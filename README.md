@@ -1,6 +1,6 @@
 # ACITO - Powerful CMS in Meteor
 
-This boilerplate is here to give you a starting point for your meteor projects, with a console tool to ease up some tasks. Essential atmosphere packages are included to give you features like routing and collection schemas out-of-the-box.  
+Acito is a Web OS/Platform and content management system. You can install various modules above Acito to make it more robust and usable. Enjoy Acito!!!!
 
 <!-- toc -->
 
