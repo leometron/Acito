@@ -8,6 +8,9 @@ Posts.attachSchema(
     content: {
       type: String
     },
+    publish: {
+      type: Boolean
+    },
     createdAt: {
       type: Date,
       denyUpdate: true
