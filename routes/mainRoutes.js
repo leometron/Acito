@@ -4,5 +4,6 @@ Router.route('/', {
   action: function () {
     this.render('home');
     SEO.set({ title: 'Home - ' + Meteor.App.NAME });
+    console.log(Meteor.App.NAME);
   }
 });
