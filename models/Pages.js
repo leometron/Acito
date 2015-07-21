@@ -15,7 +15,7 @@ Pages.attachSchema(
       type: String
     },
     categoryId: {
-        label: "Category Id",
+       type: Number,
         min: 1
     },
     createdAt: {
