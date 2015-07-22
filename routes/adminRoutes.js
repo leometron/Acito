@@ -2,7 +2,7 @@
 //using "orion generate routes"
 
 Router.route('/admin', function () {
-  this.render('admin');
+  this.render('adminLogin');
 });
 Router.route('/Dashboard', function() {
   this.render('dashBoard');
