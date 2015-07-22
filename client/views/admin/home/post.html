@@ -1,0 +1,107 @@
+<template name="post" id="main">
+    <div style="width: 100%">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-8 top-view">Screen Options <span class="caret"></span></div>
+            <div class="col-md-1 top-view" style="margin-left: 15px">Help <span class="caret"></span></div>
+        </div>
+        <div class="margin-top-20">
+            <div class="row post-margin">
+                <span style="  font-size: 30px;  vertical-align: top;">Posts</span> <span><button type="button" class="btn btn-default">Add New</button></span>
+            </div>
+            <div class="row post-margin">
+                <div style="float: right">
+                    <input type="text" />
+                    <span><button type="button" class="btn btn-default">Search Posts</button></span>
+                </div>
+            </div>
+            <div class="row post-margin">
+                <div class="col-md-3">
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Bulk Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Bulk Actions</a></li>
+                        <li><a href="#">Edit</a></li>
+                        <li><a href="#">Move to Bin</a></li>
+                    </ul>
+                </span>
+                    <span><button type="button" class="btn btn-default">Apply</button></span>
+                </div>
+                <div class="col-md-6">
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        All dates
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><a href="#">All dates</a></li>
+                    </ul>
+                </span>
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        All categories
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                        <li><a href="#"> All categories</a></li>
+                        <li><a href="#">Governance</a></li>
+                        <li><a href="#">Advisors</a></li>
+                    </ul>
+                </span>
+                    <span><button type="button" class="btn btn-default">Filter</button></span>
+                </div>
+            </div>
+            <div class="row post-margin">
+                <div class="bs-example" data-example-id="striped-table">
+                    <table class="table table-striped" style="width:90%;  border: 1px solid #ddd;">
+                        <thead style="background-color: white">
+                        <tr>
+                            <th><span><input type="checkbox"></span> <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle"  style="border-color: transparent" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Title
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+                        <li>
+                        </li>
+                    </ul>
+                </span></th>
+                            <th>Author</th>
+                            <th>Categories</th>
+                            <th>Tags</th>
+                            <th>comments</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row"><span><input type="checkbox"></span><a href="#" style=" padding-left: 10px;">Our Group</a></th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>comments</td>
+                            <td>7/11/2015</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row post-margin">
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Bulk Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                        <li><a href="#">Bulk Actions</a></li>
+                        <li><a href="#">Edit</a></li>
+                        <li><a href="#">Move to Bin</a></li>
+                    </ul>
+                </span>
+                <span><button type="button" class="btn btn-default">Apply</button></span>
+            </div>
+        </div>
+    </div>
+</template>
