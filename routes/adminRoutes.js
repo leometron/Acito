@@ -4,3 +4,9 @@
 Router.route('/admin', function () {
   this.render('admin');
 });
+Router.route('/Dashboard', function() {
+  this.render('dashBoard');
+});
+Router.route('/Posts', function() {
+  this.render('post');
+});

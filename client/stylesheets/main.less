@@ -6,13 +6,79 @@
 /* -------------------
     Main Content
    ------------------- */
+.row{
+  margin:0
+}
+
+.side_bar{
+  height: 100%;
+  position: fixed;
+  width: 14%;
+  margin-top: 40px;
+}
+
+.side_bar_menu{
+  background-color: #222;
+  border-color: #080808;
+  height:100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+
+  li{
+    width:100%;
+  }
+}
+
+.margin-top-40{
+  margin-top: 40px;
+}
+
+.pos-padding{
+  padding: 10px;
+  background-color: @blackColor;
+  position: fixed;
+  z-index: 999;
+}
+
+.padding-left-zero{
+  padding-left: 0;
+}
+
+.icons{
+  color: @iconColor;
+  font-size: 17px;
+}
+
+.padding-left-10{
+  padding-left: 10px;
+}
+
+.white{
+  color: @fontColor;
+}
+
+.top-view{
+  padding: 10px;
+  background-color: @fontColor;
+  padding-top: 0;
+}
 
 body, #main {
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden;
+//    overflow-x: hidden;
     color: @primaryFontColor;
     font-family: 'Fauna One', serif;
+    background-color: @backgroundColor;
+}
+
+.margin-top-20{
+  margin-top:20px;
 }
 
 a {
@@ -23,6 +89,7 @@ a {
         color: @primaryLinkHoverColor;
     }
 }
+
 
 .icon {
     &.orange {
