@@ -1,8 +1,17 @@
 <template name="adminLogin">
-<form id="frmLogin">
-<input type="text" id="login-email">
-<br>
-<input type="password" id="login-password">
-<input type="submit">
-</form>
+    <div class="wrapper">
+        <form  id="frmLogin" class="form-signin">
+            <div>Username</div>
+            <div><input type="text" class="form-control" id="login-email"/></div>
+            <div>Password</div>
+            <div><input type="password" id="login-password" class="form-control"/></div>
+            <div>
+                <input type="checkbox" value="remember-me" id="rememberMe" style="margin-left: 0">
+                <span>Remember me</span>
+            <span class="pull-right"><button class="btn btn-info" type="submit">Login</button></span>
+            </div>
+        </form>
+        <div class="text-center" style="padding-top: 15px;"><a href="#">Lost your password?</a></div>
+        <div class="text-center" style="padding-top: 15px;"><a href="#">Back to Acito</a></div>
+    </div>
 </template>

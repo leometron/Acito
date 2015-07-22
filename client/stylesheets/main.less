@@ -2,7 +2,6 @@
 @import 'helpers';
 @import 'variables';
 @import 'lib/elements';
-
 /* -------------------
     Main Content
    ------------------- */
@@ -68,6 +67,7 @@
   padding-top: 0;
 }
 
+
 body, #main {
     margin: 0px;
     padding: 0px;
@@ -75,6 +75,25 @@ body, #main {
     color: @primaryFontColor;
     font-family: 'Fauna One', serif;
     background-color: @backgroundColor;
+}
+
+.wrapper{
+  width: 320px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form-control{
+  font-size: 18px;
+  width: 100%;
+  padding: 3px;
+  margin: 2px 6px 16px 0;
+}
+
+.form-signin{
+  max-width: 380px;
+  padding: 35px 35px 50px;
+  margin: 0 auto;
+  background-color: #fff;
 }
 
 .margin-top-20{
@@ -116,3 +135,5 @@ a {
         color: @secondaryLinkHoverColor;
     }
 }
+
+

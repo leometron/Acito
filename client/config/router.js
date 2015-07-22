@@ -1,5 +1,6 @@
 Router.configure({
 //  layoutTemplate: 'basicLayout',
-    layoutTemplate: 'adminLayout',
+//    layoutTemplate: 'adminLayout',
+    layoutTemplate: 'loginLayout',
     notFoundTemplate: 'notFound'
 });
