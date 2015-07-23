@@ -1,8 +1,8 @@
 Template.adminHeader.helpers({
     'navBarList' : function(){
         return [
-            {'title': 'Dashboard'},
-            {'title': 'Posts', 'subtitle': ['AddNew','Categories','Tags']},
+            {'title': 'dashboard'},
+            {'title': 'posts', 'subtitle': ['AddNew','Categories','Tags']},
             {'title': 'LatestNews'},
             {'title': 'investors'},
             {'title': 'OurWorks'},
