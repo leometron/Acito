@@ -22,6 +22,13 @@
                             {{#each navBarList}}
                             <li>
                                 <a href="/admin/{{title}}"><span><i class="fa fa-tachometer icons"></i> {{title}}</span></a>
+                                {{#if subtitle}}
+                                <ul style="list-style: none;">
+                                    {{#each subtitle}}
+                                    <li><a href="/admin/{{this}}"><span>{{this}}</span></a></li>
+                                    {{/each}}
+                                </ul>
+                                {{/if}}
                             </li>
                             {{/each}}
                         </ul>
