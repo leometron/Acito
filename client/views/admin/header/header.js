@@ -2,20 +2,19 @@ Template.adminHeader.helpers({
     'navBarList' : function(){
         return [
             {'title': 'dashboard'},
-            {'title': 'posts', 'subtitle': ['AddNew','Categories','Tags']},
+            {'title': 'posts', 'subtitle': [{'sTitle':'add_new_post','name':'AddNew'},{'sTitle':'categories','name':'Categories'},{'sTitle':'tags','name':'Tags'}]},
             {'title': 'LatestNews'},
             {'title': 'investors'},
             {'title': 'OurWorks'},
             {'title': 'HomeSliders'},
             {'title': 'Media'},
-            {'title': 'Pages'},
+            {'title': 'pages','subtitle': [{'sTitle':'add_new_page','name':'AddNew'}]},
             {'title': 'Settings'},
             {'title': 'SEO'},
             {'title': 'Types'},
             {'title': 'collapseMenu'}
         ]
     }
-
 
 });
 
