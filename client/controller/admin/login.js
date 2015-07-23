@@ -16,7 +16,7 @@ Template.adminLogin.events({
         if (err)
           // The user might not have been found, or their passwword
           // could be incorrect. Inform the user that their
-          // login attempt has failed. 
+          // login attempt has failed.
           console.log("User Not found");
         else
           $(location).attr('href','admin/dashboard');

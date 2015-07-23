@@ -4,9 +4,9 @@
 Router.route('/admin', function () {
   this.render('adminLogin');
 });
-Router.route('/Dashboard', function() {
+Router.route('/admin/dashboard', function() {
   this.render('dashBoard');
 });
-Router.route('/Posts', function() {
-  this.render('post');
+Router.route('/admin/posts', function() {
+  this.render('posts');
 });
