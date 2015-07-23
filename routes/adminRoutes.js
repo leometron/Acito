@@ -10,3 +10,6 @@ Router.route('/admin/dashboard', function() {
 Router.route('/admin/posts', function() {
   this.render('posts');
 });
+Router.route('/admin/posts/add_new_post', function () {
+    this.render('add_new_post');
+});

@@ -11,9 +11,8 @@ Posts.attachSchema(
     publish: {
       type: Boolean
     },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
+    createdBy: {
+        type: String
     }
   })
 );
