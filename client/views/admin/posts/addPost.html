@@ -1,4 +1,4 @@
-<template name="add_new_post">
+<template name="addNewPost">
     <div>
         <div class="row">
             <div class="col-md-2 col-md-offset-8 top-view text-center">Screen Options <span class="caret"></span></div>
@@ -15,14 +15,6 @@
                 <textarea name="area1" cols="80" rows="20" id="postContent" class="form-control"></textarea>
             </div>
             <div>
-                <div  id="savePost" class="btn btn-default">
-                    Save
-                </div>
-                <div  id="publishPost" class="btn btn-default">
-                    publish
-                </div>
-            </div>
-            <div>
                 {{> seo}}
             </div>
         </div>
@@ -30,7 +22,7 @@
             <div class="bg-white">
                 <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
-                    <span><button type="button" class="btn btn-default">Search Draft</button></span>
+                    <span><button type="button" id="savePost" class="btn btn-default">Save Draft</button></span>
                     <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span>
                 </div>
                 <div class="board-view">Status: Draft <a href="#">Edit</a></div>
@@ -38,7 +30,7 @@
                 <div class="board-view">Publish immediately <a href="#">Edit</a></div>
             </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
-                Move to Bin  <span style="padding-left: 40%"><button type="button" class="btn btn-primary">Publish</button></span>
+                Move to Bin  <span style="padding-left: 40%"><button type="button" id="publishPost" class="btn btn-primary">Publish</button></span>
             </div>
 
             <div class="bg-white margin-top-20">
@@ -53,7 +45,7 @@
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">Tags <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
-                    <span><input type="text" class="form-control"></span>
+                    <span><input type="text" id="postTags" class="form-control"></span>
                     <span><button class="btn btn-default">Add</button></span>
                 </div>
                 <div class="board-view">

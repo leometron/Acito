@@ -1,4 +1,4 @@
-Posts = new Mongo.Collection('Posts');
+Posts = new Mongo.Collection('posts');
 
 Posts.attachSchema(
     new SimpleSchema({
@@ -13,6 +13,12 @@ Posts.attachSchema(
     },
     createdBy: {
         type: String
+    },
+    // createdAt: {
+    //   type: Date
+    // },
+    tags: {
+      type: String
     }
   })
 );

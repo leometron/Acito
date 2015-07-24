@@ -65,14 +65,17 @@
                                 <div class="col-md-1">comments</div>
                                 <div class="col-md-1">Date</div>
                             </div>
+                        {{#each postList}}
                             <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
-                                <div class="col-md-5"><span><input type="checkbox"></span>Our Group</div>
-                                <div class="col-md-2">Mark</div>
-                                <div class="col-md-2">Otto</div>
-                                <div class="col-md-1">@mdo</div>
-                                <div class="col-md-1">comments</div>
-                                <div class="col-md-1">7/2472015</div>
-                            </div>
+                                <div class="col-md-5"><span><input type="checkbox"></span>{{title}}</div>
+                                <div class="col-md-2">{{createdBy}}</div>
+                                <div class="col-md-2">{{category}}</div>
+                                <div class="col-md-1">{{tags}}</div>
+                                <div class="col-md-1">{{comments}}</div>
+                                <div class="col-md-1">{{createdAt}}</div>
+                            </div>                        
+                        {{/each}}                            
+
                         </div>
                     </div>
                 </div>
