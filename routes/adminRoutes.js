@@ -13,9 +13,15 @@ Router.route('/admin/posts', function() {
 Router.route('/admin/pages', function() {
     this.render('pages');
 });
+Router.route('/admin/media', function() {
+    this.render('media');
+});
 Router.route('/admin/posts/add_new_post', function () {
     this.render('add_new_post');
 });
 Router.route('/admin/posts/add_new_page', function () {
     this.render('add_new_page');
+});
+Router.route('/admin/posts/add_new_media', function () {
+    this.render('add_new_media');
 });

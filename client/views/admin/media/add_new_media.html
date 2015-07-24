@@ -1,0 +1,72 @@
+<template name="addNewMedia">
+    <div class="row">
+        <div class="col-md-1 pull-right top-view text-center" style="margin-left: 15px">Help <span class="caret"></span></div>
+    </div>
+    <div class="margin-top-20">
+        <div class="row post-margin">
+            <span style="font-size: 30px;">Upload New Media</span>
+        </div>
+    </div>
+    <div class="margin-top-20">
+         <div style="  border: 4px dashed #b4b9be;  height: 230px;">
+               <div style="  margin: 70px auto 0;width:250px">
+                   <p class="text-center" style="font-size: 20px;color: #A19B9B;">Drop file here</p>
+                   <p class="text-center">or</p>
+                   <div class="text-center"><button class="btn btn-default">select Files</button></div>
+               </div>
+         </div>
+    </div>
+    <div class="padding-top-bottom-10">
+         <p>You are using the multi-file uploader. Problems? Try the browser uploader instead</p>
+    </div>
+    <div>
+        <p>Maximum upload file size: 24 MB.</p>
+    </div>
+    <div id="addNewPost">
+        <div class="margin-top-20">
+            <div class="row post-margin">
+                <span style="font-size: 30px;">Add a New Post</span>
+                <span><button type="button" class="btn btn-default">Search Posts</button></span>
+            </div>
+        </div>
+        <div class="col-md-8  padding-left-zero">
+            <div class="padding-top-bottom-10">
+                <input type="text" placeholder="none" class="form-control">
+            </div>
+            <div class="padding-top-bottom-10">
+               <img src="/images/none.png" class="img-rounded">
+            </div>
+            <div class="padding-top-bottom-10">
+               <button class="btn btn-default">Edit images</button>
+            </div>
+            <div class="padding-top-bottom-10">
+                <p>Caption</p>
+                <textarea  cols="80" rows="5"  class="form-control"></textarea>
+            </div>
+            <div class="padding-top-bottom-10">
+                <p>Alternative Text</p>
+                <input type="text" class="form-control">
+            </div>
+            <div class="padding-top-bottom-10">
+                <p>Description</p>
+                <textarea  cols="80" rows="5"  class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="col-md-4 padding-bottom-40">
+            <div class="bg-white">
+                <div class="board-view  border-bottom">Save<span class="caret pull-right margin-top-10"></span></div>
+                <div class="board-view">Uploaded on:</div>
+                <div class="board-view">File URL:</div>
+                <div class="board-view"><input type="text" class="form-control"></div>
+                <div class="board-view">File URL:</div>
+                <div class="board-view">File name:</div>
+                <div class="board-view">File type:</div>
+                <div class="board-view">File size:</div>
+                <div class="board-view">Dimension:</div>
+            </div>
+            <div class="board-view border-bottom" style="border: 1px solid #ddd;border-top: 0;">
+                Delete Permanently<span style="padding-left: 30%"><button type="button" class="btn btn-primary">update</button></span>
+            </div>
+        </div>
+    </div>
+</template>

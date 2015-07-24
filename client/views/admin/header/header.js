@@ -7,7 +7,7 @@ Template.adminHeader.helpers({
             {'title': 'investors'},
             {'title': 'OurWorks'},
             {'title': 'HomeSliders'},
-            {'title': 'Media'},
+            {'title': 'media','subtitle': [{'sTitle':'add_new_media','name':'AddNew'}]},
             {'title': 'pages','subtitle': [{'sTitle':'add_new_page','name':'AddNew'}]},
             {'title': 'Settings'},
             {'title': 'SEO'},
@@ -20,8 +20,8 @@ Template.adminHeader.helpers({
 
 Template.adminHeader.rendered = function () {
 
-    var pathname = window.location.pathname.split('/')[1];
-    var pathname1 = window.location.pathname.split('/')[2];
+    var pathname = $(location).attr('pathname').split('/')[1];
+    var pathname1 = $(location).attr('pathname').split('/')[2];
     if(pathname == 'admin' && pathname1 != undefined){
         $('#header').show();
         $('#main_view').removeClass('full-width');
@@ -30,5 +30,20 @@ Template.adminHeader.rendered = function () {
         $('#main_view').addClass('full-width');
     }
 
-
 };
+
+//Template.adminHeader.events ({
+//    'click #navBar .nav': function(){
+//        var mainTitle = this.title;
+//        $(location).attr('href',mainTitle);
+//
+//    },
+//    'click #subNavBar': function(){
+//        var path = $(location).attr('pathname').split('/')[2];
+//        var subTitle = this.stitle;
+//        console.log(subTitle);
+//        $(location).attr('href', subTitle);
+//
+//    }
+//});
+

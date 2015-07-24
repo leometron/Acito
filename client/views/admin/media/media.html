@@ -1,0 +1,109 @@
+<template name="media" id="media">
+    <div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-8 top-view text-center">Screen Options <span class="caret"></span></div>
+            <div class="col-md-1 top-view text-center" style="margin-left: 15px">Help <span class="caret"></span></div>
+        </div>
+        <div class="margin-top-20">
+            <div class="row post-margin">
+                <span style="  font-size: 30px;  vertical-align: top;">Media Library</span> <span><button type="button" id="addNewPost" class="btn btn-default">Add New</button></span>
+            </div>
+            <div class="row post-margin padding-top-bottom-10">
+                <div class="col-md-12 bg-white padding-top-bottom-10 ">
+                    <span class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            All(201)
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown">
+                            <li><a href="#"> All(201)</a></li>
+                            <li><a href="#">images()</a></li>
+                            <li><a href="#">unattached()</a></li>
+                        </ul>
+                    </span>
+                    <span class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            All dates
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                            <li><a href="#">All dates</a></li>
+                            <li><a href="#">july 2015</a></li>
+                        </ul>
+                    </span>
+                    <span><button type="button" class="btn btn-default">filter</button></span>
+                    <div style="float: right">
+                        <input type="search" style="padding-top: 10px" placeholder="search"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row post-margin">
+                <div class="col-md-3 padding-left-zero">
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Bulk Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Bulk Actions</a></li>
+                        <li><a href="#">Edit</a></li>
+                        <li><a href="#">Move to Bin</a></li>
+                    </ul>
+                </span>
+                    <span><button type="button" class="btn btn-default">Apply</button></span>
+                </div>
+
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        All categories
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                        <li><a href="#"> All categories</a></li>
+                        <li><a href="#">Governance</a></li>
+                        <li><a href="#">Advisors</a></li>
+                    </ul>
+                </span>
+                    <span><button type="button" class="btn btn-default">Filter</button></span>
+                </div>
+        </div>
+        <div class="row post-margin">
+            <div class="bs-example" data-example-id="striped-table">
+                <div class="row post-margin padding-top-bottom-10">
+                    <div class="bs-example" data-example-id="striped-table">
+                        <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
+                            <div class="col-md-2"><span><input type="checkbox"></span></div>
+                            <div class="col-md-5">file</div>
+                            <div class="col-md-1">Author</div>
+                            <div class="col-md-2">Uploaded to</div>
+                            <div class="col-md-1">comments</div>
+                            <div class="col-md-1">Date</div>
+                        </div>
+                        <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
+                            <div class="col-md-2"><span><input type="checkbox"></span><span style="padding-left: 20px"><img src="/images/none.png" class="img-rounded"></span></div>
+                            <div class="col-md-5">Reef</div>
+                            <div class="col-md-1">Otto</div>
+                            <div class="col-md-2">@mdo</div>
+                            <div class="col-md-1">comments</div>
+                            <div class="col-md-1">7/24/2015</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row post-margin">
+            <span class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Bulk Actions
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                    <li><a href="#">Bulk Actions</a></li>
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="#">Move to Bin</a></li>
+                </ul>
+            </span>
+            <span><button type="button" class="btn btn-default">Apply</button></span>
+        </div>
+    </div>
+</template>
