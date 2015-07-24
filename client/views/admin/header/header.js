@@ -2,7 +2,7 @@ Template.adminHeader.helpers({
     'navBarList' : function(){
         return [
             {'title': 'dashboard'},
-            {'title': 'posts', 'subtitle': [{'sTitle':'add_new_post','name':'AddNew'},{'sTitle':'categories','name':'Categories'},{'sTitle':'tags','name':'Tags'}]},
+            {'title': 'posts', 'subtitle': [{'sTitle':'add','name':'AddNew'},{'sTitle':'categories','name':'Categories'},{'sTitle':'tags','name':'Tags'}]},
             {'title': 'LatestNews'},
             {'title': 'investors'},
             {'title': 'OurWorks'},
