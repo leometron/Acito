@@ -1,0 +1,76 @@
+<template name="add_new_page">
+    <div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-8 top-view text-center">Screen Options <span class="caret"></span></div>
+            <div class="col-md-1 top-view text-center" style="margin-left: 15px">Help <span class="caret"></span></div>
+        </div>
+        <div class="margin-top-20">
+            <div class="row post-margin">
+                <span style="font-size: 30px;">Add a New Pages</span>
+            </div>
+        </div>
+        <div class="col-md-8  padding-left-zero">
+            <input type="text" class="form-control" placeholder="Enter title here" id="postName">
+            <div>
+                <textarea name="area1" cols="80" rows="20" id="postContent" class="form-control"></textarea>
+            </div>
+            <div>
+                <div  id="savePost" class="btn btn-default">
+                    Save
+                </div>
+                <div  id="publishPost" class="btn btn-default">
+                    publish
+                </div>
+            </div>
+            <div>
+                {{> seo}}
+            </div>
+        </div>
+        <div class="col-md-4 padding-bottom-40">
+            <div class="bg-white">
+                <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span></div>
+                <div class="board-view">
+                    <span><button type="button" class="btn btn-default">Search Draft</button></span>
+                    <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span>
+                </div>
+                <div class="board-view">Status: Draft <a href="#">Edit</a></div>
+                <div class="board-view">Visibility: public <a href="#">Edit</a></div>
+                <div class="board-view">Publish immediately <a href="#">Edit</a></div>
+            </div>
+            <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
+                Move to Bin  <span style="padding-left: 40%"><button type="button" class="btn btn-primary">Publish</button></span>
+            </div>
+            <div class="bg-white margin-top-20">
+                <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span></div>
+                    <div class="board-view">Parent</div>
+                    <div class="dropdown board-view">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            (no parent)
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li><a href="#">Accessibility</a></li>
+                            <li><a href="#">Advertising Terms Conditions</a></li>
+                            <li><a href="#">Cookies & Privacy</a></li>
+                            <li><a href="#">Get in Touch</a></li>
+                        </ul>
+                    </div>
+                    <div class="board-view" >
+                        Orders
+                    </div>
+                    <div class="board-view">
+                        <input type="text" class="form-control" value="0">
+                    </div>
+                    <div class="board-view">
+                        Need help? Use the Help tab in the upper right of your screen.
+                    </div>
+                </div>
+            <div class="bg-white margin-top-20">
+                <div class="board-view border-bottom">Feature image <span class="caret pull-right margin-top-10"></span></div>
+                <div class="board-view">
+                    <span><a href="#">Set featured image</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

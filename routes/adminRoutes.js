@@ -16,3 +16,6 @@ Router.route('/admin/pages', function() {
 Router.route('/admin/posts/add_new_post', function () {
     this.render('add_new_post');
 });
+Router.route('/admin/posts/add_new_page', function () {
+    this.render('add_new_page');
+});
