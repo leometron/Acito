@@ -10,8 +10,8 @@
             </div>
             <div class="row post-margin">
                 <div style="float: right">
-                    <input type="text" />
-                    <span><button type="button" class="btn btn-default">Search Posts</button></span>
+                    <input type="text" id="queryString" value="{{queryString}}"/>
+                    <span><button type="button" id="searchPost" class="btn btn-default">Search Posts</button></span>
                 </div>
             </div>
             <div class="row post-margin">
@@ -62,20 +62,28 @@
                                 <div class="col-md-2">Author</div>
                                 <div class="col-md-2">Categories</div>
                                 <div class="col-md-1">Tags</div>
-                                <div class="col-md-1">comments</div>
+                                <div class="col-md-1">Status</div>
                                 <div class="col-md-1">Date</div>
                             </div>
-                        {{#each postList}}
-                            <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
-                                <div class="col-md-5"><span><input type="checkbox"></span>{{title}}</div>
+                           {{#each postList}}
+                            <div id="{{_id}}" class="post row  padding-top-bottom-10" style="border: 1px solid #ddd">
+                                <div class="col-md-5">
+                                    <span>
+                                        <input type="checkbox">
+                                    </span>
+                                    {{#if deleted}}                                    
+                                        <strike>{{title}}</strike>
+                                    {{else}}
+                                        {{title}}
+                                    {{/if}}                            
+                                </div>
                                 <div class="col-md-2">{{createdBy}}</div>
                                 <div class="col-md-2">{{category}}</div>
                                 <div class="col-md-1">{{tags}}</div>
-                                <div class="col-md-1">{{comments}}</div>
+                                <div class="col-md-1">{{status}}</div>
                                 <div class="col-md-1">{{createdAt}}</div>
                             </div>                        
                         {{/each}}                            
-
                         </div>
                     </div>
                 </div>

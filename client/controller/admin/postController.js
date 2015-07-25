@@ -7,8 +7,15 @@
  */
 Template.posts.events({
     'click #addNewPost': function () {
-        console.log("clicked add new post");
         $(location).attr('href','posts/add');
+    },
+    'click .post': function () {
+        Session.set('selectedPostId', this._id);
+        Router.go("/admin/posts/edit");
+    },
+    'click #searchPost' : function () {
+        Meteor.call('searchPost',$('#queryString').val());
+        Router.go("/admin/posts");        
     }
 });
 
@@ -22,11 +29,30 @@ Template.posts.events({
 Template.addNewPost.events({
     'click #savePost' : function () {
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag);
+        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,Meteor.users.findOne(Meteor.userId()).username);
+        Router.go("/admin/posts");
     },
     'click #publishPost' : function () {
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('publishPostData',$('#postName').val(),$('#postContent').val(),tag);
+        Meteor.call('publishPostData',$('#postName').val(),$('#postContent').val(),tag,Meteor.users.findOne(Meteor.userId()).username);
+        Router.go("/admin/posts");        
+    },
+    'click #updatePost' : function() {
+        var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
+        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,Meteor.users.findOne(Meteor.userId()).username);
+        Router.go("/admin/posts");        
+    },
+    'click #moveBin' : function() {
+        Meteor.call('binPostData',Session.get('selectedPostId')); 
+        Router.go("/admin/posts");               
+    },
+    'click #restorePost' : function() {
+        Meteor.call('unbinPostData',Session.get('selectedPostId'));
+        Router.go("/admin/posts");
+    },
+    'click #removePost' : function() {
+        Meteor.call('removePostData',Session.get('selectedPostId')); 
+        Router.go("/admin/posts");               
     }
 });
 
@@ -43,5 +69,14 @@ Meteor.subscribe("Posts");
 Template.posts.helpers({
     'postList': function() {
         return Posts.find();
+    },
+    'queryString': function() {
+        return $('#queryString').val();
+    }
+});
+
+Template.addNewPost.helpers({
+    'showSelectedPost': function(){
+        return Posts.findOne(Session.get('selectedPostId'));
     }
 });

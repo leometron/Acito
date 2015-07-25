@@ -13,11 +13,13 @@ Router.route('/admin/posts', function() {
 Router.route('/admin/pages', function() {
     this.render('pages');
 });
-
 Router.route('/admin/media', function() {
     this.render('media');
 });
 Router.route('/admin/posts/add', function () {
+    this.render('addNewPost');
+});
+Router.route('/admin/posts/edit', function () {
     this.render('addNewPost');
 });
 Router.route('/admin/posts/add_new_page', function () {
