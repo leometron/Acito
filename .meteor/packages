@@ -26,3 +26,6 @@ semantic:ui-css
 mizzao:bootstrap-3
 accounts-ui
 
+
+cfs:standard-packages
+cfs:gridfs

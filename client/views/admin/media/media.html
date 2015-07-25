@@ -33,7 +33,7 @@
                     </span>
                     <span><button type="button" class="btn btn-default">filter</button></span>
                     <div style="float: right">
-                        <input type="search" style="padding-top: 10px" placeholder="search"/>
+                        <input type="search" style="padding-top: 10px"/>
                     </div>
                 </div>
             </div>
@@ -80,12 +80,28 @@
                             <div class="col-md-1">Date</div>
                         </div>
                         <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
-                            <div class="col-md-2"><span><input type="checkbox"></span><span style="padding-left: 20px"><img src="/images/none.png" class="img-rounded"></span></div>
-                            <div class="col-md-5">Reef</div>
-                            <div class="col-md-1">Otto</div>
-                            <div class="col-md-2">@mdo</div>
-                            <div class="col-md-1">comments</div>
-                            <div class="col-md-1">7/24/2015</div>
+                            <ul>
+                                {{#each mediaList}}
+                                <li>
+                                    <div class="col-md-2"><span><input type="checkbox"></span><img src="{{url}}" class="img-rounded"></div>
+                                </li>
+                                <li>
+                                    <div class="col-md-5">{{name}}</div>
+                                </li>
+                                <li>
+                                    <div class="col-md-1">Otto</div>
+                                </li>
+                                <li>
+                                    <div class="col-md-2">@mdo</div>
+                                </li>
+                                <li>
+                                    <div class="col-md-1">comments</div>
+                                </li>
+                                <li>
+                                    <div class="col-md-1">7/2472015</div>
+                                </li>
+                                {{/each}}
+                            </ul>
                         </div>
                     </div>
                 </div>

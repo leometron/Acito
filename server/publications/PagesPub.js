@@ -1,21 +1,29 @@
-Meteor.publish('Pages', function () {
-  return Pages.find();
-});
 
+Meteor.publish('Pages', function () {
+    return Pages.find();
+});
 
 
 //Define all the methods interact with the PAGES object
 Meteor.methods({
-    'insertPagesData': function(content,category_id){
-      var currentUserId = Meteor.userId();
-      Pages.insert({
-          content: content,
-          category_id: category_id,
-          createdBy: currentUserId
-      });
+
+    'insertPagesData': function (title, content) {
+        var currentUserId = Meteor.userId();
+        Pages.insert ({
+            title: title,
+            content: content
+            //  category_id: category_id,
+            //   createdBy: currentUserId
+        });
+
     },
+
+    'updatePagesData' : function (pageTitle, pageComments, selectedPages) {
+        Pages.update(selectedPages, {$set: { title : pageTitle, content : pageComments }});
+    },
+
     'removePagesData': function(selectedPages){
-      var currentUserId = Meteor.userId();
-      Media.remove({_id: selectedPages, createdBy: currentUserId});
+        var currentUserId = Meteor.userId();
+        Media.remove({_id: selectedPages, createdBy: currentUserId});
     }
-  });
+});

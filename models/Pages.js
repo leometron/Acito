@@ -8,36 +8,38 @@ Pages = new Mongo.Collection('Pages');
 
 Pages.attachSchema(
     new SimpleSchema({
-    title: {
-      type: String
-    },
-    content: {
-      type: String
-    },
-    categoryId: {
-       type: Number,
-        min: 1
-    },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
-    }
+        title: {
+            type: String
+        },
+        content: {
+            type: String
+        }
 
-  })
+        /*    categoryId: {
+         type: Number,
+         min: 1
+         },
+
+         createdAt: {
+         type: Date,
+         denyUpdate: true
+         }*/
+
+    })
 );
 
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
-  Pages.allow({
-    insert : function () {
-      return true;
-    },
-    update : function () {
-      return true;
-    },
-    remove : function () {
-      return true;
-    }
-  });
+    Pages.allow({
+        insert : function () {
+            return true;
+        },
+        update : function () {
+            return true;
+        },
+        remove : function () {
+            return true;
+        }
+    });
 }

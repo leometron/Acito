@@ -20,7 +20,9 @@ Router.route('/admin/media', function() {
 Router.route('/admin/posts/add', function () {
     this.render('addNewPost');
 });
-
+Router.route('/admin/posts/add_new_page', function () {
+    this.render('add_new_page');
+});
 Router.route('/admin/posts/add_new_media', function () {
     this.render('add_new_media');
 });

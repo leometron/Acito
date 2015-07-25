@@ -12,7 +12,7 @@
                <div style="  margin: 70px auto 0;width:250px">
                    <p class="text-center" style="font-size: 20px;color: #A19B9B;">Drop file here</p>
                    <p class="text-center">or</p>
-                   <div class="text-center"><button class="btn btn-default">select Files</button></div>
+                   <div class="text-center"><input type="file" id="mediaName"></div>
                </div>
          </div>
     </div>
@@ -22,7 +22,7 @@
     <div>
         <p>Maximum upload file size: 24 MB.</p>
     </div>
-    <div id="addNewPost">
+    <div id="editPage">
         <div class="margin-top-20">
             <div class="row post-margin">
                 <span style="font-size: 30px;">Add a New Post</span>
@@ -31,10 +31,11 @@
         </div>
         <div class="col-md-8  padding-left-zero">
             <div class="padding-top-bottom-10">
-                <input type="text" placeholder="none" class="form-control">
+                <input type="text" class="form-control" value="{{selectMediaName}}">
             </div>
+            <P>{{selectMediaUrl}}</p>
             <div class="padding-top-bottom-10">
-               <img src="/images/none.png" class="img-rounded">
+               <img src="{{selectMediaUrl}}" class="img-rounded">
             </div>
             <div class="padding-top-bottom-10">
                <button class="btn btn-default">Edit images</button>

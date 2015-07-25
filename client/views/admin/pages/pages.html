@@ -6,7 +6,8 @@
         </div>
         <div class="margin-top-20">
             <div class="row post-margin">
-                <span style="  font-size: 30px;  vertical-align: top;">Pages</span> <span><button type="button" id="addNewPost" class="btn btn-default">Add New</button></span>
+                <span style="  font-size: 30px;  vertical-align: top;">Pages</span>
+                <span><button type="button" id="addNew" class="btn btn-default">Add New</button></span>
             </div>
             <div class="row post-margin">
                 <div style="float: right">
@@ -15,7 +16,7 @@
                 </div>
             </div>
             <div>
-                 <span><a herf="#">All</a> | <a href="#">Published</a></span>
+                <span><a herf="#">All</a> | <a href="#">Published</a></span>
             </div>
             <div class="row post-margin">
                 <div class="col-md-3 padding-left-zero">
@@ -54,10 +55,12 @@
                         <div class="col-md-1">Date</div>
                     </div>
                     <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
-                        <div class="col-md-7"><span><input type="checkbox"></span>Accessibility</div>
+                        {{#each lists}}
+                        <div class="col-md-7" id="list"><span><input type="checkbox"></span>{{title}}</div>
                         <div class="col-md-2">Author</div>
                         <div class="col-md-2">comments</div>
                         <div class="col-md-1">Date</div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
