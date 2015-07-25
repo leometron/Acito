@@ -13,6 +13,12 @@ Pages.attachSchema(
         },
         content: {
             type: String
+        },
+        deleted: {
+            type: Boolean
+        },
+        published: {
+            type: Boolean
         }
 
         /*    categoryId: {

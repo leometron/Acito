@@ -56,7 +56,14 @@
                     </div>
                     <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
                         {{#each lists}}
-                        <div class="col-md-7" id="list"><span><input type="checkbox"></span>{{title}}</div>
+                        <div class="col-md-7" id="list">
+                            <span><input type="checkbox"></span>
+                            {{#if deleted}}
+                            <strike>{{title}}</strike>
+                            {{else}}
+                                {{title}}
+                            {{/if}}
+                        </div>
                         <div class="col-md-2">Author</div>
                         <div class="col-md-2">comments</div>
                         <div class="col-md-1">Date</div>

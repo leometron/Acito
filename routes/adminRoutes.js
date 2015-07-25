@@ -28,3 +28,9 @@ Router.route('/admin/posts/add_new_page', function () {
 Router.route('/admin/media/add', function () {
     this.render('addNewMedia');
 });
+Router.route('/admin/pages/add', function () {
+    this.render('addNewPage');
+});
+Router.route('/admin/posts/add_new_media', function () {
+    this.render('add_new_media');
+});
