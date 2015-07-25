@@ -10,6 +10,15 @@ Template.addNewMedia.helpers({
   },
   'selectMediaName': function(){
     return Session.get('currentMediaName');
+  },
+  'selectMediaFullName': function(){
+    return Session.get('currentMediaFullName');
+  },
+  'selectMediaType': function(){
+    return Session.get('currentMediaType');
+  },
+  'selectMediaSize': function(){
+    return Session.get('currentMediaSize');
   }
 });
 
@@ -20,41 +29,46 @@ Template.addNewMedia.rendered = function(){
 Template.addNewMedia.events({
     'change #mediaName': function (event, template) {
         FS.Utility.eachFile(event, function (file) {
+          var img = event.target.files[0]
+          
+          var medianame = img.name;
+          var mediatype = img.type;
+          var mediasize = img.size + " Bytes";
+          var dimension = img.dimensions;
+          console.log(dimension+"..........................");
+
+          Session.set('currentMediaFullName', medianame);
+          Session.set('currentMediaType', mediatype);
+          Session.set('currentMediaSize', mediasize);
+
             Images.insert(file, function (err, fileObj) {
                 if (err) {
                     console.log('error')
                 } else {
                   $("#editPage").show();
-                  // $('#editPage').show();
+
                   var url = "/cfs/files/images/" + fileObj._id;
-                  Session.set('currentMediaUrl', url);
                   var name = $('#mediaName').val();
                   var splitName = name.split(".", 1);
+
+                  Meteor.setTimeout(function(){Session.set('currentMediaUrl', url)}, 1000);
                   Session.set('currentMediaName', splitName);
                     // Meteor.call('insertMediaData', url, name, description);
                 }
             });
         });
     },
-    'click #publish':function(){
+    'click #update':function(){
       var url = Session.get('currentMediaUrl');
       var name = Session.get('currentMediaName');
       var description = $('#description').val();
-      Meteor.call('insertMediaData', url, name, description);
-      alert("published");
+      var alternative = $('#alternative').val();
+      var caption = $('#caption').val();
+      
+      Meteor.call('insertMediaData', url, name, caption, alternative, description, Meteor.users.findOne(Meteor.userId()).username);
       Router.go("/admin/media");
     }
-    // 'click #edit': function(){
-    //   $(location).attr('href','add/edit');
-    // }
 });
-
-// Template.addnew.helpers({
-//   categories: function(elementId) {
-//     return getFormCategories(dict.get('activeElementId'));
-//   }
-// })
-
 
 
 Meteor.subscribe('Media');

@@ -6,7 +6,7 @@
         </div>
         <div class="margin-top-20">
             <div class="row post-margin">
-                <span style="  font-size: 30px;  vertical-align: top;">Media Library</span> <span><button type="button" id="addNewPost" class="btn btn-default">Add New</button></span>
+                <span style="  font-size: 30px;  vertical-align: top;">Media Library</span> <span><button type="button" id="addNewMedia" class="btn btn-default">Add New</button></span>
             </div>
             <div class="row post-margin padding-top-bottom-10">
                 <div class="col-md-12 bg-white padding-top-bottom-10 ">
@@ -79,30 +79,33 @@
                             <div class="col-md-1">comments</div>
                             <div class="col-md-1">Date</div>
                         </div>
-                        <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
-                            <ul>
-                                {{#each mediaList}}
-                                <li>
-                                    <div class="col-md-2"><span><input type="checkbox"></span><img src="{{url}}" class="img-rounded"></div>
-                                </li>
-                                <li>
-                                    <div class="col-md-5">{{name}}</div>
-                                </li>
-                                <li>
-                                    <div class="col-md-1">Otto</div>
-                                </li>
-                                <li>
-                                    <div class="col-md-2">@mdo</div>
-                                </li>
-                                <li>
-                                    <div class="col-md-1">comments</div>
-                                </li>
-                                <li>
-                                    <div class="col-md-1">7/2472015</div>
-                                </li>
-                                {{/each}}
-                            </ul>
-                        </div>
+                        <div class="row padding-top-bottom-10" style="border: 1px solid #ddd">
+                           <ul class="media margin-bottom-zero">
+                               {{#each mediaList}}
+                               <div class="row padding-top-bottom-10">
+                                   <li class="col-md-2">
+                                       <span><input type="checkbox"></span><span class="padding-left-10"><img src="{{url}}" style="width:50px;height:50px" class="img-rounded"></span>
+                                   </li>
+                                   <li class="col-md-5">
+                                       <div>{{name}}</div>
+                                       <div>{{selectMediaFullName}}</div>
+                                   </li>
+                                   <li class="col-md-1">
+                                       <div>{{createdBy}}</div>
+                                   </li>
+                                   <li class="col-md-2">
+                                       <div>@mdo</div>
+                                   </li>
+                                   <li class="col-md-1">
+                                       <div>comments</div>
+                                   </li>
+                                   <li class="col-md-1">
+                                       <div>7/24/2015</div>
+                                   </li>
+                               </div>
+                               {{/each}}
+                           </ul>
+                       </div>
                     </div>
                 </div>
             </div>

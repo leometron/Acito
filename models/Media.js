@@ -8,7 +8,16 @@ Media.attachSchema(
         name: {
             type: String
         },
+        caption: {
+            type: String
+        },
+        alternative: {
+            type: String
+        },
         description: {
+            type: String
+        },
+        createdBy: {
             type: String
         }
         //createdAt: {

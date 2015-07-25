@@ -25,6 +25,6 @@ Router.route('/admin/posts/edit', function () {
 Router.route('/admin/posts/add_new_page', function () {
     this.render('add_new_page');
 });
-Router.route('/admin/posts/add_new_media', function () {
-    this.render('add_new_media');
+Router.route('/admin/media/add', function () {
+    this.render('addNewMedia');
 });
