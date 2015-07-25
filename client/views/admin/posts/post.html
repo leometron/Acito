@@ -1,12 +1,12 @@
-<template name="post" id="main">
+<template name="posts" id="post">
     <div style="width: 100%">
         <div class="row">
-            <div class="col-md-2 col-md-offset-8 top-view">Screen Options <span class="caret"></span></div>
-            <div class="col-md-1 top-view" style="margin-left: 15px">Help <span class="caret"></span></div>
+            <div class="col-md-2 col-md-offset-8 top-view text-center">Screen Options <span class="caret"></span></div>
+            <div class="col-md-1 top-view text-center" style="margin-left: 15px">Help <span class="caret"></span></div>
         </div>
         <div class="margin-top-20">
             <div class="row post-margin">
-                <span style="  font-size: 30px;  vertical-align: top;">Posts</span> <span><button type="button" class="btn btn-default">Add New</button></span>
+                <span style="  font-size: 30px;  vertical-align: top;">Posts</span> <span><button type="button" id="addNewPost" class="btn btn-default">Add New</button></span>
             </div>
             <div class="row post-margin">
                 <div style="float: right">
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="row post-margin">
-                <div class="col-md-3">
+                <div class="col-md-3 padding-left-zero">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Bulk Actions
@@ -55,37 +55,29 @@
             </div>
             <div class="row post-margin">
                 <div class="bs-example" data-example-id="striped-table">
-                    <table class="table table-striped" style="width:90%;  border: 1px solid #ddd;">
-                        <thead style="background-color: white">
-                        <tr>
-                            <th><span><input type="checkbox"></span> <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle"  style="border-color: transparent" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Title
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-                        <li>
-                        </li>
-                    </ul>
-                </span></th>
-                            <th>Author</th>
-                            <th>Categories</th>
-                            <th>Tags</th>
-                            <th>comments</th>
-                            <th>Date</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row"><span><input type="checkbox"></span><a href="#" style=" padding-left: 10px;">Our Group</a></th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>comments</td>
-                            <td>7/11/2015</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="row post-margin padding-top-bottom-10">
+                        <div class="bs-example" data-example-id="striped-table">
+                            <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
+                                <div class="col-md-5"><span><input type="checkbox"></span>Title</div>
+                                <div class="col-md-2">Author</div>
+                                <div class="col-md-2">Categories</div>
+                                <div class="col-md-1">Tags</div>
+                                <div class="col-md-1">comments</div>
+                                <div class="col-md-1">Date</div>
+                            </div>
+                        {{#each postList}}
+                            <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
+                                <div class="col-md-5"><span><input type="checkbox"></span>{{title}}</div>
+                                <div class="col-md-2">{{createdBy}}</div>
+                                <div class="col-md-2">{{category}}</div>
+                                <div class="col-md-1">{{tags}}</div>
+                                <div class="col-md-1">{{comments}}</div>
+                                <div class="col-md-1">{{createdAt}}</div>
+                            </div>                        
+                        {{/each}}                            
+
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row post-margin">

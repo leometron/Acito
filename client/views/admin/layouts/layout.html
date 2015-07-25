@@ -1,15 +1,17 @@
 <template name="adminLayout">
     <div id="main">
         <div class="row">
-        <header>
-            {{> adminTop}}
-            <div class="col-md-2 padding-left-zero">
-            {{> adminHeader}}
+            <div id="header">
+                <header>
+                    {{> adminTop}}
+                    <div class="col-md-2 padding-left-zero">
+                    {{> adminHeader}}
+                    </div>
+                </header>
             </div>
-        </header>
-        <div class="col-md-10 padding-left-zero margin-top-40">
-        {{> yield}}
-        </div>
+            <div id="main_view" class="col-md-10 padding-left-zero margin-top-40">
+            {{> yield}}
+            </div>
         <!--<footer>-->
             <!--{{> footer}}-->
         <!--</footer>-->
