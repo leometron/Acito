@@ -17,9 +17,9 @@ Posts.attachSchema(
     deleted: {
       type: Boolean
     },
-    // createdAt: {
-    //   type: Date
-    // },
+    createdAt: {
+      type: Date
+    },
     tags: {
       type: String
     },

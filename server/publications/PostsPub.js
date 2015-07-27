@@ -1,11 +1,10 @@
 var currentPostId = "";
-var querystr;
+var querystr="";
+var currentDate = new Date();
 Meteor.publish('Posts', function () {
     if(querystr) {
-        console.log('entered if');
         return Posts.find({ $text: { $search: querystr } });        
     } else {
-        console.log('entered else');        
         return Posts.find();
     }
 });
@@ -13,16 +12,16 @@ Meteor.publish('Posts', function () {
 //Define all the methods interact with the POSTS object
 Meteor.methods({
     'insertPostData': function (title, content,tags,username) {
-        Posts.insert({title: title,content: content,publish: false,createdBy:username,tags: tags,deleted:false,status:"Draft"}, function (err, id) {
+        Posts.insert({title: title,content: content,publish: false,createdBy:username,tags: tags,deleted:false,createdAt:currentDate,status:"Draft"}, function (err, id) {
             currentPostId = id;
         });
         console.log('successfully saved the post...' + title);
     },
     'publishPostData': function (title, content,tags,username) {
         if (currentPostId) {
-            Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: username,tags: tags,deleted:false,status:"Published"}});
+            Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: username,tags: tags,deleted:false,createdAt:currentDate,status:"Published"}});
         } else {
-            Posts.insert({title: title, content: content, publish: true,createdBy: username,tags: tags,deleted:false,status:"Published"});
+            Posts.insert({title: title, content: content, publish: true,createdBy: username,tags: tags,deleted:false,createdAt:currentDate,status:"Published"});
         }
         console.log('successfully published post...' + title);
     },
