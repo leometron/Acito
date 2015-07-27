@@ -1,6 +1,6 @@
 var currentPostId = "";
 var querystr="";
-var currentDate = new Date();
+// var currentDate = new Date();
 Meteor.publish('Posts', function () {
     if(querystr) {
         return Posts.find({ $text: { $search: querystr } });        
@@ -11,13 +11,13 @@ Meteor.publish('Posts', function () {
 
 //Define all the methods interact with the POSTS object
 Meteor.methods({
-    'insertPostData': function (title, content,tags,username) {
+    'insertPostData': function (title, content,tags,username,currentDate) {
         Posts.insert({title: title,content: content,publish: false,createdBy:username,tags: tags,deleted:false,createdAt:currentDate,status:"Draft"}, function (err, id) {
             currentPostId = id;
         });
         console.log('successfully saved the post...' + title);
     },
-    'publishPostData': function (title, content,tags,username) {
+    'publishPostData': function (title, content,tags,username,currentDate) {
         if (currentPostId) {
             Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: username,tags: tags,deleted:false,createdAt:currentDate,status:"Published"}});
         } else {
@@ -25,8 +25,8 @@ Meteor.methods({
         }
         console.log('successfully published post...' + title);
     },
-    'updatePostData': function (postid,title,content,tags,username) {
-        Posts.update(postid, {$set: {_id: postid, title: title, content: content, publish: true,createdBy: username,tags: tags,status:"Published"}});
+    'updatePostData': function (postid,title,content,tags) {
+        Posts.update(postid, {$set: {title: title, content: content,tags: tags}});
         console.log('successfully updated post...' + title);
     },
     'binPostData' : function (postid) {

@@ -18,7 +18,7 @@ Posts.attachSchema(
       type: Boolean
     },
     createdAt: {
-      type: Date
+      type: String
     },
     tags: {
       type: String

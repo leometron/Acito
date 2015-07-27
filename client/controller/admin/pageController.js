@@ -21,7 +21,7 @@ Template.pages.events({
 
  Template.addNewPage.events({
         'click #publish': function() {
-
+console.log('username in pages.........'+getUserName());
             var title = $('#title').val();
             var content = $('#comments').val();
    
