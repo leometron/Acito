@@ -7,15 +7,18 @@
  */
 Template.posts.events({
     'click #addNewPost': function () {
+        Session.set('selectedPostId', "");
         $(location).attr('href','posts/add');
     },
     'click .post': function () {
         Session.set('selectedPostId', this._id);
         Router.go("/admin/posts/edit");
     },
-    'click #searchPost' : function () {
+    'click #searchPost' : function (e) {
+        e.preventDefault();                
         Meteor.call('searchPost',$('#queryString').val());
-        Router.go("/admin/posts");        
+        Meteor._reload.reload();        
+        // Router.go("/admin/posts");        
     }
 });
 
@@ -29,17 +32,17 @@ Template.posts.events({
 Template.addNewPost.events({
     'click #savePost' : function () {
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,Meteor.users.findOne(Meteor.userId()).username);
+        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName());
         Router.go("/admin/posts");
     },
     'click #publishPost' : function () {
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('publishPostData',$('#postName').val(),$('#postContent').val(),tag,Meteor.users.findOne(Meteor.userId()).username);
+        Meteor.call('publishPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName());
         Router.go("/admin/posts");        
     },
     'click #updatePost' : function() {
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,Meteor.users.findOne(Meteor.userId()).username);
+        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,getUserName());
         Router.go("/admin/posts");        
     },
     'click #moveBin' : function() {
@@ -55,7 +58,6 @@ Template.addNewPost.events({
         Router.go("/admin/posts");               
     }
 });
-
 
 /*
 
@@ -80,3 +82,14 @@ Template.addNewPost.helpers({
         return Posts.findOne(Session.get('selectedPostId'));
     }
 });
+
+/*
+
+ Created by LingaRaja.
+
+ Has return the current username
+
+ */
+function getUserName() {
+    return Meteor.users.findOne(Meteor.userId()).username;
+}

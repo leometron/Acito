@@ -57,6 +57,7 @@ Template.addNewMedia.events({
             });
         });
     },
+
     'click #update':function(){
       var url = Session.get('currentMediaUrl');
       var name = Session.get('currentMediaName');

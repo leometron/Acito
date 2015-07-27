@@ -19,18 +19,14 @@ Router.route('/admin/media', function() {
 Router.route('/admin/posts/add', function () {
     this.render('addNewPost');
 });
-Router.route('/admin/posts/edit', function () {
-    this.render('addNewPost');
-});
-Router.route('/admin/posts/add_new_page', function () {
-    this.render('add_new_page');
+Router.route('/admin/pages/add', function () {
+    this.render('addNewPage');
 });
 Router.route('/admin/media/add', function () {
     this.render('addNewMedia');
 });
-Router.route('/admin/pages/add', function () {
-    this.render('addNewPage');
+Router.route('/admin/posts/edit', function () {
+    this.render('addNewPost');
 });
-Router.route('/admin/posts/add_new_media', function () {
-    this.render('add_new_media');
-});
+
+
