@@ -5,13 +5,14 @@ Meteor.publish('Media', function () {
 
 //Define all methods related to Media.
 Meteor.methods({
-    'insertMediaData': function(mediaUrl,mediaName,caption,alternative,description,username){
+    'insertMediaData': function(mediaUrl,mediaName,medianametype,caption,alternative,description,username){
         // console.log(mediaUrl+"..."+mediaName+"..."+caption+"..."+alternative+"..."+description);
         //var currentUserId = Meteor.userId();
         Media.insert({
             url: mediaUrl,
             name: "\""+mediaName+"\"",
             // name: mediaName,
+            nametype: medianametype,
             caption: caption,
             alternative: alternative,
             description: description,

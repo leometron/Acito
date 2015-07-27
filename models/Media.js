@@ -8,6 +8,9 @@ Media.attachSchema(
         name: {
             type: String
         },
+        nametype: {
+            type:String
+        },
         caption: {
             type: String
         },
@@ -20,10 +23,10 @@ Media.attachSchema(
         createdBy: {
             type: String
         }
-        //createdAt: {
+        // createdAt: {
         //  type: Date,
         //  denyUpdate: true
-        //}
+        // }
     })
 );
 

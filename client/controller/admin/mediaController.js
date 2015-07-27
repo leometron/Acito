@@ -34,8 +34,6 @@ Template.addNewMedia.events({
           var medianame = img.name;
           var mediatype = img.type;
           var mediasize = img.size + " Bytes";
-          var dimension = img.dimensions;
-          console.log(dimension+"..........................");
 
           Session.set('currentMediaFullName', medianame);
           Session.set('currentMediaType', mediatype);
@@ -53,6 +51,7 @@ Template.addNewMedia.events({
 
                   Meteor.setTimeout(function(){Session.set('currentMediaUrl', url)}, 1000);
                   Session.set('currentMediaName', splitName);
+                  Session.set('currentMediaNameType', name);
                     // Meteor.call('insertMediaData', url, name, description);
                 }
             });
@@ -61,11 +60,12 @@ Template.addNewMedia.events({
     'click #update':function(){
       var url = Session.get('currentMediaUrl');
       var name = Session.get('currentMediaName');
+      var nametype = Session.get('currentMediaNameType');
       var description = $('#description').val();
       var alternative = $('#alternative').val();
       var caption = $('#caption').val();
       
-      Meteor.call('insertMediaData', url, name, caption, alternative, description, Meteor.users.findOne(Meteor.userId()).username);
+      Meteor.call('insertMediaData', url, name, nametype, caption, alternative, description, Meteor.users.findOne(Meteor.userId()).username);
       Router.go("/admin/media");
     }
 });
@@ -76,7 +76,16 @@ Meteor.subscribe('Media');
 Template.media.events({
    'click #addNewMedia': function () {
         $(location).attr('href','media/add');
-   }
+   },
+   // 'click #delete': function() {
+   //      alert("click delete button");
+   //      var url = Session.get('currentMediaUrl');
+   //      Meteor.call('removeMediaData',url);
+   // },
+   // 'click #edit': function() {
+   //      alert("click edit button");
+   //      $(location).attr('href','media/add');   
+   // }
 });
 
 Template.media.helpers({
