@@ -80,32 +80,33 @@
                             <div class="col-md-1">Date</div>
                         </div>
                         <div class="row padding-top-bottom-10" style="border: 1px solid #ddd">
-                            <ul class="media margin-bottom-zero">
-                                {{#each mediaList}}
-                                <div class="row padding-top-bottom-10" id="postMedia">
-                                    <li class="col-md-2">
-                                        <span><input type="checkbox"></span><span class="padding-left-10"><img src="{{url}}" style="width:50px;height:50px" class="img-rounded"></span>
-                                    </li>
-                                    <li class="col-md-5">
-                                        <div>{{name}}</div>
-                                        <div id="editDelete"><a href= "#">Edit</a> | <a href = "#">Delete</a></div>
-                                    </li>
-                                    <li class="col-md-1">
-                                        <div>Otto</div>
-                                    </li>
-                                    <li class="col-md-2">
-                                        <div>@mdo</div>
-                                    </li>
-                                    <li class="col-md-1">
-                                        <div>comments</div>
-                                    </li>
-                                    <li class="col-md-1">
-                                        <div>7/24/2015</div>
-                                    </li>
-                                </div>
-                                {{/each}}
-                            </ul>
-                        </div>
+                           <ul class="media margin-bottom-zero">
+                               {{#each mediaList}}
+                               <div class="row padding-top-bottom-10">
+                                   <li class="col-md-2">
+                                       <span><input type="checkbox"></span><span class="padding-left-10"><img src="{{url}}" style="width:50px;height:50px" class="img-rounded"></span>
+                                   </li>
+                                   <li class="col-md-5">
+                                       <div>{{name}}</div>
+                                       <div>{{selectMediaFullName}}</div>
+                                    <div><a href= "#">Edit</a> | <a href = "#">Delete</a></div>
+                                   </li>
+                                   <li class="col-md-1">
+                                       <div>{{createdBy}}</div>
+                                   </li>
+                                   <li class="col-md-2">
+                                       <div>@mdo</div>
+                                   </li>
+                                   <li class="col-md-1">
+                                       <div>comments</div>
+                                   </li>
+                                   <li class="col-md-1">
+                                       <div>7/24/2015</div>
+                                   </li>
+                               </div>
+                               {{/each}}
+                           </ul>
+                       </div>
                     </div>
                 </div>
             </div>

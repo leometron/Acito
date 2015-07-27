@@ -10,10 +10,10 @@
             </div>
         </div>
         <div class="col-md-8  padding-left-zero">
-            {{#if showSelectedPages}}
-            <input type="text" class="form-control" placeholder="Enter title here" id="pageTitle" value={{showSelectedPages.title}}>
+            {{#if PublishedPages}}
+            <input type="text" class="form-control" id="pageTitle" value={{PublishedPages.title}}>
             <div>
-                <textarea name="area1" cols="80" rows="20" id="pageComments" class="form-control">{{showSelectedPages.content}}</textarea>
+                <textarea name="area1" cols="80" rows="20" id="pageComments" class="form-control">{{PublishedPages.content}}</textarea>
             </div>
             {{else}}
             <input type="text" class="form-control" placeholder="Enter title here" id="title">
@@ -26,7 +26,10 @@
             <div class="bg-white">
                 <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
-                    <span><button type="button" class="btn btn-default">Search Draft</button></span>
+                    {{#if PublishedPages}}
+                        {{else}}
+                    <span><button type="button" class="btn btn-default" id="draft">Save Draft</button></span>
+                    {{/if}}
                     <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span>
                 </div>
                 <div class="board-view">Status: Draft <a href="#">Edit</a></div>
@@ -34,9 +37,27 @@
                 <div class="board-view">Publish immediately <a href="#">Edit</a></div>
             </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
-                Move to Bin
-                {{#if showSelectedPages}}
-                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="update">Update</button></span>
+                 
+                {{#if PublishedPages}}
+                    {{#if PublishedPages.deleted}}
+                        <a href= "/admin/pages" id="delete">Delete Pages</a>
+                        {{else}}
+                     <a href= "/admin/pages" id="updatebin">Move to Bin</a>
+                        {{/if}}
+                   {{else}}
+                   <a href= "/admin/pages" id="insertbin">Move to Bin</a>
+                {{/if}}
+
+                {{#if PublishedPages}}
+                    {{#if PublishedPages.deleted}}
+                    <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="restore">Restore</button></span>
+                    {{else}}
+                        {{#if PublishedPages.published}}
+                        <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="update">Update</button></span>
+                        {{else}}
+                         <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="republish">Publish</button></span>
+                        {{/if}}
+                    {{/if}}
                 {{else}}
                 <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="publish">Publish</button></span>
                 {{/if}}

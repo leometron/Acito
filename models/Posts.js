@@ -14,10 +14,16 @@ Posts.attachSchema(
     createdBy: {
         type: String
     },
-    // createdAt: {
-    //   type: Date
-    // },
+    deleted: {
+      type: Boolean
+    },
+    createdAt: {
+      type: Date
+    },
     tags: {
+      type: String
+    },
+    status: {
       type: String
     }
   })

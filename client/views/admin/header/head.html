@@ -20,14 +20,13 @@
                     <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-9" aria-expanded="false" style="  max-height: 100%;  padding: 0;  cursor: pointer;">
                         <ul class="nav navbar-nav" style="color:  rgb(200, 208, 215);">
                             {{#each navBarList}}
-                            <li id="navBar">
-                                <a href="/admin/{{title}}" class="nav"><span><i class="fa fa-tachometer icons"></i> {{title}}</span></a>                               
+                            <li id="navBar{{title}}">
+                                <a href="/admin/{{title}}"><span><i class="fa fa-tachometer icons"></i> {{title}}</span></a>
                                 <ul style="list-style: none;">
                                     {{#each subtitle}}
                                     <li id="subNavBar{{title}}{{sTitle}}"><a href="/admin/{{title}}/{{sTitle}}"><span>{{name}}</span></a></li>
                                     {{/each}}
-                                </ul>
-                            
+                                </ul>                            
                             </li>
                             {{/each}}
                         </ul>

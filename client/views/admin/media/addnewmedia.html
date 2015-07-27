@@ -33,34 +33,35 @@
             <div class="padding-top-bottom-10">
                 <input type="text" class="form-control" value="{{selectMediaName}}">
             </div>
+            <!-- <P>{{selectMediaUrl}}</p> -->
             <div class="padding-top-bottom-10">
-               <img src="{{selectMediaUrl}}" class="img-rounded">
-            </div>         
+               <img src="{{selectMediaUrl}}" class="img-rounded" style="width:200px; height:200px;">
+            </div>
             <div class="padding-top-bottom-10">
                 <p>Caption</p>
-                <textarea  cols="80" rows="5"  class="form-control"></textarea>
+                <textarea  id="caption" cols="80" rows="5"  class="form-control"></textarea>
             </div>
             <div class="padding-top-bottom-10">
                 <p>Alternative Text</p>
-                <input type="text" class="form-control">
+                <input id="alternative" type="text" class="form-control">
             </div>
             <div class="padding-top-bottom-10">
                 <p>Description</p>
-                <textarea  cols="80" rows="5" id="description" class="form-control"></textarea>
+                <textarea  id="description" cols="80" rows="5"  class="form-control"></textarea>
             </div>
         </div>
         <div class="col-md-4 padding-bottom-40">
-            <div class="bg-white">
-                <div class="board-view  border-bottom">Save<span class="caret pull-right margin-top-10"></span></div>
-                <div class="board-view">Uploaded on:</div>
-                <div class="board-view">File URL: <span class="padding-left-10 font-bold"></span></div>
-                <div class="board-view"><input type="text" class="form-control"></div>                
-                <div class="board-view">File name:<span class="padding-left-10 font-bold"></span></div>
-                <div class="board-view">File type:<span class="padding-left-10 font-bold"></span></div>
-                <div class="board-view">File size:<span class="padding-left-10 font-bold"></span></div>                
-            </div>
+        <div class="bg-white">
+               <div class="board-view  border-bottom">Save<span class="caret pull-right margin-top-10"></span></div>
+               <div class="board-view">Uploaded on:</div>
+               <div class="board-view">File URL: <span class="padding-left-10 font-bold"></span></div>
+               <div class="board-view"><input type="text" class="form-control" value="{{selectMediaUrl}}"></div>                
+               <div class="board-view">File name:<span class="padding-left-10 font-bold">{{selectMediaFullName}}</span></div>
+               <div class="board-view">File type:<span class="padding-left-10 font-bold">{{selectMediaType}}</span></div>
+               <div class="board-view">File size:<span class="padding-left-10 font-bold">{{selectMediaSize}}</span></div> 
+        </div>
             <div class="board-view border-bottom" style="border: 1px solid #ddd;border-top: 0;">
-                Delete Permanently<span style="padding-left: 30%"><button type="button" id="updateMedia" class="btn btn-primary">update</button></span>
+                Delete Permanently<span style="padding-left: 30%"><button id="update" type="button" class="btn btn-primary">update</button></span>
             </div>
         </div>
     </div>

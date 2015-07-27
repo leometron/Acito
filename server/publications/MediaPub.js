@@ -5,14 +5,17 @@ Meteor.publish('Media', function () {
 
 //Define all methods related to Media.
 Meteor.methods({
-    'insertMediaData': function(mediaUrl,mediaName,mediaDescription){
-        console.log(mediaUrl+"........"+mediaName+"........."+mediaDescription);
+    'insertMediaData': function(mediaUrl,mediaName,caption,alternative,description,username){
+        // console.log(mediaUrl+"..."+mediaName+"..."+caption+"..."+alternative+"..."+description);
         //var currentUserId = Meteor.userId();
         Media.insert({
             url: mediaUrl,
             name: "\""+mediaName+"\"",
             // name: mediaName,
-            description: mediaDescription
+            caption: caption,
+            alternative: alternative,
+            description: description,
+            createdBy: username
         });
     },
     'removeMediaData': function(selectedFile){
