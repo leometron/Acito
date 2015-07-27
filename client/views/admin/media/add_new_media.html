@@ -33,13 +33,9 @@
             <div class="padding-top-bottom-10">
                 <input type="text" class="form-control" value="{{selectMediaName}}">
             </div>
-            <P>{{selectMediaUrl}}</p>
             <div class="padding-top-bottom-10">
                <img src="{{selectMediaUrl}}" class="img-rounded">
-            </div>
-            <div class="padding-top-bottom-10">
-               <button class="btn btn-default">Edit images</button>
-            </div>
+            </div>         
             <div class="padding-top-bottom-10">
                 <p>Caption</p>
                 <textarea  cols="80" rows="5"  class="form-control"></textarea>
@@ -50,23 +46,21 @@
             </div>
             <div class="padding-top-bottom-10">
                 <p>Description</p>
-                <textarea  cols="80" rows="5"  class="form-control"></textarea>
+                <textarea  cols="80" rows="5" id="description" class="form-control"></textarea>
             </div>
         </div>
         <div class="col-md-4 padding-bottom-40">
             <div class="bg-white">
                 <div class="board-view  border-bottom">Save<span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">Uploaded on:</div>
-                <div class="board-view">File URL:</div>
-                <div class="board-view"><input type="text" class="form-control"></div>
-                <div class="board-view">File URL:</div>
-                <div class="board-view">File name:</div>
-                <div class="board-view">File type:</div>
-                <div class="board-view">File size:</div>
-                <div class="board-view">Dimension:</div>
+                <div class="board-view">File URL: <span class="padding-left-10 font-bold"></span></div>
+                <div class="board-view"><input type="text" class="form-control"></div>                
+                <div class="board-view">File name:<span class="padding-left-10 font-bold"></span></div>
+                <div class="board-view">File type:<span class="padding-left-10 font-bold"></span></div>
+                <div class="board-view">File size:<span class="padding-left-10 font-bold"></span></div>                
             </div>
             <div class="board-view border-bottom" style="border: 1px solid #ddd;border-top: 0;">
-                Delete Permanently<span style="padding-left: 30%"><button type="button" class="btn btn-primary">update</button></span>
+                Delete Permanently<span style="padding-left: 30%"><button type="button" id="updateMedia" class="btn btn-primary">update</button></span>
             </div>
         </div>
     </div>

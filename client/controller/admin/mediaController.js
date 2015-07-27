@@ -36,7 +36,7 @@ Template.addNewMedia.events({
             });
         });
     },
-    'click #publish':function(){
+    'click #updateMedia':function(){
       var url = Session.get('currentMediaUrl');
       var name = Session.get('currentMediaName');
       var description = $('#description').val();

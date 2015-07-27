@@ -1,22 +1,21 @@
+var mainTitle;
 Template.adminHeader.helpers({
     'navBarList' : function(){
         return [
             {'title': 'dashboard'},
-            {'title': 'posts', 'subtitle': [{'sTitle':'add','name':'AddNew'},{'sTitle':'categories','name':'Categories'},{'sTitle':'tags','name':'Tags'}]},
+            {'title': 'posts', 'subtitle': [{'sTitle':'add','title': 'posts','name':'AddNew'},{'sTitle':'categories','title': 'posts','name':'Categories'},{'sTitle':'tags','title': 'posts','name':'Tags'}]},
             {'title': 'LatestNews'},
-            {'title': 'investors'},
-            {'title': 'OurWorks'},
             {'title': 'HomeSliders'},
-            {'title': 'media','subtitle': [{'sTitle':'add_new_media','name':'AddNew'}]},
-            {'title': 'pages','subtitle': [{'sTitle':'add_new_page','name':'AddNew'}]},
+            {'title': 'media','subtitle': [{'sTitle':'add','title': 'media','name':'AddNew'}]},
+            {'title': 'pages','subtitle': [{'sTitle':'add','title': 'pages','name':'AddNew'}]},
             {'title': 'Settings'},
             {'title': 'SEO'},
             {'title': 'Types'},
-            {'title': 'collapseMenu'}
         ]
     }
 
 });
+
 
 Template.adminHeader.rendered = function () {
 
@@ -30,20 +29,7 @@ Template.adminHeader.rendered = function () {
         $('#main_view').addClass('full-width');
     }
 
-};
+    console.log(navBar)
 
-//Template.adminHeader.events ({
-//    'click #navBar .nav': function(){
-//        var mainTitle = this.title;
-//        $(location).attr('href',mainTitle);
-//
-//    },
-//    'click #subNavBar': function(){
-//        var path = $(location).attr('pathname').split('/')[2];
-//        var subTitle = this.stitle;
-//        console.log(subTitle);
-//        $(location).attr('href', subTitle);
-//
-//    }
-//});
+};
 
