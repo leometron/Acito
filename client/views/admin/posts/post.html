@@ -1,16 +1,13 @@
 <template name="posts" id="post">
     <div style="width: 100%">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-8 top-view text-center">Screen Options <span class="caret"></span></div>
-            <div class="col-md-1 top-view text-center" style="margin-left: 15px">Help <span class="caret"></span></div>
-        </div>
+         {{> searchHelp}}
         <div class="margin-top-20">
             <div class="row post-margin">
                 <span style="  font-size: 30px;  vertical-align: top;">Posts</span> <span><button type="button" id="addNewPost" class="btn btn-default">Add New</button></span>
-            </div>
+            </div>           
             <div class="row post-margin">
                 <div style="float: right">
-                    <input type="text" id="queryString" value="{{queryString}}"/>
+                    <input type="text" class="form-control" id="queryString" value="{{queryString}}" style="width:60%; display:inline" />
                     <span><button type="button" id="searchPost" class="btn btn-default">Search Posts</button></span>
                 </div>
             <div>
@@ -29,14 +26,13 @@
                     </button>
                      <span class="caret" style=" margin-left: -20px;"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                         <li role="presentation">
-                            <a class="menuitem"
-                                id="config-request-command" href="#">Bulk Actions</a>
+                         <li>
+                            <a class="menuitem" href="#">Bulk Actions</a>
                          </li>
-                         <li role="presentation">
+                         <li>
                             <a class="menuitem" href="#">Edit</a>
                          </li>
-                         <li role="presentation">
+                         <li>
                            <a class="menuitem" href="#">Move to Bin</a>
                          </li>           
                     </ul>
@@ -50,9 +46,8 @@
                     </button>
                      <span class="caret" style=" margin-left: -20px;"></span>
                      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                         <li role="presentation">
-                            <a class="menuitem1"
-                                id="config-request-command" href="#">All dates  </a>
+                         <li>
+                            <a class="menuitem1" href="#">All dates  </a>
                          </li>                                  
                     </ul>
                 </span>
@@ -62,22 +57,16 @@
                     </button>
                      <span class="caret" style=" margin-left: -20px;"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li role="presentation">
+                            <a class="menuitem2"
+                                id="config-request-command" href="#">All categories</a>
+                         </li>   
                         {{#each categoryList}}
                          <li role="presentation">
                             <a class="menuitem2"
                                 id="config-request-command" href="#">{{name}}</a>
                          </li>                        
-                        {{/each}}                          
-<!--                          <li role="presentation">
-                            <a class="menuitem2"
-                                id="config-request-command" href="#"> All categories</a>
-                         </li>
-                         <li role="presentation">
-                            <a class="menuitem2" href="#">Governance</a>
-                         </li>
-                         <li role="presentation">
-                           <a class="menuitem2" href="#">Advisors</a>
-                         </li>    -->        
+                        {{/each}}                                  
                     </ul>                   
                 </span>
                     <span><button type="button" id="filterByCategory" class="btn btn-default">Filter</button></span>
@@ -87,7 +76,7 @@
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row post-margin padding-top-bottom-10">
                         <div class="bs-example" data-example-id="striped-table">
-                            <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
+                            <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">
                                 <div class="col-md-5"><span><input type="checkbox"></span>Title</div>
                                 <div class="col-md-2">Author</div>
                                 <div class="col-md-2">Categories</div>
@@ -125,15 +114,14 @@
                     </button>
                      <span class="caret" style=" margin-left: -20px;"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                         <li role="presentation">
-                            <a class="menuitem3"
-                                id="config-request-command" href="#">Bulk Actions</a>
+                         <li>
+                            <a class="menuitem3" href="#">Bulk Actions</a>
                          </li>
-                         <li role="presentation">
+                         <li>
                             <a class="menuitem3" href="#">Edit</a>
                          </li>
-                         <li role="presentation">
-                           <a class="menuitem3" href="#">Move to Bin</a>
+                         <li>
+                            <a class="menuitem3" href="#">Move to Bin</a>
                          </li>           
                     </ul>
                 </span>
