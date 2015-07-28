@@ -61,7 +61,7 @@
                         <span style="padding-left: 55%">
                         {{#if showSelectedPost}}
                             {{#if showSelectedPost.deleted}}                                    
-                            <button type="button" id="restorePost" class="btn btn-primary">Restore</button>
+                            <button type="button" id="restorePost" class="btn btn-primary">Publish</button>
                             {{else}}
                                 {{#if showSelectedPost.publish}}                                    
                                     <button type="button" id="updatePost" class="btn btn-primary">Update</button>
@@ -80,11 +80,19 @@
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">categories <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
-                    <span>All Categories</span>
-                    <span>Most Used</span>
+                    <select id="categoryName" placeholder="category">
+                    {{#if showSelectedPost}}
+                        <option>{{showSelectedPost.categoryName}}</option>                 
+                    {{else}}    
+                        <option>Category</option>
+                    {{/if}}   
+                        {{#each categoryList}}
+                            <option value="{{name}}">{{name}}</option>                        
+                        {{/each}}                              
+                    </select>
                 </div>
             </div>
-            <div class="board-view bg-white"><a href="#">+ Add New Category</a></div>
+            <div class="board-view bg-white"><a href="/admin/posts/categories">+ Add New Category</a></div>
 
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">Tags <span class="caret pull-right margin-top-10"></span></div>

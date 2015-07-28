@@ -5,6 +5,10 @@
  Has the events to redirect a new post page.
 
  */
+
+Meteor.subscribe("Posts");
+Meteor.subscribe("Category");
+
 Template.posts.events({
     'click #addNewPost': function () {
         Session.set('selectedPostId', "");
@@ -14,11 +18,10 @@ Template.posts.events({
         Session.set('selectedPostId', this._id);
         Router.go("/admin/posts/edit");
     },
-    'click #searchPost' : function (e) {
-        e.preventDefault();                
+    'click #searchPost' : function (event) {
+        event.preventDefault();                
         Meteor.call('searchPost',$('#queryString').val());
         Meteor._reload.reload();        
-        // Router.go("/admin/posts");        
     },  
     'click .menuitem': function (event) {            
         $('#dropdown').text( $(event.target).text());            
@@ -26,12 +29,37 @@ Template.posts.events({
     'click .menuitem1': function (event) {                            
         $('#datedropdown').text( $(event.target).text());    
     },
-        'click .menuitem2': function (event) {                
+    'click .menuitem2': function (event) {                
         $('#categoriesdropdown').text( $(event.target).text());    
     },
-      'click .menuitem3': function (event) {    
+    'click .menuitem3': function (event) {    
         $('#dropdownmenu').text( $(event.target).text());        
     },
+    'click #showAll' : function(event) {
+        event.preventDefault();                
+        Meteor.call('statusFilter',"All");
+        Meteor._reload.reload(); 
+    },
+    'click #publishFilter' : function(event) {
+        event.preventDefault();                
+        Meteor.call('statusFilter',"Published");
+        Meteor._reload.reload(); 
+    },
+    'click #draftFilter' : function(event) {
+        event.preventDefault();                
+        Meteor.call('statusFilter',"Draft");
+        Meteor._reload.reload(); 
+    },
+    'click #binFilter' : function(event) {
+        event.preventDefault();                
+        Meteor.call('statusFilter',"Bin");
+        Meteor._reload.reload(); 
+    },
+    'click #filterByCategory' : function(event)  {
+        event.preventDefault();                
+        Meteor.call('categoryFilter',$('#categoriesdropdown').text());
+        Meteor._reload.reload(); 
+    }
 });
 
 /*
@@ -42,18 +70,20 @@ Template.posts.events({
 Template.addNewPost.events({
     'click #savePost' : function () {
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate());
+        var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
+        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate(),categoryname);
         Router.go("/admin/posts");
     },
     'click #publishPost' : function () {
-        console.log('current date and month.........'+getCurrentDate());
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('publishPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate());
+        var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
+        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate(),categoryname);
         Router.go("/admin/posts");        
     },
     'click #updatePost' : function() {
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,getUserName());
+        var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();                
+        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,categoryname);
         Router.go("/admin/posts");        
     },
     'click #moveBin' : function() {
@@ -75,7 +105,6 @@ Template.addNewPost.events({
  Has the heplper to find all the post published by the server.
 
  */
-Meteor.subscribe("Posts");
 
 Template.posts.helpers({
     'postList': function() {
@@ -83,12 +112,18 @@ Template.posts.helpers({
     },
     'queryString': function() {
         return $('#queryString').val();
-    }
+    },
+    'categoryList' : function() { 
+        return Category.find();
+    }    
 });
 
 Template.addNewPost.helpers({
     'showSelectedPost': function(){
         return Posts.findOne(Session.get('selectedPostId'));
+    },
+    'categoryList' : function() { 
+        return Category.find();
     }
 });
 
@@ -102,4 +137,3 @@ Template.adminHeader.events({
         Session.set('selectedPostId', "");
     }
 });
-

@@ -28,5 +28,7 @@ Router.route('/admin/media/add', function () {
 Router.route('/admin/posts/edit', function () {
     this.render('addNewPost');
 });
-
+Router.route('/admin/posts/categories',function() {
+	this.render('categories');
+});
 
