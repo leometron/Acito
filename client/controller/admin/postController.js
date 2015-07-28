@@ -26,10 +26,10 @@ Template.posts.events({
     'click .menuitem1': function (event) {                            
         $('#datedropdown').text( $(event.target).text());    
     },
-        'click .menuitem2': function (event) {                
+    'click .menuitem2': function (event) {                
         $('#categoriesdropdown').text( $(event.target).text());    
     },
-      'click .menuitem3': function (event) {    
+    'click .menuitem3': function (event) {    
         $('#dropdownmenu').text( $(event.target).text());        
     },
 });

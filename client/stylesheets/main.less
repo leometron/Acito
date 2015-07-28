@@ -19,12 +19,12 @@
   padding-right:20px;
 }
 
-.selected {
-  background-color: #e7e7e7;
+.font-size-12{
+      font-size: 12px !important;
 }
 
 .side_bar_menu{
-  background-color: #222;
+  background-color: @sideBarMenu;
   border-color: #080808;
   height:100%;
   position: absolute;
@@ -46,16 +46,20 @@
 
 .nav li a{
   color:@fontColor;
+ text-decoration: none;
 }
 
-.nav li a:hover{
-  color: @blackColor;
+.nav li a:hover{ 
   text-decoration: none;
+  background-color: @navColor;
+}
+.nav li a:hover,.nav li a:focus{  
+  background-color:@navColor;;
 }
 
 .pos-padding{
   padding: 10px;
-  background-color: @blackColor;
+  background-color: @navColor;
   position: fixed;
   z-index: 999;
 }
@@ -72,16 +76,6 @@
   cursor: pointer;
 }
 
-.nav li a {
-   .icons:hover{
-  color:@blackColor; 
-  }
-}
-
-a span:hover{
-   color: aqua;   
-}
-
 .icons{ 
   font-size: 17px;
 }
@@ -96,7 +90,7 @@ a span:hover{
 }
 
 .margin-bottom-zero{
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
 .font-bold{
@@ -129,6 +123,10 @@ a span:hover{
   padding-bottom: 40px
 }
 
+.padding-top-bottom-10{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 .media{
   list-style-type: none;
@@ -153,10 +151,6 @@ body, #main {
   width:100%
 }
 
-.padding-top-bottom-10{
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 
 .dashed-view{
   border: 3px dashed #b4b9be;

@@ -1,9 +1,6 @@
 <template name="addNewPage">
     <div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-8 top-view text-center">Screen Options <span class="caret"></span></div>
-            <div class="col-md-1 top-view text-center" style="margin-left: 15px">Help <span class="caret"></span></div>
-        </div>
+        {{> searchHelp}}
         <div class="margin-top-20">
             <div class="row post-margin">
                 <span style="font-size: 30px;">Add a New Pages</span>
@@ -66,17 +63,18 @@
                 <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">Parent</div>
                 <div class="dropdown board-view">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        (no parent)
-                        <span class="caret"></span>
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert" data-toggle="dropdown">
+                        (no parent)                        
                     </button>
+                    <span class="caret" style=" margin-left: -20px;"></span>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                        <!--  <li><a href="#">Accessibility</a></li>
                         <li><a href="#">Advertising Terms Conditions</a></li>
                         <li><a href="#">Cookies & Privacy</a></li>
                         <li><a href="#">Get in Touch</a></li> -->
-                        {{#each NoParentPages}}
-                            <li><a href="#" value={{title}} id="parentinsert">{{title}}</a></li>
+                        <li><a href="#" class="page">(no parent)</a></li>
+                        {{#each NoParentPages}}                          
+                            <li><a href="#" class="page">{{title}}</a></li>
                          {{/each}}
                     </ul>
                 </div>

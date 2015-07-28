@@ -81,7 +81,10 @@ Template.pages.events ({
           Session.set('ParentName', parentUsername);
           console.log(parentUsername);
 
-        }
+        },
+        'click .page': function (event) {        
+        $('#parentinsert').text( $(event.target).text());            
+    }
     });
 
  Template.addNewPage.helpers ({

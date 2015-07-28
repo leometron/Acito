@@ -1,0 +1,117 @@
+<template name="categories" id="categories">
+    <div>
+         {{> searchHelp}}
+        <div class="margin-top-20">
+            <div class="row">
+                <span style="  font-size: 30px;  vertical-align: top;">Categories</span>              
+            </div>            
+            <div class="row">
+                <div style="float: right">
+                    <input type="text" class="form-control" id="pagesearch" style="width:60%; display:inline" />
+                    <span><button type="button" id="search" class="btn btn-default">Search Pages</button></span>
+                </div>
+            </div>
+        </div>    
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="font-bold">Add New Category</div>
+                </div>
+                <div class="row padding-top-bottom-10">
+                    <div class="font-size-12">Name</div>
+                    <div><input type="text" class="form-control margin-bottom-zero" id="categoryName" placeholder="Enter category name here"></div>
+                    <em class="font-size-12">The name is how it appears on your site.</em>
+                </div>
+                <div class="row padding-top-bottom-10">
+                    <div class="font-size-12">Slug</div>
+                    <div><input type="text" class="form-control margin-bottom-zero"></div>
+                    <em class="font-size-12">The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</em>
+                </div>
+                 <div class="row padding-top-bottom-10">
+                    <div  class="font-size-12">Parent</div>
+                     <div class="padding-left-zero">
+                        <span class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="categories1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                None
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">None</a></li>
+                                <li><a href="#">Advisers</a></li>     
+                                <li><a href="#">Governance</a></li>                         
+                            </ul>
+                        </span>                       
+                    </div>       
+                    <em class="font-size-12">Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional.</em>
+                </div>
+                 <div class="row padding-top-bottom-10">
+                    <div  class="font-size-12">Description</div>
+                    <div><textarea rows="5" cols="10" class="form-control margin-bottom-zero" id="categoryDescription"></textarea></div>
+                    <em class="font-size-12">The description is not prominent by default; however, some themes may show it.</em>
+                </div>
+                <div class="row padding-top-bottom-10 ">
+                    <button class="btn btn-primary" id="addCategory">Add New Category</button>
+                </div>
+            </div>
+            <div class="col-md-8">                
+                <div class="row">
+                    <div class="padding-left-zero">
+                        <span class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="categories2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Bulk Actions
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Bulk Actions</a></li>
+                                <li><a href="#">Delete</a></li>                           
+                            </ul>
+                        </span>
+                        <span><button type="button" class="btn btn-default">Apply</button></span>
+                    </div>                    
+                </div>
+                <div class="row padding-top-bottom-10">
+                    <div class="bs-example" data-example-id="striped-table">
+                        <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
+                            <div class="col-md-7"><span><input type="checkbox"></span>Title</div>
+                            <div class="col-md-2">Author</div>
+                            <div class="col-md-2">comments</div>
+                            <div class="col-md-1">Date</div>
+                        </div>
+                        <div class="row padding-top-bottom-10" style="border: 1px solid #ddd">
+                            {{#each lists}}
+                            {{#if currentUser}}
+                            <div class="col-md-7" id="list">
+                                <span>
+                                    <input type="checkbox">
+                                </span>
+                                {{#if deleted}}
+                                <strike>{{title}}</strike>
+                                {{else}}
+                                    {{title}}
+                                {{/if}}
+                            </div>
+                            <div class="col-md-2">{{currentUser.username}}</div>
+                            <div class="col-md-2">comments</div>
+                            <div class="col-md-1">Date</div>
+                            {{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="categories3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Bulk Actions
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                            <li><a href="#">Bulk Actions</a></li>
+                            <li><a href="#">Delete</a></li>  
+                        </ul>
+                    </span>
+                    <span><button type="button" class="btn btn-default">Apply</button></span>
+                </div>
+             </div>   
+        </div>
+    </div>
+</template>
