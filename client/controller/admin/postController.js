@@ -19,7 +19,19 @@ Template.posts.events({
         Meteor.call('searchPost',$('#queryString').val());
         Meteor._reload.reload();        
         // Router.go("/admin/posts");        
-    }
+    },  
+    'click .menuitem': function (event) {            
+        $('#dropdown').text( $(event.target).text());            
+    },
+    'click .menuitem1': function (event) {                            
+        $('#datedropdown').text( $(event.target).text());    
+    },
+        'click .menuitem2': function (event) {                
+        $('#categoriesdropdown').text( $(event.target).text());    
+    },
+      'click .menuitem3': function (event) {    
+        $('#dropdownmenu').text( $(event.target).text());        
+    },
 });
 
 /*

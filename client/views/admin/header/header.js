@@ -29,7 +29,14 @@ Template.adminHeader.rendered = function () {
         $('#main_view').addClass('full-width');
     }
 
-    console.log(navBar)
-
 };
 
+Template.adminHeader.helpers({
+    activeIfTemplateIs: function (template) {
+      var currentRoute = Router.current();
+      console.log(currentRoute.lookupTemplate());
+      console.log(currentRoute);
+      console.log(template);
+      return currentRoute && template === currentRoute.lookupTemplate() ? 'active': '';
+    }
+  });

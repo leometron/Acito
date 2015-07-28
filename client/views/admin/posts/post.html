@@ -16,39 +16,56 @@
             </div>
             <div class="row post-margin">
                 <div class="col-md-3 padding-left-zero">
-                <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Bulk Actions
-                        <span class="caret"></span>
+                 <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdown"
+                          data-toggle="dropdown">Bulk Actions                        
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Bulk Actions</a></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#">Move to Bin</a></li>
+                     <span class="caret" style=" margin-left: -20px;"></span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                         <li role="presentation">
+                            <a class="menuitem"
+                                id="config-request-command" href="#">Bulk Actions</a>
+                         </li>
+                         <li role="presentation">
+                            <a class="menuitem" href="#">Edit</a>
+                         </li>
+                         <li role="presentation">
+                           <a class="menuitem" href="#">Move to Bin</a>
+                         </li>           
                     </ul>
                 </span>
                     <span><button type="button" class="btn btn-default">Apply</button></span>
                 </div>
                 <div class="col-md-6">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        All dates
-                        <span class="caret"></span>
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
+                          data-toggle="dropdown">All dates                       
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><a href="#">All dates</a></li>
+                     <span class="caret" style=" margin-left: -20px;"></span>
+                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                         <li role="presentation">
+                            <a class="menuitem1"
+                                id="config-request-command" href="#">All dates  </a>
+                         </li>                                  
                     </ul>
                 </span>
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        All categories
-                        <span class="caret"></span>
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="categoriesdropdown"
+                          data-toggle="dropdown">All categories                       
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                        <li><a href="#"> All categories</a></li>
-                        <li><a href="#">Governance</a></li>
-                        <li><a href="#">Advisors</a></li>
-                    </ul>
+                     <span class="caret" style=" margin-left: -20px;"></span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                         <li role="presentation">
+                            <a class="menuitem2"
+                                id="config-request-command" href="#"> All categories</a>
+                         </li>
+                         <li role="presentation">
+                            <a class="menuitem2" href="#">Governance</a>
+                         </li>
+                         <li role="presentation">
+                           <a class="menuitem2" href="#">Advisors</a>
+                         </li>           
+                    </ul>                   
                 </span>
                     <span><button type="button" class="btn btn-default">Filter</button></span>
                 </div>
@@ -66,7 +83,7 @@
                                 <div class="col-md-1">Date</div>
                             </div>
                            {{#each postList}}
-                            <div id="{{_id}}" class="post row  padding-top-bottom-10" style="border: 1px solid #ddd">
+                            <div id="{{_id}}" class="post row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
                                 <div class="col-md-5">
                                     <span>
                                         <input type="checkbox">
@@ -87,20 +104,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
             <div class="row post-margin">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Bulk Actions
-                        <span class="caret"></span>
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownmenu"
+                          data-toggle="dropdown">Bulk Actions                        
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                        <li><a href="#">Bulk Actions</a></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#">Move to Bin</a></li>
+                     <span class="caret" style=" margin-left: -20px;"></span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                         <li role="presentation">
+                            <a class="menuitem3"
+                                id="config-request-command" href="#">Bulk Actions</a>
+                         </li>
+                         <li role="presentation">
+                            <a class="menuitem3" href="#">Edit</a>
+                         </li>
+                         <li role="presentation">
+                           <a class="menuitem3" href="#">Move to Bin</a>
+                         </li>           
                     </ul>
                 </span>
-                <span><button type="button" class="btn btn-default">Apply</button></span>
             </div>
         </div>
     </div>
