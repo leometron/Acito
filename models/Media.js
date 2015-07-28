@@ -8,8 +8,14 @@ Media.attachSchema(
         name: {
             type: String
         },
-        nametype: {
-            type:String
+        fullName: {
+            type: String
+        },
+        type: {
+            type: String
+        },
+        size: {
+            type: String
         },
         caption: {
             type: String
@@ -22,16 +28,13 @@ Media.attachSchema(
         },
         createdBy: {
             type: String
+        },
+        createdAt: {
+         type: String
         }
-        // createdAt: {
-        //  type: Date,
-        //  denyUpdate: true
-        // }
     })
 );
 
-// Collection2 already does schema checking
-// Add custom permission rules if needed
 if (Meteor.isServer) {
     Media.allow({
         insert : function () {

@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row post-margin">
+            <div class="row post-margin" id="list">
                 <div class="col-md-3 padding-left-zero">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -86,10 +86,10 @@
                                    <li class="col-md-2">
                                        <span><input type="checkbox"></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
                                    </li>
-                                   <li class="col-md-5">
+                                   <li class="col-md-5" style="line-height: 200%;">
                                        <div>{{name}}</div>
-                                       <div>{{selectMediaFullName}}</div>
-                                    <div><a href= "#">Edit</a> | <a href = "#">Delete</a></div>
+                                       <div>{{fullName}}</div>
+                                    <div><a href= "/admin/media/add" id="edit">Edit</a> | <a href = "#" id="delete">Delete Permanently</a></div>
                                    </li>
                                    <li class="col-md-1">
                                        <div>{{createdBy}}</div>
@@ -101,7 +101,7 @@
                                        <div>comments</div>
                                    </li>
                                    <li class="col-md-1">
-                                       <div>7/24/2015</div>
+                                       <div>{{createdAt}}</div>
                                    </li>
                                </div>
                                {{/each}}
