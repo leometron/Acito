@@ -6,7 +6,7 @@
         }
     });
 
-Template.pages.events({
+Template.pages.events ({
         'click #list': function() {
             var userId = this._id;
             Session.set('selectedPages', userId);
@@ -15,62 +15,49 @@ Template.pages.events({
 
         'click #addNew': function(){
             $(location).attr('href','pages/add');
+        },
+
+        'click #search': function() {
+            var search = $('#pagesearch').val();
+            Meteor.call('searchData', search);
+            Meteor._reload.reload();   
         }
     });
 
 
  Template.addNewPage.events({
         'click #publish': function() {
-
-            var title = $('#title').val();
-            var content = $('#comments').val();
-   
-           Meteor.call('insertPagesData', title, content);
+           Meteor.call('insertPagesData', $('#title').val(), $('#comments').val());
            Router.go('/admin/pages');
         },
 
          'click #draft': function() {
-
-             var title = $('#title').val();
-            var content = $('#comments').val();
    
-           Meteor.call('draftPagesData', title, content);
+           Meteor.call('draftPagesData', $('#title').val(),  $('#comments').val());
            Router.go('/admin/pages');
-
         },
 
         'click #updatebin': function() {
 
-             var selectedPages = Session.get('selectedPages');
-            var pageTitle = $('#pageTitle').val();
-            var pageComments = $('#pageComments').val();
-
-            Meteor.call('deletePagesData', pageTitle, pageComments, selectedPages);
-            
+            var selectedPages = Session.get('selectedPages');
+            Meteor.call('deletePagesData', $('#pageTitle').val(), $('#pageComments').val(), selectedPages);  
         },
-
 
          'click #insertbin': function() {
 
-             var title = $('#title').val();
-            var content = $('#comments').val();
-
-           Meteor.call('binPagesData', title, content);
-
+            Meteor.call('binPagesData', $('#title').val(), $('#comments').val());
         },
 
         'click #update': function() {
             var selectedPages = Session.get('selectedPages');
-            var pageTitle = $('#pageTitle').val();
-            var pageComments = $('#pageComments').val();
 
-           Meteor.call('updatePagesData', pageTitle, pageComments, selectedPages);
+           Meteor.call('updatePagesData', $('#pageTitle').val(),  $('#pageComments').val(), selectedPages);
            Router.go('/admin/pages');
         },
 
         'click #delete': function() {
             var selectedPages = Session.get('selectedPages');
-            Meteor.call('crashPagesData', selectedPages);
+            Meteor.call('trashPagesData', selectedPages);
         },
 
          'click #restore': function() {
@@ -82,19 +69,29 @@ Template.pages.events({
         'click #republish': function() {
 
             var selectedPages = Session.get('selectedPages');
-            var pageTitle = $('#pageTitle').val();
-            var pageComments = $('#pageComments').val();
 
-            Meteor.call('RePublishPagesData', pageTitle, pageComments, selectedPages);
+            Meteor.call('RePublishPagesData', $('#pageTitle').val(), $('#pageComments').val(), selectedPages);
             Router.go('/admin/pages');
             
+        },
+
+        'click #parentinsert': function() {
+
+          var parentUsername = this.title;
+          Session.set('ParentName', parentUsername);
+          console.log(parentUsername);
+
         }
     });
 
- Template.addNewPage.helpers({
+ Template.addNewPage.helpers ({
         'PublishedPages': function() {
             var selectedPages = Session.get('selectedPages');
               return Pages.findOne(selectedPages);
 
+        },
+
+        'NoParentPages': function() {
+           return Pages.find();
         }
     });

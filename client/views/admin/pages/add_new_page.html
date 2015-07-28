@@ -71,10 +71,13 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><a href="#">Accessibility</a></li>
+                       <!--  <li><a href="#">Accessibility</a></li>
                         <li><a href="#">Advertising Terms Conditions</a></li>
                         <li><a href="#">Cookies & Privacy</a></li>
-                        <li><a href="#">Get in Touch</a></li>
+                        <li><a href="#">Get in Touch</a></li> -->
+                        {{#each NoParentPages}}
+                            <li><a href="#" value={{title}} id="parentinsert">{{title}}</a></li>
+                         {{/each}}
                     </ul>
                 </div>
                 <div class="board-view" >
