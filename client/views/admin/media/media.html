@@ -16,7 +16,7 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdown">
-                            <li><a href="#"> All(201)</a></li>
+                            <li><a href="#">All(201)</a></li>
                             <li><a href="#">images()</a></li>
                             <li><a href="#">unattached()</a></li>
                         </ul>
@@ -84,11 +84,12 @@
                                {{#each mediaList}}
                                <div class="row padding-top-bottom-10">
                                    <li class="col-md-2">
-                                       <span><input type="checkbox"></span><span class="padding-left-10"><img src="{{url}}" style="width:50px;height:50px" class="img-rounded"></span>
+                                       <span><input type="checkbox"></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
                                    </li>
                                    <li class="col-md-5">
                                        <div>{{name}}</div>
                                        <div>{{selectMediaFullName}}</div>
+                                    <div><a href= "#">Edit</a> | <a href = "#">Delete</a></div>
                                    </li>
                                    <li class="col-md-1">
                                        <div>{{createdBy}}</div>

@@ -24,20 +24,19 @@ Template.posts.events({
 
 /*
 
- Created by LingaRaja.
-
  Has the functionality to add a new post and publish the post.
 
  */
 Template.addNewPost.events({
     'click #savePost' : function () {
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName());
+        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate());
         Router.go("/admin/posts");
     },
     'click #publishPost' : function () {
+        console.log('current date and month.........'+getCurrentDate());
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        Meteor.call('publishPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName());
+        Meteor.call('publishPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate());
         Router.go("/admin/posts");        
     },
     'click #updatePost' : function() {
@@ -61,8 +60,6 @@ Template.addNewPost.events({
 
 /*
 
- Created by LingaRaja.
-
  Has the heplper to find all the post published by the server.
 
  */
@@ -85,8 +82,12 @@ Template.addNewPost.helpers({
 
 /*
 
- Created by LingaRaja.
-
  Has return the current username
 
  */
+Template.adminHeader.events({
+    'click #subNavBarpostsadd': function () {    
+        Session.set('selectedPostId', "");
+    }
+});
+

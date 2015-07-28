@@ -27,7 +27,6 @@ Template.pages.events ({
 
  Template.addNewPage.events({
         'click #publish': function() {
-
            Meteor.call('insertPagesData', $('#title').val(), $('#comments').val());
            Router.go('/admin/pages');
         },

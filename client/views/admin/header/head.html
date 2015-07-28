@@ -22,13 +22,11 @@
                             {{#each navBarList}}
                             <li id="navBar{{title}}">
                                 <a href="/admin/{{title}}"><span><i class="fa fa-tachometer icons"></i> {{title}}</span></a>
-                                {{#if subtitle}}
                                 <ul style="list-style: none;">
                                     {{#each subtitle}}
-                                    <li> <a href="/admin/posts/{{sTitle}}"><span>{{name}}</span></a></li>
+                                    <li id="subNavBar{{title}}{{sTitle}}"><a href="/admin/{{title}}/{{sTitle}}"><span>{{name}}</span></a></li>
                                     {{/each}}
-                                </ul>
-                                {{/if}}
+                                </ul>                            
                             </li>
                             {{/each}}
                         </ul>
