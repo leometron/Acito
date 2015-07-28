@@ -1,9 +1,6 @@
 <template name="pages" id="pages">
     <div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-8 top-view text-center">Screen Options <span class="caret"></span></div>
-            <div class="col-md-1 top-view text-center" style="margin-left: 15px">Help <span class="caret"></span></div>
-        </div>
+         {{> searchHelp}}
         <div class="margin-top-20">
             <div class="row post-margin">
                 <span style="  font-size: 30px;  vertical-align: top;">Pages</span>
@@ -70,7 +67,11 @@
                             {{else}}
                                 {{title}}
                             {{/if}}
+                        {{#if deleted}}
+                         <div><a href= "#" id="restorelist">Restore</a> | <a href = "#" id="deletelist">Delete Permanently</a></div>
+                        {{else}}
                         <div><a href= "/admin/pages/add" id="editlist">Edit</a> | <a href = "#" id="binlist">Bin</a></div>
+                        {{/if}}
                         </div>
                         <div class="col-md-2">{{currentUser.username}}</div>
                         <div class="col-md-2">comments</div>

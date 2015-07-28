@@ -1,11 +1,6 @@
 /*
-// Libraries which need a global variable, such as jQuery etc
-globalVariable = function () {
-}
-*/
 
-/*
-
+ Created by LingaRaja
  Has return the current username
 
  */
@@ -17,7 +12,8 @@ function getUserName() {
 
  Has return the current date with the format dd/mm/yyyy
 
- */
+*/
+
 function getCurrentDate() {
     var dateObj = new Date();
     return dateObj.getDate() + '/' + dateObj.getMonth() + '/' + dateObj.getFullYear();

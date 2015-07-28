@@ -24,6 +24,16 @@ Template.pages.events ({
           Meteor.call('listbinPagesData', userId);
         },
 
+        'click #restorelist': function() {
+            var userId = this._id;
+           Meteor.call('restorePagesData', userId);
+        },
+
+        'click #deletelist': function() {
+            var userId = this._id;
+            Meteor.call('trashPagesData', userId);
+        },
+
         'click #addNew': function(){
             $(location).attr('href','pages/add');
         },
@@ -109,7 +119,6 @@ Template.pages.events ({
        'click .page': function (event) { 
         
             var parentName = $(event.target).text();
-
             console.log("click interrupt " + parentName);         
             $('#parentinsert').text( $(event.target).text());       
         }

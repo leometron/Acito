@@ -28,15 +28,11 @@ Template.adminHeader.rendered = function () {
         $('#header').hide();
         $('#main_view').addClass('full-width');
     }
-
+        
 };
 
-Template.adminHeader.helpers({
-    activeIfTemplateIs: function (template) {
-      var currentRoute = Router.current();
-      console.log(currentRoute.lookupTemplate());
-      console.log(currentRoute);
-      console.log(template);
-      return currentRoute && template === currentRoute.lookupTemplate() ? 'active': '';
-    }
-  });
+Template.adminHeader.events({
+  'click .item': function() {
+    console.log(this);
+  }
+});

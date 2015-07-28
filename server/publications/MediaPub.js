@@ -2,26 +2,39 @@ Meteor.publish('Media', function () {
     return Media.find();
 });
 
-
-//Define all methods related to Media.
 Meteor.methods({
-    'insertMediaData': function(mediaUrl,mediaName,medianametype,caption,alternative,description,username){
-        // console.log(mediaUrl+"..."+mediaName+"..."+caption+"..."+alternative+"..."+description);
-        //var currentUserId = Meteor.userId();
+    'insertMediaData': function(mediaUrl,mediaName,mediaFullName,mediaType,mediaSize,caption,alternative,description,username,createdAt){
         Media.insert({
             url: mediaUrl,
             name: "\""+mediaName+"\"",
-            // name: mediaName,
-            nametype: medianametype,
+            fullName: mediaFullName,
+            type: mediaType,
+            size: mediaSize,
             caption: caption,
             alternative: alternative,
             description: description,
-            createdBy: username
+            createdBy: username,
+            createdAt: createdAt
         });
     },
+    'updateMediaData': function (mediaId,mediaUrl,mediaName,mediaNameType,mediaType,mediaSize,caption,alternative,description) {
+        console.log('entered server');
+        Media.update(
+            mediaId, 
+            {$set: {_id: mediaId,    
+            url: mediaUrl,
+            name: mediaName,
+            fullName: mediaNameType,
+            type: mediaType,
+            size: mediaSize,
+            caption: caption,
+            alternative: alternative,
+            description: description            
+        }});
+    },
     'removeMediaData': function(selectedFile){
-        var currentUserId = Meteor.userId();
-        //Write function to delete the file.
-        Media.remove({_id: selectedFile, createdBy: currentUserId});
+        Media.remove({
+            _id: selectedFile,
+         });
     }
 });

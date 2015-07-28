@@ -18,9 +18,9 @@
                 </div>
                 <div class="side_bar_menu">
                     <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-9" aria-expanded="false" style="  max-height: 100%;  padding: 0;  cursor: pointer;">
-                        <ul class="nav navbar-nav" style="color:  rgb(200, 208, 215);">
+                        <ul class="nav navbar-nav">
                             {{#each navBarList}}
-                            <li  id="navBar{{title}}">
+                            <li  id="navBar{{title}}" class="item" data-value="{{index}}">
                                 <a href="/admin/{{title}}"><div><i class="fa fa-tachometer icons"></i> {{title}}</div></a>
                                 <ul style="list-style: none;" id="showSubTitle">
                                     {{#each subtitle}}
