@@ -10,6 +10,13 @@
                     <input type="text" class="form-control" id="queryString" value="{{queryString}}" style="width:60%; display:inline" />
                     <span><button type="button" id="searchPost" class="btn btn-default">Search Posts</button></span>
                 </div>
+            <div>
+                <span><a id="showAll">All</a> | 
+                      <a id="publishFilter">Published</a> |
+                      <a id="draftFilter">Draft</a> |
+                      <a id="binFilter">Bin</a>
+                </span>
+            </div>                
             </div>
             <div class="row post-margin">
                 <div class="col-md-3 padding-left-zero">
@@ -50,18 +57,19 @@
                     </button>
                      <span class="caret" style=" margin-left: -20px;"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                         <li>
-                            <a class="menuitem2" href="#"> All categories</a>
-                         </li>
-                         <li>
-                            <a class="menuitem2" href="#">Governance</a>
-                         </li>
-                         <li>
-                           <a class="menuitem2" href="#">Advisors</a>
-                         </li>           
+                        <li role="presentation">
+                            <a class="menuitem2"
+                                id="config-request-command" href="#">All categories</a>
+                         </li>   
+                        {{#each categoryList}}
+                         <li role="presentation">
+                            <a class="menuitem2"
+                                id="config-request-command" href="#">{{name}}</a>
+                         </li>                        
+                        {{/each}}                                  
                     </ul>                   
                 </span>
-                    <span><button type="button" class="btn btn-default">Filter</button></span>
+                    <span><button type="button" id="filterByCategory" class="btn btn-default">Filter</button></span>
                 </div>
             </div>
             <div class="row post-margin">
@@ -89,7 +97,7 @@
                                     {{/if}}                            
                                 </div>
                                 <div class="col-md-2">{{createdBy}}</div>
-                                <div class="col-md-2">{{category}}</div>
+                                <div class="col-md-2">{{categoryName}}</div>
                                 <div class="col-md-1">{{tags}}</div>
                                 <div class="col-md-1">{{status}}</div>
                                 <div class="col-md-1">{{createdAt}}</div>

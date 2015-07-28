@@ -25,6 +25,9 @@ Posts.attachSchema(
     },
     status: {
       type: String
+    },
+    categoryName: {
+      type: String
     }
   })
 );
