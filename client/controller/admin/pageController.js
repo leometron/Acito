@@ -7,10 +7,21 @@
     });
 
 Template.pages.events ({
+        
         'click #list': function() {
             var userId = this._id;
             Session.set('selectedPages', userId);
             Router.go('/admin/pages/add');
+        },
+
+        'click #editlist': function() {
+          var userId = this._id;
+          Session.set('selectedPages', userId);
+        },
+
+        'click #binlist': function()  {
+          var userId = this._id;
+          Meteor.call('listbinPagesData', userId);
         },
 
         'click #addNew': function(){
@@ -21,19 +32,39 @@ Template.pages.events ({
             var search = $('#pagesearch').val();
             Meteor.call('searchData', search);
             Meteor._reload.reload();   
+        },
+
+        'click #pageAll': function() {
+            Meteor.call('loadPage', "All");
+            Meteor._reload.reload();  
+        },
+
+        'click #pagePublish': function() {
+            Meteor.call('loadPage', "Published");
+            Meteor._reload.reload();  
+        },
+
+        'click #pageDraft': function() {
+            Meteor.call('loadPage', "Draft");
+            Meteor._reload.reload();  
+        },
+
+         'click #pageBin': function() {
+            Meteor.call('loadPage', "Bin");
+            Meteor._reload.reload();  
         }
     });
 
 
  Template.addNewPage.events({
         'click #publish': function() {
-           Meteor.call('insertPagesData', $('#title').val(), $('#comments').val());
+           Meteor.call('insertPagesData', $('#title').val(), $('#comments').val(), getCurrentDate());
            Router.go('/admin/pages');
         },
 
          'click #draft': function() {
    
-           Meteor.call('draftPagesData', $('#title').val(),  $('#comments').val());
+           Meteor.call('draftPagesData', $('#title').val(),  $('#comments').val(), getCurrentDate());
            Router.go('/admin/pages');
         },
 
@@ -45,7 +76,7 @@ Template.pages.events ({
 
          'click #insertbin': function() {
 
-            Meteor.call('binPagesData', $('#title').val(), $('#comments').val());
+            Meteor.call('binPagesData', $('#title').val(), $('#comments').val(), getCurrentDate());
         },
 
         'click #update': function() {
@@ -75,12 +106,12 @@ Template.pages.events ({
             
         },
 
-        'click #parentinsert': function() {
+       'click .page': function (event) { 
+        
+            var parentName = $(event.target).text();
 
-          var parentUsername = this.title;
-          Session.set('ParentName', parentUsername);
-          console.log(parentUsername);
-
+            console.log("click interrupt " + parentName);         
+            $('#parentinsert').text( $(event.target).text());       
         }
     });
 
@@ -95,3 +126,10 @@ Template.pages.events ({
            return Pages.find();
         }
     });
+
+
+ Template.adminHeader.events ({
+        'click #subNavBarpagesadd': function() {
+          Session.set('selectedPages', ""); 
+        }
+ });

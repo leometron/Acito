@@ -22,6 +22,12 @@ Pages.attachSchema(
         },
         createdBy: {
             type: String
+        },
+        createdAt: {
+            type: String
+        },
+        status: {
+            type: String
         }
 
 
