@@ -1,6 +1,15 @@
 
+var searchtext = "";
+
 Meteor.publish('Pages', function () {
-    return Pages.find();
+    
+    var currentUserId = this.userId;
+
+    if(searchtext) {
+        return Pages.find({ $text: { $search: searchtext } });
+    }
+    return Pages.find( {createdBy: currentUserId} );
+
 });
 
 
@@ -13,32 +22,36 @@ Meteor.methods({
             title: title,
             content: content,
             deleted: false,
-            published: true
+            published: true,
+            createdBy: currentUserId
 
             //  category_id: category_id,
-            //   createdBy: currentUserId
         });
 
     },
 
      'draftPagesData': function(title, content) {
+        var currentUserId = Meteor.userId();
       Pages.insert ({
         title: title,
         content: content,
         deleted: false,
-        published: false
+        published: false,
+        createdBy: currentUserId
 
       });
 
     },
 
     'binPagesData': function(title, content) {
+        var currentUserId = Meteor.userId();
       Pages.insert ({
         title: title,
         content: content,
         deleted: true,
-        published: false
-
+        published: false,
+        createdBy: currentUserId
+        
       });
     },
 
@@ -50,7 +63,7 @@ Meteor.methods({
         Pages.update(selectedPages, {$set: { title : pageTitle, content : pageComments }});
     },
 
-    'crashPagesData' : function (selectedPages){
+    'trashPagesData' : function (selectedPages){
         Pages.remove(selectedPages);
     },
 
@@ -61,6 +74,10 @@ Meteor.methods({
 
     'RePublishPagesData' : function (pageTitle, pageComments, selectedPages){
         Pages.update(selectedPages, {$set: { title : pageTitle, content : pageComments, published: true }});
+    },
+
+    'searchData' : function (searchPage) {
+        searchtext = searchPage;
     }
 
     // 'removePagesData': function(selectedPages){

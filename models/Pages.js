@@ -19,7 +19,11 @@ Pages.attachSchema(
         },
         published: {
             type: Boolean
+        },
+        createdBy: {
+            type: String
         }
+
 
         /*    categoryId: {
          type: Number,

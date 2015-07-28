@@ -90,6 +90,3 @@ Template.addNewPost.helpers({
  Has return the current username
 
  */
-function getUserName() {
-    return Meteor.users.findOne(Meteor.userId()).username;
-}
