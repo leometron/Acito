@@ -9,13 +9,13 @@
                 <div class="col-md-12 bg-white padding-top-bottom-10 ">
                     <span class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            All(201)
+                            All
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdown">
-                            <li><a href="#">All(201)</a></li>
-                            <li><a href="#">images()</a></li>
-                            <li><a href="#">unattached()</a></li>
+                            <li><a href="#">All</a></li>
+                            <li><a href="#">images</a></li>
+                            <li><a href="#">unattached</a></li>
                         </ul>
                     </span>
                     <span class="dropdown">
@@ -41,28 +41,14 @@
                         Bulk Actions
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Bulk Actions</a></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#">Move to Bin</a></li>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li><a class="menuitem" href="#">Bulk Actions</a></li>
+                        <li><a class="menuitem" href="#" id="deleteall">Delete Permanently</a></li>
                     </ul>
                 </span>
-                    <span><button type="button" class="btn btn-default">Apply</button></span>
+                    <span><button id="apply" type="button" class="btn btn-default">Apply</button></span>
                 </div>
-
-                <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        All categories
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                        <li><a href="#"> All categories</a></li>
-                        <li><a href="#">Governance</a></li>
-                        <li><a href="#">Advisors</a></li>
-                    </ul>
-                </span>
-                    <span><button type="button" class="btn btn-default">Filter</button></span>
-                </div>
+             </div>
         </div>
         <div class="row post-margin">
             <div class="bs-example" data-example-id="striped-table">
@@ -81,7 +67,7 @@
                                {{#each mediaList}}
                                <div class="row padding-top-bottom-10">
                                    <li class="col-md-2">
-                                       <span><input type="checkbox"></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
+                                       <span><input id="checkbox" type="checkbox" ></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
                                    </li>
                                    <li class="col-md-5" style="line-height: 200%;">
                                        <div>{{name}}</div>
@@ -116,8 +102,7 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
                     <li><a href="#">Bulk Actions</a></li>
-                    <li><a href="#">Edit</a></li>
-                    <li><a href="#">Move to Bin</a></li>
+                    <li><a href="#">Delete Permanently</a></li>
                 </ul>
             </span>
             <span><button type="button" class="btn btn-default">Apply</button></span>

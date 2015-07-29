@@ -1,3 +1,6 @@
+
+var select_data = [];
+
 Template.addNewMedia.helpers({
   'selectMediaUrl': function(){
         return Session.get('browsedMediaUrl');
@@ -84,9 +87,6 @@ Template.media.events({
    'click #addNewMedia': function () {
         $(location).attr('href','media/add');
    },
-   'click #delete': function() {
-        Meteor.call('removeMediaData',this._id);
-   },
    'click #edit': function() {
         Session.set('currentMediaId',this._id);
         Session.set('browsedMediaUrl',this.url);
@@ -95,7 +95,23 @@ Template.media.events({
         Session.set('browsedMediaType',this.type);
         Session.set('browsedMediaSize',this.size);
         Session.set('mediaDetail','edit');
+   },
+   'click #delete': function() {
+        Meteor.call('removeMediaData', this._id);
+   },
+   'click #checkbox': function(event) {
+        var selectcheck = event.target.checked;
+        if(selectcheck==true){
+            select_data.push( this._id);
+        }else{
+          var index = select_data.indexOf(this._id);
+            select_data.splice(index, 1);
+        }
+    },
+   'click #apply': function() {
+        Meteor.call('removeSelectMediaData', select_data);
    }
+   
 });
 
 Template.media.helpers({
