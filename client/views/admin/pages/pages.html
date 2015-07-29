@@ -34,6 +34,18 @@
                 </span>
                     <span><button type="button" class="btn btn-default">Apply</button></span>
                 </div>
+                <!-- <div class="col-md-6">
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        All dates
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><a href="#">All dates</a></li>
+                    </ul>
+                </span>
+                    <span><button type="button" class="btn btn-default">Filter</button></span>
+                </div> -->
             </div>
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
@@ -51,16 +63,17 @@
                                 <span>
                                     <input type="checkbox">
                                 </span>
-                                {{#if deleted}}  
-                                <strike>{{title}}</strike> 
-                                {{#if equals parentId "(no parent)"}}
+                                {{#if deleted}}
+                                <strike>{{title}}</strike>
+                                 {{#if equals parentId "(no parent)"}}
                                     {{else}} 
                                     | Parent Page: {{parentId}}
                                 {{/if}}
-                        <div><a href= "#" id="restorelist">Restore</a> | <a href = "#" id="deletelist">Delete Permanently</a></div>
-                            {{else}}
-                        <div><a href= "/admin/pages/add" id="editlist">Edit</a> | <a href = "#" id="binlist">Bin</a></div>
-                            {{/if}}
+                                <div><a href= "#" id="restorelist">Restore</a> | <a href = "#" id="deletelist">Delete Permanently</a></div>
+                                {{else}}
+                                    {{title}}
+                                 <div><a href= "/admin/pages/add" id="editlist">Edit</a> | <a href = "#" id="binlist">Bin</a></div>
+                                {{/if}}
                             </div>
                             <div class="col-md-2">{{currentUser.username}}</div>
                             <div class="col-md-2">comments</div>
