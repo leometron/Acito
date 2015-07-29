@@ -1,36 +1,41 @@
 <template name="editCategory" id="editCategory">
-	<div>
-		<div>
-			Name : <input type="text" id="categoryName" class="form-control" value="{{showSelectedCategory.name}}"/>
+	   <div class="row margin-top-40">
+                <span class="main-header">Edit Category</span>                
+            </div>
+	<div class="margin-top-20">
+		<div class="row">
+			<div>
+				<div class="col-md-2 padding-left-zero font-bold">Name</div>
+				<div class="col-md-10"><input type="text" id="categoryName" class="form-control" value="{{showSelectedCategory.name}}"/>		</div>
+			</div>
+			<div>
+				<div class="col-md-2 padding-left-zero font-bold">Slug</div><div class="col-md-10"><input type="text" id="categorySlug" class="form-control" value="{{showSelectedCategory.slug}}"/></div>
+			</div>	
+			<div class="col-md-2 padding-left-zero font-bold">Parent</div>
+			<div class="col-md-10">
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        {{showSelectedCategory.parent}}                        
+                    </button>
+                      <span class="caret margin-left-minus-20"></span>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                {{#each categoryList}}
+                 <li role="presentation">
+                    <a class="menuitem2"
+                        id="config-request-command" href="#">{{name}}</a>
+                 </li>                        
+                {{/each}}                                                                     
+                    </ul>
+                </span>                       
+	        </div>
+			<div>
+				<div class="col-md-2 padding-left-zero font-bold padding-top-bottom-15">Description</div>
+				<div class="col-md-10 padding-top-bottom-15"> <textarea rows="5" cols="10" class="form-control margin-bottom-zero" id="categoryDescription">{{showSelectedCategory.description}}</textarea></div>
+			</div>
+			<div class="row padding-top-bottom-10 ">
+				<span><button class="btn btn-primary" id="updateCategory">Update</button></span>
+				<span class="padding-left-20"><button class="btn btn-primary" id="deleteCategory">Delete</button></span>
+			</div>			
 		</div>
-		<div>
-			Slug : <input type="text" id="categorySlug" class="form-control" value="{{showSelectedCategory.slug}}"/>
-		</div>	
-		<div  class="font-size-12">Parent</div>
-		<div class="padding-left-zero">
-                        <span class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                {{showSelectedCategory.parent}}
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        {{#each categoryList}}
-                         <li role="presentation">
-                            <a class="menuitem2"
-                                id="config-request-command" href="#">{{name}}</a>
-                         </li>                        
-                        {{/each}}                                                                     
-                            </ul>
-                        </span>                       
-        </div>
-		<div>
-			Description : <textarea rows="5" cols="10" class="form-control margin-bottom-zero" id="categoryDescription">{{showSelectedCategory.description}}</textarea>
-		</div>
-		<div class="row padding-top-bottom-10 ">
-			<button class="btn btn-primary" id="updateCategory">Update</button>
-		</div>
-		<div class="row padding-top-bottom-10 ">
-			<button class="btn btn-primary" id="deleteCategory">Delete</button>
-		</div>		
 	</div>
 </template>

@@ -3,7 +3,7 @@
          {{> searchHelp}}
         <div class="margin-top-20">
             <div class="row">
-                <span style="  font-size: 30px;  vertical-align: top;">Categories</span>              
+                <span class="main-header">Categories</span>              
             </div>            
             <div class="row">
                 <div style="float: right">
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="col-md-8">                
-                <div class="row">
+               <!-- <div class="row">
                     <div class="padding-left-zero">
                         <span class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="categories2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -83,31 +83,28 @@
                         </span>
                         <span><button type="button" class="btn btn-default">Apply</button></span>
                     </div>                    
-                </div>
+                </div> -->
                 <div class="row padding-top-bottom-10">
                     <div class="bs-example" data-example-id="striped-table">
                         <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
-                            <div class="col-md-2"><span><input type="checkbox"></span>Name</div>
+                            <div class="col-md-2">Name</div>
                             <div class="col-md-7">Description</div>
-                            <div class="col-md-2">Slug</div>
-                            <div class="col-md-1">Parent</div>
+                            <div class="col-md-1">Slug</div>
+                            <div class="col-md-2">Parent</div>
                         </div>
                            {{#each categoryList}}
                             <div id="{{_id}}" class="category row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                                <div class="col-md-2">
-                                    <span>
-                                        <input type="checkbox">
-                                    </span>
-                                        {{name}}
+                                <div class="col-md-2">                                    
+                                    {{name}}
                                 </div>
                                 <div class="col-md-7">{{description}}</div>
-                                <div class="col-md-2">{{slug}}</div>
-                                <div class="col-md-1">{{parent}}</div>
+                                <div class="col-md-1">{{slug}}</div>
+                                <div class="col-md-2">{{parent}}</div>
                             </div>                        
                         {{/each}}  
                     </div>
                 </div>
-                <div class="row">
+             <!--   <div class="row">
                     <span class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="categories3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             Bulk Actions
@@ -119,8 +116,8 @@
                         </ul>
                     </span>
                     <span><button type="button" class="btn btn-default">Apply</button></span>
-                </div>
-             </div>   
+                </div> -->
+            </div>   
         </div>
     </div>
 </template>
