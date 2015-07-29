@@ -9,6 +9,8 @@
 Meteor.subscribe("Posts");
 Meteor.subscribe("Category");
 
+var selectedIds = [];
+
 Template.posts.events({
     'click #addNewPost': function () {
         Session.set('selectedPostId', "");
@@ -59,7 +61,19 @@ Template.posts.events({
         event.preventDefault();                
         Meteor.call('categoryFilter',$('#categoriesdropdown').text());
         Meteor._reload.reload(); 
-    }
+    },
+   'click .checkbox': function(event) {
+        if(event.target.checked==true){
+            selectedIds.push( this._id);
+        }else{
+          var index = selectedIds.indexOf(this._id);
+            selectedIds.splice(index, 1);
+        }
+    },
+   'click #bulkApplyBtn': function() {
+        Meteor.call('bulkActions', selectedIds, $('#dropdown').text());
+        Meteor._reload.reload(); 
+   }    
 });
 
 /*

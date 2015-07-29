@@ -62,38 +62,52 @@ Template.pages.events ({
          'click #pageBin': function() {
             Meteor.call('loadPage', "Bin");
             Meteor._reload.reload();  
-        }
+        },
+         'click .menuitem': function (event) {            
+        $('#dropdownMenu1').text( $(event.target).text());            
+    }
     });
 
 
  Template.addNewPage.events({
         'click #publish': function() {
-           Meteor.call('insertPagesData', $('#title').val(), $('#comments').val(), getCurrentDate());
+           var ParentTitle = Session.get('ParentTitle'); 
+           var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
+           
+           Meteor.call('insertPagesData', $('#title').val(), $('#comments').val(), getCurrentDate(), parentinsert);
            Router.go('/admin/pages');
         },
 
          'click #draft': function() {
+           var ParentTitle = Session.get('ParentTitle'); 
+           var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
    
-           Meteor.call('draftPagesData', $('#title').val(),  $('#comments').val(), getCurrentDate());
+           Meteor.call('draftPagesData', $('#title').val(),  $('#comments').val(), getCurrentDate(), parentinsert);
            Router.go('/admin/pages');
         },
 
         'click #updatebin': function() {
-
+            var ParentTitle = Session.get('ParentTitle'); 
+            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
             var selectedPages = Session.get('selectedPages');
-            Meteor.call('deletePagesData', $('#pageTitle').val(), $('#pageComments').val(), selectedPages);  
+
+            Meteor.call('deletePagesData', $('#pageTitle').val(), $('#pageComments').val(), selectedPages, parentinsert);  
         },
 
          'click #insertbin': function() {
+             var ParentTitle = Session.get('ParentTitle'); 
+             var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
 
-            Meteor.call('binPagesData', $('#title').val(), $('#comments').val(), getCurrentDate());
+            Meteor.call('binPagesData', $('#title').val(), $('#comments').val(), getCurrentDate(), parentinsert);
         },
 
         'click #update': function() {
+            var ParentTitle = Session.get('ParentTitle'); 
+            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
             var selectedPages = Session.get('selectedPages');
 
-           Meteor.call('updatePagesData', $('#pageTitle').val(),  $('#pageComments').val(), selectedPages);
-           Router.go('/admin/pages');
+            Meteor.call('updatePagesData', $('#pageTitle').val(),  $('#pageComments').val(), selectedPages, parentinsert);
+            Router.go('/admin/pages');
         },
 
         'click #delete': function() {
@@ -108,19 +122,20 @@ Template.pages.events ({
         },
 
         'click #republish': function() {
-
+            var ParentTitle = Session.get('ParentTitle'); 
+            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
             var selectedPages = Session.get('selectedPages');
 
-            Meteor.call('RePublishPagesData', $('#pageTitle').val(), $('#pageComments').val(), selectedPages);
+            Meteor.call('RePublishPagesData', $('#pageTitle').val(), $('#pageComments').val(), selectedPages, parentinsert);
             Router.go('/admin/pages');
             
         },
 
-       'click .page': function (event) { 
+        'click .parentlist': function (event) { 
         
-            var parentName = $(event.target).text();
-            console.log("click interrupt " + parentName);         
-            $('#parentinsert').text( $(event.target).text());       
+            var parentName = $(event.target).text();       
+            $('#parentinsert').text( $(event.target).text());
+            Session.set('ParentTitle', parentName);        
         }
     });
 
@@ -142,3 +157,7 @@ Template.pages.events ({
           Session.set('selectedPages', ""); 
         }
  });
+
+ Template.registerHelper('equals', function (a, b) {
+      return a === b;
+    });
