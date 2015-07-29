@@ -8,17 +8,17 @@
             <div class="row post-margin padding-top-bottom-10">
                 <div class="col-md-12 bg-white padding-top-bottom-10 ">
                     <span class="dropdown margin-right">
-                        <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="alldropdown" data-toggle="dropdown">
-                            All(201)                            
+                        <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="allMedia" data-toggle="dropdown">
+                            All Media                            
                         </button>
-                       <span class="caret margin-left-minus-20"></span>
+                        <!--<span class="caret margin-left-minus-20"></span>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown">
                             <li><a class="menuitem" href="#">All</a></li>
                             <li><a class="menuitem" href="#">images</a></li>
                             <li><a class="menuitem" href="#">unattached</a></li>
-                        </ul>
+                        </ul> -->
                     </span>
-                    <span class="dropdown margin-right">
+                      <!--<span class="dropdown margin-right">
                         <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="alldatedropdown" data-toggle="dropdown">
                             All dates                           
                         </button>
@@ -28,9 +28,10 @@
                             <li><a class="menuitem1"  href="#">july 2015</a></li>
                         </ul>
                     </span>
-                    <span><button type="button" class="btn btn-default">filter</button></span>
+                    <span><button type="button" class="btn btn-default">filter</button></span> -->
                     <div style="float: right">
-                        <input type="search" style="padding-top: 10px"/>
+                        <input type="search" class="padding-top-10" id="queryString" value="{{queryString}}" />
+                        <button id="searchMedia" type="button" class="btn btn-default margin-left-10 margin-bottom-10">Search Media</button>
                     </div>
                 </div>
             </div>
@@ -46,7 +47,7 @@
                         <li><a class="menuitem2"  href="#" id="deleteall">Delete Permanently</a></li>                       
                     </ul>
                 </span>
-                    <span><button type="button" class="btn btn-default">Apply</button></span>
+                    <span><button id="apply" type="button" class="btn btn-default">Apply</button></span>
               </div>              
             </div>
         </div>
@@ -104,7 +105,7 @@
                     <li><a href="#" id="deleteall">Delete Permanently</a></li>
                 </ul>
             </span>
-            <span><button type="button" class="btn btn-default">Apply</button></span>
+            <span><button id="apply" type="button" class="btn btn-default">Apply</button></span>
         </div>
     </div>
 </template>

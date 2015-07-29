@@ -8,4 +8,5 @@
 Meteor.startup(function () {
 	Posts._ensureIndex({ title : "text" });
 	Pages._ensureIndex ({ title: "text" });
+	Media._ensureIndex({ name : "text"});
 });

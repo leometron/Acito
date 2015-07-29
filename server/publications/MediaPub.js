@@ -1,5 +1,16 @@
+
+var querystr="";
+
 Meteor.publish('Media', function () {
-    return Media.find();
+    var temp;
+    if (querystr) {
+        temp = querystr;
+        querystr = "";        
+        return Media.find({ $text: { $search: temp } });
+    } 
+    else {    
+       return Media.find();
+    }
 });
 
 Meteor.methods({
@@ -37,11 +48,19 @@ Meteor.methods({
             _id: selectedFile
          });
     },
-    'removeSelectMediaData': function(selectedFileAll){
+    'removeSelectMediaData': function(selectedFileAll,bulkAction){
+        if(bulkAction=="Delete Permanently"){
         for(i=0; i<selectedFileAll.length; i++){
             Media.remove({
             _id: selectedFileAll[i]
         });    
         }
-    }
+      }
+    },
+    'searchMedia' : function(queryString) {
+        querystr = queryString; 
+   },
+   'showAllMedia': function(queryStringData) {
+        querystr = "";
+   }
 });
