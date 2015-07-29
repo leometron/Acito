@@ -13,10 +13,10 @@
                 </div>
             </div>
             <div>
-                <span><a herf="/admin/pages">All</a> | 
-                      <a href="/admin/pages" id="pagePublish">Published</a> |
-                      <a href="/admin/pages" id="pageDraft">Draft</a> |
-                      <a href="/admin/pages" id="pageBin">Bin</a>
+                <span><a id="pageAll">All</a> | 
+                      <a id="pagePublish">Published</a> |
+                      <a id="pageDraft">Draft</a> |
+                      <a id="pageBin">Bin</a>
                 </span>
             </div>
             <div class="row post-margin">
@@ -59,25 +59,33 @@
                         {{#each lists}}
                         {{#if currentUser}}
                         <div class="row padding-top-bottom-10">
-                        <div class="col-md-7" id="list">
-                            <span>
-                                <input type="checkbox">
-                            </span>
+                            <div class="col-md-7" id="list">
+                                <span>
+                                    <input type="checkbox">
+                                </span>
+                                {{#if deleted}}
+                                <strike>{{title}}</strike>
+                                {{else}}
+                                    {{title}}
+                                {{/if}}
                             {{#if deleted}}
-                            <strike>{{title}}</strike>
+                             <div><a href= "#" id="restorelist">Restore</a> | <a href = "#" id="deletelist">Delete Permanently</a></div>
                             {{else}}
-                                {{title}}
+                            <div><a href= "/admin/pages/add" id="editlist">Edit</a> | <a href = "#" id="binlist">Bin</a></div>
                             {{/if}}
+                            </div>
+                            <div class="col-md-2">{{currentUser.username}}</div>
+                            <div class="col-md-2">comments</div>
+                            <div class="col-md-1">{{createdAt}}
+                             <br>
+                             <div>{{status}}</div>
+                            </div>                       
                         </div>
-                        <div class="col-md-2">{{currentUser.username}}</div>
-                        <div class="col-md-2">comments</div>
-                        <div class="col-md-1">Date</div>
-                    </div>
                         {{/if}}
                         {{/each}}
                     </div>
                 </div>
-            </div>
+            </div>    
             <div class="row post-margin">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

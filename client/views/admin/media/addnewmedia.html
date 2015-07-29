@@ -25,29 +25,43 @@
     <div id="editPage">
         <div class="margin-top-20">
             <div class="row post-margin">
-                <span style="font-size: 30px;">Add a New Post</span>
-                <span><button type="button" class="btn btn-default">Search Posts</button></span>
+                {{#if showSelectedMedia}}
+                <span style="font-size: 30px;">Edit Media</span>
+                {{else}}
+                <span style="font-size: 30px;">Add a New Media</span>
+                {{/if}}
             </div>
         </div>
         <div class="col-md-8  padding-left-zero">
             <div class="padding-top-bottom-10">
-                <input type="text" class="form-control" value="{{selectMediaName}}">
+                <input id="filename" type="text" class="form-control" value="{{selectMediaName}}">
             </div>
-            <!-- <P>{{selectMediaUrl}}</p> -->
-            <div class="padding-top-bottom-10">
+             <div class="padding-top-bottom-10">
                <img src="{{selectMediaUrl}}" class="img-rounded" style="width:200px; height:200px;">
             </div>
             <div class="padding-top-bottom-10">
                 <p>Caption</p>
+                {{#if showSelectedMedia}}
+                <textarea  id="caption" cols="80" rows="5"  class="form-control" value="{{showSelectedMedia.caption}}"></textarea>
+                {{else}}
                 <textarea  id="caption" cols="80" rows="5"  class="form-control"></textarea>
+                {{/if}}
             </div>
             <div class="padding-top-bottom-10">
                 <p>Alternative Text</p>
+                {{#if showSelectedMedia}}
+                <input id="alternative" type="text" class="form-control" value="{{showSelectedMedia.alternative}}">
+                {{else}}
                 <input id="alternative" type="text" class="form-control">
+                {{/if}}
             </div>
             <div class="padding-top-bottom-10">
                 <p>Description</p>
+                {{#if showSelectedMedia}}
+                <textarea  id="description" cols="80" rows="5"  class="form-control" value="{{showSelectedMedia.description}}"></textarea>
+                {{else}}
                 <textarea  id="description" cols="80" rows="5"  class="form-control"></textarea>
+                {{/if}}
             </div>
         </div>
         <div class="col-md-4 padding-bottom-40">
@@ -55,13 +69,26 @@
                <div class="board-view  border-bottom">Save<span class="caret pull-right margin-top-10"></span></div>
                <div class="board-view">Uploaded on:</div>
                <div class="board-view">File URL: <span class="padding-left-10 font-bold"></span></div>
-               <div class="board-view"><input type="text" class="form-control" value="{{selectMediaUrl}}"></div>                
-               <div class="board-view">File name:<span class="padding-left-10 font-bold">{{selectMediaFullName}}</span></div>
-               <div class="board-view">File type:<span class="padding-left-10 font-bold">{{selectMediaType}}</span></div>
-               <div class="board-view">File size:<span class="padding-left-10 font-bold">{{selectMediaSize}}</span></div> 
+               <div class="board-view">
+                <input id="mediaUrl" type="text" class="form-control" value="{{selectMediaUrl}}">
+                </div>                
+               <div class="board-view">File name:
+                <span id="fullimagename" class="padding-left-10 font-bold">{{selectMediaFullName}}</span>
+                </div>
+               <div class="board-view">File type:
+                <span id="filetype" class="padding-left-10 font-bold">{{selectMediaType}}</span>
+                </div>
+               <div class="board-view">File size:
+                <span id="filesize" class="padding-left-10 font-bold">{{selectMediaSize}}</span>
+               </div> 
         </div>
             <div class="board-view border-bottom" style="border: 1px solid #ddd;border-top: 0;">
-                Delete Permanently<span style="padding-left: 30%"><button id="update" type="button" class="btn btn-primary">update</button></span>
+                Delete Permanently
+                {{#if showSelectedMedia}}
+                <span style="padding-left: 30%"><button id="update" type="button" class="btn btn-primary">update</button></span>
+                {{else}}
+                <span style="padding-left: 25%"><button id="publish" type="button" class="btn btn-primary">publish</button></span>
+                {{/if}}
             </div>
         </div>
     </div>
