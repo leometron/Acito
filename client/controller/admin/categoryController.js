@@ -8,7 +8,6 @@
 Template.categories.events({
     'click #addCategory': function () {
         var parent = ($('#parentCategory').text() == "None") ? "None" : $('#parentCategory').text();
-        console.log('parent category.....'+parent);
         Meteor.call('addNewCategory',$('#categoryName').val(),$('#categoryDescription').val(),$('#categorySlug').val(),$('#parentCategory').text()); 
         Meteor._reload.reload();               
     },
@@ -18,7 +17,12 @@ Template.categories.events({
     'click .category.row': function() {
         Session.set('selectedCategoryId',this._id);
         Router.go("/admin/posts/categories/edit");
-    }
+    },
+    'click #searchCategory' : function (event) {
+        event.preventDefault();                
+        Meteor.call('searchCategory',$('#searchString').val());
+        Meteor._reload.reload();        
+    }     
 });
 
 Template.editCategory.events({
