@@ -30,17 +30,17 @@
                             <a class="menuitem" href="#">Bulk Actions</a>
                          </li>
                          <li>
-                            <a class="menuitem" href="#">Edit</a>
+                            <a class="menuitem" href="#">Delete</a>
                          </li>
                          <li>
                            <a class="menuitem" href="#">Move to Bin</a>
                          </li>           
                     </ul>
                 </span>
-                    <span><button type="button" class="btn btn-default">Apply</button></span>
+                    <span><button type="button" class="btn btn-default" id="bulkApplyBtn">Apply</button></span>
                 </div>
                 <div class="col-md-6">
-                <span class="dropdown margin-right">
+<!--                 <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
                           data-toggle="dropdown">All dates                       
                     </button>
@@ -50,7 +50,7 @@
                             <a class="menuitem1" href="#">All dates  </a>
                          </li>                                  
                     </ul>
-                </span>
+                </span> -->
                 <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="categoriesdropdown"
                           data-toggle="dropdown">All categories                       
@@ -77,7 +77,7 @@
                     <div class="row post-margin padding-top-bottom-10">
                         <div class="bs-example" data-example-id="striped-table">
                             <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">
-                                <div class="col-md-5"><span><input type="checkbox"></span>Title</div>
+                                <div class="col-md-5">Title</div>
                                 <div class="col-md-2">Author</div>
                                 <div class="col-md-2">Categories</div>
                                 <div class="col-md-1">Tags</div>
@@ -85,12 +85,13 @@
                                 <div class="col-md-1">Date</div>
                             </div>
                            {{#each postList}}
-                            <div id="{{_id}}" class="post row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                            <div id="{{_id}}" class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                                    <span>
+                                        <input type="checkbox" class="checkbox">
+                                    </span>
+                                <div class="post">                                
                                  <div class="row padding-top-bottom-10">
                                 <div class="col-md-5">
-                                    <span>
-                                        <input type="checkbox">
-                                    </span>
                                     {{#if deleted}}                                    
                                         <strike>{{title}}</strike>
                                     {{else}}
@@ -103,13 +104,14 @@
                                 <div class="col-md-1">{{status}}</div>
                                 <div class="col-md-1">{{createdAt}}</div>
                             </div>   
-                            </div>                     
+                            </div> 
+                            </div>                    
                         {{/each}}                            
                         </div>
                     </div>
                 </div>
             </div>            
-            <div class="row post-margin">
+<!--             <div class="row post-margin">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownmenu"
                           data-toggle="dropdown">Bulk Actions                        
@@ -127,7 +129,7 @@
                          </li>           
                     </ul>
                 </span>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

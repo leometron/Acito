@@ -13,9 +13,9 @@
                         </button>
                        <span class="caret margin-left-minus-20"></span>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown">
-                            <li><a class="menuitem" href="#">All(201)</a></li>
-                            <li><a class="menuitem" href="#">images()</a></li>
-                            <li><a class="menuitem" href="#">unattached()</a></li>
+                            <li><a class="menuitem" href="#">All</a></li>
+                            <li><a class="menuitem" href="#">images</a></li>
+                            <li><a class="menuitem" href="#">unattached</a></li>
                         </ul>
                     </span>
                     <span class="dropdown margin-right">
@@ -43,7 +43,7 @@
                      <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                         <li><a class="menuitem2"  href="#">Bulk Actions</a></li>
-                        <li><a class="menuitem2"  href="#">Delete Permanently</a></li>                       
+                        <li><a class="menuitem2"  href="#" id="deleteall">Delete Permanently</a></li>                       
                     </ul>
                 </span>
                     <span><button type="button" class="btn btn-default">Apply</button></span>
@@ -67,7 +67,7 @@
                                {{#each mediaList}}
                                <div class="row padding-top-bottom-10">
                                    <li class="col-md-2">
-                                       <span><input type="checkbox"></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
+                                       <span><input id="checkbox" type="checkbox" ></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
                                    </li>
                                    <li class="col-md-5" style="line-height: 200%;">
                                        <div>{{name}}</div>
@@ -99,11 +99,9 @@
                 <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="bulkactiondropdown" data-toggle="dropdown">
                     Bulk Actions                  
                 </button>
-                 <span class="caret margin-left-minus-20"></span>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu5">
-                    <li><a class="menuitem3" href="#">Bulk Actions</a></li>
-                    <li><a class="menuitem3" href="#">Edit</a></li>
-                    <li><a class="menuitem3" href="#">Move to Bin</a></li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                    <li><a href="#">Bulk Actions</a></li>
+                    <li><a href="#" id="deleteall">Delete Permanently</a></li>
                 </ul>
             </span>
             <span><button type="button" class="btn btn-default">Apply</button></span>

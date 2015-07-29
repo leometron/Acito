@@ -6,7 +6,7 @@ Meteor.methods({
     'insertMediaData': function(mediaUrl,mediaName,mediaFullName,mediaType,mediaSize,caption,alternative,description,username,createdAt){
         Media.insert({
             url: mediaUrl,
-            name: "\""+mediaName+"\"",
+            name: mediaName,
             fullName: mediaFullName,
             type: mediaType,
             size: mediaSize,
@@ -34,7 +34,14 @@ Meteor.methods({
     },
     'removeMediaData': function(selectedFile){
         Media.remove({
-            _id: selectedFile,
+            _id: selectedFile
          });
+    },
+    'removeSelectMediaData': function(selectedFileAll){
+        for(i=0; i<selectedFileAll.length; i++){
+            Media.remove({
+            _id: selectedFileAll[i]
+        });    
+        }
     }
 });

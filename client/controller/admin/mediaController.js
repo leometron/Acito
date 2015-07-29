@@ -1,3 +1,6 @@
+
+var select_data = [];
+
 Template.addNewMedia.helpers({
   'selectMediaUrl': function(){
         return Session.get('browsedMediaUrl');
@@ -84,27 +87,18 @@ Template.media.events({
    'click #addNewMedia': function () {
         $(location).attr('href','media/add');
    },
-    'click .menuitem': function (event) {            
+   'click .menuitem': function (event) {            
         $('#alldropdown').text( $(event.target).text());            
-    },
-     'click .menuitem1': function (event) {            
+   },
+   'click .menuitem1': function (event) {            
         $('#alldatedropdown').text( $(event.target).text());            
-    },
-    'click .menuitem2': function (event) {            
+   },
+   'click .menuitem2': function (event) {            
         $('#actiondropdown').text( $(event.target).text());            
-    },
-    'click .menuitem3': function (event) {            
+   },
+   'click .menuitem3': function (event) {            
         $('#bulkactiondropdown').text( $(event.target).text());            
-    },
-   // 'click #delete': function() {
-   //      alert("click delete button");
-   //      var url = Session.get('currentMediaUrl');
-   //      Meteor.call('removeMediaData',url);
-   // },
-   // 'click #edit': function() {
-   //      alert("click edit button");
-   //      $(location).attr('href','media/add');   
-   // }
+   },
    'click #delete': function() {
         Meteor.call('removeMediaData',this._id);
    },
@@ -116,7 +110,23 @@ Template.media.events({
         Session.set('browsedMediaType',this.type);
         Session.set('browsedMediaSize',this.size);
         Session.set('mediaDetail','edit');
+   },
+   'click #delete': function() {
+        Meteor.call('removeMediaData', this._id);
+   },
+   'click #checkbox': function(event) {
+        var selectcheck = event.target.checked;
+        if(selectcheck==true){
+            select_data.push( this._id);
+        }else{
+          var index = select_data.indexOf(this._id);
+            select_data.splice(index, 1);
+        }
+    },
+   'click #apply': function() {
+        Meteor.call('removeSelectMediaData', select_data);
    }
+   
 });
 
 Template.media.helpers({

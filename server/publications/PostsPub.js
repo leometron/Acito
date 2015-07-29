@@ -72,5 +72,16 @@ Meteor.methods({
    },
    'categoryFilter' : function(categoryString) {
         categorystr = categoryString;
+   },
+   'bulkActions' : function(idList,action) {
+        if(action == "Move to Bin") {
+            for(i=0; i<idList.length; i++){
+                Posts.update(idList[i], {$set: {deleted: true,status:"Bin"}});
+            }        
+        } else if(action == "Delete") {
+            for(i=0; i<idList.length; i++){
+                Posts.remove({_id: idList[i]});
+            }               
+        }
    }
 });
