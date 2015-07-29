@@ -8,6 +8,12 @@ Category.attachSchema(
     description: {
       type: String
     },
+    slug: {
+      type: String
+    },
+    parent: {
+      type: String
+    }   
   })
 );
 

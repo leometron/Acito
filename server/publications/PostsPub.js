@@ -62,7 +62,7 @@ Meteor.methods({
     },
     'removePostData': function(selectedPostId){
         Posts.remove({_id: selectedPostId});
-        console.log('Post '+ title + 'removed successfully');                
+        console.log('Post removed successfully');                
    },
    'searchPost' : function(queryString) {
         querystr = queryString; 
@@ -72,5 +72,16 @@ Meteor.methods({
    },
    'categoryFilter' : function(categoryString) {
         categorystr = categoryString;
+   },
+   'bulkActions' : function(idList,action) {
+        if(action == "Move to Bin") {
+            for(i=0; i<idList.length; i++){
+                Posts.update(idList[i], {$set: {deleted: true,status:"Bin"}});
+            }        
+        } else if(action == "Delete") {
+            for(i=0; i<idList.length; i++){
+                Posts.remove({_id: idList[i]});
+            }               
+        }
    }
 });

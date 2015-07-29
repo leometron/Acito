@@ -31,4 +31,7 @@ Router.route('/admin/posts/edit', function () {
 Router.route('/admin/posts/categories', function () {
     this.render('categories');
 });
+Router.route('/admin/posts/categories/edit', function () {
+    this.render('editCategory');
+});
 

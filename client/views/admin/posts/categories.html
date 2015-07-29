@@ -3,12 +3,12 @@
          {{> searchHelp}}
         <div class="margin-top-20">
             <div class="row">
-                <span style="  font-size: 30px;  vertical-align: top;">Categories</span>              
+                <span class="main-header">Categories</span>              
             </div>            
             <div class="row">
                 <div style="float: right">
-                    <input type="text" class="form-control" id="pagesearch" style="width:60%; display:inline" />
-                    <span><button type="button" id="search" class="btn btn-default">Search Pages</button></span>
+                    <input type="text" class="form-control" id="searchString" style="width:60%; display:inline" />
+                    <span><button type="button" id="searchCategory" class="btn btn-default">Search</button></span>
                 </div>
             </div>
         </div>    
@@ -24,21 +24,36 @@
                 </div>
                 <div class="row padding-top-bottom-10">
                     <div class="font-size-12">Slug</div>
-                    <div><input type="text" class="form-control margin-bottom-zero"></div>
-                    <em class="font-size-12">The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</em>
+                    <div><input type="text" class="form-control margin-bottom-zero" id="categorySlug"></div>
+                    <em class="font-size-12">The “slug” is the URL-friendly version of the name.</em>
                 </div>
                  <div class="row padding-top-bottom-10">
                     <div  class="font-size-12">Parent</div>
                      <div class="padding-left-zero">
                         <span class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="categories1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 None
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">None</a></li>
-                                <li><a href="#">Advisers</a></li>     
-                                <li><a href="#">Governance</a></li>                         
+                                <li role="presentation">
+                                    <a class="menuitem2"
+                                        id="config-request-command" href="#">None</a>
+                                </li>
+                        {{#each categoryList}}
+                         <li role="presentation">
+                            <a class="menuitem2"
+                                id="config-request-command" href="#">{{name}}</a>
+                         </li>                        
+                        {{/each}}                                                                    
+<!--                                 <li role="presentation">
+                                    <a class="menuitem2"
+                                        id="config-request-command" href="#">Advisers</a>
+                                </li> 
+                                <li role="presentation">
+                                    <a class="menuitem2"
+                                        id="config-request-command" href="#">Governance</a>
+                                </li>  -->   
                             </ul>
                         </span>                       
                     </div>       
@@ -54,7 +69,7 @@
                 </div>
             </div>
             <div class="col-md-8">                
-                <div class="row">
+               <!-- <div class="row">
                     <div class="padding-left-zero">
                         <span class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="categories2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -68,37 +83,28 @@
                         </span>
                         <span><button type="button" class="btn btn-default">Apply</button></span>
                     </div>                    
-                </div>
+                </div> -->
                 <div class="row padding-top-bottom-10">
                     <div class="bs-example" data-example-id="striped-table">
                         <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
-                            <div class="col-md-7"><span><input type="checkbox"></span>Title</div>
-                            <div class="col-md-2">Author</div>
-                            <div class="col-md-2">comments</div>
-                            <div class="col-md-1">Date</div>
+                            <div class="col-md-2">Name</div>
+                            <div class="col-md-7">Description</div>
+                            <div class="col-md-1">Slug</div>
+                            <div class="col-md-2">Parent</div>
                         </div>
-                        <div class="row padding-top-bottom-10" style="border: 1px solid #ddd">
-                            {{#each lists}}
-                            {{#if currentUser}}
-                            <div class="col-md-7" id="list">
-                                <span>
-                                    <input type="checkbox">
-                                </span>
-                                {{#if deleted}}
-                                <strike>{{title}}</strike>
-                                {{else}}
-                                    {{title}}
-                                {{/if}}
-                            </div>
-                            <div class="col-md-2">{{currentUser.username}}</div>
-                            <div class="col-md-2">comments</div>
-                            <div class="col-md-1">Date</div>
-                            {{/if}}
-                            {{/each}}
-                        </div>
+                           {{#each categoryList}}
+                            <div id="{{_id}}" class="category row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                                <div class="col-md-2">                                    
+                                    {{name}}
+                                </div>
+                                <div class="col-md-7">{{description}}</div>
+                                <div class="col-md-1">{{slug}}</div>
+                                <div class="col-md-2">{{parent}}</div>
+                            </div>                        
+                        {{/each}}  
                     </div>
                 </div>
-                <div class="row">
+             <!--   <div class="row">
                     <span class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="categories3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             Bulk Actions
@@ -110,8 +116,8 @@
                         </ul>
                     </span>
                     <span><button type="button" class="btn btn-default">Apply</button></span>
-                </div>
-             </div>   
+                </div> -->
+            </div>   
         </div>
     </div>
 </template>
