@@ -62,7 +62,7 @@ Meteor.methods({
     },
     'removePostData': function(selectedPostId){
         Posts.remove({_id: selectedPostId});
-        console.log('Post '+ title + 'removed successfully');                
+        console.log('Post removed successfully');                
    },
    'searchPost' : function(queryString) {
         querystr = queryString; 
