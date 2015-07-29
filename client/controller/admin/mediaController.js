@@ -78,6 +78,18 @@ Template.media.events({
    'click #addNewMedia': function () {
         $(location).attr('href','media/add');
    },
+    'click .menuitem': function (event) {            
+        $('#alldropdown').text( $(event.target).text());            
+    },
+     'click .menuitem1': function (event) {            
+        $('#alldatedropdown').text( $(event.target).text());            
+    },
+    'click .menuitem2': function (event) {            
+        $('#actiondropdown').text( $(event.target).text());            
+    },
+    'click .menuitem3': function (event) {            
+        $('#bulkactiondropdown').text( $(event.target).text());            
+    },
    // 'click #delete': function() {
    //      alert("click delete button");
    //      var url = Session.get('currentMediaUrl');

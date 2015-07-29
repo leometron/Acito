@@ -55,9 +55,10 @@
                         <div class="col-md-2">comments</div>
                         <div class="col-md-1">Date</div>
                     </div>
-                    <div class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
+                    <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
                         {{#each lists}}
                         {{#if currentUser}}
+                        <div class="row padding-top-bottom-10">
                         <div class="col-md-7" id="list">
                             <span>
                                 <input type="checkbox">
@@ -71,6 +72,7 @@
                         <div class="col-md-2">{{currentUser.username}}</div>
                         <div class="col-md-2">comments</div>
                         <div class="col-md-1">Date</div>
+                    </div>
                         {{/if}}
                         {{/each}}
                     </div>
