@@ -87,6 +87,21 @@ Template.media.events({
    'click #addNewMedia': function () {
         $(location).attr('href','media/add');
    },
+   'click .menuitem': function (event) {            
+        $('#alldropdown').text( $(event.target).text());            
+   },
+   'click .menuitem1': function (event) {            
+        $('#alldatedropdown').text( $(event.target).text());            
+   },
+   'click .menuitem2': function (event) {            
+        $('#actiondropdown').text( $(event.target).text());            
+   },
+   'click .menuitem3': function (event) {            
+        $('#bulkactiondropdown').text( $(event.target).text());            
+   },
+   'click #delete': function() {
+        Meteor.call('removeMediaData',this._id);
+   },
    'click #edit': function() {
         Session.set('currentMediaId',this._id);
         Session.set('browsedMediaUrl',this.url);

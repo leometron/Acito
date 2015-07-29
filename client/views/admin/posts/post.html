@@ -20,7 +20,7 @@
             </div>
             <div class="row post-margin">
                 <div class="col-md-3 padding-left-zero">
-                 <span class="dropdown">
+                 <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdown"
                           data-toggle="dropdown">Bulk Actions                        
                     </button>
@@ -40,22 +40,22 @@
                     <span><button type="button" class="btn btn-default">Apply</button></span>
                 </div>
                 <div class="col-md-6">
-                <span class="dropdown">
+                <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
                           data-toggle="dropdown">All dates                       
                     </button>
-                     <span class="caret" style=" margin-left: -20px;"></span>
+                     <span class="caret margin-left-minus-20"></span>
                      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                          <li>
                             <a class="menuitem1" href="#">All dates  </a>
                          </li>                                  
                     </ul>
                 </span>
-                <span class="dropdown">
+                <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="categoriesdropdown"
                           data-toggle="dropdown">All categories                       
                     </button>
-                     <span class="caret" style=" margin-left: -20px;"></span>
+                     <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li role="presentation">
                             <a class="menuitem2"
@@ -86,6 +86,7 @@
                             </div>
                            {{#each postList}}
                             <div id="{{_id}}" class="post row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                                 <div class="row padding-top-bottom-10">
                                 <div class="col-md-5">
                                     <span>
                                         <input type="checkbox">
@@ -101,7 +102,8 @@
                                 <div class="col-md-1">{{tags}}</div>
                                 <div class="col-md-1">{{status}}</div>
                                 <div class="col-md-1">{{createdAt}}</div>
-                            </div>                        
+                            </div>   
+                            </div>                     
                         {{/each}}                            
                         </div>
                     </div>
@@ -112,7 +114,7 @@
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownmenu"
                           data-toggle="dropdown">Bulk Actions                        
                     </button>
-                     <span class="caret" style=" margin-left: -20px;"></span>
+                     <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                          <li>
                             <a class="menuitem3" href="#">Bulk Actions</a>

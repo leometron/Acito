@@ -1,0 +1,36 @@
+<template name="editCategory" id="editCategory">
+	<div>
+		<div>
+			Name : <input type="text" id="categoryName" class="form-control" value="{{showSelectedCategory.name}}"/>
+		</div>
+		<div>
+			Slug : <input type="text" id="categorySlug" class="form-control" value="{{showSelectedCategory.slug}}"/>
+		</div>	
+		<div  class="font-size-12">Parent</div>
+		<div class="padding-left-zero">
+                        <span class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{showSelectedCategory.parent}}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        {{#each categoryList}}
+                         <li role="presentation">
+                            <a class="menuitem2"
+                                id="config-request-command" href="#">{{name}}</a>
+                         </li>                        
+                        {{/each}}                                                                     
+                            </ul>
+                        </span>                       
+        </div>
+		<div>
+			Description : <textarea rows="5" cols="10" class="form-control margin-bottom-zero" id="categoryDescription">{{showSelectedCategory.description}}</textarea>
+		</div>
+		<div class="row padding-top-bottom-10 ">
+			<button class="btn btn-primary" id="updateCategory">Update</button>
+		</div>
+		<div class="row padding-top-bottom-10 ">
+			<button class="btn btn-primary" id="deleteCategory">Delete</button>
+		</div>		
+	</div>
+</template>
