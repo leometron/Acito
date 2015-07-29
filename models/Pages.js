@@ -28,6 +28,9 @@ Pages.attachSchema(
         },
         status: {
             type: String
+        },
+        parentId: {
+            type: String
         }
 
 
