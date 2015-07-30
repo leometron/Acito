@@ -8,16 +8,16 @@
             <div class="row post-margin">
                 <div style="float: right">
                     <input type="text" class="form-control" id="queryString" value="{{queryString}}" style="width:60%; display:inline" />
-                    <span><button type="button" id="searchPost" class="btn btn-default">Search Posts</button></span>
+                    <span><button type="button" id="searchPost" class="btn btn-default">Search Posts</button></span>                    
                 </div>
-            <div>
+            </div>
+            <div class="cursor-pointer">
                 <span><a id="showAll">All</a> | 
                       <a id="publishFilter">Published</a> |
                       <a id="draftFilter">Draft</a> |
                       <a id="binFilter">Bin</a>
                 </span>
-            </div>                
-            </div>
+            </div>    
             <div class="row post-margin">
                 <div class="col-md-3 padding-left-zero">
                  <span class="dropdown margin-right">
@@ -77,7 +77,8 @@
                     <div class="row post-margin padding-top-bottom-10">
                         <div class="bs-example" data-example-id="striped-table">
                             <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">
-                                <div class="col-md-5">Title</div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-4 padding-left-zero margin-left-minus-30">Title</div>
                                 <div class="col-md-2">Author</div>
                                 <div class="col-md-2">Categories</div>
                                 <div class="col-md-1">Tags</div>
@@ -86,12 +87,12 @@
                             </div>
                            {{#each postList}}
                             <div id="{{_id}}" class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                                    <span>
+                                    <div class="col-md-1 margin-top-10">
                                         <input type="checkbox" class="checkbox">
-                                    </span>
+                                    </div>
                                 <div class="post">                                
                                  <div class="row padding-top-bottom-10">
-                                <div class="col-md-5">
+                                <div class="col-md-4 padding-left-zero margin-left-minus-30">
                                     {{#if deleted}}                                    
                                         <strike>{{title}}</strike>
                                     {{else}}

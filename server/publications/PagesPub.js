@@ -27,8 +27,7 @@ Meteor.publish('Pages', function () {
          if(temp == "All dates"){
             return Pages.find( { createdBy: currentUserId } );
          } else {
-            console.log("value for " + temp);
-            return Pages.find( { createdBy: currentUserId, createdAt: /.*temp$/ });
+            return Pages.find( { createdBy: currentUserId, createdAt : new RegExp(temp)});
          }
     }
      else {
