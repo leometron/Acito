@@ -19,6 +19,9 @@ Router.route('/admin/media', function() {
 Router.route('/admin/homeSliders', function() {
     this.render('homeSlider');
 });
+Router.route('/admin/settings', function() {
+    this.render('settings');
+});
 Router.route('/admin/posts/add', function () {
     this.render('addNewPost');
 });
@@ -27,6 +30,9 @@ Router.route('/admin/pages/add', function () {
 });
 Router.route('/admin/media/add', function () {
     this.render('addNewMedia');
+});
+Router.route('/admin/homeSliders/add', function () {
+    this.render('addNewHomeSlider');
 });
 Router.route('/admin/posts/edit', function () {
     this.render('addNewPost');

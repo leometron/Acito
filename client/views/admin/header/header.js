@@ -4,7 +4,7 @@ Template.adminHeader.helpers({
         return [
             {'title': 'dashboard', 'icon': 'fa-tachometer'},
             {'title': 'posts', 'icon': 'fa-thumb-tack', 'subtitle': [{'sTitle':'add','title': 'posts','name':'AddNew'},{'sTitle':'categories','title': 'posts','name':'Categories'},{'sTitle':'tags','title': 'posts','name':'Tags'}]},           
-            {'title': 'HomeSliders', 'icon': 'fa-bars'},
+            {'title': 'HomeSliders', 'icon': 'fa-bars','subtitle': [{'sTitle':'add','title': 'HomeSliders','name':'AddNew'}]},
             {'title': 'media','icon': 'fa-picture-o' ,'subtitle': [{'sTitle':'add','title': 'media','name':'AddNew'}]},
             {'title': 'pages','icon':'fa-file','subtitle': [{'sTitle':'add','title': 'pages','name':'AddNew'}]},
             {'title': 'Settings', 'icon':'fa-cog'},
@@ -22,14 +22,16 @@ Template.adminHeader.rendered = function () {
     $('#subNavBarpoststags').hide();
     $('#subNavBarmediaadd').hide();
     $('#subNavBarpagesadd').hide();
+    $('#subNavBarHomeSlidersadd').hide();
     var pathname = $(location).attr('pathname').split('/')[1];
     var pathname1 = $(location).attr('pathname').split('/')[2];
     if(pathname == 'admin' && pathname1 != undefined){
         $('#header').show();
+        $('#navBardashboard').addClass('selected');
         $('#main_view').removeClass('full-width');
     }else{
         $('#header').hide();
-        $('#main_view').addClass('full-width');
+        $('#main_view').addClass('full-width');       
     }
         
 };
@@ -85,6 +87,11 @@ Template.adminHeader.events({
         $('#subNavBarpagesadd').show(800);
     }else{
         $('#subNavBarpagesadd').hide(800);
+    }   
+    if(this.title == 'HomeSliders'){
+        $('#subNavBarHomeSlidersadd').show(800);
+    }else{
+        $('#subNavBarHomeSlidersadd').hide(800);
     }   
   }
 });

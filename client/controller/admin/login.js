@@ -20,6 +20,7 @@ Template.adminLogin.events({
           console.log("User Not found");
         else
           $(location).attr('href','admin/dashboard');
+          ('#navBardashboard').addClass('selected');
          console.log("success");
       });
          return false; 
