@@ -27,14 +27,14 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Bulk Actions</a></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#">Move to Bin</a></li>
+                        <li><a href="#" class="menuitem">Bulk Actions</a></li>
+                        <li><a href="#" class="menuitem">Edit</a></li>
+                        <li><a href="#" class="menuitem">Move to Bin</a></li>
                     </ul>
                 </span>
                     <span><button type="button" class="btn btn-default">Apply</button></span>
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         All dates
@@ -45,7 +45,7 @@
                     </ul>
                 </span>
                     <span><button type="button" class="btn btn-default">Filter</button></span>
-                </div>
+                </div> -->
             </div>
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
@@ -66,14 +66,15 @@
                             <div class="col-md-6 padding-left-zero margin-left-minus-30" id="list">                                
                                 {{#if deleted}}
                                 <strike>{{title}}</strike>
+                                 {{#if equals parentId "(no parent)"}}
+                                    {{else}} 
+                                    | Parent Page: {{parentId}}
+                                {{/if}}
+                                <div><a href= "#" id="restorelist">Restore</a> | <a href = "#" id="deletelist">Delete Permanently</a></div>
                                 {{else}}
                                     {{title}}
+                                 <div><a href= "/admin/pages/add" id="editlist">Edit</a> | <a href = "#" id="binlist">Bin</a></div>
                                 {{/if}}
-                            {{#if deleted}}
-                             <div><a href= "#" id="restorelist">Restore</a> | <a href = "#" id="deletelist">Delete Permanently</a></div>
-                            {{else}}
-                            <div><a href= "/admin/pages/add" id="editlist">Edit</a> | <a href = "#" id="binlist">Bin</a></div>
-                            {{/if}}
                             </div>
                             <div class="col-md-2">{{currentUser.username}}</div>
                             <div class="col-md-2">comments</div>

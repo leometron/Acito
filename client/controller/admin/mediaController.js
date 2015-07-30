@@ -87,18 +87,28 @@ Template.media.events({
    'click #addNewMedia': function () {
         $(location).attr('href','media/add');
    },
-   'click .menuitem': function (event) {            
-        $('#alldropdown').text( $(event.target).text());            
-   },
-   'click .menuitem1': function (event) {            
-        $('#alldatedropdown').text( $(event.target).text());            
-   },
+   // 'click .menuitem': function (event) {            
+   //      $('#alldropdown').text( $(event.target).text());            
+   // },
+   // 'click .menuitem1': function (event) {            
+   //      $('#alldatedropdown').text( $(event.target).text());            
+   // },
    'click .menuitem2': function (event) {            
         $('#actiondropdown').text( $(event.target).text());            
    },
-   'click .menuitem3': function (event) {            
-        $('#bulkactiondropdown').text( $(event.target).text());            
+   // 'click .menuitem3': function (event) {            
+   //      $('#bulkactiondropdown').text( $(event.target).text());            
+   // },
+   'click #allMedia': function(event){
+        event.preventDefault();                
+        Meteor.call('showAllMedia');
+        Meteor._reload.reload(); 
    },
+   'click #searchMedia' : function (event) {
+        event.preventDefault();                
+        Meteor.call('searchMedia',$('#queryString').val());
+        Meteor._reload.reload();        
+    }, 
    'click #delete': function() {
         Meteor.call('removeMediaData',this._id);
    },
@@ -122,9 +132,9 @@ Template.media.events({
           var index = select_data.indexOf(this._id);
             select_data.splice(index, 1);
         }
-    },
+    }, 
    'click #apply': function() {
-        Meteor.call('removeSelectMediaData', select_data);
+        Meteor.call('removeSelectMediaData', select_data, $('#actiondropdown').text());
    }
    
 });

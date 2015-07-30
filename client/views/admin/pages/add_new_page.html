@@ -67,16 +67,23 @@
                 <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">Parent</div>
                 <div class="dropdown board-view">
+                   {{#if PublishedPages}}
                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert" data-toggle="dropdown">
-                       (no parent)                        
+                       {{PublishedPages.parentId}}                      
                    </button>
+                   {{else}}
+                   <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert" data-toggle="dropdown">
+                       (no parent)                
+                   </button>
+                   {{/if}}
                    <span class="caret" style=" margin-left: -20px;"></span>
                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <!--  <li><a href="#">Accessibility</a></li>
-                       <li><a href="#">Get in Touch</a></li> -->
-                       <li><a href="#"  class="page">(no parent)</a></li>
+                       <li><a href="#"  class="parentlist">(no parent)</a></li>
                        {{#each NoParentPages}}
-                           <li><a href="#" class="page">{{title}}</a></li>
+                            {{#if equals PublishedPages._id _id}}
+                            {{else}}
+                           <li><a href="#" class="parentlist">{{title}}</a></li>
+                           {{/if}}
                         {{/each}}
                    </ul>
                </div>
