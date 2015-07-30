@@ -29,6 +29,7 @@
                         </ul>
                     </span>
                     <span><button type="button" class="btn btn-default">filter</button></span> -->
+
                     <div style="float: right">
                         <input type="search" class="padding-top-10" id="queryString" value="{{queryString}}" />
                         <button id="searchMedia" type="button" class="btn btn-default margin-left-10 margin-bottom-10">Search Media</button>
@@ -49,7 +50,19 @@
                 </span>
                     <span><button id="apply" type="button" class="btn btn-default">Apply</button></span>
               </div>              
+            <div class="col-md-6">
+                <span class="dropdown">
+                    <select id="filterdate" style="padding:7px;">
+                          <option value="All dates" selected="selected">All dates</option>
+                          <option value="/5/2015">May 2015</option>
+                          <option value="/6/2015">June 2015</option>
+                          <option value="/7/2015">July 2015</option>
+                    </select>
+                </span>
+                    <span><button type="button" class="btn btn-default" id="filter">Filter</button></span>
+                </div>
             </div>
+
         </div>
         <div class="row post-margin">
             <div class="bs-example" data-example-id="striped-table">
@@ -113,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="row post-margin">
+<!--         <div class="row post-margin">
             <span class="dropdown margin-right">
                 <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="bulkactiondropdown" data-toggle="dropdown">
                     Bulk Actions                  
@@ -124,6 +137,6 @@
                 </ul>
             </span>
             <span><button id="apply" type="button" class="btn btn-default">Apply</button></span>
-        </div>
+        </div> -->
     </div>
 </template>

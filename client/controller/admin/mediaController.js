@@ -135,6 +135,11 @@ Template.media.events({
     }, 
    'click #apply': function() {
         Meteor.call('removeSelectMediaData', select_data, $('#actiondropdown').text());
+   },
+   'click #filter': function(event) {
+           var date = $('#filterdate').val();
+           Meteor.call('selectDateFilter', date);
+           Meteor._reload.reload();
    }
    
 });
