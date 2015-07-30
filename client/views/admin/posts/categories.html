@@ -1,6 +1,10 @@
 <template name="categories" id="categories">
     <div>
          {{> searchHelp}}
+            {{#if errormsg}}
+            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
+            <span  id="showError">{{errormsg}}</span></div>  
+            {{/if}}         
         <div class="margin-top-20">
             <div class="row">
                 <span class="main-header">Categories</span>              
@@ -23,11 +27,11 @@
                     <div><input type="text" class="form-control margin-bottom-zero" id="categoryName" placeholder="Enter category name here"></div>
                     <em class="font-size-12">The name is how it appears on your site.</em>
                 </div>
-                <div class="row padding-top-bottom-10">
+<!--                 <div class="row padding-top-bottom-10">
                     <div class="font-size-12">Slug</div>
                     <div><input type="text" class="form-control margin-bottom-zero" id="categorySlug"></div>
                     <em class="font-size-12">The “slug” is the URL-friendly version of the name.</em>
-                </div>
+                </div> -->
                  <div class="row padding-top-bottom-10">
                     <div  class="font-size-12">Parent</div>
                      <div class="padding-left-zero">
@@ -90,8 +94,8 @@
                         <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
                             <div class="col-md-2">Name</div>
                             <div class="col-md-6">Description</div>
-                            <div class="col-md-2">Slug</div>
-                            <div class="col-md-2">Parent</div>
+<!--                             <div class="col-md-2">Slug</div>
+ -->                            <div class="col-md-2">Parent</div>
                         </div>
                            {{#each categoryList}}
                             <div id="{{_id}}" class="category row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
@@ -99,8 +103,8 @@
                                     {{name}}
                                 </div>
                                 <div class="col-md-6">{{description}}</div>
-                                <div class="col-md-2">{{slug}}</div>
-                                <div class="col-md-2">{{parent}}</div>
+<!--                                 <div class="col-md-2">{{slug}}</div>
+ -->                                <div class="col-md-2">{{parent}}</div>
                             </div>                        
                         {{/each}}  
                     </div>

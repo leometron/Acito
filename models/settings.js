@@ -2,15 +2,44 @@ settings = new Mongo.Collection('settings');
 
 settings.attachSchema(
     new SimpleSchema({
-    title: {
+    siteTitle: {
       type: String
     },
-    content: {
+    tagline: {
       type: String
     },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
+    wordpressAddress: {
+      type: String
+    },
+    siteAddress: {
+      type: String
+    },
+    email: {
+      type: String
+    },
+    membership: {
+      type: String
+    },
+    userDefaultRole: {
+      type: String
+    },
+    timeZone: {
+      type: String
+    },
+    dateFormat: {
+      type: String
+    },
+    timeFormat: {
+      type: String
+    },
+    weekStarts: {
+      type: String
+    },
+    language: {
+      type: String
+    },
+    createdBy: {
+      type: String      
     }
   })
 );
