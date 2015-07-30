@@ -141,11 +141,6 @@ Template.addNewPost.helpers({
     }
 });
 
-/*
-
- Has return the current username
-
- */
 Template.adminHeader.events({
     'click #subNavBarpostsadd': function () {    
         Session.set('selectedPostId', "");
