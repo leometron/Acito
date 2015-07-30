@@ -5,9 +5,10 @@
             <div class="row">
                 <span class="main-header">Categories</span>              
             </div>            
-            <div class="row">
+            <div class="row">               
                 <div style="float: right">
-                    <input type="text" class="form-control" id="searchString" style="width:60%; display:inline" />
+                     <span><button class="btn btn-primary" id="addCategory">Add New Category</button></span>
+                    <input type="text" class="form-control" id="searchString" style="width:45%; display:inline" />
                     <span><button type="button" id="searchCategory" class="btn btn-default">Search</button></span>
                 </div>
             </div>
@@ -88,8 +89,8 @@
                     <div class="bs-example" data-example-id="striped-table">
                         <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
                             <div class="col-md-2">Name</div>
-                            <div class="col-md-7">Description</div>
-                            <div class="col-md-1">Slug</div>
+                            <div class="col-md-6">Description</div>
+                            <div class="col-md-2">Slug</div>
                             <div class="col-md-2">Parent</div>
                         </div>
                            {{#each categoryList}}
@@ -97,8 +98,8 @@
                                 <div class="col-md-2">                                    
                                     {{name}}
                                 </div>
-                                <div class="col-md-7">{{description}}</div>
-                                <div class="col-md-1">{{slug}}</div>
+                                <div class="col-md-6">{{description}}</div>
+                                <div class="col-md-2">{{slug}}</div>
                                 <div class="col-md-2">{{parent}}</div>
                             </div>                        
                         {{/each}}  
