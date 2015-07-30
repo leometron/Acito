@@ -1,5 +1,5 @@
 var currentPostId = "";
-var querystr="", filterstr = "", categorystr= "";
+var querystr="", filterstr = "", categorystr= "", dateString = "";
 // var currentDate = new Date();
 Meteor.publish('Posts', function () {
     var temp;
@@ -23,8 +23,15 @@ Meteor.publish('Posts', function () {
         } else {
         return Posts.find({ categoryName : temp } );        
         }          
-    } 
-    else {
+    } else if(dateString) {
+        temp = dateString;
+        dateString = "";
+        if(temp == "All dates"){
+            return Posts.find();
+        } else {
+            return Posts.find( { createdAt : new RegExp(temp)});
+        }
+    } else {
         return Posts.find();
     }
 });
@@ -83,5 +90,8 @@ Meteor.methods({
                 Posts.remove({_id: idList[i]});
             }               
         }
-   }
+   },
+   'showDateFilterPost': function(filterDate) {
+        dateString = filterDate;
+   },   
 });

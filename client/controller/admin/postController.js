@@ -73,7 +73,11 @@ Template.posts.events({
    'click #bulkApplyBtn': function() {
         Meteor.call('bulkActions', selectedIds, $('#dropdown').text());
         Meteor._reload.reload(); 
-   }    
+   },
+    'click #filter': function(event) {
+        Meteor.call('showDateFilterPost', $('#dateFilter').val());
+        Meteor._reload.reload();
+   }
 });
 
 /*
@@ -85,7 +89,8 @@ Template.addNewPost.events({
     'click #savePost' : function () {
         if (!$('#postName').val()) {
             Session.set('errorMessage','Post title is required');
-        } else {  
+        } else {
+        Session.set('errorMessage','');  
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
         var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
@@ -97,6 +102,7 @@ Template.addNewPost.events({
         if (!$('#postName').val()) {
             Session.set('errorMessage','Post title is required');
         } else {      
+        Session.set('errorMessage','');              
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
         var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();        
@@ -108,6 +114,7 @@ Template.addNewPost.events({
         if (!$('#postName').val()) {
             Session.set('errorMessage','Post title is required');
         } else {
+        Session.set('errorMessage','');              
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
         var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();        

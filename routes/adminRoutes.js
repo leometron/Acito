@@ -43,5 +43,11 @@ Router.route('/admin/posts/categories', function () {
 Router.route('/admin/posts/categories/edit', function () {
     this.render('editCategory');
 });
+Router.route('/admin/posts/tags', function () {
+    this.render('tags');
+});
+Router.route('/admin/posts/tags/edit', function () {
+    this.render('editTags');
+});
 
 

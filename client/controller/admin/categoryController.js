@@ -19,7 +19,7 @@ Template.categories.events({
              
     },
     'click .menuitem2' : function (event) {
-        $('#parentCategory').text( $(event.target).text());                	
+        $('#parentCategory').text( $(event.target).text());                 
     },
     'click .category.row': function() {
         Session.set('selectedCategoryId',this._id);
@@ -29,7 +29,12 @@ Template.categories.events({
         event.preventDefault();                
         Meteor.call('searchCategory',$('#searchString').val());
         Meteor._reload.reload();        
-    }     
+    },
+    'click #allCategory': function(event){
+        event.preventDefault();                
+        Meteor.call('showAllCategory');
+        Meteor._reload.reload(); 
+   }  
 });
 
 Template.editCategory.events({

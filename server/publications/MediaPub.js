@@ -16,8 +16,7 @@ Meteor.publish('Media', function () {
          } else {
             return Media.find( { createdAt : new RegExp(temp)});
          }
-    } 
-    else {    
+    } else {    
        return Media.find();
     }
 });

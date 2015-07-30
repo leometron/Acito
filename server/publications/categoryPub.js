@@ -26,4 +26,7 @@ Meteor.methods({
    'searchCategory' : function(queryString) {
         querystr = queryString; 
    },
+   'showAllCategory': function(queryStringData) {
+        querystr = "";
+   }      
 });
