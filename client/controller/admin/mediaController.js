@@ -57,9 +57,9 @@ Template.addNewMedia.events({
       var url = $('#mediaUrl').val();
       var name = $('#filename').val();
       var nametype = $('#fullimagename').text();
-      var description = $('#description').val();
-      var alternative = $('#alternative').val();
-      var caption = $('#caption').val();
+      var description = (!$('#description').val()) ? "-" : $('#description').val();
+      var alternative = (!$('#alternative').val()) ? "-" : $('#alternative').val();
+      var caption = (!$('#caption').val()) ? "-" : $('#caption').val();
       var type = $('#filetype').text();
       var size = $('#filesize').text();
 
@@ -70,9 +70,9 @@ Template.addNewMedia.events({
       var url = $('#mediaUrl').val();
       var name = $('#filename').val();
       var nametype = $('#fullimagename').text();
-      var description = $('#description').val();
-      var alternative = $('#alternative').val();
-      var caption = $('#caption').val();
+      var description = (!$('#description').val()) ? "-" : $('#description').val();
+      var alternative = (!$('#alternative').val()) ? "-" : $('#alternative').val();
+      var caption = (!$('#caption').val()) ? "-" : $('#caption').val();
       var type = $('#filetype').text();
       var size = $('#filesize').text();
       Meteor.call('updateMediaData', Session.get('currentMediaId'), url, name, nametype, type, size, caption, alternative, description);

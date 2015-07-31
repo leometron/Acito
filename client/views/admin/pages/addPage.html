@@ -31,11 +31,16 @@
                         {{else}}
                     <span><button type="button" class="btn btn-default" id="draft">Save Draft</button></span>
                     {{/if}}
-                    <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span>
+                    <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
                 </div>
-                <div class="board-view">Status: Draft <a href="#">Edit</a></div>
-                <div class="board-view">Visibility: public <a href="#">Edit</a></div>
-                <div class="board-view">Publish immediately <a href="#">Edit</a></div>
+                <div class="board-view">Status: {{#if PublishedPages}}
+                    {{PublishedPages.status}}
+                    {{else}}
+                    Draft
+                    {{/if}} 
+                </div>
+                <div class="board-view">Visibility: public </div>
+                <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
             </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
                  
