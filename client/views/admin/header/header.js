@@ -3,7 +3,7 @@ Template.adminHeader.helpers({
     'navBarList' : function(){
         return [
             {'title': 'dashboard', 'icon': 'fa-tachometer'},
-            {'title': 'posts', 'icon': 'fa-thumb-tack', 'subtitle': [{'sTitle':'add','title': 'posts','name':'AddNew'},{'sTitle':'categories','title': 'posts','name':'Categories'},{'sTitle':'tags','title': 'posts','name':'Tags'}]},           
+            {'title': 'posts', 'icon': 'fa-thumb-tack', 'subtitle': [{'sTitle':'add','title': 'posts','name':'AddNew'},{'sTitle':'tags','title': 'posts','name':'Tags'}]},           
             {'title': 'HomeSliders', 'icon': 'fa-bars','subtitle': [{'sTitle':'add','title': 'HomeSliders','name':'AddNew'}]},
             {'title': 'media','icon': 'fa-picture-o' ,'subtitle': [{'sTitle':'add','title': 'media','name':'AddNew'}]},
             {'title': 'pages','icon':'fa-file','subtitle': [{'sTitle':'add','title': 'pages','name':'AddNew'}]},

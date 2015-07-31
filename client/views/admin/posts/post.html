@@ -50,7 +50,7 @@
                 </span>
                     <span><button type="button" class="btn btn-default" id="filter">Filter</button></span>
                 </div>                
-                <div class="col-md-4 margin-left-minus-10">
+                <!-- <div class="col-md-4 margin-left-minus-10"> -->
 <!--                 <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
                           data-toggle="dropdown">All dates                       
@@ -62,7 +62,7 @@
                          </li>                                  
                     </ul>
                 </span> -->
-                <span class="dropdown margin-right">
+<!--                 <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="categoriesdropdown"
                           data-toggle="dropdown">All categories                       
                     </button>
@@ -83,7 +83,7 @@
                     <span class="margin-left-10">
                         <button type="button" id="filterByCategory" class="btn btn-default">Filter</button>
                     </span>
-                </div>
+                </div> -->
             </div>
             <div class="row post-margin">
                 <div class="bs-example" data-example-id="striped-table">
@@ -93,7 +93,7 @@
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4 padding-left-zero margin-left-minus-30">Title</div>
                                 <div class="col-md-2">Author</div>
-                                <div class="col-md-2">Categories</div>
+                                <div class="col-md-2">Page</div>
                                 <div class="col-md-1">Tags</div>
                                 <div class="col-md-1">Status</div>
                                 <div class="col-md-1">Date</div>
@@ -105,22 +105,34 @@
                                     <div class="col-md-1 margin-top-10">
                                         <input type="checkbox" class="checkbox">
                                     </div>
+                                    {{#if deleted}}                                                                        
                                 <div class="post">                                
                                  <div class="row padding-top-bottom-10">
                                 <div class="col-md-4 padding-left-zero margin-left-minus-30">
-                                    {{#if deleted}}                                    
-                                        <strike>{{title}}</strike>
-                                    {{else}}
+                                        <strike>{{title}}</strike>                        
+                                </div>
+                                <div class="col-md-2"><strike>{{currentUser.username}}</strike></div>
+                                <div class="col-md-2"><strike>{{pageName}}</strike></div>
+                                <div class="col-md-1"><strike>{{tags}}</strike></div>
+                                <div class="col-md-1"><strike>{{status}}</strike></div>
+                                <div class="col-md-1"><strike>{{createdAt}}</strike></div>
+                            </div>   
+                            </div>
+                                  {{else}}
+
+                                <div class="post">                                
+                                 <div class="row padding-top-bottom-10">
+                                <div class="col-md-4 padding-left-zero margin-left-minus-30">
                                         {{title}}
-                                    {{/if}}                            
                                 </div>
                                 <div class="col-md-2">{{currentUser.username}}</div>
-                                <div class="col-md-2">{{categoryName}}</div>
+                                <div class="col-md-2">{{pageName}}</div>
                                 <div class="col-md-1">{{tags}}</div>
                                 <div class="col-md-1">{{status}}</div>
                                 <div class="col-md-1">{{createdAt}}</div>
                             </div>   
                             </div> 
+                                    {{/if}}                                                        
                             </div> 
                                     {{/if}}                            
                                                

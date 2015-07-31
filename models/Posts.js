@@ -26,9 +26,12 @@ Posts.attachSchema(
     status: {
       type: String
     },
-    categoryName: {
+    pageName: {
       type: String
-    }
+    },
+    pageId: {
+      type: String
+    }    
   })
 );
 
