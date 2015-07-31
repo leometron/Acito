@@ -14,7 +14,7 @@
                 <div class="board-view"><input type="text" class="form-control" style="width: 82%; display: inline;">
                     <span><button type="button" id="selectImage" class="btn btn-default" data-toggle="modal" data-target="#myModal">Select image</button></span>
                     <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog" style="width: 80%">
+                        <div class="modal-dialog model-width">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="modal-body">                                
                                     <div class="margin-top-20" id="dropFile">
-                                        <div style="height: 230px;">
+                                        <div class="model-height">
                                             <div style="  margin: 70px auto 0;width:100%">
                                                 <p class="text-center font-bold" style="font-size: 20px;color: #A19B9B;">Drop files anywhere to upload</p>
                                                 <p class="text-center">or</p>
@@ -34,10 +34,72 @@
                                         </div>
                                     </div> 
                                     <div id="media">
-                                       <div class="col-md-8">
-                                       </div>
-                                       <div class="col-md-4">
-                                       </div>
+                                        <div class="model-height">
+                                            <div class="col-md-8">     
+                                                <div class="row">                                                                                
+                                                    <span class="dropdown">
+                                                        <select id="filterdate" class="selctionButton">
+                                                            <option value="All dates" selected="selected">All dates</option>
+                                                            <option value="/5/2015">May 2015</option>
+                                                            <option value="/6/2015">June 2015</option>
+                                                            <option value="/7/2015">July 2015</option>
+                                                        </select>
+                                                    </span>      
+                                                    <span>
+                                                        <input type="text" class="form-control pull-right font-size-12" style="width:30%" placeholder="search">
+                                                    </span>
+                                                </div>    
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                         <img src="/images/none.png" style=" width: 80px; height: 80px;"/>
+                                                    </div>
+                                                </div>                                   
+                                            </div>
+                                            <div class="col-md-4 bg-color model-height" style=" overflow-y: scroll">
+                                                <div class="font-bold margin-top-10">ATTACHMENT DETAILS</div>
+                                                    <div class="col-md-4 margin-top-10 padding-left-zero">
+                                                        <img src="/images/none.png" style=" width: 60px; height: 60px;"/>
+                                                    </div>
+                                                <div class="col-md-8">
+                                                    <div class="font-size-12 padding-top-bottom-10">none.jpg</div>
+                                                    <div class="font-size-12 padding-top-bottom-10">24th July 2015</div>
+                                                    <div class="font-size-12 padding-top-bottom-10">1kb</div>
+                                                    <div class="font-size-12 padding-top-bottom-10">Delete Premanently</div>
+                                                </div>
+                                                <div class="margin-top-15">
+                                                    <div class="col-md-3 font-size-12 margin-top-10">
+                                                        URl
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-3 font-size-12 margin-top-10">
+                                                        Title
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-3 font-size-12 margin-top-10">
+                                                        Caption
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <textarea rows="5" cols="5" class="form-control"></textarea>
+                                                    </div>
+                                                    <div class="col-md-3 font-size-12 margin-top-10">
+                                                        Alt Text
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                    <div class="col-md-3 font-size-12 margin-top-10">
+                                                       Description
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <textarea rows="5" cols="5" class="form-control"></textarea>
+                                                    </div>
+                                                </div>    
+                                            </div>                                            
+                                        </div>
                                     </div>                                                              
                                 </div>
                                 <div class="modal-footer">
@@ -51,7 +113,7 @@
         </div>
         <div class="col-md-4 padding-bottom-40">
              <div class="bg-white">
-                <div class="board-view  border-bottom font-bold">Display Custom Content<span class="caret pull-right margin-top-10"></span></div>               
+                <div class="board-view  border-bottom font-bold">Display Custom Content<span class="caret pull-right margin-top-10"></span></div>          
                 <div class="board-view"><a href="#">Views</a> lets you build complete websites without coding.</div>
                 <div class="board-view">
                       <ul>
