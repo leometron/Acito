@@ -1,4 +1,9 @@
 
+
+Template.addNewMedia.rendered = function(){
+    $("#popupMediadetail").hide();
+};
+
 Template.addNewHomeSlider.events({
     'click #selectImage': function () {             
          $('#uploadFile').addClass('border');
@@ -12,6 +17,7 @@ Template.addNewHomeSlider.events({
         $('#dropFile').hide() ;
         $('#mediaLibrary').addClass('border');
         $('#media').show();
+        $("#popupMediadetail").hide();
     },
     'click #uploadFile': function(){
         $('#media').hide();
@@ -19,4 +25,12 @@ Template.addNewHomeSlider.events({
         $('#uploadFile').addClass('border');
         $('#dropFile').show() ;
     }    
+});
+
+Meteor.subscribe('Media');
+
+Template.addNewHomeSlider.helpers({
+   'mediaList': function() {
+       return Media.find();
+   }
 });

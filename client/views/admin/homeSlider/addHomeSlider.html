@@ -50,12 +50,14 @@
                                                     </span>
                                                 </div>    
                                                 <div class="row">
+                                                    {{#each mediaList}}
                                                     <div class="col-md-2">
-                                                         <img src="/images/none.png" style=" width: 80px; height: 80px;"/>
+                                                         <img src="{{url}}" style=" width: 80px; height: 80px;"/>
                                                     </div>
+                                                    {{/each}}
                                                 </div>                                   
                                             </div>
-                                            <div class="col-md-4 bg-color model-height" style=" overflow-y: scroll">
+                                            <div id="popupMediadetail" class="col-md-4 bg-color model-height" style=" overflow-y: scroll">
                                                 <div class="font-bold margin-top-10">ATTACHMENT DETAILS</div>
                                                     <div class="col-md-4 margin-top-10 padding-left-zero">
                                                         <img src="/images/none.png" style=" width: 60px; height: 60px;"/>
