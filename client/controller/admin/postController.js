@@ -7,9 +7,24 @@
  */
 
 Meteor.subscribe("Posts");
-Meteor.subscribe("Category");
 
 var selectedIds = [];
+
+Template.posts.rendered = function(){
+    var status = Session.get('checkStatus');
+    if( status == "all" ){
+        $('#showAll').css('color','red');
+    }else if( status == "published" ){
+        $('#publishFilter').css('color','red');
+    }else if( status == "draft" ){
+        $('#draftFilter').css('color','red');
+    }else if( status == "bin" ){
+        $('#binFilter').css('color','red');
+    }else{
+        $('#showAll').css('color','red');
+    }
+};
+
 
 Template.posts.events({
     'click #addNewPost': function () {
@@ -19,7 +34,7 @@ Template.posts.events({
     'click .post': function () {
         Session.set('selectedPostId', this._id);
         Router.go("/admin/posts/edit");
-    },
+    }, 
     'click #searchPost' : function (event) {
         event.preventDefault();                
         Meteor.call('searchPost',$('#queryString').val());
@@ -38,24 +53,29 @@ Template.posts.events({
         $('#dropdownmenu').text( $(event.target).text());        
     },
     'click #showAll' : function(event) {
+        
         event.preventDefault();                
         Meteor.call('statusFilter',"All");
         Meteor._reload.reload(); 
+        Session.set('checkStatus','all');
     },
     'click #publishFilter' : function(event) {
         event.preventDefault();                
         Meteor.call('statusFilter',"Published");
         Meteor._reload.reload(); 
+        Session.set('checkStatus','published');
     },
     'click #draftFilter' : function(event) {
         event.preventDefault();                
         Meteor.call('statusFilter',"Draft");
-        Meteor._reload.reload(); 
+        Meteor._reload.reload();
+        Session.set('checkStatus','draft'); 
     },
     'click #binFilter' : function(event) {
         event.preventDefault();                
         Meteor.call('statusFilter',"Bin");
-        Meteor._reload.reload(); 
+        Meteor._reload.reload();
+        Session.set('checkStatus','bin'); 
     },
     'click #filterByCategory' : function(event)  {
         event.preventDefault();                
@@ -73,7 +93,11 @@ Template.posts.events({
    'click #bulkApplyBtn': function() {
         Meteor.call('bulkActions', selectedIds, $('#dropdown').text());
         Meteor._reload.reload(); 
-   }    
+   },
+    'click #filter': function(event) {
+        Meteor.call('showDateFilterPost', $('#dateFilter').val());
+        Meteor._reload.reload();
+   },
 });
 
 /*
@@ -83,22 +107,40 @@ Template.posts.events({
  */
 Template.addNewPost.events({
     'click #savePost' : function () {
+        if (!$('#postName').val()) {
+            Session.set('errorMessage','Post title is required');
+        } else {
+        Session.set('errorMessage','');  
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
-        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate(),categoryname);
+        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+        Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),categoryname);
         Router.go("/admin/posts");
+        }
     },
     'click #publishPost' : function () {
+        if (!$('#postName').val()) {
+            Session.set('errorMessage','Post title is required');
+        } else {      
+        Session.set('errorMessage','');              
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
-        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate(),categoryname);
-        Router.go("/admin/posts");        
+        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),categoryname);
+        Router.go("/admin/posts"); 
+        }       
     },
     'click #updatePost' : function() {
+        if (!$('#postName').val()) {
+            Session.set('errorMessage','Post title is required');
+        } else {
+        Session.set('errorMessage','');              
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();                
-        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,categoryname);
-        Router.go("/admin/posts");        
+        var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
+        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();        
+        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,categoryname);
+        Router.go("/admin/posts");
+        }        
     },
     'click #moveBin' : function() {
         Meteor.call('binPostData',Session.get('selectedPostId')); 
@@ -111,6 +153,9 @@ Template.addNewPost.events({
     'click #removePost' : function() {
         Meteor.call('removePostData',Session.get('selectedPostId')); 
         Router.go("/admin/posts");               
+    },
+    'click #addNewTag' : function() {
+        Router.go("/admin/posts/tags");                       
     }
 });
 
@@ -127,22 +172,23 @@ Template.posts.helpers({
     'queryString': function() {
         return $('#queryString').val();
     },
-    'categoryList' : function() { 
-        return Category.find();
-    }    
 });
 
 Template.addNewPost.helpers({
     'showSelectedPost': function(){
         return Posts.findOne(Session.get('selectedPostId'));
     },
-    'categoryList' : function() { 
-        return Category.find();
+    'errormsg' : function() {
+        return Session.get('errorMessage');
     }
 });
 
 Template.adminHeader.events({
     'click #subNavBarpostsadd': function () {    
         Session.set('selectedPostId', "");
-    }
+    },
+    'click #navBarposts' : function() {
+        console.log('inside');
+        Session.set('errorMessage','');
+    }    
 });

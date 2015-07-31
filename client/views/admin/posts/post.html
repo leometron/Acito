@@ -18,7 +18,7 @@
                       <a id="binFilter">Bin</a>
                 </span>
             </div>    
-            <div class="row post-margin">
+            <div class="row post-margin margin-top-10">
                 <div class="col-md-3 padding-left-zero">
                  <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdown"
@@ -39,7 +39,7 @@
                 </span>
                     <span class="margin-left-10"><button type="button" class="btn btn-default" id="bulkApplyBtn">Apply</button></span>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 margin-left-minus-5">
                 <span class="dropdown margin-right">
                     <select id="dateFilter" class="selctionButton">
                           <option value="All dates" selected="selected">All dates</option>
@@ -50,7 +50,7 @@
                 </span>
                     <span><button type="button" class="btn btn-default" id="filter">Filter</button></span>
                 </div>                
-                <div class="col-md-4">
+                <div class="col-md-4 margin-left-minus-10">
 <!--                 <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
                           data-toggle="dropdown">All dates                       
@@ -99,6 +99,8 @@
                                 <div class="col-md-1">Date</div>
                             </div>
                            {{#each postList}}
+                        {{#if currentUser}}
+
                             <div id="{{_id}}" class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
                                     <div class="col-md-1 margin-top-10">
                                         <input type="checkbox" class="checkbox">
@@ -112,14 +114,16 @@
                                         {{title}}
                                     {{/if}}                            
                                 </div>
-                                <div class="col-md-2">{{createdBy}}</div>
+                                <div class="col-md-2">{{currentUser.username}}</div>
                                 <div class="col-md-2">{{categoryName}}</div>
                                 <div class="col-md-1">{{tags}}</div>
                                 <div class="col-md-1">{{status}}</div>
                                 <div class="col-md-1">{{createdAt}}</div>
                             </div>   
                             </div> 
-                            </div>                    
+                            </div> 
+                                    {{/if}}                            
+                                               
                         {{/each}}                            
                         </div>
                     </div>
