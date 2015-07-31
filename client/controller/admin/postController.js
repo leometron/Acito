@@ -19,7 +19,7 @@ Template.posts.events({
     'click .post': function () {
         Session.set('selectedPostId', this._id);
         Router.go("/admin/posts/edit");
-    }, 
+    },
     'click #searchPost' : function (event) {
         event.preventDefault();                
         Meteor.call('searchPost',$('#queryString').val());
@@ -73,11 +73,7 @@ Template.posts.events({
    'click #bulkApplyBtn': function() {
         Meteor.call('bulkActions', selectedIds, $('#dropdown').text());
         Meteor._reload.reload(); 
-   },
-    'click #filter': function(event) {
-        Meteor.call('showDateFilterPost', $('#dateFilter').val());
-        Meteor._reload.reload();
-   }
+   }    
 });
 
 /*
@@ -87,40 +83,22 @@ Template.posts.events({
  */
 Template.addNewPost.events({
     'click #savePost' : function () {
-        if (!$('#postName').val()) {
-            Session.set('errorMessage','Post title is required');
-        } else {
-        Session.set('errorMessage','');  
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
-        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
-        Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getUserName(),getCurrentDate(),categoryname);
+        Meteor.call('insertPostData',$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate(),categoryname);
         Router.go("/admin/posts");
-        }
     },
     'click #publishPost' : function () {
-        if (!$('#postName').val()) {
-            Session.set('errorMessage','Post title is required');
-        } else {      
-        Session.set('errorMessage','');              
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
-        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();        
-        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getUserName(),getCurrentDate(),categoryname);
-        Router.go("/admin/posts"); 
-        }       
+        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,getUserName(),getCurrentDate(),categoryname);
+        Router.go("/admin/posts");        
     },
     'click #updatePost' : function() {
-        if (!$('#postName').val()) {
-            Session.set('errorMessage','Post title is required');
-        } else {
-        Session.set('errorMessage','');              
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-        var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
-        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();        
-        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,categoryname);
-        Router.go("/admin/posts");
-        }        
+        var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();                
+        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),$('#postContent').val(),tag,categoryname);
+        Router.go("/admin/posts");        
     },
     'click #moveBin' : function() {
         Meteor.call('binPostData',Session.get('selectedPostId')); 
@@ -160,18 +138,11 @@ Template.addNewPost.helpers({
     },
     'categoryList' : function() { 
         return Category.find();
-    },
-    'errormsg' : function() {
-        return Session.get('errorMessage');
     }
 });
 
 Template.adminHeader.events({
     'click #subNavBarpostsadd': function () {    
         Session.set('selectedPostId', "");
-    },
-    'click #navBarposts' : function() {
-        console.log('inside');
-        Session.set('errorMessage','');
-    }    
+    }
 });

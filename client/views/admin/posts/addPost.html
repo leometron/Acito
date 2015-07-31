@@ -50,16 +50,19 @@
                     <div class="col-md-6 padding-left-zero cursor-pointer">
                     {{#if showSelectedPost}}
                         {{#if showSelectedPost.deleted}}
-                        <div id="removePost">                                 
+                        <span id="removePost">                                 
                             Delete Post  
-                        </div>
+                        </span>
                         {{else}}
-                        <div id="moveBin">                                 
+                        <span id="moveBin">                                 
                             Move to Bin  
-                        </div>
+                        </span>
+                        <span class="padding-left-10">
+                            delete
+                        </span>
                         {{/if}} 
                     {{/if}}                            
-                    </div>
+                    </div>                  
                     <div class="col-md-6 padding-right-zero">
                         <span style="padding-left: 55%">
                         {{#if showSelectedPost}}

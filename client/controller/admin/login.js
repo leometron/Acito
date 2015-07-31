@@ -19,8 +19,7 @@ Template.adminLogin.events({
           // login attempt has failed.
           console.log("User Not found");
         else
-          $(location).attr('href','admin/dashboard');
-          ('#navBardashboard').addClass('selected');
+          $(location).attr('href','admin/dashboard');         
          console.log("success");
       });
          return false; 
