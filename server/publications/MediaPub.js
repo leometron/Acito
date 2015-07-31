@@ -10,13 +10,14 @@ Meteor.publish('Media', function () {
         return Media.find({ $text: { $search: temp } });
     } else if(date) {
          temp = date;
-        date = "";
-         if(temp == "All dates"){
-            return Media.find();
-         } else {
-            return Media.find( { createdAt : new RegExp(temp)});
-         }
-    } else {    
+         date = "";
+             if(temp == "All dates"){
+                return Media.find();
+             } else {
+                return Media.find( { createdAt : new RegExp(temp)});
+             }
+    } 
+    else {    
        return Media.find();
     }
 });
