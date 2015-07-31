@@ -7,9 +7,24 @@
  */
 
 Meteor.subscribe("Posts");
-Meteor.subscribe("Category");
 
 var selectedIds = [];
+
+Template.posts.rendered = function(){
+    var status = Session.get('checkStatus');
+    if( status == "all" ){
+        $('#showAll').css('color','red');
+    }else if( status == "published" ){
+        $('#publishFilter').css('color','red');
+    }else if( status == "draft" ){
+        $('#draftFilter').css('color','red');
+    }else if( status == "bin" ){
+        $('#binFilter').css('color','red');
+    }else{
+        $('#showAll').css('color','red');
+    }
+};
+
 
 Template.posts.events({
     'click #addNewPost': function () {
@@ -38,24 +53,29 @@ Template.posts.events({
         $('#dropdownmenu').text( $(event.target).text());        
     },
     'click #showAll' : function(event) {
+        
         event.preventDefault();                
         Meteor.call('statusFilter',"All");
         Meteor._reload.reload(); 
+        Session.set('checkStatus','all');
     },
     'click #publishFilter' : function(event) {
         event.preventDefault();                
         Meteor.call('statusFilter',"Published");
         Meteor._reload.reload(); 
+        Session.set('checkStatus','published');
     },
     'click #draftFilter' : function(event) {
         event.preventDefault();                
         Meteor.call('statusFilter',"Draft");
-        Meteor._reload.reload(); 
+        Meteor._reload.reload();
+        Session.set('checkStatus','draft'); 
     },
     'click #binFilter' : function(event) {
         event.preventDefault();                
         Meteor.call('statusFilter',"Bin");
-        Meteor._reload.reload(); 
+        Meteor._reload.reload();
+        Session.set('checkStatus','bin'); 
     },
     'click #filterByCategory' : function(event)  {
         event.preventDefault();                
@@ -77,7 +97,7 @@ Template.posts.events({
     'click #filter': function(event) {
         Meteor.call('showDateFilterPost', $('#dateFilter').val());
         Meteor._reload.reload();
-   }
+   },
 });
 
 /*
@@ -149,17 +169,11 @@ Template.posts.helpers({
     'queryString': function() {
         return $('#queryString').val();
     },
-    'categoryList' : function() { 
-        return Category.find();
-    }    
 });
 
 Template.addNewPost.helpers({
     'showSelectedPost': function(){
         return Posts.findOne(Session.get('selectedPostId'));
-    },
-    'categoryList' : function() { 
-        return Category.find();
     },
     'errormsg' : function() {
         return Session.get('errorMessage');
