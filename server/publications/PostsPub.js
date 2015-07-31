@@ -1,15 +1,16 @@
 var currentPostId = "";
 var querystr="", filterstr = "", categorystr= "", dateString = "";
-// var currentDate = new Date();
+
 Meteor.publish('Posts', function () {
+    var loginUserId = this.userId;    
     var temp;
     if(filterstr) {
         temp = filterstr;
         filterstr = "";
         if (temp == "All") {
-            return Posts.find();
+            return Posts.find({createdBy: loginUserId});
         } else {
-            return Posts.find({ status : temp });                
+            return Posts.find({ createdBy: loginUserId, status : temp });                
         }        
     } else if (querystr) {
         temp = querystr;
@@ -19,7 +20,7 @@ Meteor.publish('Posts', function () {
         temp = categorystr;
         categorystr = "";
         if (temp == "All categories") {
-            return Posts.find();
+            return Posts.find({createdBy: loginUserId});
         } else {
         return Posts.find({ categoryName : temp } );        
         }          
@@ -27,31 +28,29 @@ Meteor.publish('Posts', function () {
         temp = dateString;
         dateString = "";
         if(temp == "All dates"){
-            return Posts.find();
+            return Posts.find({createdBy: loginUserId});
         } else {
-            return Posts.find( { createdAt : new RegExp(temp)});
+            return Posts.find( { createdBy: loginUserId, createdAt : new RegExp(temp)});
         }
     } else {
-        return Posts.find();
+        return Posts.find({createdBy: loginUserId});
     }
 });
 
 //Define all the methods interact with the POSTS object
 Meteor.methods({
-    'insertPostData': function (title, content,tags,username,currentDate,category) {
-        Posts.insert({title: title,content: content,publish: false,createdBy:username,tags: tags,deleted:false,createdAt:currentDate,status:"Draft",categoryName:category}, function (err, id) {
+    'insertPostData': function (title, content,tags,currentDate,category) {
+        Posts.insert({title: title,content: content,publish: false,createdBy:Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Draft",categoryName:category}, function (err, id) {
             currentPostId = id;
         });
         console.log('successfully saved the post...' + title);
     },
-    'publishPostData': function (id,title, content,tags,username,currentDate,category) {
-        if(id) {
-            currentPostId = id;
-        }
+    'publishPostData': function (id,title, content,tags,currentDate,category) {
+        currentPostId = id;
         if (currentPostId) {
-            Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: username,tags: tags,deleted:false,createdAt:currentDate,status:"Published",categoryName:category}});
+            Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",categoryName:category}});
         } else {
-            Posts.insert({title: title, content: content, publish: true,createdBy: username,tags: tags,deleted:false,createdAt:currentDate,status:"Published",categoryName:category});
+            Posts.insert({title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",categoryName:category});
         }
         console.log('successfully published post...' + title);
     },

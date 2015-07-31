@@ -114,7 +114,7 @@ Template.addNewPost.events({
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
         var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
-        Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getUserName(),getCurrentDate(),categoryname);
+        Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),categoryname);
         Router.go("/admin/posts");
         }
     },
@@ -125,8 +125,8 @@ Template.addNewPost.events({
         Session.set('errorMessage','');              
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var categoryname = ($('#categoryName').val() == "Category") ? "Uncategorized" : $('#categoryName').val();
-        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();        
-        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getUserName(),getCurrentDate(),categoryname);
+        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),categoryname);
         Router.go("/admin/posts"); 
         }       
     },
@@ -153,6 +153,9 @@ Template.addNewPost.events({
     'click #removePost' : function() {
         Meteor.call('removePostData',Session.get('selectedPostId')); 
         Router.go("/admin/posts");               
+    },
+    'click #addNewTag' : function() {
+        Router.go("/admin/posts/tags");                       
     }
 });
 

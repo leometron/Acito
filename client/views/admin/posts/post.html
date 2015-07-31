@@ -99,6 +99,8 @@
                                 <div class="col-md-1">Date</div>
                             </div>
                            {{#each postList}}
+                        {{#if currentUser}}
+
                             <div id="{{_id}}" class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
                                     <div class="col-md-1 margin-top-10">
                                         <input type="checkbox" class="checkbox">
@@ -112,14 +114,16 @@
                                         {{title}}
                                     {{/if}}                            
                                 </div>
-                                <div class="col-md-2">{{createdBy}}</div>
+                                <div class="col-md-2">{{currentUser.username}}</div>
                                 <div class="col-md-2">{{categoryName}}</div>
                                 <div class="col-md-1">{{tags}}</div>
                                 <div class="col-md-1">{{status}}</div>
                                 <div class="col-md-1">{{createdAt}}</div>
                             </div>   
                             </div> 
-                            </div>                    
+                            </div> 
+                                    {{/if}}                            
+                                               
                         {{/each}}                            
                         </div>
                     </div>
