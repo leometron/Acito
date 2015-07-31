@@ -1,6 +1,6 @@
 <template name="posts" id="post">
     <div style="width: 100%">
-         {{> searchHelp}}
+         {{> searchHelp}}      
         <div class="margin-top-20">
             <div class="row post-margin">
                 <span class="main-header">Posts</span> <span><button type="button" id="addNewPost" class="btn btn-default">Add New</button></span>
@@ -39,7 +39,18 @@
                 </span>
                     <span class="margin-left-10"><button type="button" class="btn btn-default" id="bulkApplyBtn">Apply</button></span>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
+                <span class="dropdown margin-right">
+                    <select id="dateFilter" style="padding:7px;">
+                          <option value="All dates" selected="selected">All dates</option>
+                          <option value="/5/2015">May 2015</option>
+                          <option value="/6/2015">June 2015</option>
+                          <option value="/7/2015">July 2015</option>
+                    </select>
+                </span>
+                    <span><button type="button" class="btn btn-default" id="filter">Filter</button></span>
+                </div>                
+                <div class="col-md-4">
 <!--                 <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
                           data-toggle="dropdown">All dates                       

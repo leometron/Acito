@@ -28,24 +28,33 @@
                      <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li><a href="#" class="menuitem">Bulk Actions</a></li>
-                        <li><a href="#" class="menuitem">Edit</a></li>
+                        <li><a href="#" class="menuitem">Delete</a></li>
                         <li><a href="#" class="menuitem">Move to Bin</a></li>
                     </ul>
                 </span>
-                    <span class="margin-left-10"><button type="button" class="btn btn-default">Apply</button></span>
+                    <span class="margin-left-10"><button type="button" id="Bulkapply" class="btn btn-default">Apply</button></span>
                 </div>
-                <!-- <div class="col-md-6">
+                <div class="col-md-6">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         All dates
                         <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><a href="#">All dates</a></li>
-                    </ul>
+                    </button> -->
+                   <!--  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><a href="#" class="dateitem">All dates</a></li>
+                        <li><a href="#" class="dateitem" value="5/2015">May 2015</a></li>
+                        <li><a href="#" class="dateitem">June 2015</a></li>
+                        <li><a href="#" class="dateitem">July 2015</a></li>
+                    </ul> -->
+                    <select id="filterdate" class="selctionButton">
+                          <option value="All dates" selected="selected">All dates</option>
+                          <option value="/5/2015">May 2015</option>
+                          <option value="/6/2015">June 2015</option>
+                          <option value="/7/2015">July 2015</option>
+                    </select>
                 </span>
-                    <span><button type="button" class="btn btn-default">Filter</button></span>
-                </div> -->
+                    <span><button type="button" class="btn btn-default" id="Datefilter">Filter</button></span>
+                </div>
             </div>
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
@@ -63,7 +72,7 @@
                            <div class="col-md-1 margin-top-10">
                                     <input type="checkbox" class="checkbox">
                                 </div>
-                            <div class="col-md-6 padding-left-zero margin-left-minus-30" id="list">                                
+                            <div class="col-md-6 padding-left-zero margin-left-minus-30" id="list">                     
                                 {{#if deleted}}
                                 <strike>{{title}}</strike>
                                  {{#if equals parentId "(no parent)"}}

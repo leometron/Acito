@@ -7,12 +7,19 @@
  */
 Template.categories.events({
     'click #addCategory': function () {
+        if (!$('#categoryName').val()) {
+            Session.set('errorMessage','Category name is required');
+        } else {
+        Session.set('errorMessage','');
         var parent = ($('#parentCategory').text() == "None") ? "None" : $('#parentCategory').text();
-        Meteor.call('addNewCategory',$('#categoryName').val(),$('#categoryDescription').val(),$('#categorySlug').val(),$('#parentCategory').text()); 
-        Meteor._reload.reload();               
+        var description = (!$('#categoryDescription').val()) ? "-" : $('#categoryDescription').val();
+        Meteor.call('addNewCategory',$('#categoryName').val(),description,$('#parentCategory').text()); 
+        Meteor._reload.reload();              
+        }
+             
     },
     'click .menuitem2' : function (event) {
-        $('#parentCategory').text( $(event.target).text());                	
+        $('#parentCategory').text( $(event.target).text());                 
     },
     'click .category.row': function() {
         Session.set('selectedCategoryId',this._id);
@@ -22,13 +29,23 @@ Template.categories.events({
         event.preventDefault();                
         Meteor.call('searchCategory',$('#searchString').val());
         Meteor._reload.reload();        
-    }     
+    },
+    'click #allCategory': function(event){
+        event.preventDefault();                
+        Meteor.call('showAllCategory');
+        Meteor._reload.reload(); 
+   }  
 });
 
 Template.editCategory.events({
     'click #updateCategory': function() {
-        Meteor.call('updateCategory',Session.get('selectedCategoryId'),$('#categoryName').val(),$('#categoryDescription').val(),$('#categorySlug').val(),$('#parentCategory').text());
-        Router.go("/admin/posts/categories");    
+        if (!$('#categoryName').val()) {
+            Session.set('errorMessage','Category name is required');
+        } else {        
+        var description = (!$('#categoryDescription').val()) ? "" : $('#categoryDescription').val();        
+        Meteor.call('updateCategory',Session.get('selectedCategoryId'),$('#categoryName').val(),description,$('#parentCategory').text());
+        Router.go("/admin/posts/categories");
+        }    
     },
     'click #deleteCategory': function() {
         Meteor.call('removeCategory',Session.get('selectedCategoryId'));
@@ -42,6 +59,9 @@ Template.editCategory.events({
 Template.categories.helpers({
     'categoryList' : function() { 
         return Category.find();
+    },
+    'errormsg' : function() {
+        return Session.get('errorMessage');
     }
 });
 

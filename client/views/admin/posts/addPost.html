@@ -1,6 +1,10 @@
 <template name="addNewPost">
     <div>
          {{> searchHelp}}
+            {{#if errormsg}}
+            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
+            <span  id="showError">{{errormsg}}</span></div>  
+            {{/if}}
         <div class="margin-top-20">
             <div class="row post-margin">
             {{#if showSelectedPost}}
@@ -33,11 +37,13 @@
                         <button type="button" id="savePost" class="btn btn-default">Save Draft</button>
                     {{/if}}            
                     </span>
-                    <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span>
+                    <span class="pull-right">
+                        <!-- <button type="button" class="btn btn-default">Preview</button> -->
+                    </span>
                 </div>
-                <div class="board-view">Status: Draft <a href="#">Edit</a></div>
-                <div class="board-view">Visibility: public <a href="#">Edit</a></div>
-                <div class="board-view">Publish immediately <a href="#">Edit</a></div>
+                <div class="board-view">Status: {{#if showSelectedPost}}{{showSelectedPost.status}}{{else}}Draft{{/if}} </div>
+                <div class="board-view">Visibility: public </div>
+                <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
             </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0; padding-bottom: 40px;">
                 <div class="col-md-12 padding-left-zero" >
@@ -106,9 +112,9 @@
                 <div class="board-view">
                     <span style="font-style: italic">Separate tags with commas</span>
                 </div>
-                <div class="board-view">
+<!--                 <div class="board-view">
                     <span><a href="#">Choose from the most used tags</a></span>
-                </div>
+                </div> -->
             </div>
 
             <div class="bg-white margin-top-20">

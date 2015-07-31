@@ -1,5 +1,6 @@
 
 var querystr="";
+var date = "";
 
 Meteor.publish('Media', function () {
     var temp;
@@ -7,8 +8,15 @@ Meteor.publish('Media', function () {
         temp = querystr;
         querystr = "";        
         return Media.find({ $text: { $search: temp } });
-    } 
-    else {    
+    } else if(date) {
+         temp = date;
+        date = "";
+         if(temp == "All dates"){
+            return Media.find();
+         } else {
+            return Media.find( { createdAt : new RegExp(temp)});
+         }
+    } else {    
        return Media.find();
     }
 });
@@ -62,5 +70,8 @@ Meteor.methods({
    },
    'showAllMedia': function(queryStringData) {
         querystr = "";
-   }
+   },
+   'selectDateFilter': function(filterDate) {
+        date = filterDate;
+   },
 });

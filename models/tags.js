@@ -1,23 +1,20 @@
-Category = new Mongo.Collection('category');
+tags = new Mongo.Collection('tags');
 
-Category.attachSchema(
+tags.attachSchema(
     new SimpleSchema({
     name: {
       type: String
     },
     description: {
       type: String
-    },
-    parent: {
-      type: String
-    }   
+    }
   })
 );
 
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
-  Category.allow({
+  tags.allow({
     insert : function () {
       return true;
     },

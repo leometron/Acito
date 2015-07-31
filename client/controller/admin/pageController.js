@@ -1,5 +1,7 @@
  Meteor.subscribe('Pages');
 
+ var selectedIds = [];
+
     Template.pages.helpers ({
         'lists' : function() {
             return Pages.find();
@@ -63,9 +65,30 @@ Template.pages.events ({
             Meteor.call('loadPage', "Bin");
             Meteor._reload.reload();  
         },
+
          'click .menuitem': function (event) {            
-        $('#dropdownMenu1').text( $(event.target).text());            
-    }
+           $('#dropdownMenu1').text( $(event.target).text());            
+        },
+
+         'click .checkbox': function(event) {
+            if (event.target.checked == true) {
+              selectedIds.push( this._id);
+            } else {
+              var index = selectedIds.indexOf(this._id);
+              selectedIds.splice(index, 1);
+            }
+        },
+
+        'click #Bulkapply' : function () {
+          Meteor.call('bulkMethod', selectedIds, $('#dropdownMenu1').text());
+          Meteor._reload.reload();
+        },
+
+        'click #Datefilter': function(event) {
+           var date = $('#filterdate').val();
+           Meteor.call('dateFilter', date);
+           Meteor._reload.reload();
+        }
     });
 
 

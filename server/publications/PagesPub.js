@@ -1,6 +1,7 @@
 
 var searchtext = "";
 var publishtext = "";
+var datetext = "";
 
 
 Meteor.publish('Pages', function () {
@@ -20,6 +21,14 @@ Meteor.publish('Pages', function () {
         temp = searchtext;
         searchtext = "";
         return Pages.find({ $text: { $search: temp } });
+    } else if(datetext) {
+        temp = datetext;
+        datetext = "";
+         if(temp == "All dates"){
+            return Pages.find( { createdBy: currentUserId } );
+         } else {
+            return Pages.find( { createdBy: currentUserId, createdAt : new RegExp(temp)});
+         }
     }
      else {
         return Pages.find( {createdBy: currentUserId} );
@@ -105,12 +114,23 @@ Meteor.methods({
         publishtext = loadData;
     },
 
+    'dateFilter': function(filterdate) {
+        datetext = filterdate;
+    },
+
     'listbinPagesData': function(binpageid) {
         Pages.update(binpageid, {$set: {deleted: true, published: false, status:"Bin"} });
-    }
+    },
 
-    // 'removePagesData': function(selectedPages){
-    //     var currentUserId = Meteor.userId();
-    //     Media.remove({_id: selectedPages, createdBy: currentUserId});
-    // }
+    'bulkMethod' : function(idList, action) {
+        if(action == "Move to Bin") {
+            for(i=0; i<idList.length; i++) {
+                Pages.update(idList[i], {$set: {deleted: true,status:"Bin"}});
+            }        
+        } else if(action == "Delete") {
+            for(i=0; i<idList.length; i++) {
+                Pages.remove({_id: idList[i]});
+            }               
+        }
+    }
 });
