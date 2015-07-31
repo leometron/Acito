@@ -11,7 +11,42 @@
                 <div class="board-view  border-bottom font-bold">Banned Image<span class="caret pull-right margin-top-10"></span></div>               
                 <div class="board-view">This is the banner image for our work</div>
                 <div class="board-view">Our work banner image*</div>
-                <div class="board-view"><input type="text" class="form-control" style="width: 82%; display: inline;"><span><button type="button" class="btn btn-default">Select image</button></span></div>
+                <div class="board-view"><input type="text" class="form-control" style="width: 82%; display: inline;">
+                    <span><button type="button" id="selectImage" class="btn btn-default" data-toggle="modal" data-target="#myModal">Select image</button></span>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog" style="width: 80%">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title font-bold margin-bottom-20">Select image</h4>
+                                    <span class="padding-10 cursor-pointer" id="uploadFile" style="padding-bottom: 17px">Upload Files</span>
+                                    <span class="padding-10 cursor-pointer" id="mediaLibrary" style="padding-bottom: 17px">Media Library</span>
+                                </div>
+                                <div class="modal-body">                                
+                                    <div class="margin-top-20" id="dropFile">
+                                        <div style="height: 230px;">
+                                            <div style="  margin: 70px auto 0;width:100%">
+                                                <p class="text-center font-bold" style="font-size: 20px;color: #A19B9B;">Drop files anywhere to upload</p>
+                                                <p class="text-center">or</p>
+                                                <div style="margin: 20px auto 0; width: 19%;"><input type="file" id="mediaName"></div>
+                                                <div class="text-center margin-top-10 font-size-12"><p>Maximum upload file size: 24 MB.</p></div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div id="media">
+                                       <div class="col-md-8">
+                                       </div>
+                                       <div class="col-md-4">
+                                       </div>
+                                    </div>                                                              
+                                </div>
+                                <div class="modal-footer">
+                                     <button type="button" id="publish" class="btn btn-primary" data-dismiss="modal">Select</button>
+                                </div>
+                          </div>                      
+                        </div>
+                    </div> 
+                </div>
             </div>
         </div>
         <div class="col-md-4 padding-bottom-40">

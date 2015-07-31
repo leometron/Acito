@@ -68,6 +68,11 @@ Template.adminHeader.events({
          }else {
          $('#navBarHomeSliders').removeClass('selected');
      }
+     if(selectedId == 'navBarSettings'){
+         $('#navBarSettings').addClass('selected');
+         }else {
+         $('#navBarSettings').removeClass('selected');
+     }
     if(this.title == 'posts'){
         $('#subNavBarpostsadd').show(800);
         $('#subNavBarpostscategories').show(800);
