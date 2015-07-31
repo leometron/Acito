@@ -7,10 +7,7 @@
  */
 
 Meteor.subscribe("Posts");
-<<<<<<< HEAD
 Meteor.subscribe("Pages");
-=======
->>>>>>> 34064946542a3a4366ce74053aba50a57a59029c
 
 var selectedIds = [];
 
