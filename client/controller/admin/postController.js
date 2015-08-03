@@ -185,7 +185,7 @@ Template.addNewPost.events({
         $('#media').hide();
         $('#mediaLibrary').removeClass('border');
         $('#uploadFile').addClass('border');
-        $('#dropFile').show() ;
+        $('#dropFile').show();
     },
 });
 
