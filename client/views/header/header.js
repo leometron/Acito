@@ -50,4 +50,15 @@ Template.header.rendered = function(){
     $('body, html').animate({scrollTop: pos});
 });
 
+$(window).scroll(function(){
+   var window_top = $(window).scrollTop();
+   if(window_top != 0){     
+       $('#mainNav').css({'background-color': 'white'});            
+   }else{
+       $('#mainNav').scrollTop(function(){           
+           $(this).css({'background-color': 'transparent','border-color':'white'})
+       })
+   }
+});
+
 }
