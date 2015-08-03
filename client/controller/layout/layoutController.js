@@ -20,7 +20,7 @@ Template.header.helpers({
 Template.home.helpers({
     'postsList' : function() {
         return Posts.find({pageId:Session.get("pageId")});
-    }  
+    },  
 	'mediaList' : function() {
     	return Media.find();
     }
