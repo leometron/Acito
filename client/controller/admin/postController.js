@@ -96,6 +96,7 @@ Template.posts.events({
         Meteor._reload.reload(); 
    },
     'click #filter': function(event) {
+        console.log('entered filter');
         Meteor.call('showDateFilterPost', $('#dateFilter').val());
         Meteor._reload.reload();
    },
@@ -198,9 +199,9 @@ Template.posts.helpers({
     'postList': function() {
         return Posts.find();
     },
-    'queryString': function() {
-        return $('#queryString').val();
-    },
+    // 'queryString': function() {
+    //     return $('#queryString').val();
+    // },
     'pageList' : function() { 
         return Pages.find();
     }  
