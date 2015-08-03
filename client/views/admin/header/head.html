@@ -21,7 +21,12 @@
                         <ul class="nav navbar-nav">
                             {{#each navBarList}}
                             <li  id="navBar{{title}}" class="item">
-                                <a href="/admin/{{title}}"><div><i class="fa {{icon}} icons"></i><span>{{title}}</span></div></a>
+                                <a href="/admin/{{title}}">
+                                    <div><i class="fa {{icon}} icons"></i><span>{{title}}</span>
+                                       <!--  {{#if subtitle}}
+                                        <span class="pull-right"><i class="fa fa-plus-circle"></i></span>                                    
+                                        {{/if}} -->
+                                    </div></a>
                                 <ul style="list-style: none;" id="showSubTitle">
                                     {{#each subtitle}}
                                     <li class="padding-bottom-10" id="subNavBar{{title}}{{sTitle}}"><a href="/admin/{{title}}/{{sTitle}}"><span>{{name}}</span></a></li>

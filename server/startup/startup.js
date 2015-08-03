@@ -7,7 +7,6 @@
  */
 Meteor.startup(function () {
 	Posts._ensureIndex({ title : "text" });
-	Category._ensureIndex({ name : "text" });
 	tags._ensureIndex({ name : "text" });	
 	Pages._ensureIndex ({ title: "text" });
 	Media._ensureIndex({ name : "text"});

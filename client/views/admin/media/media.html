@@ -66,9 +66,7 @@
             </div>
 
         </div>
-        <div class="row post-margin">
-            <div class="bs-example" data-example-id="striped-table">
-                <div class="row post-margin padding-top-bottom-10">
+        <div class="row padding-top-bottom-10">
                     <div class="bs-example" data-example-id="striped-table">
                         <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
                             <div class="col-md-2"><span><input type="checkbox"></span></div>
@@ -78,22 +76,21 @@
                             <div class="col-md-1">comments</div>
                             <div class="col-md-1">Date</div>
                         </div>
-                        <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                           <ul class="media margin-bottom-zero">
+                                             
                                {{#each mediaList}}
-                               <div class="row padding-top-bottom-10">
-                                   <li class="col-md-2">
+                                <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">                               
+                                   <div class="col-md-2">
                                        <span><input id="checkbox" type="checkbox" ></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
-                                   </li>
-                                   <li class="col-md-5" style="line-height: 200%;">
+                                   </div>
+                                   <div class="col-md-5" style="line-height: 200%;">
                                        <div>{{name}}</div>
                                        <div>{{fullName}}</div>
                                     <div><a href= "/admin/media/add" id="edit">Edit</a> | <a href = "#" id="delete">Delete Permanently</a></div>
-                                   </li>
-                                   <li class="col-md-1">
+                                   </div>
+                                   <div class="col-md-1">
                                        <div>{{createdBy}}</div>
-                                   </li>
-                                   <li class="col-md-2">
+                                   </div>
+                                   <div class="col-md-2">
                                        <div>@mdo</div>
                                     <!--    <div data-toggle="modal" data-target="#myModal">attach</div>
                                           <div class="modal fade" id="myModal" role="dialog">
@@ -113,21 +110,20 @@
                                             
                                           </div>
                                         </div> -->
-                                   </li>
-                                   <li class="col-md-1">
+                                   </div>
+                                   <div class="col-md-1">
                                        <div>comments</div>
-                                   </li>
-                                   <li class="col-md-1">
+                                   </div>
+                                   <div class="col-md-1">
                                        <div>{{createdAt}}</div>
-                                   </li>
+                                   </div>
                                </div>
                                {{/each}}
-                           </ul>
+                          
                        </div>
-                    </div>
+                    
                 </div>
-            </div>
-        </div>
+           
 <!--         <div class="row post-margin">
             <span class="dropdown margin-right">
                 <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="bulkactiondropdown" data-toggle="dropdown">

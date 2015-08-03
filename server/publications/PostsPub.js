@@ -39,23 +39,23 @@ Meteor.publish('Posts', function () {
 
 //Define all the methods interact with the POSTS object
 Meteor.methods({
-    'insertPostData': function (title, content,tags,currentDate,page) {
-        Posts.insert({title: title,content: content,publish: false,createdBy:Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Draft",pageNameId:page}, function (err, id) {
+    'insertPostData': function (title, content,tags,currentDate,pageid,pagename) {
+        Posts.insert({title: title,content: content,publish: false,createdBy:Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Draft",pageId:pageid,pageName:pagename}, function (err, id) {
             currentPostId = id;
         });
         console.log('successfully saved the post...' + title);
     },
-    'publishPostData': function (id,title, content,tags,currentDate,category) {
+    'publishPostData': function (id,title, content,tags,currentDate,pageid,pagename) {
         currentPostId = id;
         if (currentPostId) {
-            Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",categoryName:category}});
+            Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",pageId:pageid,pageName:pagename}});
         } else {
-            Posts.insert({title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",categoryName:category});
+            Posts.insert({title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",pageId:pageid,pageName:pagename});
         }
         console.log('successfully published post...' + title);
     },
-    'updatePostData': function (postid,title,content,tags,category) {
-        Posts.update(postid, {$set: {title: title, content: content,tags: tags,categoryName:category}});
+    'updatePostData': function (postid,title,content,tags,pageid,pagename) {
+        Posts.update(postid, {$set: {title: title, content: content,tags: tags,pageId:pageid,pageName:pagename}});
         console.log('successfully updated post...' + title);
     },
     'binPostData' : function (postid) {
