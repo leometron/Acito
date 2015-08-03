@@ -96,7 +96,6 @@ Template.posts.events({
         Meteor._reload.reload(); 
    },
     'click #filter': function(event) {
-        console.log('entered filter');
         Meteor.call('showDateFilterPost', $('#dateFilter').val());
         Meteor._reload.reload();
    },
@@ -118,8 +117,10 @@ Template.addNewPost.events({
         var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
         var pageName = ($('#pageName :selected').text() == "none") ? "-" : $('#pageName :selected').text();        
         var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
-        Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName);
+        var featuredIamge = (!Session.get('selectedImageUrl')) ? "-" : Session.get('selectedImageUrl');        
+        Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredIamge);
         Router.go("/admin/posts");
+        Session.set('selectedImageUrl','');  
         }
     },
     'click #publishPost' : function () {
@@ -131,8 +132,10 @@ Template.addNewPost.events({
         var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
         var pageName = ($('#pageName :selected').text() == "none") ? "-" : $('#pageName :selected').text();
         var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
-        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName);
-        Router.go("/admin/posts"); 
+        var featuredIamge = (!Session.get('selectedImageUrl')) ? "-" : Session.get('selectedImageUrl');                
+        Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredIamge);
+        Router.go("/admin/posts");
+        Session.set('selectedImageUrl','');
         }       
     },
     'click #updatePost' : function() {
@@ -143,9 +146,11 @@ Template.addNewPost.events({
         var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
         var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
         var pageName = ($('#pageName :selected').text() == "none") ? "-" : $('#pageName :selected').text();        
-        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();        
-        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName);
+        var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+        var featuredIamge = (!Session.get('selectedImageUrl')) ? "-" : Session.get('selectedImageUrl');                
+        Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName,featuredIamge);
         Router.go("/admin/posts");
+        Session.set('selectedImageUrl','');
         }        
     },
     'click #moveBin' : function() {
@@ -171,7 +176,7 @@ Template.addNewPost.events({
          $('#uploadFile').addClass('border');
          $('#media').hide();
          $('#mediaLibrary').removeClass('border');
-         $('#dropFile').show() ;             
+         $('#dropFile').show();             
     },
     'click #mediaLibrary': function(){
         console.log("media");
@@ -187,6 +192,16 @@ Template.addNewPost.events({
         $('#uploadFile').addClass('border');
         $('#dropFile').show() ;
     },
+    'click #media': function() {
+        if(this._id){
+            Session.set('selectedImageUrl',this.url);
+        }
+    },
+    'click #removeImage' : function() {
+        Meteor.call('removeFeaturedImage',Session.get('selectedPostId'));
+        Router.go("/admin/posts");                       
+
+    }
 });
 
 /*
@@ -216,6 +231,12 @@ Template.addNewPost.helpers({
     },
     'pageList' : function() { 
         return Pages.find();
+    },
+    'mediaList' : function() {
+        return Media.find();  
+    },
+    'getUrlValue' : function() {
+        return Session.get('selectedImageUrl');
     }      
 });
 

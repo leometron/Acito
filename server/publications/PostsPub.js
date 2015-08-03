@@ -39,23 +39,23 @@ Meteor.publish('Posts', function () {
 
 //Define all the methods interact with the POSTS object
 Meteor.methods({
-    'insertPostData': function (title, content,tags,currentDate,pageid,pagename) {
-        Posts.insert({title: title,content: content,publish: false,createdBy:Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Draft",pageId:pageid,pageName:pagename}, function (err, id) {
+    'insertPostData': function (title, content,tags,currentDate,pageid,pagename,image) {
+        Posts.insert({title: title,content: content,publish: false,createdBy:Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Draft",pageId:pageid,pageName:pagename,featuredImage:image}, function (err, id) {
             currentPostId = id;
         });
         console.log('successfully saved the post...' + title);
     },
-    'publishPostData': function (id,title, content,tags,currentDate,pageid,pagename) {
+    'publishPostData': function (id,title, content,tags,currentDate,pageid,pagename,image) {
         currentPostId = id;
         if (currentPostId) {
-            Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",pageId:pageid,pageName:pagename}});
+            Posts.update({_id: currentPostId}, {$set: {_id: currentPostId, title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",pageId:pageid,pageName:pagename,featuredImage:image}});
         } else {
-            Posts.insert({title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",pageId:pageid,pageName:pagename});
+            Posts.insert({title: title, content: content, publish: true,createdBy: Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Published",pageId:pageid,pageName:pagename,featuredImage:image});
         }
         console.log('successfully published post...' + title);
     },
-    'updatePostData': function (postid,title,content,tags,pageid,pagename) {
-        Posts.update(postid, {$set: {title: title, content: content,tags: tags,pageId:pageid,pageName:pagename}});
+    'updatePostData': function (postid,title,content,tags,pageid,pagename,image) {
+        Posts.update(postid, {$set: {title: title, content: content,tags: tags,pageId:pageid,pageName:pagename,featuredImage:image}});
         console.log('successfully updated post...' + title);
     },
     'binPostData' : function (postid) {
@@ -92,5 +92,8 @@ Meteor.methods({
    },
    'showDateFilterPost': function(filterDate) {
         dateString = filterDate;
-   },   
+   },
+   'removeFeaturedImage' : function(postId) {
+        Posts.update(postId, {$set: {featuredImage: "-"}});    
+   }
 });
