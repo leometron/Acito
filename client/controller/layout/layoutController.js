@@ -15,5 +15,11 @@ Template.home.events({
 Template.header.helpers({
     'pagesList' : function() {
         return Pages.find();
-    }
+    },
 });
+
+Template.home.helpers({
+	'mediaList' : function() {
+    	return Media.find();
+    }
+})
