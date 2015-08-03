@@ -27,7 +27,7 @@ Template.addNewHomeSlider.events({
     }    
 });
 
-Meteor.subscribe('Media');
+// Meteor.subscribe('Media');
 
 Template.addNewHomeSlider.helpers({
    'mediaList': function() {

@@ -18,12 +18,11 @@
                     <li>
                         <a class="page-scroll" href="#DashBoard">DashBoard</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#Post">Post</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#Pages">Pages</a>
-                    </li>
+                        {{#each pagesList}}
+                            <li>
+                                <a class="page-scroll" href="#Pages">{{title}}</a>
+                            </li>                    
+                        {{/each}}                      
                     <li>
                         <a class="page-scroll" href="#Media">Media</a>
                     </li>
