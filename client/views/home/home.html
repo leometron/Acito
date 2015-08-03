@@ -17,7 +17,7 @@
                <div class="col-md-12 text-center black" style="font-size: xx-large; margin-bottom: 40px;">
                      Posts
                </div>
-                        {{#each postsList}}
+              {{#each postsList}}
                <div class="col-md-3">
                    <div>
                     <h3 class="text-center">{{title}}</h3>
@@ -26,58 +26,15 @@
                      </div>   
                 </div>
                </div>                  
-                        {{/each}}               
-<!--                <div class="col-md-3">
-                   <div>
-                    <h3 class="text-center">Sturdy Templates</h3>
-                    <div class="text-center">
-                       Our templates are updated regularly so they don't break.
-                     </div>   
-                </div>
-               </div>     
-                <div class="col-md-3">
-                   <div>
-                    <h3 class="text-center">Ready to Ship</h3>
-                    <div class="text-center">You can use this theme as is, or you can make changes! Our templates are updated regularly so they don't break.
-                     </div>   
-                </div>
-               </div>   
-                <div class="col-md-3">
-                   <div>
-                    <h3 class="text-center">Up to Date</h3>
-                    <div class="text-center">
-                       We update dependencies to keep things fresh.
-                     </div>   
-                </div>
-               </div>   
-                <div class="col-md-3">
-                   <div>
-                    <h3 class="text-center">Made with Love</h3>
-                    <div class="text-center">
-                       You have to make your websites with love these days!
-                     </div>   
-                </div>
-               </div>   -->           
+              {{/each}}                        
           </div>
      </div>   
      <div id="Media" class="row bg-black">                           
-                <div class="col-md-4" style="    padding-left: 0;
-    padding-right: 0;">
-                   <img src="images/laptop.jpg" style="max-width: 100%;
-    height: auto;">
-                </div>
-            
-                <div class="col-md-4" style="    padding-left: 0;
-    padding-right: 0;">
-                   <img src="images/laptop.jpg" style="max-width: 100%;
-    height: auto;">
-                </div>
-                
-                <div class="col-md-4" style="    padding-left: 0;
-    padding-right: 0;">
-                   <img src="images/laptop.jpg" style="max-width: 100%;
-    height: auto;">   
-  </div> 
+      {{#each mediaList}}
+          <div class="col-md-4" style="padding-left: 0; padding-right: 0;">
+            <img src="{{url}}" style="width: 100%; height: 250px">
+          </div>
+      {{/each}}           
                 <div class="col-md-12 margin-top-40"  style=" font-size: xx-large;   text-align: center;color:white">
                     Free Download
                 </div>
@@ -88,9 +45,6 @@
                     background-color: white;">
                     <span>Download Now!</span>
                 </button>
-               </div>
-            
-                                   
-       
- </div>
+              </div>        
+     </div>
 </template>
