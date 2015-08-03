@@ -1,5 +1,6 @@
 // Home Route
 Router.route('/', {
+  layoutTemplate: 'basicLayout',	
   name: 'home',
   action: function () {
     this.render('home');
