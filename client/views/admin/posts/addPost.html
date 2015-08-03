@@ -47,21 +47,24 @@
             </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0; padding-bottom: 40px;">
                 <div class="col-md-12 padding-left-zero" >
-                    <div class="col-md-6 padding-left-zero cursor-pointer">
+                    <div class="col-md-8 padding-left-zero cursor-pointer">
                     {{#if showSelectedPost}}
                         {{#if showSelectedPost.deleted}}
-                        <div id="removePost">                                 
+                        <span id="removePost">                                 
                             Delete Post  
-                        </div>
+                        </span>
                         {{else}}
-                        <div id="moveBin">                                 
-                            Move to Bin  
-                        </div>
+                        <span id="moveBin">                                 
+                            Move to Bin 
+                        </span>
+                        <span id="deletePost" class="padding-left-10">                                 
+                            Delete 
+                        </span>
                         {{/if}} 
                     {{/if}}                            
                     </div>
-                    <div class="col-md-6 padding-right-zero">
-                        <span style="padding-left: 55%">
+                    <div class="col-md-4 padding-right-zero">
+                        <span style="padding-left: 25%">
                         {{#if showSelectedPost}}
                             {{#if showSelectedPost.deleted}}                                    
                             <button type="button" id="restorePost" class="btn btn-primary">Publish</button>

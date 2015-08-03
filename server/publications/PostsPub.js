@@ -39,8 +39,8 @@ Meteor.publish('Posts', function () {
 
 //Define all the methods interact with the POSTS object
 Meteor.methods({
-    'insertPostData': function (title, content,tags,currentDate,category) {
-        Posts.insert({title: title,content: content,publish: false,createdBy:Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Draft",categoryName:category}, function (err, id) {
+    'insertPostData': function (title, content,tags,currentDate,page) {
+        Posts.insert({title: title,content: content,publish: false,createdBy:Meteor.userId(),tags: tags,deleted:false,createdAt:currentDate,status:"Draft",pageNameId:page}, function (err, id) {
             currentPostId = id;
         });
         console.log('successfully saved the post...' + title);

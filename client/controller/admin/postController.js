@@ -134,6 +134,10 @@ Template.addNewPost.events({
         Meteor.call('removePostData',Session.get('selectedPostId')); 
         Router.go("/admin/posts");               
     },
+    'click #deletePost': function() {
+        Meteor.call('removePostData',Session.get('selectedPostId'));
+        Router.go("/admin/posts"); 
+    },
     'click #addNewTag' : function() {
         Router.go("/admin/posts/tags");                       
     }
