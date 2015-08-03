@@ -12,12 +12,22 @@
                </div>
           </div>
      </div>   
-     <div id="Post" class="row padding-100 bg-white">
+     <div id="Pages" class="row padding-100 bg-white">
           <div class="container">
                <div class="col-md-12 text-center black" style="font-size: xx-large; margin-bottom: 40px;">
-                     At Your Service
+                     Posts
                </div>
+                        {{#each postsList}}
                <div class="col-md-3">
+                   <div>
+                    <h3 class="text-center">{{title}}</h3>
+                    <div class="text-center">
+                       {{content}}
+                     </div>   
+                </div>
+               </div>                  
+                        {{/each}}               
+<!--                <div class="col-md-3">
                    <div>
                     <h3 class="text-center">Sturdy Templates</h3>
                     <div class="text-center">
@@ -47,10 +57,10 @@
                        You have to make your websites with love these days!
                      </div>   
                 </div>
-               </div>             
+               </div>   -->           
           </div>
      </div>   
-     <div id="Pages" class="row bg-black">                           
+     <div id="Media" class="row bg-black">                           
                 <div class="col-md-4" style="    padding-left: 0;
     padding-right: 0;">
                    <img src="images/laptop.jpg" style="max-width: 100%;
