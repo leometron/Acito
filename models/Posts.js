@@ -31,6 +31,9 @@ Posts.attachSchema(
     },
     pageId: {
       type: String
+    },
+    featuredImage: {
+      type: String
     }    
   })
 );

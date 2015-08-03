@@ -122,7 +122,16 @@
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">Feature image <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
-                    <span class="cursor-pointer" id="selectImage" data-toggle="modal" data-target="#myModal" >Set featured image</span>
+                    {{#if showSelectedPost.featuredImage}}                  
+                                      <span class="cursor-pointer" id="removeImage">Remove featured image
+<img src="{{showSelectedPost.featuredImage}}" style="width:100px; height:100px;"/>
+</span>
+                    {{else}}                    
+
+                    <span class="cursor-pointer" id="selectImage" data-toggle="modal" data-target="#myModal" >Set featured image
+<img src="{{getUrlValue}}" style="width:100px; height:100px;"/>
+                    </span>
+{{/if}}                    
                       <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog model-width">
                             <div class="modal-content">
@@ -215,7 +224,7 @@
                                     </div>                                                              
                                 </div>
                                 <div class="modal-footer">
-                                     <button type="button" id="publish" class="btn btn-primary" data-dismiss="modal">Select</button>
+                                     <button type="button" id="selectpublish" class="btn btn-primary" data-dismiss="modal">Select</button>
                                 </div>
                           </div>                      
                         </div>
