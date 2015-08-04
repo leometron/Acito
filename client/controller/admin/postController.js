@@ -192,15 +192,15 @@ Template.addNewPost.events({
         $('#uploadFile').addClass('border');
         $('#dropFile').show();
     },
-    'click #media': function() {
+    'click .selectedImg': function(e) {
         if(this._id){
+             $('.selectedImg').removeClass('selected-border');
+            $(e.currentTarget).addClass('selected-border');             
             Session.set('selectedImageUrl',this.url);
         }
     },
     'click #removeImage' : function() {
         Meteor.call('removeFeaturedImage',Session.get('selectedPostId'));
-        Router.go("/admin/posts");                       
-
     }
 });
 
