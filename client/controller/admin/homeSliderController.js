@@ -1,5 +1,3 @@
-
-
 Template.addNewMedia.rendered = function(){
     $("#popupMediadetail").hide();
 };
@@ -24,10 +22,14 @@ Template.addNewHomeSlider.events({
         $('#mediaLibrary').removeClass('border');
         $('#uploadFile').addClass('border');
         $('#dropFile').show() ;
-    }    
+    },
+     'click .selectedImg' : function(e){     
+    $('.selectedImg').removeClass('selected-border');
+    $(e.currentTarget).addClass('selected-border'); 
+   }
 });
 
-// Meteor.subscribe('Media');
+Meteor.subscribe('Media');
 
 Template.addNewHomeSlider.helpers({
    'mediaList': function() {
