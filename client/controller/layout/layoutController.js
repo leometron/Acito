@@ -5,15 +5,23 @@
  Has the events and helpers related to home page.
 
  */
-Template.home.events({
-    'click #deleteTag': function() {
-        Meteor.call('removeTag',Session.get('selectedTagId'));
-        Router.go("/admin/posts/tags");        
+Template.header.events({
+    'click #pageName': function() {
+        Session.set("pageId",this._id);
     } 
 });
 
 Template.header.helpers({
     'pagesList' : function() {
         return Pages.find();
+    },
+});
+
+Template.home.helpers({
+    'postsList' : function() {
+        return Posts.find({pageId:Session.get("pageId")});
+    },  
+	'mediaList' : function() {
+    	return Media.find();
     }
 });

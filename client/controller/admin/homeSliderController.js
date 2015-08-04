@@ -4,10 +4,11 @@ Template.addNewMedia.rendered = function(){
 
 Template.addNewHomeSlider.events({
     'click #selectImage': function () {             
-         $('#uploadFile').addClass('border');
-         $('#media').hide();
-         $('#mediaLibrary').removeClass('border');
-         $('#dropFile').show() ;             
+        alert("success");
+         // $('#uploadFile').addClass('border');
+         // $('#media').hide();
+         // $('#mediaLibrary').removeClass('border');
+         // $('#dropFile').show() ;             
     },
     'click #mediaLibrary': function(){
         console.log("media");
