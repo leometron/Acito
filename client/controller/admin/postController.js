@@ -225,6 +225,7 @@ Template.addNewPost.events({
                     $('#mediaLibrary').addClass('border');
                     $('#media').show();
                     $("#popupMediadetail").hide();
+                    Session.set('selectedImageUrl',url);
                 }
             });
         });
@@ -258,26 +259,6 @@ Template.posts.helpers({
 });
 
 Template.addNewPost.helpers({
-<<<<<<< HEAD
-    'showSelectedPost': function(){
-        return Posts.findOne(Session.get('selectedPostId'));
-    },
-    'errormsg' : function() {
-        return Session.get('errorMessage');
-    },
-    'pageList' : function() { 
-        return Pages.find();
-    },
-    'mediaList' : function() {
-        return Media.find();  
-    },
-    'getUrlValue' : function() {
-        return Session.get('selectedImageUrl');
-    },
-    'showUploadMediaUrl' : function() {
-        return Session.get('uploadMediaUrl');
-    }      
-=======
 	'showSelectedPost': function(){
 		return Posts.findOne(Session.get('selectedPostId'));
 	},
@@ -292,8 +273,10 @@ Template.addNewPost.helpers({
 	},
 	'getUrlValue' : function() { 
 		return Session.get('selectImage');
-	}      
->>>>>>> e88fec090109a6311640f63825e027fda7bb91ea
+	},
+        'showUploadMediaUrl' : function() {
+        return Session.get('uploadMediaUrl');
+    }      
 });
 
 Template.adminHeader.events({
