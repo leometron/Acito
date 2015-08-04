@@ -15,9 +15,7 @@ Meteor.publish('Posts', function () {
     } else if (querystr) {
         temp = querystr;
         querystr = "";        
-        // return Posts.find({ $text: { $search: temp } });
-        return Posts.find({ createdBy: loginUserId, title : new RegExp(temp,"i") });
-
+        return Posts.find({ $text: { $search: temp } });
     } else if(categorystr) {
         temp = categorystr;
         categorystr = "";
@@ -96,6 +94,6 @@ Meteor.methods({
         dateString = filterDate;
    },
    'removeFeaturedImage' : function(postId) {
-        Posts.update(postId, {$unset: {featuredImage: ""}});    
+        Posts.update(postId, {$set: {featuredImage: "-"}});    
    }
 });

@@ -147,7 +147,7 @@
                                             <div style="  margin: 70px auto 0;width:100%">
                                                 <p class="text-center font-bold" style="font-size: 20px;color: #A19B9B;">Drop files anywhere to upload</p>
                                                 <p class="text-center">or</p>
-                                                <div style="margin: 20px auto 0; width: 19%;"><input type="file" id="mediaName"></div>
+                                                <div style="margin: 20px auto 0; width: 19%;"><input type="file" id="selectMediaUrl"></div>
                                                 <div class="text-center margin-top-10 font-size-12"><p>Maximum upload file size: 24 MB.</p></div>
                                             </div>
                                         </div>
@@ -171,8 +171,12 @@
                                                 <div class="row">
                                                     {{#each mediaList}}
                                                     <div class="col-md-2">
-                                                         <img id="mediaImage" class="selectedImg" src="{{url}}" style=" width: 80px; height: 80px;"/>
-                                                    </div>
+                                                    {{#if equals showUploadMediaUrl url}}
+                                                        <img id="mediaImage" class="selectedImg selected-border" src="{{url}}" style=" width: 80px; height: 80px;"/>
+                                                        {{else}}
+                                                        <img id="mediaImage" class="selectedImg" src="{{url}}" style=" width: 80px; height: 80px;"/>
+                                                    {{/if}}    
+                                                    </div>    
                                                     {{/each}}
                                                 </div>                                   
                                             </div>

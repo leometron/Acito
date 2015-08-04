@@ -194,14 +194,33 @@ Template.addNewPost.events({
     },
     'click .selectedImg': function(e) {
         if(this._id){
-             $('.selectedImg').removeClass('selected-border');
+            $('.selectedImg').removeClass('selected-border');
             $(e.currentTarget).addClass('selected-border');             
             Session.set('selectedImageUrl',this.url);
         }
     },
     'click #removeImage' : function() {
         Meteor.call('removeFeaturedImage',Session.get('selectedPostId'));
-    }
+    },
+    'change #selectMediaUrl': function (event, template) {
+        FS.Utility.eachFile(event, function (file) {
+          var img = event.target.files[0]
+            Images.insert(file, function (err, fileObj) {
+                if (err) {
+                    console.log('error')
+                } else {                 
+                  var url = "/cfs/files/images/" + fileObj._id;
+                  Session.set('uploadMediaUrl',url);
+                  Meteor.call('insertMediaData', url, img.name, "-" , img.type, img.size + " Bytes",  "-", "-" , "-" , "-" , "-");
+                    $('#uploadFile').removeClass('border');
+                    $('#dropFile').hide() ;
+                    $('#mediaLibrary').addClass('border');
+                    $('#media').show();
+                    $("#popupMediadetail").hide();
+                }
+            });
+        });
+    },
 });
 
 /*
@@ -237,6 +256,9 @@ Template.addNewPost.helpers({
     },
     'getUrlValue' : function() {
         return Session.get('selectedImageUrl');
+    },
+    'showUploadMediaUrl' : function() {
+        return Session.get('uploadMediaUrl');
     }      
 });
 
