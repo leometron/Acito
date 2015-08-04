@@ -16,7 +16,7 @@ Meteor.publish('Posts', function () {
         temp = querystr;
         querystr = "";        
         // return Posts.find({ $text: { $search: temp } });
-        return Posts.find({ title : new RegExp(temp) });
+        return Posts.find({ createdBy: loginUserId, title : new RegExp(temp,"i") });
 
     } else if(categorystr) {
         temp = categorystr;
