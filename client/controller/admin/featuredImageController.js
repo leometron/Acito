@@ -18,6 +18,7 @@ Template.featuredImage.events({
       alert("click");
         Meteor.call('insertFeaturedImage',Session.get('selectFeaturedImage'),$('#pageId').val());
         console.log(Session.get('selectFeaturedImage')+$('#pageId').val() + "......................");
+        // Session.set('selectFeaturedImage',"");
     }
  });
 
@@ -25,5 +26,5 @@ Template.featuredImage.events({
 Template.featuredImage.helpers({
   'postList': function() {
     return Posts.find();
-  },
+  }
 });
