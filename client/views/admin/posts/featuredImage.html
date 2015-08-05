@@ -1,0 +1,29 @@
+<template name="featuredImage" id="featuredImage">
+
+    <div class="margin-top-20">
+        <div class="row post-margin">
+            <span style="font-size: 30px;">Add Featured Image</span>
+        </div>
+    </div>
+    <div class="margin-top-20">
+        <div class="text-center"><input type="file" id="selectFeaturedImage"></div>
+    </div>
+
+    <div class="bg-white margin-top-20" style="width:28%">
+        <div class="board-view border-bottom">Posts <span class="caret pull-right margin-top-10"></span></div>
+        <div class="board-view">
+            <select id="pageId" placeholder="Posts">
+                <option>none</option>
+                {{#each postList}}
+                <option value="{{_id}}">{{title}}</option>                        
+                {{/each}}                              
+            </select>
+        </div>
+    </div>
+
+    <div class="margin-top-20">
+        <button type="button" id="publishFeaturedImage" class="btn btn-primary">Publish</button>
+    </div>
+  
+</template>
+
