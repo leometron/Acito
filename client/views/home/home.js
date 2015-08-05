@@ -61,6 +61,13 @@ Template.home.events({
 
 
 Template.home.rendered = function () {
+
+console.log($('#postIntroduction').offset());
+console.log($('#postasas').offset());
+$('#postIntroduction').offset().top - $('#postasas').offset().top
+
+console.log($('#postIntroduction').offset().top)
+console.log($('#postIntroduction').offset().top - $('#postasas').offset().top);
   // @see: http://stackoverflow.com/questions/5284814/jquery-scroll-to-div
   $('a[href*=#]:not([href=#])').click(function () {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
