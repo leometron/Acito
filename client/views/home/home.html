@@ -11,13 +11,32 @@
                    <button class="btn white-button"><span>Get Started</span></button>
                </div>
           </div>
-     </div>   
-<!-- <<<<<<< HEAD -->
-     <div id="Pages" class="row padding-100 bg-color" >
+     </div>
+     <div id="Pages" class="row padding-100 bg-color" >     
+     {{#if showSelectedPost}}
           <div class="container" >
                <div class="col-md-12 text-center black font-xxlarge margin-bottom-40">
-                     Posts
+                     {{showSelectedPost.title}}
                </div>
+               <div class="row equal">              
+               <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
+                  <div>
+                    {{#each imageList}}
+                      {{#if equals showSelectedPost._id postId}}
+                    <img src="{{url}}" style="width:270px;height:150px"/>
+                    {{/if}}
+                    {{/each}}
+                  </div>
+                  <div>
+                      <p>
+                         {{showSelectedPost.content}}
+                      </p>
+                   </div>                   
+               </div>                  
+              </div>                                   
+          </div>
+     {{else}}   
+          <div class="container" >
                <div class="row equal">              
               {{#each postsList}}
                <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
@@ -27,7 +46,7 @@
                   
                   {{/each}}
                   <div class="post-thumb">
-                      <h3>{{title}}</h3>
+                      <h3 id="postTitle" class="moz-header">{{title}}</h3>
                       <p class="break-word text-ellipsis">
                          {{content}}
                       </p>
@@ -36,7 +55,8 @@
               {{/each}} 
               </div>                                   
           </div>
-     </div>   
+     {{/if}}
+    </div>
      <div id="Media" class="row bg-black">    
      <i class="fa fa-arrow-circle-left"></i>                      
       {{#each mediaList}}
