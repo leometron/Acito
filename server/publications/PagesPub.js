@@ -71,7 +71,7 @@ Meteor.methods({
     },
 
     'binPagesData': function(title, content, date, parent) {
-        var currentUserId = Meteor.userId();
+      var currentUserId = Meteor.userId();
       Pages.insert ({
         title: title,
         content: content,

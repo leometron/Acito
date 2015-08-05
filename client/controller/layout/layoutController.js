@@ -44,6 +44,7 @@ Template.home.helpers({
 	'mediaList' : function() {
     	return Media.find();
     },
+
     'showSelectedPost' : function() {
         if(Session.get('selectedPostId')){
             // var temp = Session.get('selectedPostId');
