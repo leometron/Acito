@@ -66,3 +66,17 @@ Template.home.helpers({
 // Tracker.afterFlush(function(){
 //   $('.animate').delay(1000).fadeOut('slow');
 // });
+Template.home.animations({
+  ".item": {
+    container: ".container", // container of the ".item" elements
+    in: "animated fast fadeInLeft", // class applied to inserted elements
+    out: "animated fast fadeOutRight", // class applied to removed elements
+    inCallback: function(element) {}, // callback after an element gets inserted
+    outCallback: function(element) {}, // callback after an element gets removed
+    delayIn: 500, // Delay before inserted items animate
+    delayOut: 500, // Delay before removed items animate
+    animateInitial: true, // animate the elements already rendered
+    animateInitialStep: 200, // Step between animations for each initial item
+    animateInitialDelay: 500 // Delay before the initial items animate
+  }
+});

@@ -61,7 +61,7 @@ Template.home.events({
 
 
 Template.home.rendered = function () {
-
+console.log('rendered...');
 console.log($('#postIntroduction').offset());
 console.log($('#postasas').offset());
 $('#postIntroduction').offset().top - $('#postasas').offset().top
