@@ -29,8 +29,4 @@ accounts-ui
 
 cfs:standard-packages
 cfs:gridfs
-<<<<<<< HEAD
 gwendall:template-animations
-=======
-rexzh0u:bxslider
->>>>>>> 6afbf9bb7d0bc61f5a101a348902b1441dfa5e78
