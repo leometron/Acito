@@ -8,3 +8,15 @@ Router.route('/', {
     console.log(Meteor.App.NAME);
   }
 });
+
+// Router.route('/post/:_id', function () {
+    // this.render('home');
+Router.route('/post/:_id', {    
+  layoutTemplate: 'basicLayout',	
+  name: 'postDetail',
+  action: function () {
+    this.render('home');
+    SEO.set({ title: 'postdetails - ' + Meteor.App.NAME });
+    console.log(Meteor.App.NAME);
+  }    
+});

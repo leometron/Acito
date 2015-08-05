@@ -1,5 +1,5 @@
 <template name="home">
-    <div id="DashBoard" class="row padding-100" style="background-color: #f05f40;">
+ <div id="DashBoard" class="row padding-100" style="background-color: #f05f40;">
           <div class="container">
                <div class="col-md-12 white text-center margin-bottom-20 font-xxlarge">
                      We've got what you need!
@@ -12,19 +12,43 @@
                </div>
           </div>
      </div>   
-     <div id="Pages" class="row padding-100 bg-color" >
+
+     <div id="Pages" class="row padding-100 bg-color" >     
+     {{#if showSelectedPost}}
           <div class="container" >
+            <!-- <button type="button" class="btn btn-default" id="backToPage">Back</button> -->
+            <span id="backToPage" style="font-size: 20px;color: #4C9ED9;cursor:pointer;">Back</span>                       
                <div class="col-md-12 text-center black font-xxlarge margin-bottom-40">
-                     Posts
+                     {{showSelectedPost.title}}
                </div>
+               <div class="row equal">              
+                    {{#each imageList}}
+                      {{#if equals showSelectedPost._id postId}}
+                  <div style="text-align:center" class="col-xs-4">
+                    <img src="{{url}}" style="width:270px;height:200px"/>
+                  </div>
+                    {{/if}}
+                    {{/each}}
+                  </div>
+                  <div class="row" style="margin-top:50px" >
+                      <p>
+                         {{showSelectedPost.content}}
+                      </p>
+                   </div>                   
+          </div>
+     {{else}}   
+          <div class="container" >
                <div class="row equal">              
               {{#each postsList}}
                <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
-                  <div>
-                    <img src="{{featuredImage}}" style="width:270px;height:280px"/>
-                  </div>
+                    <img src="{{featuredImage}}" style="width:270px;height:150px"/>                  
+<!--                   {{#each imageList}} 
+                    {{#if equals postId ../_id}}                 
+                      <img src="{{url}}" style="width:270px;height:150px"/>
+                    {{/if}}                  
+                  {{/each}}  -->                 
                   <div class="post-thumb">
-                      <h3>{{title}}</h3>
+                      <h3 id="postTitle" class="moz-header">{{title}}</h3>
                       <p class="break-word text-ellipsis">
                          {{content}}
                       </p>
@@ -33,8 +57,12 @@
               {{/each}} 
               </div>                                   
           </div>
-     </div>   
+            {{/if}} 
+     </div>  
+
     <!--  <div id="Media" class="row bg-black">    
+     {{/if}}
+    </div>      <div id="Media" class="row bg-black">    
      <i class="fa fa-arrow-circle-left"></i>                      
       {{#each mediaList}}
           <div class="col-md-4 padding-left-zero padding-right-zero">            
@@ -57,6 +85,5 @@
   <div class="slide"><img src="{{url}}" style="height: 371px;"></div>
   {{/each}}  
 </div>
-
 
 </template>

@@ -2,16 +2,16 @@ featuredimage = new Mongo.Collection('featuredimage');
 
 featuredimage.attachSchema(
     new SimpleSchema({
-    title: {
+    url: {
       type: String
     },
-    content: {
+    postId: {
       type: String
     },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
-    }
+    // createdAt: {
+    //   type: Date,
+    //   denyUpdate: true
+    // }
   })
 );
 

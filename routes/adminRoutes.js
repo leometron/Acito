@@ -49,5 +49,8 @@ Router.route('/admin/posts/tags', function () {
 Router.route('/admin/posts/tags/edit', function () {
     this.render('editTags');
 });
+Router.route('/admin/posts/image', function () {
+    this.render('featuredImage');
+});
 
 
