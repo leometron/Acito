@@ -56,18 +56,24 @@ Template.home.helpers({
   }
 });
 
-Template.home.events({
-});
-
 
 Template.home.rendered = function () {
-console.log('rendered...');
 console.log($('#postIntroduction').offset());
 console.log($('#postasas').offset());
 $('#postIntroduction').offset().top - $('#postasas').offset().top
 
 console.log($('#postIntroduction').offset().top)
 console.log($('#postIntroduction').offset().top - $('#postasas').offset().top);
+
+  $(document).ready(function(){  
+  $('.slider5').bxSlider({
+    slideWidth: 600,
+    minSlides: 3,
+    maxSlides: 3,
+    moveSlides: 3,
+    slideMargin: 10
+  });
+});
   // @see: http://stackoverflow.com/questions/5284814/jquery-scroll-to-div
   $('a[href*=#]:not([href=#])').click(function () {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
