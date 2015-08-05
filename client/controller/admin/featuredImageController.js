@@ -25,5 +25,5 @@ Template.featuredImage.events({
 Template.featuredImage.helpers({
   'postList': function() {
     return Posts.find();
-  },
+  }
 });

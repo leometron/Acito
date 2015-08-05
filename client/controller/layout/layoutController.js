@@ -5,6 +5,9 @@
  Has the events and helpers related to home page.
 
  */
+
+Meteor.subscribe('featuredimage');
+
 Template.header.events({
     'click #pageName': function() {
         Session.set("pageId",this._id);
@@ -24,5 +27,8 @@ Template.home.helpers({
     },  
 	'mediaList' : function() {
     	return Media.find();
-    }
+    },
+    'featuredImageList' : function() {
+      return featuredimage.find();
+  }
 });

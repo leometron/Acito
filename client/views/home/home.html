@@ -21,9 +21,11 @@
                <div class="row equal">              
               {{#each postsList}}
                <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
-                  <div>
-                    <img src="{{featuredImage}}" style="width:270px;height:150px"/>
-                  </div>
+                  {{#each featuredImageList}}
+                  
+                    <img src="{{url}}" style="width:270px;height:150px"/>
+                  
+                  {{/each}}
                   <div class="post-thumb">
                       <h3>{{title}}</h3>
                       <p class="break-word text-ellipsis">
