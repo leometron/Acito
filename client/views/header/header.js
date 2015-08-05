@@ -53,10 +53,12 @@ Template.header.rendered = function(){
 $(window).scroll(function(){
    var window_top = $(window).scrollTop();
    if(window_top != 0){     
-       $('#mainNav').css({'background-color': 'white'});            
+       $('#mainNav').css({'background-color': 'white'});  
+       $('.navbar-brand').css({'font-size': '15px'});          
    }else{
        $('#mainNav').scrollTop(function(){           
            $(this).css({'background-color': 'transparent','border-color':'white'})
+            $('.navbar-brand').css({'font-size': 'x-large'});  
        })
    }
 });

@@ -19,6 +19,7 @@ Template.header.helpers({
 
 Template.home.helpers({
     'postsList' : function() {
+        console.log(Session.get("pageId"));
         return Posts.find({pageId:Session.get("pageId")});
     },  
 	'mediaList' : function() {
