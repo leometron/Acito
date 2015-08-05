@@ -15,6 +15,8 @@
      <div id="Pages" class="row padding-100 bg-color" >     
      {{#if showSelectedPost}}
           <div class="container" >
+            <!-- <button type="button" class="btn btn-default" id="backToPage">Back</button> -->
+            <span id="backToPage" style="font-size: 20px;color: #4C9ED9;cursor:pointer;">Back</span>                       
                <div class="col-md-12 text-center black font-xxlarge margin-bottom-40">
                      {{showSelectedPost.title}}
                </div>
@@ -38,12 +40,12 @@
                <div class="row equal">              
               {{#each postsList}}
                <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
-                    <!-- <img src="{{featuredImage}}" style="width:270px;height:150px"/>                   -->
-                  {{#each imageList}} 
+                    <img src="{{featuredImage}}" style="width:270px;height:150px"/>                  
+<!--                   {{#each imageList}} 
                     {{#if equals postId ../_id}}                 
                       <img src="{{url}}" style="width:270px;height:150px"/>
                     {{/if}}                  
-                  {{/each}}                  
+                  {{/each}}  -->                 
                   <div class="post-thumb">
                       <h3 id="postTitle" class="moz-header">{{title}}</h3>
                       <p class="break-word text-ellipsis">

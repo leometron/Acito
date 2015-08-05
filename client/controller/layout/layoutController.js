@@ -6,7 +6,7 @@
 
  */
 
-Meteor.subscribe('featuredimage');
+ Meteor.subscribe('featuredimage');
 
 Template.header.events({
     'click #pageName': function() {
@@ -23,10 +23,19 @@ Template.header.helpers({
 
 Template.home.events({
     'click #postTitle': function() {
+        Session.set('selectedPageId',Session.get("pageId"));
         Session.set("pageId","");        
         Session.set('selectedPostId',this._id);
-        Router.go("/post/"+this._id);               
-    } 
+        $('#postDetail').fadeIn(10000);                       
+        Router.go("/post/"+this._id);
+    },
+    'click #backToPage' : function()  {
+        console.log('pageId...'+Session.get("pageId"));
+        console.log('postid....'+Session.get('selectedPostId'));
+        Session.set('selectedPostId',"");
+        Session.set("pageId",Session.get("selectedPageId"));        
+        history.back();
+    }
 });
 Template.home.helpers({
     'postsList' : function() {
@@ -48,8 +57,11 @@ Template.home.helpers({
     }
 });
 
-// Template.header.rendered = function(){
-//     Session.set('selectedPostId',"");
-//     Session.set("pageId","");            
+// Template.home.rendered = function(){
+//     console.log('rendered');
+//       $('.animate').fadeIn(3000);
 // };
 
+// Tracker.afterFlush(function(){
+//   $('.animate').delay(1000).fadeOut('slow');
+// });
