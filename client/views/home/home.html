@@ -1,5 +1,5 @@
 <template name="home">
-    <div id="DashBoard" class="row padding-100" style="background-color: #f05f40;">
+<!--     <div id="DashBoard" class="row padding-100" style="background-color: #f05f40;">
           <div class="container">
                <div class="col-md-12 white text-center margin-bottom-20 font-xxlarge">
                      We've got what you need!
@@ -11,7 +11,7 @@
                    <button class="btn white-button"><span>Get Started</span></button>
                </div>
           </div>
-     </div>
+     </div> -->
      <div id="Pages" class="row padding-100 bg-color" >     
      {{#if showSelectedPost}}
           <div class="container" >
@@ -40,11 +40,12 @@
                <div class="row equal">              
               {{#each postsList}}
                <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
-                  {{#each featuredImageList}}
-                  
-                    <img src="{{url}}" style="width:270px;height:150px"/>
-                  
-                  {{/each}}
+                    <!-- <img src="{{featuredImage}}" style="width:270px;height:150px"/>                   -->
+                  {{#each imageList}} 
+                    {{#if equals postId ../_id}}                 
+                      <img src="{{url}}" style="width:270px;height:150px"/>
+                    {{/if}}                  
+                  {{/each}}                  
                   <div class="post-thumb">
                       <h3 id="postTitle" class="moz-header">{{title}}</h3>
                       <p class="break-word text-ellipsis">
@@ -57,7 +58,7 @@
           </div>
      {{/if}}
     </div>
-     <div id="Media" class="row bg-black">    
+<!--      <div id="Media" class="row bg-black">    
      <i class="fa fa-arrow-circle-left"></i>                      
       {{#each mediaList}}
           <div class="col-md-4 padding-left-zero padding-right-zero">            
@@ -73,5 +74,5 @@
                     <span>Download Now!</span>
                 </button>
               </div>        
-     </div>
+     </div> -->
 </template>
