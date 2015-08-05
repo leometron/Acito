@@ -19,21 +19,19 @@
                      {{showSelectedPost.title}}
                </div>
                <div class="row equal">              
-               <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
-                  <div>
                     {{#each imageList}}
                       {{#if equals showSelectedPost._id postId}}
-                    <img src="{{url}}" style="width:270px;height:150px"/>
+                  <div style="text-align:center" class="col-xs-4">
+                    <img src="{{url}}" style="width:270px;height:200px"/>
+                  </div>
                     {{/if}}
                     {{/each}}
                   </div>
-                  <div>
+                  <div class="row" style="margin-top:50px" >
                       <p>
                          {{showSelectedPost.content}}
                       </p>
                    </div>                   
-               </div>                  
-              </div>                                   
           </div>
      {{else}}   
           <div class="container" >
