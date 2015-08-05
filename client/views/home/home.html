@@ -14,16 +14,16 @@
      </div>   
      <div id="Pages" class="row padding-100 bg-white">
           <div class="container">
-               <div class="col-md-12 text-center black" style="font-size: xx-large; margin-bottom: 40px;">
+<!--                <div class="col-md-12 text-center black" style="font-size: xx-large; margin-bottom: 40px;">
                      Posts
-               </div>
+               </div> -->
               {{#each postsList}}
                <div class="col-md-3">
                    <div>
                     <div>
                        {{#if equals featuredImage "-"}}
                         {{else}}
-                        <img src="{{featuredImage}}" style="width:100px;height:100px"/>
+                        <img src="{{featuredImage}}" style="width:250px;height:150px"/>
                       {{/if}}
                     </div>
                     <h3 class="text-center">{{title}}</h3>
