@@ -12,13 +12,23 @@ Template.header.events({
     'click #pageName': function() {
         Session.set('selectedPostId',"");        
         Session.set("pageId",this._id);
-    } 
+    },
+    'click #backToPage' : function()  {
+        Session.set('selectedPostId',"");
+        Session.set("pageId",Session.get("selectedPageId"));        
+        history.back();
+    }
 });
 
 Template.header.helpers({
     'pagesList' : function() {
         return Pages.find();
     },
+    'showSelectedPost' : function() {
+        if(Session.get('selectedPostId')){
+            return Posts.findOne({_id: Session.get('selectedPostId')});            
+        }
+    },    
 });
 
 Template.home.events({
@@ -29,13 +39,6 @@ Template.home.events({
         $('#postDetail').fadeIn(10000);                       
         Router.go("/post/"+this._id);
     },
-    'click #backToPage' : function()  {
-        console.log('pageId...'+Session.get("pageId"));
-        console.log('postid....'+Session.get('selectedPostId'));
-        Session.set('selectedPostId',"");
-        Session.set("pageId",Session.get("selectedPageId"));        
-        history.back();
-    }
 });
 Template.home.helpers({
     'postsList' : function() {
