@@ -59,13 +59,14 @@ Template.home.helpers({
 });
 
 
-Template.home.rendered = function () {   
-    
-  $(document).ready(function(){   
+Template.home.rendered = function () {
 
-    $('#showPost').hide();
+$('#showPost').hide();
+$('#postIntroduction').offset().top - $('#postasas').offset().top
 
-    console.log("ready");
+
+ $(document).ready(function(){       
+  
   $('.slider5').bxSlider({
     slideWidth: 600,
     minSlides: 3,

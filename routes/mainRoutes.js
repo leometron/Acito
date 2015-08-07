@@ -15,7 +15,8 @@ Router.route('/post/:_id', {
   layoutTemplate: 'basicLayout',	
   name: 'postDetail',
   action: function () {
-    this.render('home');
+    // this.render('home');
+    this.render('postDetail');    
     SEO.set({ title: 'postdetails - ' + Meteor.App.NAME });
     console.log(Meteor.App.NAME);
   }    

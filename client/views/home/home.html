@@ -1,5 +1,6 @@
 <template name="home">
- <!-- <div id="DashBoard" class="row padding-100" style="background-color: #f05f40;">
+
+<!--     <div id="DashBoard" class="row padding-100" style="background-color: #f05f40;">
           <div class="container">
                <div class="col-md-12 white text-center margin-bottom-20 font-xxlarge">
                      We've got what you need!
@@ -11,46 +12,21 @@
                    <button class="btn white-button"><span>Get Started</span></button>
                </div>
           </div>
-     </div>    -->
-
-
-          <div id="Pages" class="row padding-100 bg-color" >     
-     {{#if showSelectedPost}}
-          <div class="container" >
-            <!-- <button type="button" class="btn btn-default" id="backToPage">Back</button> -->
-            <span id="backToPage" style="font-size: 20px;color: #4C9ED9;cursor:pointer;">Back</span>                       
-               <div class="col-md-12 text-center black font-xxlarge margin-bottom-40">
-                     {{showSelectedPost.title}}
-               </div>
-               <div class="row equal">              
-                    {{#each imageList}}
-                      {{#if equals showSelectedPost._id postId}}
-                  <div style="text-align:center" class="col-xs-4">
-                    <img src="{{url}}" style="width:270px;height:200px"/>
-                  </div>
-                    {{/if}}
-                    {{/each}}
-                  </div>
-                  <div class="row" style="margin-top:50px" >
-                      <p>
-                         {{showSelectedPost.content}}
-                      </p>
-                   </div>                   
-          </div>
-     {{else}}   
-          <div class="container" >
-               <div class="row equal">              
+     </div> -->
+     <div id="Pages" class="row padding-100 bg-color" >     
+         <div class="container" >
+               <div class="row equal image">              
               {{#each postsList}}
-               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15">                  
+               <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
                     <img src="{{featuredImage}}" style="width:270px;height:150px"/>                  
 <!--                   {{#each imageList}} 
                     {{#if equals postId ../_id}}                 
                       <img src="{{url}}" style="width:270px;height:150px"/>
                     {{/if}}                  
                   {{/each}}  -->                 
-                  <div class="post-thumb" style="width:270px;">
+                  <div class="post-thumb">
                       <h3 id="postTitle" class="moz-header">{{title}}</h3>
-                      <p id="content" class="break-word text-ellipsis">
+                      <p class="break-word text-ellipsis">
                          {{content}}
                       </p>
                    </div>                   
@@ -58,33 +34,25 @@
               {{/each}} 
               </div>                                   
           </div>
-            {{/if}} 
-     </div>  
-
-    <!--   <div id="Media" class="row bg-black">                          
-        {{#each mediaList}}
+    </div>
+<!--      <div id="Media" class="row bg-black">    
+     <i class="fa fa-arrow-circle-left"></i>                      
+      {{#each mediaList}}
           <div class="col-md-4 padding-left-zero padding-right-zero">            
             <img src="{{url}}" style="width: 100%; height: 250px">            
           </div>
-        {{/each}}                
-            <div class="col-md-12 margin-top-40 text-center white font-xxlarge">
-                Free Download
-            </div>
-            <div class="col-md-12 margin-bottom-40 margin-top-10 text-center">
-               <button class="btn white-button">
-                <span>Download Now!</span>
-            </button>
-          </div>        
+      {{/each}}           
+      <i class="fa fa-arrow-circle-right"></i>
+                <div class="col-md-12 margin-top-40 text-center white font-xxlarge">
+                    Free Download
+                </div>
+                <div class="col-md-12 margin-bottom-40 margin-top-10 text-center">
+                   <button class="btn white-button">
+                    <span>Download Now!</span>
+                </button>
+              </div>        
      </div> -->
-
-
-
-<!-- <div id="Media" class="row slider5 bg-black">
-  {{#each mediaList}}
-  <div ><img src="{{url}}" style="height:286px"></div> 
-  {{/each}}           
-</div> -->
-
+     
 <div id="Ask" class="cursor-pointer"><img src="images/Help.png" style="width: 30px; position: fixed; top: 50%;"></div>
 
 <div id="showPost" style="position: fixed; top: 40%; border: 1px solid white; background-color: white;left: 40px; width: 60%; border-radius: 10px; padding: 10px;">
@@ -94,4 +62,5 @@
       </div>
       <div class="col-md-2 col-xs-2"><a href="#" class="btn btn-default" style="margin-top:45px">Ask</a></div>
 </div>
+
 </template>
