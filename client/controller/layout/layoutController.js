@@ -26,7 +26,7 @@ Template.home.events({
         Session.set('selectedPageId',Session.get("pageId"));
         Session.set("pageId","");        
         Session.set('selectedPostId',this._id);
-        $('#postDetail').fadeIn(10000);                       
+        $('#postDetail').fadeIn(10000);                  
         Router.go("/post/"+this._id);
     },
     'click #backToPage' : function()  {
