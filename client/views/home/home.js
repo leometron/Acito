@@ -1,5 +1,7 @@
+var showPost = true;
+
 Template.home.helpers({
-  'feature' : function () {
+  /*'feature' : function () {
     return [
       { 'text' : 'Uses trusted packages', 'icon' : 'archive', 'path' : '#packages' },
       { 'text' : 'Has a console tool', 'icon' : 'terminal', 'path' : '#console-tool' },
@@ -53,13 +55,17 @@ Template.home.helpers({
       { 'root' : 'public' },
       { 'root' : 'meteor-boilerplate' }
     ];
-  }
+  }*/
 });
 
 
-Template.home.rendered = function () {
+Template.home.rendered = function () {   
+    
+  $(document).ready(function(){   
 
-  $(document).ready(function(){  
+    $('#showPost').hide();
+
+    console.log("ready");
   $('.slider5').bxSlider({
     slideWidth: 600,
     minSlides: 3,
@@ -84,3 +90,16 @@ Template.home.rendered = function () {
     return true;
   });
 };
+
+Template.home.events({
+  'click #Ask' : function(){   
+       if(showPost){          
+          $('#showPost').show();
+          showPost = false;  
+       }else{
+        $('#showPost').hide();
+          showPost = true;  
+       }    
+  }
+
+});
