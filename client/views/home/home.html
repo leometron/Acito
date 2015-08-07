@@ -13,36 +13,8 @@
           </div>
      </div> -->
      <div id="Pages" class="row padding-100 bg-color" >     
-     {{#if showSelectedPost}}
-          <div id="postDetail" class="container" >
-            <div class="animateclass">
-            <!-- <button type="button" class="btn btn-default" id="backToPage">Back</button> -->
-            <span id="backToPage" style="font-size: 20px;color: #4C9ED9;cursor:pointer;">Back</span>                       
-               <div class="col-md-12 text-center black font-xxlarge margin-bottom-40">
-                     {{showSelectedPost.title}}
-               </div>
-               <div class="row equal">              
-                    {{#each imageList}}
-                      {{#if equals showSelectedPost._id postId}}
-                  <div style="text-align:center" class="col-xs-4">
-                    <img src="{{url}}" style="width:270px;height:200px"/>
-                  </div>
-                    {{/if}}
-                    {{/each}}
-                  </div>
-                  <div class="row" style="margin-top:50px" >
-<!--                       <p>
-                         {{showSelectedPost.content}}
-                      </p> -->
-<textarea disabled rows="40" cols="150" style="border: none">
-                        {{showSelectedPost.content}}
-                     </textarea>                      
-                   </div>                   
-          </div>
-        </div>
-     {{else}}   
-          <div class="container" >
-               <div class="row equal">              
+         <div class="container" >
+               <div class="row equal image">              
               {{#each postsList}}
                <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
                     <img src="{{featuredImage}}" style="width:270px;height:150px"/>                  
@@ -61,7 +33,6 @@
               {{/each}} 
               </div>                                   
           </div>
-     {{/if}}
     </div>
 <!--      <div id="Media" class="row bg-black">    
      <i class="fa fa-arrow-circle-left"></i>                      

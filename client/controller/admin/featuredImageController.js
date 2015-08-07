@@ -15,10 +15,7 @@ Template.featuredImage.events({
         });
     },
     'click #publishFeaturedImage' : function() {
-      alert("click");
         Meteor.call('insertFeaturedImage',Session.get('selectFeaturedImage'),$('#pageId').val());
-        console.log(Session.get('selectFeaturedImage')+$('#pageId').val() + "......................");
-        // Session.set('selectFeaturedImage',"");
     }
  });
 
