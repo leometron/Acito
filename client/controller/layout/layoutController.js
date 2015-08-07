@@ -34,9 +34,8 @@ Template.header.helpers({
 Template.home.events({
     'click #postTitle': function() {
         Session.set('selectedPageId',Session.get("pageId"));
-        Session.set("pageId","");        
+        // Session.set("pageId","");        
         Session.set('selectedPostId',this._id);
-        $('#postDetail').fadeIn(10000);                       
         Router.go("/post/"+this._id);
     },
 });
@@ -48,6 +47,20 @@ Template.home.helpers({
     	return Media.find();
     },
 
+    // 'showSelectedPost' : function() {
+    //     if(Session.get('selectedPostId')){
+    //         // var temp = Session.get('selectedPostId');
+    //         // Session.set('selectedPostId',"");
+    //         // console.log('temp.........'+temp);
+    //         return Posts.findOne({_id: Session.get('selectedPostId')});            
+    //     }
+    // },
+    // 'imageList' : function() {
+    //     return featuredimage.find();
+    // }
+});
+
+Template.postDetail.helpers({
     'showSelectedPost' : function() {
         if(Session.get('selectedPostId')){
             // var temp = Session.get('selectedPostId');
@@ -55,10 +68,11 @@ Template.home.helpers({
             // console.log('temp.........'+temp);
             return Posts.findOne({_id: Session.get('selectedPostId')});            
         }
+        $('#postDetail').fadeIn(10000);          
     },
     'imageList' : function() {
         return featuredimage.find();
-    }
+    }   
 });
 
 // Template.home.rendered = function(){
@@ -83,3 +97,27 @@ Template.home.animations({
     animateInitialDelay: 500 // Delay before the initial items animate
   }
 });
+
+//myItem
+// Template.home.rendered = function(){
+//   var instance = this;
+//   if(Session.get("selected_item") === this.data._id){
+//     Meteor.defer(function() {  
+//       $(instance.firstNode).addClass("selected"); //use "instance" instead of "this"
+//     });
+//   }
+// };
+
+// Template.home.events({
+//   "click .myItem": function(evt, template){
+//     Session.set("selected_item", this._id);
+//   }
+// });
+
+
+// //myItemList
+// Template.home.helpers({
+//   items: function(){
+//     return Items.find();
+//   }
+// });

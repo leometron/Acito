@@ -1,0 +1,25 @@
+<template name="postDetail">
+     <div id="Pages" class="row padding-100 bg-color" >     
+          <div id="postDetail" class="container" >
+            <div class="animateclass">
+               <div class="col-md-12 text-center black font-xxlarge margin-bottom-40">
+                     {{showSelectedPost.title}}
+               </div>
+               <div class="row equal">              
+                    {{#each imageList}}
+                      {{#if equals showSelectedPost._id postId}}
+                  <div style="text-align:center" class="col-xs-4">
+                    <img src="{{url}}" style="width:270px;height:200px"/>
+                  </div>
+                    {{/if}}
+                    {{/each}}
+                  </div>
+                  <div class="row" style="margin-top:50px" >
+                    <textarea disabled rows="40" cols="150" style="border: none">
+                        {{showSelectedPost.content}}
+                    </textarea>                      
+                  </div>                   
+          </div>
+        </div>
+    </div>
+</template>
