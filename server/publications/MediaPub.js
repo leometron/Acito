@@ -2,7 +2,8 @@
 var querystr="";
 var date = "";
 
-Meteor.publish('Media', function () {
+Meteor.publish('Media', function (limit) {
+    
     var temp;
     if (querystr) {
         temp = querystr;

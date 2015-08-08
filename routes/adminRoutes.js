@@ -22,6 +22,9 @@ Router.route('/admin/homeSliders', function() {
 Router.route('/admin/settings', function() {
     this.render('settings');
 });
+Router.route('/admin/themes', function() {
+    this.render('themes');
+});
 Router.route('/admin/posts/add', function () {
     this.render('addNewPost');
 });

@@ -57,8 +57,16 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    height: 8em;      
+    height: 8em;
+    overflow: hidden; 
+}
+
+.navbar-default .navbar-nav li  a{
+    color: @fontColor;
+}
+
+.navbar-default .navbar-brand{
+    color: @fontColor;
 }
 
 .banner{
@@ -67,11 +75,22 @@
     background-image: url(/images/office.jpg);
     height: 700px;
     background-position: center;        
-
 }
 
 .moz-header{
     height: 1.2em;
     overflow: hidden;
     cursor : pointer;
+}
+
+.popover fade right in{
+    position: fixed;
+    top:50%;
+}
+
+@media(max-width:992px){
+    
+    .equal-child:nth-child(2n+1) {
+    clear: left;      
+   }
 }

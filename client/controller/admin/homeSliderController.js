@@ -66,6 +66,7 @@ Template.addNewHomeSlider.events({
             Session.set('errorMessage','');
             var sliderImage = $('#sliderImage').attr('src');
             Meteor.call('insertSliderData', $('#sliderName').val(), Session.get('selectimgName'), sliderImage, getCurrentDate());
+            Router.go('/admin/homeSliders');
         } 
     },
     'click #publishSlider': function() {
@@ -75,6 +76,7 @@ Template.addNewHomeSlider.events({
             Session.set('errorMessage','');
             var sliderImage = $('#sliderImage').attr('src');
             Meteor.call('publishSliderData', $('#sliderName').val(), Session.get('selectimgName'), sliderImage, getCurrentDate());
+            Router.go('/admin/homeSliders');
         } 
     }
 });
