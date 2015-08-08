@@ -5,13 +5,24 @@ homeslider.attachSchema(
     title: {
       type: String
     },
-    content: {
+    sliderName: {
+      type: String
+    },
+    sliderImage: {
       type: String
     },
     createdAt: {
-      type: Date,
-      denyUpdate: true
-    }
+      type: String
+    },
+    published: {
+      type: Boolean
+    },
+    deleted: {
+      type: Boolean
+    },
+    status: {
+      type: String
+    }  
   })
 );
 

@@ -1,18 +1,52 @@
 <template name="addNewHomeSlider">
-    <div>         
+    <div>
+        {{#if errormsg}}
+            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
+            <span  id="showError">{{errormsg}}</span></div>  
+        {{/if}}         
         <div class="margin-top-40">
             <div class="row">                             
                 <span style="font-size: 30px;">Add New Home Slider</span>           
             </div>
         </div>
         <div class="col-md-8  padding-left-zero">           
-            <input type="text" class="form-control" id="postName" value="Enter title here">   
+            {{#if showSelectedSlider}}
+                <input type="text" class="form-control" id="sliderName" value="{{showSelectedSlider.title}}"> 
+                {{else}}
+                <input type="text" class="form-control" id="sliderName" placeholder="Enter title here"> 
+            {{/if}} 
             <div class="bg-white margin-top-40">
                 <div class="board-view  border-bottom font-bold">Banned Image<span class="caret pull-right margin-top-10"></span></div>               
                 <div class="board-view">This is the banner image for our work</div>
                 <div class="board-view">Our work banner image*</div>
-                <div class="board-view"><input type="text" class="form-control" style="width: 82%; display: inline;">
+                <div class="board-view">
+                   {{#if showSelectedSlider}}
+                     {{#if imageName}} 
+                        <input type="text" class="form-control" style="width: 82%; display: inline;" value="{{imageName}}">
+                            {{else}}
+                                <input type="text" class="form-control" style="width: 82%; display: inline;" value="{{showSelectedSlider.sliderName}}">
+                     {{/if}}
+                        {{else}}
+                     {{#if imageName}} 
+                       <input type="text" class="form-control" style="width: 82%; display: inline;" value="{{imageName}}">
+                        {{else}}
+                            <input type="text" class="form-control" style="width: 82%; display: inline;">
+                     {{/if}}
+                   {{/if}}
                     <span><button type="button" id="selectImage" class="btn btn-default" data-toggle="modal" data-target="#myModal">Select image</button></span>
+                    <span class="cursor-pointer">
+                        {{#if showSelectedSlider}}
+                            {{#if getUrlValue}}
+                        <img src="{{getUrlValue}}" id="sliderImage" style="width:100px; height:100px;"/>
+                                {{else}}
+                        <img src="{{showSelectedSlider.sliderImage}}" id="sliderImage" style="width:100px; height:100px;"/>
+                            {{/if}}
+                            {{else}}
+                            {{#if getUrlValue}}
+                                <img src="{{getUrlValue}}" id="sliderImage" style="width:100px; height:100px;"/>
+                            {{/if}}
+                        {{/if}}
+                    </span>
                     <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog model-width">
                             <div class="modal-content">
@@ -28,7 +62,7 @@
                                             <div style="  margin: 70px auto 0;width:100%">
                                                 <p class="text-center font-bold" style="font-size: 20px;color: #A19B9B;">Drop files anywhere to upload</p>
                                                 <p class="text-center">or</p>
-                                                <div style="margin: 20px auto 0; width: 19%;"><input type="file" id="mediaName"></div>
+                                 <div style="margin: 20px auto 0; width: 19%;"><input type="file" id="selectMediaUrl"></div>
                                                 <div class="text-center margin-top-10 font-size-12"><p>Maximum upload file size: 24 MB.</p></div>
                                             </div>
                                         </div>
@@ -105,7 +139,7 @@
                                     </div>                                                              
                                 </div>
                                 <div class="modal-footer">
-                                     <button type="button" id="publish" class="btn btn-primary" data-dismiss="modal">Select</button>
+                                     <button type="button" id="sliderpublish" class="btn btn-primary" data-dismiss="modal">Select</button>
                                 </div>
                           </div>                      
                         </div>
@@ -114,7 +148,7 @@
             </div>
         </div>
         <div class="col-md-4 padding-bottom-40">
-             <div class="bg-white">
+             <!-- <div class="bg-white">
                 <div class="board-view  border-bottom font-bold">Display Custom Content<span class="caret pull-right margin-top-10"></span></div>          
                 <div class="board-view"><a href="#">Views</a> lets you build complete websites without coding.</div>
                 <div class="board-view">
@@ -137,13 +171,24 @@
                       </ul>
                 </div>
                 <div class="board-view"><button type="button" class="btn btn-default">Get Views</button></div>
-            </div>
+            </div> -->
             <div class="bg-white margin-top-20">
                 <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
-                    <span>                    
-                        <button type="button" id="savePost" class="btn btn-default">Save Draft</button>                            
-                    </span>
+                    <!-- <span>                    
+                        <button type="button" id="saveSlider" class="btn btn-default">Save Draft</button>                            
+                    </span> -->
+                    {{#if showSelectedSlider}}
+                        {{#if showSelectedSlider.published}}
+                        {{else}}
+                          {{#if showSelectedSlider.deleted}}
+                           {{else}}
+                            <span><button type="button" class="btn btn-default" id="updatedraft">Save Draft</button></span>
+                          {{/if}}
+                        {{/if}}
+                     {{else}}
+                    <button type="button" id="saveSlider" class="btn btn-default">Save Draft</button>
+                    {{/if}}
                     <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span>
                 </div>
                 <div class="board-view">Status: Draft <a href="#">Edit</a></div>
@@ -154,17 +199,21 @@
                 <div class="col-md-12 padding-left-zero" >
                     <div class="col-md-6 padding-left-zero cursor-pointer">                                       
                         <div>                                 
-                            Move to Bin  
+                            <!-- Move to Bin   -->
                         </div>                                                
                     </div>
                     <div class="col-md-6 padding-right-zero">
                         <span style="padding-left: 55%">
-                            <button type="button" class="btn btn-primary">Publish</button>                                                    
+                            {{#if showSelectedSlider.published}}
+                                <button type="button" class="btn btn-primary">Update</button> 
+                                {{else}}
+                                <button type="button" class="btn btn-primary" id="publishSlider">Publish</button> 
+                            {{/if}}             
                         </span>
                     </div>
                 </div>
             </div>
-             <div class="bg-white margin-top-20">
+             <!-- <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom font-bold">Attributes<span class="caret pull-right margin-top-10"></span></div>                
                 <div class="board-view" >
                     Orders
@@ -172,7 +221,7 @@
                 <div class="board-view">
                     <input type="text" class="form-control" value="0">
                 </div>                
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
