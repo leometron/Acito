@@ -26,7 +26,8 @@ Template.addNewHomeSlider.events({
     },
      'click .selectedImg' : function(e){     
     $('.selectedImg').removeClass('selected-border');
-    $(e.currentTarget).addClass('selected-border'); 
+    selectedImage(e);
+    // $(e.currentTarget).addClass('selected-border'); 
    }
 });
 

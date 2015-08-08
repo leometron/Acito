@@ -17,14 +17,14 @@
          <div class="container" >
                <div class="row equal image">              
               {{#each postsList}}
-               <div class="col-md-3 equal-child padding-left-zero margin-bottom-15">                  
+               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15">                  
                     <img src="{{featuredImage}}" style="width:270px;height:150px"/>                  
 <!--                   {{#each imageList}} 
                     {{#if equals postId ../_id}}                 
                       <img src="{{url}}" style="width:270px;height:150px"/>
                     {{/if}}                  
                   {{/each}}  -->                 
-                  <div class="post-thumb">
+                  <div class="post-thumb" style="width:270px">
                       <h3 id="postTitle" class="moz-header">{{title}}</h3>
                       <p class="break-word text-ellipsis">
                          {{content}}

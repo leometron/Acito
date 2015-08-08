@@ -9,6 +9,7 @@ Template.adminHeader.helpers({
             {'title': 'pages','icon':'fa-file','subtitle': [{'sTitle':'add','title': 'pages','name':'AddNew'}]},
             {'title': 'Settings', 'icon':'fa-cog'},
             {'title': 'SEO', 'icon':'fa-globe'},
+            {'title': 'themes', 'icon': 'fa-paint-brush'},
             {'title': 'Types', 'icon': 'fa-folder-open'},
         ]
     }
@@ -23,6 +24,7 @@ Template.adminHeader.rendered = function () {
     $('#subNavBarmediaadd').hide();
     $('#subNavBarpagesadd').hide();
     $('#subNavBarHomeSlidersadd').hide();
+    $('#subNavBarpostsimage').hide();;
     var pathname = $(location).attr('pathname').split('/')[1];
     var pathname1 = $(location).attr('pathname').split('/')[2];
     if(pathname == 'admin' && pathname1 != undefined){
@@ -74,13 +76,13 @@ Template.adminHeader.events({
          $('#navBarSettings').removeClass('selected');
      }
     if(this.title == 'posts'){
-        $('#subNavBarpostsadd').show(800);
-        $('#subNavBarpostscategories').show(800);
+        $('#subNavBarpostsadd').show(800);       
         $('#subNavBarpoststags').show(800);
+        $('#subNavBarpostsimage').show(800);
     }else{
-        $('#subNavBarpostsadd').hide(800);
-        $('#subNavBarpostscategories').hide(800);
+        $('#subNavBarpostsadd').hide(800);       
         $('#subNavBarpoststags').hide(800);
+        $('#subNavBarpostsimage').hide(800);
     }
     if(this.title == 'media'){
         $('#subNavBarmediaadd').show(800);    

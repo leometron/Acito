@@ -132,7 +132,7 @@
 }
 
 .cursor-pointer{
-  cursor: pointer;
+  cursor: @cursorPointer
 }
 
 .icons{ 
@@ -178,9 +178,6 @@
 
 .margin-top-15{
  margin-top: 15px 
-}
-.selected-border{
- border:3px solid blue;
 }
 
 .margin-bottom-10{
@@ -258,8 +255,9 @@
   background-color: @backgroundColor;
 }
 
-.selected-border{
-  border:3px solid blue;
+.selected-border{ 
+  border: 1px groove #DAD4D4;
+  opacity: 0.5;
 }
 
 body, #main {
