@@ -10,4 +10,5 @@ Meteor.startup(function () {
 	tags._ensureIndex({ name : "text" });	
 	Pages._ensureIndex ({ title: "text" });
 	Media._ensureIndex({ name : "text"});
+	homeslider._ensureIndex({title: "text"});
 });

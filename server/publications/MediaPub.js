@@ -3,6 +3,7 @@ var querystr="";
 var date = "";
 
 Meteor.publish('Media', function () {
+    
     var temp;
     if (querystr) {
         temp = querystr;

@@ -58,6 +58,12 @@ Template.home.helpers({
 
 
 Template.home.rendered = function () {
+$(function(){
+  $('#currentTheme').remove();   
+  var themesheet = $('<link href="/main.css" rel="stylesheet" id="currentTheme"/>');
+  themesheet.appendTo('head');
+});  
+  $('#showPost').hide();
 console.log($('#postIntroduction').offset());
 console.log($('#postasas').offset());
 $('#postIntroduction').offset().top - $('#postasas').offset().top
@@ -89,4 +95,11 @@ console.log($('#postIntroduction').offset().top - $('#postasas').offset().top);
 
     return true;
   });
+
+  var instance = this;
+  if(Session.get("selected_item") === this._id){
+    Meteor.defer(function() {  
+      $(instance.firstNode).addClass("selected"); //use "instance" instead of "this"
+    });
+  }
 };

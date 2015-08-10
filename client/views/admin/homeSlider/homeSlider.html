@@ -8,62 +8,82 @@
             </div>
             <div class="row post-margin">
                 <div style="float: right">
-                    <input type="text" class="form-control" id="pagesearch" style="width:54%; display:inline" />
-                    <span><button type="button" id="search" class="btn btn-default">Search Home Sliders</button></span>
+                    <input type="text" class="form-control" id="searchString" style="width:54%; display:inline" />
+                    <span><button type="button" id="searchSlider" class="btn btn-default">Search Home Sliders</button></span>
                 </div>
             </div>
             <div class="cursor-pointer">
-                <span><a id="pageAll">All</a> | 
-                      <a id="pagePublish">Published</a>                    
+                <span><a id="sliderAll">All</a> | 
+                      <a id="sliderPublish">Published</a> |
+                      <a id="sliderDraft">Draft</a> |
+                      <a id="sliderBin">Bin</a>
                 </span>
             </div>
             <div class="row post-margin">
                 <div class="col-md-3 padding-left-zero">
-                <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Bulk Actions
-                        <span class="caret"></span>
+               <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                        Bulk Actions                       
                     </button>
+                     <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Bulk Actions</a></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#">Move to Bin</a></li>
+                        <li><a href="#" class="menuitem">Bulk Actions</a></li>
+                        <li><a href="#" class="menuitem">Delete</a></li>
+                        <li><a href="#" class="menuitem">Move to Bin</a></li>
                     </ul>
                 </span>
-                    <span><button type="button" class="btn btn-default">Apply</button></span>
+                    <span class="margin-left-10"><button type="button" id="Bulkapply" class="btn btn-default">Apply</button></span>
                 </div>
                 <div class="col-md-6">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         All dates
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <li><a href="#">All dates</a></li>
-                    </ul>
+                    </ul> -->
+                    <select id="filterdate" class="selctionButton">
+                          <option value="All dates" selected="selected">All dates</option>
+                          <option value="/6/2015">June 2015</option>
+                          <option value="/7/2015">July 2015</option>
+                          <option value="/8/2015">August 2015</option>
+                    </select>
                 </span>
-                    <span><button type="button" class="btn btn-default">Filter</button></span>
+                    <span><button type="button" class="btn btn-default" id="Datefilter">Filter</button></span>
                 </div>
             </div>
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
                         <div class="col-md-1"></div>
-                        <div class="col-md-9 padding-left-zero margin-left-minus-30">Title</div>  <!-- <span><input type="checkbox"></span> -->      
+                        <div class="col-md-7 padding-left-zero margin-left-minus-30">Title</div>
+                        <div class="col-md-2">Status</div>  
                         <div class="col-md-2">Date</div>
                     </div>
-                    <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">                     
+                    <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">   
+                     {{#each sliderList}}
+                       {{#if currentUser}}                  
                         <div class="row padding-top-bottom-10">
                            <div class="col-md-1 margin-top-10">
                                     <input type="checkbox" class="checkbox">
                                 </div>
-                            <div class="col-md-9 padding-left-zero margin-left-minus-30"></div>                                                           
-                            <div class="col-md-2"></div>
-                        </div>                       
+                            <div class="col-md-7 padding-left-zero margin-left-minus-30" id="slider">
+                                {{#if deleted}}
+                                   <strike>{{title}}</strike>
+                                {{else}}
+                                    {{title}}
+                                {{/if}}
+                            </div>         
+                            <div class="col-md-2">{{status}}</div>
+                            <div class="col-md-2">{{createdAt}}</div>
+                        </div>
+                        {{/if}}
+                     {{/each}}                       
                     </div>
                 </div>
             </div>    
-            <div class="row post-margin">
+            <!-- <div class="row post-margin">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Bulk Actions
@@ -76,7 +96,7 @@
                     </ul>
                 </span>
                 <span><button type="button" class="btn btn-default">Apply</button></span>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
