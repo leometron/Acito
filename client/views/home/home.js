@@ -60,7 +60,7 @@ Template.home.helpers({
 Template.home.rendered = function () {
 $(function(){
   $('#currentTheme').remove();   
-  var themesheet = $('<link href="/newthemestyle.css" rel="stylesheet" id="currentTheme"/>');
+  var themesheet = $('<link href="/main.css" rel="stylesheet" id="currentTheme"/>');
   themesheet.appendTo('head');
 });  
   $('#showPost').hide();
