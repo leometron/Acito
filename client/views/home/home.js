@@ -1,7 +1,5 @@
-var showPost = true;
-
 Template.home.helpers({
-  /*'feature' : function () {
+  'feature' : function () {
     return [
       { 'text' : 'Uses trusted packages', 'icon' : 'archive', 'path' : '#packages' },
       { 'text' : 'Has a console tool', 'icon' : 'terminal', 'path' : '#console-tool' },
@@ -55,18 +53,25 @@ Template.home.helpers({
       { 'root' : 'public' },
       { 'root' : 'meteor-boilerplate' }
     ];
-  }*/
+  }
 });
 
 
 Template.home.rendered = function () {
-
-$('#showPost').hide();
+$(function(){
+  $('#currentTheme').remove();   
+  var themesheet = $('<link href="/newthemestyle.css" rel="stylesheet" id="currentTheme"/>');
+  themesheet.appendTo('head');
+});  
+  $('#showPost').hide();
+console.log($('#postIntroduction').offset());
+console.log($('#postasas').offset());
 $('#postIntroduction').offset().top - $('#postasas').offset().top
 
+console.log($('#postIntroduction').offset().top)
+console.log($('#postIntroduction').offset().top - $('#postasas').offset().top);
 
- $(document).ready(function(){       
-  
+  $(document).ready(function(){  
   $('.slider5').bxSlider({
     slideWidth: 600,
     minSlides: 3,
@@ -90,17 +95,11 @@ $('#postIntroduction').offset().top - $('#postasas').offset().top
 
     return true;
   });
-};
 
-Template.home.events({
-  'click #Ask' : function(){   
-       if(showPost){          
-          $('#showPost').show();
-          showPost = false;  
-       }else{
-        $('#showPost').hide();
-          showPost = true;  
-       }    
+  var instance = this;
+  if(Session.get("selected_item") === this._id){
+    Meteor.defer(function() {  
+      $(instance.firstNode).addClass("selected"); //use "instance" instead of "this"
+    });
   }
-
-});
+};

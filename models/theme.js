@@ -1,35 +1,20 @@
-homeslider = new Mongo.Collection('homeslider');
+theme = new Mongo.Collection('theme');
 
-homeslider.attachSchema(
+theme.attachSchema(
     new SimpleSchema({
-    title: {
+    userId: {
       type: String
     },
-    sliderName: {
+    themeName: {
       type: String
-    },
-    sliderImage: {
-      type: String
-    },
-    createdAt: {
-      type: String
-    },
-    published: {
-      type: Boolean
-    },
-    deleted: {
-      type: Boolean
-    },
-    status: {
-      type: String
-    }  
+    }
   })
 );
 
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
-  homeslider.allow({
+  theme.allow({
     insert : function () {
       return true;
     },
