@@ -36,7 +36,6 @@ Template.home.events({
         var userId = this._id;
         Session.set('selectedPageId',Session.get("pageId"));
         // Session.set("pageId","");        
-        Session.set('selectedPostId', userId);
         $('.image').animate({width: 'toggle'}, 770);
         setTimeout(function(){
              Router.go("/post/"+userId);
@@ -62,6 +61,12 @@ Template.home.helpers({
     // 'imageList' : function() {
     //     return featuredimage.find();
     // }
+});
+
+Template.header.helpers({
+    'mediaList' : function() {
+        return Media.find();
+    },
 });
 
 Template.postDetail.helpers({
