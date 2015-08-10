@@ -11,9 +11,9 @@
         </div>
         <div class="col-md-8  padding-left-zero">           
             {{#if showSelectedSlider}}
-                <input type="text" class="form-control" id="sliderName" value="{{showSelectedSlider.title}}"> 
+                <input type="text" class="form-control" id="sliderTitle" value="{{showSelectedSlider.title}}"> 
                 {{else}}
-                <input type="text" class="form-control" id="sliderName" placeholder="Enter title here"> 
+                <input type="text" class="form-control" id="sliderTitle" placeholder="Enter title here"> 
             {{/if}} 
             <div class="bg-white margin-top-40">
                 <div class="board-view  border-bottom font-bold">Banned Image<span class="caret pull-right margin-top-10"></span></div>               
@@ -22,9 +22,9 @@
                 <div class="board-view">
                    {{#if showSelectedSlider}}
                      {{#if imageName}} 
-                        <input type="text" class="form-control" style="width: 82%; display: inline;" value="{{imageName}}">
-                            {{else}}
-                                <input type="text" class="form-control" style="width: 82%; display: inline;" value="{{showSelectedSlider.sliderName}}">
+                        <input type="text" class="form-control" id="sliderName" style="width: 82%; display: inline;" value="{{imageName}}">
+                      {{else}}
+                        <input type="text" class="form-control" id="sliderName" style="width: 82%; display: inline;" value="{{showSelectedSlider.sliderName}}">
                      {{/if}}
                         {{else}}
                      {{#if imageName}} 
@@ -178,14 +178,7 @@
                     <!-- <span>                    
                         <button type="button" id="saveSlider" class="btn btn-default">Save Draft</button>                            
                     </span> -->
-                    {{#if showSelectedSlider}}
-                        {{#if showSelectedSlider.published}}
-                        {{else}}
-                          {{#if showSelectedSlider.deleted}}
-                           {{else}}
-                            <span><button type="button" class="btn btn-default" id="updatedraft">Save Draft</button></span>
-                          {{/if}}
-                        {{/if}}
+                    {{#if showSelectedSlider}}  
                      {{else}}
                     <button type="button" id="saveSlider" class="btn btn-default">Save Draft</button>
                     {{/if}}
@@ -198,17 +191,33 @@
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0; padding-bottom: 40px;">
                 <div class="col-md-12 padding-left-zero" >
                     <div class="col-md-6 padding-left-zero cursor-pointer">                                       
-                        <div>                                 
-                            <!-- Move to Bin   -->
-                        </div>                                                
+                        {{#if showSelectedSlider}}
+                            {{#if showSelectedSlider.deleted}}
+                              <div id="removeSlider">                                 
+                                 Delete  
+                              </div>
+                            {{else}}
+                              <div id="moveBin">                                 
+                                Move to Bin  
+                              </div>
+                            {{/if}}
+                        {{/if}}                                                
                     </div>
                     <div class="col-md-6 padding-right-zero">
                         <span style="padding-left: 55%">
-                            {{#if showSelectedSlider.published}}
-                                <button type="button" class="btn btn-primary">Update</button> 
+                           {{#if showSelectedSlider}}
+                             {{#if showSelectedSlider.deleted}}
+                             <button type="button" class="btn btn-primary" id="restoreSlider">Restore</button> 
+                              {{else}}
+                                {{#if showSelectedSlider.published}}
+                                    <button type="button" class="btn btn-primary" id="updateSlider">Update</button> 
+                                    {{else}}
+                                    <button type="button" class="btn btn-primary" id="republishSlider">Publish</button> 
+                                {{/if}}
+                             {{/if}}
                                 {{else}}
-                                <button type="button" class="btn btn-primary" id="publishSlider">Publish</button> 
-                            {{/if}}             
+                                    <button type="button" class="btn btn-primary" id="publishSlider">Publish</button>
+                               {{/if}}              
                         </span>
                     </div>
                 </div>

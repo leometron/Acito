@@ -58,13 +58,20 @@
                            <div class="col-md-1 margin-top-10">
                                     <input type="checkbox" class="checkbox">
                                 </div>
-                            <div class="col-md-9 padding-left-zero margin-left-minus-30" id="slider">{{title}}</div>          <div class="col-md-2">{{createdAt}}</div>
+                            <div class="col-md-9 padding-left-zero margin-left-minus-30" id="slider">
+                                {{#if deleted}}
+                                   <strike>{{title}}</strike>
+                                {{else}}
+                                    {{title}}
+                                {{/if}}
+                            </div>          
+                            <div class="col-md-2">{{createdAt}}</div>
                         </div>
                         {{/each}}                       
                     </div>
                 </div>
             </div>    
-            <div class="row post-margin">
+            <!-- <div class="row post-margin">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Bulk Actions
@@ -77,7 +84,7 @@
                     </ul>
                 </span>
                 <span><button type="button" class="btn btn-default">Apply</button></span>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
