@@ -1,5 +1,7 @@
 Meteor.subscribe('homeslider');
 
+var selectedIds = [];
+
 Template.addNewMedia.rendered = function(){
     $("#popupMediadetail").hide();
 };
@@ -110,8 +112,8 @@ Template.addNewHomeSlider.events({
          Meteor.call('removeSliderData', Session.get('selectedSliderId'));
          Router.go('/admin/homeSliders');
     },
-    'click #restoreSlider': function(){
-        Meteor.call('unbinSliderData', Session.get('selectedSliderId'));
+    'click #restoreSlider': function() {
+        Meteor.call('unbinSliderData', Session.get('selectedSliderId'), this.published);
         Router.go('/admin/homeSliders');
     }
 
@@ -153,6 +155,52 @@ Template.addNewHomeSlider.helpers({
         Session.set('selectImage', '');
         Session.set('selectimgName', '');
         Router.go("/admin/homeSliders/add");
+    },
+    'click #searchSlider': function() {
+        Meteor.call('searchSlider', $('#searchString').val());
+        Meteor._reload.reload();
+        Session.set('checkStatus', "all");
+    },
+    'click #Datefilter': function() {
+        Meteor.call('dateSlider', $('#filterdate').val());
+        Meteor._reload.reload();
+        Session.set('checkStatus', "all");
+    },
+    'click .menuitem': function (event) {            
+        $('#dropdownMenu1').text( $(event.target).text());            
+    },
+    'click .checkbox': function(event) {
+            if (event.target.checked == true) {
+              selectedIds.push( this._id);
+            } else {
+              var index = selectedIds.indexOf(this._id);
+              selectedIds.splice(index, 1);
+            }
+    },
+    'click #Bulkapply' : function () {
+          Meteor.call('bulkSlider', selectedIds, $('#dropdownMenu1').text());
+          Meteor._reload.reload();
+          Session.set('checkStatus', "all");
+    },
+    'click #sliderAll': function() {
+        Meteor.call('loadSlider', "All");
+        Meteor._reload.reload();
+        Session.set('checkStatus', "all");
+    },
+    'click #sliderPublish': function() {
+        Meteor.call('loadSlider', "Published");
+        Meteor._reload.reload();
+        Session.set('checkStatus', "published");
+    },
+    'click #sliderDraft': function() {
+        Meteor.call('loadSlider', "Draft");
+        Meteor._reload.reload();
+        Session.set('checkStatus', "draft"); 
+    },
+    'click #sliderBin': function() {
+        Meteor.call('loadSlider', "Bin");
+        Meteor._reload.reload();
+        Session.set('checkStatus', "bin");    
     }
  });
 
@@ -166,3 +214,18 @@ Template.addNewHomeSlider.helpers({
         Session.set('selectimgName', '');
     }
  });
+
+ Template.homeSlider.rendered = function(){
+    var status = Session.get('checkStatus');
+    if ( status == "all" ) {
+       $('#sliderAll').css('color','red');
+    } else if ( status == "published" ) {
+       $('#sliderPublish').css('color','red');
+    } else if ( status == "draft" ) {
+       $('#sliderDraft').css('color','red');
+    } else if ( status == "bin" ) {
+       $('#sliderBin').css('color','red');
+    } else {
+       $('#sliderAll').css('color','red');
+    }
+};

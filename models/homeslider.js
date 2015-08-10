@@ -20,6 +20,9 @@ homeslider.attachSchema(
     deleted: {
       type: Boolean
     },
+    createdBy: {
+            type: String
+    },
     status: {
       type: String
     }  
