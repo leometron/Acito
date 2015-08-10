@@ -1,6 +1,5 @@
 // General styles, e. g. for the body tag
-@import 'client/stylesheets/variables';
-@import 'client/stylesheets/lib/elements';
+
 /* -------------------
     Main Content
    ------------------- */
@@ -337,4 +336,96 @@ a {
     a:hover {
         color: @secondaryLinkHoverColor;
     }
+}
+
+
+.fixed-nav{
+  position:fixed;
+  background-color:transparent;
+}
+
+.header-content{
+    width: 100%;
+    text-align: center;    
+    position: absolute;
+    top: 30%;
+    background-position: center;
+}
+.header-content-inner{
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px;
+    color:@fontColor;
+}
+
+.padding-100{
+   padding: 100px 0;
+}
+.white-button{
+  font-size: 20px;
+    border-radius: 30px;
+    padding: 15px 30px;
+    background-color: @fontColor;
+}
+.img-view{
+  max-width: 100%;
+    height: auto;
+}
+.font-xxlarge{
+  font-size: xx-large;
+}
+.font-xlarge{
+  font-size: x-large;
+}
+.post-thumb{    
+    padding: 15px 0px 16px 20px; 
+    background: @fontColor;
+}
+.equal-child:nth-child(4n+1) {
+    clear: left;      
+}
+.break-word{
+    word-wrap: break-word;
+}
+.text-ellipsis{
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 8em;
+    overflow: hidden; 
+}
+
+.navbar-default .navbar-nav li  a{
+    color: @fontColor;
+}
+
+.navbar-default .navbar-brand{
+    color: @fontColor;
+}
+
+.banner{
+    width: 100%;
+    text-align: center;
+    background-image: url(/images/theme2.jpg);
+    height: 700px;
+    background-position: center;        
+}
+
+.moz-header{
+    height: 1.2em;
+    overflow: hidden;
+    cursor : pointer;
+}
+
+.popover fade right in{
+    position: fixed;
+    top:50%;
+}
+
+@media(max-width:992px){
+    
+    .equal-child:nth-child(2n+1) {
+    clear: left;      
+   }
 }
