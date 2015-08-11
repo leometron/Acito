@@ -1,34 +1,66 @@
 <template name="settings" id="settings">
+	    {{#if errormsg}}
+            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
+            <span  id="showError">{{errormsg}}</span></div>  
+        {{/if}}   
 	   <div class="row margin-top-40">
                 <span class="main-header">General Settings</span>                
-            </div>
+       </div>
 	<div class="margin-top-20">
 		<div class="row">
-			<div>
+	    {{#if settingsList}}
+			 <div>
 				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Title</div>
-				<div class="col-md-10"><input type="text" id="categoryName" class="form-control font-size-15" value="Acito"/></div>
-			</div>
-			<div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Tagline</div>
-				<div class="col-md-10"><input type="text" id="categorySlug" class="form-control font-size-15" value="Just another WordPress site"/></div>
-			</div>	
-			<div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">WordPress Address (URL)</div>
-				<div class="col-md-10"><input type="text" id="categorySlug" class="form-control font-size-15" value="http://www.acito.com"/></div>
-			</div>
-			<div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Address (URL)</div>
-				<div class="col-md-10"><input type="text" id="categorySlug" class="form-control font-size-15" value="http://www.acito.com"/></div>
-			</div>
-			<div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">E-mail Address</div>
-				<div class="col-md-10"><input type="text" id="categorySlug" class="form-control font-size-15" value="hello@acito.com"/></div>
-			</div>
-			<div>
+				<div class="col-md-10"><input type="text" id="sitetitle" class="form-control font-size-15" 
+					value="{{settingsList.siteTitle}}"/></div>
+			 </div>
+			 <div>
+				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Tagline</div>
+				 <div class="col-md-10"><input type="text" id="tagline" class="form-control font-size-15"
+				 	value="{{settingsList.tagline}}"/></div>
+			 </div>	
+			 <div>
+				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">WordPress Address (URL)</div>
+				 <div class="col-md-10"><input type="text" id="wpaddress" class="form-control font-size-15"
+				 	value="{{settingsList.wordpressAddress}}"/></div>
+		 	 </div>
+			 <div>
+				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Address (URL)</div>
+				 <div class="col-md-10"><input type="text" id="siteaddress" class="form-control font-size-15"
+				 	value="{{settingsList.siteAddress}}"/></div>
+			 </div>
+			 <div>
+				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">E-mail Address</div>
+				 <div class="col-md-10"><input type="text" id="email" class="form-control font-size-15"
+				 	value="{{settingsList.email}}"/></div>
+			 </div>
+		  {{else}}
+		  	<div>
+				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Title</div>
+				<div class="col-md-10"><input type="text" id="sitetitle" class="form-control font-size-15"/></div>
+			 </div>
+			 <div>
+				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Tagline</div>
+				 <div class="col-md-10"><input type="text" id="tagline" class="form-control font-size-15"/></div>
+			 </div>	
+			 <div>
+				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">WordPress Address (URL)</div>
+				 <div class="col-md-10"><input type="text" id="wpaddress" class="form-control font-size-15"/></div>
+		 	 </div>
+			 <div>
+				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Address (URL)</div>
+				 <div class="col-md-10"><input type="text" id="siteaddress" class="form-control font-size-15"/></div>
+			 </div>
+			 <div>
+				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">E-mail Address</div>
+				 <div class="col-md-10"><input type="text" id="email" class="form-control font-size-15"/></div>
+			 </div>
+	    {{/if}}		
+			<!-- <div>
 				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-bottom-10">Membership</div>
 				<div class="col-md-10 margin-bottom-10"><label class="checkbox-inline"><input type="checkbox" value="">Anyone can register</label></div>
-			</div>
-			<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">New User Default Role</div>
+			</div> -->
+			<!-- <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">New User Default Role</div>
 			<div class="col-md-10">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -42,8 +74,8 @@
                  </li>                                                                                               
                     </ul>
                 </span>                       
-	        </div>			
-	        <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">TimeZone</div>
+	        </div>			 -->
+	        <!-- <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">TimeZone</div>
 			<div class="col-md-10 margin-top-10">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -93,8 +125,8 @@
 				</div>
 				<div><a href="#">Documentation on date and time formatting.</a></div>
 				</div>
-			</div>	
-	         <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">Week Starts On</div>
+			</div>	 -->
+	        <!--  <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">Week Starts On</div>
 			<div class="col-md-10 margin-top-10">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -108,25 +140,28 @@
                  </li>                                                                                  
                     </ul>                     
                 </span>                       
-	        </div>			
+	        </div>			 -->
 	         <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">Site Language</div>
 			<div class="col-md-10 margin-top-10">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Tamil                   
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="addlanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        English                   
                     </button>
                       <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">              
 		                <li role="presentation">
-		                   <a class="menuitem2"
-		                      id="config-request-command" href="#">Tamil
+		                   <a class="languagemenu"
+		                      id="config-request-command" href="#">English
 		                   </a>
+		                   <!-- <a class="languagemenu"
+		                      id="config-request-command" href="#">Tamil
+		                   </a> -->
 		                </li>                                                                                  
                     </ul>                    
                 </span>                       
 	        </div>			
 			<div class="row padding-top-bottom-10 ">
-				<span><button class="btn btn-primary margin-top-40" id="updateCategory">Save Changes</button></span>				
+			 	<span><button class="btn btn-primary margin-top-40" id="savesetting">Save Changes</button></span>
 			</div>			
 		</div>
 	</div>

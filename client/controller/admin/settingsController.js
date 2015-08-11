@@ -1,0 +1,41 @@
+
+Meteor.subscribe("settings");
+
+Template.settings.events({
+	'click #savesetting': function() {
+		if(!$('#sitetitle').val()){
+			Session.set('errorMessage','site title is required');
+		}else if(!$('#tagline').val()){
+			Session.set('errorMessage','tag line is required');
+		}else if(!$('#wpaddress').val()){
+			Session.set('errorMessage','word press address is required');
+		}else if(!$('#siteaddress').val()){
+			Session.set('errorMessage','site address is required');
+		}else if(!$('#email').val()){
+			Session.set('errorMessage','email is required');
+		} else {
+			Session.set('errorMessage','');
+			var language = (!Session.get('languageName'))? "English":  Session.get('languageName');
+		    Meteor.call('saveSettingData', $('#sitetitle').val(), $('#tagline').val(), $('#wpaddress').val(), $('#siteaddress').val(), $('#email').val(), language);
+		}
+	},
+	'click .languagemenu': function(event){
+		$('#addlanguage').text($(event.target).text());
+		Session.set('languageName', $(event.target).text());
+	}
+});
+
+
+Template.settings.helpers({
+	'errormsg' : function() {
+        return Session.get('errorMessage');
+    },
+    'settingsList': function(){
+    	var userId = Meteor.userId();
+    	return settings.findOne({createdBy: userId});
+    }
+});
+
+Template.adminHeader.events({
+	
+});

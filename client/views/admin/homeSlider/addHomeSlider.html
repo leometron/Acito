@@ -5,8 +5,12 @@
             <span  id="showError">{{errormsg}}</span></div>  
         {{/if}}         
         <div class="margin-top-40">
-            <div class="row">                             
-                <span style="font-size: 30px;">Add New Home Slider</span>           
+            <div class="row">
+                {{#if showSelectedSlider}}                             
+                    <span style="font-size: 30px;">Edit Home Slider</span>
+                  {{else}}
+                    <span style="font-size: 30px;">Add New Home Slider</span>
+                {{/if}}           
             </div>
         </div>
         <div class="col-md-8  padding-left-zero">           
