@@ -8,7 +8,6 @@ Has the events and helpers related to home page.
 */
 
 Meteor.subscribe('featuredimage');
-Meteor.subscribe('homeslider');
 
 Template.header.events({
    'click #pageName': function() {
