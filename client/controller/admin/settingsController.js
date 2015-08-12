@@ -33,9 +33,15 @@ Template.settings.helpers({
     'settingsList': function(){
     	var userId = Meteor.userId();
     	return settings.findOne({createdBy: userId});
+    },
+    'languageList': function(){
+    	return Session.get('languageName');
     }
 });
 
 Template.adminHeader.events({
-	
+	'click #navBarSettings': function(){
+		Session.set('errorMessage', '');
+		Session.set('languageName', '');
+	}
 });

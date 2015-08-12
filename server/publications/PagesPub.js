@@ -41,51 +41,20 @@ Meteor.methods({
 
     'insertPagesData': function (title, content, date, parent) {
         var currentUserId = Meteor.userId();
-        Pages.insert ({
-            title: title,
-            content: content,
-            deleted: false,
-            published: true,
-            createdBy: currentUserId,
-            createdAt: date,
-            status:"Published",
-            parentId: parent
-        });
-
+        Pages.insert ({ title: title, content: content, deleted: false, published: true, createdBy: currentUserId, createdAt: date, status:"Published", parentId: parent});
     },
 
      'draftPagesData': function(title, content, date, parent) {
         var currentUserId = Meteor.userId();
-        Pages.insert ({
-            title: title,
-            content: content,
-            deleted: false,
-            published: false,
-            createdBy: currentUserId,
-            createdAt: date,
-            status:"Draft",
-            parentId: parent
-
-      });
-
+        Pages.insert ({ title: title, content: content, deleted: false, published: false, createdBy: currentUserId, createdAt: date, status:"Draft", parentId: parent});
     },
 
     'binPagesData': function(title, content, date, parent) {
       var currentUserId = Meteor.userId();
-      Pages.insert ({
-        title: title,
-        content: content,
-        deleted: true,
-        published: false,
-        createdBy: currentUserId,
-        createdAt: date,
-        status:"Bin",
-        parentId: parent
-        
-      });
+      Pages.insert ({ title: title, content: content, deleted: true, published: false, createdBy: currentUserId, createdAt: date, status:"Bin", parentId: parent});
     },
 
-     'deletePagesData' : function(pageTitle, pageComments, selectedPages, parent) {
+    'deletePagesData' : function(pageTitle, pageComments, selectedPages, parent) {
        Pages.update(selectedPages, {$set: {title : pageTitle, content: pageComments, deleted:true, published: false, status:"Bin", parentId: parent}});
     },
 

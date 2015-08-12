@@ -144,9 +144,19 @@
 	         <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">Site Language</div>
 			<div class="col-md-10 margin-top-10">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="addlanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                	{{#if settingsList}}
+                		{{#if languageList}}
+                			<button class="btn btn-default dropdown-toggle padding-right-20" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        	{{languageList}} </button>
+                		 {{else}}
+                		  <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="addlanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        {{settingsList.language}} </button>
+                		{{/if}}
+                     {{else}}
+                      <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="addlanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         English                   
-                    </button>
+                      </button>
+                	{{/if}}
                       <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">              
 		                <li role="presentation">
