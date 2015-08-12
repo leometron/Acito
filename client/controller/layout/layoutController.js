@@ -7,6 +7,8 @@ Has the events and helpers related to home page.
 
 */
 
+var showPost = true;
+
 Meteor.subscribe('featuredimage');
 
 Template.header.events({
@@ -43,6 +45,17 @@ Template.home.events({
             Router.go("/post/"+userId);
        }, 1000);  
    },
+    'click .Ask' : function(){   
+       if(showPost){          
+          $('#post').hide();
+          $('#showPost').show().animate({"width": "50%"}, "fast");
+          showPost = false;  
+       }else{
+        $('#post').show();
+        $('#showPost').hide().animate({"width": "-50%"}, "slow");
+          showPost = true;  
+       }    
+  },
 });
 Template.home.helpers({
    'postsList' : function() {
@@ -103,26 +116,51 @@ Template.home.animations({
  }
 });
 
-//myItem
-// Template.home.rendered = function(){
-//   var instance = this;
-//   if(Session.get("selected_item") === this.data._id){
-//     Meteor.defer(function() {  
-//       $(instance.firstNode).addClass("selected"); //use "instance" instead of "this"
-//     });
-//   }
-// };
+Template.home.rendered = function () {
 
-// Template.home.events({
-//   "click .myItem": function(evt, template){
-//     Session.set("selected_item", this._id);
-//   }
-// });
+  Meteor.setTimeout(function(){
+    $('#xLoader').hide();
+   $(".owl-carousel").owlCarousel({  
+      autoPlay: 3000, 
+      items : 5,
+    });
+   scrollToDown();
+  },5500);    
 
 
-// //myItemList
-// Template.home.helpers({
-//   items: function(){
-//     return Items.find();
-//   }
-// });
+$(function(){
+  $('#currentTheme').remove();   
+  var themesheet = $('<link href="/main.css" rel="stylesheet" id="currentTheme"/>');
+  themesheet.appendTo('head');
+});  
+
+$('#showPost').hide();
+$('#postIntroduction').offset().top - $('#postasas').offset().top
+   
+  $('a[href*=#]:not([href=#])').click(function () {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+
+    return true;
+  });
+
+  var instance = this;
+  if(Session.get("selected_item") === this._id){
+    Meteor.defer(function() {  
+      $(instance.firstNode).addClass("selected"); //use "instance" instead of "this"
+    });
+  }
+};
+
+function scrollToDown(){
+   console.log("loaded");
+    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+}
