@@ -78,6 +78,18 @@ Template.home.helpers({
    // }
 });
 
+Template.header.helpers({
+    'homeSliderList' : function() {
+        return homeslider.find();
+    },
+    'singlehomeSlider' : function() {
+        return homeslider.findOne({}, { limit:1 });
+    },
+    'mediaList' : function() {
+    return Media.find();
+   },
+});
+
 Template.postDetail.helpers({
    'showSelectedPost' : function() {
        if(Session.get('selectedPostId')){
@@ -164,3 +176,4 @@ function scrollToDown(){
    console.log("loaded");
     $('html, body').animate({scrollTop:$(document).height()}, 'slow');
 }
+

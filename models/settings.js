@@ -17,24 +17,24 @@ settings.attachSchema(
     email: {
       type: String
     },
-    membership: {
-      type: String
-    },
-    userDefaultRole: {
-      type: String
-    },
-    timeZone: {
-      type: String
-    },
-    dateFormat: {
-      type: String
-    },
-    timeFormat: {
-      type: String
-    },
-    weekStarts: {
-      type: String
-    },
+    // membership: {
+    //   type: String
+    // },
+    // userDefaultRole: {
+    //   type: String
+    // },
+    // timeZone: {
+    //   type: String
+    // },
+    // dateFormat: {
+    //   type: String
+    // },
+    // timeFormat: {
+    //   type: String
+    // },
+    // weekStarts: {
+    //   type: String
+    // },
     language: {
       type: String
     },

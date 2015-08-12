@@ -18,8 +18,3 @@ Template.themes.events({
     	Meteor.call('saveTheme',$('.themeSelection.selected-border').attr('id'));
     }
 });
-
-Template.themes.helpers({
- 
-});
-

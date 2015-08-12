@@ -1,8 +1,6 @@
 var showPost = true;
 
-Template.theme.helpers({
- 
-});
+
 
 
 Template.theme.rendered = function () {
@@ -25,7 +23,3 @@ Template.theme.rendered = function () {
   });
 };
 
-Template.theme.events({
-  
-
-});

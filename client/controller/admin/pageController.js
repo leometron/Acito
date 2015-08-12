@@ -208,7 +208,6 @@ Template.pages.events ({
         },
 
         'click .parentlist': function (event) { 
-        
             var parentName = $(event.target).text();       
             $('#parentinsert').text( $(event.target).text());
             Session.set('ParentTitle', parentName);        
