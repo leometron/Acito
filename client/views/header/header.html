@@ -16,85 +16,78 @@
        </div>
     </nav>
 </div>
+
 {{else}}
-   <div>
-    
-
-
+   
 <div class="container">
-  <br>
   <div id="myCarousel" class="carousel slide bannerDesign" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
-
+      {{#if isHomeSlider}}      
       {{#each homeSliderList}}
       {{#if equals _id singlehomeSlider._id }}
-      <div class="item active" id="someid">
-        <img src="{{sliderImage}}" alt="Chania" style="width:100%; height: 600px">
-      </div>
+        <div class="item active" id="someid">
+          <img src="{{sliderImage}}" style="width:100%; height: 600px">
+        </div>
       {{else}}
-      <div class="item">
-        <img src="{{sliderImage}}" alt="Chania" style="width:100%; height: 600px">
-      </div>
+        <div class="item">
+          <img src="{{sliderImage}}" style="width:100%; height: 600px">
+        </div>
+        
       {{/if}}
-      {{/each}}
-
-    </div>
-
         <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="border:none; padding:25px;">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>  
         <a class="carousel-control right" href="#myCarousel" data-slide="next" style="border:none; padding:25px;">
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
-
+      {{/each}} 
+      {{else}} 
+        <img src="/images/background/background1.jpg" style="width:100%; height: 600px">
+      {{/if}}  
+    </div>
   </div>
 </div>
+  
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
+  <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand page-scroll font-xlarge" href="#">ACITO</a>
+      </div>
 
-       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll font-xlarge" href="#">ACITO</a>
-            </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <!-- <a class="page-scroll" href="#DashBoard">DashBoard</a> -->
+            </li>
+            {{#each pagesList}}
+            <li>
+              <a id="pageName" class="page-scroll" href="#Pages">{{title}}</a>
+            </li>                    
+            {{/each}}                      
+            <li>
+              <!-- <a class="page-scroll" href="#Media">Media</a> -->
+            </li>
+          </ul>
+      </div>
+  </div>
+</nav>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <!-- <a class="page-scroll" href="#DashBoard">DashBoard</a> -->
-                    </li>
-                        {{#each pagesList}}
-                            <li>
-                                <a id="pageName" class="page-scroll" href="#Pages">{{title}}</a>
-                            </li>                    
-                        {{/each}}                      
-                    <li>
-                        <!-- <a class="page-scroll" href="#Media">Media</a> -->
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+<header>
+  <div class="header-content">
+    <div class="header-content-inner">
+      <h1 style="text-transform: uppercase;font-weight: 700;font-size: 65px;line-height: 70px;">Your Favorite Source of Free Bootstrap Themes</h1>              
+        <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+    </div>
+  </div>
+</header>
 
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1 style="text-transform: uppercase;font-weight: 700;font-size: 65px;line-height: 70px;">Your Favorite Source of Free Bootstrap Themes</h1>              
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <!-- <a href="#about" class="btn white-button margin-top-10 black">Find Out More</a> -->
-
-            </div>
-        </div>
-    </header>
-</div>
 {{/if}}
+
 </template>
 

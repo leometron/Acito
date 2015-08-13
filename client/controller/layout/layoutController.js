@@ -67,14 +67,14 @@ Template.home.helpers({
 
 Template.header.helpers({
     'homeSliderList' : function() {
-        return homeslider.find();
+        return homeslider.find({status:"Published"});
     },
     'singlehomeSlider' : function() {
-        return homeslider.findOne({}, { limit:1 });
+        return homeslider.findOne({status:"Published"}, { limit:1 });
     },
-    'mediaList' : function() {
-    return Media.find();
-   },
+    'isHomeSlider' : function() {
+        return homeslider.findOne({status:"Published"});
+    },    
 });
 
 Template.postDetail.helpers({
