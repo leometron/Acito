@@ -1,30 +1,16 @@
 <template name="home">
-
-<!--     <div id="DashBoard" class="row padding-100" style="background-color: #f05f40;">
-          <div class="container">
-               <div class="col-md-12 white text-center margin-bottom-20 font-xxlarge">
-                     We've got what you need!
-               </div>
-               <div class="col-md-12 text-center margin-bottom-20 font-size-15" style="color: #F3BCBC;">
-                    Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!
-               </div>
-               <div class="col-md-12 text-center">
-                   <button class="btn white-button"><span>Get Started</span></button>
-               </div>
-          </div>
-     </div> -->
      <div id="Pages" class="row padding-100 bg-color" >     
          <div class="container" >
-               <div class="row equal image">              
+               <div class="row equal image-center">              
               {{#each postsList}}
                <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15">                  
-                    <img src="{{featuredImage}}" style="width:270px;height:150px"/>                  
+                    <img src="{{featuredImage}}" class="feature-image"/>                  
                   {{#each imageList}} 
                     {{#if equals postId ../_id}}                 
-                      <img src="{{url}}" style="width:270px;height:150px"/>
+                      <img src="{{url}}" class="feature-image"/>
                     {{/if}}                  
                   {{/each}}                  
-                  <div class="post-thumb" style="width:270px">
+                  <div class="post-thumb post-width text-center">
                       <h3 id="postTitle" class="moz-header">{{title}}</h3>
                       <p class="break-word text-ellipsis">
                          {{content}}
@@ -40,19 +26,19 @@
 
 <div class="owl-carousel">   
    {{#each mediaList}}
-      <div  class="item" style="margin-left:5px; margin-right:5px"> <img src="{{url}}" style="height:250px"></div>
+      <div  class="item margin-left-right-5">
+        <img src="{{url}}" class="height-250">
+      </div>
    {{/each}}   
 </div>
 </div>
 
-<div id="showPost" style="position: fixed; top: 30%; border: 1px solid white; background-color: white; padding: 10px; z-index: 10">     
+<div id="showPost" class="show-post">     
       <div class="col-md-10 col-xs-10">
           <textarea rows="5" cols="5" class="form-control" placeholder="Post Your Question"></textarea>
       </div>
-      <div class="col-md-2 col-xs-2 "><a href="#" class="btn btn-default" style="margin-top:45px">Ask</a></div>
-      <div class="Ask cursor-pointer"><img src="images/close-button.png" style=" width: 30px; position: fixed; top:27%"></div>
+      <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" class="btn btn-default">Ask</a></div>
+      <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
 </div>
-<div id="post" class="Ask cursor-pointer"><img src="images/post.png" style="width: 40px; position: fixed; top: 30%; z-index: 1"></div>
-
-
+<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div>
 </template>
