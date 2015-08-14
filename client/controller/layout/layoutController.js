@@ -43,7 +43,7 @@ Template.home.events({
        $('.image').animate({width: 'toggle'}, 770);
        setTimeout(function(){
             Router.go("/post/"+userId);
-       }, 700);  
+       }, 1000);  
    },
     'click .Ask' : function(){   
        if(showPost){          
