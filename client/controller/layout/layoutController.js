@@ -128,14 +128,15 @@ Template.home.animations({
  }
 });
 
-Template.home.rendered = function(){
+Template.home.rendered = function () {
 
   Meteor.setTimeout(function(){
     $('#xLoader').hide();
    $(".owl-carousel").owlCarousel({  
       autoPlay: 3000, 
       items : 5,
-    }); 
+    });
+   scrollToDown();
   },5500);    
 
 
@@ -171,4 +172,8 @@ $('#postIntroduction').offset().top - $('#postasas').offset().top
   }
 };
 
+function scrollToDown(){
+   console.log("loaded");
+    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+}
 

@@ -40,7 +40,7 @@ Template.settings.helpers({
 });
 
 Template.adminHeader.events({
-	'click #navBarSettings': function(){
+	'click #navBarsettings': function(){
 		Session.set('errorMessage', '');
 		Session.set('languageName', '');
 	}

@@ -43,36 +43,41 @@ Template.adminHeader.events({
      
      var selectedId = $(events.currentTarget).attr("id");
 
-     if(selectedId == 'navBardashboard'){
-         $('#navBardashboard').addClass('selected');
-     }else {
-         $('#navBardashboard').removeClass('selected');
-     }
-    if(selectedId == 'navBarposts'){
-         $('#navBarposts').addClass('selected');
-     }else {
-         $('#navBarposts').removeClass('selected');
-     }
-      if(selectedId == 'navBarmedia'){
-         $('#navBarmedia').addClass('selected');
-     }else {
-         $('#navBarmedia').removeClass('selected');
-     }
-    if(selectedId == 'navBarpages'){
-         $('#navBarpages').addClass('selected');
-         }else {
-         $('#navBarpages').removeClass('selected');
-     }
-     if(selectedId == 'navBarHomeSliders'){
-         $('#navBarHomeSliders').addClass('selected');
-         }else {
-         $('#navBarHomeSliders').removeClass('selected');
-     }
-     if(selectedId == 'navBarSettings'){
-         $('#navBarSettings').addClass('selected');
-         }else {
-         $('#navBarSettings').removeClass('selected');
-     }
+    if(selectedId == 'navBardashboard'){
+        $('#navBardashboard').addClass('selected');
+    }else {
+        $('#navBardashboard').removeClass('selected');
+    }
+   if(selectedId == 'navBarposts'){
+        $('#navBarposts').addClass('selected');
+    }else {
+        $('#navBarposts').removeClass('selected');
+    }
+     if(selectedId == 'navBarmedia'){
+        $('#navBarmedia').addClass('selected');
+    }else {
+        $('#navBarmedia').removeClass('selected');
+    }
+   if(selectedId == 'navBarpages'){
+        $('#navBarpages').addClass('selected');
+        }else {
+        $('#navBarpages').removeClass('selected');
+    }
+    if(selectedId == 'navBarhomeSliders'){
+        $('#navBarhomeSliders').addClass('selected');
+        }else {
+        $('#navBarhomeSliders').removeClass('selected');
+    }
+    if(selectedId == 'navBarsettings'){
+        $('#navBarsettings').addClass('selected');
+        }else {
+        $('#navBarsettings').removeClass('selected');
+    }
+    if(selectedId == 'navBarthemes'){
+         $('#navBarthemes').addClass('selected');
+        }else {
+        $('#navBarthemes').removeClass('selected');
+    }
     if(this.title == 'posts'){
         $('#subNavBarpostsadd').show(800);       
         $('#subNavBarpoststags').show(800);

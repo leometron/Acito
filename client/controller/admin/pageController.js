@@ -23,11 +23,16 @@
     }
 };
 
+  Template.addNewPage.rendered = function(){
+    Session.set('errorMessage','');
+  };
+
 Template.pages.events ({
         
         'click #list': function() {
             var userId = this._id;
             Session.set('selectedPages', userId);
+            Session.set('errorMessage', "");
             Router.go('/admin/pages/add');
         },
 
