@@ -54,11 +54,11 @@ Meteor.methods({
 		homeslider.remove({_id: sliderId});
 	},
 	'unbinSliderData': function(sliderId, status){
-		if(status){
+		// if(status){
 			homeslider.update(sliderId, {$set: {deleted: false, status:"Published"}});	
-		} else {
-			homeslider.update(sliderId, {$set: {deleted: false, status:"Draft"}});
-		}
+		// } else {
+		// 	homeslider.update(sliderId, {$set: {deleted: false, status:"Draft"}});
+		// }
 		
 	},
 	'searchSlider': function(searchString){
