@@ -33,7 +33,8 @@ Template.addNewPost.rendered = function(){
 Template.posts.events({
 	'click #addNewPost': function () {
 		Session.set('selectedPostId', "");
-		$(location).attr('href','posts/add');
+		// $(location).attr('href','posts/add');
+		Router.go("/admin/posts/add");
 	},
 	'click .post': function () {
 		Session.set('selectedPostId', this._id);

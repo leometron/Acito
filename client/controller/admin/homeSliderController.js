@@ -158,7 +158,9 @@ Template.addNewHomeSlider.helpers({
 
  Template.homeSlider.events({
     'click #addNew': function() {
-        $(location).attr('href','homeSliders/add');
+        Session.set('selectedSliderId', '');
+        // $(location).attr('href','homeSliders/add');
+        Router.go("/admin/homeSliders/add");
     },
      'click #slider': function() {
         Session.set('selectedSliderId', this._id);
@@ -166,7 +168,7 @@ Template.addNewHomeSlider.helpers({
         Session.set('errorMessage', "");
         Session.set('selectImage', '');
         Session.set('selectimgName', '');
-        Router.go("/admin/homeSliders/add");
+        Router.go("/admin/homeSliders/edit");
     },
     'click #searchSlider': function() {
         Meteor.call('searchSlider', $('#searchString').val());

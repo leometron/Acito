@@ -6,8 +6,8 @@
 
  */
 Template.dashBoard.rendered = function(){
-    Meteor.call('statusFilter',"All");
-    Meteor.call('loadPage',"All");
+    // Meteor.call('statusFilter',"All");
+    // Meteor.call('loadPage',"All");
 };
 
 Template.dashBoard.helpers({

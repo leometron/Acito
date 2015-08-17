@@ -33,7 +33,7 @@ Template.pages.events ({
             var userId = this._id;
             Session.set('selectedPages', userId);
             Session.set('errorMessage', "");
-            Router.go('/admin/pages/add');
+            Router.go('/admin/pages/edit');
         },
 
         'click #editlist': function() {
@@ -57,7 +57,9 @@ Template.pages.events ({
         },
 
         'click #addNew': function(){
-            $(location).attr('href','pages/add');
+           Session.set('selectedPages', ''); 
+            // $(location).attr('href','pages/add');
+            Router.go('/admin/pages/add');
         },
 
         'click #search': function() {

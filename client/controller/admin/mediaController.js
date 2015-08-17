@@ -71,7 +71,7 @@ Template.addNewMedia.events({
         var type = $('#filetype').text();
         var size = $('#filesize').text();
 
-        Meteor.call('insertMediaData', url, name, nametype, type, size, caption, alternative, description, getUserName(), getCurrentDate());
+        Meteor.call('insertMediaData', url, name, nametype, type, size, caption, alternative, description, getCurrentDate());
         Router.go("/admin/media");
       }
     },
@@ -99,7 +99,9 @@ Meteor.subscribe('Media');
 
 Template.media.events({
    'click #addNewMedia': function () {
-        $(location).attr('href','media/add');
+        Session.set('mediaDetail', '');
+        // $(location).attr('href','media/add');
+        Router.go('/admin/media/add');
    },
    // 'click .menuitem': function (event) {            
    //      $('#alldropdown').text( $(event.target).text());            
@@ -167,6 +169,7 @@ Template.media.helpers({
 
 Template.adminHeader.events({
     'click #subNavBarmediaadd': function() {
-        Session.set('currentMediaId', '');
+        $("#editPage").hide();
+        Session.set('mediaDetail', '');
     }
  });
