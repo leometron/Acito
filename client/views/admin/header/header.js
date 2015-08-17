@@ -63,15 +63,20 @@ Template.adminHeader.events({
          }else {
          $('#navBarpages').removeClass('selected');
      }
-     if(selectedId == 'navBarHomeSliders'){
-         $('#navBarHomeSliders').addClass('selected');
+     if(selectedId == 'navBarhomeSliders'){
+         $('#navBarhomeSliders').addClass('selected');
          }else {
-         $('#navBarHomeSliders').removeClass('selected');
+         $('#navBarhomeSliders').removeClass('selected');
      }
-     if(selectedId == 'navBarSettings'){
-         $('#navBarSettings').addClass('selected');
+     if(selectedId == 'navBarsettings'){
+         $('#navBarsettings').addClass('selected');
          }else {
-         $('#navBarSettings').removeClass('selected');
+         $('#navBarsettings').removeClass('selected');
+     }
+     if(selectedId == 'navBarthemes'){
+          $('#navBarthemes').addClass('selected');
+         }else {
+         $('#navBarthemes').removeClass('selected');
      }
     if(this.title == 'posts'){
         $('#subNavBarpostsadd').show(800);       

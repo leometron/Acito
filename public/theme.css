@@ -287,20 +287,23 @@ pre {
 }
 
 .bg-color{
-  background-color:  #F2F1F1;
+  background-color:  #B7B5B5;
 }
 
 .selected-border{ 
   border: 1px groove #DAD4D4;
   opacity: 0.5;
 }
-
 .bg-dynamic-color{
-  background-color: black;
+  background-color: white;
 }
 
 .bg-white{
   background-color: #ffffff;
+}
+
+.border{
+  border: 1px solid #B7B5B5;
 }
 
 .full-width{
@@ -331,9 +334,6 @@ pre {
   background-color: #ffffff;
 }
 
-.border{
-  border: 1px solid #B7B5B5;
-}
 
 .ui.header {
     font-family: 'Glegoo', serif;
@@ -414,6 +414,8 @@ pre {
     color: #ffffff;
 }
 
+
+
 .banner{
     width: 100%;
     text-align: center;
@@ -464,7 +466,7 @@ pre {
 
 .back{
   font-size: 20px;
-  color: black;
+  color: white;
   cursor:pointer;
   position:absolute;
   margin-top: 10px;
@@ -532,6 +534,7 @@ pre {
     left: 0;
     right: 0;
 }
+
 
 @media(max-width:992px){    
     .equal-child:nth-child(2n+1) {

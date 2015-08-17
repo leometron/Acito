@@ -28,8 +28,10 @@ Template.posts.rendered = function(){
 
 Template.posts.events({
 	'click #addNewPost': function () {
+		Session.set('selectImage', "");
 		Session.set('selectedPostId', "");
-		$(location).attr('href','posts/add');
+		// $(location).attr('href','posts/add');
+			Router.go("/admin/posts/add");
 	},
 	'click .post': function () {
 		Session.set('selectedPostId', this._id);
@@ -280,7 +282,9 @@ Template.addNewPost.helpers({
 
 Template.adminHeader.events({
 	'click #subNavBarpostsadd': function () {    
-		Session.set('selectedPostId', "");
+		Session.set('selectedPostId', "");	
+		Session.set('selectImage', "");
+
 	},
 	'click #navBarposts' : function() {
 		console.log('inside');

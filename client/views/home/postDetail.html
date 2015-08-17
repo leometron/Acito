@@ -1,27 +1,41 @@
 <template name="postDetail">
-     <div id="Pages" class="row padding-100 bg-gradient set-color">     
-          <div id="postDetail" class="container" >
+     <div id="Pages" class="row set-color">     
+          <div id="postDetail" class="container padding-zero full-width" >
             <div class="animateclass">
-               <div class="col-md-12 text-center black font-xxlarge margin-bottom-40 upper-case">
-                     {{showSelectedPost.title}}
-               </div>
-               <div class="row equal">              
+                <div id="myPost" class="carousel slide bannerDesign" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">              
                     {{#each imageList}}
                       {{#if equals showSelectedPost._id postId}}
-                  <div style="text-align:center" class="col-xs-4">
-                    <img src="{{url}}" class="image feature-image" />
-                  </div>
+                      {{#if equals _id singlePostSlider._id}}
+                       <div class="item active">
+                        <img src="{{url}}" class="slider-post-image">
+                        </div>
+                      {{else}}
+                      <div class="item">
+                        <img src="{{url}}" class="slider-post-image">
+                      </div>                  
+                      {{/if}}  
                     {{/if}}
                     {{/each}}
+                     <a class="carousel-control left" href="#myPost" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>  
+                    <a class="carousel-control right" href="#myPost" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a> 
                   </div>
-                  <div class="row">
-                <!--     <textarea disabled rows="40" cols="150" style="border: none">
-                        {{showSelectedPost.content}}
-                    </textarea>  -->
-                    <pre>  
-                     {{showSelectedPost.content}}                  
-                   </pre>
-                  </div>                   
+                </div>
+              <div class="col-md-12 text-center black font-xxlarge margin-top-15 margin-bottom-40 upper-case">
+               {{showSelectedPost.title}}
+              </div>
+              <div class="row">
+              <!--     <textarea disabled rows="40" cols="150" style="border: none">
+                  {{showSelectedPost.content}}
+              </textarea>  -->
+              <pre>  
+               {{showSelectedPost.content}}                  
+             </pre>
+            </div>                   
           </div>
         </div>
     </div>
