@@ -57,9 +57,9 @@ Template.pages.events ({
         },
 
         'click #addNew': function(){
-           Session.set('selectedPages', ''); 
-            // $(location).attr('href','pages/add');
-            Router.go('/admin/pages/add');
+           // Session.set('selectedPages', ''); 
+            $(location).attr('href','pages/add');
+            // Router.go('/admin/pages/add');
         },
 
         'click #search': function() {

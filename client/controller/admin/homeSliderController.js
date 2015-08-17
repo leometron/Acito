@@ -158,9 +158,9 @@ Template.addNewHomeSlider.helpers({
 
  Template.homeSlider.events({
     'click #addNew': function() {
-        Session.set('selectedSliderId', '');
-        // $(location).attr('href','homeSliders/add');
-        Router.go("/admin/homeSliders/add");
+        // Session.set('selectedSliderId', '');
+        $(location).attr('href','homeSliders/add');
+        // Router.go("/admin/homeSliders/add");
     },
      'click #slider': function() {
         Session.set('selectedSliderId', this._id);

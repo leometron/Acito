@@ -99,9 +99,9 @@ Meteor.subscribe('Media');
 
 Template.media.events({
    'click #addNewMedia': function () {
-        Session.set('mediaDetail', '');
-        // $(location).attr('href','media/add');
-        Router.go('/admin/media/add');
+        // Session.set('mediaDetail', '');
+        $(location).attr('href','media/add');
+        // Router.go('/admin/media/add');
    },
    // 'click .menuitem': function (event) {            
    //      $('#alldropdown').text( $(event.target).text());            
