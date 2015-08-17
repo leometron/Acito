@@ -19,6 +19,9 @@ Template.addNewMedia.helpers({
   },
   'showSelectedMedia': function(){
     return Media.findOne(Session.get('currentMediaId'));
+  },
+  'errormsg': function() {
+        return Session.get('errorMessage');
   }
 });
 
@@ -27,6 +30,7 @@ Template.addNewMedia.rendered = function(){
   if(page!="edit"){
     $("#editPage").hide();
   }
+  Session.set('errorMessage','');
 };
 
 Template.addNewMedia.events({
@@ -54,29 +58,39 @@ Template.addNewMedia.events({
         });
     },
     'click #publish':function(){
-      var url = $('#mediaUrl').val();
-      var name = $('#filename').val();
-      var nametype = $('#fullimagename').text();
-      var description = (!$('#description').val()) ? "-" : $('#description').val();
-      var alternative = (!$('#alternative').val()) ? "-" : $('#alternative').val();
-      var caption = (!$('#caption').val()) ? "-" : $('#caption').val();
-      var type = $('#filetype').text();
-      var size = $('#filesize').text();
+      if(!$('#filename').val()){
+        Session.set('errorMessage','Media Title is required');
+      } else {
+        Session.set('errorMessage','');
+        var url = $('#mediaUrl').val();
+        var name = $('#filename').val();
+        var nametype = $('#fullimagename').text();
+        var description = (!$('#description').val()) ? "-" : $('#description').val();
+        var alternative = (!$('#alternative').val()) ? "-" : $('#alternative').val();
+        var caption = (!$('#caption').val()) ? "-" : $('#caption').val();
+        var type = $('#filetype').text();
+        var size = $('#filesize').text();
 
-      Meteor.call('insertMediaData', url, name, nametype, type, size, caption, alternative, description, getUserName(), getCurrentDate());
-      Router.go("/admin/media");
+        Meteor.call('insertMediaData', url, name, nametype, type, size, caption, alternative, description, getCurrentDate());
+        Router.go("/admin/media");
+      }
     },
     'click #update': function(){
-      var url = $('#mediaUrl').val();
-      var name = $('#filename').val();
-      var nametype = $('#fullimagename').text();
-      var description = (!$('#description').val()) ? "-" : $('#description').val();
-      var alternative = (!$('#alternative').val()) ? "-" : $('#alternative').val();
-      var caption = (!$('#caption').val()) ? "-" : $('#caption').val();
-      var type = $('#filetype').text();
-      var size = $('#filesize').text();
-      Meteor.call('updateMediaData', Session.get('currentMediaId'), url, name, nametype, type, size, caption, alternative, description);
-      Router.go("/admin/media");
+      if(!$('#filename').val()){
+        Session.set('errorMessage','Media Title is required');
+      } else {
+        Session.set('errorMessage','');
+        var url = $('#mediaUrl').val();
+        var name = $('#filename').val();
+        var nametype = $('#fullimagename').text();
+        var description = (!$('#description').val()) ? "-" : $('#description').val();
+        var alternative = (!$('#alternative').val()) ? "-" : $('#alternative').val();
+        var caption = (!$('#caption').val()) ? "-" : $('#caption').val();
+        var type = $('#filetype').text();
+        var size = $('#filesize').text();
+        Meteor.call('updateMediaData', Session.get('currentMediaId'), url, name, nametype, type, size, caption, alternative, description);
+        Router.go("/admin/media");
+      }
     }
 });
 
@@ -85,7 +99,9 @@ Meteor.subscribe('Media');
 
 Template.media.events({
    'click #addNewMedia': function () {
+        // Session.set('mediaDetail', '');
         $(location).attr('href','media/add');
+        // Router.go('/admin/media/add');
    },
    // 'click .menuitem': function (event) {            
    //      $('#alldropdown').text( $(event.target).text());            
@@ -120,6 +136,7 @@ Template.media.events({
         Session.set('browsedMediaType',this.type);
         Session.set('browsedMediaSize',this.size);
         Session.set('mediaDetail','edit');
+        Session.set('errorMessage','');
    },
    'click #delete': function() {
         Meteor.call('removeMediaData', this._id);
@@ -137,9 +154,9 @@ Template.media.events({
         Meteor.call('removeSelectMediaData', select_data, $('#actiondropdown').text());
    },
    'click #filter': function(event) {
-           var date = $('#filterdate').val();
-           Meteor.call('selectDateFilter', date);
-           Meteor._reload.reload();
+        var date = $('#filterdate').val();
+        Meteor.call('selectDateFilter', date);
+        Meteor._reload.reload();
    }
    
 });
@@ -149,3 +166,10 @@ Template.media.helpers({
        return Media.find();
    }
 });
+
+Template.adminHeader.events({
+    'click #subNavBarmediaadd': function() {
+        $("#editPage").hide();
+        Session.set('mediaDetail', '');
+    }
+ });

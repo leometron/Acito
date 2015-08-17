@@ -93,6 +93,12 @@ Template.header.helpers({
     },    
 });
 
+Template.home.helpers({
+  'imageList' : function() {
+       return featuredimage.find();
+   }
+})
+
 Template.postDetail.helpers({
    'showSelectedPost' : function() {
        if(Session.get('selectedPostId')){
@@ -105,7 +111,10 @@ Template.postDetail.helpers({
    },
    'imageList' : function() {
        return featuredimage.find();
-   }   
+   },
+   'singlePostSlider' : function(){
+    return featuredimage.findOne({postId:Session.get('selectedPostId')}, { limit:1 });
+   }
 });
 
 // Template.home.rendered = function(){
@@ -131,6 +140,7 @@ Template.home.animations({
  }
 });
 
+
 Template.home.rendered = function(){
 
   Meteor.setTimeout(function(){
@@ -138,16 +148,25 @@ Template.home.rendered = function(){
    $(".owl-carousel").owlCarousel({  
       autoPlay: 3000, 
       items : 5,
-    }); 
+    });
+   scrollToDown();
   },5500);    
 
 
-$(function(){
-  $('#currentTheme').remove();   
+$(function(){ 
+  console.log(Session.get('themeName'));
+  var theme = Session.get('themeName');
+  if(theme === 'theme1'){
+    $('#currentTheme').remove(); 
+     var themesheet = $('<link href="/theme.css" rel="stylesheet" id="currentTheme1"/>');
+     themesheet.appendTo('head');
+  }  else{
+      $('#currentTheme1').remove();   
   var themesheet = $('<link href="/main.css" rel="stylesheet" id="currentTheme"/>');
   themesheet.appendTo('head');
+  }  
 });  
-
+  
 $('#showPost').hide();
 $('#postIntroduction').offset().top - $('#postasas').offset().top
    
@@ -174,4 +193,8 @@ $('#postIntroduction').offset().top - $('#postasas').offset().top
   }
 };
 
+function scrollToDown(){
+   console.log("loaded");
+    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+}
 

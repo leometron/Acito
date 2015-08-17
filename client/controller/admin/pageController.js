@@ -23,12 +23,17 @@
     }
 };
 
+  Template.addNewPage.rendered = function(){
+    Session.set('errorMessage','');
+  };
+
 Template.pages.events ({
         
         'click #list': function() {
             var userId = this._id;
             Session.set('selectedPages', userId);
-            Router.go('/admin/pages/add');
+            Session.set('errorMessage', "");
+            Router.go('/admin/pages/edit');
         },
 
         'click #editlist': function() {
@@ -52,7 +57,9 @@ Template.pages.events ({
         },
 
         'click #addNew': function(){
+           // Session.set('selectedPages', ''); 
             $(location).attr('href','pages/add');
+            // Router.go('/admin/pages/add');
         },
 
         'click #search': function() {

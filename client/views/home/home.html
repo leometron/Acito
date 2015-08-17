@@ -1,15 +1,15 @@
 <template name="home">
-     <div id="Pages" class="row padding-100 bg-color" >     
-         <div class="container" >
+     <div id="Pages" class="row bg-color" >     
+         <div class="container padding-100">
                <div class="row equal image image-center">              
               {{#each postsList}}
-               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15">                  
+               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">                  
                     <img src="{{featuredImage}}" class="feature-image"/>                  
-                  {{#each imageList}} 
+                 <!--  {{#each imageList}} 
                     {{#if equals postId ../_id}}                 
-                      <img src="{{url}}" class="feature-image"/>
+                      <img src="{{url}}" class="feature-image"/>                  
                     {{/if}}                  
-                  {{/each}}                  
+                  {{/each}}  -->                 
                   <div class="post-thumb post-width text-center">
                       <h3 id="postTitle" class="moz-header">{{title}}</h3>
                       <p class="break-word text-ellipsis">
@@ -21,15 +21,17 @@
               </div>                                   
           </div>
     </div>
-    <div id="xLoader" class="padding-100 bg-black"><div class="google-spin-wrapper"><div class="google-spin"></div></div></div>
- <div id="media" class="padding-bottom-10 padding-top-50 bg-black">   
+    <div id="xLoader" class="padding-100 bg-dynamic-color"><div class="google-spin-wrapper"><div class="google-spin"></div></div></div>
+ <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">   
+
 <div class="owl-carousel">   
    {{#each mediaList}}
-      <div  class="item margin-left-right-5">
+      <div  class="item margin-left-right-5 border">
         <img src="{{url}}" class="height-250">
       </div>
    {{/each}}   
 </div>
+
 </div>
 
 <div id="showPost" class="show-post">     

@@ -295,6 +295,9 @@ pre {
   opacity: 0.5;
 }
 
+.bg-dynamic-color{
+  background-color: black;
+}
 
 .bg-white{
   background-color: #ffffff;
@@ -328,6 +331,9 @@ pre {
   background-color: #ffffff;
 }
 
+.border{
+  border: 1px solid #B7B5B5;
+}
 
 .ui.header {
     font-family: 'Glegoo', serif;
@@ -467,6 +473,10 @@ pre {
 .slider-image{
   width:100% !important;
   height: 600px !important;
+}
+.slider-post-image{
+  width:100% !important;
+  height: 400px !important;
 }
 
 .slider-main-text{

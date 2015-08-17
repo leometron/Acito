@@ -25,14 +25,21 @@ Template.posts.rendered = function(){
 	}
 };
 
+Template.addNewPost.rendered = function(){
+	Session.set('errorMessage','');
+} 
+
 
 Template.posts.events({
 	'click #addNewPost': function () {
+		Session.set('selectImage', "");
 		Session.set('selectedPostId', "");
-		$(location).attr('href','posts/add');
+		// $(location).attr('href','posts/add');
+			Router.go("/admin/posts/add");
 	},
 	'click .post': function () {
 		Session.set('selectedPostId', this._id);
+		Session.set('errorMessage','');
 		Router.go("/admin/posts/edit");
 	}, 
 	'click #searchPost' : function (event) {
@@ -53,7 +60,6 @@ Template.posts.events({
 		$('#dropdownmenu').text( $(event.target).text());        
 	},
 	'click #showAll' : function(event) {
-		
 		event.preventDefault();                
 		Meteor.call('statusFilter',"All");
 		Meteor._reload.reload(); 
@@ -280,10 +286,11 @@ Template.addNewPost.helpers({
 
 Template.adminHeader.events({
 	'click #subNavBarpostsadd': function () {    
-		Session.set('selectedPostId', "");
+		Session.set('selectedPostId', "");	
+		Session.set('selectImage', "");
+
 	},
 	'click #navBarposts' : function() {
-		console.log('inside');
 		Session.set('errorMessage','');
 	},
 	'click #subNavBarmediaadd' : function() {

@@ -68,7 +68,9 @@
         <div class="row padding-top-bottom-10">
                     <div class="bs-example" data-example-id="striped-table">
                         <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
-                            <div class="col-md-2"><span><input type="checkbox"></span></div>
+                            <div class="col-md-2">
+                              <!-- <span><input type="checkbox"></span> -->
+                            </div>
                             <div class="col-md-5">file</div>
                             <div class="col-md-1">Author</div>
                             <div class="col-md-2">Uploaded to</div>
@@ -77,6 +79,7 @@
                         </div>
                                              
                                {{#each mediaList}}
+                                 {{#if currentUser}}
                                 <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">                               
                                    <div class="col-md-2">
                                        <span><input id="checkbox" type="checkbox" ></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
@@ -84,10 +87,10 @@
                                    <div class="col-md-5" style="line-height: 200%;">
                                        <div>{{name}}</div>
                                        <div>{{fullName}}</div>
-                                    <div><a href= "/admin/media/add" id="edit">Edit</a> | <a href = "#" id="delete">Delete Permanently</a></div>
+                                    <div><a href= "/admin/media/edit" id="edit">Edit</a> | <a href = "#" id="delete">Delete Permanently</a></div>
                                    </div>
                                    <div class="col-md-1">
-                                       <div>{{createdBy}}</div>
+                                       <div>{{currentUser.username}}</div>
                                    </div>
                                    <div class="col-md-2">
                                        <div>@mdo</div>
@@ -117,6 +120,7 @@
                                        <div>{{createdAt}}</div>
                                    </div>
                                </div>
+                                  {{/if}}
                                {{/each}}
                           
                        </div>

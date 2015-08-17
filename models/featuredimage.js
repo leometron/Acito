@@ -8,6 +8,9 @@ featuredimage.attachSchema(
     postId: {
       type: String
     },
+    userId: {
+      type: String
+    }
     // createdAt: {
     //   type: Date,
     //   denyUpdate: true

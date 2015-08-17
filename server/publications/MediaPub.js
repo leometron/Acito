@@ -3,28 +3,30 @@ var querystr="";
 var date = "";
 
 Meteor.publish('Media', function () {
-    
+
+    var currentUserId = this.userId;
     var temp;
+
     if (querystr) {
         temp = querystr;
         querystr = "";        
-        return Media.find({ $text: { $search: temp } });
+        return Media.find({ createdBy: currentUserId, $text: { $search: temp } });
     } else if(date) {
          temp = date;
          date = "";
              if(temp == "All dates"){
-                return Media.find();
+                return Media.find({createdBy: currentUserId});
              } else {
-                return Media.find( { createdAt : new RegExp(temp)});
+                return Media.find( { createdBy: currentUserId, createdAt : new RegExp(temp)});
              }
     } 
     else {  
-       return Media.find();
+       return Media.find( {createdBy: currentUserId} );
     }
 });
 
 Meteor.methods({
-    'insertMediaData': function(mediaUrl,mediaName,mediaFullName,mediaType,mediaSize,caption,alternative,description,username,createdAt){
+    'insertMediaData': function(mediaUrl,mediaName,mediaFullName,mediaType,mediaSize,caption,alternative,description,createdAt){
         Media.insert({
             url: mediaUrl,
             name: mediaName,
@@ -34,8 +36,8 @@ Meteor.methods({
             caption: caption,
             alternative: alternative,
             description: description,
-            createdBy: username,
-            createdAt: createdAt
+            createdAt: createdAt,
+            createdBy: Meteor.userId()
         });
     },
     'updateMediaData': function (mediaId,mediaUrl,mediaName,mediaNameType,mediaType,mediaSize,caption,alternative,description) {
