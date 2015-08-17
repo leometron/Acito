@@ -15,7 +15,7 @@ Template.adminHeader.helpers({
 });
 
 
-Template.adminHeader.rendered = function () {
+Template.adminHeader.rendered = function () {    
     $('#subNavBarpostsadd').hide();
     $('#subNavBarpostscategories').hide();
     $('#subNavBarpoststags').hide();

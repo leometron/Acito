@@ -15,6 +15,8 @@ Template.settings.events({
 			Session.set('errorMessage','email is required');
 		} else {
 			Session.set('errorMessage','');
+			Session.set('sucessMessage', 'Settings saved');
+			Meteor.setTimeout(function(){Session.set('sucessMessage', '')}, 1500);
 			var language = (!Session.get('languageName'))? "English":  Session.get('languageName');
 		    Meteor.call('saveSettingData', $('#sitetitle').val(), $('#tagline').val(), $('#wpaddress').val(), $('#siteaddress').val(), $('#email').val(), language);
 		}
@@ -30,6 +32,9 @@ Template.settings.helpers({
 	'errormsg' : function() {
         return Session.get('errorMessage');
     },
+    'successmsg' : function(){
+    	return Session.get('sucessMessage');
+    },
     'settingsList': function(){
     	var userId = Meteor.userId();
     	return settings.findOne({createdBy: userId});
@@ -40,7 +45,7 @@ Template.settings.helpers({
 });
 
 Template.adminHeader.events({
-	'click #navBarSettings': function(){
+	'click #navBarsettings': function(){
 		Session.set('errorMessage', '');
 		Session.set('languageName', '');
 	}
