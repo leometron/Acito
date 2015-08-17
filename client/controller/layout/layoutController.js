@@ -15,6 +15,9 @@ Template.header.events({
    'click #pageName': function() {
        Session.set('selectedPostId',"");        
        Session.set("pageId",this._id);
+       console.log('file created.......');
+// files.insert(new File(['Test file contents'], 'my_test_file'));
+       getAllFilesFromFolder();
    },
    'click #backToPage' : function()  {
        Session.set('selectedPostId',"");

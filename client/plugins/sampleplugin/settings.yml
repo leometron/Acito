@@ -1,0 +1,4 @@
+plugin_detail:
+  name: 'sample'
+  title: 'second PLUGIN'
+  subtitle: ['one','two']

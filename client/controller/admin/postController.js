@@ -285,5 +285,8 @@ Template.adminHeader.events({
 	'click #navBarposts' : function() {
 		console.log('inside');
 		Session.set('errorMessage','');
-	}    
+	},
+	'click #subNavBarmediaadd' : function() {
+    	$("#editPage").hide();
+	}
 });

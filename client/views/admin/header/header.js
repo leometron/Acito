@@ -1,3 +1,6 @@
+
+Meteor.subscribe("plugin");
+
 var mainTitle;
 Template.adminHeader.helpers({
     'navBarList' : function(){
@@ -10,6 +13,9 @@ Template.adminHeader.helpers({
             {'title': 'settings','maintitle': 'Settings', 'icon':'fa-cog'},           
             {'title': 'themes','maintitle': 'Themes','icon': 'fa-paint-brush'},           
         ]
+    },
+    'pluginList' : function(){
+        return plugin.find();
     }
 
 });
