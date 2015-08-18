@@ -40,13 +40,11 @@
                             <li  id="navBar{{title}}" class="item">
                                 <a href="/admin/{{title}}">
                                     <div><i class="fa {{icon}} icons"></i><span>{{title}}</span>
-<!--                                         {{#if subtitle}}
-                                        <span class="pull-right">s subtitle is available</span>                                    
-                                        {{/if}} -->
-                                    </div></a>
+                                    </div>
+                                </a>
                                 <ul style="list-style: none;" id="showSubTitle">
                                     {{#each subtitle}}
-                                    <li class="padding-bottom-10" id="subNavBar{{sTitle}}"><a href="/admin/{{sTitle}}"><span>{{sTitle}}</span></a></li>
+                                    <li class="padding-bottom-10" id="subNavBar{{../title}}{{sTitle}}"><a href="/admin/{{../title}}/{{sTitle}}"><span>{{sTitle}}</span></a></li>
                                     {{/each}}
                                 </ul>                            
                             </li>

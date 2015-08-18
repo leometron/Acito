@@ -3,8 +3,11 @@
          <div class="container padding-100">
                <div class="row equal image image-center">              
               {{#each postsList}}
-               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">                  
-                    <img src="{{featuredImage}}" class="feature-image"/>                  
+               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">     
+                {{#if equals featuredImage '-'}}
+                {{else}}             
+                    <img src="{{featuredImage}}" class="feature-image"/>
+                {{/if}}                  
                  <!--  {{#each imageList}} 
                     {{#if equals postId ../_id}}                 
                       <img src="{{url}}" class="feature-image"/>                  
@@ -41,5 +44,5 @@
       <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" class="btn btn-default">Ask</a></div>
       <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
 </div>
-<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div>
+<!-- <div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
 </template>

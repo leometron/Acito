@@ -4,13 +4,13 @@ plugin.attachSchema(
     new SimpleSchema({
     title: {
       type: String
+    },
+    subtitle: {
+      type: [Object]
+    },
+    'subtitle.$.sTitle': {
+      type: String
     }
-    // subtitle: {
-    //   type: [Object]
-    // },
-    // 'subtitle.$.sTitle': {
-    //   type: String
-    // },
   })
 );
 

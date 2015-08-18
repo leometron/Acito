@@ -1,4 +1,5 @@
 plugin_detail:
-  name: 'sample'
-  title: 'second PLUGIN'
-  subtitle: ['one','two']
+  title: 'SECOND'
+  subtitle: 
+  	stitle1 : 'old'
+  	stitle2 : 'new'
