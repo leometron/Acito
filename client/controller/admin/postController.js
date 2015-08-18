@@ -212,7 +212,7 @@ Template.addNewPost.events({
         if(this._id){
             $('.selectedImg').removeClass('selected-border');
             $(e.currentTarget).addClass('selected-border');             
-            Session.set('selectedImageUrl',this.url);
+            Session.set('postImageUrl',this.url);
         }
     },
     'change #selectMediaUrl': function (event, template) {
@@ -224,24 +224,25 @@ Template.addNewPost.events({
                 } else {                 
                   var url = "/cfs/files/images/" + fileObj._id;
                   Session.set('uploadMediaUrl',url);
-                  Meteor.call('insertMediaData', url, img.name, "-" , img.type, img.size + " Bytes",  "-", "-" , "-" , "-" , "-");
+                  var currentUserId = Meteor.userId();
+                  Meteor.call('insertMediaData', url, img.name, "-" , img.type, img.size + " Bytes",  "-", "-" , "-" , currentUserId, getCurrentDate());
                     $('#uploadFile').removeClass('border');
                     $('#dropFile').hide() ;
                     $('#mediaLibrary').addClass('border');
                     $('#media').show();
                     $("#popupMediadetail").hide();
-                    Session.set('selectedImageUrl',url);
+                    Session.set('postImageUrl',url);
                 }
             });
         });
     },
 	'click #selectpublish': function() {
-		var selectimage = Session.get('selectedImageUrl');
-		Session.set('selectImage', selectimage);
+		var selectimage = Session.get('postImageUrl');
+		Session.set('postImage', selectimage);
 	},
 	'click #removeImage' : function() {
 		Meteor.call('removeFeaturedImage',Session.get('selectedPostId'));
-		Session.set('selectImage','');                      
+		Session.set('postImage','');                      
 	}
 });
 
@@ -276,8 +277,8 @@ Template.addNewPost.helpers({
 	'mediaList' : function() {
 		return Media.find();  
 	},
-	'getUrlValue' : function() { 
-		return Session.get('selectImage');
+	'getpostUrl' : function() { 
+		return Session.get('postImage');
 	},
         'showUploadMediaUrl' : function() {
         return Session.get('uploadMediaUrl');
@@ -287,7 +288,7 @@ Template.addNewPost.helpers({
 Template.adminHeader.events({
 	'click #subNavBarpostsadd': function () {    
 		Session.set('selectedPostId', "");	
-		Session.set('selectImage', "");
+		Session.set('postImage', "");
 
 	},
 	'click #navBarposts' : function() {

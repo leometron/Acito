@@ -26,7 +26,8 @@ Meteor.publish('Media', function () {
 });
 
 Meteor.methods({
-    'insertMediaData': function(mediaUrl,mediaName,mediaFullName,mediaType,mediaSize,caption,alternative,description,createdAt){
+    'insertMediaData': function(mediaUrl,mediaName,mediaFullName,mediaType,mediaSize,caption,alternative,description,userId, createdAt){
+        // console.log('Meteor.user......................'+userId);
         Media.insert({
             url: mediaUrl,
             name: mediaName,
@@ -36,8 +37,9 @@ Meteor.methods({
             caption: caption,
             alternative: alternative,
             description: description,
-            createdAt: createdAt,
-            createdBy: Meteor.userId()
+            createdBy: userId,
+            createdAt: createdAt
+            
         });
     },
     'updateMediaData': function (mediaId,mediaUrl,mediaName,mediaNameType,mediaType,mediaSize,caption,alternative,description) {
