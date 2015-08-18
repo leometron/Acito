@@ -1,6 +1,10 @@
 
 Meteor.subscribe("settings");
 
+Template.settings.rendered = function(){
+	Session.set('errorMessage','');
+} 
+
 Template.settings.events({
 	'click #savesetting': function() {
 		if(!$('#sitetitle').val()){
