@@ -37,14 +37,14 @@
                         </ul>
                         <ul class="nav navbar-nav">
                             {{#each pluginList}}
-                            <li  id="navBar{{title}}" class="item">
+                            <li  id="navBar{{title}}" class="plugin item">
                                 <a href="/admin/{{title}}">
                                     <div><i class="fa {{icon}} icons"></i><span>{{title}}</span>
                                     </div>
                                 </a>
                                 <ul style="list-style: none;" id="showSubTitle">
                                     {{#each subtitle}}
-                                    <li class="padding-bottom-10" id="subNavBar{{../title}}{{sTitle}}"><a href="/admin/{{../title}}/{{sTitle}}"><span>{{sTitle}}</span></a></li>
+                                    <li class="plugin-submenu navBar{{../title}} padding-bottom-10" id="subNavBar{{../title}}{{sTitle}}"><a href="/admin/{{../title}}/{{sTitle}}"><span>{{sTitle}}</span></a></li>
                                     {{/each}}
                                 </ul>                            
                             </li>

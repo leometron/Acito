@@ -21,7 +21,8 @@ Template.adminHeader.helpers({
 });
 
 
-Template.adminHeader.rendered = function () {    
+Template.adminHeader.rendered = function () {
+    // $('.plugin-submenu').hide();    
     $('#subNavBarpostsadd').hide();
     $('#subNavBarpostscategories').hide();
     $('#subNavBarpoststags').hide();
@@ -39,7 +40,9 @@ Template.adminHeader.rendered = function () {
         $('#header').hide();
         $('#main_view').addClass('full-width');       
     }
-        
+    Meteor.setTimeout(function(){
+        $('.plugin-submenu').hide()
+    }, 1000);   
 };
 
 Template.adminHeader.events({
@@ -109,5 +112,9 @@ Template.adminHeader.events({
     }else{
         $('#subNavBarHomeSlidersadd').hide(800);
     }   
+  },
+  'click .plugin.item' : function(events) {
+        var selectedId = $(events.currentTarget).attr("id");
+        $('.plugin-submenu.'+selectedId).show(800);
   }
 });

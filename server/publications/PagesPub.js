@@ -31,7 +31,12 @@ Meteor.publish('Pages', function () {
          }
     }
      else {
-        return Pages.find( {createdBy: currentUserId} );
+        if (currentUserId) {
+            return Pages.find( {createdBy: currentUserId} );            
+        } else {
+            var adminObj = Meteor.users.findOne({ username : 'admin' });
+            return Pages.find( {createdBy: adminObj._id} )
+        }
     }
 });
 

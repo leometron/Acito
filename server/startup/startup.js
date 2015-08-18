@@ -43,6 +43,7 @@ Meteor.startup(function () {
                             pluginSubtitle.push(myObj);        
                         }
                         if (typeof plugin.findOne({title: titleData})=== "object") {
+                            plugin.update({title: titleData},{$set:{title: titleData,subtitle:pluginSubtitle}});                                    
                             console.log('plugin '+ titleData + ' already exists');
                         } else {
                             plugin.insert({title: titleData,subtitle:pluginSubtitle});        

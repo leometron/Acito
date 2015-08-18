@@ -15,9 +15,6 @@ Template.header.events({
    'click #pageName': function() {
        Session.set('selectedPostId',"");        
        Session.set("pageId",this._id);
-       console.log('file created.......');
-// files.insert(new File(['Test file contents'], 'my_test_file'));
-       getAllFilesFromFolder();
    },
    'click #backToPage' : function()  {
        Session.set('selectedPostId',"");
@@ -41,7 +38,6 @@ Template.home.events({
    'click #postTitle': function() {
        var userId = this._id;
        Session.set('selectedPageId',Session.get("pageId"));
-       // Session.set("pageId","");        
        Session.set('selectedPostId', userId);
        $('.image').animate({width: 'toggle'}, 770);
        setTimeout(function(){
@@ -116,30 +112,6 @@ Template.postDetail.helpers({
     return featuredimage.findOne({postId:Session.get('selectedPostId')}, { limit:1 });
    }
 });
-
-// Template.home.rendered = function(){
-//     console.log('rendered');
-//       $('.animate').fadeIn(3000);
-// };
-
-// Tracker.afterFlush(function(){
-//   $('.animate').delay(1000).fadeOut('slow');
-// });
-Template.home.animations({
- ".item": {
-   container: ".container", // container of the ".item" elements
-   in: "animated fast fadeInLeft", // class applied to inserted elements
-   out: "animated fast fadeOutRight", // class applied to removed elements
-   inCallback: function(element) {}, // callback after an element gets inserted
-   outCallback: function(element) {}, // callback after an element gets removed
-   delayIn: 500, // Delay before inserted items animate
-   delayOut: 500, // Delay before removed items animate
-   animateInitial: true, // animate the elements already rendered
-   animateInitialStep: 200, // Step between animations for each initial item
-   animateInitialDelay: 500 // Delay before the initial items animate
- }
-});
-
 
 Template.home.rendered = function(){
 
