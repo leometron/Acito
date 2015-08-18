@@ -1,4 +1,4 @@
-
+  
 /*
 
 Created by LingaRaja.
@@ -13,8 +13,10 @@ Meteor.subscribe('featuredimage');
 
 Template.header.events({
    'click #pageName': function() {
-       Session.set('selectedPostId',"");        
-       Session.set("pageId",this._id);
+    Session.set('numberOfCount',4);
+      $('.give-more-content').show();
+      Session.set('selectedPostId',"");        
+      Session.set("pageId",this._id);
    },
    'click #backToPage' : function()  {
        Session.set('selectedPostId',"");
@@ -56,12 +58,25 @@ Template.home.events({
           showPost = true;  
        }    
   },
+  'click .give-more-content' : function() {
+    $('.loading-icon').show();
+    Meteor.setTimeout(function(){
+    $('.loading-icon').hide();
+      Session.set('numberOfCount', Session.get('numberOfCount') +4);
+          if(Session.get('postCount')<=Session.get('numberOfCount')){
+            $('.give-more-content').hide();
+            $('.posts-Over').show();
+            Meteor.setTimeout(function(){$('.posts-Over').hide()},1500);
+          }
+    }, 1000);
+  },
 });
 Template.home.helpers({
    'postsList' : function() {
-       return Posts.find({pageId:Session.get("pageId")});
+      Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+      return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
    },  
-'mediaList' : function() {
+  'mediaList' : function() {
     return Media.find();
    },
 
@@ -128,14 +143,17 @@ Template.home.animations({
  }
 });
 
-Template.home.rendered = function(){
+Template.home.rendered = function () {
+$('.give-more-content').hide();
+$('.loading-icon').hide();
+$('.posts-Over').hide();
 
   Meteor.setTimeout(function(){
     $('#xLoader').hide();
    $(".owl-carousel").owlCarousel({  
       autoPlay: 3000, 
       items : 5,
-    }); 
+    });
   },5500);    
 
 
@@ -170,5 +188,3 @@ $('#postIntroduction').offset().top - $('#postasas').offset().top
     });
   }
 };
-
-
