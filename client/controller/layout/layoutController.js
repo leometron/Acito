@@ -40,7 +40,6 @@ Template.home.events({
    'click #postTitle': function() {
        var userId = this._id;
        Session.set('selectedPageId',Session.get("pageId"));
-       // Session.set("pageId","");        
        Session.set('selectedPostId', userId);
        $('.image').animate({width: 'toggle'}, 770);
        setTimeout(function(){
@@ -105,6 +104,12 @@ Template.header.helpers({
     },    
 });
 
+Template.home.helpers({
+  'imageList' : function() {
+       return featuredimage.find();
+   }
+})
+
 Template.postDetail.helpers({
    'showSelectedPost' : function() {
        if(Session.get('selectedPostId')){
@@ -117,30 +122,10 @@ Template.postDetail.helpers({
    },
    'imageList' : function() {
        return featuredimage.find();
-   }   
-});
-
-// Template.home.rendered = function(){
-//     console.log('rendered');
-//       $('.animate').fadeIn(3000);
-// };
-
-// Tracker.afterFlush(function(){
-//   $('.animate').delay(1000).fadeOut('slow');
-// });
-Template.home.animations({
- ".item": {
-   container: ".container", // container of the ".item" elements
-   in: "animated fast fadeInLeft", // class applied to inserted elements
-   out: "animated fast fadeOutRight", // class applied to removed elements
-   inCallback: function(element) {}, // callback after an element gets inserted
-   outCallback: function(element) {}, // callback after an element gets removed
-   delayIn: 500, // Delay before inserted items animate
-   delayOut: 500, // Delay before removed items animate
-   animateInitial: true, // animate the elements already rendered
-   animateInitialStep: 200, // Step between animations for each initial item
-   animateInitialDelay: 500 // Delay before the initial items animate
- }
+   },
+   'singlePostSlider' : function(){
+    return featuredimage.findOne({postId:Session.get('selectedPostId')}, { limit:1 });
+   }
 });
 
 Template.home.rendered = function () {
@@ -157,12 +142,20 @@ $('.posts-Over').hide();
   },5500);    
 
 
-$(function(){
-  $('#currentTheme').remove();   
+$(function(){ 
+  console.log(Session.get('themeName'));
+  var theme = Session.get('themeName');
+  if(theme === 'theme1'){
+    $('#currentTheme').remove(); 
+     var themesheet = $('<link href="/theme.css" rel="stylesheet" id="currentTheme1"/>');
+     themesheet.appendTo('head');
+  }  else{
+      $('#currentTheme1').remove();   
   var themesheet = $('<link href="/main.css" rel="stylesheet" id="currentTheme"/>');
   themesheet.appendTo('head');
+  }  
 });  
-
+  
 $('#showPost').hide();
 $('#postIntroduction').offset().top - $('#postasas').offset().top
    
@@ -188,3 +181,4 @@ $('#postIntroduction').offset().top - $('#postasas').offset().top
     });
   }
 };
+

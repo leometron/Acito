@@ -33,7 +33,12 @@ Meteor.publish('Posts', function () {
             return Posts.find( { createdBy: loginUserId, createdAt : new RegExp(temp)});
         }
     } else {
-        return Posts.find({createdBy: loginUserId});
+        if (loginUserId) {
+            return Posts.find({createdBy: loginUserId});
+        } else {
+            var adminObj = Meteor.users.findOne({ username : 'admin' });
+            return Posts.find( {createdBy: adminObj._id} );
+        }        
     }
 });
 

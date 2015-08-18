@@ -6,6 +6,10 @@ Template.addNewMedia.rendered = function(){
     $("#popupMediadetail").hide();
 };
 
+Template.addNewHomeSlider.rendered = function(){
+    Session.set('errorMessage','');
+};
+
 Template.addNewHomeSlider.events({
     'click #selectImage': function () {             
         // alert("success");
@@ -15,7 +19,6 @@ Template.addNewHomeSlider.events({
          $('#dropFile').show() ;             
     },
     'click #mediaLibrary': function(){
-        console.log("media");
         $('#uploadFile').removeClass('border');
         $('#dropFile').hide() ;
         $('#mediaLibrary').addClass('border');
@@ -36,7 +39,7 @@ Template.addNewHomeSlider.events({
             Session.set('selectimgName', this.name);
         }     
     },
-    'change #selectMediaUrl': function (event, template) {
+    'change #selectSlideUrl': function (event, template) {
         FS.Utility.eachFile(event, function (file) {
           var img = event.target.files[0]
             Images.insert(file, function (err, fileObj) {
@@ -45,7 +48,8 @@ Template.addNewHomeSlider.events({
                 } else {                 
                   var url = "/cfs/files/images/" + fileObj._id;
                   Session.set('uploadMediaUrl',url);
-                  Meteor.call('insertMediaData', url, img.name, "-" , img.type, img.size + " Bytes",  "-", "-" , "-" , "-" , "-");
+                  var currentUserId = Meteor.userId();
+                  Meteor.call('insertMediaData', url, img.name, "-" , img.type, img.size + " Bytes",  "-", "-" , "-" , currentUserId, getCurrentDate());
                     $('#uploadFile').removeClass('border');
                     $('#dropFile').hide() ;
                     $('#mediaLibrary').addClass('border');
@@ -127,7 +131,7 @@ Template.addNewHomeSlider.events({
 
 });
 
-Meteor.subscribe('Media');
+// Meteor.subscribe('Media');
 
 Template.addNewHomeSlider.helpers({
    'mediaList': function() {
@@ -155,7 +159,9 @@ Template.addNewHomeSlider.helpers({
 
  Template.homeSlider.events({
     'click #addNew': function() {
+        // Session.set('selectedSliderId', '');
         $(location).attr('href','homeSliders/add');
+        // Router.go("/admin/homeSliders/add");
     },
      'click #slider': function() {
         Session.set('selectedSliderId', this._id);
@@ -163,7 +169,7 @@ Template.addNewHomeSlider.helpers({
         Session.set('errorMessage', "");
         Session.set('selectImage', '');
         Session.set('selectimgName', '');
-        Router.go("/admin/homeSliders/add");
+        Router.go("/admin/homeSliders/edit");
     },
     'click #searchSlider': function() {
         Meteor.call('searchSlider', $('#searchString').val());

@@ -1,27 +1,23 @@
-featuredimage = new Mongo.Collection('featuredimage');
+plugin = new Mongo.Collection('plugin');
 
-featuredimage.attachSchema(
+plugin.attachSchema(
     new SimpleSchema({
-    url: {
+    title: {
       type: String
     },
-    postId: {
-      type: String
+    subtitle: {
+      type: [Object]
     },
-    userId: {
+    'subtitle.$.sTitle': {
       type: String
     }
-    // createdAt: {
-    //   type: Date,
-    //   denyUpdate: true
-    // }
   })
 );
 
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
-  featuredimage.allow({
+  plugin.allow({
     insert : function () {
       return true;
     },

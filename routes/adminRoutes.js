@@ -31,10 +31,19 @@ Router.route('/admin/posts/add', function () {
 Router.route('/admin/pages/add', function () {
     this.render('addNewPage');
 });
+Router.route('/admin/pages/edit', function () {
+    this.render('addNewPage');
+});
 Router.route('/admin/media/add', function () {
     this.render('addNewMedia');
 });
+Router.route('/admin/media/edit', function () {
+    this.render('addNewMedia');
+});
 Router.route('/admin/homeSliders/add', function () {
+    this.render('addNewHomeSlider');
+});
+Router.route('/admin/homeSliders/edit', function () {
     this.render('addNewHomeSlider');
 });
 Router.route('/admin/posts/edit', function () {
@@ -54,6 +63,18 @@ Router.route('/admin/posts/tags/edit', function () {
 });
 Router.route('/admin/posts/image', function () {
     this.render('featuredImage');
+});
+
+
+//Routes related to plugin first
+Router.route('/admin/FIRST', function () {
+    this.render('firstHomeTemplate');
+});
+Router.route('/admin/FIRST/old', function () {
+    this.render('firstHomeTemplate');
+});
+Router.route('/admin/FIRST/new', function () {
+    this.render('firstHomeTemplate');
 });
 
 

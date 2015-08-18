@@ -1,3 +1,6 @@
+
+Meteor.subscribe("plugin");
+
 var mainTitle;
 Template.adminHeader.helpers({
     'navBarList' : function(){
@@ -10,12 +13,16 @@ Template.adminHeader.helpers({
             {'title': 'settings','maintitle': 'Settings', 'icon':'fa-cog'},           
             {'title': 'themes','maintitle': 'Themes','icon': 'fa-paint-brush'},           
         ]
+    },
+    'pluginList' : function(){
+        return plugin.find();
     }
 
 });
 
 
 Template.adminHeader.rendered = function () {
+    // $('.plugin-submenu').hide();    
     $('#subNavBarpostsadd').hide();
     $('#subNavBarpostscategories').hide();
     $('#subNavBarpoststags').hide();
@@ -33,7 +40,9 @@ Template.adminHeader.rendered = function () {
         $('#header').hide();
         $('#main_view').addClass('full-width');       
     }
-        
+    Meteor.setTimeout(function(){
+        $('.plugin-submenu').hide()
+    }, 1000);   
 };
 
 Template.adminHeader.events({
@@ -63,15 +72,20 @@ Template.adminHeader.events({
          }else {
          $('#navBarpages').removeClass('selected');
      }
-     if(selectedId == 'navBarHomeSliders'){
-         $('#navBarHomeSliders').addClass('selected');
+     if(selectedId == 'navBarhomeSliders'){
+         $('#navBarhomeSliders').addClass('selected');
          }else {
-         $('#navBarHomeSliders').removeClass('selected');
+         $('#navBarhomeSliders').removeClass('selected');
      }
-     if(selectedId == 'navBarSettings'){
-         $('#navBarSettings').addClass('selected');
+     if(selectedId == 'navBarsettings'){
+         $('#navBarsettings').addClass('selected');
          }else {
-         $('#navBarSettings').removeClass('selected');
+         $('#navBarsettings').removeClass('selected');
+     }
+     if(selectedId == 'navBarthemes'){
+          $('#navBarthemes').addClass('selected');
+         }else {
+         $('#navBarthemes').removeClass('selected');
      }
     if(this.title == 'posts'){
         $('#subNavBarpostsadd').show(800);       
@@ -98,5 +112,9 @@ Template.adminHeader.events({
     }else{
         $('#subNavBarHomeSlidersadd').hide(800);
     }   
+  },
+  'click .plugin.item' : function(events) {
+        var selectedId = $(events.currentTarget).attr("id");
+        $('.plugin-submenu.'+selectedId).show(800);
   }
 });
