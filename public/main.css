@@ -349,11 +349,17 @@ pre {
   background-color:transparent;
 }
 
+.default-image{
+   background-image: url(images/background/background1.jpg);
+  background-size: cover;
+   display: block;
+}
+
 .header-content{
     width: 100%;
     text-align: center;    
     position: absolute;
-    top: 10%;
+    top: 30%;
     background-position: center;
 }
 .header-content-inner{
@@ -532,6 +538,14 @@ pre {
     left: 0;
     right: 0;
 }
+
+.fa-arrow-right:before {
+    content: "\f061";
+}
+
+
+/*xloader*/
+
 
 @media(max-width:992px){    
     .equal-child:nth-child(2n+1) {

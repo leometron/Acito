@@ -45,6 +45,16 @@ Template.home.events({
             Router.go("/post/"+userId);
        }, 1000);  
    },
+    'click .right-arrow' : function(){
+     var userId = this._id;
+       Session.set('selectedPageId',Session.get("pageId"));
+       // Session.set("pageId","");        
+       Session.set('selectedPostId', userId);
+       $('.image').animate({width: 'toggle'}, 770);
+       setTimeout(function(){
+            Router.go("/post/"+userId);
+       }, 1000);  
+   },
     'click .Ask' : function(){   
        if(showPost){          
           $('#post').hide();
@@ -146,7 +156,7 @@ Template.home.rendered = function(){
       autoPlay: 3000, 
       items : 5,
     });
-   scrollToDown();
+   // scrollToDown();
   },5500);    
 
 
@@ -164,7 +174,7 @@ $(function(){
   }  
 });  
   
-$('#showPost').hide();
+
 $('#postIntroduction').offset().top - $('#postasas').offset().top
    
   $('a[href*=#]:not([href=#])').click(function () {
@@ -190,8 +200,8 @@ $('#postIntroduction').offset().top - $('#postasas').offset().top
   }
 };
 
-function scrollToDown(){
+/*function scrollToDown(){
    console.log("loaded");
     $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-}
+}*/
 

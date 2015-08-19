@@ -23,6 +23,12 @@ body, #main {
     border-color: #447F8C;
 } 
 
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 35px;
+     z-index: 1030; 
+}
 
 .main-header{
    font-size: 30px !important; 
@@ -32,6 +38,10 @@ body, #main {
 
 .font-size-15{
   font-size: 15px !important;
+}
+
+.navbar-default {
+    background-color: #ffffff !important;   
 }
 
 .side_bar{
@@ -62,7 +72,7 @@ pre {
 }
 
 .navbar-default .navbar-nav li a:hover{
-  color:#ffffff;
+  color:#000000;
 }
 
 .side_bar_menu{
@@ -79,11 +89,10 @@ pre {
 }
 .side_bar_menu  li{
     width:100%;
-  }
-
+}
 
 .nav li a{
-  color:#ffffff;
+  color: #ffffff;
  text-decoration: none;
 }
 
@@ -315,6 +324,24 @@ pre {
   height: 250px;
 }
 
+.default-image{
+   background-image: url(/images/back-ground.jpg); 
+   background-size: cover;
+   display: block;
+}
+
+.right-arrow{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 32px;
+    height: 30px;
+    left: 280px;
+    background: url(/images/down.png) no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
 .wrapper{
   width: 320px;
   padding: 8% 0 0;
@@ -353,7 +380,7 @@ pre {
     width: 100%;
     text-align: center;    
     position: absolute;
-    top: 10%;
+    top: 20%;
     background-position: center;
 }
 .header-content-inner{
@@ -400,34 +427,29 @@ pre {
     -webkit-box-orient: vertical;
     height: 7.8em;
     overflow: hidden; 
+    text-align: left;
+    color: #7B7A7A;
 }
 
 .navbar-default .navbar-nav li  a{
-    color: #ffffff;
+    color: #000000;
 }
 
 .navbar-default .navbar-brand{
-    color: #ffffff;
+    color: #000000;
 }
 
 .navbar-default .navbar-brand:hover{
-    color: #ffffff;
-}
-
-
-
-.banner{
-    width: 100%;
-    text-align: center;
-    background-image: url(/images/office.jpg);
-    height: 400px;
-    background-position: center;        
+    color: #000000;
 }
 
 .moz-header{
     height: 1.2em;
     overflow: hidden;
     cursor : pointer;
+    text-transform: uppercase;
+    font-size: larger;
+    font-weight: 600;
 }
 
 .popover fade right in{
@@ -444,6 +466,10 @@ pre {
   height: auto;
 }
 
+.theme-width {
+  width:100%;
+}
+
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
      width: 70%;
@@ -456,20 +482,29 @@ pre {
 }
 
 .bannerDesign{  
-   margin-top: -20px;  
+   margin-top: 0;  
 }
 
 .feature-image{
-  width:270px;
+  width: 310px;
   height:150px
+}
+
+.navbar-fixed-top {
+    top: 25px;
+    width: 95%;
 }
 
 .back{
   font-size: 20px;
-  color: white;
+  color: black;
   cursor:pointer;
   position:absolute;
   margin-top: 10px;
+}
+
+.post-list-header-theme{
+   margin-top: 10%;
 }
 
 .slider-image{
@@ -482,14 +517,14 @@ pre {
 }
 
 .slider-main-text{
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 65px;
+/*  text-transform: uppercase;
+  font-weight: 700;*/
+  font-size: 30px;
   line-height: 70px;
 }
 
 .post-width{
-   width:270px;
+   width: 310px;
 }
 
 .height-250{
@@ -533,6 +568,10 @@ pre {
     position: absolute;
     left: 0;
     right: 0;
+}
+
+.theme-left-20{
+  padding-left: 20px;
 }
 
 
