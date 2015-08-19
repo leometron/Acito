@@ -1,5 +1,3 @@
-Template.notFound.helpers({
-});
+Template.notFound.helpers({});
 
-Template.notFound.events({
-});
+Template.notFound.events({});

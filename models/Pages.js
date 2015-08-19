@@ -51,13 +51,13 @@ Pages.attachSchema(
 // Add custom permission rules if needed
 if (Meteor.isServer) {
     Pages.allow({
-        insert : function () {
+        insert: function () {
             return true;
         },
-        update : function () {
+        update: function () {
             return true;
         },
-        remove : function () {
+        remove: function () {
             return true;
         }
     });

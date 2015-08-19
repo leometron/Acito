@@ -413,7 +413,7 @@ pre {
 }
 .post-thumb{    
     padding: 15px 10px 16px 10px; 
-    background: #848383;
+    background: #797878;
 }
 .equal-child:nth-child(4n+1) {
     clear: left;      
@@ -560,10 +560,10 @@ pre {
 }
 
 .bg-gradient{
-    background: -webkit-linear-gradient(top, rgba(255,0,0,0),rgb(111, 142, 96));
-    background: -o-linear-gradient(top, rgba(255,0,0,0), rgb(111, 142, 96));
-    background: -moz-linear-gradient(top, rgba(255,0,0,0), rgb(111, 142, 96));
-    background: linear-gradient(to top, rgba(255,0,0,0), rgb(111, 142, 96));
+    background: -webkit-linear-gradient(top, rgba(255,0,0,0),rgb(20, 138, 165));
+    background: -o-linear-gradient(top, rgba(255,0,0,0), rgb(20, 138, 165));
+    background: -moz-linear-gradient(top, rgba(255,0,0,0), rgb(20, 138, 165));
+    background: linear-gradient(to top, rgba(255,0,0,0), rgb(20, 138, 165));
 }
 
 .set-color{
@@ -584,10 +584,10 @@ pre {
 }
 
 .give-more-content {
-  background: #ffffff;
+  background: #8CB4BA;
   border-radius: 28px;
   font-family: Arial;
-  color: #000000;
+  color: #ffffff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -619,7 +619,7 @@ pre {
   color: red;
 }
 
-.side-margin-theme{
+.margin-left-right-theme{
       margin-left: 30px;
     margin-right: 30px;
 }

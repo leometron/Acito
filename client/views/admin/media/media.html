@@ -1,14 +1,17 @@
 <template name="media" id="media">
-    <div>      
+    <div>
         <div class="margin-top-40">
             <div class="row post-margin">
-                <span class="main-header">Media Library</span> <span><button type="button" id="addNewMedia" class="btn btn-default">Add New</button></span>
+                <span class="main-header">Media Library</span> <span><button type="button" id="addNewMedia"
+                                                                             class="btn btn-default">Add New
+            </button></span>
             </div>
             <div class="row post-margin padding-top-bottom-10">
                 <div class="col-md-12 bg-white padding-top-bottom-10 ">
                     <span class="dropdown margin-right">
-                        <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="allMedia" data-toggle="dropdown">
-                            All Media                            
+                        <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="allMedia"
+                                data-toggle="dropdown">
+                            All Media
                         </button>
                         <!--<span class="caret margin-left-minus-20"></span>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown">
@@ -17,47 +20,50 @@
                             <li><a class="menuitem" href="#">unattached</a></li>
                         </ul> -->
                     </span>
-                      <!--<span class="dropdown margin-right">
-                        <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="alldatedropdown" data-toggle="dropdown">
-                            All dates                           
-                        </button>
-                         <span class="caret margin-left-minus-20"></span>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                            <li><a class="menuitem1"  href="#">All dates</a></li>
-                            <li><a class="menuitem1"  href="#">july 2015</a></li>
-                        </ul>
-                    </span>
-                    <span><button type="button" class="btn btn-default">filter</button></span> -->
+                    <!--<span class="dropdown margin-right">
+                      <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="alldatedropdown" data-toggle="dropdown">
+                          All dates
+                      </button>
+                       <span class="caret margin-left-minus-20"></span>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                          <li><a class="menuitem1"  href="#">All dates</a></li>
+                          <li><a class="menuitem1"  href="#">july 2015</a></li>
+                      </ul>
+                  </span>
+                  <span><button type="button" class="btn btn-default">filter</button></span> -->
 
                     <div style="float: right">
-                        <input type="search" class="padding-top-10" id="queryString" value="{{queryString}}" />
-                        <button id="searchMedia" type="button" class="btn btn-default margin-left-10 margin-bottom-10">Search Media</button>
+                        <input type="search" class="padding-top-10" id="queryString" value="{{queryString}}"/>
+                        <button id="searchMedia" type="button" class="btn btn-default margin-left-10 margin-bottom-10">
+                            Search Media
+                        </button>
                     </div>
                 </div>
             </div>
             <div class="row post-margin" id="list">
                 <div class="col-md-3 padding-left-zero">
                 <span class="dropdown margin-right">
-                   <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown" data-toggle="dropdown">
-                        Bulk Actions                        
-                    </button>
+                   <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown"
+                           data-toggle="dropdown">
+                       Bulk Actions
+                   </button>
                      <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li><a class="menuitem2"  href="#">Bulk Actions</a></li>
-                        <li><a class="menuitem2"  href="#" id="deleteall">Delete Permanently</a></li>                       
+                        <li><a class="menuitem2" href="#">Bulk Actions</a></li>
+                        <li><a class="menuitem2" href="#" id="deleteall">Delete Permanently</a></li>
                     </ul>
                 </span>
                     <span class="margin-left-10">
                       <button id="apply" type="button" class="btn btn-default">Apply</button>
                     </span>
-              </div>              
-            <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
                 <span class="dropdown">
                     <select id="filterdate" class="selctionButton">
-                          <option value="All dates" selected="selected">All dates</option>
-                          <option value="/5/2015">May 2015</option>
-                          <option value="/6/2015">June 2015</option>
-                          <option value="/7/2015">July 2015</option>
+                        <option value="All dates" selected="selected">All dates</option>
+                        <option value="/5/2015">May 2015</option>
+                        <option value="/6/2015">June 2015</option>
+                        <option value="/7/2015">July 2015</option>
                     </select>
                 </span>
                     <span><button type="button" class="btn btn-default" id="filter">Filter</button></span>
@@ -66,83 +72,85 @@
 
         </div>
         <div class="row padding-top-bottom-10">
-                    <div class="bs-example" data-example-id="striped-table">
-                        <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
-                            <div class="col-md-2">
-                              <!-- <span><input type="checkbox"></span> -->
-                            </div>
-                            <div class="col-md-5">file</div>
-                            <div class="col-md-1">Author</div>
-                            <div class="col-md-2">Uploaded to</div>
-                            <div class="col-md-1">comments</div>
-                            <div class="col-md-1">Date</div>
-                        </div>
-                                             
-                               {{#each mediaList}}
-                                 {{#if currentUser}}
-                                <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">                               
-                                   <div class="col-md-2">
-                                       <span><input id="checkbox" type="checkbox" ></span><span class="padding-left-20"><img src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
-                                   </div>
-                                   <div class="col-md-5" style="line-height: 200%;">
-                                       <div>{{name}}</div>
-                                       <div>{{fullName}}</div>
-                                    <div><a href= "/admin/media/edit" id="edit">Edit</a> | <a href = "#" id="delete">Delete Permanently</a></div>
-                                   </div>
-                                   <div class="col-md-1">
-                                       <div>{{currentUser.username}}</div>
-                                   </div>
-                                   <div class="col-md-2">
-                                       <div>@mdo</div>
-                                    <!--    <div data-toggle="modal" data-target="#myModal">attach</div>
-                                          <div class="modal fade" id="myModal" role="dialog">
-                                          <div class="modal-dialog">                                                                                     
-                                            <div class="modal-content">
-                                              <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 class="modal-title">Find Posts or Pages</h4>
-                                              </div>
-                                              <div class="modal-body">
-                                                    <input type="text" class="form"> 
-                                              </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
-                                              </div>
-                                            </div>
-                                            
-                                          </div>
-                                        </div> -->
-                                   </div>
-                                   <div class="col-md-1">
-                                       <div>comments</div>
-                                   </div>
-                                   <div class="col-md-1">
-                                       <div>{{createdAt}}</div>
-                                   </div>
-                               </div>
-                                  {{/if}}
-                               {{/each}}
-                          
-                       </div>
-                    
+            <div class="bs-example" data-example-id="striped-table">
+                <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
+                    <div class="col-md-2">
+                        <!-- <span><input type="checkbox"></span> -->
+                    </div>
+                    <div class="col-md-5">file</div>
+                    <div class="col-md-1">Author</div>
+                    <div class="col-md-2">Uploaded to</div>
+                    <div class="col-md-1">comments</div>
+                    <div class="col-md-1">Date</div>
                 </div>
-           
-<!--         <div class="row post-margin">
-            <span class="dropdown margin-right">
-                <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="bulkactiondropdown" data-toggle="dropdown">
-                    Bulk Actions                  
-                </button>
-                <span class="caret margin-left-minus-20"></span>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                    <li><a href="#">Bulk Actions</a></li>
-                    <li><a href="#" id="deleteall">Delete Permanently</a></li>
-                </ul>
-            </span>
-            <span class="margin-left-10">
-              <button id="apply" type="button" class="btn btn-default">Apply</button>
-            </span>
+
+                {{#each mediaList}}
+                {{#if currentUser}}
+                <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                    <div class="col-md-2">
+                        <span><input id="checkbox" type="checkbox"></span><span class="padding-left-20"><img
+                            src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
+                    </div>
+                    <div class="col-md-5" style="line-height: 200%;">
+                        <div>{{name}}</div>
+                        <div>{{fullName}}</div>
+                        <div><a href="/admin/media/edit" id="edit">Edit</a> | <a href="#" id="delete">Delete
+                            Permanently</a></div>
+                    </div>
+                    <div class="col-md-1">
+                        <div>{{currentUser.username}}</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div>@mdo</div>
+                        <!--    <div data-toggle="modal" data-target="#myModal">attach</div>
+                              <div class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Find Posts or Pages</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                        <input type="text" class="form">
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div> -->
+                    </div>
+                    <div class="col-md-1">
+                        <div>comments</div>
+                    </div>
+                    <div class="col-md-1">
+                        <div>{{createdAt}}</div>
+                    </div>
+                </div>
+                {{/if}}
+                {{/each}}
+
+            </div>
+
         </div>
-            <span><button id="apply" type="button" class="btn btn-default">Apply</button></span>
-        </div> -->
+
+        <!--         <div class="row post-margin">
+                    <span class="dropdown margin-right">
+                        <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="bulkactiondropdown" data-toggle="dropdown">
+                            Bulk Actions
+                        </button>
+                        <span class="caret margin-left-minus-20"></span>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                            <li><a href="#">Bulk Actions</a></li>
+                            <li><a href="#" id="deleteall">Delete Permanently</a></li>
+                        </ul>
+                    </span>
+                    <span class="margin-left-10">
+                      <button id="apply" type="button" class="btn btn-default">Apply</button>
+                    </span>
+                </div>
+                    <span><button id="apply" type="button" class="btn btn-default">Apply</button></span>
+                </div> -->
     </div>
 </template>

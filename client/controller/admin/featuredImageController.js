@@ -1,7 +1,6 @@
-
-Template.featuredImage.rendered = function(){
-  Session.set('errorImage','');
-  Session.set('selectFeaturedImage', '');
+Template.featuredImage.rendered = function () {
+    Session.set('errorImage', '');
+    Session.set('selectFeaturedImage', '');
 }
 
 
@@ -11,37 +10,39 @@ Template.featuredImage.events({
             Images.insert(file, function (err, fileObj) {
                 if (err) {
                     console.log('error')
-                } else {                 
-                  var url = "/cfs/files/images/" + fileObj._id;
-                  // Meteor.setTimeout(function(){Session.set('browsedMediaUrl', url)}, 1000);
-                  Session.set('selectFeaturedImage', url);
+                } else {
+                    var url = "/cfs/files/images/" + fileObj._id;
+                    // Meteor.setTimeout(function(){Session.set('browsedMediaUrl', url)}, 1000);
+                    Session.set('selectFeaturedImage', url);
                 }
             });
         });
     },
-    'click #publishFeaturedImage' : function() {
-      if(!Session.get('selectFeaturedImage')){
-        Session.set('errorImage','Image is required');
-      } else if($('#pageId').val() == "none") {
-        Session.set('errorImage','post title is required');
-      } else {
-        Session.set('errorImage','');
-        Session.set('sucessMessage', 'Featured Image Saved');
-        Meteor.call('insertFeaturedImage',Session.get('selectFeaturedImage'),$('#pageId').val(),getUserName());
-        Meteor.setTimeout(function(){Session.set('sucessMessage', ''), $('#pageId').val("none"), Session.set('selectFeaturedImage', ''), $('#selectFeaturedImage').val("")}, 2000);
-      }
+    'click #publishFeaturedImage': function () {
+        if (!Session.get('selectFeaturedImage')) {
+            Session.set('errorImage', 'Image is required');
+        } else if ($('#pageId').val() == "none") {
+            Session.set('errorImage', 'post title is required');
+        } else {
+            Session.set('errorImage', '');
+            Session.set('sucessMessage', 'Featured Image Saved');
+            Meteor.call('insertFeaturedImage', Session.get('selectFeaturedImage'), $('#pageId').val(), getUserName());
+            Meteor.setTimeout(function () {
+                Session.set('sucessMessage', ''), $('#pageId').val("none"), Session.set('selectFeaturedImage', ''), $('#selectFeaturedImage').val("")
+            }, 2000);
+        }
     }
- });
+});
 
 
 Template.featuredImage.helpers({
-  'postList': function() {
-    return Posts.find();
-  },
-  'errorimg' : function() {
+    'postList': function () {
+        return Posts.find();
+    },
+    'errorimg': function () {
         return Session.get('errorImage');
-  },
-  'successmsg': function(){
-    return Session.get('sucessMessage');
-  }
+    },
+    'successmsg': function () {
+        return Session.get('sucessMessage');
+    }
 });

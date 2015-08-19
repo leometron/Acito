@@ -2,27 +2,27 @@
 //using "orion generate routes"
 
 Router.route('/admin', function () {
-  this.render('adminLogin');
+    this.render('adminLogin');
 });
-Router.route('/admin/dashboard', function() {
-  this.render('dashBoard');
+Router.route('/admin/dashboard', function () {
+    this.render('dashBoard');
 });
-Router.route('/admin/posts', function() {
-  this.render('posts');
+Router.route('/admin/posts', function () {
+    this.render('posts');
 });
-Router.route('/admin/pages', function() {
+Router.route('/admin/pages', function () {
     this.render('pages');
 });
-Router.route('/admin/media', function() {
+Router.route('/admin/media', function () {
     this.render('media');
 });
-Router.route('/admin/homeSliders', function() {
+Router.route('/admin/homeSliders', function () {
     this.render('homeSlider');
 });
-Router.route('/admin/settings', function() {
+Router.route('/admin/settings', function () {
     this.render('settings');
 });
-Router.route('/admin/themes', function() {
+Router.route('/admin/themes', function () {
     this.render('themes');
 });
 Router.route('/admin/posts/add', function () {

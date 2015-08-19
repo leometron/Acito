@@ -1,13 +1,16 @@
 <template name="posts" id="post">
-    <div style="width: 100%">        
+    <div style="width: 100%">
         <div class="margin-top-40">
             <div class="row post-margin">
-                <span class="main-header">Posts</span> <span><button type="button" id="addNewPost" class="btn btn-default">Add New</button></span>
-            </div>           
+                <span class="main-header">Posts</span> <span><button type="button" id="addNewPost"
+                                                                     class="btn btn-default">Add New
+            </button></span>
+            </div>
             <div class="row post-margin">
                 <div style="float: right">
-                    <input type="text" class="form-control" id="queryString" value="{{queryString}}" style="width:60%; display:inline" />
-                    <span><button type="button" id="searchPost" class="btn btn-default">Search Posts</button></span>                    
+                    <input type="text" class="form-control" id="queryString" value="{{queryString}}"
+                           style="width:60%; display:inline"/>
+                    <span><button type="button" id="searchPost" class="btn btn-default">Search Posts</button></span>
                 </div>
             </div>
             <div class="cursor-pointer">
@@ -16,144 +19,145 @@
                       <a id="draftFilter">Draft</a> |
                       <a id="binFilter">Bin</a>
                 </span>
-            </div>    
+            </div>
             <div class="row post-margin margin-top-10">
                 <div class="col-md-3 padding-left-zero">
                  <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdown"
-                          data-toggle="dropdown">Bulk Actions                        
+                            data-toggle="dropdown">Bulk Actions
                     </button>
                      <span class="caret" style=" margin-left: -20px;"></span>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                         <li>
+                        <li>
                             <a class="menuitem" href="#">Bulk Actions</a>
-                         </li>
-                         <li>
+                        </li>
+                        <li>
                             <a class="menuitem" href="#">Delete</a>
-                         </li>
-                         <li>
-                           <a class="menuitem" href="#">Move to Bin</a>
-                         </li>           
+                        </li>
+                        <li>
+                            <a class="menuitem" href="#">Move to Bin</a>
+                        </li>
                     </ul>
                 </span>
-                    <span class="margin-left-10"><button type="button" class="btn btn-default" id="bulkApplyBtn">Apply</button></span>
+                    <span class="margin-left-10"><button type="button" class="btn btn-default" id="bulkApplyBtn">Apply
+                    </button></span>
                 </div>
                 <div class="col-md-4 margin-left-minus-5">
                 <span class="dropdown margin-right">
                     <select id="dateFilter" class="selctionButton">
-                          <option value="All dates" selected="selected">All dates</option>
-                          <option value="/5/2015">May 2015</option>
-                          <option value="/6/2015">June 2015</option>
-                          <option value="/7/2015">July 2015</option>
+                        <option value="All dates" selected="selected">All dates</option>
+                        <option value="/5/2015">May 2015</option>
+                        <option value="/6/2015">June 2015</option>
+                        <option value="/7/2015">July 2015</option>
                     </select>
                 </span>
                     <span><button type="button" class="btn btn-default" id="filter">Filter</button></span>
-                </div>                
+                </div>
                 <!-- <div class="col-md-4 margin-left-minus-10"> -->
-<!--                 <span class="dropdown margin-right">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
-                          data-toggle="dropdown">All dates                       
-                    </button>
-                     <span class="caret margin-left-minus-20"></span>
-                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                         <li>
-                            <a class="menuitem1" href="#">All dates  </a>
-                         </li>                                  
-                    </ul>
-                </span> -->
-<!--                 <span class="dropdown margin-right">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="categoriesdropdown"
-                          data-toggle="dropdown">All categories                       
-                    </button>
-                     <span class="caret margin-left-minus-20"></span>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                        <li role="presentation">
-                            <a class="menuitem2"
-                                id="config-request-command" href="#">All categories</a>
-                         </li>   
-                        {{#each categoryList}}
-                         <li role="presentation">
-                            <a class="menuitem2"
-                                id="config-request-command" href="#">{{name}}</a>
-                         </li>                        
-                        {{/each}}                                  
-                    </ul>                   
-                </span>
-                    <span class="margin-left-10">
-                        <button type="button" id="filterByCategory" class="btn btn-default">Filter</button>
-                    </span>
-                </div> -->
+                <!--                 <span class="dropdown margin-right">
+                                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
+                                          data-toggle="dropdown">All dates
+                                    </button>
+                                     <span class="caret margin-left-minus-20"></span>
+                                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                         <li>
+                                            <a class="menuitem1" href="#">All dates  </a>
+                                         </li>
+                                    </ul>
+                                </span> -->
+                <!--                 <span class="dropdown margin-right">
+                                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="categoriesdropdown"
+                                          data-toggle="dropdown">All categories
+                                    </button>
+                                     <span class="caret margin-left-minus-20"></span>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                        <li role="presentation">
+                                            <a class="menuitem2"
+                                                id="config-request-command" href="#">All categories</a>
+                                         </li>
+                                        {{#each categoryList}}
+                                         <li role="presentation">
+                                            <a class="menuitem2"
+                                                id="config-request-command" href="#">{{name}}</a>
+                                         </li>
+                                        {{/each}}
+                                    </ul>
+                                </span>
+                                    <span class="margin-left-10">
+                                        <button type="button" id="filterByCategory" class="btn btn-default">Filter</button>
+                                    </span>
+                                </div> -->
             </div>
             <div class="row post-margin padding-top-bottom-10">
-              <div class="bs-example" data-example-id="striped-table">
-                  <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">
-                      <div class="col-md-1"></div>
-                      <div class="col-md-4 padding-left-zero margin-left-minus-30">Title</div>
-                      <div class="col-md-2">Author</div>
-                      <div class="col-md-2">Page</div>
-                      <div class="col-md-1">Tags</div>
-                      <div class="col-md-1">Status</div>
-                      <div class="col-md-1">Date</div>
-                  </div>
-                       {{#each postList}}
+                <div class="bs-example" data-example-id="striped-table">
+                    <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4 padding-left-zero margin-left-minus-30">Title</div>
+                        <div class="col-md-2">Author</div>
+                        <div class="col-md-2">Page</div>
+                        <div class="col-md-1">Tags</div>
+                        <div class="col-md-1">Status</div>
+                        <div class="col-md-1">Date</div>
+                    </div>
+                    {{#each postList}}
                     {{#if currentUser}}
-                        <div id="{{_id}}" class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                                <div class="col-md-1 margin-top-10">
-                                    <input type="checkbox" class="checkbox">
-                                </div>
-                                {{#if deleted}}                                                                        
-                            <div class="post">                                
-                             <div class="row padding-top-bottom-10">
-                            <div class="col-md-4 padding-left-zero margin-left-minus-30">
-                                    <strike>{{title}}</strike>                        
-                            </div>
-                            <div class="col-md-2"><strike>{{currentUser.username}}</strike></div>
-                            <div class="col-md-2"><strike>{{pageName}}</strike></div>
-                            <div class="col-md-1"><strike>{{tags}}</strike></div>
-                            <div class="col-md-1"><strike>{{status}}</strike></div>
-                            <div class="col-md-1"><strike>{{createdAt}}</strike></div>
-                        </div>   
+                    <div id="{{_id}}" class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                        <div class="col-md-1 margin-top-10">
+                            <input type="checkbox" class="checkbox">
                         </div>
-                              {{else}}
-
-                            <div class="post">                                
-                             <div class="row padding-top-bottom-10">
-                            <div class="col-md-4 padding-left-zero margin-left-minus-30">
-                                    {{title}}
+                        {{#if deleted}}
+                        <div class="post">
+                            <div class="row padding-top-bottom-10">
+                                <div class="col-md-4 padding-left-zero margin-left-minus-30">
+                                    <strike>{{title}}</strike>
+                                </div>
+                                <div class="col-md-2"><strike>{{currentUser.username}}</strike></div>
+                                <div class="col-md-2"><strike>{{pageName}}</strike></div>
+                                <div class="col-md-1"><strike>{{tags}}</strike></div>
+                                <div class="col-md-1"><strike>{{status}}</strike></div>
+                                <div class="col-md-1"><strike>{{createdAt}}</strike></div>
                             </div>
-                            <div class="col-md-2">{{currentUser.username}}</div>
-                            <div class="col-md-2">{{pageName}}</div>
-                            <div class="col-md-1">{{tags}}</div>
-                            <div class="col-md-1">{{status}}</div>
-                            <div class="col-md-1">{{createdAt}}</div>
-                        </div>   
-                        </div> 
-                                {{/if}}                                                        
-                        </div> 
-                                {{/if}}                            
-                                           
-                    {{/each}}                            
-                    </div>                    
-              </div>
-<!--             <div class="row post-margin">
-                <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownmenu"
-                          data-toggle="dropdown">Bulk Actions                        
-                    </button>
-                     <span class="caret margin-left-minus-20"></span>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                         <li>
-                            <a class="menuitem3" href="#">Bulk Actions</a>
-                         </li>
-                         <li>
-                            <a class="menuitem3" href="#">Edit</a>
-                         </li>
-                         <li>
-                            <a class="menuitem3" href="#">Move to Bin</a>
-                         </li>           
-                    </ul>
-                </span>
-            </div> -->
+                        </div>
+                        {{else}}
+
+                        <div class="post">
+                            <div class="row padding-top-bottom-10">
+                                <div class="col-md-4 padding-left-zero margin-left-minus-30">
+                                    {{title}}
+                                </div>
+                                <div class="col-md-2">{{currentUser.username}}</div>
+                                <div class="col-md-2">{{pageName}}</div>
+                                <div class="col-md-1">{{tags}}</div>
+                                <div class="col-md-1">{{status}}</div>
+                                <div class="col-md-1">{{createdAt}}</div>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{/if}}
+
+                    {{/each}}
+                </div>
+            </div>
+            <!--             <div class="row post-margin">
+                            <span class="dropdown">
+                                <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownmenu"
+                                      data-toggle="dropdown">Bulk Actions
+                                </button>
+                                 <span class="caret margin-left-minus-20"></span>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                     <li>
+                                        <a class="menuitem3" href="#">Bulk Actions</a>
+                                     </li>
+                                     <li>
+                                        <a class="menuitem3" href="#">Edit</a>
+                                     </li>
+                                     <li>
+                                        <a class="menuitem3" href="#">Move to Bin</a>
+                                     </li>
+                                </ul>
+                            </span>
+                        </div> -->
         </div>
     </div>
 </template>
