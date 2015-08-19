@@ -14,7 +14,13 @@ Meteor.subscribe('featuredimage');
 Template.header.events({
    'click #pageName': function() {
     Session.set('numberOfCount',4);
-      $('.give-more-content').show();
+    Meteor.setTimeout(function(){
+      if(Session.get('numberOfCount')<Session.get('postCount')){
+        $('.give-more-content').show();  
+      }else{
+        $('.give-more-content').hide();
+      }
+    },100);
       Session.set('selectedPostId',"");        
       Session.set("pageId",this._id);
    },
@@ -65,7 +71,7 @@ Template.home.events({
           if(Session.get('postCount')<=Session.get('numberOfCount')){
             $('.give-more-content').hide();
             $('.posts-Over').show();
-            Meteor.setTimeout(function(){$('.posts-Over').hide()},1500);
+            Meteor.setTimeout(function(){$('.posts-Over').hide()},3000);
           }
     }, 1000);
   },
