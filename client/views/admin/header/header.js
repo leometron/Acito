@@ -53,10 +53,11 @@ Template.adminHeader.rendered = function () {
     $('#subNavBarpagesadd').hide();
     $('#subNavBarHomeSlidersadd').hide();
     $('#subNavBarpostsimage').hide();
-    ;
+    var path = $(location).attr('pathname');
     var pathname = $(location).attr('pathname').split('/')[1];
-    var pathname1 = $(location).attr('pathname').split('/')[2];
-    if (pathname == 'admin' && pathname1 != undefined) {
+    var pathname1 = $(location).attr('pathname').split('/')[2];    
+
+    if(pathname === 'admin' && pathname1 != undefined && path != '/admin/'){
         $('#header').show();
         $('#navBardashboard').addClass('selected');
         $('#main_view').removeClass('full-width');

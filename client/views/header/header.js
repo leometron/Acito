@@ -50,41 +50,45 @@ Template.header.rendered = function () {
         $('body, html').animate({scrollTop: pos});
     });
 
-    $(window).scroll(function () {
-        console.log(Session.get('themeName'));
-        var theme = Session.get('themeName');
-        if (theme === 'theme1') {
-            var window_top = $(window).scrollTop();
-            if (window_top != 0) {
-                $('#mainNav').css({'background-color': 'black'});
-                $('.navbar-brand').css({'font-size': '15px'});
-                $('.navbar-default .navbar-nav li a').css({'color': 'white'})
-                $('.navbar-default .navbar-brand').css({'color': 'white'})
-            } else {
-                $('#mainNav').scrollTop(function () {
-                    $(this).css({'background-color': 'transparent', 'border-color': 'white'})
-                    $('.navbar-brand').css({'font-size': 'x-large'});
-                    $('.navbar-default .navbar-nav li a').css({'color': 'white'})
-                    $('.navbar-default .navbar-brand').css({'color': 'white'})
-                })
-            }
-        } else {
-            var window_top = $(window).scrollTop();
-            if (window_top != 0) {
-                $('#mainNav').css({'background-color': 'white'});
-                $('.navbar-brand').css({'font-size': '15px'});
-                $('.navbar-default .navbar-nav li a').css({'color': 'black'})
-                $('.navbar-default .navbar-brand').css({'color': 'black'})
-            } else {
-                $('#mainNav').scrollTop(function () {
-                    $(this).css({'background-color': 'transparent', 'border-color': 'white'})
-                    $('.navbar-brand').css({'font-size': 'x-large'});
-                    $('.navbar-default .navbar-nav li a').css({'color': 'white'})
-                    $('.navbar-default .navbar-brand').css({'color': 'white'})
-                })
-            }
-        }
+$(window).scroll(function(){
 
-    });
-
+  var theme = Session.get('themeName');
+  if(theme === 'theme1'){
+var window_top = $(window).scrollTop();   
+   if(window_top != 0){     
+      $('#mainNav').css({'background-color': 'black'});  
+       $('.navbar-brand').css({'font-size': '15px'});  
+       $('.navbar-default .navbar-nav li a').css({'color':'black'})  
+       $('.navbar-default .navbar-brand').css({'color':'black'})   
+       $('.navbar-fixed-top').css({'top': '0', 'width':'100%'})  
+       $('.navbar-fixed-top').css({'left':'0'})   
+   }else{
+       $('#mainNav').scrollTop(function(){           
+       $(this).css({'background-color': 'transparent','border-color':'black'})
+       $('.navbar-brand').css({'font-size': 'x-large'}); 
+       $('.navbar-default .navbar-nav li a').css({'color':'black'})   
+       $('.navbar-default .navbar-brand').css({'color':'black'})  
+       $('.navbar-fixed-top').css({'top': '25px', 'width':'95%'})  
+        $('.navbar-fixed-top').css({'left':'35px'})  
+       })
+   }
+   
+  }else{
+   var window_top = $(window).scrollTop();   
+   if(window_top != 0){     
+       $('#mainNav').css({'background-color': 'black'});  
+       $('.navbar-brand').css({'font-size': '15px'});  
+       $('.navbar-default .navbar-nav li a').css({'color':'white'})  
+      $('.navbar-default .navbar-brand').css({'color':'white'})        
+   }else{
+       $('#mainNav').scrollTop(function(){           
+       $(this).css({'background-color': 'transparent','border-color':'white'})
+       $('.navbar-brand').css({'font-size': 'x-large'}); 
+       $('.navbar-default .navbar-nav li a').css({'color':'white'})   
+      $('.navbar-default .navbar-brand').css({'color':'white'})  
+      })
+  }
+}
+      
+});
 };

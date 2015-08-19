@@ -76,6 +76,16 @@ Template.home.events({
             }
         }, 1000);
     },
+   'click .right-arrow' : function(){
+     var userId = this._id;
+       Session.set('selectedPageId',Session.get("pageId"));
+       // Session.set("pageId","");        
+       Session.set('selectedPostId', userId);
+       $('.image').animate({width: 'toggle'}, 770);
+       setTimeout(function(){
+            Router.go("/post/"+userId);
+       }, 1000);  
+   }    
 });
 Template.home.helpers({
     'postsList': function () {
@@ -168,6 +178,7 @@ Template.home.rendered = function () {
             themesheet.appendTo('head');
         }
     });
+  
 
     $('#showPost').hide();
     $('#postIntroduction').offset().top - $('#postasas').offset().top
@@ -194,4 +205,5 @@ Template.home.rendered = function () {
         });
     }
 };
+
 
