@@ -1,10 +1,10 @@
 Template.adminLogin.events({
 
-    'submit #frmLogin' : function(e, t){
-      e.preventDefault();
-      // retrieve the input field values
-      var email = t.find('#login-email').value
-        , password = t.find('#login-password').value;
+    'submit #frmLogin': function (e, t) {
+        e.preventDefault();
+        // retrieve the input field values
+        var email = t.find('#login-email').value
+            , password = t.find('#login-password').value;
 
         console.log("entering inside....");
 
@@ -12,16 +12,16 @@ Template.adminLogin.events({
 
         // If validation passes, supply the appropriate fields to the
         // Meteor.loginWithPassword() function.
-        Meteor.loginWithPassword(email, password, function(err){
-        if (err)
-          // The user might not have been found, or their passwword
-          // could be incorrect. Inform the user that their
-          // login attempt has failed.
-          console.log("User Not found");
-        else
-          $(location).attr('href','/admin/dashboard');         
-         console.log("success");
-      });
-         return false; 
-      }
-  });
+        Meteor.loginWithPassword(email, password, function (err) {
+            if (err)
+            // The user might not have been found, or their passwword
+            // could be incorrect. Inform the user that their
+            // login attempt has failed.
+                console.log("User Not found");
+            else
+                $(location).attr('href', '/admin/dashboard');
+            console.log("success");
+        });
+        return false;
+    }
+});

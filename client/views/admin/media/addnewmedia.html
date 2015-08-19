@@ -1,20 +1,22 @@
-<template name="addNewMedia">   
+<template name="addNewMedia">
     <div class="margin-top-40">
         <div class="row post-margin">
             <span style="font-size: 30px;">Upload New Media</span>
         </div>
     </div>
     <div class="margin-top-20">
-         <div style="  border: 4px dashed #b4b9be;  height: 230px;">
-               <div style="  margin: 70px auto 0;width:250px">
-                   <p class="text-center" style="font-size: 20px;color: #A19B9B;">Drop file here</p>
-                   <p class="text-center">or</p>
-                   <div class="text-center"><input type="file" id="mediaName"></div>
-               </div>
-         </div>
+        <div style="  border: 4px dashed #b4b9be;  height: 230px;">
+            <div style="  margin: 70px auto 0;width:250px">
+                <p class="text-center" style="font-size: 20px;color: #A19B9B;">Drop file here</p>
+
+                <p class="text-center">or</p>
+
+                <div class="text-center"><input type="file" id="mediaName"></div>
+            </div>
+        </div>
     </div>
     <div class="padding-top-bottom-10">
-         <p>You are using the multi-file uploader. Problems? Try the browser uploader instead</p>
+        <p>You are using the multi-file uploader. Problems? Try the browser uploader instead</p>
     </div>
     <div>
         <p>Maximum upload file size: 24 MB.</p>
@@ -34,18 +36,19 @@
                 <input id="filename" type="text" class="form-control" value="{{selectMediaName}}">
             </div>
             {{#if errormsg}}
-                <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 5px;width: 50%;margin-top: -20px;">
-                <span  id="showError">{{errormsg}}</span></div>  
+            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 5px;width: 50%;margin-top: -20px;">
+                <span id="showError">{{errormsg}}</span></div>
             {{/if}}
-             <div class="padding-top-bottom-10">
-               <img src="{{selectMediaUrl}}" class="img-rounded" style="width:200px; height:200px;">
+            <div class="padding-top-bottom-10">
+                <img src="{{selectMediaUrl}}" class="img-rounded" style="width:200px; height:200px;">
             </div>
             <div class="padding-top-bottom-10">
                 <p>Caption</p>
                 {{#if showSelectedMedia}}
-                <textarea  id="caption" cols="80" rows="5"  class="form-control" value="{{showSelectedMedia.caption}}"></textarea>
+                <textarea id="caption" cols="80" rows="5" class="form-control"
+                          value="{{showSelectedMedia.caption}}"></textarea>
                 {{else}}
-                <textarea  id="caption" cols="80" rows="5"  class="form-control"></textarea>
+                <textarea id="caption" cols="80" rows="5" class="form-control"></textarea>
                 {{/if}}
             </div>
             <div class="padding-top-bottom-10">
@@ -59,36 +62,39 @@
             <div class="padding-top-bottom-10">
                 <p>Description</p>
                 {{#if showSelectedMedia}}
-                <textarea  id="description" cols="80" rows="5"  class="form-control" value="{{showSelectedMedia.description}}"></textarea>
+                <textarea id="description" cols="80" rows="5" class="form-control"
+                          value="{{showSelectedMedia.description}}"></textarea>
                 {{else}}
-                <textarea  id="description" cols="80" rows="5"  class="form-control"></textarea>
+                <textarea id="description" cols="80" rows="5" class="form-control"></textarea>
                 {{/if}}
             </div>
         </div>
         <div class="col-md-4 padding-bottom-40">
-        <div class="bg-white">
-               <div class="board-view  border-bottom">Save<span class="caret pull-right margin-top-10"></span></div>
-               <div class="board-view">Uploaded on:</div>
-               <div class="board-view">File URL: <span class="padding-left-10 font-bold"></span></div>
-               <div class="board-view">
-                <input id="mediaUrl" type="text" class="form-control" value="{{selectMediaUrl}}">
-                </div>                
-               <div class="board-view">File name:
-                <span id="fullimagename" class="padding-left-10 font-bold">{{selectMediaFullName}}</span>
+            <div class="bg-white">
+                <div class="board-view  border-bottom">Save<span class="caret pull-right margin-top-10"></span></div>
+                <div class="board-view">Uploaded on:</div>
+                <div class="board-view">File URL: <span class="padding-left-10 font-bold"></span></div>
+                <div class="board-view">
+                    <input id="mediaUrl" type="text" class="form-control" value="{{selectMediaUrl}}">
                 </div>
-               <div class="board-view">File type:
-                <span id="filetype" class="padding-left-10 font-bold">{{selectMediaType}}</span>
+                <div class="board-view">File name:
+                    <span id="fullimagename" class="padding-left-10 font-bold">{{selectMediaFullName}}</span>
                 </div>
-               <div class="board-view">File size:
-                <span id="filesize" class="padding-left-10 font-bold">{{selectMediaSize}}</span>
-               </div> 
-        </div>
+                <div class="board-view">File type:
+                    <span id="filetype" class="padding-left-10 font-bold">{{selectMediaType}}</span>
+                </div>
+                <div class="board-view">File size:
+                    <span id="filesize" class="padding-left-10 font-bold">{{selectMediaSize}}</span>
+                </div>
+            </div>
             <div class="board-view border-bottom" style="border: 1px solid #ddd;border-top: 0;">
                 Delete Permanently
                 {{#if showSelectedMedia}}
-                <span style="padding-left: 30%"><button id="update" type="button" class="btn btn-primary">update</button></span>
+                <span style="padding-left: 30%"><button id="update" type="button" class="btn btn-primary">update
+                </button></span>
                 {{else}}
-                <span style="padding-left: 25%"><button id="publish" type="button" class="btn btn-primary">publish</button></span>
+                <span style="padding-left: 25%"><button id="publish" type="button" class="btn btn-primary">publish
+                </button></span>
                 {{/if}}
             </div>
         </div>

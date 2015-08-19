@@ -1,5 +1,5 @@
 <template name="pages" id="pages">
-    <div>        
+    <div>
         <div class="margin-top-40">
             <div class="row post-margin">
                 <span class="main-header">Pages</span>
@@ -7,7 +7,7 @@
             </div>
             <div class="row post-margin">
                 <div style="float: right">
-                    <input type="text" class="form-control" id="pagesearch" style="width:60%; display:inline" />
+                    <input type="text" class="form-control" id="pagesearch" style="width:60%; display:inline"/>
                     <span><button type="button" id="search" class="btn btn-default">Search Pages</button></span>
                 </div>
             </div>
@@ -21,8 +21,9 @@
             <div class="row post-margin">
                 <div class="col-md-3 padding-left-zero">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                        Bulk Actions                       
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown">
+                        Bulk Actions
                     </button>
                      <span class="caret margin-left-minus-20"></span>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -31,7 +32,8 @@
                         <li><a href="#" class="menuitem">Move to Bin</a></li>
                     </ul>
                 </span>
-                    <span class="margin-left-10"><button type="button" id="Bulkapply" class="btn btn-default">Apply</button></span>
+                    <span class="margin-left-10"><button type="button" id="Bulkapply" class="btn btn-default">Apply
+                    </button></span>
                 </div>
                 <div class="col-md-6">
                 <span class="dropdown">
@@ -46,10 +48,10 @@
                         <li><a href="#" class="dateitem">July 2015</a></li>
                     </ul> -->
                     <select id="filterdate" class="selctionButton">
-                          <option value="All dates" selected="selected">All dates</option>
-                          <option value="/6/2015">June 2015</option>
-                          <option value="/7/2015">July 2015</option>
-                          <option value="/8/2015">August 2015</option>
+                        <option value="All dates" selected="selected">All dates</option>
+                        <option value="/6/2015">June 2015</option>
+                        <option value="/7/2015">July 2015</option>
+                        <option value="/8/2015">August 2015</option>
                     </select>
                 </span>
                     <span><button type="button" class="btn btn-default" id="Datefilter">Filter</button></span>
@@ -59,55 +61,59 @@
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
                         <div class="col-md-1"></div>
-                        <div class="col-md-6 padding-left-zero margin-left-minus-30">Title</div>  <!-- <span><input type="checkbox"></span> -->
+                        <div class="col-md-6 padding-left-zero margin-left-minus-30">Title</div>
+                        <!-- <span><input type="checkbox"></span> -->
                         <div class="col-md-2">Author</div>
                         <div class="col-md-2">comments</div>
                         <div class="col-md-1">Date</div>
-                    </div>                  
-                        {{#each lists}}
-                        {{#if currentUser}}
-                          <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                           <div class="col-md-1 margin-top-10">
-                                    <input type="checkbox" class="checkbox">
-                                </div>
-                            <div class="col-md-6 padding-left-zero margin-left-minus-30" id="list">                     
-                                {{#if deleted}}
-                                <strike>{{title}}</strike>
-                                 {{#if equals parentId "(no parent)"}}
-                                    {{else}} 
-                                    | Parent Page: {{parentId}}
-                                {{/if}}
-                                <div><a href= "#" id="restorelist">Restore</a> | <a href = "#" id="deletelist">Delete Permanently</a></div>
-                                {{else}}
-                                    {{title}}
-                                 <div><a href= "/admin/pages/edit" id="editlist">Edit</a> | <a href = "#" id="binlist">Bin</a></div>
-                                {{/if}}
-                            </div>
-                            <div class="col-md-2">{{currentUser.username}}</div>
-                            <div class="col-md-2">comments</div>
-                            <div class="col-md-1">{{createdAt}}
-                            <br>
-                            <div>{{status}}</div>
-                            </div>                       
-                        </div>
-                        {{/if}}
-                        {{/each}}
                     </div>
-                </div>        
-           <!--  <div class="row post-margin">
-                <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownMenu5" data-toggle="dropdown">
-                        Bulk Actions                        
-                    </button>
-                    <span class="caret margin-left-minus-20"></span>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                        <li><a href="#">Bulk Actions</a></li>
-                        <li><a href="#">Edit</a></li>
-                        <li><a href="#">Move to Bin</a></li>
-                    </ul>
-                </span>
-                <span class="margin-left-10"><button type="button" class="btn btn-default">Apply</button></span>
-            </div> -->
+                    {{#each lists}}
+                    {{#if currentUser}}
+                    <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                        <div class="col-md-1 margin-top-10">
+                            <input type="checkbox" class="checkbox">
+                        </div>
+                        <div class="col-md-6 padding-left-zero margin-left-minus-30" id="list">
+                            {{#if deleted}}
+                            <strike>{{title}}</strike>
+                            {{#if equals parentId "(no parent)"}}
+                            {{else}}
+                            | Parent Page: {{parentId}}
+                            {{/if}}
+                            <div><a href="#" id="restorelist">Restore</a> | <a href="#" id="deletelist">Delete
+                                Permanently</a></div>
+                            {{else}}
+                            {{title}}
+                            <div><a href="/admin/pages/edit" id="editlist">Edit</a> | <a href="#" id="binlist">Bin</a>
+                            </div>
+                            {{/if}}
+                        </div>
+                        <div class="col-md-2">{{currentUser.username}}</div>
+                        <div class="col-md-2">comments</div>
+                        <div class="col-md-1">{{createdAt}}
+                            <br>
+
+                            <div>{{status}}</div>
+                        </div>
+                    </div>
+                    {{/if}}
+                    {{/each}}
+                </div>
+            </div>
+            <!--  <div class="row post-margin">
+                 <span class="dropdown">
+                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownMenu5" data-toggle="dropdown">
+                         Bulk Actions
+                     </button>
+                     <span class="caret margin-left-minus-20"></span>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                         <li><a href="#">Bulk Actions</a></li>
+                         <li><a href="#">Edit</a></li>
+                         <li><a href="#">Move to Bin</a></li>
+                     </ul>
+                 </span>
+                 <span class="margin-left-10"><button type="button" class="btn btn-default">Apply</button></span>
+             </div> -->
         </div>
     </div>
 </template>

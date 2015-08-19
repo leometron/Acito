@@ -30,20 +30,20 @@ Media.attachSchema(
             type: String
         },
         createdAt: {
-         type: String
+            type: String
         }
     })
 );
 
 if (Meteor.isServer) {
     Media.allow({
-        insert : function () {
+        insert: function () {
             return true;
         },
-        update : function () {
+        update: function () {
             return true;
         },
-        remove : function () {
+        remove: function () {
             return true;
         }
     });
@@ -56,31 +56,31 @@ Images = new FS.Collection("images", {
 });
 
 Images.deny({
-    insert: function(){
+    insert: function () {
         return false;
     },
-    update: function(){
+    update: function () {
         return false;
     },
-    remove: function(){
+    remove: function () {
         return false;
     },
-    download: function(){
+    download: function () {
         return false;
     }
 });
 
 Images.allow({
-    insert: function(){
+    insert: function () {
         return true;
     },
-    update: function(){
+    update: function () {
         return true;
     },
-    remove: function(){
+    remove: function () {
         return true;
     },
-    download: function(){
+    download: function () {
         return true;
     }
 });

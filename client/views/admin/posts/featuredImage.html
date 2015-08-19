@@ -1,12 +1,13 @@
 <template name="featuredImage" id="featuredImage">
     {{#if errorimg}}
-            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
-            <span  id="showError">{{errorimg}}</span></div>  
+    <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
+        <span id="showError">{{errorimg}}</span></div>
     {{/if}}
     {{#if successmsg}}
-            <div id="showMsg" style="background-color: #009933;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
-            <span>{{successmsg}}</span></div>  
-    {{/if}}  
+    <div id="showMsg"
+         style="background-color: #009933;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
+        <span>{{successmsg}}</span></div>
+    {{/if}}
     <div class="margin-top-20">
         <div class="row post-margin">
             <span style="font-size: 30px;">Add Featured Image</span>
@@ -22,8 +23,8 @@
             <select id="pageId" placeholder="Posts">
                 <option>none</option>
                 {{#each postList}}
-                <option value="{{_id}}">{{title}}</option>                        
-                {{/each}}                              
+                <option value="{{_id}}">{{title}}</option>
+                {{/each}}
             </select>
         </div>
     </div>
@@ -31,6 +32,6 @@
     <div class="margin-top-20">
         <button type="button" id="publishFeaturedImage" class="btn btn-primary">Publish</button>
     </div>
-  
+
 </template>
 
