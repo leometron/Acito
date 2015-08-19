@@ -48,6 +48,7 @@ Template.adminHeader.rendered = function () {
 Template.adminHeader.events({
   'click .item': function(events) { 
 
+    $('.plugin-submenu').hide(800);
      console.log($(events.currentTarget).attr("id"));
      
      var selectedId = $(events.currentTarget).attr("id");
