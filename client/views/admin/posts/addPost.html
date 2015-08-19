@@ -92,7 +92,7 @@
                     <!-- {{/if}}    -->
 
                        
-                            {{#if showSelectedPost.pageName}}
+                            <!-- {{#if showSelectedPost.pageName}}
                                 <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
                                 {{else}}
                                     <option>none</option>
@@ -100,7 +100,27 @@
                         
                         {{#each pageList}}
                             <option value="{{_id}}">{{title}}</option>                        
-                        {{/each}}                              
+                        {{/each}}       --> 
+                         {{#if showSelectedPost}}
+                          {{#if equals showSelectedPost.pageName "-"}}
+                            <option>none</option>
+                            {{else}}
+                            <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
+                            <option>none</option>
+                          {{/if}}
+                            <!-- <option>none</option> -->
+                            {{#each pageList}}
+                                {{#if equals showSelectedPost.pageId _id}}
+                                {{else}}
+                                <option value="{{_id}}">{{title}}</option>
+                                {{/if}}                        
+                            {{/each}} 
+                         {{else}}
+                            <option>none</option>
+                            {{#each pageList}}
+                                <option value="{{_id}}">{{title}}</option>                        
+                            {{/each}}
+                         {{/if}}
                     </select>
                 </div>
             </div>
