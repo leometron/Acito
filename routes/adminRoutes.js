@@ -66,3 +66,15 @@ Router.route('/admin/posts/image', function () {
 });
 
 
+//Routes related to plugin first
+Router.route('/admin/FIRST', function () {
+    this.render('firstHomeTemplate');
+});
+Router.route('/admin/FIRST/old', function () {
+    this.render('firstHomeTemplate');
+});
+Router.route('/admin/FIRST/new', function () {
+    this.render('firstHomeTemplate');
+});
+
+

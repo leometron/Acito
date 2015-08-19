@@ -359,8 +359,9 @@ pre {
     width: 100%;
     text-align: center;    
     position: absolute;
-    top: 30%;
+    top: 5%;
     background-position: center;
+    margin-top: 10%;
 }
 .header-content-inner{
     margin-right: auto;

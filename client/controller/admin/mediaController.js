@@ -70,8 +70,9 @@ Template.addNewMedia.events({
         var caption = (!$('#caption').val()) ? "-" : $('#caption').val();
         var type = $('#filetype').text();
         var size = $('#filesize').text();
+        var currentUserId = Meteor.userId();
 
-        Meteor.call('insertMediaData', url, name, nametype, type, size, caption, alternative, description, getCurrentDate());
+        Meteor.call('insertMediaData', url, name, nametype, type, size, caption, alternative, description, currentUserId, getCurrentDate());
         Router.go("/admin/media");
       }
     },

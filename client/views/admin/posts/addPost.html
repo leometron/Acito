@@ -133,8 +133,8 @@
                         {{#if showSelectedPost}}
                             {{#if equals showSelectedPost.featuredImage "-"}}
                                <span class="cursor-pointer" id="selectImage" data-toggle="modal" data-target="#myModal" >Set featured image
-                            {{#if getUrlValue}}
-                                <img src="{{getUrlValue}}" id="featureImage" style="width:100px; height:100px;"/>
+                            {{#if getpostUrl}}
+                                <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                             {{/if}}
                                 </span> 
                              {{else}}
@@ -144,8 +144,8 @@
                             {{/if}}
                         {{else}}
                 <span class="cursor-pointer" id="selectImage" data-toggle="modal" data-target="#myModal" >Set featured image
-                            {{#if getUrlValue}}
-                                <img src="{{getUrlValue}}" id="featureImage" style="width:100px; height:100px;"/>
+                            {{#if getpostUrl}}
+                                <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                             {{/if}}
                 </span>
                         {{/if}}

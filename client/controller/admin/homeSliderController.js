@@ -39,7 +39,7 @@ Template.addNewHomeSlider.events({
             Session.set('selectimgName', this.name);
         }     
     },
-    'change #selectMediaUrl': function (event, template) {
+    'change #selectSlideUrl': function (event, template) {
         FS.Utility.eachFile(event, function (file) {
           var img = event.target.files[0]
             Images.insert(file, function (err, fileObj) {
@@ -48,7 +48,8 @@ Template.addNewHomeSlider.events({
                 } else {                 
                   var url = "/cfs/files/images/" + fileObj._id;
                   Session.set('uploadMediaUrl',url);
-                  Meteor.call('insertMediaData', url, img.name, "-" , img.type, img.size + " Bytes",  "-", "-" , "-" , getUserName(), getCurrentDate());
+                  var currentUserId = Meteor.userId();
+                  Meteor.call('insertMediaData', url, img.name, "-" , img.type, img.size + " Bytes",  "-", "-" , "-" , currentUserId, getCurrentDate());
                     $('#uploadFile').removeClass('border');
                     $('#dropFile').hide() ;
                     $('#mediaLibrary').addClass('border');

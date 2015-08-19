@@ -3,8 +3,11 @@
          <div class="container padding-100 theme-width">
                <div class="row equal image image-center theme-left-20">              
               {{#each postsList}}
-               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">                  
-                    <img src="{{featuredImage}}" class="feature-image"/>                  
+               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">     
+                {{#if equals featuredImage '-'}}
+                {{else}}             
+                    <img src="{{featuredImage}}" class="feature-image"/>
+                {{/if}}                  
                  <!--  {{#each imageList}} 
                     {{#if equals postId ../_id}}                 
                       <img src="{{url}}" class="feature-image"/>                  
@@ -19,7 +22,14 @@
                    </div>                   
                </div>
               {{/each}}
-              </div>                                   
+              </div>  
+
+              <div class="loading-icon">
+              </div>
+              <div class="load-content-design">
+                <button class='give-more-content'>Click To Load More Content</button>
+              </div>
+              <div class="posts-Over">Posts Over</div>
           </div>
     </div>
     <div id="xLoader" class="padding-100 bg-dynamic-color"><div class="google-spin-wrapper"><div class="google-spin"></div></div></div>
@@ -42,6 +52,5 @@
       <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
 </div>
 <div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
-
 
  </template>
