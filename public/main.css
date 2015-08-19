@@ -56,8 +56,12 @@ body, #main {
   padding : 10px;
 }
 
+.post-list-header-theme{
+   margin-top: 10%;
+}
+
 pre {
- /* white-space:pre-wrap !important;*/
+  white-space:pre-wrap !important;
   word-wrap:break-word !important;
 }
 
@@ -538,12 +542,55 @@ pre {
     position: absolute;
     left: 0;
     right: 0;
+    top: 0;
+    bottom: 0;
+}
 }
 
 .fa-arrow-right:before {
     content: "\f061";
 }
 
+.load-content-design {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.give-more-content {
+  background: #8CB4BA;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.give-more-content:hover {
+  background: #221010;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.loading-icon {
+  background-image: url(/images/loading_anim.gif);
+  text-align: center;
+  margin-left: 48%;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  width:34px;
+  height: 34px;
+}
+
+.posts-Over {
+  font-size: 25px;
+  text-align: center;
+  color: red;
+}
 
 /*xloader*/
 
