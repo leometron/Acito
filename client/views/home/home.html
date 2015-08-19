@@ -1,55 +1,60 @@
 <template name="home">
-     <div id="Pages" class="row bg-color" >     
-         <div class="container padding-100">
-               <div class="row equal image image-center">              
-              {{#each postsList}}
-               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">     
-                {{#if equals featuredImage '-'}}
-                {{else}}             
+    <div id="Pages" class="row bg-color">
+        <div class="container padding-100">
+            <div class="row equal image image-center">
+                {{#each postsList}}
+                <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">
+                    {{#if equals featuredImage '-'}}
+                    {{else}}
                     <img src="{{featuredImage}}" class="feature-image"/>
-                {{/if}}                  
-                 <!--  {{#each imageList}} 
-                    {{#if equals postId ../_id}}                 
-                      <img src="{{url}}" class="feature-image"/>                  
-                    {{/if}}                  
-                  {{/each}}  -->                 
-                  <div class="post-thumb post-width text-center">
-                      <h3 id="postTitle" class="moz-header">{{title}}</h3>
-                      <p class="break-word text-ellipsis">
-                         {{content}}
-                      </p>
-                   </div>                   
-               </div>
-              {{/each}}
-              </div>  
+                    {{/if}}
+                    <!--  {{#each imageList}}
+                       {{#if equals postId ../_id}}
+                         <img src="{{url}}" class="feature-image"/>
+                       {{/if}}
+                     {{/each}}  -->
+                    <div class="post-thumb post-width text-center">
+                        <h3 id="postTitle" class="moz-header">{{title}}</h3>
 
-              <div class="loading-icon">
-              </div>
-              <div class="load-content-design">
+                        <p class="break-word text-ellipsis">
+                            {{content}}
+                        </p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="loading-icon">
+            </div>
+            <div class="load-content-design">
                 <button class='give-more-content'>Click To Load More Content</button>
-              </div>
-              <div class="posts-Over">Posts Over</div>
-          </div>
+            </div>
+            <div class="posts-Over">Posts Over</div>
+        </div>
     </div>
-    <div id="xLoader" class="padding-100 bg-dynamic-color"><div class="google-spin-wrapper"><div class="google-spin"></div></div></div>
- <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">   
+    <div id="xLoader" class="padding-100 bg-dynamic-color">
+        <div class="google-spin-wrapper">
+            <div class="google-spin"></div>
+        </div>
+    </div>
+    <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">
 
-<div class="owl-carousel">   
-   {{#each mediaList}}
-      <div  class="item margin-left-right-5 border">
-        <img src="{{url}}" class="height-250">
-      </div>
-   {{/each}}   
-</div>
+        <div class="owl-carousel">
+            {{#each mediaList}}
+            <div class="item margin-left-right-5 border">
+                <img src="{{url}}" class="height-250">
+            </div>
+            {{/each}}
+        </div>
 
-</div>
+    </div>
 
-<div id="showPost" class="show-post">     
-      <div class="col-md-10 col-xs-10">
-          <textarea rows="5" cols="5" class="form-control" placeholder="Post Your Question"></textarea>
-      </div>
-      <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" class="btn btn-default">Ask</a></div>
-      <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
-</div>
-<!-- <div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
+    <div id="showPost" class="show-post">
+        <div class="col-md-10 col-xs-10">
+            <textarea rows="5" cols="5" class="form-control" placeholder="Post Your Question"></textarea>
+        </div>
+        <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" class="btn btn-default">Ask</a></div>
+        <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
+    </div>
+    <!-- <div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
 </template>

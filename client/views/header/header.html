@@ -1,85 +1,89 @@
 <template name="header">
-{{#if showSelectedPost}}    
+    {{#if showSelectedPost}}
     <div>
-       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
-          <div class="container-fluid">       
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
-                  <span id="backToPage" class="back">Back</span>                       
-              </div>
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span id="backToPage" class="back">Back</span>
+                </div>
             </div>
         </nav>
-      </div>
-{{else}}   
-<div class="container padding-zero full-width">
-  <div id="myCarousel" class="carousel slide bannerDesign" data-ride="carousel">
-    <div class="carousel-inner" role="listbox">
-      {{#if isHomeSlider}}      
-          {{#each homeSliderList}}
+    </div>
+    {{else}}
+    <div class="container padding-zero full-width">
+        <div id="myCarousel" class="carousel slide bannerDesign" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                {{#if isHomeSlider}}
+                {{#each homeSliderList}}
                 {{#if equals _id singlehomeSlider._id }}
                 <div class="item active" id="someid">
-                  <img src="{{sliderImage}}" class="slider-image">
+                    <img src="{{sliderImage}}" class="slider-image">
                 </div>
                 {{else}}
                 <div class="item">
-                  <img src="{{sliderImage}}" class="slider-image">
+                    <img src="{{sliderImage}}" class="slider-image">
                 </div>
                 {{/if}}
-          {{/each}}
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>  
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a> 
-      {{else}} 
-        <img src="/images/background/background1.jpg" class="slider-image">
-      {{/if}}  
+                {{/each}}
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+                {{else}}
+                <img src="/images/background/background1.jpg" class="slider-image">
+                {{/if}}
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
-  <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand page-scroll font-xlarge" href="#">ACITO</a>
-      </div>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll font-xlarge" href="#">ACITO</a>
+            </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <!-- <a class="page-scroll" href="#DashBoard">DashBoard</a> -->
-            </li>
-            {{#each pagesList}}
-            <li>
-              <a id="pageName" class="page-scroll" href="#Pages">{{title}}</a>
-            </li>                    
-            {{/each}}                      
-            <li>
-              <!-- <a class="page-scroll" href="#Media">Media</a> -->
-            </li>
-          </ul>
-      </div>
-  </div>
-</nav>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!-- <a class="page-scroll" href="#DashBoard">DashBoard</a> -->
+                    </li>
+                    {{#each pagesList}}
+                    <li>
+                        <a id="pageName" class="page-scroll" href="#Pages">{{title}}</a>
+                    </li>
+                    {{/each}}
+                    <li>
+                        <!-- <a class="page-scroll" href="#Media">Media</a> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 class="slider-main-text">Your Favorite Source of Free Bootstrap Themes</h1>              
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>                
+                <h1 class="slider-main-text">Your Favorite Source of Free Bootstrap Themes</h1>
+
+                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download
+                    your template and start going, no strings attached!</p>
             </div>
         </div>
     </header>
-{{/if}}
+    {{/if}}
 </template>
 

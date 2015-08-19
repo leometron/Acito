@@ -1,49 +1,55 @@
 <template name="addNewHomeSlider">
     <div>
         {{#if errormsg}}
-            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
-            <span  id="showError">{{errormsg}}</span></div>  
-        {{/if}}         
+        <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
+            <span id="showError">{{errormsg}}</span></div>
+        {{/if}}
         <div class="margin-top-40">
             <div class="row">
-                {{#if showSelectedSlider}}                             
-                    <span style="font-size: 30px;">Edit Home Slider</span>
-                  {{else}}
-                    <span style="font-size: 30px;">Add New Home Slider</span>
-                {{/if}}           
+                {{#if showSelectedSlider}}
+                <span style="font-size: 30px;">Edit Home Slider</span>
+                {{else}}
+                <span style="font-size: 30px;">Add New Home Slider</span>
+                {{/if}}
             </div>
         </div>
-        <div class="col-md-8  padding-left-zero">           
+        <div class="col-md-8  padding-left-zero">
             {{#if showSelectedSlider}}
-                <input type="text" class="form-control" id="sliderTitle" value="{{showSelectedSlider.title}}"> 
-                {{else}}
-                <input type="text" class="form-control" id="sliderTitle" placeholder="Enter title here"> 
-            {{/if}} 
+            <input type="text" class="form-control" id="sliderTitle" value="{{showSelectedSlider.title}}">
+            {{else}}
+            <input type="text" class="form-control" id="sliderTitle" placeholder="Enter title here">
+            {{/if}}
             <div class="bg-white margin-top-40">
-                <div class="board-view  border-bottom font-bold">Banned Image<span class="caret pull-right margin-top-10"></span></div>               
+                <div class="board-view  border-bottom font-bold">Banned Image<span
+                        class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">This is the banner image for our work</div>
                 <div class="board-view">Our work banner image*</div>
                 <div class="board-view">
-                   {{#if showSelectedSlider}}
-                     {{#if imageName}} 
-                        <input type="text" class="form-control" id="sliderName" style="width: 82%; display: inline;" value="{{imageName}}">
-                      {{else}}
-                        <input type="text" class="form-control" id="sliderName" style="width: 82%; display: inline;" value="{{showSelectedSlider.sliderName}}">
-                     {{/if}}
-                        {{else}}
-                     {{#if imageName}} 
-                       <input type="text" class="form-control" style="width: 82%; display: inline;" value="{{imageName}}">
-                        {{else}}
-                            <input type="text" class="form-control" style="width: 82%; display: inline;">
-                     {{/if}}
-                   {{/if}}
-                    <span><button type="button" id="selectImage" class="btn btn-default" data-toggle="modal" data-target="#myModal">Select image</button></span>
+                    {{#if showSelectedSlider}}
+                    {{#if imageName}}
+                    <input type="text" class="form-control" id="sliderName" style="width: 82%; display: inline;"
+                           value="{{imageName}}">
+                    {{else}}
+                    <input type="text" class="form-control" id="sliderName" style="width: 82%; display: inline;"
+                           value="{{showSelectedSlider.sliderName}}">
+                    {{/if}}
+                    {{else}}
+                    {{#if imageName}}
+                    <input type="text" class="form-control" style="width: 82%; display: inline;" value="{{imageName}}">
+                    {{else}}
+                    <input type="text" class="form-control" style="width: 82%; display: inline;">
+                    {{/if}}
+                    {{/if}}
+                    <span><button type="button" id="selectImage" class="btn btn-default" data-toggle="modal"
+                                  data-target="#myModal">Select image
+                    </button></span>
                     <span class="cursor-pointer">
                         {{#if showSelectedSlider}}
                             {{#if getUrlValue}}
                         <img src="{{getUrlValue}}" id="sliderImage" style="width:100px; height:100px;"/>
                                 {{else}}
-                        <img src="{{showSelectedSlider.sliderImage}}" id="sliderImage" style="width:100px; height:100px;"/>
+                        <img src="{{showSelectedSlider.sliderImage}}" id="sliderImage"
+                             style="width:100px; height:100px;"/>
                             {{/if}}
                             {{else}}
                             {{#if getUrlValue}}
@@ -51,60 +57,75 @@
                             {{/if}}
                         {{/if}}
                     </span>
+
                     <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog model-width">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title font-bold margin-bottom-20">Select image</h4>
-                                    <span class="padding-10 cursor-pointer" id="uploadFile" style="padding-bottom: 17px">Upload Files</span>
-                                    <span class="padding-10 cursor-pointer" id="mediaLibrary" style="padding-bottom: 17px">Media Library</span>
+                                    <span class="padding-10 cursor-pointer" id="uploadFile"
+                                          style="padding-bottom: 17px">Upload Files</span>
+                                    <span class="padding-10 cursor-pointer" id="mediaLibrary"
+                                          style="padding-bottom: 17px">Media Library</span>
                                 </div>
-                                <div class="modal-body">                                
+                                <div class="modal-body">
                                     <div class="margin-top-20" id="dropFile">
                                         <div class="model-height">
                                             <div style="  margin: 70px auto 0;width:100%">
-                                                <p class="text-center font-bold" style="font-size: 20px;color: #A19B9B;">Drop files anywhere to upload</p>
+                                                <p class="text-center font-bold"
+                                                   style="font-size: 20px;color: #A19B9B;">Drop files anywhere to
+                                                    upload</p>
+
                                                 <p class="text-center">or</p>
-                                 <div style="margin: 20px auto 0; width: 19%;"><input type="file" id="selectSlideUrl"></div>
-                                                <div class="text-center margin-top-10 font-size-12"><p>Maximum upload file size: 24 MB.</p></div>
+
+                                                <div style="margin: 20px auto 0; width: 19%;"><input type="file"
+                                                                                                     id="selectSlideUrl">
+                                                </div>
+                                                <div class="text-center margin-top-10 font-size-12"><p>Maximum upload
+                                                    file size: 24 MB.</p></div>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div id="media">
                                         <div class="model-height">
-                                            <div class="col-md-8">     
+                                            <div class="col-md-8">
                                                 <div class="row">                                                                                
                                                     <span class="dropdown">
                                                         <select id="filterdate" class="selctionButton">
-                                                            <option value="All dates" selected="selected">All dates</option>
+                                                            <option value="All dates" selected="selected">All dates
+                                                            </option>
                                                             <option value="/5/2015">May 2015</option>
                                                             <option value="/6/2015">June 2015</option>
                                                             <option value="/7/2015">July 2015</option>
                                                         </select>
                                                     </span>      
                                                     <span>
-                                                        <input type="text" class="form-control pull-right font-size-12" style="width:30%" placeholder="search">
+                                                        <input type="text" class="form-control pull-right font-size-12"
+                                                               style="width:30%" placeholder="search">
                                                     </span>
-                                                </div>    
+                                                </div>
                                                 <div class="row">
                                                     {{#each mediaList}}
                                                     <div class="col-md-2 margin-bottom-10">
-                                                         <img src="{{url}}" class="selectedImg" style=" width: 80px; height: 80px;"/>
+                                                        <img src="{{url}}" class="selectedImg"
+                                                             style=" width: 80px; height: 80px;"/>
                                                     </div>
                                                     {{/each}}
-                                                </div>                                   
+                                                </div>
                                             </div>
-                                            <div id="popupMediadetail" class="col-md-4 bg-color model-height" style=" overflow-y: scroll">
+                                            <div id="popupMediadetail" class="col-md-4 bg-color model-height"
+                                                 style=" overflow-y: scroll">
                                                 <div class="font-bold margin-top-10">ATTACHMENT DETAILS</div>
-                                                    <div class="col-md-4 margin-top-10 padding-left-zero">
-                                                        <img src="/images/none.png" style=" width: 60px; height: 60px;"/>
-                                                    </div>
+                                                <div class="col-md-4 margin-top-10 padding-left-zero">
+                                                    <img src="/images/none.png" style=" width: 60px; height: 60px;"/>
+                                                </div>
                                                 <div class="col-md-8">
                                                     <div class="font-size-12 padding-top-bottom-10">none.jpg</div>
                                                     <div class="font-size-12 padding-top-bottom-10">24th July 2015</div>
                                                     <div class="font-size-12 padding-top-bottom-10">1kb</div>
-                                                    <div class="font-size-12 padding-top-bottom-10">Delete Premanently</div>
+                                                    <div class="font-size-12 padding-top-bottom-10">Delete Premanently
+                                                    </div>
                                                 </div>
                                                 <div class="margin-top-15">
                                                     <div class="col-md-3 font-size-12 margin-top-10">
@@ -132,86 +153,89 @@
                                                         <input type="text" class="form-control">
                                                     </div>
                                                     <div class="col-md-3 font-size-12 margin-top-10">
-                                                       Description
+                                                        Description
                                                     </div>
                                                     <div class="col-md-9">
                                                         <textarea rows="5" cols="5" class="form-control"></textarea>
                                                     </div>
-                                                </div>    
-                                            </div>                                            
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>                                                              
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                     <button type="button" id="sliderpublish" class="btn btn-primary" data-dismiss="modal">Select</button>
+                                    <button type="button" id="sliderpublish" class="btn btn-primary"
+                                            data-dismiss="modal">Select
+                                    </button>
                                 </div>
-                          </div>                      
+                            </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4 padding-bottom-40">
-             <!-- <div class="bg-white">
-                <div class="board-view  border-bottom font-bold">Display Custom Content<span class="caret pull-right margin-top-10"></span></div>          
-                <div class="board-view"><a href="#">Views</a> lets you build complete websites without coding.</div>
-                <div class="board-view">
-                      <ul>
+            <!-- <div class="bg-white">
+               <div class="board-view  border-bottom font-bold">Display Custom Content<span class="caret pull-right margin-top-10"></span></div>
+               <div class="board-view"><a href="#">Views</a> lets you build complete websites without coding.</div>
+               <div class="board-view">
+                     <ul>
+                          <li>
+                           Design templates for single pages
+                          </li>
                            <li>
-                            Design templates for single pages
-                           </li>
-                            <li>
-                            Query content and display anywhere
-                           </li>
-                            <li>
-                            Build parametric searches
-                           </li>
-                            <li>
-                            Create your own widgets
-                           </li>
-                            <li>
-                            No coding necessary
-                           </li>
-                      </ul>
-                </div>
-                <div class="board-view"><button type="button" class="btn btn-default">Get Views</button></div>
-            </div> -->
+                           Query content and display anywhere
+                          </li>
+                           <li>
+                           Build parametric searches
+                          </li>
+                           <li>
+                           Create your own widgets
+                          </li>
+                           <li>
+                           No coding necessary
+                          </li>
+                     </ul>
+               </div>
+               <div class="board-view"><button type="button" class="btn btn-default">Get Views</button></div>
+           </div> -->
             <div class="bg-white margin-top-20">
-                <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span></div>
+                <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span>
+                </div>
                 <div class="board-view">
                     <!-- <span>                    
                         <button type="button" id="saveSlider" class="btn btn-default">Save Draft</button>                            
                     </span> -->
-                    {{#if showSelectedSlider}}  
-                     {{else}}
+                    {{#if showSelectedSlider}}
+                    {{else}}
                     <button type="button" id="saveSlider" class="btn btn-default">Save Draft</button>
                     {{/if}}
                     <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
                 </div>
-                <div class="board-view">Status: 
+                <div class="board-view">Status:
                     {{#if showSelectedSlider}}
-                      {{showSelectedSlider.status}}
-                        {{else}}
-                            Draft
+                    {{showSelectedSlider.status}}
+                    {{else}}
+                    Draft
                     {{/if}}
                 </div>
-                <div class="board-view">Visibility: public </div>
+                <div class="board-view">Visibility: public</div>
                 <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
             </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0; padding-bottom: 40px;">
-                <div class="col-md-12 padding-left-zero" >
-                    <div class="col-md-6 padding-left-zero cursor-pointer">                                       
+                <div class="col-md-12 padding-left-zero">
+                    <div class="col-md-6 padding-left-zero cursor-pointer">
                         {{#if showSelectedSlider}}
-                            {{#if showSelectedSlider.deleted}}
-                              <div id="removeSlider">                                 
-                                 Delete  
-                              </div>
-                            {{else}}
-                              <div id="moveBin">                                 
-                                Move to Bin  
-                              </div>
-                            {{/if}}
-                        {{/if}}                                                
+                        {{#if showSelectedSlider.deleted}}
+                        <div id="removeSlider">
+                            Delete
+                        </div>
+                        {{else}}
+                        <div id="moveBin">
+                            Move to Bin
+                        </div>
+                        {{/if}}
+                        {{/if}}
                     </div>
                     <div class="col-md-6 padding-right-zero">
                         <span style="padding-left: 55%">
@@ -232,15 +256,15 @@
                     </div>
                 </div>
             </div>
-             <!-- <div class="bg-white margin-top-20">
-                <div class="board-view border-bottom font-bold">Attributes<span class="caret pull-right margin-top-10"></span></div>                
-                <div class="board-view" >
-                    Orders
-                </div>
-                <div class="board-view">
-                    <input type="text" class="form-control" value="0">
-                </div>                
-            </div> -->
+            <!-- <div class="bg-white margin-top-20">
+               <div class="board-view border-bottom font-bold">Attributes<span class="caret pull-right margin-top-10"></span></div>
+               <div class="board-view" >
+                   Orders
+               </div>
+               <div class="board-view">
+                   <input type="text" class="form-control" value="0">
+               </div>
+           </div> -->
         </div>
     </div>
 </template>
