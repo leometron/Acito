@@ -9,6 +9,7 @@
 var showPost = true;
 
 Meteor.subscribe('featuredimage');
+Meteor.subscribe('theme');
 
 Template.header.events({
     'click #pageName': function () {
@@ -124,6 +125,10 @@ Template.header.helpers({
 Template.home.helpers({
     'imageList': function () {
         return featuredimage.find();
+    },
+    'themename' : function() {
+      var themeObj = theme.findOne({userId:Meteor.userId()});
+      Session.set('themeName',themeObj.themeName);
     }
 })
 
@@ -146,6 +151,20 @@ Template.postDetail.helpers({
 });
 
 Template.home.rendered = function () {
+  var currentUserId;
+            if (Meteor.userId()){
+              console.log('entered if');
+                currentUserId = Meteor.userId();
+            } else {
+              console.log('entered else');
+
+                var adminObj = Meteor.users.findOne({username: 'admin'});
+                currentUserId = adminObj._id;
+            }
+            console.log('currentUserId....'+currentUserId);
+        var themeObj = theme.findOne({userId:currentUserId});
+
+      console.log('themeObj.......'+currentUserId+'............'+ theme.findOne({userId:currentUserId})+'.......'+themeObj.themeName);
     Meteor.setTimeout(function () {
         if (Session.get('numberOfCount') < Session.get('postCount')) {
             $('.give-more-content').show();
@@ -165,8 +184,10 @@ Template.home.rendered = function () {
     }, 5500);
 
 
+      // Session.set('themeName',themeObj.themeName);
     $(function () {
-        console.log(Session.get('themeName'));
+
+      console.log('s inside'+Session.get('themeName'));
         var theme = Session.get('themeName');
         if (theme === 'theme1') {
             $('#currentTheme').remove();
