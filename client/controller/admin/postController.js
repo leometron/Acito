@@ -285,7 +285,7 @@ Template.addNewPost.helpers({
 	'getpostUrl' : function() { 
 		return Session.get('postImage');
 	},
-        'showUploadMediaUrl' : function() {
+    'showUploadMediaUrl' : function() {
         return Session.get('uploadMediaUrl');
     }
 });
