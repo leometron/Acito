@@ -1,4 +1,4 @@
-  
+
 /*
 
 Created by LingaRaja.
@@ -145,20 +145,7 @@ Template.postDetail.helpers({
 });
 
 Template.home.rendered = function () {
-$('.give-more-content').hide();
-$('.loading-icon').hide();
-$('.posts-Over').hide();
 
-  Meteor.setTimeout(function(){
-    $('#xLoader').hide();
-   $(".owl-carousel").owlCarousel({  
-      autoPlay: 3000, 
-      items : 5,
-    });
-  },5500);    
-
-
-$(function(){
    // var currentUserId;
    //          if (Meteor.userId()){
    //            console.log('entered if');
@@ -173,7 +160,20 @@ $(function(){
    //      var themeObj = theme.findOne({userId:currentUserId});
 
    //    console.log('themeObj.......'+currentUserId+'............'+ theme.findOne({userId:currentUserId})+'.......'+themeObj.themeName);
-  console.log(Session.get('themeName'));
+  console.log(Session.get('themeName'));  
+$('.give-more-content').hide();
+$('.loading-icon').hide();
+$('.posts-Over').hide();
+
+  Meteor.setTimeout(function(){
+    $('#xLoader').hide();
+   $(".owl-carousel").owlCarousel({  
+      autoPlay: 3000, 
+      items : 5,
+    });
+  },5500);    
+
+$(function(){
   var theme = Session.get('themeName');
   if(theme === 'theme1'){
     $('#currentTheme').remove(); 
