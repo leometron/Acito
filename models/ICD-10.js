@@ -2,7 +2,10 @@ ICD = new Mongo.Collection('ICD');
 
 ICD.attachSchema(
     new SimpleSchema({
-    section: {
+    sectionName: {
+      type: String
+    },
+    sectionId: {
       type: String
     },
     code: {

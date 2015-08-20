@@ -619,3 +619,21 @@ pre {
   text-align: center;
   color: #3AABF6;
 }
+
+.postError {
+  /*background-color: #F2F1F1; */
+  color: #F00; 
+  font-weight: bold;
+  font-size: 16px;
+  font-family: arial;
+  margin-left: 36%; 
+}
+
+.post-success {
+  /*background-color: #F2F1F1; */
+  color: #0F0; 
+  font-weight: bold;
+  font-size: 16px;
+  font-family: arial;
+  margin-left: 36%; 
+}
