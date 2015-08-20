@@ -10,6 +10,12 @@ Template.BHSICD.events({
             Meteor.call('insertSection', $('#sectionName').val());
         }
     },
+    'click #addNewSection' : function () {
+        $('#chooseSectionName').fadeIn(500);
+    },
+    'click #saveSection' : function () {
+        $('#chooseSectionName').fadeOut(500);
+    },
 });
 
 
@@ -18,3 +24,7 @@ Template.BHSICD.helpers({
         return section.find();
     },
 });
+
+Template.BHSICD.rendered = function () {
+    $('#chooseSectionName').hide();
+};

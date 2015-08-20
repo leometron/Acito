@@ -1,21 +1,21 @@
 <template name="BHSICD">
-	<div style="margin-top:8%; margin-left:5%">
-		<div style="padding-bottom:4%; ">
-			<span style="font-size:20px; padding-right:10px;">Section :</span>
-			<select id="sectionList" placeholder="section name" style="width:30%; padding:7px;">
+	<div class="margin-top-4pt margin-left-2pt">
+		<div class="margin-bottom-4pt">
+			<span class="font-size-20px padding-right-10px">Section :</span>
+			<select id="sectionList" placeholder="section name" class="width30pt padding-10px font-size-16px">
                	{{#each sectionList}}
-                    <option value="{{_id}}">{{sectionName}}</option>
+                    <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
                 {{/each}} 
 			</select>
-			<button id="addNewSection" class="btn btn-default" style="margin-left:10px; font-size:20px">+</button>
+			<button id="addNewSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
 		</div>
 
-		<div class="row" style="padding-bottom:20px;">
+		<div class="row padding-bottom-20px" id="chooseSectionName">
                <div class="col-xs-5" style="margin-left:-1.5%"><input type="text" id="sectionName" class="form-control font-size-14" style="width:77%" placeholder="section name"></div>
 				<div class="col-xs-3" style="margin-left:-10%"><button class="btn btn-default" id="saveSection" >Save Section</button></div>
 		</div>
 
-		<div class="row" style="padding-bottom:20px;">
+		<div class="row padding-bottom-20px">
 			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" placeholder="ICD Code"></div>			 
             <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" placeholder="Detail"></div>
             <div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost">Save</button></div>
