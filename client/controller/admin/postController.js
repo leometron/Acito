@@ -11,6 +11,7 @@ Meteor.subscribe("Posts");
 var selectedIds = [];
 
 Template.posts.rendered = function(){
+	Session.set('errorPost','');
 	var status = Session.get('checkStatus');
 	if( status == "all" ){
 		$('#showAll').css('color','red');
@@ -26,7 +27,7 @@ Template.posts.rendered = function(){
 };
 
 Template.addNewPost.rendered = function(){
-	Session.set('errorMessage','');
+	Session.set('errorPost','');
 } 
 
 
@@ -39,7 +40,7 @@ Template.posts.events({
 	},
 	'click .post': function () {
 		Session.set('selectedPostId', this._id);
-		Session.set('errorMessage','');
+		Session.set('errorPost','');
 		Router.go("/admin/posts/edit");
 	}, 
 	'click #searchPost' : function (event) {
@@ -114,59 +115,63 @@ Template.posts.events({
 Template.addNewPost.events({
 	'click #savePost' : function () {
 		if (!$('#postName').val()) {
-			Session.set('errorMessage','Post title is required');
+			Session.set('errorPost','Post title is required');
+		} else if($('#pageName :selected').text() == "none") {
+			Session.set('errorPost','Pages is required');
 		} else {
-		Session.set('errorMessage','');  
-		var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-		var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
-		var pageName = ($('#pageName :selected').text() == "none") ? "-" : $('#pageName :selected').text();        
-		var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
-		var featuredImage;
-		if($('#featureImage').length == 0) {
-			featuredImage = "-";
-		} else {
-			featuredImage = $('#featureImage').attr('src');
-		}                     
-		Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
-		Router.go("/admin/posts");  
+			Session.set('errorPost','');  
+			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
+			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
+			var pageName = $('#pageName :selected').text();        
+			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var featuredImage;
+			if($('#featureImage').length == 0) {
+				featuredImage = "-";
+			} else {
+				featuredImage = $('#featureImage').attr('src');
+			}                     
+			Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
+			Router.go("/admin/posts");  
 		}
 	},
 	'click #publishPost' : function () {
-		if (!$('#postName').val()) {
-			Session.set('errorMessage','Post title is required');
+		if(!$('#postName').val()) {
+			Session.set('errorPost','Post title is required');
+		} else if ($('#pageName :selected').text() == "none") {
+			Session.set('errorPost','Pages is required');
 		} else {      
-		Session.set('errorMessage','');              
-		var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-		var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
-		var pageName = ($('#pageName :selected').text() == "none") ? "-" : $('#pageName :selected').text();
-		var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
-		var featuredImage;
-		if($('#featureImage').length == 0) {
-			featuredImage = "-";
-		} else {
-			featuredImage = $('#featureImage').attr('src');
-		}              
-		Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
-		Router.go("/admin/posts");
+			Session.set('errorPost','');              
+			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
+			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
+			var pageName = $('#pageName :selected').text();
+			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var featuredImage;
+			if($('#featureImage').length == 0) {
+				featuredImage = "-";
+			} else {
+				featuredImage = $('#featureImage').attr('src');
+			}              
+			Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
+			Router.go("/admin/posts");
 		}       
 	},
 	'click #updatePost' : function() {
 		if (!$('#postName').val()) {
-			Session.set('errorMessage','Post title is required');
+			Session.set('errorPost','Post title is required');
 		} else {
-		Session.set('errorMessage','');              
-		var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-		var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
-		var pageName = ($('#pageName :selected').text() == "none") ? "-" : $('#pageName :selected').text();        
-		var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
-		var featuredImage;
-		if($('#featureImage').length == 0) {
-			featuredImage = "-";
-		} else {
-			featuredImage = $('#featureImage').attr('src');
-		}                                 
-		Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName,featuredImage);
-		Router.go("/admin/posts");
+			Session.set('errorPost','');              
+			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
+			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
+			var pageName = $('#pageName :selected').text();        
+			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var featuredImage;
+			if($('#featureImage').length == 0) {
+				featuredImage = "-";
+			} else {
+				featuredImage = $('#featureImage').attr('src');
+			}                                 
+			Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName,featuredImage);
+			Router.go("/admin/posts");
 		}        
 	},
 	'click #moveBin' : function() {
@@ -268,9 +273,9 @@ Template.addNewPost.helpers({
 	'showSelectedPost': function(){
 		return Posts.findOne(Session.get('selectedPostId'));
 	},
-	'errormsg' : function() {
-		return Session.get('errorMessage');
-	},
+	// 'errormsg' : function() {
+	// 	return Session.get('errorMessage');
+	// },
 	'pageList' : function() { 
 		return Pages.find();
 	},
@@ -292,9 +297,15 @@ Template.adminHeader.events({
 
 	},
 	'click #navBarposts' : function() {
-		Session.set('errorMessage','');
+		Session.set('errorPost','');
 	},
 	'click #subNavBarmediaadd' : function() {
     	$("#editPage").hide();
+	}
+});
+
+Template.adminTop.helpers({
+	'errormsg' : function() {
+		return Session.get('errorPost');
 	}
 });

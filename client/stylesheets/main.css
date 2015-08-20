@@ -437,3 +437,12 @@ body, #main {
   text-align: center;
   color: red;
 }
+
+.postError {
+  /*background-color: #F2F1F1; */
+  color: #F00; 
+  font-weight: bold;
+  font-size: 16px;
+  font-family: arial;
+  margin-left: 36%; 
+}

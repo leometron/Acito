@@ -9,7 +9,7 @@
     });
 
   Template.pages.rendered = function(){
-    var status = Session.get('checkStatus');
+    var status = Session.get('pageStatus');
     if ( status == "all" ) {
        $('#pageAll').css('color','red');
     } else if ( status == "published" ) {
@@ -66,31 +66,31 @@ Template.pages.events ({
             var search = $('#pagesearch').val();
             Meteor.call('searchData', search);
             Meteor._reload.reload();
-            Session.set('checkStatus', "all");    
+            Session.set('pageStatus', "all");    
         },
 
         'click #pageAll': function() {
             Meteor.call('loadPage', "All");
             Meteor._reload.reload();
-            Session.set('checkStatus', "all");  
+            Session.set('pageStatus', "all");  
         },
 
         'click #pagePublish': function() {
             Meteor.call('loadPage', "Published");
             Meteor._reload.reload();
-            Session.set('checkStatus', "published");   
+            Session.set('pageStatus', "published");   
         },
 
         'click #pageDraft': function() {
             Meteor.call('loadPage', "Draft");
             Meteor._reload.reload(); 
-            Session.set('checkStatus', "draft");  
+            Session.set('pageStatus', "draft");  
         },
 
          'click #pageBin': function() {
             Meteor.call('loadPage', "Bin");
             Meteor._reload.reload();
-            Session.set('checkStatus', "bin");   
+            Session.set('pageStatus', "bin");   
         },
 
          'click .menuitem': function (event) {            
@@ -109,14 +109,14 @@ Template.pages.events ({
         'click #Bulkapply' : function () {
           Meteor.call('bulkMethod', selectedIds, $('#dropdownMenu1').text());
           Meteor._reload.reload();
-          Session.set('checkStatus', "all");
+          Session.set('pageStatus', "all");
         },
 
         'click #Datefilter': function(event) {
            var date = $('#filterdate').val();
            Meteor.call('dateFilter', date);
            Meteor._reload.reload();
-           Session.set('checkStatus', "all");
+           Session.set('pageStatus', "all");
         }
     });
 

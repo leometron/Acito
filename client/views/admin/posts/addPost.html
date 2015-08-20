@@ -1,9 +1,9 @@
 <template name="addNewPost">
     <div>      
-            {{#if errormsg}}
+           <!--  {{#if errormsg}}
             <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
             <span  id="showError">{{errormsg}}</span></div>  
-            {{/if}}
+            {{/if}} -->
         <div class="margin-top-40">
             <div class="row post-margin">
             {{#if showSelectedPost}}
@@ -102,13 +102,7 @@
                             <option value="{{_id}}">{{title}}</option>                        
                         {{/each}}       --> 
                          {{#if showSelectedPost}}
-                          {{#if equals showSelectedPost.pageName "-"}}
-                            <option>none</option>
-                            {{else}}
                             <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
-                            <option>none</option>
-                          {{/if}}
-                            <!-- <option>none</option> -->
                             {{#each pageList}}
                                 {{#if equals showSelectedPost.pageId _id}}
                                 {{else}}

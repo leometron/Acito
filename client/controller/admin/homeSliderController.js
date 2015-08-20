@@ -174,12 +174,12 @@ Template.addNewHomeSlider.helpers({
     'click #searchSlider': function() {
         Meteor.call('searchSlider', $('#searchString').val());
         Meteor._reload.reload();
-        Session.set('checkStatus', "all");
+        Session.set('sliderStatus', "all");
     },
     'click #Datefilter': function() {
         Meteor.call('dateSlider', $('#filterdate').val());
         Meteor._reload.reload();
-        Session.set('checkStatus', "all");
+        Session.set('sliderStatus', "all");
     },
     'click .menuitem': function (event) {            
         $('#dropdownMenu1').text( $(event.target).text());            
@@ -195,27 +195,27 @@ Template.addNewHomeSlider.helpers({
     'click #Bulkapply' : function () {
           Meteor.call('bulkSlider', selectedIds, $('#dropdownMenu1').text());
           Meteor._reload.reload();
-          Session.set('checkStatus', "all");
+          Session.set('sliderStatus', "all");
     },
     'click #sliderAll': function() {
         Meteor.call('loadSlider', "All");
         Meteor._reload.reload();
-        Session.set('checkStatus', "all");
+        Session.set('sliderStatus', "all");
     },
     'click #sliderPublish': function() {
         Meteor.call('loadSlider', "Published");
         Meteor._reload.reload();
-        Session.set('checkStatus', "published");
+        Session.set('sliderStatus', "published");
     },
     'click #sliderDraft': function() {
         Meteor.call('loadSlider', "Draft");
         Meteor._reload.reload();
-        Session.set('checkStatus', "draft"); 
+        Session.set('sliderStatus', "draft"); 
     },
     'click #sliderBin': function() {
         Meteor.call('loadSlider', "Bin");
         Meteor._reload.reload();
-        Session.set('checkStatus', "bin");    
+        Session.set('sliderStatus', "bin");    
     }
  });
 
@@ -231,7 +231,7 @@ Template.addNewHomeSlider.helpers({
  });
 
  Template.homeSlider.rendered = function(){
-    var status = Session.get('checkStatus');
+    var status = Session.get('sliderStatus');
     if ( status == "all" ) {
        $('#sliderAll').css('color','red');
     } else if ( status == "published" ) {
