@@ -1,4 +1,4 @@
-  
+
 /*
 
 Created by LingaRaja.
@@ -128,19 +128,27 @@ Template.postDetail.helpers({
 
 Template.home.rendered = function () {
 
+   // var currentUserId;
+   //          if (Meteor.userId()){
+   //            console.log('entered if');
+   //              currentUserId = Meteor.userId();
+   //          } else {
+   //            console.log('entered else');
+
+   //              var adminObj = Meteor.users.findOne({username: 'admin'});
+   //              currentUserId = adminObj._id;
+   //          }
+   //          console.log('currentUserId....'+currentUserId);
+   //      var themeObj = theme.findOne({userId:currentUserId});
+
+   //    console.log('themeObj.......'+currentUserId+'............'+ theme.findOne({userId:currentUserId})+'.......'+themeObj.themeName);
+
     $('.posts-Over').hide();
     $('.loading-icon').hide();
 
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height() - 30) {
             $('.loading-icon').show();            
-            // Meteor.setTimeout(function(){
-            // if(Session.get('postCount')<=Session.get('numberOfCount')){
-            //     $('.loading-icon').hide();
-            // }else{
-            //     $('.loading-icon').show();
-            // }
-            // }, 100);
             Meteor.setTimeout(function(){
             Session.set('numberOfCount', Session.get('numberOfCount') +4);
                 if(Session.get('postCount')<=Session.get('numberOfCount')){
