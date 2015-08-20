@@ -12,3 +12,9 @@ Template.BHSICD.events({
     },
 });
 
+
+Template.BHSICD.helpers({
+    'sectionList': function () {
+        return section.find();
+    },
+});

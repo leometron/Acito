@@ -3,7 +3,9 @@
 		<div>
 			Section 
 			<select id="sectionList" placeholder="section name">
-
+               	{{#each sectionList}}
+                    <option value="{{_id}}">{{sectionName}}</option>
+                {{/each}} 
 			</select>
 <!-- 			<div>
 				<button class="btn btn-default" id="addNewSection">Add New</button>
@@ -17,6 +19,16 @@
 			<div>
 				<button class="btn btn-default" id="saveSection">Save Section</button>
 			</div>
-		</div>		
+		</div>
+
+		<div>
+			<div>
+                <input type="text" id="ICDCode" class="form-control font-size-12" style="width:30%" placeholder="ICD Code">			 
+                <input type="text" id="ICDDetail" class="form-control font-size-12" style="width:30%" placeholder="Detail">
+            </div>
+			<div>
+				<button class="btn btn-default" id="saveCurrentICDPost">Save</button>
+			</div>
+		</div>					
 	</div>
 </template>
