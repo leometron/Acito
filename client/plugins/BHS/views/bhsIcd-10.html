@@ -1,34 +1,34 @@
 <template name="BHSICD">
-	<div>
-		<div>
-			Section 
-			<select id="sectionList" placeholder="section name">
+	<div style="margin-top:8%; margin-left:5%">
+		<div style="padding-bottom:4%; ">
+			<span style="font-size:20px; padding-right:10px;">Section :</span>
+			<select id="sectionList" placeholder="section name" style="width:30%; padding:7px;">
                	{{#each sectionList}}
                     <option value="{{_id}}">{{sectionName}}</option>
                 {{/each}} 
 			</select>
-<!-- 			<div>
-				<button class="btn btn-default" id="addNewSection">Add New</button>
-			</div> -->
+			<button id="addNewSection" class="btn btn-default" style="margin-left:10px; font-size:20px">+</button>
 		</div>
 
-		<div>
-			<div>
-                <input type="text" id="sectionName" class="form-control font-size-12" style="width:30%" placeholder="section name">				
-			</div>
-			<div>
-				<button class="btn btn-default" id="saveSection">Save Section</button>
-			</div>
+		<div class="row" style="padding-bottom:20px;">
+               <div class="col-xs-5" style="margin-left:-1.5%"><input type="text" id="sectionName" class="form-control font-size-14" style="width:77%" placeholder="section name"></div>
+				<div class="col-xs-3" style="margin-left:-10%"><button class="btn btn-default" id="saveSection" >Save Section</button></div>
 		</div>
 
-		<div>
-			<div>
-                <input type="text" id="ICDCode" class="form-control font-size-12" style="width:30%" placeholder="ICD Code">			 
-                <input type="text" id="ICDDetail" class="form-control font-size-12" style="width:30%" placeholder="Detail">
+		<div class="row" style="padding-bottom:20px;">
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" placeholder="ICD Code"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" placeholder="Detail"></div>
+            <div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost">Save</button></div>
+        </div>    
+		
+        <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+            <div class="col-md-2">
+                <span style="font-size:16px">ICD Code</span>
             </div>
-			<div>
-				<button class="btn btn-default" id="saveCurrentICDPost">Save</button>
-			</div>
-		</div>					
-	</div>
+            <div class="col-md-6">
+                <span style="font-size:16px">Detail</span>
+            </div>
+        </div>
+
+	</div>					
 </template>

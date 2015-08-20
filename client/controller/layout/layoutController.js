@@ -147,7 +147,7 @@ Template.home.rendered = function () {
     $('.loading-icon').hide();
 
     $(window).scroll(function(){
-        if ($(window).scrollTop() >= $(document).height() - $(window).height() - 30) {
+        if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
             $('.loading-icon').show();            
             Meteor.setTimeout(function(){
             Session.set('numberOfCount', Session.get('numberOfCount') +4);
