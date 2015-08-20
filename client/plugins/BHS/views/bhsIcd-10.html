@@ -3,7 +3,11 @@
 		<div style="padding-bottom:4%; ">
 			<span style="font-size:20px; padding-right:10px;">Section :</span>
 			<select id="sectionList" placeholder="section name" style="width:30%; padding:7px;">
-				<option>Choose Section</option>
+				{{#if selectedICD}}
+					<option>{{selectedICD.sectionName}}</option>
+				{{else}}
+					<option>Choose Section</option>				
+				{{/if}}
                	{{#each sectionList}}
                     <option value="{{_id}}">{{sectionName}}</option>
                 {{/each}} 
@@ -17,9 +21,16 @@
 		</div>
 
 		<div class="row" style="padding-bottom:20px;">
+			{{#if selectedICD}}
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" value="{{selectedICD.code}}"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" value="{{selectedICD.detail}}"></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost">Update</button></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="cancelCurrentICDPost">Cancel</button></div>            			
+			{{else}}
 			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" placeholder="ICD Code"></div>			 
             <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" placeholder="Detail"></div>
-            <div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost">Save</button></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost">Save</button></div>            
+            {{/if}}            
         </div>    
 		
         <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
@@ -30,6 +41,15 @@
                 <span style="font-size:16px">Detail</span>
             </div>
         </div>
-
+        {{#each ICDList}}
+        	<div class="ICD-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+            	<div class="col-md-2">
+                	<span style="font-size:16px">{{code}}</span>
+            	</div>
+            	<div class="col-md-6">
+                	<span style="font-size:16px">{{detail}}</span>
+            	</div>
+          	</div>            
+        {{/each}}
 	</div>					
 </template>

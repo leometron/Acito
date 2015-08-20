@@ -9,8 +9,12 @@ Template.BHSICD.events({
             Session.set('errorMessage', '');
             Meteor.call('insertSection', $('#sectionName').val());
         }
+        Meteor.setTimeout(function () {
+            Session.set('errorMessage','')
+        }, 2000);	        
     },
     'click #saveCurrentICDPost': function () {
+    	$('#cancelCurrentICDPost').hide()
     	var sectionName = $('#sectionList :selected').text();
 		var sectionId = $('#sectionList').val();    	
     	var icdCode = $('#ICDCode').val();
@@ -23,15 +27,23 @@ Template.BHSICD.events({
 		} else if(!ICDDetail) {
 			Session.set('errorMessage','ICD Detail is Required');
 		} else {
-    		Session.set('errorMessage','');			
-			Meteor.call('insertICD',sectionName,sectionId,icdCode,ICDDetail);
+			Meteor.call('insertICD',sectionName,sectionId,icdCode,ICDDetail,Session.get('currentICDid'));
             Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
-            Meteor.call('insertFeaturedImage', Session.get('selectFeaturedImage'), $('#pageId').val(), getUserName());
             Meteor.setTimeout(function () {
-                Session.set('BHSSuccessMessage', ''),$('#ICDCode').val(""),$('#ICDDetail').val("")
+                Session.set('BHSSuccessMessage', ''),$('#ICDCode').val(""),$('#ICDDetail').val(""),Session.set('currentICDid','')
             }, 2000);			
 		}
-    }
+        Meteor.setTimeout(function () {
+            Session.set('errorMessage','')
+        }, 2000);		
+    },
+    'click .ICD-data-row' : function () {
+    	Session.set('currentICDid',this._id);
+    },
+    'click #cancelCurrentICDPost' : function () {
+    	Session.set('currentICDid','');
+    	// $('#ICDCode').attr("placeholder", "ICD Code");
+    },
 });
 
 
@@ -39,6 +51,12 @@ Template.BHSICD.helpers({
     'sectionList': function () {
         return section.find();
     },
+    'ICDList': function() {
+    	return ICD.find();
+    },
+    'selectedICD' : function () {
+    	return ICD.findOne(Session.get('currentICDid'));    	
+    }
 });
 
 Template.adminTop.helpers({
