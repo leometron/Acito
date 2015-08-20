@@ -12,23 +12,16 @@ var showPost = true;
 Meteor.subscribe('featuredimage');
 
 Template.header.events({
-   'click #pageName': function() {
-    Session.set('numberOfCount',4);
-    Meteor.setTimeout(function(){
-      if(Session.get('numberOfCount')<Session.get('postCount')){
-        $('.give-more-content').show();  
-      }else{
-        $('.give-more-content').hide();
-      }
-    },100);
-      Session.set('selectedPostId',"");        
-      Session.set("pageId",this._id);
-   },
-   'click #backToPage' : function()  {
-       Session.set('selectedPostId',"");
-       Session.set("pageId",Session.get("selectedPageId"));        
-       history.back();
-   }
+    'click #pageName': function () {
+        Session.set('numberOfCount', 4);
+        Session.set('selectedPostId', "");
+        Session.set("pageId", this._id);
+    },
+    'click #backToPage': function () {
+        Session.set('selectedPostId', "");
+        Session.set("pageId", Session.get("selectedPageId"));
+        history.back();
+    }
 });
 
 Template.header.helpers({
@@ -43,15 +36,26 @@ Template.header.helpers({
 });
 
 Template.home.events({
-   'click #postTitle': function() {
-       var userId = this._id;
-       Session.set('selectedPageId',Session.get("pageId"));
-       Session.set('selectedPostId', userId);
-       $('.image').animate({width: 'toggle'}, 770);
-       setTimeout(function(){
-            Router.go("/post/"+userId);
-       }, 1000);  
-   },
+    'click #postTitle': function () {
+        var userId = this._id;
+        Session.set('selectedPageId', Session.get("pageId"));
+        Session.set('selectedPostId', userId);
+        $('.image').animate({width: 'toggle'}, 770);
+        setTimeout(function () {
+            Router.go("/post/" + userId);
+        }, 1000);
+    },
+    'click .Ask': function () {
+        if (showPost) {
+            $('#post').hide();
+            $('#showPost').show().animate({"width": "50%"}, "fast");
+            showPost = false;
+        } else {
+            $('#post').show();
+            $('#showPost').hide().animate({"width": "-50%"}, "slow");
+            showPost = true;
+        }
+    },
     'click .right-arrow' : function(){
      var userId = this._id;
        Session.set('selectedPageId',Session.get("pageId"));
@@ -62,30 +66,8 @@ Template.home.events({
             Router.go("/post/"+userId);
        }, 1000);  
    },
-    'click .Ask' : function(){   
-       if(showPost){          
-          $('#post').hide();
-          $('#showPost').show().animate({"width": "50%"}, "fast");
-          showPost = false;  
-       }else{
-        $('#post').show();
-        $('#showPost').hide().animate({"width": "-50%"}, "slow");
-          showPost = true;  
-       }    
-  },
-  'click .give-more-content' : function() {
-    $('.loading-icon').show();
-    Meteor.setTimeout(function(){
-    $('.loading-icon').hide();
-      Session.set('numberOfCount', Session.get('numberOfCount') +4);
-          if(Session.get('postCount')<=Session.get('numberOfCount')){
-            $('.give-more-content').hide();
-            $('.posts-Over').show();
-            Meteor.setTimeout(function(){$('.posts-Over').hide()},3000);
-          }
-    }, 1000);
-  },
 });
+
 Template.home.helpers({
    'postsList' : function() {
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
@@ -160,30 +142,45 @@ Template.home.rendered = function () {
    //      var themeObj = theme.findOne({userId:currentUserId});
 
    //    console.log('themeObj.......'+currentUserId+'............'+ theme.findOne({userId:currentUserId})+'.......'+themeObj.themeName);
-  console.log(Session.get('themeName'));  
-$('.give-more-content').hide();
-$('.loading-icon').hide();
-$('.posts-Over').hide();
 
-  Meteor.setTimeout(function(){
-    $('#xLoader').hide();
-   $(".owl-carousel").owlCarousel({  
-      autoPlay: 3000, 
-      items : 5,
+    $('.posts-Over').hide();
+    $('.loading-icon').hide();
+
+    $(window).scroll(function(){
+        if ($(window).scrollTop() >= $(document).height() - $(window).height() - 30) {
+            $('.loading-icon').show();            
+            Meteor.setTimeout(function(){
+            Session.set('numberOfCount', Session.get('numberOfCount') +4);
+                if(Session.get('postCount')<=Session.get('numberOfCount')){
+                    $('.loading-icon').hide();
+                    $('.posts-Over').show();
+                    Meteor.setTimeout(function(){$('.posts-Over').hide()},3000);
+                }
+            }, 3000);
+        }
     });
-  },5500);    
 
-$(function(){
-  var theme = Session.get('themeName');
-  if(theme === 'theme1'){
-    $('#currentTheme').remove(); 
-     var themesheet = $('<link href="/theme.css" rel="stylesheet" id="currentTheme1"/>');
-     themesheet.appendTo('head');
-  }  else{
-      $('#currentTheme1').remove();   
-  var themesheet = $('<link href="/main.css" rel="stylesheet" id="currentTheme"/>');
-  themesheet.appendTo('head');
-  }  
+    Meteor.setTimeout(function () {
+        $('#xLoader').hide();
+        $(".owl-carousel").owlCarousel({
+            autoPlay: 3000,
+            items: 5,
+        });
+    }, 5500);
+
+
+    $(function () {
+        console.log(Session.get('themeName'));
+        var theme = Session.get('themeName');
+        if (theme === 'theme1') {
+            $('#currentTheme').remove();
+            var themesheet = $('<link href="/theme.css" rel="stylesheet" id="currentTheme1"/>');
+            themesheet.appendTo('head');
+        } else {
+            $('#currentTheme1').remove();
+            var themesheet = $('<link href="/main.css" rel="stylesheet" id="currentTheme"/>');
+            themesheet.appendTo('head');
+        }
 });  
   
 $('#showPost').hide();
