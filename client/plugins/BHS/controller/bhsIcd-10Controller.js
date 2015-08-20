@@ -16,6 +16,28 @@ Template.BHSICD.events({
     'click #saveSection' : function () {
         $('#chooseSectionName').fadeOut(500);
     },
+    'click #saveCurrentICDPost': function () {
+    	var sectionName = $('#sectionList :selected').text();
+		var sectionId = $('#sectionList').val();    	
+    	var icdCode = $('#ICDCode').val();
+    	var ICDDetail = $('#ICDDetail').val();
+
+		if (sectionName == "Choose Section") {
+			Session.set('errorMessage','Please select the section');
+		} else if(!icdCode) {
+			Session.set('errorMessage','ICD Code is Required');
+		} else if(!ICDDetail) {
+			Session.set('errorMessage','ICD Detail is Required');
+		} else {
+    		Session.set('errorMessage','');			
+			Meteor.call('insertICD',sectionName,sectionId,icdCode,ICDDetail);
+            Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
+            Meteor.call('insertFeaturedImage', Session.get('selectFeaturedImage'), $('#pageId').val(), getUserName());
+            Meteor.setTimeout(function () {
+                Session.set('BHSSuccessMessage', ''),$('#ICDCode').val(""),$('#ICDDetail').val("")
+            }, 2000);			
+		}
+    }
 });
 
 
@@ -25,6 +47,17 @@ Template.BHSICD.helpers({
     },
 });
 
+<<<<<<< HEAD
 Template.BHSICD.rendered = function () {
     $('#chooseSectionName').hide();
 };
+=======
+Template.adminTop.helpers({
+	'BHSErrorMsg' : function() {
+		return Session.get('errorMessage');
+	},
+	'BHSSuccessMessage' : function() {
+		return Session.get('BHSSuccessMessage');		
+	}
+});
+>>>>>>> 188701c41d3dffb6563184f7852bc62bddda6fcc

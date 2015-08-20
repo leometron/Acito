@@ -5,6 +5,12 @@
             {{#if errormsg}}
             <span  class="postError">{{errormsg}}</span>
             {{/if}}
+            {{#if BHSErrorMsg}}
+            <span  class="postError">{{BHSErrorMsg}}</span>
+            {{/if}}
+            {{#if BHSSuccessMessage}}
+            <span  class="post-success">{{BHSSuccessMessage}}</span>
+            {{/if}}  
             <span class="pull-right white">Welcome {{currentUser.username}}</span>
         </div>
     </div>
