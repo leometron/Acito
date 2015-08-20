@@ -152,19 +152,19 @@
 
                     {{#if showSelectedPost}}
                     {{#if equals showSelectedPost.featuredImage "-"}}
-                               <span class="cursor-pointer" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
+                               <span class="cursor-pointer set-img" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
                             {{#if getpostUrl}}
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                             {{/if}}
                                 </span>
                     {{else}}
-                              <span class="cursor-pointer" id="removeImage">Remove featured image
+                              <span class="cursor-pointer set-img" id="removeImage">Remove featured image
                                 <img src="{{showSelectedPost.featuredImage}}" id="featureImage"
                                      style="width:100px; height:100px;"/>
                               </span>
                     {{/if}}
                     {{else}}
-                <span class="cursor-pointer" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
+                <span class="cursor-pointer set-img" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
                             {{#if getpostUrl}}
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                             {{/if}}

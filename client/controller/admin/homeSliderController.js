@@ -137,9 +137,9 @@ Template.addNewHomeSlider.helpers({
     'mediaList': function () {
         return Media.find();
     },
-    'errormsg': function () {
-        return Session.get('errorMessage');
-    },
+    // 'errormsg': function () {
+    //     return Session.get('errorMessage');
+    // },
     'getUrlValue': function () {
         return Session.get('selectImage');
     },
@@ -232,6 +232,7 @@ Template.adminHeader.events({
 
  Template.homeSlider.rendered = function(){
     var status = Session.get('sliderStatus');
+     Session.set('errorMessage', '');
     if ( status == "all" ) {
        $('#sliderAll').css('color','red');
     } else if ( status == "published" ) {

@@ -446,3 +446,7 @@ body, #main {
   font-family: arial;
   margin-left: 36%; 
 }
+
+.set-img:hover {
+  color: #19A3D1;
+}
