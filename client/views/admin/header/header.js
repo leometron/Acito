@@ -72,9 +72,8 @@ Template.adminHeader.rendered = function () {
 
 Template.adminHeader.events({
     'click .item': function (events) {
-
-        console.log($(events.currentTarget).attr("id"));
-
+        $('.plugin-submenu').hide(800);    
+        var selectedId = $(events.currentTarget).attr("id");
         var selectedId = $(events.currentTarget).attr("id");
 
         if (selectedId == 'navBardashboard') {

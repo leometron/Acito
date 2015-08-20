@@ -55,9 +55,13 @@ body, #main {
     padding: 10px;
 }
 
+.post-list-header-theme{
+   margin-top: 10%;
+}
+
 pre {
-    /* white-space:pre-wrap !important;*/
-    word-wrap: break-word !important;
+  white-space:pre-wrap !important;
+  word-wrap:break-word !important;
 }
 
 .navbar-default .navbar-nav li a:hover {
@@ -552,6 +556,9 @@ pre {
     position: absolute;
     left: 0;
     right: 0;
+    top: 0;
+    bottom: 0;
+}
 }
 
 /*xloader*/
@@ -566,12 +573,10 @@ pre {
     .image-center {
         text-align: center;
     }
-
     .text-center {
         margin: auto;
     }
 }
-
 
 .load-content-design {
   text-align: center;
@@ -579,16 +584,23 @@ pre {
 }
 
 .give-more-content {
-  background: #8CB4BA ;
+  background: #8CB4BA;
   border-radius: 28px;
   font-family: Arial;
   color: #ffffff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
 
 .give-more-content:hover {
-  background: #3AABF6;
+  background: #221010;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
 }
 
 .loading-icon {
