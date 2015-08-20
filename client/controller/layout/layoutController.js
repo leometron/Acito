@@ -13,13 +13,13 @@ Meteor.subscribe('featuredimage');
 Template.header.events({
     'click #pageName': function () {
         Session.set('numberOfCount', 4);
-        Meteor.setTimeout(function () {
-            if (Session.get('numberOfCount') < Session.get('postCount')) {
-                $('.give-more-content').show();
-            } else {
-                $('.give-more-content').hide();
-            }
-        }, 100);
+        // Meteor.setTimeout(function () {
+        //     if (Session.get('numberOfCount') < Session.get('postCount')) {
+        //         $('.give-more-content').show();
+        //     } else {
+        //         $('.give-more-content').hide();
+        //     }
+        // }, 100);
         Session.set('selectedPostId', "");
         Session.set("pageId", this._id);
     },
@@ -62,20 +62,20 @@ Template.home.events({
             showPost = true;
         }
     },
-    'click .give-more-content': function () {
-        $('.loading-icon').show();
-        Meteor.setTimeout(function () {
-            $('.loading-icon').hide();
-            Session.set('numberOfCount', Session.get('numberOfCount') + 4);
-            if (Session.get('postCount') <= Session.get('numberOfCount')) {
-                $('.give-more-content').hide();
-                $('.posts-Over').show();
-                Meteor.setTimeout(function () {
-                    $('.posts-Over').hide()
-                }, 3000);
-            }
-        }, 1000);
-    },
+    // 'click .give-more-content': function () {
+    //     $('.loading-icon').show();
+    //     Meteor.setTimeout(function () {
+    //         $('.loading-icon').hide();
+    //         Session.set('numberOfCount', Session.get('numberOfCount') + 4);
+    //         if (Session.get('postCount') <= Session.get('numberOfCount')) {
+    //             $('.give-more-content').hide();
+    //             $('.posts-Over').show();
+    //             Meteor.setTimeout(function () {
+    //                 $('.posts-Over').hide();
+    //             }, 3000);
+    //         }
+    //     }, 1000);
+    // },
    'click .right-arrow' : function(){
      var userId = this._id;
        Session.set('selectedPageId',Session.get("pageId"));
@@ -146,15 +146,30 @@ Template.postDetail.helpers({
 });
 
 Template.home.rendered = function () {
-    Meteor.setTimeout(function () {
-        if (Session.get('numberOfCount') < Session.get('postCount')) {
-            $('.give-more-content').show();
-        } else {
-            $('.give-more-content').hide();
-        }
-    }, 100);
-    $('.loading-icon').hide();
+
     $('.posts-Over').hide();
+    $('.loading-icon').hide();
+
+    $(window).scroll(function(){
+        if ($(window).scrollTop() >= $(document).height() - $(window).height() - 30) {
+            $('.loading-icon').show();            
+            // Meteor.setTimeout(function(){
+            // if(Session.get('postCount')<=Session.get('numberOfCount')){
+            //     $('.loading-icon').hide();
+            // }else{
+            //     $('.loading-icon').show();
+            // }
+            // }, 100);
+            Meteor.setTimeout(function(){
+            Session.set('numberOfCount', Session.get('numberOfCount') +4);
+                if(Session.get('postCount')<=Session.get('numberOfCount')){
+                    $('.loading-icon').hide();
+                    $('.posts-Over').show();
+                    Meteor.setTimeout(function(){$('.posts-Over').hide()},3000);
+                }
+            }, 3000);
+        }
+    });
 
     Meteor.setTimeout(function () {
         $('#xLoader').hide();
