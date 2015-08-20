@@ -6,15 +6,13 @@ Template.BHSICD.events({
         if (!$('#sectionName').val()) {
             Session.set('errorMessage', 'Section name is required');
         } else {
+            $('#chooseSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             Meteor.call('insertSection', $('#sectionName').val());
         }
     },
     'click #addNewSection' : function () {
         $('#chooseSectionName').fadeIn(500);
-    },
-    'click #saveSection' : function () {
-        $('#chooseSectionName').fadeOut(500);
     },
     'click #saveCurrentICDPost': function () {
     	var sectionName = $('#sectionList :selected').text();
@@ -47,11 +45,11 @@ Template.BHSICD.helpers({
     },
 });
 
-<<<<<<< HEAD
+
 Template.BHSICD.rendered = function () {
     $('#chooseSectionName').hide();
 };
-=======
+
 Template.adminTop.helpers({
 	'BHSErrorMsg' : function() {
 		return Session.get('errorMessage');
@@ -60,4 +58,3 @@ Template.adminTop.helpers({
 		return Session.get('BHSSuccessMessage');		
 	}
 });
->>>>>>> 188701c41d3dffb6563184f7852bc62bddda6fcc
