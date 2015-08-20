@@ -1,26 +1,28 @@
 <template name="addNewPage">
-    <div>      
-            {{#if errormsg}}
-                <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
-                <span  id="showError">{{errormsg}}</span></div>  
-            {{/if}}
+    <div>
+        {{#if errormsg}}
+        <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
+            <span id="showError">{{errormsg}}</span></div>
+        {{/if}}
         <div class="margin-top-40">
             <div class="row post-margin">
                 {{#if PublishedPages}}
-                    <span style="font-size: 30px;">Edit Pages</span>
+                <span style="font-size: 30px;">Edit Pages</span>
                 {{else}}
-                    <span style="font-size: 30px;">Add a New Pages</span>
+                <span style="font-size: 30px;">Add a New Pages</span>
                 {{/if}}
             </div>
         </div>
         <div class="col-md-8  padding-left-zero">
             {{#if PublishedPages}}
             <input type="text" class="form-control" id="pageTitle" value={{PublishedPages.title}}>
+
             <div>
                 <textarea name="area1" cols="80" rows="20" id="pageComments" class="form-control">{{PublishedPages.content}}</textarea>
             </div>
             {{else}}
             <input type="text" class="form-control" placeholder="Enter title here" id="title">
+
             <div>
                 <textarea name="area1" cols="80" rows="20" id="comments" class="form-control"></textarea>
             </div>
@@ -28,10 +30,11 @@
         </div>
         <div class="col-md-4 padding-bottom-40">
             <div class="bg-white">
-                <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span></div>
+                <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span>
+                </div>
                 <div class="board-view">
                     {{#if PublishedPages}}
-                        {{else}}
+                    {{else}}
                     <span><button type="button" class="btn btn-default" id="draft">Save Draft</button></span>
                     {{/if}}
                     <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
@@ -40,70 +43,77 @@
                     {{PublishedPages.status}}
                     {{else}}
                     Draft
-                    {{/if}} 
+                    {{/if}}
                 </div>
-                <div class="board-view">Visibility: public </div>
+                <div class="board-view">Visibility: public</div>
                 <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
             </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
-                 
+
                 {{#if PublishedPages}}
-                    {{#if PublishedPages.deleted}}
-                        <a href= "/admin/pages" id="delete">Delete Pages</a>
-                        {{else}}
-                     <a id="updatebin">Move to Bin</a>
-                        {{/if}}
-                   {{else}}
-                   <a id="insertbin">Move to Bin</a>
+                {{#if PublishedPages.deleted}}
+                <a href="/admin/pages" id="delete">Delete Pages</a>
+                {{else}}
+                <a id="updatebin">Move to Bin</a>
+                {{/if}}
+                {{else}}
+                <a id="insertbin">Move to Bin</a>
                 {{/if}}
 
                 {{#if PublishedPages}}
-                    {{#if PublishedPages.deleted}}
-                    <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="restore">Restore</button></span>
-                    {{else}}
-                        {{#if PublishedPages.published}}
-                        <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="update">Update</button></span>
-                        {{else}}
-                         <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="republish">Publish</button></span>
-                        {{/if}}
-                    {{/if}}
+                {{#if PublishedPages.deleted}}
+                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="restore">Restore
+                </button></span>
                 {{else}}
-                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="publish">Publish</button></span>
+                {{#if PublishedPages.published}}
+                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="update">Update
+                </button></span>
+                {{else}}
+                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="republish">Publish
+                </button></span>
+                {{/if}}
+                {{/if}}
+                {{else}}
+                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="publish">Publish
+                </button></span>
                 {{/if}}
             </div>
             <div class="bg-white margin-top-20">
-                <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span></div>
+                <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span>
+                </div>
                 <div class="board-view">Parent</div>
                 <div class="dropdown board-view">
-                   {{#if PublishedPages}}
-                   <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert" data-toggle="dropdown">
-                       {{PublishedPages.parentId}}                      
-                   </button>
-                   {{else}}
-                   <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert" data-toggle="dropdown">
-                       (no parent)                
-                   </button>
-                   {{/if}}
-                   <span class="caret" style=" margin-left: -20px;"></span>
-                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                       <li><a href="#"  class="parentlist">(no parent)</a></li>
-                       {{#each NoParentPages}}
-                            {{#if equals PublishedPages._id _id}}
-                            {{else}}
-                           <li><a href="#" class="parentlist">{{title}}</a></li>
-                           {{/if}}
+                    {{#if PublishedPages}}
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert"
+                            data-toggle="dropdown">
+                        {{PublishedPages.parentId}}
+                    </button>
+                    {{else}}
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert"
+                            data-toggle="dropdown">
+                        (no parent)
+                    </button>
+                    {{/if}}
+                    <span class="caret" style=" margin-left: -20px;"></span>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><a href="#" class="parentlist">(no parent)</a></li>
+                        {{#each NoParentPages}}
+                        {{#if equals PublishedPages._id _id}}
+                        {{else}}
+                        <li><a href="#" class="parentlist">{{title}}</a></li>
+                        {{/if}}
                         {{/each}}
-                   </ul>
-               </div>
-               <!--  <div class="board-view" >
-                    Orders
+                    </ul>
                 </div>
-                <div class="board-view">
-                    <input type="text" class="form-control" value="0">
-                </div>
-                <div class="board-view">
-                    Need help? Use the Help tab in the upper right of your screen.
-                </div> -->
+                <!--  <div class="board-view" >
+                     Orders
+                 </div>
+                 <div class="board-view">
+                     <input type="text" class="form-control" value="0">
+                 </div>
+                 <div class="board-view">
+                     Need help? Use the Help tab in the upper right of your screen.
+                 </div> -->
             </div>
             <!-- <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">Feature image <span class="caret pull-right margin-top-10"></span></div>

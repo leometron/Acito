@@ -14,7 +14,13 @@ Meteor.subscribe('featuredimage');
 Template.header.events({
    'click #pageName': function() {
     Session.set('numberOfCount',4);
-      $('.give-more-content').show();
+    Meteor.setTimeout(function(){
+      if(Session.get('numberOfCount')<Session.get('postCount')){
+        $('.give-more-content').show();  
+      }else{
+        $('.give-more-content').hide();
+      }
+    },100);
       Session.set('selectedPostId',"");        
       Session.set("pageId",this._id);
    },
@@ -46,6 +52,16 @@ Template.home.events({
             Router.go("/post/"+userId);
        }, 1000);  
    },
+    'click .right-arrow' : function(){
+     var userId = this._id;
+       Session.set('selectedPageId',Session.get("pageId"));
+       // Session.set("pageId","");        
+       Session.set('selectedPostId', userId);
+       $('.image').animate({width: 'toggle'}, 770);
+       setTimeout(function(){
+            Router.go("/post/"+userId);
+       }, 1000);  
+   },
     'click .Ask' : function(){   
        if(showPost){          
           $('#post').hide();
@@ -65,7 +81,7 @@ Template.home.events({
           if(Session.get('postCount')<=Session.get('numberOfCount')){
             $('.give-more-content').hide();
             $('.posts-Over').show();
-            Meteor.setTimeout(function(){$('.posts-Over').hide()},1500);
+            Meteor.setTimeout(function(){$('.posts-Over').hide()},3000);
           }
     }, 1000);
   },
@@ -142,7 +158,21 @@ $('.posts-Over').hide();
   },5500);    
 
 
-$(function(){ 
+$(function(){
+   // var currentUserId;
+   //          if (Meteor.userId()){
+   //            console.log('entered if');
+   //              currentUserId = Meteor.userId();
+   //          } else {
+   //            console.log('entered else');
+
+   //              var adminObj = Meteor.users.findOne({username: 'admin'});
+   //              currentUserId = adminObj._id;
+   //          }
+   //          console.log('currentUserId....'+currentUserId);
+   //      var themeObj = theme.findOne({userId:currentUserId});
+
+   //    console.log('themeObj.......'+currentUserId+'............'+ theme.findOne({userId:currentUserId})+'.......'+themeObj.themeName);
   console.log(Session.get('themeName'));
   var theme = Session.get('themeName');
   if(theme === 'theme1'){

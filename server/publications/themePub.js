@@ -1,18 +1,22 @@
 Meteor.publish('theme', function () {
-  return theme.find();
+    // return theme.find();
+    var loginUserId = this.userId;    
+        if (loginUserId) {
+            return theme.find({userId: loginUserId});
+        } else {
+            var adminObj = Meteor.users.findOne({username: 'admin'});
+            return theme.find({userId: adminObj._id});
+        }    
 });
 
 //Define all the methods interact with the POSTS object
 Meteor.methods({
     'saveTheme': function (themeName) {
-    	// console.log('')
-    	if (typeof theme.findOne({userId: Meteor.userId()})=== "object") {
-    		console.log('if...');
-        	theme.update({userId: Meteor.userId()},{$set:{userId: Meteor.userId(),themeName: themeName}});    		    		
-    	} else {
-    		console.log('else...');
-        	theme.insert({userId: Meteor.userId(),themeName: themeName});    		
-    	}        
-        console.log('Theme '+ themeName + ' added successfully');
+        if (typeof theme.findOne({userId: Meteor.userId()}) === "object") {
+            theme.update({userId: Meteor.userId()}, {$set: {userId: Meteor.userId(), themeName: themeName}});
+        } else {
+            theme.insert({userId: Meteor.userId(), themeName: themeName});
+        }
+        console.log('Theme ' + themeName + ' added successfully');
     }
 });

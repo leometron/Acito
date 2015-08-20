@@ -1,182 +1,190 @@
 <template name="settings" id="settings">
-	    {{#if errormsg}}
-            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
-            <span  id="showError">{{errormsg}}</span></div>  
-        {{/if}}
-         {{#if successmsg}}
-            <div id="showMsg" style="background-color: #009933;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
-            <span>{{successmsg}}</span></div>  
-        {{/if}}    
-	   <div class="row margin-top-40">
-                <span class="main-header">General Settings</span>                
-       </div>
-	<div class="margin-top-20">
-		<div class="row">
-	    {{#if settingsList}}
-			 <div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Title</div>
-				<div class="col-md-10"><input type="text" id="sitetitle" class="form-control font-size-15" 
-					value="{{settingsList.siteTitle}}"/></div>
-			 </div>
-			 <div>
-				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Tagline</div>
-				 <div class="col-md-10"><input type="text" id="tagline" class="form-control font-size-15"
-				 	value="{{settingsList.tagline}}"/></div>
-			 </div>	
-			 <div>
-				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">WordPress Address (URL)</div>
-				 <div class="col-md-10"><input type="text" id="wpaddress" class="form-control font-size-15"
-				 	value="{{settingsList.wordpressAddress}}"/></div>
-		 	 </div>
-			 <div>
-				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Address (URL)</div>
-				 <div class="col-md-10"><input type="text" id="siteaddress" class="form-control font-size-15"
-				 	value="{{settingsList.siteAddress}}"/></div>
-			 </div>
-			 <div>
-				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">E-mail Address</div>
-				 <div class="col-md-10"><input type="text" id="email" class="form-control font-size-15"
-				 	value="{{settingsList.email}}"/></div>
-			 </div>
-		  {{else}}
-		  	<div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Title</div>
-				<div class="col-md-10"><input type="text" id="sitetitle" class="form-control font-size-15"/></div>
-			 </div>
-			 <div>
-				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Tagline</div>
-				 <div class="col-md-10"><input type="text" id="tagline" class="form-control font-size-15"/></div>
-			 </div>	
-			 <div>
-				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">WordPress Address (URL)</div>
-				 <div class="col-md-10"><input type="text" id="wpaddress" class="form-control font-size-15"/></div>
-		 	 </div>
-			 <div>
-				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Address (URL)</div>
-				 <div class="col-md-10"><input type="text" id="siteaddress" class="form-control font-size-15"/></div>
-			 </div>
-			 <div>
-				 <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">E-mail Address</div>
-				 <div class="col-md-10"><input type="text" id="email" class="form-control font-size-15"/></div>
-			 </div>
-	    {{/if}}		
-			<!-- <div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-bottom-10">Membership</div>
-				<div class="col-md-10 margin-bottom-10"><label class="checkbox-inline"><input type="checkbox" value="">Anyone can register</label></div>
-			</div> -->
-			<!-- <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">New User Default Role</div>
-			<div class="col-md-10">
+    {{#if errormsg}}
+    <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
+        <span id="showError">{{errormsg}}</span></div>
+    {{/if}}
+    {{#if successmsg}}
+    <div id="showMsg"
+         style="background-color: #009933;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
+        <span>{{successmsg}}</span></div>
+    {{/if}}
+    <div class="row margin-top-40">
+        <span class="main-header">General Settings</span>
+    </div>
+    <div class="margin-top-20">
+        <div class="row">
+            {{#if settingsList}}
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Title</div>
+                <div class="col-md-10"><input type="text" id="sitetitle" class="form-control font-size-15"
+                                              value="{{settingsList.siteTitle}}"/></div>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Tagline</div>
+                <div class="col-md-10"><input type="text" id="tagline" class="form-control font-size-15"
+                                              value="{{settingsList.tagline}}"/></div>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">WordPress Address (URL)
+                </div>
+                <div class="col-md-10"><input type="text" id="wpaddress" class="form-control font-size-15"
+                                              value="{{settingsList.wordpressAddress}}"/></div>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Address (URL)</div>
+                <div class="col-md-10"><input type="text" id="siteaddress" class="form-control font-size-15"
+                                              value="{{settingsList.siteAddress}}"/></div>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">E-mail Address</div>
+                <div class="col-md-10"><input type="text" id="email" class="form-control font-size-15"
+                                              value="{{settingsList.email}}"/></div>
+            </div>
+            {{else}}
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Title</div>
+                <div class="col-md-10"><input type="text" id="sitetitle" class="form-control font-size-15"/></div>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Tagline</div>
+                <div class="col-md-10"><input type="text" id="tagline" class="form-control font-size-15"/></div>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">WordPress Address (URL)
+                </div>
+                <div class="col-md-10"><input type="text" id="wpaddress" class="form-control font-size-15"/></div>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Site Address (URL)</div>
+                <div class="col-md-10"><input type="text" id="siteaddress" class="form-control font-size-15"/></div>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">E-mail Address</div>
+                <div class="col-md-10"><input type="text" id="email" class="form-control font-size-15"/></div>
+            </div>
+            {{/if}}
+            <!-- <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-bottom-10">Membership</div>
+                <div class="col-md-10 margin-bottom-10"><label class="checkbox-inline"><input type="checkbox" value="">Anyone can register</label></div>
+            </div> -->
+            <!-- <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">New User Default Role</div>
+            <div class="col-md-10">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Subscriber                    
+                        Subscriber
                     </button>
                       <span class="caret margin-left-minus-20"></span>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">              
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                  <li role="presentation">
                     <a class="menuitem2"
                         id="config-request-command" href="#">Subscriber</a>
-                 </li>                                                                                               
+                 </li>
                     </ul>
-                </span>                       
-	        </div>			 -->
-	        <!-- <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">TimeZone</div>
-			<div class="col-md-10 margin-top-10">
+                </span>
+            </div>			 -->
+            <!-- <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">TimeZone</div>
+            <div class="col-md-10 margin-top-10">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        India                   
+                        India
                     </button>
                       <span class="caret margin-left-minus-20"></span>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">              
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                  <li role="presentation">
                     <a class="menuitem2"
                         id="config-request-command" href="#">India</a>
-                 </li>                                                                                  
+                 </li>
                     </ul>
                      <span class="margin-left-10">GMT time is 2015-07-30 06:42:53</span> <span class="margin-left-10">Local time is 2015-07-30 07:42:53</span>
-                </span>                       
-	        </div>		
-	        <div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Date Format</div>
-				<div class="col-md-10 margin-bottom-10">
-					<div class="radio">
-					  <label><input type="radio" checked name="optradio">30th July 2015</label>
-					</div>
-					<div class="radio">
-					  <label><input type="radio" name="optradio">2015-07-30</label>
-					</div>
-					<div class="radio disabled">
-					  <label><input type="radio" name="optradio">07/30/2015</label>
-					</div>
-					<div class="radio disabled">
-					  <label><input type="radio" name="optradio">custom: <input type="text"></label>
-				</div>
-				</div>
-			</div>	
-			 <div>
-				<div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Time Format</div>
-				<div class="col-md-10 margin-bottom-10">
-					<div class="radio">
-					  <label><input type="radio" checked name="optradio1">7:42 am</label>
-					</div>
-					<div class="radio">
-					  <label><input type="radio" name="optradio1">7:42 AM</label>
-					</div>
-					<div class="radio disabled">
-					  <label><input type="radio" name="optradio1">7:42 </label>
-					</div>
-					<div class="radio disabled">
-					  <label><input type="radio" name="optradio1">custom: <input type="text"></label>
-				</div>
-				<div><a href="#">Documentation on date and time formatting.</a></div>
-				</div>
-			</div>	 -->
-	        <!--  <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">Week Starts On</div>
-			<div class="col-md-10 margin-top-10">
+                </span>
+            </div>
+            <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Date Format</div>
+                <div class="col-md-10 margin-bottom-10">
+                    <div class="radio">
+                      <label><input type="radio" checked name="optradio">30th July 2015</label>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio">2015-07-30</label>
+                    </div>
+                    <div class="radio disabled">
+                      <label><input type="radio" name="optradio">07/30/2015</label>
+                    </div>
+                    <div class="radio disabled">
+                      <label><input type="radio" name="optradio">custom: <input type="text"></label>
+                </div>
+                </div>
+            </div>
+             <div>
+                <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-10">Time Format</div>
+                <div class="col-md-10 margin-bottom-10">
+                    <div class="radio">
+                      <label><input type="radio" checked name="optradio1">7:42 am</label>
+                    </div>
+                    <div class="radio">
+                      <label><input type="radio" name="optradio1">7:42 AM</label>
+                    </div>
+                    <div class="radio disabled">
+                      <label><input type="radio" name="optradio1">7:42 </label>
+                    </div>
+                    <div class="radio disabled">
+                      <label><input type="radio" name="optradio1">custom: <input type="text"></label>
+                </div>
+                <div><a href="#">Documentation on date and time formatting.</a></div>
+                </div>
+            </div>	 -->
+            <!--  <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">Week Starts On</div>
+            <div class="col-md-10 margin-top-10">
                 <span class="dropdown">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentCategory" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Monday                   
+                        Monday
                     </button>
                       <span class="caret margin-left-minus-20"></span>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">              
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                  <li role="presentation">
                     <a class="menuitem2"
                         id="config-request-command" href="#">Monday</a>
-                 </li>                                                                                  
-                    </ul>                     
-                </span>                       
-	        </div>			 -->
-	         <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">Site Language</div>
-			<div class="col-md-10 margin-top-10">
+                 </li>
+                    </ul>
+                </span>
+            </div>			 -->
+            <div class="col-md-2 padding-left-zero font-bold font-size-12 margin-top-15">Site Language</div>
+            <div class="col-md-10 margin-top-10">
                 <span class="dropdown">
                 	{{#if settingsList}}
                 		{{#if languageList}}
-                			<button class="btn btn-default dropdown-toggle padding-right-20" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        	{{languageList}} </button>
+                			<button class="btn btn-default dropdown-toggle padding-right-20" type="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{languageList}}
+                            </button>
                 		 {{else}}
-                		  <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="addlanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        {{settingsList.language}} </button>
+                		  <button class="btn btn-default dropdown-toggle padding-right-20" type="button"
+                                  id="addlanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                              {{settingsList.language}}
+                          </button>
                 		{{/if}}
                      {{else}}
-                      <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="addlanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        English                   
+                      <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="addlanguage"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          English
                       </button>
                 	{{/if}}
                       <span class="caret margin-left-minus-20"></span>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">              
-		                <li role="presentation">
-		                   <a class="languagemenu"
-		                      id="config-request-command" href="#">English
-		                   </a>
-		                   <!-- <a class="languagemenu"
-		                      id="config-request-command" href="#">Tamil
-		                   </a> -->
-		                </li>                                                                                  
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a class="languagemenu"
+                               id="config-request-command" href="#">English
+                            </a>
+                            <!-- <a class="languagemenu"
+                               id="config-request-command" href="#">Tamil
+                            </a> -->
+                        </li>
                     </ul>                    
-                </span>                       
-	        </div>			
-			<div class="row padding-top-bottom-10 ">
-			 	<span><button class="btn btn-primary margin-top-40" id="savesetting">Save Changes</button></span>
-			</div>			
-		</div>
-	</div>
+                </span>
+            </div>
+            <div class="row padding-top-bottom-10 ">
+                <span><button class="btn btn-primary margin-top-40" id="savesetting">Save Changes</button></span>
+            </div>
+        </div>
+    </div>
 </template>

@@ -1,19 +1,23 @@
-<template name = "admin" id="main">
-        <div style="width: 100%">           
-            <div class="margin-top-40">
-                <div class="row post-margin">
-                    <span style="  font-size: 30px;  vertical-align: top;">Posts</span> <span><button type="button" class="btn btn-default">Add New</button></span>
+<template name="admin" id="main">
+    <div style="width: 100%">
+        <div class="margin-top-40">
+            <div class="row post-margin">
+                <span style="  font-size: 30px;  vertical-align: top;">Posts</span> <span><button type="button"
+                                                                                                  class="btn btn-default">
+                Add New
+            </button></span>
+            </div>
+            <div class="row post-margin">
+                <div style="float: right">
+                    <input type="text"/>
+                    <span><button type="button" class="btn btn-default">Search Posts</button></span>
                 </div>
-                <div class="row post-margin">
-                    <div style="float: right">
-                        <input type="text" />
-                        <span><button type="button" class="btn btn-default">Search Posts</button></span>
-                    </div>
-                </div>
-                <div class="row post-margin">
-                    <div class="col-md-3">
+            </div>
+            <div class="row post-margin">
+                <div class="col-md-3">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Bulk Actions
                         <span class="caret"></span>
                     </button>
@@ -23,11 +27,12 @@
                         <li><a href="#">Move to Bin</a></li>
                     </ul>
                 </span>
-                        <span><button type="button" class="btn btn-default">Apply</button></span>
-                    </div>
-                    <div class="col-md-6">
+                    <span><button type="button" class="btn btn-default">Apply</button></span>
+                </div>
+                <div class="col-md-6">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         All dates
                         <span class="caret"></span>
                     </button>
@@ -36,7 +41,8 @@
                     </ul>
                 </span>
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         All categories
                         <span class="caret"></span>
                     </button>
@@ -46,16 +52,17 @@
                         <li><a href="#">Advisors</a></li>
                     </ul>
                 </span>
-                        <span><button type="button" class="btn btn-default">Filter</button></span>
-                    </div>
+                    <span><button type="button" class="btn btn-default">Filter</button></span>
                 </div>
-                <div class="row post-margin">
-                    <div class="bs-example" data-example-id="striped-table">
-                        <table class="table table-striped" style="width:90%;  border: 1px solid #ddd;">
-                            <thead style="background-color: white">
-                            <tr>
-                                <th><span><input type="checkbox"></span> <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle"  style="border-color: transparent" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            </div>
+            <div class="row post-margin">
+                <div class="bs-example" data-example-id="striped-table">
+                    <table class="table table-striped" style="width:90%;  border: 1px solid #ddd;">
+                        <thead style="background-color: white">
+                        <tr>
+                            <th><span><input type="checkbox"></span> <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" style="border-color: transparent" type="button"
+                            id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Title
                         <span class="caret"></span>
                     </button>
@@ -64,29 +71,32 @@
                         </li>
                     </ul>
                 </span></th>
-                                <th>Author</th>
-                                <th>Categories</th>
-                                <th>Tags</th>
-                                <th>comments</th>
-                                <th>Date</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row"><span><input type="checkbox"></span><a href="#" style=" padding-left: 10px;">Our Group</a></th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>comments</td>
-                                <td>7/11/2015</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            <th>Author</th>
+                            <th>Categories</th>
+                            <th>Tags</th>
+                            <th>comments</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row"><span><input type="checkbox"></span><a href="#"
+                                                                                   style=" padding-left: 10px;">Our
+                                Group</a></th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>comments</td>
+                            <td>7/11/2015</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row post-margin">
+            </div>
+            <div class="row post-margin">
                 <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Bulk Actions
                         <span class="caret"></span>
                     </button>
@@ -96,8 +106,8 @@
                         <li><a href="#">Move to Bin</a></li>
                     </ul>
                 </span>
-                    <span><button type="button" class="btn btn-default">Apply</button></span>
-                </div>
+                <span><button type="button" class="btn btn-default">Apply</button></span>
             </div>
         </div>
+    </div>
 </template>

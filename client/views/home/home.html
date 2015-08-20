@@ -1,7 +1,7 @@
 <template name="home">
      <div id="Pages" class="row bg-color" >     
-         <div class="container padding-100">
-               <div class="row equal image image-center">              
+         <div class="container padding-100 theme-width">
+               <div class="row equal image image-center theme-left-20">              
               {{#each postsList}}
                <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">     
                 {{#if equals featuredImage '-'}}
@@ -18,21 +18,25 @@
                       <p class="break-word text-ellipsis">
                          {{content}}
                       </p>
+                      <div class="right-arrow"></div>
                    </div>                   
                </div>
               {{/each}}
               </div>  
-
-              <div class="loading-icon">
-              </div>
-              <div class="load-content-design">
+            <div class="loading-icon">
+            </div>
+            <div class="load-content-design">
                 <button class='give-more-content'>Click To Load More Content</button>
-              </div>
-              <div class="posts-Over">Posts Over</div>
-          </div>
+            </div>
+            <div class="posts-Over">Posts Over</div>
+        </div>
     </div>
-    <div id="xLoader" class="padding-100 bg-dynamic-color"><div class="google-spin-wrapper"><div class="google-spin"></div></div></div>
- <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">   
+    <div id="xLoader" class="padding-100 bg-dynamic-color">
+        <div class="google-spin-wrapper">
+            <div class="google-spin"></div>
+        </div>
+    </div>
+    <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">
 
 <div class="owl-carousel">   
    {{#each mediaList}}
@@ -41,15 +45,15 @@
       </div>
    {{/each}}   
 </div>
-
 </div>
 
-<div id="showPost" class="show-post">     
+<!-- <div id="showPost" class="show-post">     
       <div class="col-md-10 col-xs-10">
           <textarea rows="5" cols="5" class="form-control" placeholder="Post Your Question"></textarea>
       </div>
       <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" class="btn btn-default">Ask</a></div>
       <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
 </div>
-<!-- <div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
-</template>
+<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
+
+ </template>
