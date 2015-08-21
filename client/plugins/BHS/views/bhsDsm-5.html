@@ -4,11 +4,11 @@
 		<div class="col-md-6">	
 		<div class="margin-bottom-2pt">
 			<span class="font-size-20px padding-right-10px">Section :</span>
-			<select id="sectionList" placeholder="Section Name" class="padding-10px font-size-16px" style="width:70%">
-				{{#if selectedICD}}
-					<option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionName}}</option>
+			<select id="sectionList" class="padding-10px font-size-16px" style="width:68%">
+				{{#if selectedDSM}}
+				<option class="font-size-16px" value="{{selectedDSM.sectionId}}">{{selectedDSM.sectionName}}</option>
 				{{else}}
-					<option>Select</option>				
+				<option class="font-size-16px">Select</option>
 				{{/if}}
                	{{#each sectionList}}
                	    <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
@@ -23,15 +23,15 @@
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveDSMSection" >Save</button></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelDSMSection" >Cancel</button></div>				
 		</div>
-</div>
-<div class="col-md-6">
+	</div>
+	<div class="col-md-6">
 		<div class="margin-bottom-2pt">
 			<span class="font-size-20px padding-right-10px">Sub section :</span>
-			<select id="subSectionList" placeholder="Sub section Name" class="padding-10px font-size-16px" style="width:62%">
-				{{#if selectedICD}}
-					<option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionName}}</option>
+			<select id="subSectionList" placeholder="Sub section Name" class="padding-10px font-size-16px" style="width:58%">
+				{{#if selectedDSM}}
+				<option class="font-size-16px" value="{{selectedDSM.subSectionId}}">{{selectedDSM.subSectionName}}</option>
 				{{else}}
-					<option>Select</option>				
+				<option class="font-size-16px">Select</option>
 				{{/if}}
                	{{#each subSectionList}}
                	    <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
@@ -46,13 +46,13 @@
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveDSMSubSection" >Save</button></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelDSMSubSection" >Cancel</button></div>
 			</div>
-	</div>	
-</div>
+		</div>	
+	</div>
 		<div class="row" style="padding-bottom:20px; margin-top:20px;">
-			{{#if selectedICD}}
-			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" value="{{selectedICD.code}}"></div>			 
-            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" value="{{selectedICD.detail}}"></div>
-			<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveCurrentDSMPost">Update</button></div>
+			{{#if selectedDSM}}
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" value="{{selectedDSM.DSMCode}}"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" value="{{selectedDSM.DSMDetail}}"></div>
+			<div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateCurrentDSMPost">Update</button></div>
 			<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelCurrentDSMPost">Cancel</button></div>            		
 			{{else}}
 			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="DSMCode" class="form-control font-size-14" style="width:100%" placeholder="DSM Code"></div>			 
@@ -69,13 +69,13 @@
                 <span style="font-size:18px">Detail</span>
             </div>
         </div>
-        {{#each ICDList}}
-        	<div class="ICD-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+        {{#each DSMList}}
+        	<div class="DSM-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
             	<div class="col-md-2">
-                	<span style="font-size:16px">{{code}}</span>
+                	<span style="font-size:16px">{{DSMCode}}</span>
             	</div>
             	<div class="col-md-6">
-                	<span style="font-size:16px">{{detail}}</span>
+                	<span style="font-size:16px">{{DSMDetail}}</span>
             	</div>
           	</div>            
         {{/each}}

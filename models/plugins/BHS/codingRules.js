@@ -1,32 +1,24 @@
-DSM = new Mongo.Collection('DSM');
+codingRules = new Mongo.Collection('codingRules');
 
-DSM.attachSchema(
+codingRules.attachSchema(
     new SimpleSchema({
-    sectionId: {
+    title: {
       type: String
     },
-    sectionName: {
-      type: String
-    },    
-    subSectionId: {
+    content: {
       type: String
     },
-    subSectionName: {
-      type: String
-    },     
-    DSMCode: {
-      type: String
-    },
-    DSMDetail: {
-      type: String
-    }    
+    createdAt: {
+      type: Date,
+      denyUpdate: true
+    }
   })
 );
 
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
-  DSM.allow({
+  codingRules.allow({
     insert : function () {
       return true;
     },
