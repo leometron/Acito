@@ -2,6 +2,37 @@ Meteor.subscribe("DSM");
 Meteor.subscribe("subSection");
 
 Template.BHSDSM.events({
+	    'click #addNewDSMSection' : function () {
+	    	$('#addNewDSMSection').hide();
+	    	$('#minimizeDSMSection').show();
+	        $('#chooseDSMSectionName').fadeIn(500);
+	    },
+	    'click #minimizeDSMSection' : function () {
+	        $('#minimizeDSMSection').hide();
+	        $('#addNewDSMSection').show();
+	        $('#chooseDSMSectionName').fadeOut(500);
+	    },
+	    'click #addNewDSMSubSection' : function () {
+	     	$('#addNewDSMSubSection').hide();
+	     	$('#minimizeDSMSubSection').show();
+	        $('#chooseDSMSubSectionName').fadeIn(500);
+	    },
+	    'click #minimizeDSMSubSection' : function () {
+	        $('#minimizeDSMSubSection').hide();
+	        $('#addNewDSMSubSection').show();
+	        $('#chooseDSMSubSectionName').fadeOut(500);
+	    },
+	    'click #cancelDSMSection' : function () {
+	        $('#minimizeDSMSection').hide();
+	        $('#addNewDSMSection').show();
+	        $('#chooseDSMSectionName').fadeOut(500);
+	    },
+	    'click #cancelDSMSubSection' : function () {
+	        $('#minimizeDSMSubSection').hide();
+	        $('#addNewDSMSubSection').show();
+	        $('#chooseDSMSubSectionName').fadeOut(500);
+	    },
+
 	'click #saveDSMSection': function () {
         if (!$('#DSMSectionName').val()) {
             Session.set('errorMessage', 'Section name is required');
@@ -63,7 +94,7 @@ Template.BHSDSM.events({
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')
         }, 2000);    
-    }    
+    },    
 });
 
 
@@ -76,6 +107,13 @@ Template.BHSDSM.helpers({
     },    
 });
 
+
+Template.BHSDSM.rendered = function () {
+	$('#chooseDSMSectionName').hide();
+    $('#chooseDSMSubSectionName').hide();
+    $('#minimizeDSMSection').hide();
+    $('#minimizeDSMSubSection').hide();
+};
 
 Template.adminTop.helpers({
 	'BHSErrorMsg' : function() {
