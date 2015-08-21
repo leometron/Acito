@@ -438,15 +438,29 @@ body, #main {
   color: red;
 }
 
-.postError {
-  /*background-color: #F2F1F1; */
-  color: #F00; 
+/*.postError {*/
+  /*background-color: #99CCFF; */
+  /*color: #F00; 
   font-weight: bold;
   font-size: 16px;
-  font-family: arial;
-  margin-left: 36%; 
-}
+  font-family: arial;*/
+  /*margin-left: 36%; */
+/*}*/
 
 .set-img:hover {
   color: #19A3D1;
 }
+
+.err-padding{
+  padding: 1px;
+  background-color: #E22727;
+  position: fixed;
+  z-index: 999;
+  margin-top: 32px;
+  /*color: #1B1919; */
+  font-weight: bold;
+  font-size: 16px;
+  font-family: arial;
+  text-align: center;
+}
+

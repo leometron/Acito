@@ -2,10 +2,25 @@
     <div class="row">
         <div class="col-md-12 pos-padding">
             <span class="white padding-left-10"><i class="fa fa-home icons"></i>Acito</span>
-            {{#if errormsg}}
-            <span  class="postError">{{errormsg}}</span>
-            {{/if}}
             <span class="pull-right white">Welcome {{currentUser.username}}</span>
         </div>
-    </div>
+        <div class="row">
+            {{#if errormsg}}
+                <div class="col-md-12 err-padding">{{errormsg}}</div>
+            {{/if}}
+            {{#if BHSSuccessMessage}}
+                <div class="col-md-12 post-success">{{BHSSuccessMessage}}</div>
+            {{/if}}  
+               <!--  {{#if errormsg}}
+                <span  class="postError">{{errormsg}}</span>
+                {{/if}} -->
+                <!-- {{#if BHSErrorMsg}}
+                <span  class="postError">{{BHSErrorMsg}}</span>
+                {{/if}} -->
+                <!-- {{#if BHSSuccessMessage}}
+                <span  class="post-success">{{BHSSuccessMessage}}</span>
+                {{/if}} -->  
+               
+        </div>   
+    </div> 
 </template>
