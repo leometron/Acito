@@ -2,11 +2,11 @@
 	<div class="margin-top-4pt margin-left-2pt">
 		<div class="margin-bottom-2pt">
 			<span class="font-size-20px padding-right-10px">Section :</span>
-			<select id="sectionList" placeholder="section name" class="width30pt padding-10px font-size-16px">
+			<select id="sectionList" placeholder="Section Name" class="width30pt padding-10px font-size-16px">
 				{{#if selectedICD}}
 					<option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionName}}</option>
 				{{else}}
-					<option>Choose Section</option>				
+					<option>Select</option>				
 				{{/if}}
                	{{#each sectionList}}
                	    <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
@@ -17,8 +17,8 @@
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseSectionName" style="margin-bottom:20px; width:60%">
-               <div class="col-xs-7" ><input type="text" id="sectionName" class="form-control font-size-14" placeholder="section name"></div>
-				<div class="col-xs-3"><button class="btn btn-default padding-8px" id="saveSection" >Save Section</button></div>
+               <div class="col-xs-7" ><input type="text" id="sectionName" class="form-control font-size-14" placeholder="Section Name"></div>
+				<div class="col-xs-3"><button class="btn btn-default padding-8px" id="saveSection" >Save</button></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" style="margin-left:-14%" id="cancelSection" >Cancel</button></div>				
 		</div>
 
