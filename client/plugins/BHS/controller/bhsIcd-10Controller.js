@@ -41,7 +41,8 @@ Template.BHSICD.events({
             Meteor.setTimeout(function () {
                 // $('#sectionList').text("Choose Section");
                 console.log('........'+$('#sectionList').val());
-                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select")
+                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
+                $('#ICDCode').val(""),$('#ICDDetail').val(""),$('#ICDCode').attr('placeholder',"ICD Code"),$('#ICDDetail').attr("placeholder",'Detail')
             }, 2000);			
 		}
         Meteor.setTimeout(function () {
@@ -60,7 +61,7 @@ Template.BHSICD.events({
 
 Template.BHSICD.helpers({
     'sectionList': function () {
-        return section.find();
+        return section.find({type:"ICD"});
     },
     'ICDList': function() {
     	return ICD.find();
@@ -84,11 +85,13 @@ Template.adminTop.helpers({
 	}
 });
 
-Template.adminHeader.events({
-    'click #subNavBarBHSICD-10': function () {
-        Meteor.call('showSection','ICD');
-    },
-    'click #subNavBarBHSDSM-5': function () {
-        Meteor.call('showSection','DSM');        
-    }
-});
+// Template.adminHeader.events({
+//     'click #subNavBarBHSICD-10': function () {
+//         Session.set('showSection','ICD');
+//         // Meteor.call('showSection','ICD');
+//     },
+//     'click #subNavBarBHSDSM-5': function () {
+//         Session.set('showSection','DSM');        
+//         // Meteor.call('showSection','DSM');        
+//     }
+// });

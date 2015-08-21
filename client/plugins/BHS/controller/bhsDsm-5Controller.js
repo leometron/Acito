@@ -1,20 +1,37 @@
 Meteor.subscribe("DSM");
 
 Template.BHSDSM.events({
-	// 'click #saveSection': function () {
- //        if (!$('#sectionName').val()) {
- //            Session.set('errorMessage', 'Section name is required');
- //        } else {
- //            $('#chooseSectionName').fadeOut(500);
- //            Session.set('errorMessage', '');
- //            Meteor.call('insertSection', $('#sectionName').val());
- //            $('#sectionName').val("");
- //            $('#sectionName').attr('placeholder','Section Name');
- //        }
- //        Meteor.setTimeout(function () {
- //            Session.set('errorMessage','')
- //        }, 2000);	        
- //    },
+	'click #saveDSMSection': function () {
+        if (!$('#DSMSectionName').val()) {
+            Session.set('errorMessage', 'Section name is required');
+        } else {
+            $('#chooseDSMSectionName').fadeOut(500);
+            Session.set('errorMessage', '');
+            Meteor.call('insertSection', $('#DSMSectionName').val(),"DSM");
+            $('#DSMSectionName').val("");
+            $('#DSMSectionName').attr('placeholder','Section Name');
+        }
+        Meteor.setTimeout(function () {
+            Session.set('errorMessage','')
+        }, 2000);	        
+    },
+
+    'click #saveDSMSubSection': function () {
+        if (!$('#DSMSectionName').val()) {
+            Session.set('errorMessage', 'Section name is required');
+        } else if (!$('#DSMSubSectionName').val()) {
+            Session.set('errorMessage', 'Sub Section name is required');
+        } else {
+            $('#chooseDSMSubSectionName').fadeOut(500);
+            Session.set('errorMessage', '');
+            Meteor.call('insertSubSection', $('#DSMSectionName').val(), $('#DSMSubSectionName').val());
+            $('#DSMSubSectionName').val("");
+            $('#DSMSubSectionName').attr('placeholder','Sub Section Name');
+        }
+        Meteor.setTimeout(function () {
+            Session.set('errorMessage','')
+        }, 2000);           
+    },    
  //    'click #addNewSection' : function () {
  //        $('#chooseSectionName').fadeIn(500);
  //    },
@@ -58,9 +75,9 @@ Template.BHSDSM.events({
 
 
 Template.BHSDSM.helpers({
-    // 'sectionList': function () {
-    //     return section.find();
-    // },
+    'sectionList': function () {
+        return section.find({type:"DSM"});
+    },
     // 'ICDList': function() {
     // 	return ICD.find();
     // },
@@ -69,10 +86,6 @@ Template.BHSDSM.helpers({
     // }
 });
 
-
-Template.BHSICD.rendered = function () {
-    $('#chooseSectionName').hide();
-};
 
 Template.adminTop.helpers({
 	'BHSErrorMsg' : function() {

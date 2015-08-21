@@ -1,10 +1,10 @@
-var sectionType;
+// var sectionType;
 Meteor.publish('section', function () {
-	if (sectionType){
-  		return section.find({type:sectionType});
-	} else {
+	// if (sectionType){
+ //  		return section.find({type:sectionType});
+	// } else {
   		return section.find();		
-	}
+	// }
 });
 
 Meteor.methods({
@@ -16,7 +16,7 @@ Meteor.methods({
 	        console.log('Section ' + name + ' added successfully');        	
         }
     },
-    'showSection': function (secType) {
-    	sectionType = secType;
-    }
+    // 'showSection': function (secType) {
+    // 	sectionType = secType;
+    // }
 });
