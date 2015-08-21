@@ -53,10 +53,10 @@ Template.editTags.events({
 Template.tags.helpers({
     'tagList': function () {
         return tags.find();
-    },
-    'errormsg': function () {
-        return Session.get('errorMessage');
     }
+    // 'errormsg': function () {
+    //     return Session.get('errorMessage');
+    // }
 });
 
 Template.editTags.helpers({
