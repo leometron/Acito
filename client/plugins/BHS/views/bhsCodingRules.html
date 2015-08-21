@@ -1,5 +1,39 @@
 <template name="BHSCodingRules">
-	<div>
-		This is the First Plugin
-	</div>
+	<div class="margin-top-4pt margin-left-2pt">
+
+		<div class="row">
+			<div class="col-xs-4" style="margin-top:8px; font-size:16px">Code Reference :</div>
+			<div class="col-xs-6"><input type="text" id="DSMCode" class="form-control font-size-14"></div>
+		</div>				 
+		<div class="row" style="margin-top:7px;">	
+			<div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Documentation Guideline :</div>
+            <div class="col-xs-6"><input type="text" id="DSMDetail" class="form-control font-size-14"></div>
+        </div>    
+        <div class="row" style="margin-top:7px;">
+        	<div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Guideline Definition :</div>
+            <div class="col-xs-6"><input type="text" id="DSMDetail" class="form-control font-size-14"></div>
+        </div>
+        <div class="row" style="margin-top:10px; margin-left:33%; margin-bottom:20px;">
+        	<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentDSMPost" style="padding:7px 40px; margin-top:1px">Save</button></div>         
+        </div>	
+
+        <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
+            <div class="col-md-2">
+                <span style="font-size:18px">DSM Code</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-size:18px">Detail</span>
+            </div>
+        </div>
+
+        <div class="ICD-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+            <div class="col-md-2">
+               	<span style="font-size:16px">{{code}}</span>
+            </div>
+            <div class="col-md-6">
+               	<span style="font-size:16px">{{detail}}</span>
+            </div>
+        </div>
+
+	</div>		
 </template>
