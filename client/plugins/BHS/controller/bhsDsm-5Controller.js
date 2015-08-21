@@ -1,4 +1,5 @@
 Meteor.subscribe("DSM");
+Meteor.subscribe("subSection");
 
 Template.BHSDSM.events({
 	'click #saveDSMSection': function () {
@@ -17,60 +18,52 @@ Template.BHSDSM.events({
     },
 
     'click #saveDSMSubSection': function () {
-        if (!$('#DSMSectionName').val()) {
-            Session.set('errorMessage', 'Section name is required');
+        var sectionName = $('#sectionList :selected').text();
+        var sectionId = $('#sectionList').val();
+        if (sectionName == "Select") {
+            Session.set('errorMessage', 'Please select section');
         } else if (!$('#DSMSubSectionName').val()) {
             Session.set('errorMessage', 'Sub Section name is required');
         } else {
-            $('#chooseDSMSubSectionName').fadeOut(500);
             Session.set('errorMessage', '');
-            Meteor.call('insertSubSection', $('#DSMSectionName').val(), $('#DSMSubSectionName').val());
+            Meteor.call('insertSubSection', sectionId, sectionName, $('#DSMSubSectionName').val());
             $('#DSMSubSectionName').val("");
             $('#DSMSubSectionName').attr('placeholder','Sub Section Name');
         }
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')
         }, 2000);           
-    },    
- //    'click #addNewSection' : function () {
- //        $('#chooseSectionName').fadeIn(500);
- //    },
- //    'click #cancelSection' : function () {
- //        $('#chooseSectionName').fadeOut(500);
- //    },
- //    'click #saveCurrentICDPost': function () {
- //    	$('#cancelCurrentICDPost').hide()
- //    	var sectionName = $('#sectionList :selected').text();
-	// 	var sectionId = $('#sectionList').val();    	
- //    	var icdCode = $('#ICDCode').val();
- //    	var ICDDetail = $('#ICDDetail').val();
+    },
+    'click #saveCurrentDSMPost': function () {
+        // $('#cancelCurrentICDPost').hide()
+        var sectionName = $('#sectionList :selected').text();
+        var sectionId = $('#sectionList').val();
+        var subSectionName = $('#subSectionList :selected').text();
+        var subSectionId = $('#subSectionList').val();        
+        var dsmCode = $('#DSMCode').val();
+        var dsmDetail = $('#DSMDetail').val();
 
-	// 	if (sectionName == "Select") {
-	// 		Session.set('errorMessage','Please select section');
-	// 	} else if(!icdCode) {
-	// 		Session.set('errorMessage','ICD Code is Required');
-	// 	} else if(!ICDDetail) {
-	// 		Session.set('errorMessage','ICD Detail is Required');
-	// 	} else {
-	// 		Meteor.call('insertICD',sectionName,sectionId,icdCode,ICDDetail,Session.get('currentICDid'));
- //            Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
- //            Meteor.setTimeout(function () {
- //                // $('#sectionList').text("Choose Section");
- //                console.log('........'+$('#sectionList').val());
- //                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select")
- //            }, 2000);			
-	// 	}
- //        Meteor.setTimeout(function () {
- //            Session.set('errorMessage','')
- //        }, 2000);		
- //    },
- //    'click .ICD-data-row' : function () {
- //    	Session.set('currentICDid',this._id);
- //    },
- //    'click #cancelCurrentICDPost' : function () {
- //    	Session.set('currentICDid','');
- //    	// $('#ICDCode').attr("placeholder", "ICD Code");
- //    },
+        if (sectionName == "Select") {
+            Session.set('errorMessage','Please select section');
+        } else if (subSectionName == "Select") {
+            Session.set('errorMessage','Please select sub section');            
+        }  else if(!dsmCode) {
+            Session.set('errorMessage','DSM Code is Required');
+        } else if(!dsmDetail) {
+            Session.set('errorMessage','DSM Detail is Required');
+        } else {
+        Meteor.call('insertDSM',sectionId,subSectionId,dsmCode,dsmDetail,Session.get('currentDSMid'));
+            Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully saved');
+            Meteor.setTimeout(function () {
+                Session.set('BHSSuccessMessage', ''),Session.set('currentDSMid',''),$('#sectionList').val("Select"),
+                $('#subSectionList').val("Select"),$('#DSMCode').val(""),$('#DSMDetail').val(""),
+                $('#DSMCode').attr("placeholder","DSMCode"),$('#DSMDetail').attr("placeholder","Detail")
+            }, 2000);            
+        }
+        Meteor.setTimeout(function () {
+            Session.set('errorMessage','')
+        }, 2000);    
+    }    
 });
 
 
@@ -78,12 +71,9 @@ Template.BHSDSM.helpers({
     'sectionList': function () {
         return section.find({type:"DSM"});
     },
-    // 'ICDList': function() {
-    // 	return ICD.find();
-    // },
-    // 'selectedICD' : function () {
-    // 	return ICD.findOne(Session.get('currentICDid'));    	
-    // }
+    'subSectionList': function () {
+        return subSection.find();
+    },    
 });
 
 

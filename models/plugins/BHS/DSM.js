@@ -2,16 +2,18 @@ DSM = new Mongo.Collection('DSM');
 
 DSM.attachSchema(
     new SimpleSchema({
-    title: {
+    sectionId: {
       type: String
     },
-    content: {
+    subSectionId: {
       type: String
     },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
-    }
+    DSMCode: {
+      type: String
+    },
+    DSMDetail: {
+      type: String
+    }    
   })
 );
 

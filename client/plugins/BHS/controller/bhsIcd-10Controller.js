@@ -11,11 +11,12 @@ Template.BHSICD.events({
             $('#chooseSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             Meteor.call('insertSection', $('#sectionName').val(),"ICD");
+            Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');            
             $('#sectionName').val("");
             $('#sectionName').attr('placeholder','Section Name');
         }
         Meteor.setTimeout(function () {
-            Session.set('errorMessage','')
+            Session.set('errorMessage',''),Session.set('BHSSuccessMessage','')
         }, 2000);	        
     },
     'click #addNewSection' : function () {
