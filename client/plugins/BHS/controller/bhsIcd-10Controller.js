@@ -17,6 +17,9 @@ Template.BHSICD.events({
     'click #addNewSection' : function () {
         $('#chooseSectionName').fadeIn(500);
     },
+    'click #cancelSection' : function () {
+        $('#chooseSectionName').fadeOut(500);
+    },
     'click #saveCurrentICDPost': function () {
     	$('#cancelCurrentICDPost').hide()
     	var sectionName = $('#sectionList :selected').text();
@@ -34,7 +37,9 @@ Template.BHSICD.events({
 			Meteor.call('insertICD',sectionName,sectionId,icdCode,ICDDetail,Session.get('currentICDid'));
             Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
             Meteor.setTimeout(function () {
-                Session.set('BHSSuccessMessage', ''),$('#ICDCode').val(""),$('#ICDDetail').val(""),Session.set('currentICDid','')
+                // $('#sectionList').text("Choose Section");
+                console.log('........'+$('#sectionList').val());
+                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Choose Section")
             }, 2000);			
 		}
         Meteor.setTimeout(function () {

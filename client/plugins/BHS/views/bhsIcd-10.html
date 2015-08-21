@@ -3,9 +3,8 @@
 		<div class="margin-bottom-4pt">
 			<span class="font-size-20px padding-right-10px">Section :</span>
 			<select id="sectionList" placeholder="section name" class="width30pt padding-10px font-size-16px">
-            <option>Choose Section</option>
 				{{#if selectedICD}}
-					<option>{{selectedICD.sectionName}}</option>
+					<option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionName}}</option>
 				{{else}}
 					<option>Choose Section</option>				
 				{{/if}}
@@ -19,6 +18,7 @@
 		<div class="row padding-bottom-20px" id="chooseSectionName">
                <div class="col-xs-5" style="margin-left:-1.5%"><input type="text" id="sectionName" class="form-control font-size-14" style="width:77%" placeholder="section name"></div>
 				<div class="col-xs-3" style="margin-left:-10%"><button class="btn btn-default" id="saveSection" >Save Section</button></div>
+				<div class="col-xs-3" style="margin-left:-10%"><button class="btn btn-default" id="cancelSection" >Cancel</button></div>				
 		</div>
 
 		<div class="row" style="padding-bottom:20px;">
