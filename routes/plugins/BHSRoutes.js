@@ -6,7 +6,7 @@ Router.route('/admin/BHS/CodingRules', function () {
     this.render('BHSCodingRules');
 });
 Router.route('/admin/BHS/DSM-5', function () {
-    this.render('BHSDSM-5');
+    this.render('BHSDSM');
 });
 Router.route('/admin/BHS/ICD-10', function () {
     this.render('BHSICD');

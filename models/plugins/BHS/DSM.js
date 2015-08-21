@@ -1,18 +1,24 @@
-section = new Mongo.Collection('section');
+DSM = new Mongo.Collection('DSM');
 
-section.attachSchema(
+DSM.attachSchema(
     new SimpleSchema({
-    sectionName: {
+    title: {
       type: String
     },
-    type: {
+    content: {
       type: String
+    },
+    createdAt: {
+      type: Date,
+      denyUpdate: true
     }
   })
 );
 
+// Collection2 already does schema checking
+// Add custom permission rules if needed
 if (Meteor.isServer) {
-  section.allow({
+  DSM.allow({
     insert : function () {
       return true;
     },

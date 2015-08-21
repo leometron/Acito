@@ -148,7 +148,7 @@ Template.home.rendered = function () {
 
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
-            $('.loading-icon').show();            
+            // $('.loading-icon').show();            
             Meteor.setTimeout(function(){
             Session.set('numberOfCount', Session.get('numberOfCount') +4);
                 if(Session.get('postCount')<=Session.get('numberOfCount')){
@@ -167,7 +167,6 @@ Template.home.rendered = function () {
             items: 5,
         });
     }, 5500);
-
 
     $(function () {
         console.log(Session.get('themeName'));
