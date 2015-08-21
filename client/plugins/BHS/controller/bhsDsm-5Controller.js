@@ -15,12 +15,36 @@ Template.BHSDSM.events({
  //            Session.set('errorMessage','')
  //        }, 2000);	        
  //    },
- //    'click #addNewSection' : function () {
- //        $('#chooseSectionName').fadeIn(500);
- //    },
- //    'click #cancelSection' : function () {
- //        $('#chooseSectionName').fadeOut(500);
- //    },
+	    'click #addNewDSMSection' : function () {
+	    	$('#addNewDSMSection').hide();
+	    	$('#minimizeDSMSection').show();
+	        $('#chooseDSMSectionName').fadeIn(500);
+	    },
+	    'click #minimizeDSMSection' : function () {
+	        $('#minimizeDSMSection').hide();
+	        $('#addNewDSMSection').show();
+	        $('#chooseDSMSectionName').fadeOut(500);
+	    },
+	    'click #addNewDSMSubSection' : function () {
+	     	$('#addNewDSMSubSection').hide();
+	     	$('#minimizeDSMSubSection').show();
+	        $('#chooseDSMSubSectionName').fadeIn(500);
+	    },
+	    'click #minimizeDSMSubSection' : function () {
+	        $('#minimizeDSMSubSection').hide();
+	        $('#addNewDSMSubSection').show();
+	        $('#chooseDSMSubSectionName').fadeOut(500);
+	    },
+	    'click #cancelDSMSection' : function () {
+	        $('#minimizeDSMSection').hide();
+	        $('#addNewDSMSection').show();
+	        $('#chooseDSMSectionName').fadeOut(500);
+	    },
+	    'click #cancelDSMSubSection' : function () {
+	        $('#minimizeDSMSubSection').hide();
+	        $('#addNewDSMSubSection').show();
+	        $('#chooseDSMSubSectionName').fadeOut(500);
+	    },
  //    'click #saveCurrentICDPost': function () {
  //    	$('#cancelCurrentICDPost').hide()
  //    	var sectionName = $('#sectionList :selected').text();
@@ -70,8 +94,11 @@ Template.BHSDSM.helpers({
 });
 
 
-Template.BHSICD.rendered = function () {
-    $('#chooseSectionName').hide();
+Template.BHSDSM.rendered = function () {
+	$('#chooseDSMSectionName').hide();
+    $('#chooseDSMSubSectionName').hide();
+    $('#minimizeDSMSection').hide();
+    $('#minimizeDSMSubSection').hide();
 };
 
 Template.adminTop.helpers({
