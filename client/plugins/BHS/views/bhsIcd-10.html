@@ -26,12 +26,12 @@
 			{{#if selectedICD}}
 			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" value="{{selectedICD.code}}"></div>			 
             <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" value="{{selectedICD.detail}}"></div>
-			<div class="col-xs-1"><button class="btn btn-default padding-8px" id="saveCurrentICDPost">Update</button></div>
-			<div class="col-xs-1"><button class="btn btn-default padding-8px" id="cancelCurrentICDPost">Cancel</button></div>            		
+			<div class="col-xs-1"><button class="btn btn-default" id="saveCurrentICDPost" style="padding:7px 40px; margin-top:1px">Update</button></div>
+			<div class="col-xs-1"><button class="btn btn-default" id="cancelCurrentICDPost" style="padding:7px 40px; margin-top:1px">Cancel</button></div>            		
 			{{else}}
 			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" placeholder="ICD Code"></div>			 
             <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" placeholder="Detail"></div>
-			<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveCurrentICDPost">Save</button></div>            
+			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost" style="padding:7px 40px; margin-top:1px">Save</button></div>            
             {{/if}}            
         </div>    
 		
