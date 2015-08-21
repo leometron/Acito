@@ -18,7 +18,8 @@ Template.themes.events({
         Meteor.call('saveTheme', $('.themeSelection.selected-border').attr('id'));
         console.log($('.themeSelection.selected-border').attr('id'));
         Session.set('themeName', $('.themeSelection.selected-border').attr('id'));
-        Router.go("http://localhost:3000/");
+        // Router.go("http://localhost:3000/");
+        window.open("http://localhost:3000/", '_blank');
 
     }
 });

@@ -9,6 +9,7 @@ Template.pages.helpers({
 });
 
   Template.pages.rendered = function(){
+     Session.set('errorMessage', '');
     var status = Session.get('pageStatus');
     if ( status == "all" ) {
        $('#pageAll').css('color','red');
@@ -229,11 +230,11 @@ Template.addNewPage.helpers({
 
     'NoParentPages': function () {
         return Pages.find();
-    },
-
-    'errormsg': function () {
-        return Session.get('errorMessage');
     }
+
+    // 'errormsg': function () {
+    //     return Session.get('errorMessage');
+    // }
 });
 
 

@@ -19,9 +19,9 @@ Template.addNewMedia.helpers({
     'showSelectedMedia': function () {
         return Media.findOne(Session.get('currentMediaId'));
     },
-    'errormsg': function () {
-        return Session.get('errorMessage');
-    }
+    // 'errormsg': function () {
+    //     return Session.get('errorMessage');
+    // }
 });
 
 Template.addNewMedia.rendered = function () {
@@ -175,3 +175,7 @@ Template.adminHeader.events({
         Session.set('mediaDetail', '');
     }
 });
+
+Template.media.rendered = function(){
+    Session.set('errorMessage', '');
+};

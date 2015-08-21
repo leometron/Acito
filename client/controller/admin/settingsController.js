@@ -34,9 +34,9 @@ Template.settings.events({
 
 
 Template.settings.helpers({
-    'errormsg': function () {
-        return Session.get('errorMessage');
-    },
+    // 'errormsg': function () {
+    //     return Session.get('errorMessage');
+    // },
     'successmsg': function () {
         return Session.get('sucessMessage');
     },

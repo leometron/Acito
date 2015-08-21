@@ -6,6 +6,8 @@ Template.BHSICD.events({
         if (!$('#sectionName').val()) {
             Session.set('errorMessage', 'Section name is required');
         } else {
+            $('#minimizeAddNewSection').hide();
+            $('#addNewSection').show();
             $('#chooseSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             Meteor.call('insertSection', $('#sectionName').val(),"ICD");
@@ -17,9 +19,18 @@ Template.BHSICD.events({
         }, 2000);	        
     },
     'click #addNewSection' : function () {
+        $('#addNewSection').hide();
+        $('#minimizeAddNewSection').show();
         $('#chooseSectionName').fadeIn(500);
     },
+    'click #minimizeAddNewSection' : function () {
+        $('#minimizeAddNewSection').hide();
+        $('#addNewSection').show();
+        $('#chooseSectionName').fadeOut(500);
+    },
     'click #cancelSection' : function () {
+        $('#minimizeAddNewSection').hide();
+        $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
     },
     'click #saveCurrentICDPost': function () {
@@ -73,11 +84,12 @@ Template.BHSICD.helpers({
 
 
 Template.BHSICD.rendered = function () {
+    $('#minimizeAddNewSection').hide();
     $('#chooseSectionName').hide();
 };
 
 Template.adminTop.helpers({
-	'BHSErrorMsg' : function() {
+	'errormsg' : function() {
 		return Session.get('errorMessage');
 	},
 	'BHSSuccessMessage' : function() {
