@@ -4,9 +4,9 @@ Meteor.publish('DSM', function () {
 
 Meteor.methods({
     'insertDSM': function (secId,secName,subSecId,subSecName,dsmCode,dsmDetail,currentId) {
-        if (typeof ICD.findOne(currentId) === "object") {
-        	// DSM.update(currentId,{$set:{sectionName: secName,sectionId: secId,code: icdCode,detail: icdDetail}});        	
-        	// console.log('ICD ' + icdCode + ' updated successfully');    	
+        if (typeof DSM.findOne(currentId) === "object") {
+        	DSM.update(currentId,{$set:{sectionId: secId,sectionName: secName,subSectionId: subSecId,subSectionName: subSecName,DSMCode: dsmCode,DSMDetail: dsmDetail}});        	
+        	console.log('DSM ' + dsmCode + ' updated successfully');    	
         } else {
         	DSM.insert({sectionId: secId,sectionName: secName,subSectionId: subSecId,subSectionName: subSecName,DSMCode: dsmCode,DSMDetail: dsmDetail});
 	        console.log('DSM ' + dsmCode + ' added successfully');        	

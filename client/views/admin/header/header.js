@@ -72,7 +72,9 @@ Template.adminHeader.rendered = function () {
 
 Template.adminHeader.events({
     'click .item': function (events) {
-        $('.plugin-submenu').hide(800);    
+        $('.plugin-submenu').hide(800);
+        $('.icon-plugin').show();
+        $('.plugin').hide();    
         var selectedId = $(events.currentTarget).attr("id");
         var selectedId = $(events.currentTarget).attr("id");
 
@@ -137,8 +139,20 @@ Template.adminHeader.events({
             $('#subNavBarHomeSlidersadd').hide(800);
         }
     },
-    'click .plugin.item': function (events) {
+    // 'click .plugin': function (events) {
+    //     var selectedId = $(events.currentTarget).attr("id");
+    //     $('.plugin-submenu.' + selectedId).show(800);
+    // }
+    'click .icon-plugin': function (events) {
         var selectedId = $(events.currentTarget).attr("id");
         $('.plugin-submenu.' + selectedId).show(800);
+        $('.icon-plugin').hide();
+        $('.plugin').show();
+    },
+     'click .plugin': function (events) {
+        var selectedId = $(events.currentTarget).attr("id");
+        $('.plugin-submenu.' + selectedId).hide();
+        $('.icon-plugin').show();
+        $('.plugin').hide();
     }
 });
