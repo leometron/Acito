@@ -1,6 +1,8 @@
 Meteor.subscribe("DSM");
 Meteor.subscribe("subSection");
 
+var select_data = [];
+
 Template.BHSDSM.events({
 	    'click #addNewDSMSection' : function () {
 	    	$('#addNewDSMSection').hide();
@@ -107,7 +109,22 @@ Template.BHSDSM.events({
         Session.set('currentDSMid','');
         $('#sectionList').val("Select");
         $('#subSectionList').val("Select");        
-    }
+    },
+    'click .menuitem2': function (event) {
+        $('#actiondropdown').text($(event.target).text());
+    },
+    'click #checkbox': function (event) {
+        var selectcheck = event.target.checked;
+        if (selectcheck == true) {
+            select_data.push(this._id);
+        } else {
+            var index = select_data.indexOf(this._id);
+            select_data.splice(index, 1);
+        }
+    },
+    'click #apply': function () {
+        Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
+    },
 });
 
 
@@ -133,12 +150,3 @@ Template.BHSDSM.rendered = function () {
     $('#minimizeDSMSection').hide();
     $('#minimizeDSMSubSection').hide();
 };
-
-// Template.adminTop.helpers({
-// 	'BHSErrorMsg' : function() {
-// 		return Session.get('errorMessage');
-// 	},
-// 	'BHSSuccessMessage' : function() {
-// 		return Session.get('BHSSuccessMessage');		
-// 	}
-// });

@@ -2,15 +2,14 @@ codingRules = new Mongo.Collection('codingRules');
 
 codingRules.attachSchema(
     new SimpleSchema({
-    title: {
+    code: {
       type: String
     },
-    content: {
+    guideline: {
       type: String
     },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
+    definition: {
+      type: String
     }
   })
 );
