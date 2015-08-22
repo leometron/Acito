@@ -11,5 +11,14 @@ Meteor.methods({
         	ICD.insert({sectionName: secName,sectionId: secId,code: icdCode,detail: icdDetail});
 	        console.log('ICD ' + icdCode + ' added successfully');        	
         }
+    },
+    'removeSelectIcd' : function(selectedFileAll, bulkAction) {
+        if (bulkAction == "Delete Permanently") {
+            for (i = 0; i < selectedFileAll.length; i++) {
+                ICD.remove({
+                    _id: selectedFileAll[i]
+                });
+            }
+        }
     }
 });
