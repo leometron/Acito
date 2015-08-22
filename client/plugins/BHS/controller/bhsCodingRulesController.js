@@ -1,5 +1,7 @@
 Meteor.subscribe("codingRules");
 
+var select_data = [];
+
 Template.BHSCodingRules.events({
 	'click #saveCurrentCodingRules' : function() {
 		var code = $('#codingRulesCode').val();
@@ -28,6 +30,21 @@ Template.BHSCodingRules.events({
 	},
 	'click .cancelCurrentId' : function () {
     	Session.set('currentCodingRulesid','');
+    },
+    'click .menuitem2': function (event) {
+        $('#actiondropdown').text($(event.target).text());
+    },
+    'click #checkbox': function (event) {
+        var selectcheck = event.target.checked;
+        if (selectcheck == true) {
+            select_data.push(this._id);
+        } else {
+            var index = select_data.indexOf(this._id);
+            select_data.splice(index, 1);
+        }
+    },
+    'click #apply': function () {
+        Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
     },
 });
 

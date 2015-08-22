@@ -2,17 +2,17 @@
 	<div class="margin-top-4pt margin-left-2pt">
         {{#if selectedCodingRules}}
     		<div class="row">
-    			<div class="col-xs-4" style="margin-top:8px; font-size:16px">Code Reference :</div>
+    			<div class="col-xs-4" style="margin-top:10px; font-size:15px">Code Reference :</div>
     			<div class="col-xs-6"><input type="text" id="codingRulesCode" class="form-control font-size-14"
                     value="{{selectedCodingRules.code}}"></div>
     		</div>				 
     		<div class="row" style="margin-top:7px;">	
-    			<div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Documentation Guideline :</div>
+    			<div class="col-xs-4" style="margin-top:10px; font-size:15px">Coding and Documentation Guideline :</div>
                 <div class="col-xs-6"><input type="text" id="codingRulesGuideline" class="form-control font-size-14"
                     value="{{selectedCodingRules.guideline}}"></div>
             </div>    
             <div class="row" style="margin-top:7px;">
-            	<div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Guideline Definition :</div>
+            	<div class="col-xs-4" style="margin-top:10px; font-size:15px">Coding and Guideline Definition :</div>
                 <div class="col-xs-6"><input type="text" id="codingRulesDefinition" class="form-control font-size-14"
                     value="{{selectedCodingRules.definition}}"></div>
             </div>
@@ -22,44 +22,69 @@
             </div>
         {{else}}
             <div class="row">
-                <div class="col-xs-4" style="margin-top:8px; font-size:16px">Code Reference :</div>
+                <div class="col-xs-4" style="margin-top:10px; font-size:15px">Code Reference :</div>
                 <div class="col-xs-6"><input type="text" id="codingRulesCode" class="form-control font-size-14"></div>
             </div>               
             <div class="row" style="margin-top:7px;">   
-                <div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Documentation Guideline :</div>
+                <div class="col-xs-4" style="margin-top:10px; font-size:15px">Coding and Documentation Guideline :</div>
                 <div class="col-xs-6"><input type="text" id="codingRulesGuideline" class="form-control font-size-14"></div>
             </div>    
             <div class="row" style="margin-top:7px;">
-                <div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Guideline Definition :</div>
+                <div class="col-xs-4" style="margin-top:10px; font-size:15px">Coding and Guideline Definition :</div>
                 <div class="col-xs-6"><input type="text" id="codingRulesDefinition" class="form-control font-size-14"></div>
             </div>
             <div class="row" style="margin-top:10px; margin-left:33%; margin-bottom:20px;">
                 <div class="col-xs-2"><button class="btn btn-default" id="saveCurrentCodingRules" style="padding:7px 40px; margin-top:1px">Save</button></div>         
             </div>
         {{/if}}	
+        <div class="row" style="margin-top:10px; margin-bottom:15px;">
+            <div class="col-md-3 padding-left-zero">
+                <span class="dropdown margin-right">
+                   <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown"
+                           data-toggle="dropdown">
+                        Bulk Actions
+                   </button>
+                        <span class="caret margin-left-minus-20"></span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li><a class="menuitem2" href="#">Bulk Actions</a></li>
+                        <li><a class="menuitem2" href="#" id="deleteall">Delete Permanently</a></li>
+                    </ul>
+                </span>
+                <span class="margin-left-10">
+                    <button id="apply" type="button" class="btn btn-default">Apply</button>
+                </span>
+            </div>         
+        </div>
 
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
+            <div class="col-md-1">
+            </div>
             <div class="col-md-2">
                 <span style="font-size:18px">Code</span>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <span style="font-size:18px">Guideline</span>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <span style="font-size:18px">Definition</span>
             </div>
         </div>
 
        {{#each codingRulesList}}
-        <div class="CodingRules-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+        <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+            <div class="col-md-1">
+                <span><input id="checkbox" type="checkbox"></span>
+            </div>
+            <div class="CodingRules-data-row">
             <div class="col-md-2">
                	<span style="font-size:16px">{{code}}</span>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                	<span style="font-size:16px">{{guideline}}</span>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <span style="font-size:16px">{{definition}}</span>
+            </div>
             </div>
         </div>
         {{/each}}

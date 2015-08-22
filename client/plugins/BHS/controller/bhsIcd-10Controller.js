@@ -1,6 +1,8 @@
 Meteor.subscribe("section");
 Meteor.subscribe("ICD");
 
+var select_data = [];
+
 Template.BHSICD.events({
 	'click #saveSection': function () {
         if (!$('#sectionName').val()) {
@@ -67,6 +69,21 @@ Template.BHSICD.events({
     'click #cancelCurrentICDPost' : function () {
     	Session.set('currentICDid','');
     	// $('#ICDCode').attr("placeholder", "ICD Code");
+    },
+    'click .menuitem2': function (event) {
+        $('#actiondropdown').text($(event.target).text());
+    },
+    'click #checkbox': function (event) {
+        var selectcheck = event.target.checked;
+        if (selectcheck == true) {
+            select_data.push(this._id);
+        } else {
+            var index = select_data.indexOf(this._id);
+            select_data.splice(index, 1);
+        }
+    },
+    'click #apply': function () {
+        Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
     },
 });
 

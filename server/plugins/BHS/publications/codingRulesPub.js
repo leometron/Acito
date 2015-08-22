@@ -15,4 +15,13 @@ Meteor.methods({
 	        });
     	}
     },
+    'removeSelectCodingRules' : function(selectedFileAll, bulkAction) {
+        if (bulkAction == "Delete Permanently") {
+            for (i = 0; i < selectedFileAll.length; i++) {
+                codingRules.remove({
+                    _id: selectedFileAll[i]
+                });
+            }
+        }
+    }
 });
