@@ -123,12 +123,3 @@ Template.BHSDSM.rendered = function () {
     $('#minimizeDSMSection').hide();
     $('#minimizeDSMSubSection').hide();
 };
-
-Template.adminTop.helpers({
-	'BHSErrorMsg' : function() {
-		return Session.get('errorMessage');
-	},
-	'BHSSuccessMessage' : function() {
-		return Session.get('BHSSuccessMessage');		
-	}
-});

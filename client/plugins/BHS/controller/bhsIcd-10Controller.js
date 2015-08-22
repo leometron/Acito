@@ -88,23 +88,3 @@ Template.BHSICD.rendered = function () {
     $('#minimizeAddNewSection').hide();
     $('#chooseSectionName').hide();
 };
-
-Template.adminTop.helpers({
-	'errormsg' : function() {
-		return Session.get('errorMessage');
-	},
-	'BHSSuccessMessage' : function() {
-		return Session.get('BHSSuccessMessage');		
-	}
-});
-
-// Template.adminHeader.events({
-//     'click #subNavBarBHSICD-10': function () {
-//         Session.set('showSection','ICD');
-//         // Meteor.call('showSection','ICD');
-//     },
-//     'click #subNavBarBHSDSM-5': function () {
-//         Session.set('showSection','DSM');        
-//         // Meteor.call('showSection','DSM');        
-//     }
-// });

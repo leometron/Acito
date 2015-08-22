@@ -1,39 +1,67 @@
 <template name="BHSCodingRules">
 	<div class="margin-top-4pt margin-left-2pt">
-
-		<div class="row">
-			<div class="col-xs-4" style="margin-top:8px; font-size:16px">Code Reference :</div>
-			<div class="col-xs-6"><input type="text" id="DSMCode" class="form-control font-size-14"></div>
-		</div>				 
-		<div class="row" style="margin-top:7px;">	
-			<div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Documentation Guideline :</div>
-            <div class="col-xs-6"><input type="text" id="DSMDetail" class="form-control font-size-14"></div>
-        </div>    
-        <div class="row" style="margin-top:7px;">
-        	<div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Guideline Definition :</div>
-            <div class="col-xs-6"><input type="text" id="DSMDetail" class="form-control font-size-14"></div>
-        </div>
-        <div class="row" style="margin-top:10px; margin-left:33%; margin-bottom:20px;">
-        	<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentDSMPost" style="padding:7px 40px; margin-top:1px">Save</button></div>         
-        </div>	
+        {{#if selectedCodingRules}}
+    		<div class="row">
+    			<div class="col-xs-4" style="margin-top:8px; font-size:16px">Code Reference :</div>
+    			<div class="col-xs-6"><input type="text" id="codingRulesCode" class="form-control font-size-14"
+                    value="{{selectedCodingRules.code}}"></div>
+    		</div>				 
+    		<div class="row" style="margin-top:7px;">	
+    			<div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Documentation Guideline :</div>
+                <div class="col-xs-6"><input type="text" id="codingRulesGuideline" class="form-control font-size-14"
+                    value="{{selectedCodingRules.guideline}}"></div>
+            </div>    
+            <div class="row" style="margin-top:7px;">
+            	<div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Guideline Definition :</div>
+                <div class="col-xs-6"><input type="text" id="codingRulesDefinition" class="form-control font-size-14"
+                    value="{{selectedCodingRules.definition}}"></div>
+            </div>
+            <div class="row" style="margin-top:10px; margin-left:33%; margin-bottom:20px;">
+            	<div class="col-xs-3"><button class="btn btn-default" id="saveCurrentCodingRules" style="padding:7px 40px; margin-top:1px">Update</button></div>
+                <div class="col-xs-3"><button class="btn btn-default cancelCurrentId" style="padding:7px 40px; margin-top:1px">Cancel</button></div>         
+            </div>
+        {{else}}
+            <div class="row">
+                <div class="col-xs-4" style="margin-top:8px; font-size:16px">Code Reference :</div>
+                <div class="col-xs-6"><input type="text" id="codingRulesCode" class="form-control font-size-14"></div>
+            </div>               
+            <div class="row" style="margin-top:7px;">   
+                <div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Documentation Guideline :</div>
+                <div class="col-xs-6"><input type="text" id="codingRulesGuideline" class="form-control font-size-14"></div>
+            </div>    
+            <div class="row" style="margin-top:7px;">
+                <div class="col-xs-4" style="margin-top:8px; font-size:16px">Coding and Guideline Definition :</div>
+                <div class="col-xs-6"><input type="text" id="codingRulesDefinition" class="form-control font-size-14"></div>
+            </div>
+            <div class="row" style="margin-top:10px; margin-left:33%; margin-bottom:20px;">
+                <div class="col-xs-2"><button class="btn btn-default" id="saveCurrentCodingRules" style="padding:7px 40px; margin-top:1px">Save</button></div>         
+            </div>
+        {{/if}}	
 
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
             <div class="col-md-2">
-                <span style="font-size:18px">DSM Code</span>
+                <span style="font-size:18px">Code</span>
             </div>
-            <div class="col-md-6">
-                <span style="font-size:18px">Detail</span>
+            <div class="col-md-5">
+                <span style="font-size:18px">Guideline</span>
+            </div>
+            <div class="col-md-5">
+                <span style="font-size:18px">Definition</span>
             </div>
         </div>
 
-        <div class="ICD-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+       {{#each codingRulesList}}
+        <div class="CodingRules-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
             <div class="col-md-2">
                	<span style="font-size:16px">{{code}}</span>
             </div>
-            <div class="col-md-6">
-               	<span style="font-size:16px">{{detail}}</span>
+            <div class="col-md-5">
+               	<span style="font-size:16px">{{guideline}}</span>
+            </div>
+            <div class="col-md-5">
+                <span style="font-size:16px">{{definition}}</span>
             </div>
         </div>
-
+        {{/each}}
 	</div>		
 </template>
