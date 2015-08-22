@@ -6,13 +6,20 @@
 			<span class="font-size-20px padding-right-10px">Section :</span>
 			<select id="sectionList" class="padding-10px font-size-16px" style="width:68%">
 				{{#if selectedDSM}}
-				<option class="font-size-16px" value="{{selectedDSM.sectionId}}">{{selectedDSM.sectionName}}</option>
+					<option class="font-size-16px" value="{{selectedDSM.sectionId}}">{{selectedDSM.sectionName}}</option>
+					<option class="font-size-16px">Select</option>
+					{{#each sectionList}}
+						{{#if equals selectedDSM.sectionId _id}}
+                            {{else}}
+                            <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                        {{/if}} 
+                	{{/each}} 
 				{{else}}
-				<option class="font-size-16px">Select</option>
+					<option class="font-size-16px">Select</option>
+					{{#each sectionList}}
+               	    	<option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                	{{/each}} 
 				{{/if}}
-               	{{#each sectionList}}
-               	    <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
-                {{/each}} 
 			</select>
 			<button id="addNewDSMSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
 			<button id="minimizeDSMSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
@@ -29,13 +36,19 @@
 			<span class="font-size-20px padding-right-10px">Sub section :</span>
 			<select id="subSectionList" placeholder="Sub section Name" class="padding-10px font-size-16px" style="width:58%">
 				{{#if selectedDSM}}
-				<option class="font-size-16px" value="{{selectedDSM.subSectionId}}">{{selectedDSM.subSectionName}}</option>
+				  <option class="font-size-16px" value="{{selectedDSM.subSectionId}}">{{selectedDSM.subSectionName}}</option>
+				  {{#each subSectionList}}
+						{{#if equals selectedDSM.subSectionId _id}}
+                            {{else}}
+                            <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                        {{/if}} 
+                  {{/each}} 
 				{{else}}
-				<option class="font-size-16px">Select</option>
-				{{/if}}
-               	{{#each subSectionList}}
-               	    <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
-                {{/each}} 
+					<option class="font-size-16px">Select</option>
+               		  {{#each subSectionList}}
+               	        <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
+                	  {{/each}}
+                {{/if}} 
 			</select>
 			<button id="addNewDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
 			<button id="minimizeDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">-</button>

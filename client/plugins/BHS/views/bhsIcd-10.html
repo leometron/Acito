@@ -5,12 +5,19 @@
 			<select id="sectionList" placeholder="Section Name" class="width30pt padding-10px font-size-16px">
 				{{#if selectedICD}}
 					<option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionName}}</option>
+                    <option>Select</option>
+                    {{#each sectionList}}
+                        {{#if equals selectedICD.sectionId _id}}
+                            {{else}}
+                            <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                        {{/if}}  
+                    {{/each}} 
 				{{else}}
-					<option>Select</option>				
+					<option>Select</option>
+                    {{#each sectionList}}
+                        <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                    {{/each}} 				
 				{{/if}}	
-               	{{#each sectionList}}
-               	    <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
-                {{/each}} 
 			</select>
 			<button id="addNewSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
             <button id="minimizeAddNewSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
