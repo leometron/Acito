@@ -37,6 +37,8 @@ Template.BHSDSM.events({
         if (!$('#DSMSectionName').val()) {
             Session.set('errorMessage', 'Section name is required');
         } else {
+            $('#minimizeDSMSection').hide();
+            $('#addNewDSMSection').show();
             $('#chooseDSMSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             Meteor.call('insertSection', $('#DSMSectionName').val(),"DSM");
@@ -56,6 +58,9 @@ Template.BHSDSM.events({
         } else if (!$('#DSMSubSectionName').val()) {
             Session.set('errorMessage', 'Sub Section name is required');
         } else {
+            $('#minimizeDSMSubSection').hide();
+            $('#addNewDSMSubSection').show();
+            $('#chooseDSMSubSectionName').fadeOut(500);            
             Session.set('errorMessage', '');
             Meteor.call('insertSubSection', sectionId, sectionName, $('#DSMSubSectionName').val());
             $('#DSMSubSectionName').val("");
@@ -66,7 +71,6 @@ Template.BHSDSM.events({
         }, 2000);           
     },
     'click #saveCurrentDSMPost': function () {
-        // $('#cancelCurrentICDPost').hide()
         var sectionName = $('#sectionList :selected').text();
         var sectionId = $('#sectionList').val();
         var subSectionName = $('#subSectionList :selected').text();
@@ -83,6 +87,7 @@ Template.BHSDSM.events({
         } else if(!dsmDetail) {
             Session.set('errorMessage','DSM Detail is Required');
         } else {
+        $('#cancelCurrentDSMPost').hide();            
         Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,dsmCode,dsmDetail,Session.get('currentDSMid'));
             Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully saved');
             Meteor.setTimeout(function () {
@@ -97,7 +102,12 @@ Template.BHSDSM.events({
     },
     'click .DSM-data-row' : function () {
         Session.set('currentDSMid',this._id);
-    },        
+    },
+    'click #cancelCurrentDSMPost': function () {
+        Session.set('currentDSMid','');
+        $('#sectionList').val("Select");
+        $('#subSectionList').val("Select");        
+    }
 });
 
 
@@ -124,11 +134,11 @@ Template.BHSDSM.rendered = function () {
     $('#minimizeDSMSubSection').hide();
 };
 
-Template.adminTop.helpers({
-	'BHSErrorMsg' : function() {
-		return Session.get('errorMessage');
-	},
-	'BHSSuccessMessage' : function() {
-		return Session.get('BHSSuccessMessage');		
-	}
-});
+// Template.adminTop.helpers({
+// 	'BHSErrorMsg' : function() {
+// 		return Session.get('errorMessage');
+// 	},
+// 	'BHSSuccessMessage' : function() {
+// 		return Session.get('BHSSuccessMessage');		
+// 	}
+// });
