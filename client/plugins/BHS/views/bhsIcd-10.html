@@ -17,7 +17,7 @@
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseSectionName" style="margin-bottom:20px; width:50%">
-               <div class="col-xs-8" ><input type="text" id="sectionName" class="form-control font-size-14" placeholder="Section Name"></div>
+               <div class="col-xs-8" ><input type="text" id="sectionName" class="form-control font-size-14" placeholder="Section"></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveSection" >Save</button></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelSection" >Cancel</button></div>				
 		</div>
@@ -43,6 +43,7 @@
                 <span style="font-size:18px;">Detail</span>
             </div>
         </div>
+        {{#if ICDList}}
         {{#each ICDList}}
         	<div class="ICD-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
             	<div class="col-md-2">
@@ -53,5 +54,10 @@
             	</div>
           	</div>            
         {{/each}}
+        {{else}}
+            <div class="ICD-data-row row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                ....No Result....
+            </div>          
+        {{/if}}
 	</div>					
 </template>

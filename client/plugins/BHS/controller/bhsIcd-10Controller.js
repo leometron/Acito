@@ -28,14 +28,17 @@ Template.BHSICD.events({
         $('#minimizeAddNewSection').hide();
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
+        $('#sectionName').val("");
+        $('#sectionName').attr('placeholder','Section Name');        
     },
     'click #cancelSection' : function () {
         $('#minimizeAddNewSection').hide();
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
+        $('#sectionName').val("");
+        $('#sectionName').attr('placeholder','Section Name');             
     },
     'click #saveCurrentICDPost': function () {
-    	$('#cancelCurrentICDPost').hide()
     	var sectionName = $('#sectionList :selected').text();
 		var sectionId = $('#sectionList').val();    	
     	var icdCode = $('#ICDCode').val();
@@ -48,12 +51,15 @@ Template.BHSICD.events({
 		} else if(!ICDDetail) {
 			Session.set('errorMessage','ICD Detail is Required');
 		} else {
+            $('#cancelCurrentICDPost').hide()
 			Meteor.call('insertICD',sectionName,sectionId,icdCode,ICDDetail,Session.get('currentICDid'));
-            Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
+            if (Session.get('currentICDid')) {
+                Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully updated');               
+            } else {
+                Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
+            }            
             Meteor.setTimeout(function () {
-                // $('#sectionList').text("Choose Section");
-                console.log('........'+$('#sectionList').val());
-                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
+                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid','')
                 $('#ICDCode').val(""),$('#ICDDetail').val(""),$('#ICDCode').attr('placeholder',"ICD Code"),$('#ICDDetail').attr("placeholder",'Detail')
             }, 2000);			
 		}
@@ -66,7 +72,6 @@ Template.BHSICD.events({
     },
     'click #cancelCurrentICDPost' : function () {
     	Session.set('currentICDid','');
-    	// $('#ICDCode').attr("placeholder", "ICD Code");
     },
 });
 
