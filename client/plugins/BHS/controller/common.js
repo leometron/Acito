@@ -2,26 +2,12 @@ Template.BHShome.rendered = function(){
    $('body').addClass('splash_bg');
 }
 
-Template.BHSlist.helpers({
+Template.list.helpers({
 	'title':function(){
 		return Session.get('title');
-	},
-	'icdList' : function(){
-		return ICD.find();
 	}
 })
 
-Template.BHShome.helpers({
-	'bhsCode':function(){
-		return Pages.find({status: "Published"});
-	},
-	'logo' : function() {
-		return Media.findOne({caption:"LOGO"});
-	},
-	'introText' : function() {
-		return Posts.find({tags:"Introduction"});
-	}	
-})
 
 Template.BHShome.events({
 	'click .button': function(event, fview) {
@@ -31,7 +17,7 @@ Template.BHShome.events({
   }
 });
 
-Template.BHSlist.events({
+Template.list.events({
 	'click #backArrow': function(event, fview) {
 		history.back();
   }
