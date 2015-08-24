@@ -1,0 +1,122 @@
+<template name="BHSDSM">
+	<div class="margin-top-4pt margin-left-2pt">
+		<div class="row margin-bottom-4pt" style="margin-left:-12px">
+		<div class="col-md-6">	
+		<div class="margin-bottom-2pt">
+			<span class="font-size-20px padding-right-10px">Section :</span>
+			<select id="sectionList" class="padding-10px font-size-16px" style="width:68%">
+				{{#if selectedDSM}}
+					<option class="font-size-16px" value="{{selectedDSM.sectionId}}">{{selectedDSM.sectionName}}</option>
+					<option class="font-size-16px">Select</option>
+					{{#each sectionList}}
+						{{#if equals selectedDSM.sectionId _id}}
+                            {{else}}
+                            <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                        {{/if}} 
+                	{{/each}} 
+				{{else}}
+					<option class="font-size-16px">Select</option>
+					{{#each sectionList}}
+               	    	<option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                	{{/each}} 
+				{{/if}}
+			</select>
+			<button id="addNewDSMSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
+			<button id="minimizeDSMSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
+		</div>
+
+		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseDSMSectionName" style="margin-bottom:15px; margin-top: 30px;">
+               <div class="col-xs-8"><input type="text" id="DSMSectionName" class="form-control font-size-14" placeholder="Section"></div>
+				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveDSMSection" >Save</button></div>
+				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelDSMSection" >Cancel</button></div>				
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="margin-bottom-2pt">
+			<span class="font-size-20px padding-right-10px">Sub section :</span>
+			<select id="subSectionList" placeholder="Sub section Name" class="padding-10px font-size-16px" style="width:58%">
+				{{#if selectedDSM}}
+				  <option class="font-size-16px" value="{{selectedDSM.subSectionId}}">{{selectedDSM.subSectionName}}</option>
+				  {{#each subSectionList}}
+						{{#if equals selectedDSM.subSectionId _id}}
+                            {{else}}
+                            <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                        {{/if}} 
+                  {{/each}} 
+				{{else}}
+					<option class="font-size-16px">Select</option>
+               		  {{#each subSectionList}}
+               	        <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
+                	  {{/each}}
+                {{/if}} 
+			</select>
+			<button id="addNewDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
+			<button id="minimizeDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
+		</div>
+
+		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseDSMSubSectionName" style="margin-bottom:15px; margin-top: 30px;">
+               <div class="col-xs-8"><input type="text" id="DSMSubSectionName" class="form-control font-size-14" placeholder="Sub Section"></div>
+				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveDSMSubSection" >Save</button></div>
+				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelDSMSubSection" >Cancel</button></div>
+			</div>
+		</div>	
+	</div>
+		<div class="row" style="padding-bottom:20px; margin-top:20px;">
+			{{#if selectedDSM}}
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="DSMCode" class="form-control font-size-14" style="width:100%" value="{{selectedDSM.DSMCode}}"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="DSMDetail" class="form-control font-size-14" style="width:100%" value="{{selectedDSM.DSMDetail}}"></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentDSMPost" style="padding:7px 40px; margin-top:1px">Update</button></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="cancelCurrentDSMPost" style="padding:7px 40px; margin-top:1px">Cancel</button></div>            		
+			{{else}}
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="DSMCode" class="form-control font-size-14" style="width:100%" placeholder="DSM Code"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="DSMDetail" class="form-control font-size-14" style="width:100%" placeholder="Detail"></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentDSMPost" style="padding:7px 40px; margin-top:1px">Save</button></div>            
+            {{/if}}            
+        </div>    
+		
+        <div class="row" style="margin-top:10px; margin-bottom:15px;">
+            <div class="col-md-4 padding-left-zero">
+                <span class="dropdown margin-right">
+                   <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown"
+                           data-toggle="dropdown">
+                        Bulk Actions
+                   </button>
+                        <span class="caret margin-left-minus-20"></span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li><a class="menuitem2" href="#">Bulk Actions</a></li>
+                        <li><a class="menuitem2" href="#" id="deleteall">Delete Permanently</a></li>
+                    </ul>
+                </span>
+                <span class="margin-left-10">
+                    <button id="apply" type="button" class="btn btn-default">Apply</button>
+                </span>
+            </div>         
+        </div>
+
+        <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2">
+                <span style="font-size:18px">DSM Code</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-size:18px">Detail</span>
+            </div>
+        </div>
+        {{#each DSMList}}
+        	<div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+            	<div class="col-md-1">
+                	<span><input id="checkbox" type="checkbox"></span>
+            	</div>
+            	<div class="DSM-data-row">
+            	<div class="col-md-2">
+                	<span style="font-size:16px">{{DSMCode}}</span>
+            	</div>
+            	<div class="col-md-6">
+                	<span style="font-size:16px">{{DSMDetail}}</span>
+            	</div>
+            	</div>
+          	</div>            
+        {{/each}}
+	</div>					
+</template>

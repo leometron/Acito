@@ -1,0 +1,58 @@
+.margin-top-4pt {
+	margin-top: 4%;
+}
+
+.margin-bottom-4pt {
+	margin-bottom: 4%;
+}
+
+.margin-bottom-2pt {
+	margin-bottom: 2%;
+}
+
+.margin-left-2pt {
+	margin-left: 2%;
+}
+
+.margin-left-10px {
+	margin-left: 10px;
+}
+.font-size-20px {
+	font-size: 20px;
+}
+
+.font-size-16px {
+	font-size: 16px;
+}
+
+.padding-right-10px {
+	padding-right: 10px;
+}
+
+.width30pt {
+	width: 30%;
+}
+
+.padding-10px {
+	padding: 10px;
+}
+
+.padding-8px {
+	padding: 8px;
+}
+
+.padding-20px {
+	padding: 20px;
+}
+
+.padding-bottom-20px {
+	padding-bottom: 20px;
+}
+
+.padding-bottom-10px {
+	padding-bottom: 10px;
+}
+
+.border-dashed {
+	border: 1px dashed #000000;
+}

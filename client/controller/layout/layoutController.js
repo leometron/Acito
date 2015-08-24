@@ -68,8 +68,17 @@ Template.home.events({
        }    
   },
   'click .give-more-content' : function() {
-  
-  },
+   $('.loading-icon').show();
+    Meteor.setTimeout(function(){
+    $('.loading-icon').hide();
+      Session.set('numberOfCount', Session.get('numberOfCount') +4);
+          if(Session.get('postCount')<=Session.get('numberOfCount')){
+            $('.give-more-content').hide();
+            $('.posts-Over').show();
+            Meteor.setTimeout(function(){$('.posts-Over').hide()},1500);
+          }
+    }, 1000);
+  }
 });
 Template.home.helpers({
    'postsList' : function() {

@@ -1,0 +1,91 @@
+<template name="BHSICD">
+	<div class="margin-top-4pt margin-left-2pt">
+		<div class="margin-bottom-2pt">
+			<span class="font-size-20px padding-right-10px">Section :</span>
+			<select id="sectionList" placeholder="Section Name" class="width30pt padding-10px font-size-16px">
+				{{#if selectedICD}}
+					<option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionName}}</option>
+                    <option>Select</option>
+                    {{#each sectionList}}
+                        {{#if equals selectedICD.sectionId _id}}
+                            {{else}}
+                            <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                        {{/if}}  
+                    {{/each}} 
+				{{else}}
+					<option>Select</option>
+                    {{#each sectionList}}
+                        <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                    {{/each}} 				
+				{{/if}}	
+			</select>
+			<button id="addNewSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
+            <button id="minimizeAddNewSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
+		</div>
+
+		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseSectionName" style="margin-bottom:20px; width:50%">
+               <div class="col-xs-8" ><input type="text" id="sectionName" class="form-control font-size-14" placeholder="Section"></div>
+				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveSection" >Save</button></div>
+				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelSection" >Cancel</button></div>				
+		</div>
+
+		<div class="row" style="padding-bottom:20px; margin-top:3%">
+			{{#if selectedICD}}
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" value="{{selectedICD.code}}"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" value="{{selectedICD.detail}}"></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost" style="padding:7px 40px; margin-top:1px">Update</button></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="cancelCurrentICDPost" style="padding:7px 40px; margin-top:1px">Cancel</button></div>            		
+			{{else}}
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" placeholder="ICD Code"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" placeholder="Detail"></div>
+			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost" style="padding:7px 40px; margin-top:1px">Save</button></div>            
+            {{/if}}            
+        </div>    
+		
+        <div class="row" style="margin-top:10px; margin-bottom:15px;">
+            <div class="col-md-4 padding-left-zero">
+                <span class="dropdown margin-right">
+                   <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown"
+                           data-toggle="dropdown">
+                        Bulk Actions
+                   </button>
+                        <span class="caret margin-left-minus-20"></span>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li><a class="menuitem2" href="#">Bulk Actions</a></li>
+                        <li><a class="menuitem2" href="#" id="deleteall">Delete Permanently</a></li>
+                    </ul>
+                </span>
+                <span class="margin-left-10">
+                    <button id="apply" type="button" class="btn btn-default">Apply</button>
+                </span>
+            </div>         
+        </div>
+
+        <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2">
+                <span style="font-size:18px;">ICD Code</span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-size:18px;">Detail</span>
+            </div>
+        </div>
+        {{#each ICDList}}
+        	<div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+            	<div class="col-md-1">
+                    <span><input id="checkbox" type="checkbox"></span>
+                </div>
+                <div class="ICD-data-row">
+                <div class="col-md-2">
+                	<span style="font-size:16px">{{code}}</span>
+            	</div>
+            	<div class="col-md-6">
+                	<span style="font-size:16px">{{detail}}</span>
+            	</div>
+                </div>
+          	</div>            
+        {{/each}}
+        
+	</div>					
+</template>
