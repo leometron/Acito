@@ -12,9 +12,11 @@ Template.BHSICD.events({
             $('#addNewSection').show();
             $('#chooseSectionName').fadeOut(500);
             Session.set('errorMessage', '');
-            Meteor.call('insertSection', $('#sectionName').val(),"ICD");
+            var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
+            Meteor.call('insertSection', $('#sectionName').val(),sectionCode,"ICD");
             Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');            
             $('#sectionName').val("");
+            $('#sectionCode').val("");
             $('#sectionName').attr('placeholder','Section Name');
         }
         Meteor.setTimeout(function () {
@@ -102,6 +104,11 @@ Template.BHSICD.helpers({
     },
     'selectedICD' : function () {
     	return ICD.findOne(Session.get('currentICDid'));    	
+    },
+    'noResult' : function () {
+        if (ICD.find().count() == 0) {
+            
+        }
     }
 });
 

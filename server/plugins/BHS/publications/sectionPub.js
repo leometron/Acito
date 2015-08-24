@@ -3,11 +3,11 @@ Meteor.publish('section', function () {
 });
 
 Meteor.methods({
-    'insertSection': function (name, secType) {
+    'insertSection': function (name, code, secType) {
         if (typeof section.findOne({sectionName: name}) === "object") {
         	console.log('section ' + name + ' already exists');    	
         } else {
-        	section.insert({sectionName: name, type: secType});
+        	section.insert({sectionName: name, sectionCode: code, type: secType});
 	        console.log('Section ' + name + ' added successfully');        	
         }
     }
