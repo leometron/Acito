@@ -1,6 +1,7 @@
 Meteor.subscribe("plugin");
 
 var mainTitle;
+var flag = true;
 Template.adminHeader.helpers({
     'navBarList': function () {
         return [
@@ -72,9 +73,7 @@ Template.adminHeader.rendered = function () {
 };
 
 Template.adminHeader.events({
-    'click .item': function (events) {
-        $('#second').hide();
-        $('#first').show();    
+    'click .item': function (events) {  
         var selectedId = $(events.currentTarget).attr("id");
 
         if (selectedId == 'navBardashboard') {
@@ -142,19 +141,26 @@ Template.adminHeader.events({
         } else {
             $('#navBarBHS').removeClass('selected');
         }
-        if (this.title == "BHS") {
-            $('.plugin-submenu').show(800);
-        } else {
+        if (this.title != "BHS") {
+            $('#second').hide();
+            $('#first').show(); 
             $('.plugin-submenu').hide(800);
+            flag = true;
         }
     },
-     'click .plugin.item': function (events) {
-        var selectedId = $(events.currentTarget).attr("id");
-        var flag = true;
-        if(flag){
-             $('#second').show();
-             $('#first').hide();
-             // $('.plugin-submenu.' + selectedId).show(800);      
-        }
-     }
+      'click .plugin': function(){
+          if(flag){
+            // console.log("link ");
+            $('#second').show();
+            $('#first').hide();
+            $('.plugin-submenu').show(800);
+            flag = false;
+          } else {
+            $('#second').hide();
+            $('#first').show();
+            $('.plugin-submenu').hide(800); 
+            // console.log("antoher link ");
+            flag = true;
+          }
+      }
 });
