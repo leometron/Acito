@@ -366,13 +366,9 @@ body, #main {
     font-size: x-large;
 }
 
-
-
 .break-word {
     word-wrap: break-word;
 }
-
-
 
 .navbar-default .navbar-nav li a {
     color: #ffffff;
@@ -387,8 +383,6 @@ body, #main {
 }
 
 
-
-
 .popover fade right in {
     position: fixed;
     top: 50%;
@@ -396,6 +390,11 @@ body, #main {
 
 .height-250 {
     height: 250px;
+}
+
+
+.option-icon {
+ margin-left:50px;
 }
 
 /*Ask Question*/

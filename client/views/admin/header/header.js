@@ -154,6 +154,7 @@ Template.adminHeader.events({
         if(flag){
              $('#second').show();
              $('#first').hide();
+             
              // $('.plugin-submenu.' + selectedId).show(800);      
         }
      }
