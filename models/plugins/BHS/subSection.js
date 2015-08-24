@@ -10,6 +10,9 @@ subSection.attachSchema(
     },    
     subSectionName: {
       type: String
+    },
+    subSectionCode: {
+      type: String
     }
   })
 );

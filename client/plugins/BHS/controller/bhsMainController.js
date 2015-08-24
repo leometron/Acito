@@ -18,8 +18,14 @@ Template.BHSlist.helpers({
 
 Template.BHShome.helpers({
 	'bhsCode':function(){
-		return Pages.find();
-	}
+		return Pages.find({status: "Published"});
+	},
+	'logo' : function() {
+		return Media.findOne({caption:"LOGO"});
+	},
+	'introText' : function() {
+		return Posts.find({tags:"Introduction"});
+	}	
 })
 
 Template.BHShome.events({

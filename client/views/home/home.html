@@ -9,10 +9,10 @@
         </footer> -->
     </div>  
      <div id="Pages" class="row bg-color" >     
-         <div class="container padding-100 theme-width">
+         <div class="container padding-left-right-zero theme-width">
                <div class="row equal image image-center theme-left-20">              
               {{#each postsList}}
-               <div class="col-md-3 col-sm-6 col-xs-12 equal-child padding-left-zero margin-bottom-15" id="postLists">     
+               <div class="col-md-3 col-sm-6 col-xs-12 equal-child margin-bottom-15 postLists" id="postLists" style=" padding-right: 5px; padding-left: 5px;">     
                 {{#if equals featuredImage '-'}}
                 {{else}}             
                     <img src="{{featuredImage}}" class="feature-image"/>
@@ -22,12 +22,12 @@
                       <img src="{{url}}" class="feature-image"/>                  
                     {{/if}}                  
                   {{/each}}  -->                 
-                  <div class="post-thumb post-width text-center">
-                      <h3 id="postTitle" class="moz-header">{{title}}</h3>
+                  <div class="post-thumb post-width">
+                      <span id="postTitle" class="post-header-theme">{{title}}</span>
                       <p class="break-word text-ellipsis">
                          {{content}}
                       </p>
-                      <div class="right-arrow"></div>
+                      <span class="right-arrow"></span> 
                    </div>                   
                </div>
               {{/each}}
@@ -40,6 +40,7 @@
             <div class="posts-Over">Posts Over</div>
         </div>
     </div>
+
 
 <!--     <div id="xLoader" class="padding-100 bg-dynamic-color">
         <div class="google-spin-wrapper">

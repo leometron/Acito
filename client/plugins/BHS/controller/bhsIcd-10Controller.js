@@ -12,10 +12,12 @@ Template.BHSICD.events({
             $('#addNewSection').show();
             $('#chooseSectionName').fadeOut(500);
             Session.set('errorMessage', '');
-            Meteor.call('insertSection', $('#sectionName').val(),"ICD");
+            var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
+            Meteor.call('insertSection', $('#sectionName').val(),sectionCode,"ICD");
             Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');            
             $('#sectionName').val("");
-            $('#sectionName').attr('placeholder','Section Name');
+            $('#sectionCode').val("");
+            $('#sectionName').attr('placeholder','Section');
         }
         Meteor.setTimeout(function () {
             Session.set('errorMessage',''),Session.set('BHSSuccessMessage','')
@@ -31,14 +33,14 @@ Template.BHSICD.events({
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
         $('#sectionName').val("");
-        $('#sectionName').attr('placeholder','Section Name');        
+        $('#sectionName').attr('placeholder','Section');        
     },
     'click #cancelSection' : function () {
         $('#minimizeAddNewSection').hide();
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
         $('#sectionName').val("");
-        $('#sectionName').attr('placeholder','Section Name');             
+        $('#sectionName').attr('placeholder','Section');             
     },
     'click #saveCurrentICDPost': function () {
     	var sectionName = $('#sectionList :selected').text();
@@ -61,7 +63,7 @@ Template.BHSICD.events({
                 Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
             }            
             Meteor.setTimeout(function () {
-                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid','')
+                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
                 $('#ICDCode').val(""),$('#ICDDetail').val(""),$('#ICDCode').attr('placeholder',"ICD Code"),$('#ICDDetail').attr("placeholder",'Detail')
             }, 2000);			
 		}
