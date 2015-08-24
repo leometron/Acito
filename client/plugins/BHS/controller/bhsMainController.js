@@ -13,7 +13,7 @@ Template.BHSlist.helpers({
 
 Template.BHShome.helpers({
 	'bhsCode':function(){
-		return Pages.find();
+		return Pages.find({status: "Published"});
 	}
 })
 

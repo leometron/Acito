@@ -66,10 +66,10 @@ Template.adminHeader.rendered = function () {
         $('#header').hide();
         $('#main_view').addClass('full-width');
     }
-    Meteor.setTimeout(function () {
-        $('.plugin-submenu').hide(),
-        $('#second').hide();
-    }, 500);
+    // Meteor.setTimeout(function () {
+    //     $('.plugin-submenu').hide(),
+    //     $('#second').hide();
+    // }, 500);
 };
 
 Template.adminHeader.events({
