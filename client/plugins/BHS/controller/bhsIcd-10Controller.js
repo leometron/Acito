@@ -107,6 +107,7 @@ Template.BHSICD.helpers({
         if (ICD.find().count() == 0) {
             
         }
+
     }
 });
 

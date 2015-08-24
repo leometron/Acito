@@ -247,3 +247,67 @@ pre {
         margin: auto;
     }
 }
+
+.load-content-design {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.give-more-content {
+  background: #8CB4BA;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.give-more-content:hover {
+  background: #221010;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.loading-icon {
+  background-image: url(/images/loading_anim.gif);
+  text-align: center;
+  margin-left: 48%;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  width:34px;
+  height: 34px;
+}
+
+.posts-Over {
+  font-size: 25px;
+  font-family: Arial;
+  text-align: center;
+  color: #3AABF6;
+}
+
+/*.postError {*/
+  /*background-color: #F2F1F1; */
+ /* color: #F00; 
+  font-weight: bold;
+  font-size: 16px;
+  font-family: arial;
+  margin-left: 36%; 
+}*/
+
+.post-success {
+  /*color: #0F0;  */
+  padding: 1px;
+  background-color: #36DB5C;
+  position: fixed;
+  z-index: 999;
+  margin-top: 32px; 
+  font-weight: bold;
+  font-size: 16px;
+  font-family: arial;
+  text-align: center;
+}

@@ -8,116 +8,117 @@ Template.pages.helpers({
     }
 });
 
-Template.pages.rendered = function () {
-    var status = Session.get('checkStatus');
-    if (status == "all") {
-        $('#pageAll').css('color', 'red');
-    } else if (status == "published") {
-        $('#pagePublish').css('color', 'red');
-    } else if (status == "draft") {
-        $('#pageDraft').css('color', 'red');
-    } else if (status == "bin") {
-        $('#pageBin').css('color', 'red');
+  Template.pages.rendered = function(){
+     Session.set('errorMessage', '');
+    var status = Session.get('pageStatus');
+    if ( status == "all" ) {
+       $('#pageAll').css('color','red');
+    } else if ( status == "published" ) {
+       $('#pagePublish').css('color','red');
+    } else if ( status == "draft" ) {
+       $('#pageDraft').css('color','red');
+    } else if ( status == "bin" ) {
+       $('#pageBin').css('color','red');
     } else {
         $('#pageAll').css('color', 'red');
     }
 };
 
-Template.addNewPage.rendered = function () {
-    Session.set('errorMessage', '');
-};
+  Template.addNewPage.rendered = function(){
+    Session.set('errorMessage','');
+  };
 
-Template.pages.events({
+Template.pages.events ({
+        
+        'click #list': function() {
+            var userId = this._id;
+            Session.set('selectedPages', userId);
+            Session.set('errorMessage', "");
+            Router.go('/admin/pages/edit');
+        },
 
-    'click #list': function () {
-        var userId = this._id;
-        Session.set('selectedPages', userId);
-        Session.set('errorMessage', "");
-        Router.go('/admin/pages/edit');
-    },
+        'click #editlist': function() {
+          var userId = this._id;
+          Session.set('selectedPages', userId);
+        },
 
-    'click #editlist': function () {
-        var userId = this._id;
-        Session.set('selectedPages', userId);
-    },
+        'click #binlist': function()  {
+          var userId = this._id;
+          Meteor.call('listbinPagesData', userId);
+        },
 
-    'click #binlist': function () {
-        var userId = this._id;
-        Meteor.call('listbinPagesData', userId);
-    },
+        'click #restorelist': function() {
+            var userId = this._id;
+           Meteor.call('restorePagesData', userId);
+        },
 
-    'click #restorelist': function () {
-        var userId = this._id;
-        Meteor.call('restorePagesData', userId);
-    },
+        'click #deletelist': function() {
+            var userId = this._id;
+            Meteor.call('trashPagesData', userId);
+        },
 
-    'click #deletelist': function () {
-        var userId = this._id;
-        Meteor.call('trashPagesData', userId);
-    },
+        'click #addNew': function(){
+           // Session.set('selectedPages', ''); 
+            $(location).attr('href','pages/add');
+            // Router.go('/admin/pages/add');
+        },
 
-    'click #addNew': function () {
-        // Session.set('selectedPages', '');
-        $(location).attr('href', 'pages/add');
-        // Router.go('/admin/pages/add');
-    },
+        'click #search': function() {
+            var search = $('#pagesearch').val();
+            Meteor.call('searchData', search);
+            Meteor._reload.reload();
+            Session.set('pageStatus', "all");    
+        },
 
-    'click #search': function () {
-        var search = $('#pagesearch').val();
-        Meteor.call('searchData', search);
-        Meteor._reload.reload();
-        Session.set('checkStatus', "all");
-    },
+        'click #pageAll': function() {
+            Meteor.call('loadPage', "All");
+            Meteor._reload.reload();
+            Session.set('pageStatus', "all");  
+        },
 
-    'click #pageAll': function () {
-        Meteor.call('loadPage', "All");
-        Meteor._reload.reload();
-        Session.set('checkStatus', "all");
-    },
+        'click #pagePublish': function() {
+            Meteor.call('loadPage', "Published");
+            Meteor._reload.reload();
+            Session.set('pageStatus', "published");   
+        },
 
-    'click #pagePublish': function () {
-        Meteor.call('loadPage', "Published");
-        Meteor._reload.reload();
-        Session.set('checkStatus', "published");
-    },
+        'click #pageDraft': function() {
+            Meteor.call('loadPage', "Draft");
+            Meteor._reload.reload(); 
+            Session.set('pageStatus', "draft");  
+        },
 
-    'click #pageDraft': function () {
-        Meteor.call('loadPage', "Draft");
-        Meteor._reload.reload();
-        Session.set('checkStatus', "draft");
-    },
+         'click #pageBin': function() {
+            Meteor.call('loadPage', "Bin");
+            Meteor._reload.reload();
+            Session.set('pageStatus', "bin");   
+        },
 
-    'click #pageBin': function () {
-        Meteor.call('loadPage', "Bin");
-        Meteor._reload.reload();
-        Session.set('checkStatus', "bin");
-    },
+         'click .menuitem': function (event) {            
+           $('#dropdownMenu1').text( $(event.target).text());            
+        },
 
-    'click .menuitem': function (event) {
-        $('#dropdownMenu1').text($(event.target).text());
-    },
+         'click .checkbox': function(event) {
+            if (event.target.checked == true) {
+              selectedIds.push( this._id);
+            } else {
+              var index = selectedIds.indexOf(this._id);
+              selectedIds.splice(index, 1);
+            }
+        },
 
-    'click .checkbox': function (event) {
-        if (event.target.checked == true) {
-            selectedIds.push(this._id);
-        } else {
-            var index = selectedIds.indexOf(this._id);
-            selectedIds.splice(index, 1);
+        'click #Bulkapply' : function () {
+          Meteor.call('bulkMethod', selectedIds, $('#dropdownMenu1').text());
+          Meteor._reload.reload();
+          Session.set('pageStatus', "all");
+        },
+
+        'click #Datefilter': function(event) {
+           var date = $('#filterdate').val();
+           Meteor.call('dateFilter', date);
+           Meteor._reload.reload();
+           Session.set('pageStatus', "all");
         }
-    },
-
-    'click #Bulkapply': function () {
-        Meteor.call('bulkMethod', selectedIds, $('#dropdownMenu1').text());
-        Meteor._reload.reload();
-        Session.set('checkStatus', "all");
-    },
-
-    'click #Datefilter': function (event) {
-        var date = $('#filterdate').val();
-        Meteor.call('dateFilter', date);
-        Meteor._reload.reload();
-        Session.set('checkStatus', "all");
-    }
 });
 
 
@@ -229,11 +230,11 @@ Template.addNewPage.helpers({
 
     'NoParentPages': function () {
         return Pages.find();
-    },
-
-    'errormsg': function () {
-        return Session.get('errorMessage');
     }
+
+    // 'errormsg': function () {
+    //     return Session.get('errorMessage');
+    // }
 });
 
 

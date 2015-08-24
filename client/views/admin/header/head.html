@@ -42,8 +42,11 @@
                         <ul class="nav navbar-nav">
                             {{#each pluginList}}
                             <li id="navBar{{title}}" class="plugin item">
-                                <a href="/admin/{{title}}">
-                                    <div><i class="fa {{icon}} icons"></i><span>{{title}}</span>
+                                <a href="/admin/{{title}}" style="width:210%">
+                                    <div>
+                                        <span>{{title}}</span>
+                                        <i class="glyphicon glyphicon-chevron-down option-icon" id="first"></i>
+                                        <i class="glyphicon glyphicon-chevron-up option-icon" id="second"></i>
                                     </div>
                                 </a>
                                 <ul style="list-style: none;" id="showSubTitle">

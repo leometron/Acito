@@ -66,14 +66,15 @@ Template.adminHeader.rendered = function () {
         $('#main_view').addClass('full-width');
     }
     Meteor.setTimeout(function () {
-        $('.plugin-submenu').hide()
-    }, 1000);
+        $('.plugin-submenu').hide(),
+        $('#second').hide();
+    }, 500);
 };
 
 Template.adminHeader.events({
     'click .item': function (events) {
-        $('.plugin-submenu').hide(800);    
-        var selectedId = $(events.currentTarget).attr("id");
+        $('#second').hide();
+        $('#first').show();    
         var selectedId = $(events.currentTarget).attr("id");
 
         if (selectedId == 'navBardashboard') {
@@ -136,9 +137,24 @@ Template.adminHeader.events({
         } else {
             $('#subNavBarHomeSlidersadd').hide(800);
         }
+        if(selectedId == "navBarBHS") {
+            $('#navBarBHS').addClass('selected');
+        } else {
+            $('#navBarBHS').removeClass('selected');
+        }
+        if (this.title == "BHS") {
+            $('.plugin-submenu').show(800);
+        } else {
+            $('.plugin-submenu').hide(800);
+        }
     },
-    'click .plugin.item': function (events) {
+     'click .plugin.item': function (events) {
         var selectedId = $(events.currentTarget).attr("id");
-        $('.plugin-submenu.' + selectedId).show(800);
-    }
+        var flag = true;
+        if(flag){
+             $('#second').show();
+             $('#first').hide();
+             // $('.plugin-submenu.' + selectedId).show(800);      
+        }
+     }
 });

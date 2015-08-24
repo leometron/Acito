@@ -5,29 +5,28 @@ var allslider = "";
 
 Meteor.publish('homeslider', function () {
 
-    var currentUserId = this.userId;
-    var temp;
-    if (searchstr) {
-        temp = searchstr;
-        searchstr = "";
-        return homeslider.find({$text: {$search: temp}});
-    } else if (datestr) {
-        temp = datestr;
-        datestr = "";
-        if (temp == "All dates") {
-            return homeslider.find({createdBy: currentUserId});
-        } else {
-            return homeslider.find({createdBy: currentUserId, createdAt: new RegExp(temp)});
-        }
-    } else if (allslider) {
-        temp = allslider;
-        allslider = "";
-        if (temp == "All") {
-            return homeslider.find();
-        } else {
-            return homeslider.find({createdBy: currentUserId, status: temp});
-        }
-
+	var currentUserId = this.userId;
+  	var temp;
+  	if(searchstr) {
+  		temp = searchstr;
+  		searchstr = "";
+  		return homeslider.find({ createdBy: currentUserId, $text: { $search: temp }});
+  	} else if(datestr) {
+  		temp = datestr;
+  		datestr = "";
+  		if(temp == "All dates"){
+  			return homeslider.find({ createdBy: currentUserId });		
+  		} else {
+  			return homeslider.find({createdBy: currentUserId, createdAt : new RegExp(temp)});
+  		}
+  	} else if(allslider){
+  		temp = allslider;
+  		allslider = "";
+  			if(temp == "All"){
+  				return homeslider.find({ createdBy: currentUserId });
+  			} else {
+  			return homeslider.find({createdBy: currentUserId, status: temp});	
+  		}
     } else {
         return homeslider.find({createdBy: currentUserId});
     }

@@ -346,10 +346,6 @@ body, #main {
 }
 
 
-
-
-
-
 .white-button {
     font-size: 20px;
     border-radius: 30px;
@@ -397,17 +393,6 @@ body, #main {
     position: fixed;
     top: 50%;
 }
-
-
-.feature-image {
-    width: 270px;
-    height: 150px
-}
-
-
-
-
-
 
 .height-250 {
     height: 250px;

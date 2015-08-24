@@ -137,9 +137,9 @@ Template.addNewHomeSlider.helpers({
     'mediaList': function () {
         return Media.find();
     },
-    'errormsg': function () {
-        return Session.get('errorMessage');
-    },
+    // 'errormsg': function () {
+    //     return Session.get('errorMessage');
+    // },
     'getUrlValue': function () {
         return Session.get('selectImage');
     },
@@ -174,12 +174,12 @@ Template.homeSlider.events({
     'click #searchSlider': function () {
         Meteor.call('searchSlider', $('#searchString').val());
         Meteor._reload.reload();
-        Session.set('checkStatus', "all");
+        Session.set('sliderStatus', "all");
     },
     'click #Datefilter': function () {
         Meteor.call('dateSlider', $('#filterdate').val());
         Meteor._reload.reload();
-        Session.set('checkStatus', "all");
+        Session.set('sliderStatus', "all");
     },
     'click .menuitem': function (event) {
         $('#dropdownMenu1').text($(event.target).text());
@@ -192,30 +192,30 @@ Template.homeSlider.events({
             selectedIds.splice(index, 1);
         }
     },
-    'click #Bulkapply': function () {
-        Meteor.call('bulkSlider', selectedIds, $('#dropdownMenu1').text());
-        Meteor._reload.reload();
-        Session.set('checkStatus', "all");
+    'click #Bulkapply' : function () {
+          Meteor.call('bulkSlider', selectedIds, $('#dropdownMenu1').text());
+          Meteor._reload.reload();
+          Session.set('sliderStatus', "all");
     },
     'click #sliderAll': function () {
         Meteor.call('loadSlider', "All");
         Meteor._reload.reload();
-        Session.set('checkStatus', "all");
+        Session.set('sliderStatus', "all");
     },
     'click #sliderPublish': function () {
         Meteor.call('loadSlider', "Published");
         Meteor._reload.reload();
-        Session.set('checkStatus', "published");
+        Session.set('sliderStatus', "published");
     },
     'click #sliderDraft': function () {
         Meteor.call('loadSlider', "Draft");
         Meteor._reload.reload();
-        Session.set('checkStatus', "draft");
+        Session.set('sliderStatus', "draft"); 
     },
     'click #sliderBin': function () {
         Meteor.call('loadSlider', "Bin");
         Meteor._reload.reload();
-        Session.set('checkStatus', "bin");
+        Session.set('sliderStatus', "bin"); 
     }
 });
 
@@ -230,16 +230,17 @@ Template.adminHeader.events({
     }
 });
 
-Template.homeSlider.rendered = function () {
-    var status = Session.get('checkStatus');
-    if (status == "all") {
-        $('#sliderAll').css('color', 'red');
-    } else if (status == "published") {
-        $('#sliderPublish').css('color', 'red');
-    } else if (status == "draft") {
-        $('#sliderDraft').css('color', 'red');
-    } else if (status == "bin") {
-        $('#sliderBin').css('color', 'red');
+ Template.homeSlider.rendered = function(){
+    var status = Session.get('sliderStatus');
+     Session.set('errorMessage', '');
+    if ( status == "all" ) {
+       $('#sliderAll').css('color','red');
+    } else if ( status == "published" ) {
+       $('#sliderPublish').css('color','red');
+    } else if ( status == "draft" ) {
+       $('#sliderDraft').css('color','red');
+    } else if ( status == "bin" ) {
+       $('#sliderBin').css('color','red');
     } else {
         $('#sliderAll').css('color', 'red');
     }

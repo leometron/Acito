@@ -1,9 +1,9 @@
 <template name="addNewPost">
-    <div>
-        {{#if errormsg}}
-        <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
-            <span id="showError">{{errormsg}}</span></div>
-        {{/if}}
+    <div>      
+           <!--  {{#if errormsg}}
+            <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
+            <span  id="showError">{{errormsg}}</span></div>  
+            {{/if}} -->
         <div class="margin-top-40">
             <div class="row post-margin">
                 {{#if showSelectedPost}}
@@ -107,13 +107,7 @@
                             <option value="{{_id}}">{{title}}</option>                        
                         {{/each}}       --> 
                          {{#if showSelectedPost}}
-                          {{#if equals showSelectedPost.pageName "-"}}
-                            <option>none</option>
-                            {{else}}
                             <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
-                            <option>none</option>
-                          {{/if}}
-                            <!-- <option>none</option> -->
                             {{#each pageList}}
                                 {{#if equals showSelectedPost.pageId _id}}
                                 {{else}}
@@ -158,19 +152,19 @@
 
                     {{#if showSelectedPost}}
                     {{#if equals showSelectedPost.featuredImage "-"}}
-                               <span class="cursor-pointer" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
+                               <span class="cursor-pointer set-img" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
                             {{#if getpostUrl}}
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                             {{/if}}
                                 </span>
                     {{else}}
-                              <span class="cursor-pointer" id="removeImage">Remove featured image
+                              <span class="cursor-pointer set-img" id="removeImage">Remove featured image
                                 <img src="{{showSelectedPost.featuredImage}}" id="featureImage"
                                      style="width:100px; height:100px;"/>
                               </span>
                     {{/if}}
                     {{else}}
-                <span class="cursor-pointer" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
+                <span class="cursor-pointer set-img" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
                             {{#if getpostUrl}}
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                             {{/if}}
