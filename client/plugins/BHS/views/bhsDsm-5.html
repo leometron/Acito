@@ -5,28 +5,33 @@
 		<div class="margin-bottom-2pt">
 			<span class="font-size-20px padding-right-10px">Section :</span>
 			<select id="sectionList" class="padding-10px font-size-16px" style="width:68%">
-			  {{#if selectedDSM}}
-					<option class="font-size-16px" value="{{selectedDSM.sectionId}}">{{selectedDSM.sectionName}}</option>
-					<option class="font-size-16px">Select</option>
-					{{#each sectionList}}
-						{{#if equals selectedDSM.sectionId _id}}
-                            {{else}}
+				{{#if selectedDSM}}
+    				<option class="font-size-16px" value="{{selectedDSM.sectionId}}">{{selectedDSM.sectionName}}</option>
+    				<option class="font-size-16px">Select</option>
+                    {{#each sectionList}}
+                        {{#if equals selectedDSM.sectionId _id}}
+                        {{else}}
                             <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
-                        {{/if}} 
-                	{{/each}} 
-				{{else}}
-					<option class="font-size-16px">Select</option>
-					{{#each sectionList}}
-               	    	<option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
-                	{{/each}} 
-			  {{/if}}
+                        {{/if}}
+                    {{/each}}
+                {{else}}
+				    <option class="font-size-16px">Select</option>
+                   	{{#each sectionList}}
+                        {{#if equals sectionCode "-" }}
+                   	        <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
+                        {{else}}
+                            <option class="font-size-16px" value="{{_id}}">{{sectionCode}}:{{sectionName}}</option>
+                        {{/if}}
+                    {{/each}} 
+                {{/if}}
 			</select>
 			<button id="addNewDSMSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
 			<button id="minimizeDSMSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseDSMSectionName" style="margin-bottom:15px; margin-top: 30px;">
-               <div class="col-xs-8"><input type="text" id="DSMSectionName" class="form-control font-size-14" placeholder="Section"></div>
+                <div class="col-xs-2" ><input type="text" id="sectionCode" class="form-control font-size-14" placeholder="Code" style="width:110%"></div>
+               <div class="col-xs-6"><input type="text" id="DSMSectionName" class="form-control font-size-14" placeholder="Section Name"></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveDSMSection" >Save</button></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelDSMSection" >Cancel</button></div>				
 		</div>
@@ -36,26 +41,32 @@
 			<span class="font-size-20px padding-right-10px">Sub section :</span>
 			<select id="subSectionList" placeholder="Sub section Name" class="padding-10px font-size-16px" style="width:58%">
 				{{#if selectedDSM}}
-				  <option class="font-size-16px" value="{{selectedDSM.subSectionId}}">{{selectedDSM.subSectionName}}</option>
-				  {{#each subSectionList}}
-						{{#if equals selectedDSM.subSectionId _id}}
-                            {{else}}
-                            <option class="font-size-16px" value="{{_id}}">{{sectionName}}</option>
-                        {{/if}} 
-                  {{/each}} 
-				{{else}}
-					<option class="font-size-16px">Select</option>
-               		  {{#each subSectionList}}
-               	        <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
-                	  {{/each}}
-                {{/if}} 
+    				<option class="font-size-16px" value="{{selectedDSM.subSectionId}}">{{selectedDSM.subSectionName}}</option>
+                    <option class="font-size-16px">Select</option>
+				    {{#each subSectionList}}
+                        {{#if equals selectedDSM.subSectionId _id}}
+                        {{else}}
+                            <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
+                        {{/if}}
+                    {{/each}}
+                {{else}}
+				    <option class="font-size-16px">Select</option>
+                   	{{#each subSectionList}}
+                        {{#if equals subSectionCode "-" }}
+                            <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
+                        {{else}}    
+                            <option class="font-size-16px" value="{{_id}}">{{subSectionCode}}:{{subSectionName}}</option>
+                        {{/if}}
+                    {{/each}} 
+                {{/if}}
 			</select>
 			<button id="addNewDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
 			<button id="minimizeDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseDSMSubSectionName" style="margin-bottom:15px; margin-top: 30px;">
-               <div class="col-xs-8"><input type="text" id="DSMSubSectionName" class="form-control font-size-14" placeholder="Sub Section"></div>
+                <div class="col-xs-2" ><input type="text" id="subSectionCode" class="form-control font-size-14" placeholder="Code" style="width:110%"></div>
+               <div class="col-xs-6"><input type="text" id="DSMSubSectionName" class="form-control font-size-14" placeholder="Section Name"></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveDSMSubSection" >Save</button></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelDSMSubSection" >Cancel</button></div>
 			</div>
@@ -75,7 +86,7 @@
         </div>    
 		
         <div class="row" style="margin-top:10px; margin-bottom:15px;">
-            <div class="col-md-3 padding-left-zero">
+            <div class="col-md-4 padding-left-zero">
                 <span class="dropdown margin-right">
                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown"
                            data-toggle="dropdown">
