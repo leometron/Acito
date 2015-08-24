@@ -61,7 +61,7 @@ Template.BHSICD.events({
                 Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
             }            
             Meteor.setTimeout(function () {
-                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid','')
+                Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
                 $('#ICDCode').val(""),$('#ICDDetail').val(""),$('#ICDCode').attr('placeholder',"ICD Code"),$('#ICDDetail').attr("placeholder",'Detail')
             }, 2000);			
 		}

@@ -1,6 +1,7 @@
 Meteor.subscribe("plugin");
 
 var mainTitle;
+var flag = true;
 Template.adminHeader.helpers({
     'navBarList': function () {
         return [
@@ -73,8 +74,7 @@ Template.adminHeader.rendered = function () {
 
 Template.adminHeader.events({
     'click .item': function (events) {
-        $('#second').hide();
-        $('#first').show();    
+        // $('.plugin-submenu').hide(800);   
         var selectedId = $(events.currentTarget).attr("id");
 
         if (selectedId == 'navBardashboard') {
@@ -143,18 +143,27 @@ Template.adminHeader.events({
             $('#navBarBHS').removeClass('selected');
         }
         if (this.title == "BHS") {
+            $('#second').show();
+            $('#first').hide();
             $('.plugin-submenu').show(800);
         } else {
+            $('#second').hide();
+            $('#first').show(); 
             $('.plugin-submenu').hide(800);
         }
-    },
-     'click .plugin.item': function (events) {
-        var selectedId = $(events.currentTarget).attr("id");
-        var flag = true;
-        if(flag){
-             $('#second').show();
-             $('#first').hide();
-             // $('.plugin-submenu.' + selectedId).show(800);      
-        }
-     }
+    }
+     // 'click .plugin.item': function (events) {
+     //    var selectedId = $(events.currentTarget).attr("id");
+     //    if(flag){
+     //         $('#second').show();
+     //         $('#first').hide();
+     //         $('.plugin-submenu.' + selectedId).show(800);
+     //         flag = false;      
+     //    } else {
+     //        $('#first').show();
+     //        $('#second').hide();
+     //        $('.plugin-submenu.' + selectedId).hide(800);
+     //        flag = true;
+     //    }
+     // }
 });
