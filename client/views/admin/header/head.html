@@ -41,26 +41,12 @@
                         </ul>
                         <ul class="nav navbar-nav">
                             {{#each pluginList}}
-                            <li id="navBar{{title}}" class="plugin" style="display: none;">
+                            <li id="navBar{{title}}" class="plugin item">
                                 <a href="/admin/{{title}}" style="width:210%">
                                     <div>
                                         <span>{{title}}</span>
-                                        <i class="glyphicon glyphicon-chevron-down option-icon"></i>
-                                    </div>
-                                </a>
-                                <ul style="list-style: none;" id="showSubTitle">
-                                    {{#each subtitle}}
-                                    <li class="plugin-submenu navBar{{../title}} padding-bottom-10"
-                                        id="subNavBar{{../title}}{{sTitle}}"><a
-                                            href="/admin/{{../title}}/{{sTitle}}"><span>{{sTitle}}</span></a></li>
-                                    {{/each}}
-                                </ul>
-                            </li>
-                            <li id="navBar{{title}}" class="icon-plugin" style="display: block;">
-                                <a href="/admin/{{title}}" style="width:210%">
-                                    <div>
-                                       <span>{{title}}</span>
-                                       <i class="glyphicon glyphicon-chevron-up option-icon"></i>
+                                        <i class="glyphicon glyphicon-chevron-down option-icon" id="first"></i>
+                                        <i class="glyphicon glyphicon-chevron-up option-icon" id="second"></i>
                                     </div>
                                 </a>
                                 <ul style="list-style: none;" id="showSubTitle">

@@ -13,6 +13,8 @@ Template.BHSDSM.events({
 	        $('#minimizeDSMSection').hide();
 	        $('#addNewDSMSection').show();
 	        $('#chooseDSMSectionName').fadeOut(500);
+            $('#DSMSectionName').val("");
+            $('#DSMSectionName').attr('placeholder','Section');            
 	    },
 	    'click #addNewDSMSubSection' : function () {
 	     	$('#addNewDSMSubSection').hide();
@@ -23,16 +25,22 @@ Template.BHSDSM.events({
 	        $('#minimizeDSMSubSection').hide();
 	        $('#addNewDSMSubSection').show();
 	        $('#chooseDSMSubSectionName').fadeOut(500);
+            $('#DSMSubSectionName').val("");
+            $('#DSMSubSectionName').attr('placeholder','Sub Section');            
 	    },
 	    'click #cancelDSMSection' : function () {
 	        $('#minimizeDSMSection').hide();
 	        $('#addNewDSMSection').show();
 	        $('#chooseDSMSectionName').fadeOut(500);
+            $('#DSMSectionName').val("");
+            $('#DSMSectionName').attr('placeholder','Section');            
 	    },
 	    'click #cancelDSMSubSection' : function () {
 	        $('#minimizeDSMSubSection').hide();
 	        $('#addNewDSMSubSection').show();
 	        $('#chooseDSMSubSectionName').fadeOut(500);
+            $('#DSMSubSectionName').val("");
+            $('#DSMSubSectionName').attr('placeholder','Sub Section');            
 	    },
 
 	'click #saveDSMSection': function () {
@@ -47,7 +55,7 @@ Template.BHSDSM.events({
             Meteor.call('insertSection', $('#DSMSectionName').val(), sectionCode, "DSM");
             $('#DSMSectionName').val("");
             $('#sectionCode').val("");
-            $('#DSMSectionName').attr('placeholder','Section Name');
+            $('#DSMSectionName').attr('placeholder','Section');
         }
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')
@@ -70,7 +78,7 @@ Template.BHSDSM.events({
             Meteor.call('insertSubSection', sectionId, sectionName, $('#DSMSubSectionName').val(), subSectionCode);
             $('#DSMSubSectionName').val("");
             $('#subSectionCode').val("");
-            $('#DSMSubSectionName').attr('placeholder','Sub Section Name');
+            $('#DSMSubSectionName').attr('placeholder','Sub Section');
         }
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')
@@ -93,9 +101,13 @@ Template.BHSDSM.events({
         } else if(!dsmDetail) {
             Session.set('errorMessage','DSM Detail is Required');
         } else {
-        $('#cancelCurrentDSMPost').hide();            
-        Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,dsmCode,dsmDetail,Session.get('currentDSMid'));
-            Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully saved');
+            $('#cancelCurrentDSMPost').hide();            
+            Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,dsmCode,dsmDetail,Session.get('currentDSMid'));
+            if (Session.get('currentDSMid')) {
+                Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully updated');               
+            } else {
+                Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully saved');            
+            }
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage', ''),Session.set('currentDSMid',''),$('#sectionList').val("Select"),
                 $('#subSectionList').val("Select"),$('#DSMCode').val(""),$('#DSMDetail').val(""),

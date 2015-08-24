@@ -23,24 +23,3 @@ function getCurrentDate() {
     return dateObj.getDate() + '/' + (dateObj.getMonth() + 1) + '/' + dateObj.getFullYear();
 
 }
-
-// function getAllFilesFromFolder() {
-//     // var filesystem = require("fs");
-//     var filesystem = Meteor.npmRequire('fs');
-//     var results = [];
-
-//     filesystem.readdirSync('public').forEach(function(file) {
-
-//         file = dir+'/'+file;
-//         var stat = filesystem.statSync(file);
-
-//         if (stat && stat.isDirectory()) {
-//             results = results.concat(_getAllFilesFromFolder(file))
-//         } else results.push(file);
-
-//     });
-//     console.log('files list.....'+results);
-
-//     return results;
-
-// }

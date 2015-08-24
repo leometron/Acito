@@ -55,5 +55,6 @@ Meteor.startup(function () {
         });
     }
 
-    getAllFilesFromFolder('../../../../../client/plugins');
+    // getAllFilesFromFolder('../../../../../client/plugins');
+    getAllFilesFromFolder(process.cwd()+"/assets/app");    
 });

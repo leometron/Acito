@@ -1,9 +1,132 @@
-#onetwo {
-	overflow-y: scroll;
-	overflow-x: hidden;
-	height:400px;
+*{
+	font-family: Arial;
 }
 
+.bhs .header{
+	text-align:center;
+	padding-top:10px;
+}
+
+.bhs .heading{
+	font-weight:bold;
+	font-size:18px;
+}
+
+.bhs .content{
+	margin-top:20px;
+	text-align:justify;
+}
+
+.bhs .buttonRow{
+	font-weight:bold;
+	font-size:16px;
+	padding-top:5px;
+}
+
+.bhs .button{
+	background: -webkit-linear-gradient(#0b63a6, #0145f5);
+  	background: -o-linear-gradient(#0b63a6, #0145f5);
+  	background: -moz-linear-gradient(#0b63a6, #0145f5);
+  	background: linear-gradient(#0b63a6, #0145f5);
+  	color:#FFFFFF;
+  	text-align: center;
+  	width:200px;
+  	padding:10px 5px;
+  	border-radius:8px;
+  	margin-bottom:15px;
+}
+
+.bhs .list_header{
+	display:table;
+	width:100%;
+	background: -webkit-linear-gradient(#0b63a6, #0145f5);
+  	background: -o-linear-gradient(#0b63a6, #0145f5);
+  	background: -moz-linear-gradient(#0b63a6, #0145f5);
+  	background: linear-gradient(#0b63a6, #0145f5);
+  	color:#FFFFFF;
+}
+
+.bhs .leftColmn{
+	display:table-cell;
+	vertical-align:middle;
+	text-align: center;
+	width:30px;
+}
+
+.bhs .middleColmn{
+	display:table-cell; 
+	vertical-align:middle;
+	width:50px;
+}
+
+.bhs .lastColmn{
+	diaplay:table-cell;
+	width:auto;
+	vertical-align:middle;
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+	font-size:20px;
+	margin-top:10px;
+	margin-right:20px;
+}
+
+.bhs .list_heading_div{
+	display:table;
+	width:100%;
+	background:#E6EDFF;
+	padding:8px;
+	color:#5571B4;
+	font-size:18px;
+	table-layout:fixed;
+}
+
+.bhs .list_heading_left{
+	display:table-cell;
+	width:50px;
+	text-align:center;
+}
+
+.bhs .list_heading_middle{
+	display:table-cell;
+	width:15px;
+}
+
+.bhs .list_heading_right{
+	display:table-cell;
+	width:auto;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.bhs .list_item_div{
+	display:table;
+	width:100%;
+	padding:8px;
+	table-layout:fixed;
+}
+
+.bhs .list_item_left{
+	display:table-cell;
+	width:50px;
+	text-align:center;
+	color:#3C97CE;
+	vertical-align:middle;
+}
+
+.bhs .list_item_middle{
+	display:table-cell;
+	width:2px;
+	border-right:1px solid green;
+	vertical-align:middle;
+}
+
+.bhs .list_item_right{
+	display:table-cell;
+	width:auto;
+	vertical-align:middle;
+}
 
 .margin-top-4pt {
 	margin-top: 4%;
