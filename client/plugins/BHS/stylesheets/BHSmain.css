@@ -38,6 +38,7 @@
 
 .bhs .list_header{
 	display:table;
+	table-layout: fixed;
 	width:100%;
 	background: -webkit-linear-gradient(#0b63a6, #0145f5);
   	background: -o-linear-gradient(#0b63a6, #0145f5);
@@ -60,7 +61,7 @@
 }
 
 .bhs .lastColmn{
-	diaplay:table-cell;
+	display:table-cell;
 	width:auto;
 	vertical-align:middle;
 	text-align:center;
