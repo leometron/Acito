@@ -5,6 +5,9 @@ section.attachSchema(
     sectionName: {
       type: String
     },
+    sectionCode: {
+      type: String
+    },
     type: {
       type: String
     }

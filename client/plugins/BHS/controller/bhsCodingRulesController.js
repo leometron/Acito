@@ -46,20 +46,34 @@ Template.BHSCodingRules.events({
     'click #apply': function () {
         Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
     },
+    // 'click .next' : function() {
+    // 	if(Session.get('codingRulesCount')>3){
+	   // 		Session.set('numberOfCount',Session.get('numberOfCount')+3);
+   	// 	}
+    // },
+    // 'click .previous' : function() {
+    // 		Session.set('numberOfCount',Session.get('numberOfCount')-3);
+    // },
 });
 
 Template.BHSCodingRules.helpers({
 	'codingRulesList': function () {
-        return codingRules.find();
+        return codingRules.find({});
     },
     'selectedCodingRules' : function () {
     	return codingRules.findOne(Session.get('currentCodingRulesid'));        
-    }
+    },
+   //  'codingRulesLimit' : function() {
+   //  	return codingRules.find({},{limit: Session.get('numberOfCount')});
+   //  },
+   //  'codingRulesCount' : function() {
+   //    Session.set('codingRulesCount',codingRules.find().count());
+   // }
 });
 
 Template.BHSCodingRules.rendered = function () {
-	
-};
+	// Session.set('numberOfCount', 3);
+}
 
 Template.adminTop.helpers({
 	'BHSErrorMsg' : function() {
