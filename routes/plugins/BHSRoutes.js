@@ -1,7 +1,4 @@
 //Routes related to plugin BHS admin 
-Router.route('/admin/BHS', function () {
-    this.render('BHSMain');
-});
 Router.route('/admin/BHS/CodingRules', function () {
     this.render('BHSCodingRules');
 });
