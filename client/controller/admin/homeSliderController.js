@@ -12,7 +12,6 @@ Template.addNewHomeSlider.rendered = function () {
 
 Template.addNewHomeSlider.events({
     'click #selectImage': function () {
-        // alert("success");
         $('#uploadFile').addClass('border');
         $('#media').hide();
         $('#mediaLibrary').removeClass('border');

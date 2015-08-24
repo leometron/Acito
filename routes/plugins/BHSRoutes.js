@@ -1,4 +1,4 @@
-//Routes related to plugin BHS
+//Routes related to plugin BHS admin 
 Router.route('/admin/BHS', function () {
     this.render('BHSMain');
 });
@@ -10,4 +10,13 @@ Router.route('/admin/BHS/DSM-5', function () {
 });
 Router.route('/admin/BHS/ICD-10', function () {
     this.render('BHSICD');
+});
+
+//Routes related to plugin BHS client 
+
+Router.route('/list', {
+	layoutTemplate: '',
+	 data: function () {
+	 	this.render('BHSlist');
+	 }
 });

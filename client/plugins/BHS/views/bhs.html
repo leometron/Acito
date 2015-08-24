@@ -1,0 +1,26 @@
+<template name="BHShome">
+	<div class="container">
+		<div class="bhs">
+			<div class="header">
+				<div>
+					<img src="/images/logo.png" width="80"/>
+				</div>
+				<div class="heading">Indroduction</div>
+			</div>
+			<div class="content">
+				<p>
+					Complete and accurate clinical documentation is needed to accurately code and report diagnoses and services or procedures.it should present the level of detail needed to support the specific diagnosis,justify provided treatment and services,and accurately reflect the patient’s severity of illness.
+				</p>
+				<p>
+					In all cases,physicians should document only the level of specificity that accurately and completely describes the patient’s condition(s) and treatments(s).physician documentation should NEVER include information that is enhanced,modified,or otherwise inaccurate for the purposes of determining or increasing payment,or for any other situation in which a physician or facility may falsely gain
+				</p>
+				<div class="buttonRow">Mental Health Unique Needs</div>
+				<div style="padding-top:15px;" align="center">
+					{{#each bhsCode}}
+					<div class="button" id="{{title}}">{{title}}</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+</div>
+</template>
