@@ -1,5 +1,15 @@
+var searchString = "";
+
 Meteor.publish('section', function () {
-	return section.find();		
+	var temp;
+	if (searchString) {
+		temp = searchString;
+		searchString = "";
+        return section.find({$text: { $search: temp } });	
+	} else {
+			return section.find();		
+
+	}
 });
 
 Meteor.methods({
@@ -10,5 +20,8 @@ Meteor.methods({
         	section.insert({sectionName: name, sectionCode: code, type: secType});
 	        console.log('Section ' + name + ' added successfully');        	
         }
+    },
+    'showSearchSection': function (searchStr) {
+    	searchString = searchStr;
     }
 });

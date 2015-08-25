@@ -21,8 +21,11 @@ Template.BHSlist.helpers({
 		}
 	},
 	'BHSLogo' : function() {
-		return Media.findOne({caption:"LOGO"});
+		return Media.findOne({name:"BHSlogo"});
 	},
+	'searchList' : function () {
+        return section.find();	
+	}
 })
 
 Template.BHShome.helpers({
@@ -30,7 +33,7 @@ Template.BHShome.helpers({
 		return Pages.find({status: "Published"});
 	},
 	'logo' : function() {
-		return Media.findOne({caption:"LOGO"});
+		return Media.findOne({name:"BHSlogo"});
 	},
 	'introText' : function() {
 		return Posts.find({tags:"Introduction"});
@@ -48,5 +51,12 @@ Template.BHShome.events({
 Template.BHSlist.events({
 	'click .backArrow': function(event, fview) {
 		history.back();
-  }
+  	},
+  	'keydown #searchString' : function(e){
+  		if (e.which == 13) {
+  			// Session.set('searchString',$('#searchString').val());
+  			Meteor.call('showSearchSection',$('#searchString').val());
+			Meteor._reload.reload();        
+  		}
+  	}  
 });

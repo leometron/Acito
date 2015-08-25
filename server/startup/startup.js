@@ -12,6 +12,9 @@ Meteor.startup(function () {
     Media._ensureIndex({name: "text"});
     homeslider._ensureIndex({title: "text"});
 
+    section._ensureIndex({sectionName: "text",sectionCode: "text"});
+
+
     Meteor.publish('plugin', function () {
         return plugin.find();
     });
