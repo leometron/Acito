@@ -1,18 +1,40 @@
+var prevId = "";
 Template.BHShome.rendered = function(){
    $('body').addClass('bgImage');
 }
 
 Template.BHSlist.rendered = function(){
-	console.log('s inside');
-   	$('body').removeClass('bgImage');
-   	$('body').addClass('bgColor');
-	// Meteor._reload.reload();        
+	var height = window.innerHeight-112;
+   $('body').removeClass('bgImage');
+   $('body').addClass('bgColor');
+   $('.listContainer, .alphabetical').css('height', height);
+   $('.alphabetical').css('height', height+65);
 }
 
 Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
+	'icdList' : function(){
+		return ICD.find();
+	},
+	'icdSectionList':function(){
+		return section.find({'type':'ICD'});
+	},
+	'icdSectionAlphabet':function(){
+		var alphabetArray = new Array();
+		var data = section.find({'type':'ICD'}).fetch();
+		if(data.length>0){
+			$.each(data, function(i,row) {
+    			var x = row.sectionName.charAt(0).toUpperCase();
+			    if ($.inArray(x, alphabetArray) === -1) {
+			        alphabetArray.push(x);
+			    }
+			});
+		}
+		return alphabetArray.sort();
+	},
+
 	'listIcd' : function(){
 		if(Session.get('title') == "ICD-10-CM") {
 			return ICD.find();
@@ -86,8 +108,7 @@ Template.BHSlist.events({
 		 		});
 			}
 		},100)	;
-  	}
-});  	
+  	},
   	'keydown #searchString' : function(e){
   		if (e.which == 13) {
 			if(Session.get('title') == "Coding Rules") {
