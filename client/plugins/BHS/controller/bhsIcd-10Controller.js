@@ -33,14 +33,18 @@ Template.BHSICD.events({
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
         $('#sectionName').val("");
-        $('#sectionName').attr('placeholder','Section');        
+        $('#sectionName').attr('placeholder','Section');
+        $('#sectionCode').val("");
+        $('#sectionCode').attr('placeholder','Code');                   
     },
     'click #cancelSection' : function () {
         $('#minimizeAddNewSection').hide();
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
         $('#sectionName').val("");
-        $('#sectionName').attr('placeholder','Section');             
+        $('#sectionName').attr('placeholder','Section');
+        $('#sectionCode').val("");
+        $('#sectionCode').attr('placeholder','Code');                     
     },
     'click #saveCurrentICDPost': function () {
     	var sectionName = $('#sectionList :selected').text();

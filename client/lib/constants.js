@@ -5,6 +5,6 @@ if (Meteor.App) {
 }
 
 Meteor.App = {
-    NAME: 'Acito - A powerful Webplatform to handle any application',
+    NAME: 'BHS - Behavioral Health Solutions',
     DESCRIPTION: ''
 };

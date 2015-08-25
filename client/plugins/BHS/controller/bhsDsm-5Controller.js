@@ -3,7 +3,7 @@ Meteor.subscribe("subSection");
 
 var select_data = [];
 
-Template.BHSDSM.events({
+Template.BHSDSM.events({    
 	    'click #addNewDSMSection' : function () {
 	    	$('#addNewDSMSection').hide();
 	    	$('#minimizeDSMSection').show();
@@ -14,7 +14,9 @@ Template.BHSDSM.events({
 	        $('#addNewDSMSection').show();
 	        $('#chooseDSMSectionName').fadeOut(500);
             $('#DSMSectionName').val("");
-            $('#DSMSectionName').attr('placeholder','Section');            
+            $('#DSMSectionName').attr('placeholder','Section');
+            $('#sectionCode').val("");
+            $('#sectionCode').attr('placeholder','Code');                          
 	    },
 	    'click #addNewDSMSubSection' : function () {
 	     	$('#addNewDSMSubSection').hide();
@@ -26,21 +28,27 @@ Template.BHSDSM.events({
 	        $('#addNewDSMSubSection').show();
 	        $('#chooseDSMSubSectionName').fadeOut(500);
             $('#DSMSubSectionName').val("");
-            $('#DSMSubSectionName').attr('placeholder','Sub Section');            
+            $('#DSMSubSectionName').attr('placeholder','Sub Section');
+            $('#subSectionCode').val("");
+            $('#subSectionCode').attr('placeholder','Code');                           
 	    },
 	    'click #cancelDSMSection' : function () {
 	        $('#minimizeDSMSection').hide();
 	        $('#addNewDSMSection').show();
 	        $('#chooseDSMSectionName').fadeOut(500);
             $('#DSMSectionName').val("");
-            $('#DSMSectionName').attr('placeholder','Section');            
+            $('#DSMSectionName').attr('placeholder','Section');
+            $('#sectionCode').val("");
+            $('#sectionCode').attr('placeholder','Code');                         
 	    },
 	    'click #cancelDSMSubSection' : function () {
 	        $('#minimizeDSMSubSection').hide();
 	        $('#addNewDSMSubSection').show();
 	        $('#chooseDSMSubSectionName').fadeOut(500);
             $('#DSMSubSectionName').val("");
-            $('#DSMSubSectionName').attr('placeholder','Sub Section');            
+            $('#DSMSubSectionName').attr('placeholder','Sub Section');
+            $('#subSectionCode').val("");
+            $('#subSectionCode').attr('placeholder','Code');                            
 	    },
 
 	'click #saveDSMSection': function () {
