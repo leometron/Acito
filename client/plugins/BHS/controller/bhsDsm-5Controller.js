@@ -141,6 +141,13 @@ Template.BHSDSM.events({
     'click #apply': function () {
         Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
     },
+    'change #sectionList': function() {
+        if($('#sectionList :selected').val() != "Select"){
+             Session.set("subsectionselectId", $('#sectionList :selected').val());
+        } else {
+            Session.set("subsectionselectId", "");
+        }
+    }
 });
 
 
@@ -156,7 +163,11 @@ Template.BHSDSM.helpers({
     },
     'selectedDSM' : function () {
         return DSM.findOne(Session.get('currentDSMid'));        
-    } 
+    },
+    'subSectionSelectList' :function() {
+        var subvalue = Session.get("subsectionselectId");
+        return subvalue;
+    }
 });
 
 
