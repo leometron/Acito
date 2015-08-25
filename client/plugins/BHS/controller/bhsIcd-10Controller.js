@@ -13,7 +13,9 @@ Template.BHSICD.events({
             $('#chooseSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
-            Meteor.call('insertSection', $('#sectionName').val(),sectionCode,"ICD");
+            var secName = $('#sectionName').val();
+            var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
+            Meteor.call('insertSection', capitalizedSection,sectionCode,"ICD");
             Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');            
             $('#sectionName').val("");
             $('#sectionCode').val("");
@@ -69,7 +71,7 @@ Template.BHSICD.events({
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
                 $('#ICDCode').val(""),$('#ICDDetail').val(""),$('#ICDCode').attr('placeholder',"ICD Code"),$('#ICDDetail').attr("placeholder",'Detail')
-            }, 2000);			
+            }, 2600);			
 		}
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')

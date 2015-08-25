@@ -60,7 +60,9 @@ Template.BHSDSM.events({
             $('#chooseDSMSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
-            Meteor.call('insertSection', $('#DSMSectionName').val(), sectionCode, "DSM");
+            var secName = $('#DSMSectionName').val();
+            var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
+            Meteor.call('insertSection', capitalizedSection, sectionCode, "DSM");
             $('#DSMSectionName').val("");
             $('#sectionCode').val("");
             $('#DSMSectionName').attr('placeholder','Section');
@@ -83,7 +85,9 @@ Template.BHSDSM.events({
             $('#chooseDSMSubSectionName').fadeOut(500);            
             Session.set('errorMessage', '');
             var subSectionCode = (!$('#subSectionCode').val() ) ? "-" : $('#subSectionCode').val();
-            Meteor.call('insertSubSection', sectionId, sectionName, $('#DSMSubSectionName').val(), subSectionCode);
+            var subSecName = $('#DSMSubSectionName').val();
+            var capitalizedSection = subSecName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });            
+            Meteor.call('insertSubSection', sectionId, sectionName, capitalizedSection, subSectionCode);
             $('#DSMSubSectionName').val("");
             $('#subSectionCode').val("");
             $('#DSMSubSectionName').attr('placeholder','Sub Section');
@@ -120,7 +124,7 @@ Template.BHSDSM.events({
                 Session.set('BHSSuccessMessage', ''),Session.set('currentDSMid',''),$('#sectionList').val("Select"),
                 $('#subSectionList').val("Select"),$('#DSMCode').val(""),$('#DSMDetail').val(""),
                 $('#DSMCode').attr("placeholder","DSMCode"),$('#DSMDetail').attr("placeholder","Detail")
-            }, 2000);            
+            }, 2600);            
         }
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')

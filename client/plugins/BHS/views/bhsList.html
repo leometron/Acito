@@ -12,54 +12,94 @@
 			<div class="lastColmn">{{title}}</div>
 		</div>
 		<div class="row"> 
-		<div class="col-md-11 col-sm-11 col-xs-10" style="background-color: white; padding-left:0; padding-right:0">
+		<div class="col-md-11 col-sm-11 col-xs-10 main_post">
 			<div>
 			 	<div style="margin:15px;">
 	      			<input type="text" id="searchString" placeholder="Search"/>
 	  			</div>
 			</div>
+		<div class="listContainer">
+		{{#if listIcd}}
+		{{#each sectionListICD}}
+			{{#if equals sectionCode "-"}}
+				<div class="list_heading_div">
+					<div class="list_heading_left_coding">{{sectionName}}</div>
+				</div>
+			{{else}}
+				<div class="list_heading_div">
+					<div class="list_heading_left">{{sectionCode}}</div>
+					<div class="list_heading_middle">:</div>
+					<div class="list_heading_right">{{sectionName}}</div>
+				</div>
+			{{/if}}
+				{{#each listIcd}}
+					{{#if equals ../_id sectionId}}
+						<div class="list_item_div">
+							<div class="list_item_left">{{code}}</div>
+							<div class="list_item_middle"></div>
+							<div class="list_item_right">
+								<div style="margin-left:15px;">{{detail}}</div>
+							</div>
+						</div>
+					{{/if}}
+				{{/each}}
+		{{/each}}
+		{{/if}}
+
+
+		{{#if listDSM}}
+			{{#each sectionListDSM}}
+				{{#if equals sectionCode "-"}}
+					<div class="list_heading_main_div">
+						<div class="list_heading_left_coding">{{sectionName}}</div>
+					</div>
+				{{else}}
+					<div class="list_heading_main_div">
+						<div class="list_heading_left">{{sectionCode}}</div>
+						<div class="list_heading_middle">:</div>
+						<div class="list_heading_right">{{sectionName}}</div>
+					</div>
+				{{/if}}
+					{{#each subSectionList}}
+						{{#if equals ../_id  sectionId}}
+							<div class="list_heading_div">
+								<div class="list_heading_left_coding">{{subSectionName}}</div>
+							</div>
+							{{#each listDSM}}
+								{{#if equals ../_id subSectionId}}
+									<div class="list_item_div">
+										<div class="list_item_left">{{DSMCode}}</div>
+										<div class="list_item_middle"></div>
+										<div class="list_item_right">
+											<div style="margin-left:15px;">{{DSMDetail}}</div>
+										</div>
+									</div>
+								{{/if}}
+							{{/each}}
+						{{/if}}
+					{{/each}}	
+			{{/each}}	
+		{{/if}}
+
+		
+		{{#if listCodingRule}}
+		{{#each listCodingRule}}
 		<div class="list_heading_div">
-			<div class="list_heading_left">F04</div>
-			<div class="list_heading_middle">:</div>
-			<div class="list_heading_right">Amneatic Disorder Due to Known</div>
+			<div class="list_heading_left_coding">{{guideline}}</div>
 		</div>
-		{{#each searchList}}
 		<div class="list_item_div">
-			<div class="list_item_left">{{sectionCode}}</div>
-			<div class="list_item_middle"></div>
 			<div class="list_item_right">
-				<div style="margin-left:15px;">{{sectionName}}</div>
+				<div style="margin-left:15px;">{{definition}}</div>
 			</div>
 		</div>
 		{{/each}}
+		{{/if}}
 		</div>
-		<div class="col-md-1 col-sm-1 col-xs-2" style=" text-align: center; font-size: large; font-weight: bold;background: #f7f7f7;  padding-top: 8%;">
-             <div>A</div>  
-             <div>B</div>  
-             <div>C</div>  
-             <div>D</div>
-             <div>E</div>  
-             <div>F</div>  
-             <div>G</div>  
-             <div>H</div> 
-             <div>I</div>  
-             <div>J</div>  
-             <div>K</div>  
-             <div>L</div>
-             <div>M</div>  
-             <div>N</div>  
-             <div>O</div>  
-             <div>P</div>
-             <div>Q</div>  
-             <div>R</div>  
-             <div>S</div>  
-             <div>T</div>
-             <div>U</div>  
-             <div>V</div>  
-             <div>W</div>  
-             <div>X</div> 
-             <div>Y</div>  
-             <div>Z</div>               
+		</div>
+		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
+			{{#each icdSectionAlphabet}}
+             <div class="alphabet" id="{{this}}" style="padding:5px;">{{this}}</div>  
+            {{/each}}
 		</div>
 	</div>
 </div>

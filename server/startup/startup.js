@@ -13,6 +13,7 @@ Meteor.startup(function () {
     homeslider._ensureIndex({title: "text"});
 
     section._ensureIndex({sectionName: "text",sectionCode: "text"});
+    codingRules._ensureIndex({guideline: "text"});
 
 
     Meteor.publish('plugin', function () {

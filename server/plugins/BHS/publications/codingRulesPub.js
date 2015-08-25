@@ -1,5 +1,13 @@
+var searchString = "";
 Meteor.publish('codingRules', function () {
-  return codingRules.find();
+    var temp;
+    if (searchString) { 
+        temp = searchString;
+        searchString = "";
+        return codingRules.find({$text: { $search: temp } });
+    } else {
+        return codingRules.find();
+    }
 });
 
 
@@ -23,5 +31,8 @@ Meteor.methods({
                 });
             }
         }
+    },
+    'searchCodingRules' : function(searchStr) {
+        searchString = searchStr;
     }
 });

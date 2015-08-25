@@ -23,5 +23,8 @@ Meteor.methods({
     },
     'showSearchSection': function (searchStr) {
     	searchString = searchStr;
+    },
+    'showAllSection': function () {
+    	searchString = "";
     }
 });

@@ -90,10 +90,26 @@
 	table-layout:fixed;
 }
 
+.bhs .list_heading_main_div{
+	display:table;
+	width:100%;
+	background:#4C94CE;
+	padding:8px;
+	color:white;
+	font-size:18px;
+	table-layout:fixed;
+}
+
 .bhs .list_heading_left{
 	display:table-cell;
 	width:50px;
 	text-align:center;
+}
+
+.bhs .list_heading_left_side{
+	display:table-cell;
+	width:50px;
+	text-align:left;
 }
 
 .bhs .list_heading_middle{
@@ -135,6 +151,29 @@
 	display:table-cell;
 	width:auto;
 	vertical-align:middle;
+}
+
+.bhs .alphabetical{
+	text-align: center; 
+	font-size: 16px;
+	font-weight: bold;
+	background: #f7f7f7;
+	height: 100%;
+   position: fixed;
+   right: 0;
+   padding-top: 25px;
+   overflow-y: scroll; 
+   padding-bottom: 25px;  
+}
+
+.bhs .main_post{
+	background-color: white;
+	padding-left:0; 
+	padding-right:0
+}
+
+.bhs .listContainer{
+	overflow-y : scroll;
 }
 
 .margin-top-4pt {
