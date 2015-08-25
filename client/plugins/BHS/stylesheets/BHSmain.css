@@ -90,10 +90,26 @@
 	table-layout:fixed;
 }
 
+.bhs .list_heading_main_div{
+	display:table;
+	width:100%;
+	background:#4C94CE;
+	padding:8px;
+	color:white;
+	font-size:18px;
+	table-layout:fixed;
+}
+
 .bhs .list_heading_left{
 	display:table-cell;
 	width:50px;
 	text-align:center;
+}
+
+.bhs .list_heading_left_side{
+	display:table-cell;
+	width:50px;
+	text-align:left;
 }
 
 .bhs .list_heading_middle{

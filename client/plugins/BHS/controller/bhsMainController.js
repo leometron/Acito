@@ -11,14 +11,38 @@ Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
-	'list' : function(){
+	// 'list' : function(){
+	// 	if(Session.get('title') == "ICD-10-CM") {
+	// 		return ICD.find();
+	// 	} else if (Session.get('title') == "DSM-5-CM") {
+	// 		return DSM.find();			
+	// 	} else if (Session.get('title') == "Coding Rules") {
+	// 		return codingRules.find();			
+	// 	}
+	// },
+	'listIcd' : function(){
 		if(Session.get('title') == "ICD-10-CM") {
 			return ICD.find();
-		} else if (Session.get('title') == "DSM-5-CM") {
-			return DSM.find();			
-		} else if (Session.get('title') == "Coding Rules") {
-			return codingRules.find();			
 		}
+	},
+	'listDSM' : function(){
+		if(Session.get('title') == "DSM-5-CM") {
+			return DSM.find();
+		}
+	},
+	'listCodingRule' : function(){
+		if(Session.get('title') == "Coding Rules") {
+			return codingRules.find();
+		}
+	},
+	'sectionListICD' : function() {
+		return section.find({type:"ICD"});
+	},
+	'sectionListDSM' : function() {
+		return section.find({type:"DSM"});
+	},
+	'subSectionList' : function() {
+		return subSection.find();
 	},
 	'BHSLogo' : function() {
 		return Media.findOne({caption:"LOGO"});
