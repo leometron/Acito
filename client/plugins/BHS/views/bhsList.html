@@ -5,7 +5,9 @@
 				<img src="/images/left.png" width="25"/>
 			</div>
 			<div class="middleColmn">
-				<img src="/images/logo.png" width="45"/>
+				{{#if BHSLogo}}
+					<img src="{{BHSLogo.url}}" width="45"/>
+				{{/if}}
 			</div>
 			<div class="lastColmn">{{title}}</div>
 		</div>
@@ -19,7 +21,7 @@
 			<div class="list_heading_middle">:</div>
 			<div class="list_heading_right">Amneatic Disorder Due to Known</div>
 		</div>
-		{{#each icdList}}
+		{{#each list}}
 		<div class="list_item_div">
 			<div class="list_item_left">{{code}}</div>
 			<div class="list_item_middle"></div>

@@ -6,9 +6,18 @@ Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
-	'icdList' : function(){
-		return ICD.find();
-	}
+	'list' : function(){
+		if(Session.get('title') == "ICD-10-CM") {
+			return ICD.find();
+		} else if (Session.get('title') == "DSM-5-CM") {
+			return DSM.find();			
+		} else if (Session.get('title') == "Coding Rules") {
+			return codingRules.find();			
+		}
+	},
+	'BHSLogo' : function() {
+		return Media.findOne({caption:"LOGO"});
+	},
 })
 
 Template.BHShome.helpers({

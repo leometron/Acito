@@ -27,7 +27,6 @@ Meteor.startup(function () {
             var stat = filesystem.statSync(file);
 
             if (stat && stat.isDirectory()) {
-                console.log('directory');
                 results = results.concat(getAllFilesFromFolder(file))
             } else {
                 var myRe = /settings.yml/ig;

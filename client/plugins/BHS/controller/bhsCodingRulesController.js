@@ -15,7 +15,11 @@ Template.BHSCodingRules.events({
 				Session.set('errorMessage','Coding and Guideline Definition is Required');
 			} else {
 				Meteor.call('insertCodingRules', code, guideline, definition, Session.get('currentCodingRulesid'));
-				Session.set('BHSSuccessMessage', 'CodeRules Successfully Saved');
+                if (Session.get('currentCodingRulesid')) {
+                    Session.set('BHSSuccessMessage', 'Coding Rules Successfully updated');               
+                } else {
+                    Session.set('BHSSuccessMessage', 'Coding Rules Successfully Saved');
+                }                 
 				Meteor.setTimeout(function () {
 	                Session.set('BHSSuccessMessage', ''),$('#codingRulesCode').val(""),$('#codingRulesGuideline').val(""),
 	                $('#codingRulesDefinition').val(""), Session.set('currentCodingRulesid','');

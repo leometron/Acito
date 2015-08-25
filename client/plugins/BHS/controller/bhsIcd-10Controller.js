@@ -17,7 +17,7 @@ Template.BHSICD.events({
             Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');            
             $('#sectionName').val("");
             $('#sectionCode').val("");
-            $('#sectionName').attr('placeholder','Section Name');
+            $('#sectionName').attr('placeholder','Section');
         }
         Meteor.setTimeout(function () {
             Session.set('errorMessage',''),Session.set('BHSSuccessMessage','')
@@ -33,14 +33,18 @@ Template.BHSICD.events({
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
         $('#sectionName').val("");
-        $('#sectionName').attr('placeholder','Section Name');        
+        $('#sectionName').attr('placeholder','Section');
+        $('#sectionCode').val("");
+        $('#sectionCode').attr('placeholder','Code');                   
     },
     'click #cancelSection' : function () {
         $('#minimizeAddNewSection').hide();
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
         $('#sectionName').val("");
-        $('#sectionName').attr('placeholder','Section Name');             
+        $('#sectionName').attr('placeholder','Section');
+        $('#sectionCode').val("");
+        $('#sectionCode').attr('placeholder','Code');                     
     },
     'click #saveCurrentICDPost': function () {
     	var sectionName = $('#sectionList :selected').text();
