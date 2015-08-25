@@ -120,7 +120,7 @@ Template.BHSDSM.events({
                 Session.set('BHSSuccessMessage', ''),Session.set('currentDSMid',''),$('#sectionList').val("Select"),
                 $('#subSectionList').val("Select"),$('#DSMCode').val(""),$('#DSMDetail').val(""),
                 $('#DSMCode').attr("placeholder","DSMCode"),$('#DSMDetail').attr("placeholder","Detail")
-            }, 2000);            
+            }, 2600);            
         }
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')
