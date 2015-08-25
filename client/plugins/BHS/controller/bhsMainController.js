@@ -1,14 +1,28 @@
 Template.BHShome.rendered = function(){
-   $('body').addClass('splash_bg');
+   $('body').addClass('bgImage');
+}
+
+Template.BHSlist.rendered = function(){
+   $('body').removeClass('bgImage');
+   $('body').addClass('bgColor');
 }
 
 Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
-	'icdList' : function(){
-		return ICD.find();
-	}
+	'list' : function(){
+		if(Session.get('title') == "ICD-10-CM") {
+			return ICD.find();
+		} else if (Session.get('title') == "DSM-5-CM") {
+			return DSM.find();			
+		} else if (Session.get('title') == "Coding Rules") {
+			return codingRules.find();			
+		}
+	},
+	'BHSLogo' : function() {
+		return Media.findOne({caption:"LOGO"});
+	},
 })
 
 Template.BHShome.helpers({
@@ -32,7 +46,7 @@ Template.BHShome.events({
 });
 
 Template.BHSlist.events({
-	'click #backArrow': function(event, fview) {
+	'click .backArrow': function(event, fview) {
 		history.back();
   }
 });

@@ -30,8 +30,8 @@
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseDSMSectionName" style="margin-bottom:15px; margin-top: 30px;">
-                <div class="col-xs-2" ><input type="text" id="sectionCode" class="form-control font-size-14" placeholder="Code" style="width:110%"></div>
-               <div class="col-xs-6"><input type="text" id="DSMSectionName" class="form-control font-size-14" placeholder="Section"></div>
+                <div class="col-xs-2" ><input type="text" id="sectionCode" class="form-control font-size-14" placeholder="Code" style="width:125%"></div>
+               <div class="col-xs-6"><input type="text" id="DSMSectionName" class="form-control font-size-14" placeholder="Section "></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveDSMSection" >Save</button></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelDSMSection" >Cancel</button></div>				
 		</div>
@@ -52,10 +52,20 @@
                 {{else}}
 				    <option class="font-size-16px">Select</option>
                    	{{#each subSectionList}}
-                        {{#if equals subSectionCode "-" }}
-                            <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
-                        {{else}}    
-                            <option class="font-size-16px" value="{{_id}}">{{subSectionCode}}:{{subSectionName}}</option>
+                        {{#if subSectionSelectList}}
+                           {{#if equals sectionId subSectionSelectList}}
+                              {{#if equals subSectionCode "-" }}
+                                <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
+                               {{else}}    
+                             <option class="font-size-16px" value="{{_id}}">{{subSectionCode}}:{{subSectionName}}</option>
+                              {{/if}}
+                           {{/if}} 
+                          {{else}}
+                            {{#if equals subSectionCode "-" }}
+                             <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
+                             {{else}}    
+                              <option class="font-size-16px" value="{{_id}}">{{subSectionCode}}:{{subSectionName}}</option>
+                            {{/if}}
                         {{/if}}
                     {{/each}} 
                 {{/if}}
@@ -65,7 +75,7 @@
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseDSMSubSectionName" style="margin-bottom:15px; margin-top: 30px;">
-                <div class="col-xs-2" ><input type="text" id="subSectionCode" class="form-control font-size-14" placeholder="Code" style="width:110%"></div>
+                <div class="col-xs-2" ><input type="text" id="subSectionCode" class="form-control font-size-14" placeholder="Code" style="width:125%"></div>
                <div class="col-xs-6"><input type="text" id="DSMSubSectionName" class="form-control font-size-14" placeholder="Sub Section"></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="saveDSMSubSection" >Save</button></div>
 				<div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelDSMSubSection" >Cancel</button></div>
