@@ -1,5 +1,10 @@
 Template.BHShome.rendered = function(){
-   $('body').addClass('splash_bg');
+   $('body').addClass('bgImage');
+}
+
+Template.BHSlist.rendered = function(){
+   $('body').removeClass('bgImage');
+   $('body').addClass('bgColor');
 }
 
 Template.BHSlist.helpers({
@@ -22,7 +27,7 @@ Template.BHSlist.helpers({
 
 Template.BHShome.helpers({
 	'bhsCode':function(){
-		return Pages.find();
+		return Pages.find({status: "Published"});
 	},
 	'logo' : function() {
 		return Media.findOne({caption:"LOGO"});
@@ -41,7 +46,7 @@ Template.BHShome.events({
 });
 
 Template.BHSlist.events({
-	'click #backArrow': function(event, fview) {
+	'click .backArrow': function(event, fview) {
 		history.back();
   }
 });
