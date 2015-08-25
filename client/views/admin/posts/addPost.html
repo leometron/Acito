@@ -110,6 +110,7 @@
                             <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
                             {{#each pageList}}
                                 {{#if equals showSelectedPost.pageId _id}}
+                                <option>none</option>
                                 {{else}}
                                 <option value="{{_id}}">{{title}}</option>
                                 {{/if}}                        
