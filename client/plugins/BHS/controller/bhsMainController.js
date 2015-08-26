@@ -23,7 +23,7 @@ Template.BHSlist.helpers({
 	},
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
-		var type = (Session.get('title') == "ICD-10-CM")  ? "ICD" : "DSM";
+		var type = (Session.get('title') == "ICD-10 codes") ? "ICD" : "DSM";
 		var data = section.find({'type':type}).fetch();
 		if(data.length>0){
 			$.each(data, function(i,row) {
@@ -37,17 +37,17 @@ Template.BHSlist.helpers({
 	},
 
 	'listIcd' : function(){
-		if(Session.get('title') == "ICD-10-CM") {
+		if(Session.get('title') == "ICD-10 codes") {
 			return ICD.find();
 		}
 	},
 	'listDSM' : function(){
-		if(Session.get('title') == "DSM-5-CM") {
+		if(Session.get('title') == "DSM-5 codes") {
 			return DSM.find();
 		}
 	},
 	'listCodingRule' : function(){
-		if(Session.get('title') == "Coding Rules") {
+		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
 			return codingRules.find();
 		}
 	},
@@ -83,7 +83,7 @@ Template.BHShome.events({
 		Session.set('title',title);
 	   	Meteor.call('showSearchSection','');
     	Router.go('list');
-		Meteor._reload.reload();        
+		//Meteor._reload.reload();        
 
   	}
 });
@@ -112,7 +112,7 @@ Template.BHSlist.events({
   	},
   	'keydown #searchString' : function(e){
   		if (e.which == 13) {
-			if(Session.get('title') == "Coding Rules") {
+			if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
 				Meteor.call('searchCodingRules',$('#searchString').val());
 			} else {
   				Meteor.call('showSearchSection',$('#searchString').val());			
