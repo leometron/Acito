@@ -83,7 +83,7 @@ Template.BHShome.events({
 		Session.set('title',title);
 	   	Meteor.call('showSearchSection','');
     	Router.go('list');
-		Meteor._reload.reload();        
+		//Meteor._reload.reload();        
 
   	}
 });

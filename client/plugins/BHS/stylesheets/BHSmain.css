@@ -55,6 +55,7 @@
   	background: -moz-linear-gradient(#0b63a6, #0145f5);
   	background: linear-gradient(#0b63a6, #0145f5);
   	color:#FFFFFF;
+  	height:45px;
 }
 
 .bhs .leftColmn{
@@ -139,6 +140,15 @@
 	color:#3C97CE;
 	vertical-align:middle;
 }
+
+.listContainer ::-webkit-scrollbar { 
+    display: none; 
+}
+
+.alphabetical ::-webkit-scrollbar { 
+    display: none; 
+}
+
 
 .bhs .list_item_middle{
 	display:table-cell;
