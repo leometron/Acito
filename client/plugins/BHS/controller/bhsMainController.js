@@ -4,11 +4,14 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
-	var height = window.innerHeight-112;
    $('body').removeClass('bgImage');
    $('body').addClass('bgColor');
-   $('.listContainer, .alphabetical').css('height', height);
-   $('.alphabetical').css('height', height+65);
+   setListHeight();
+}
+
+function setListHeight(){
+	$('.listContainer, .alphabetical').css('height', window.innerHeight-111);
+   $('.alphabetical').css('height', window.innerHeight-45);
 }
 
 Template.BHSlist.helpers({
@@ -83,8 +86,6 @@ Template.BHShome.events({
 		Session.set('title',title);
 	   	Meteor.call('showSearchSection','');
     	Router.go('list');
-		//Meteor._reload.reload();        
-
   	}
 });
 
@@ -99,16 +100,16 @@ Template.BHSlist.events({
 		$('#'+id).css('color','#0758C3');
 		Meteor.setTimeout(function(){
 			if(id!=prevId){
-				$(".list_heading_right").each(function() {
+				$(".listItem").each(function() {
 					var text = $(this).text().charAt(0);
 		 			if(id==text && !isAvailable){
 		 				prevId = id;
 		 				isAvailable = true;
-		 				$('.listContainer').scrollTop($(this).position().top - 112);	
+		 				$('.listContainer').animate({scrollTop:$(this).offset().top - 111}, 'slow');	
 		 			}
 		 		});
 			}
-		},100)	;
+		},100);
   	},
   	'keydown #searchString' : function(e){
   		if (e.which == 13) {
@@ -120,4 +121,8 @@ Template.BHSlist.events({
 			Meteor._reload.reload();        
   		}
   	}  
+});
+
+$(window).resize(function(evt) {
+   setListHeight();
 });

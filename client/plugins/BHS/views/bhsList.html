@@ -21,13 +21,13 @@
 		{{#each sectionListICD}}
 			{{#if equals sectionCode "-"}}
 				<div class="list_heading_div">
-					<div class="list_heading_left_coding">{{sectionName}}</div>
+					<div class="listItem">{{sectionName}}</div>
 				</div>
 			{{else}}
 				<div class="list_heading_div">
 					<div class="list_heading_left">{{sectionCode}}</div>
 					<div class="list_heading_middle">:</div>
-					<div class="list_heading_right">{{sectionName}}</div>
+					<div class="list_heading_right listItem">{{sectionName}}</div>
 				</div>
 			{{/if}}
 				{{#each listIcd}}
@@ -49,13 +49,13 @@
 			{{#each sectionListDSM}}
 				{{#if equals sectionCode "-"}}
 					<div class="list_heading_main_div">
-						<div class="list_heading_right">{{sectionName}}</div>
+						<div class="list_heading_right listItem">{{sectionName}}</div>
 					</div>
 				{{else}}
 					<div class="list_heading_main_div">
 						<div class="list_heading_left">{{sectionCode}}</div>
 						<div class="list_heading_middle">:</div>
-						<div class="list_heading_right">{{sectionName}}</div>
+						<div class="list_heading_right listItem">{{sectionName}}</div>
 					</div>
 				{{/if}}
 					{{#each subSectionList}}
@@ -83,7 +83,7 @@
 		{{#if listCodingRule}}
 		{{#each listCodingRule}}
 		<div class="list_heading_div">
-			<div class="list_heading_left_coding">{{guideline}}</div>
+			<div class="list_heading_left_coding listItem">{{guideline}}</div>
 		</div>
 		<div class="list_item_div">
 			<div class="list_item_right">
@@ -96,7 +96,7 @@
 		</div>
 		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
 			{{#each icdSectionAlphabet}}
-             <div class="alphabet" id="{{this}}" style="padding:5px;">{{this}}</div>  
+             <div class="alphabet" id="{{this}}" style="padding:5px 0;">{{this}}</div>  
             {{/each}}
 		</div>
 	</div>
