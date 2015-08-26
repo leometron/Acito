@@ -4,11 +4,14 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
-	var height = window.innerHeight-112;
    $('body').removeClass('bgImage');
    $('body').addClass('bgColor');
-   $('.listContainer, .alphabetical').css('height', height);
-   $('.alphabetical').css('height', height+65);
+   setListHeight();
+}
+
+function setListHeight(){
+	$('.listContainer, .alphabetical').css('height', window.innerHeight-111);
+   $('.alphabetical').css('height', window.innerHeight-45);
 }
 
 Template.BHSlist.helpers({
@@ -23,16 +26,29 @@ Template.BHSlist.helpers({
 	},
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
+		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+			var data = codingRules.find().fetch();
+			if(data.length>0){
+				$.each(data, function(i,row) {
+	    			var x = row.guideline.charAt(0).toUpperCase();
+				    if ($.inArray(x, alphabetArray) === -1) {
+				        alphabetArray.push(x);
+				    }
+				});
+			}
+		}else{
 		var type = (Session.get('title') == "ICD-10 codes") ? "ICD" : "DSM";
 		var data = section.find({'type':type}).fetch();
-		if(data.length>0){
-			$.each(data, function(i,row) {
-    			var x = row.sectionName.charAt(0).toUpperCase();
-			    if ($.inArray(x, alphabetArray) === -1) {
-			        alphabetArray.push(x);
-			    }
-			});
+			if(data.length>0){
+				$.each(data, function(i,row) {
+	    			var x = row.sectionName.charAt(0).toUpperCase();
+				    if ($.inArray(x, alphabetArray) === -1) {
+				        alphabetArray.push(x);
+				    }
+				});
+			}
 		}
+
 		return alphabetArray.sort();
 	},
 
@@ -49,10 +65,10 @@ Template.BHSlist.helpers({
 	'listCodingRule' : function(){
 		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
 		if (Session.get('searchString')) {
-			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')});
+			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
 			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
 		} else {
-			return codingRules.find();
+			return codingRules.find({},{ sort: { guideline: 1 } });
 		}			
 		}
 	},
@@ -99,8 +115,6 @@ Template.BHShome.events({
 		Session.set('title',title);
 		Session.set('searchString', '');
     	Router.go('list');
-		//Meteor._reload.reload();        
-
   	}
 });
 
@@ -115,12 +129,12 @@ Template.BHSlist.events({
 		$('#'+id).css('color','#0758C3');
 		Meteor.setTimeout(function(){
 			if(id!=prevId){
-				$(".list_heading_right").each(function() {
+				$(".listItem").each(function() {
 					var text = $(this).text().charAt(0);
 		 			if(id==text && !isAvailable){
 		 				prevId = id;
 		 				isAvailable = true;
-		 				$('.listContainer').scrollTop($(this).position().top - 112);	
+		 				$('.listContainer').animate({scrollTop:$(this).offset().top - 111}, 'slow');	
 		 			}
 		 		});
 			}
@@ -143,4 +157,8 @@ Template.BHSlist.events({
 			Session.set('searchString',$('#searchString').val());
   		// }
   	}  
+});
+
+$(window).resize(function(evt) {
+   setListHeight();
 });
