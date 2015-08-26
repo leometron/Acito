@@ -77,8 +77,7 @@ Template.BHSlist.helpers({
 		return Media.findOne({name:"BHSlogo"});
 	},
 	'searchDataEmpty' : function() {
-		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString')), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
-		// console.log('count.....'+count);
+		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
 	}
 })
 
