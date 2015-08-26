@@ -48,14 +48,29 @@ Template.BHSlist.helpers({
 	},
 	'listCodingRule' : function(){
 		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+		if (Session.get('searchString')) {
+			return codingRules.find({ guideline : new RegExp(Session.get('searchString'))});
+			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
+		} else {
 			return codingRules.find();
+		}			
 		}
 	},
 	'sectionListICD' : function() {
-		return section.find({type:"ICD"});
+		if (Session.get('searchString')) {
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString')), type:"ICD"} ] })
+			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
+		} else {
+			return section.find({type:"ICD"});
+		}
 	},
 	'sectionListDSM' : function() {
-		return section.find({type:"DSM"});
+		if (Session.get('searchString')) {
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ] })			
+			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"DSM"});        
+		} else {
+			return section.find({type:"DSM"});
+		}		
 	},
 	'subSectionList' : function() {
 		return subSection.find();
@@ -81,7 +96,7 @@ Template.BHShome.events({
 	'click .button': function(event, fview) {
 		var title = event.currentTarget.id;
 		Session.set('title',title);
-	   	Meteor.call('showSearchSection','');
+		Session.set('searchString', '');
     	Router.go('list');
 		//Meteor._reload.reload();        
 
@@ -108,16 +123,17 @@ Template.BHSlist.events({
 		 			}
 		 		});
 			}
-		},100)	;
+		},100);
   	},
   	'keydown #searchString' : function(e){
   		if (e.which == 13) {
-			if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
-				Meteor.call('searchCodingRules',$('#searchString').val());
-			} else {
-  				Meteor.call('showSearchSection',$('#searchString').val());			
-			}  			
-			Meteor._reload.reload();        
+			// if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+			// 	Meteor.call('searchCodingRules',$('#searchString').val());
+			// } else {
+  	// 			Meteor.call('showSearchSection',$('#searchString').val());			
+			// }  			
+			// Meteor._reload.reload();   
+			Session.set('searchString',$('#searchString').val());
   		}
   	}  
 });

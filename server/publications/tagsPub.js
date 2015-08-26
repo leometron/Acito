@@ -3,7 +3,7 @@ Meteor.publish('tags', function () {
     if (querystr) {
         var temp = querystr;
         querystr = "";
-        return tags.find({$text: {$search: temp}});
+        // return tags.find({$text: {$search: temp}});
     } else {
         return tags.find();
     }
@@ -14,6 +14,9 @@ Meteor.methods({
     'addNewTag': function (title, content) {
         tags.insert({name: title, description: content});
         console.log('tag ' + title + ' added successfully');
+        if (tags.find().count() == 1) {
+            tags._ensureIndex({name: "text"});
+        }        
     },
     'removeTag': function (id) {
         tags.remove({_id: id});

@@ -1,13 +1,13 @@
-var searchString = "";
+// var searchString = "";
 Meteor.publish('codingRules', function () {
-    var temp;
-    if (searchString) { 
-        temp = searchString;
-        searchString = "";
-        return codingRules.find({$text: { $search: temp } });
-    } else {
+    // var temp;
+    // if (searchString) { 
+    //     temp = searchString;
+    //     searchString = "";
+    //     return codingRules.find({$text: { $search: temp } });
+    // } else {
         return codingRules.find();
-    }
+    // }
 });
 
 
@@ -22,6 +22,9 @@ Meteor.methods({
 	            definition: definition
 	        });
     	}
+        // if (codingRules.find().count() == 1) {
+        //     codingRules._ensureIndex({guideline: "text"});
+        // }        
     },
     'removeSelectCodingRules' : function(selectedFileAll, bulkAction) {
         if (bulkAction == "Delete Permanently") {
@@ -32,7 +35,7 @@ Meteor.methods({
             }
         }
     },
-    'searchCodingRules' : function(searchStr) {
-        searchString = searchStr;
-    }
+    // 'searchCodingRules' : function(searchStr) {
+    //     searchString = searchStr;
+    // }
 });
