@@ -15,7 +15,7 @@ Meteor.publish('Posts', function () {
     } else if (querystr) {
         temp = querystr;
         querystr = "";        
-       return Posts.find({ createdBy: loginUserId, $text: { $search: temp } });
+       // return Posts.find({ createdBy: loginUserId, $text: { $search: temp } });
     } else if(categorystr) {
         temp = categorystr;
         categorystr = "";
@@ -61,6 +61,9 @@ Meteor.methods({
             currentPostId = id;
         });
         console.log('successfully saved the post...' + title);
+        if (Posts.find().count() == 1) {
+            Posts._ensureIndex({title: "text"});
+        }        
     },
     'publishPostData': function (id, title, content, tags, currentDate, pageid, pagename, image) {
         currentPostId = id;

@@ -10,7 +10,7 @@ Meteor.publish('homeslider', function () {
   	if(searchstr) {
   		temp = searchstr;
   		searchstr = "";
-  		return homeslider.find({ createdBy: currentUserId, $text: { $search: temp }});
+  		// return homeslider.find({ createdBy: currentUserId, $text: { $search: temp }});
   	} else if(datestr) {
   		temp = datestr;
   		datestr = "";
@@ -45,6 +45,9 @@ Meteor.methods({
             status: "Draft",
             createdBy: Meteor.userId()
         });
+        if (homeslider.find().count() == 1) {
+          homeslider._ensureIndex({title: "text"});
+        }        
     },
     'publishSliderData': function (title, imgname, imgfile, date) {
         homeslider.insert({

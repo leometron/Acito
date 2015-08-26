@@ -6,14 +6,14 @@
 
  */
 Meteor.startup(function () {
-    Posts._ensureIndex({title: "text"});
-    tags._ensureIndex({name: "text"});
-    Pages._ensureIndex({title: "text"});
-    Media._ensureIndex({name: "text"});
-    homeslider._ensureIndex({title: "text"});
+    // Posts._ensureIndex({title: "text"});
+    // tags._ensureIndex({name: "text"});
+    // Pages._ensureIndex({title: "text"});
+    // Media._ensureIndex({name: "text"});
+    // homeslider._ensureIndex({title: "text"});
 
-    section._ensureIndex({sectionName: "text",sectionCode: "text"});
-    codingRules._ensureIndex({guideline: "text"});
+    // section._ensureIndex({sectionName: "text",sectionCode: "text"});
+    // codingRules._ensureIndex({guideline: "text"});
 
 
     Meteor.publish('plugin', function () {
