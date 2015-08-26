@@ -20,7 +20,7 @@
 		{{#if listIcd}}
 		{{#each sectionListICD}}
 			{{#if equals sectionCode "-"}}
-				<div class="list_heading_div">
+				<div class="list_heading_div" style="padding-left:1.8%">
 					<div class="list_heading_left_coding">{{sectionName}}</div>
 				</div>
 			{{else}}
@@ -48,7 +48,7 @@
 		{{#if listDSM}}
 			{{#each sectionListDSM}}
 				{{#if equals sectionCode "-"}}
-					<div class="list_heading_main_div">
+					<div class="list_heading_main_div" style="padding-left:1.8%">
 						<div class="list_heading_right">{{sectionName}}</div>
 					</div>
 				{{else}}
@@ -82,7 +82,7 @@
 		
 		{{#if listCodingRule}}
 		{{#each listCodingRule}}
-		<div class="list_heading_div">
+		<div class="list_heading_div" style="padding-left:1.8%">
 			<div class="list_heading_left_coding">{{guideline}}</div>
 		</div>
 		<div class="list_item_div">

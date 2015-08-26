@@ -48,14 +48,14 @@ Template.BHSlist.helpers({
 	},
 	'listCodingRule' : function(){
 		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
-			return codingRules.find();
+			return codingRules.find({},{ sort: { guideline: 1 } });
 		}
 	},
 	'sectionListICD' : function() {
-		return section.find({type:"ICD"},{sort: {sectionName: 1} });
+		return section.find({type:"ICD"},{ sort: { sectionName: 1 } });
 	},
 	'sectionListDSM' : function() {
-		return section.find({type:"DSM"},{sort: {sectionName: 1} });
+		return section.find({type:"DSM"},{ sort: { sectionName: 1 } });
 	},
 	'subSectionList' : function() {
 		return subSection.find();
