@@ -26,16 +26,29 @@ Template.BHSlist.helpers({
 	},
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
+		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+			var data = codingRules.find().fetch();
+			if(data.length>0){
+				$.each(data, function(i,row) {
+	    			var x = row.guideline.charAt(0).toUpperCase();
+				    if ($.inArray(x, alphabetArray) === -1) {
+				        alphabetArray.push(x);
+				    }
+				});
+			}
+		}else{
 		var type = (Session.get('title') == "ICD-10 codes") ? "ICD" : "DSM";
 		var data = section.find({'type':type}).fetch();
-		if(data.length>0){
-			$.each(data, function(i,row) {
-    			var x = row.sectionName.charAt(0).toUpperCase();
-			    if ($.inArray(x, alphabetArray) === -1) {
-			        alphabetArray.push(x);
-			    }
-			});
+			if(data.length>0){
+				$.each(data, function(i,row) {
+	    			var x = row.sectionName.charAt(0).toUpperCase();
+				    if ($.inArray(x, alphabetArray) === -1) {
+				        alphabetArray.push(x);
+				    }
+				});
+			}
 		}
+
 		return alphabetArray.sort();
 	},
 
