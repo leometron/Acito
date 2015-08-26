@@ -4,11 +4,14 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
-	var height = window.innerHeight-112;
    $('body').removeClass('bgImage');
    $('body').addClass('bgColor');
-   $('.listContainer, .alphabetical').css('height', height);
-   $('.alphabetical').css('height', height+65);
+   setListHeight();
+}
+
+function setListHeight(){
+	$('.listContainer, .alphabetical').css('height', window.innerHeight-111);
+   $('.alphabetical').css('height', window.innerHeight-45);
 }
 
 Template.BHSlist.helpers({
@@ -48,14 +51,27 @@ Template.BHSlist.helpers({
 	},
 	'listCodingRule' : function(){
 		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+		if (Session.get('searchString')) {
+			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
+			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
+		} else {
 			return codingRules.find({},{ sort: { guideline: 1 } });
+		}			
 		}
 	},
 	'sectionListICD' : function() {
-		return section.find({type:"ICD"},{ sort: { sectionName: 1 } });
+		if (Session.get('searchString')) {
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}})
+		} else {
+			return section.find({type:"ICD"},{sort: {sectionName: 1}});
+		}
 	},
 	'sectionListDSM' : function() {
-		return section.find({type:"DSM"},{ sort: { sectionName: 1 } });
+		if (Session.get('searchString')) {
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
+		} else {
+			return section.find({type:"DSM"},{sort: {sectionName: 1}});
+		}		
 	},
 	'subSectionList' : function() {
 		return subSection.find();
@@ -63,6 +79,10 @@ Template.BHSlist.helpers({
 	'BHSLogo' : function() {
 		return Media.findOne({name:"BHSlogo"});
 	},
+	'searchDataEmpty' : function() {
+		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString')), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
+		// console.log('count.....'+count);
+	}
 })
 
 Template.BHShome.helpers({
@@ -81,10 +101,8 @@ Template.BHShome.events({
 	'click .button': function(event, fview) {
 		var title = event.currentTarget.id;
 		Session.set('title',title);
-	   	Meteor.call('showSearchSection','');
+		Session.set('searchString', '');
     	Router.go('list');
-		//Meteor._reload.reload();        
-
   	}
 });
 
@@ -99,25 +117,36 @@ Template.BHSlist.events({
 		$('#'+id).css('color','#0758C3');
 		Meteor.setTimeout(function(){
 			if(id!=prevId){
-				$(".list_heading_right").each(function() {
+				$(".listItem").each(function() {
 					var text = $(this).text().charAt(0);
 		 			if(id==text && !isAvailable){
 		 				prevId = id;
 		 				isAvailable = true;
-		 				$('.listContainer').scrollTop($(this).position().top - 112);	
+		 				$('.listContainer').animate({scrollTop:$(this).offset().top - 111}, 'slow');	
 		 			}
 		 		});
 			}
-		},100)	;
+		},100);
   	},
-  	'keydown #searchString' : function(e){
-  		if (e.which == 13) {
-			if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
-				Meteor.call('searchCodingRules',$('#searchString').val());
-			} else {
-  				Meteor.call('showSearchSection',$('#searchString').val());			
-			}  			
-			Meteor._reload.reload();        
-  		}
+  	'keyup #searchString' : function(e){
+  		// var searchString = $('#searchString').val();
+  		// Meteor.setTimeout(function(){
+  			// alert('searchString...'+searchString)
+  		// }
+  		// 	,1000);
+  		
+  		// if (e.which == 13) {
+			// if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+			// 	Meteor.call('searchCodingRules',$('#searchString').val());
+			// } else {
+  	// 			Meteor.call('showSearchSection',$('#searchString').val());			
+			// }  			
+			// Meteor._reload.reload();   
+			Session.set('searchString',$('#searchString').val());
+  		// }
   	}  
+});
+
+$(window).resize(function(evt) {
+   setListHeight();
 });

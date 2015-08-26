@@ -1,3 +1,6 @@
+*{
+	font-family: Arial;
+}
 
 .bgImage{
 	background-image: url('/images/background.jpg');
@@ -169,11 +172,11 @@
 	font-weight: bold;
 	background: #f7f7f7;
 	height: 100%;
-   position: fixed;
-   right: 0;
-   padding-top: 25px;
-   overflow-y: scroll; 
-   padding-bottom: 25px;  
+    position: absolute;
+    right: 0;
+    padding-top: 25px;
+    overflow:auto; 
+    padding-bottom: 25px;  
 }
 
 .bhs .main_post{
@@ -183,7 +186,7 @@
 }
 
 .bhs .listContainer{
-	overflow-y : scroll;
+	overflow-y : auto;
 }
 
 .margin-top-4pt {
@@ -258,3 +261,13 @@
  width:100%;
 }
 
+.search-empty {
+    bottom: 0;
+    font-size: 20px;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 50%;
+}

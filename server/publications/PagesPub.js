@@ -19,7 +19,7 @@ Meteor.publish('Pages', function () {
     } else if (searchtext) {
         temp = searchtext;
         searchtext = "";
-        return Pages.find({createdBy: currentUserId, $text: {$search: temp}});
+        // return Pages.find({createdBy: currentUserId, $text: {$search: temp}});
     } else if (datetext) {
         temp = datetext;
         datetext = "";
@@ -55,6 +55,9 @@ Meteor.methods({
             status: "Published",
             parentId: parent
         });
+        if (Pages.find().count() == 1) {
+            Pages._ensureIndex({title: "text"});
+        }        
     },
 
     'draftPagesData': function (title, content, date, parent) {
