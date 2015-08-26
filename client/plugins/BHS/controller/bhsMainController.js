@@ -23,7 +23,8 @@ Template.BHSlist.helpers({
 	},
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
-		var data = section.find({'type':'ICD'}).fetch();
+		var type = (Session.get('title') == "ICD-10-CM")  ? "ICD" : "DSM";
+		var data = section.find({'type':type}).fetch();
 		if(data.length>0){
 			$.each(data, function(i,row) {
     			var x = row.sectionName.charAt(0).toUpperCase();
@@ -51,10 +52,10 @@ Template.BHSlist.helpers({
 		}
 	},
 	'sectionListICD' : function() {
-		return section.find({type:"ICD"});
+		return section.find({type:"ICD"},{sort: {sectionName: 1} });
 	},
 	'sectionListDSM' : function() {
-		return section.find({type:"DSM"});
+		return section.find({type:"DSM"},{sort: {sectionName: 1} });
 	},
 	'subSectionList' : function() {
 		return subSection.find();
@@ -103,7 +104,7 @@ Template.BHSlist.events({
 		 			if(id==text && !isAvailable){
 		 				prevId = id;
 		 				isAvailable = true;
-		 				$('.listContainer').scrollTop($(this).offset().top - 112);	
+		 				$('.listContainer').scrollTop($(this).position().top - 112);	
 		 			}
 		 		});
 			}

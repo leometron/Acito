@@ -15,7 +15,7 @@ Template.BHSICD.events({
             var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
             var secName = $('#sectionName').val();
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
-            Meteor.call('insertSection', capitalizedSection,sectionCode,"ICD");
+            Meteor.call('insertSection', capitalizedSection,sectionCode.charAt(0).toUpperCase(),"ICD");
             Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');            
             $('#sectionName').val("");
             $('#sectionCode').val("");
