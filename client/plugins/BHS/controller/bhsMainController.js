@@ -49,7 +49,7 @@ Template.BHSlist.helpers({
 	'listCodingRule' : function(){
 		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
 		if (Session.get('searchString')) {
-			return codingRules.find({ guideline : new RegExp(Session.get('searchString'))});
+			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')});
 			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
 		} else {
 			return codingRules.find();
@@ -58,16 +58,14 @@ Template.BHSlist.helpers({
 	},
 	'sectionListICD' : function() {
 		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString')), type:"ICD"} ] },{sort: {sectionName: 1}})
-			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}})
 		} else {
 			return section.find({type:"ICD"},{sort: {sectionName: 1}});
 		}
 	},
 	'sectionListDSM' : function() {
 		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ] },{sort: {sectionName: 1}})			
-			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"DSM"});        
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
 		} else {
 			return section.find({type:"DSM"},{sort: {sectionName: 1}});
 		}		
@@ -78,6 +76,10 @@ Template.BHSlist.helpers({
 	'BHSLogo' : function() {
 		return Media.findOne({name:"BHSlogo"});
 	},
+	'searchDataEmpty' : function() {
+		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString')), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
+		// console.log('count.....'+count);
+	}
 })
 
 Template.BHShome.helpers({
@@ -125,8 +127,14 @@ Template.BHSlist.events({
 			}
 		},100);
   	},
-  	'keydown #searchString' : function(e){
-  		if (e.which == 13) {
+  	'keyup #searchString' : function(e){
+  		// var searchString = $('#searchString').val();
+  		// Meteor.setTimeout(function(){
+  			// alert('searchString...'+searchString)
+  		// }
+  		// 	,1000);
+  		
+  		// if (e.which == 13) {
 			// if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
 			// 	Meteor.call('searchCodingRules',$('#searchString').val());
 			// } else {
@@ -134,6 +142,6 @@ Template.BHSlist.events({
 			// }  			
 			// Meteor._reload.reload();   
 			Session.set('searchString',$('#searchString').val());
-  		}
+  		// }
   	}  
 });

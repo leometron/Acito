@@ -258,3 +258,13 @@
  width:100%;
 }
 
+.search-empty {
+    bottom: 0;
+    font-size: 20px;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 50%;
+}
