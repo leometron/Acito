@@ -58,18 +58,18 @@ Template.BHSlist.helpers({
 	},
 	'sectionListICD' : function() {
 		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString')), type:"ICD"} ] })
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString')), type:"ICD"} ] },{sort: {sectionName: 1}})
 			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
 		} else {
-			return section.find({type:"ICD"});
+			return section.find({type:"ICD"},{sort: {sectionName: 1}});
 		}
 	},
 	'sectionListDSM' : function() {
 		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ] })			
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ] },{sort: {sectionName: 1}})			
 			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"DSM"});        
 		} else {
-			return section.find({type:"DSM"});
+			return section.find({type:"DSM"},{sort: {sectionName: 1}});
 		}		
 	},
 	'subSectionList' : function() {
@@ -119,7 +119,7 @@ Template.BHSlist.events({
 		 			if(id==text && !isAvailable){
 		 				prevId = id;
 		 				isAvailable = true;
-		 				$('.listContainer').scrollTop($(this).offset().top - 112);	
+		 				$('.listContainer').scrollTop($(this).position().top - 112);	
 		 			}
 		 		});
 			}
