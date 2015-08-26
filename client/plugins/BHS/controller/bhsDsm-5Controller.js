@@ -60,9 +60,10 @@ Template.BHSDSM.events({
             $('#chooseDSMSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
+            var capitalizedSectionCode = sectionCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
             var secName = $('#DSMSectionName').val();
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
-            Meteor.call('insertSection', capitalizedSection, sectionCode, "DSM");
+            Meteor.call('insertSection', capitalizedSection, capitalizedSectionCode, "DSM");
             $('#DSMSectionName').val("");
             $('#sectionCode').val("");
             $('#DSMSectionName').attr('placeholder','Section');
@@ -85,9 +86,10 @@ Template.BHSDSM.events({
             $('#chooseDSMSubSectionName').fadeOut(500);            
             Session.set('errorMessage', '');
             var subSectionCode = (!$('#subSectionCode').val() ) ? "-" : $('#subSectionCode').val();
+            var capitalizedSectionCode = subSectionCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
             var subSecName = $('#DSMSubSectionName').val();
             var capitalizedSection = subSecName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });            
-            Meteor.call('insertSubSection', sectionId, sectionName, capitalizedSection, subSectionCode);
+            Meteor.call('insertSubSection', sectionId, sectionName, capitalizedSection, capitalizedSectionCode);
             $('#DSMSubSectionName').val("");
             $('#subSectionCode').val("");
             $('#DSMSubSectionName').attr('placeholder','Sub Section');
@@ -102,7 +104,9 @@ Template.BHSDSM.events({
         var subSectionName = $('#subSectionList :selected').text();
         var subSectionId = $('#subSectionList').val();        
         var dsmCode = $('#DSMCode').val();
+        var capitalizedDsmCode = dsmCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
         var dsmDetail = $('#DSMDetail').val();
+        var capitalizedDsmDetail = dsmDetail.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
 
         if (sectionName == "Select") {
             Session.set('errorMessage','Please select section');
@@ -114,7 +118,7 @@ Template.BHSDSM.events({
             Session.set('errorMessage','DSM Detail is Required');
         } else {
             $('#cancelCurrentDSMPost').hide();            
-            Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,dsmCode,dsmDetail,Session.get('currentDSMid'));
+            Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,capitalizedDsmCode,capitalizedDsmDetail,Session.get('currentDSMid'));
             if (Session.get('currentDSMid')) {
                 Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully updated');               
             } else {
