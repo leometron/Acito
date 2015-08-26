@@ -10,18 +10,19 @@ Template.adminHeader.helpers({
                 'title': 'posts',
                 'maintitle': 'Posts',
                 'icon': 'fa-thumb-tack',
-                'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}, {
-                    'sTitle': 'tags',
-                    'title': 'posts',
-                    'name': 'Tags'
-                }, {'sTitle': 'image', 'title': 'posts', 'name': 'FeaturedImage'}]
+                'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}]                
+                // 'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}, {
+                //     'sTitle': 'tags',
+                //     'title': 'posts',
+                //     'name': 'Tags'
+                // }, {'sTitle': 'image', 'title': 'posts', 'name': 'FeaturedImage'}]
             },
-            {
-                'title': 'homeSliders',
-                'maintitle': 'HomeSliders',
-                'icon': 'fa-bars',
-                'subtitle': [{'sTitle': 'add', 'title': 'HomeSliders', 'name': 'AddNew'}]
-            },
+            // {
+            //     'title': 'homeSliders',
+            //     'maintitle': 'HomeSliders',
+            //     'icon': 'fa-bars',
+            //     'subtitle': [{'sTitle': 'add', 'title': 'HomeSliders', 'name': 'AddNew'}]
+            // },
             {
                 'title': 'media',
                 'maintitle': 'Media',
@@ -34,7 +35,7 @@ Template.adminHeader.helpers({
                 'icon': 'fa-file',
                 'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
             },
-            {'title': 'settings', 'maintitle': 'Settings', 'icon': 'fa-cog'},
+            // {'title': 'settings', 'maintitle': 'Settings', 'icon': 'fa-cog'},
             {'title': 'themes', 'maintitle': 'Themes', 'icon': 'fa-paint-brush'},
         ]
     },
