@@ -26,7 +26,7 @@ Template.BHSlist.helpers({
 	},
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
-		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+		if(Session.get('title') == "Coding Rules") {
 			var data = codingRules.find().fetch();
 			if(data.length>0){
 				$.each(data, function(i,row) {
@@ -63,7 +63,7 @@ Template.BHSlist.helpers({
 		}
 	},
 	'listCodingRule' : function(){
-		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+		if(Session.get('title') == "Coding Rules") {
 		if (Session.get('searchString')) {
 			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
 			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
@@ -93,8 +93,7 @@ Template.BHSlist.helpers({
 		return Media.findOne({name:"BHSlogo"});
 	},
 	'searchDataEmpty' : function() {
-		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString')), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString')), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
-		// console.log('count.....'+count);
+		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
 	}
 })
 
@@ -149,7 +148,7 @@ Template.BHSlist.events({
   		// 	,1000);
   		
   		// if (e.which == 13) {
-			// if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+			// if(Session.get('title') == "Coding Rules") {
 			// 	Meteor.call('searchCodingRules',$('#searchString').val());
 			// } else {
   	// 			Meteor.call('showSearchSection',$('#searchString').val());			
