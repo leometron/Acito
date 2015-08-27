@@ -212,3 +212,21 @@
  width:100%;
 }
 
+.char{
+	text-align: center; 
+	font-size: 16px;
+	font-weight: bold;
+	background: #f7f7f7;
+	height: 100%;
+    position: fixed;
+    right: 0;
+    padding-top: 25px;
+    overflow: scroll; 
+    padding-bottom: 25px;  
+}
+
+.main-post{
+	background-color: white;
+	 padding-left:0; 
+	 padding-right:0
+}
