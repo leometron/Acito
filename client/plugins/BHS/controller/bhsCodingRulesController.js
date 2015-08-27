@@ -10,17 +10,17 @@ Template.BHSCodingRules.events({
 		var definition = $('#codingRulesDefinition').val();
         var capitalizedDefinition = definition.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
 			if(!code) {
-				Session.set('errorMessage','Code Reference is Required');
+				Session.set('errorMessage','Code Reference is required');
 			} else if(!guideline) {
-				Session.set('errorMessage','Coding and Documentation Guideline is Required');
+				Session.set('errorMessage','Coding and Documentation Guideline is required');
 			} else if (!definition) {
-				Session.set('errorMessage','Coding and Guideline Definition is Required');
+				Session.set('errorMessage','Coding and Guideline Definition is required');
 			} else {
 				Meteor.call('insertCodingRules', code, capitalizedGuideline, capitalizedDefinition, Session.get('currentCodingRulesid'));
                 if (Session.get('currentCodingRulesid')) {
-                    Session.set('BHSSuccessMessage', 'Coding Rules Successfully updated');               
+                    Session.set('BHSSuccessMessage', 'Coding Rules successfully updated');               
                 } else {
-                    Session.set('BHSSuccessMessage', 'Coding Rules Successfully Saved');
+                    Session.set('BHSSuccessMessage', 'Coding Rules successfully Saved');
                 }                 
 				Meteor.setTimeout(function () {
 	                Session.set('BHSSuccessMessage', ''),$('#codingRulesCode').val(""),$('#codingRulesGuideline').val(""),

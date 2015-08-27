@@ -66,7 +66,6 @@ Template.BHSlist.helpers({
 		if(Session.get('title') == "Coding Rules") {
 		if (Session.get('searchString')) {
 			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
-			// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
 		} else {
 			return codingRules.find({},{ sort: { guideline: 1 } });
 		}			
@@ -93,7 +92,13 @@ Template.BHSlist.helpers({
 		return Media.findOne({name:"BHSlogo"});
 	},
 	'searchDataEmpty' : function() {
-		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
+		if(Session.get('title') == "Coding Rules") {
+			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')}).count();
+		} else if(Session.get('title') == "ICD-10 codes") {
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] }).count();			
+		} else if(Session.get('title') == "DSM-5 codes") {
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] }).count();						
+		}
 	}
 })
 
@@ -141,21 +146,7 @@ Template.BHSlist.events({
 		},100);
   	},
   	'keyup #searchString' : function(e){
-  		// var searchString = $('#searchString').val();
-  		// Meteor.setTimeout(function(){
-  			// alert('searchString...'+searchString)
-  		// }
-  		// 	,1000);
-  		
-  		// if (e.which == 13) {
-			// if(Session.get('title') == "Coding Rules") {
-			// 	Meteor.call('searchCodingRules',$('#searchString').val());
-			// } else {
-  	// 			Meteor.call('showSearchSection',$('#searchString').val());			
-			// }  			
-			// Meteor._reload.reload();   
-			Session.set('searchString',$('#searchString').val());
-  		// }
+		Session.set('searchString',$('#searchString').val());
   	}  
 });
 
