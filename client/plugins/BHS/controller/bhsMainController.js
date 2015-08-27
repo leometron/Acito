@@ -26,8 +26,7 @@ Template.BHSlist.helpers({
 	},
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
-		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
-
+		if(Session.get('title') == "Coding Rules") {
 			var find = "";
 			if (Session.get('searchString')) {
 				find = { guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } };
@@ -93,9 +92,10 @@ Template.BHSlist.helpers({
 		}
 	},
 	'listCodingRule' : function(){
-		if(Session.get('title') == "ICD-10 CM Coding and Documentation Rules") {
+		if(Session.get('title') == "Coding Rules") {
 			if (Session.get('searchString')) {
-				return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });     
+				return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
+				// return section.find({ sectionName : new RegExp(Session.get('searchString')), type:"ICD"});        
 			} else {
 				return codingRules.find({},{ sort: { guideline: 1 } });
 			}			
@@ -122,7 +122,7 @@ Template.BHSlist.helpers({
 		return Media.findOne({name:"BHSlogo"});
 	},
 	'searchDataEmpty' : function() {
-		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'), 'i'), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
+		return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ,{ sectionName : new RegExp(Session.get('searchString')), type:"DSM"} , { sectionCode : new RegExp(Session.get('searchString')), type:"DSM"} ]  }).count();
 	}
 })
 
@@ -172,6 +172,7 @@ Template.BHSlist.events({
 	 		});
 		}
   	},
+
   	'keyup #searchString' : function(e){   
 		Session.set('searchString',$('#searchString').val());
   	}  
