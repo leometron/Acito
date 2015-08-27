@@ -13,9 +13,10 @@ Template.BHSICD.events({
             $('#chooseSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
+            var capitalizedSectionCode = sectionCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
             var secName = $('#sectionName').val();
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
-            Meteor.call('insertSection', capitalizedSection,sectionCode,"ICD");
+            Meteor.call('insertSection', capitalizedSection,capitalizedSectionCode,"ICD");
             Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');            
             $('#sectionName').val("");
             $('#sectionCode').val("");
@@ -52,7 +53,9 @@ Template.BHSICD.events({
     	var sectionName = $('#sectionList :selected').text();
 		var sectionId = $('#sectionList').val();    	
     	var icdCode = $('#ICDCode').val();
+        var capitalizedIcdCode = icdCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
     	var ICDDetail = $('#ICDDetail').val();
+        var capitalizedIcdDetail = ICDDetail.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
 
 		if (sectionName == "Select") {
 			Session.set('errorMessage','Please select section');
@@ -62,7 +65,7 @@ Template.BHSICD.events({
 			Session.set('errorMessage','ICD Detail is Required');
 		} else {
             $('#cancelCurrentICDPost').hide()
-			Meteor.call('insertICD',sectionName,sectionId,icdCode,ICDDetail,Session.get('currentICDid'));
+			Meteor.call('insertICD',sectionName,sectionId,capitalizedIcdCode,capitalizedIcdDetail,Session.get('currentICDid'));
             if (Session.get('currentICDid')) {
                 Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully updated');               
             } else {

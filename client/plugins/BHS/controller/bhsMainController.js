@@ -11,7 +11,7 @@ Template.BHSlist.rendered = function(){
 
 function setListHeight(){
 	$('.listContainer, .alphabetical').css('height', window.innerHeight-111);
-   $('.alphabetical').css('height', window.innerHeight-45);
+   	$('.alphabetical').css('height', window.innerHeight-45);
 }
 
 Template.BHSlist.helpers({
@@ -27,7 +27,14 @@ Template.BHSlist.helpers({
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
 		if(Session.get('title') == "Coding Rules") {
-			var data = codingRules.find().fetch();
+			var find = "";
+			if (Session.get('searchString')) {
+				find = { guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } };
+			}else{
+				find = { sort: { guideline: 1 } };
+			}
+
+			var data = codingRules.find(find).fetch();
 			if(data.length>0){
 				$.each(data, function(i,row) {
 	    			var x = row.guideline.charAt(0).toUpperCase();
@@ -36,19 +43,41 @@ Template.BHSlist.helpers({
 				    }
 				});
 			}
-		}else{
-		var type = (Session.get('title') == "ICD-10 codes") ? "ICD" : "DSM";
-		var data = section.find({'type':type}).fetch();
-			if(data.length>0){
-				$.each(data, function(i,row) {
-	    			var x = row.sectionName.charAt(0).toUpperCase();
-				    if ($.inArray(x, alphabetArray) === -1) {
-				        alphabetArray.push(x);
-				    }
-				});
+		} else if(Session.get('title') == "ICD-10 codes"){
+			var find = "";
+			if (Session.get('searchString')) {
+				find = { $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}};
+			}else{
+				find = {type:"ICD"},{sort: {sectionName: 1}};
 			}
-		}
 
+			var data = section.find(find).fetch();
+				if(data.length>0){
+					$.each(data, function(i,row) {
+		    			var x = row.sectionName.charAt(0).toUpperCase();
+					    if ($.inArray(x, alphabetArray) === -1) {
+					        alphabetArray.push(x);
+					    }
+					});
+				}
+		 }else if(Session.get('title') == "DSM-5 codes"){
+			var find = "";
+			if (Session.get('searchString')) {
+				find = { $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}};
+			}else{
+				find = {type:"DSM"},{sort: {sectionName: 1}};
+			}
+
+			var data = section.find(find).fetch();
+				if(data.length>0){
+					$.each(data, function(i,row) {
+		    			var x = row.sectionName.charAt(0).toUpperCase();
+					    if ($.inArray(x, alphabetArray) === -1) {
+					        alphabetArray.push(x);
+					    }
+					});
+				}
+			}
 		return alphabetArray.sort();
 	},
 
@@ -64,11 +93,11 @@ Template.BHSlist.helpers({
 	},
 	'listCodingRule' : function(){
 		if(Session.get('title') == "Coding Rules") {
-		if (Session.get('searchString')) {
-			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
-		} else {
-			return codingRules.find({},{ sort: { guideline: 1 } });
-		}			
+			if (Session.get('searchString')) {
+				return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
+			} else {
+				return codingRules.find({},{ sort: { guideline: 1 } });
+			}			
 		}
 	},
 	'sectionListICD' : function() {
@@ -132,20 +161,23 @@ Template.BHSlist.events({
 		var id = event.currentTarget.id;
 		$('.alphabet').css('color','black');
 		$('#'+id).css('color','#0758C3');
-		Meteor.setTimeout(function(){
-			if(id!=prevId){
-				$(".listItem").each(function() {
-					var text = $(this).text().charAt(0);
-		 			if(id==text && !isAvailable){
-		 				prevId = id;
-		 				isAvailable = true;
-		 				$('.listContainer').animate({scrollTop:$(this).offset().top - 111}, 'slow');	
-		 			}
-		 		});
-			}
-		},100);
+		if(id!=prevId){
+			$(".listItem").each(function() {
+				var text = $(this).text().charAt(0);
+	 			if(id==text && !isAvailable){
+	 				$(this).attr('id',"list_"+text);
+	 				var currentId = $(this).attr('id');
+	 				prevId = id;
+	 				isAvailable = true;
+	 				$parentDiv = $('.listContainer');
+	 				$parentDiv.animate({
+    					scrollTop: $parentDiv.scrollTop() + $('#'+currentId).position().top - 111
+					}, 'slow');
+	 			}
+	 		});
+		}
   	},
-  	'keyup #searchString' : function(e){
+  	'keyup #searchString' : function(e){   
 		Session.set('searchString',$('#searchString').val());
   	}  
 });
