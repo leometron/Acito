@@ -279,3 +279,11 @@
     text-align: center;
     top: 50%;
 }
+
+.empty-results {
+	bottom: -20%;
+    font-size: 20px;
+    font-weight: bold;
+    left: 45%;
+    position: absolute;
+}

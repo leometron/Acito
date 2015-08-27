@@ -31,7 +31,7 @@ Template.BHSlist.helpers({
 			if (Session.get('searchString')) {
 				find = { guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } };
 			}else{
-				find = { sort: { guideline: 1 } };
+				find = {},{sort: { guideline: 1 }};
 			}
 
 			var data = codingRules.find(find).fetch();

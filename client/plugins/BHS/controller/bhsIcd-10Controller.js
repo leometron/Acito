@@ -114,10 +114,8 @@ Template.BHSICD.helpers({
     'selectedICD' : function () {
     	return ICD.findOne(Session.get('currentICDid'));    	
     },
-    'noResult' : function () {
-        if (ICD.find().count() == 0) {
-            
-        }
+    'ICDListCount' : function () {
+         return ICD.find().count();  
     }
 });
 

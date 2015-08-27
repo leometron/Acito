@@ -26,17 +26,11 @@ Template.posts.rendered = function(){
 	}
 };
 
-// Template.addNewPost.rendered = function(){
-// 	// Session.set('errorMessage','');
-// } 
-
-
 Template.posts.events({
 	'click #addNewPost': function () {
 		Session.set('selectImage', "");
 		Session.set('selectedPostId', "");
-		// $(location).attr('href','posts/add');
-			Router.go("/admin/posts/add");
+		Router.go("/admin/posts/add");
 	},
 	'click .post': function () {
 		Session.set('selectedPostId', this._id);
@@ -259,9 +253,6 @@ Template.posts.helpers({
     'postList': function () {
         return Posts.find();
     },
-    // 'queryString': function() {
-    //     return $('#queryString').val();
-    // },
     'pageList': function () {
         return Pages.find();
     }
@@ -271,9 +262,6 @@ Template.addNewPost.helpers({
 	'showSelectedPost': function(){
 		return Posts.findOne(Session.get('selectedPostId'));
 	},
-	// 'errormsg' : function() {
-	// 	return Session.get('errorMessage');
-	// },
 	'pageList' : function() { 
 		return Pages.find();
 	},
