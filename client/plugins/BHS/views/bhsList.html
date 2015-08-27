@@ -4,10 +4,11 @@
 			<div class="leftColmn backArrow">
 				<img src="/images/left_arrow.png" width="25"/>
 			</div>
-			<div class="middleColmn backArrow">
-				{{#if BHSLogo}}				
+			<div class="middleColmn backArrow">	
+<!-- 										{{#if BHSLogo}}				
 					<img src="{{BHSLogo.url}}" width="45"/>
-				{{/if}}				
+				{{/if}}	 -->
+					<img src="images/logo.png" width="45"/>				
 			</div>
 			<div class="lastColmn"><div style="margin-right:80px;">{{title}}</div></div>
 		</div>
@@ -22,14 +23,14 @@
 		{{#if listIcd}}
 		{{#each sectionListICD}}
 			{{#if equals sectionCode "-"}}
-				<div class="list_heading_div" style="padding-left:1.8%">
-					<div class="list_heading_left_coding listItem">{{sectionName}}</div>
+				<div class="list_heading_div">
+					<div class="list_heading_left_coding">{{sectionName}}</div>
 				</div>
 			{{else}}
 				<div class="list_heading_div">
 					<div class="list_heading_left">{{sectionCode}}</div>
 					<div class="list_heading_middle">:</div>
-					<div class="list_heading_right listItem">{{sectionName}}</div>
+					<div class="list_heading_right">{{sectionName}}</div>
 				</div>
 			{{/if}}
 				{{#each listIcd}}
@@ -50,14 +51,14 @@
 		{{#if listDSM}}
 			{{#each sectionListDSM}}
 				{{#if equals sectionCode "-"}}
-					<div class="list_heading_main_div" style="padding-left:1.8%">
-						<div class="list_heading_right listItem">{{sectionName}}</div>
+					<div class="list_heading_main_div">
+						<div class="list_heading_right">{{sectionName}}</div>
 					</div>
 				{{else}}
 					<div class="list_heading_main_div">
 						<div class="list_heading_left">{{sectionCode}}</div>
 						<div class="list_heading_middle">:</div>
-						<div class="list_heading_right listItem">{{sectionName}}</div>
+						<div class="list_heading_right">{{sectionName}}</div>
 					</div>
 				{{/if}}
 					{{#each subSectionList}}
@@ -84,8 +85,8 @@
 		
 		{{#if listCodingRule}}
 		{{#each listCodingRule}}
-		<div class="list_heading_div" style="padding-left:1.8%">
-			<div class="list_heading_left_coding listItem">{{guideline}}</div>
+		<div class="list_heading_div">
+			<div class="list_heading_left_coding" style="padding-left:15px">{{guideline}}</div>
 		</div>
 		<div class="list_item_div">
 			<div class="list_item_right">
@@ -98,12 +99,12 @@
 		</div>
 		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
 			{{#each icdSectionAlphabet}}
-             <div class="alphabet" id="{{this}}" style="padding:5px 0;">{{this}}</div>  
+             <div class="alphabet" id="{{this}}" style="padding:5px;">{{this}}</div>  
             {{/each}}
 		</div>
 	</div>
 	{{#if equals searchDataEmpty 0}}
-	<div class="search-empty">No Result</div>
+	<div class="search-empty">No Results</div>
 	{{/if}}
 </div>
 </template>
