@@ -94,7 +94,7 @@
 	display:table;
 	width:100%;
 	background:#E6EDFF;
-	padding:8px;
+	padding:8px 8px 8px 12px;
 	color:#5571B4;
 	font-size:18px;
 	table-layout:fixed;
@@ -112,19 +112,20 @@
 
 .bhs .list_heading_left{
 	display:table-cell;
-	width:120px;
-	text-align:center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width:75px;
+	text-align:left;
 }
 
 .bhs .list_heading_left_side{
-	display:table-cell;
-	width:50px;
 	text-align:left;
 }
 
 .bhs .list_heading_middle{
 	display:table-cell;
-	width:15px;
+	width:2px;
 }
 
 .bhs .list_heading_right{
@@ -133,21 +134,24 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	padding-left : 30px;
+	padding-left : 10px;
 }
 
 .bhs .list_item_div{
 	display:table;
 	width:100%;
-	padding:8px;
+	padding:8px 8px 8px 12px;
 	table-layout:fixed;
 }
 
 .bhs .list_item_left{
 	display:table-cell;
-	width:120px;
-	text-align:center;
+	width:75px;
+	text-align:middle;
 	color:#3C97CE;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	vertical-align:middle;
 }
 
@@ -171,7 +175,7 @@
 	display:table-cell;
 	width:auto;
 	vertical-align:middle;
-	padding-left : 30px;
+	padding-left :10px;
 }
 
 .bhs .alphabetical{
