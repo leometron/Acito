@@ -47,6 +47,11 @@
   	border-radius:8px;
   	margin-bottom:15px;
   	font-size:18px;
+  	cursor: pointer;
+}
+
+.bhs .button:hover{
+	background: #6495ED;
 }
 
 .bhs .list_header{
@@ -106,7 +111,7 @@
 
 .bhs .list_heading_left{
 	display:table-cell;
-	width:50px;
+	width:120px;
 	text-align:center;
 }
 
@@ -127,6 +132,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	padding-left : 30px;
 }
 
 .bhs .list_item_div{
@@ -138,7 +144,7 @@
 
 .bhs .list_item_left{
 	display:table-cell;
-	width:50px;
+	width:120px;
 	text-align:center;
 	color:#3C97CE;
 	vertical-align:middle;
@@ -164,6 +170,7 @@
 	display:table-cell;
 	width:auto;
 	vertical-align:middle;
+	padding-left : 30px;
 }
 
 .bhs .alphabetical{

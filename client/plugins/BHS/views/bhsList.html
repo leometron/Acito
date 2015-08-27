@@ -21,7 +21,7 @@
 		{{#each sectionListICD}}
 			{{#if equals sectionCode "-"}}
 				<div class="list_heading_div" style="padding-left:1.8%">
-					<div class="list_heading_left_coding listItem">{{sectionName}}</div>
+					<div class="listItem" style="margin-left:2%">{{sectionName}}</div>
 				</div>
 			{{else}}
 				<div class="list_heading_div">
@@ -61,7 +61,7 @@
 					{{#each subSectionList}}
 						{{#if equals ../_id  sectionId}}
 							<div class="list_heading_div">
-								<div class="list_heading">{{subSectionName}}</div>
+								<div class="list_heading" style="margin-left:3.5%">{{subSectionName}}</div>
 							</div>
 							{{#each listDSM}}
 								{{#if equals ../_id subSectionId}}
