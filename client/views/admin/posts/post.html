@@ -112,7 +112,13 @@
                                     <strike>{{title}}</strike>
                                 </div>
                                 <div class="col-md-2"><strike>{{currentUser.username}}</strike></div>
-                                <div class="col-md-2"><strike>{{pageName}}</strike></div>
+                                <div class="col-md-2"><strike>
+                                  {{#if equals pageName "none"}}
+                                     -
+                                    {{else}}
+                                     {{pageName}}  
+                                  {{/if}}
+                                </strike></div>
                                 <div class="col-md-1"><strike>{{tags}}</strike></div>
                                 <div class="col-md-1"><strike>{{status}}</strike></div>
                                 <div class="col-md-1"><strike>{{createdAt}}</strike></div>
@@ -126,7 +132,13 @@
                                     {{title}}
                                 </div>
                                 <div class="col-md-2">{{currentUser.username}}</div>
-                                <div class="col-md-2">{{pageName}}</div>
+                                <div class="col-md-2">
+                                  {{#if equals pageName "none"}}
+                                     -
+                                   {{else}}
+                                     {{pageName}}  
+                                  {{/if}}
+                                </div>
                                 <div class="col-md-1">{{tags}}</div>
                                 <div class="col-md-1">{{status}}</div>
                                 <div class="col-md-1">{{createdAt}}</div>

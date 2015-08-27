@@ -457,7 +457,7 @@ body, #main {
   position: fixed;
   z-index: 999;
   margin-top: 32px;
-  /*color: #1B1919; */
+  color: #FFFFFF;  
   font-weight: bold;
   font-size: 16px;
   font-family: arial;
@@ -465,5 +465,5 @@ body, #main {
 }
 
 .option-icon {
-  margin-left:95px;
+  margin-left:80px;
 }

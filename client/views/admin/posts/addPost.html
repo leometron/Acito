@@ -110,6 +110,7 @@
                             <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
                             {{#each pageList}}
                                 {{#if equals showSelectedPost.pageId _id}}
+                                <option>none</option>
                                 {{else}}
                                 <option value="{{_id}}">{{title}}</option>
                                 {{/if}}                        
@@ -135,16 +136,16 @@
                         <input type="text" id="postTags" class="form-control">
                     {{/if}}                                                    
                     </span>
-                    <span><button class="btn btn-default" id="addNewTag">Add New Tag</button></span>
+                    <!-- <span><button class="btn btn-default" id="addNewTag">Add New Tag</button></span> -->
                 </div>
-                <div class="board-view">
+<!--                 <div class="board-view">
                     <span style="font-style: italic">Separate tags with commas</span>
-                </div>
+                </div> -->
                 <!--                 <div class="board-view">
                                     <span><a href="#">Choose from the most used tags</a></span>
                                 </div> -->
             </div>
-
+<!-- 
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">Feature image <span class="caret pull-right margin-top-10"></span>
                 </div>
@@ -289,7 +290,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

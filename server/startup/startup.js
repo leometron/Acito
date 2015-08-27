@@ -6,11 +6,15 @@
 
  */
 Meteor.startup(function () {
-    Posts._ensureIndex({title: "text"});
-    tags._ensureIndex({name: "text"});
-    Pages._ensureIndex({title: "text"});
-    Media._ensureIndex({name: "text"});
-    homeslider._ensureIndex({title: "text"});
+    // Posts._ensureIndex({title: "text"});
+    // tags._ensureIndex({name: "text"});
+    // Pages._ensureIndex({title: "text"});
+    // Media._ensureIndex({name: "text"});
+    // homeslider._ensureIndex({title: "text"});
+
+    // section._ensureIndex({sectionName: "text",sectionCode: "text"});
+    // codingRules._ensureIndex({guideline: "text"});
+
 
     Meteor.publish('plugin', function () {
         return plugin.find();
@@ -27,7 +31,6 @@ Meteor.startup(function () {
             var stat = filesystem.statSync(file);
 
             if (stat && stat.isDirectory()) {
-                console.log('directory');
                 results = results.concat(getAllFilesFromFolder(file))
             } else {
                 var myRe = /settings.yml/ig;

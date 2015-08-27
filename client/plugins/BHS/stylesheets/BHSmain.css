@@ -47,6 +47,11 @@
   	border-radius:8px;
   	margin-bottom:15px;
   	font-size:18px;
+  	cursor: pointer;
+}
+
+.bhs .button:hover{
+	background: #6495ED;
 }
 
 .bhs .list_header{
@@ -58,6 +63,7 @@
   	background: -moz-linear-gradient(#0b63a6, #0145f5);
   	background: linear-gradient(#0b63a6, #0145f5);
   	color:#FFFFFF;
+  	height:45px;
 }
 
 .bhs .leftColmn{
@@ -81,6 +87,7 @@
 	font-weight:bold;
 	font-size:20px;
 	margin-top:10px;
+	text-align: center;
 }
 
 .bhs .list_heading_div{
@@ -93,10 +100,26 @@
 	table-layout:fixed;
 }
 
+.bhs .list_heading_main_div{
+	display:table;
+	width:100%;
+	background:#4C94CE;
+	padding:8px;
+	color:white;
+	font-size:18px;
+	table-layout:fixed;
+}
+
 .bhs .list_heading_left{
 	display:table-cell;
-	width:50px;
+	width:120px;
 	text-align:center;
+}
+
+.bhs .list_heading_left_side{
+	display:table-cell;
+	width:50px;
+	text-align:left;
 }
 
 .bhs .list_heading_middle{
@@ -110,6 +133,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	padding-left : 30px;
 }
 
 .bhs .list_item_div{
@@ -121,11 +145,20 @@
 
 .bhs .list_item_left{
 	display:table-cell;
-	width:50px;
+	width:120px;
 	text-align:center;
 	color:#3C97CE;
 	vertical-align:middle;
 }
+
+.listContainer ::-webkit-scrollbar { 
+    display: none; 
+}
+
+.alphabetical ::-webkit-scrollbar { 
+    display: none; 
+}
+
 
 .bhs .list_item_middle{
 	display:table-cell;
@@ -138,6 +171,30 @@
 	display:table-cell;
 	width:auto;
 	vertical-align:middle;
+	padding-left : 30px;
+}
+
+.bhs .alphabetical{
+	text-align: center; 
+	font-size: 16px;
+	font-weight: bold;
+	background: #f7f7f7;
+	height: 100%;
+    position: absolute;
+    right: 0;
+    padding-top: 25px;
+    overflow:auto; 
+    padding-bottom: 25px;  
+}
+
+.bhs .main_post{
+	background-color: white;
+	padding-left:0; 
+	padding-right:0
+}
+
+.bhs .listContainer{
+	overflow-y : auto;
 }
 
 .margin-top-4pt {
@@ -212,21 +269,13 @@
  width:100%;
 }
 
-.char{
-	text-align: center; 
-	font-size: 16px;
-	font-weight: bold;
-	background: #f7f7f7;
-	height: 100%;
-    position: fixed;
+.search-empty {
+    bottom: 0;
+    font-size: 20px;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
     right: 0;
-    padding-top: 25px;
-    overflow: scroll; 
-    padding-bottom: 25px;  
-}
-
-.main-post{
-	background-color: white;
-	 padding-left:0; 
-	 padding-right:0
+    text-align: center;
+    top: 50%;
 }

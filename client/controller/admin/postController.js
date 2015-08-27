@@ -117,10 +117,6 @@ Template.addNewPost.events({
 			Session.set('errorMessage','Post title is required');
 			Meteor.setTimeout(function () {
 				Session.set('errorMessage','')},2000);
-		} else if($('#pageName :selected').text() == "none") {
-			Session.set('errorMessage','Page is required');
-			Meteor.setTimeout(function () {
-				Session.set('errorMessage','')},2000);
 		} else {  
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
 			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
@@ -139,10 +135,6 @@ Template.addNewPost.events({
 	'click #publishPost' : function () {
 		if(!$('#postName').val()) {
 			Session.set('errorMessage','Post title is required');
-			Meteor.setTimeout(function () {
-				Session.set('errorMessage','')},2000);
-		} else if ($('#pageName :selected').text() == "none") {
-			Session.set('errorMessage','Page is required');
 			Meteor.setTimeout(function () {
 				Session.set('errorMessage','')},2000);
 		} else {                   

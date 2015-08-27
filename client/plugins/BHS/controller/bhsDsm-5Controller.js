@@ -3,7 +3,7 @@ Meteor.subscribe("subSection");
 
 var select_data = [];
 
-Template.BHSDSM.events({
+Template.BHSDSM.events({    
 	    'click #addNewDSMSection' : function () {
 	    	$('#addNewDSMSection').hide();
 	    	$('#minimizeDSMSection').show();
@@ -14,7 +14,9 @@ Template.BHSDSM.events({
 	        $('#addNewDSMSection').show();
 	        $('#chooseDSMSectionName').fadeOut(500);
             $('#DSMSectionName').val("");
-            $('#DSMSectionName').attr('placeholder','Section');            
+            $('#DSMSectionName').attr('placeholder','Section');
+            $('#sectionCode').val("");
+            $('#sectionCode').attr('placeholder','Code');                          
 	    },
 	    'click #addNewDSMSubSection' : function () {
 	     	$('#addNewDSMSubSection').hide();
@@ -26,21 +28,27 @@ Template.BHSDSM.events({
 	        $('#addNewDSMSubSection').show();
 	        $('#chooseDSMSubSectionName').fadeOut(500);
             $('#DSMSubSectionName').val("");
-            $('#DSMSubSectionName').attr('placeholder','Sub Section');            
+            $('#DSMSubSectionName').attr('placeholder','Sub Section');
+            $('#subSectionCode').val("");
+            $('#subSectionCode').attr('placeholder','Code');                           
 	    },
 	    'click #cancelDSMSection' : function () {
 	        $('#minimizeDSMSection').hide();
 	        $('#addNewDSMSection').show();
 	        $('#chooseDSMSectionName').fadeOut(500);
             $('#DSMSectionName').val("");
-            $('#DSMSectionName').attr('placeholder','Section');            
+            $('#DSMSectionName').attr('placeholder','Section');
+            $('#sectionCode').val("");
+            $('#sectionCode').attr('placeholder','Code');                         
 	    },
 	    'click #cancelDSMSubSection' : function () {
 	        $('#minimizeDSMSubSection').hide();
 	        $('#addNewDSMSubSection').show();
 	        $('#chooseDSMSubSectionName').fadeOut(500);
             $('#DSMSubSectionName').val("");
-            $('#DSMSubSectionName').attr('placeholder','Sub Section');            
+            $('#DSMSubSectionName').attr('placeholder','Sub Section');
+            $('#subSectionCode').val("");
+            $('#subSectionCode').attr('placeholder','Code');                            
 	    },
 
 	'click #saveDSMSection': function () {
@@ -52,7 +60,10 @@ Template.BHSDSM.events({
             $('#chooseDSMSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
-            Meteor.call('insertSection', $('#DSMSectionName').val(), sectionCode, "DSM");
+            var capitalizedSectionCode = sectionCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
+            var secName = $('#DSMSectionName').val();
+            var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
+            Meteor.call('insertSection', capitalizedSection, capitalizedSectionCode, "DSM");
             $('#DSMSectionName').val("");
             $('#sectionCode').val("");
             $('#DSMSectionName').attr('placeholder','Section');
@@ -75,7 +86,10 @@ Template.BHSDSM.events({
             $('#chooseDSMSubSectionName').fadeOut(500);            
             Session.set('errorMessage', '');
             var subSectionCode = (!$('#subSectionCode').val() ) ? "-" : $('#subSectionCode').val();
-            Meteor.call('insertSubSection', sectionId, sectionName, $('#DSMSubSectionName').val(), subSectionCode);
+            var capitalizedSectionCode = subSectionCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
+            var subSecName = $('#DSMSubSectionName').val();
+            var capitalizedSection = subSecName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });            
+            Meteor.call('insertSubSection', sectionId, sectionName, capitalizedSection, capitalizedSectionCode);
             $('#DSMSubSectionName').val("");
             $('#subSectionCode').val("");
             $('#DSMSubSectionName').attr('placeholder','Sub Section');
@@ -90,7 +104,9 @@ Template.BHSDSM.events({
         var subSectionName = $('#subSectionList :selected').text();
         var subSectionId = $('#subSectionList').val();        
         var dsmCode = $('#DSMCode').val();
+        var capitalizedDsmCode = dsmCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
         var dsmDetail = $('#DSMDetail').val();
+        var capitalizedDsmDetail = dsmDetail.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
 
         if (sectionName == "Select") {
             Session.set('errorMessage','Please select section');
@@ -102,7 +118,7 @@ Template.BHSDSM.events({
             Session.set('errorMessage','DSM Detail is Required');
         } else {
             $('#cancelCurrentDSMPost').hide();            
-            Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,dsmCode,dsmDetail,Session.get('currentDSMid'));
+            Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,capitalizedDsmCode,capitalizedDsmDetail,Session.get('currentDSMid'));
             if (Session.get('currentDSMid')) {
                 Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully updated');               
             } else {
@@ -112,7 +128,7 @@ Template.BHSDSM.events({
                 Session.set('BHSSuccessMessage', ''),Session.set('currentDSMid',''),$('#sectionList').val("Select"),
                 $('#subSectionList').val("Select"),$('#DSMCode').val(""),$('#DSMDetail').val(""),
                 $('#DSMCode').attr("placeholder","DSMCode"),$('#DSMDetail').attr("placeholder","Detail")
-            }, 2000);            
+            }, 2600);            
         }
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')
@@ -141,6 +157,13 @@ Template.BHSDSM.events({
     'click #apply': function () {
         Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
     },
+    'change #sectionList': function() {
+        if($('#sectionList :selected').val() != "Select"){
+             Session.set("subsectionselectId", $('#sectionList :selected').val());
+        } else {
+            Session.set("subsectionselectId", "");
+        }
+    }
 });
 
 
@@ -156,7 +179,11 @@ Template.BHSDSM.helpers({
     },
     'selectedDSM' : function () {
         return DSM.findOne(Session.get('currentDSMid'));        
-    } 
+    },
+    'subSectionSelectList' :function() {
+        var subvalue = Session.get("subsectionselectId");
+        return subvalue;
+    }
 });
 
 

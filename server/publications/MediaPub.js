@@ -9,7 +9,7 @@ Meteor.publish('Media', function () {
     if (querystr) {
         temp = querystr;
         querystr = "";
-        return Media.find({createdBy: currentUserId, $text: {$search: temp}});
+       // return Media.find({createdBy: currentUserId, $text: {$search: temp}});
     } else if (date) {
         temp = date;
         date = "";
@@ -40,6 +40,9 @@ Meteor.methods({
             createdAt: createdAt
 
         });
+        if (Media.find().count() == 1) {
+            Media._ensureIndex({name: "text"});
+        }        
     },
     'updateMediaData': function (mediaId, mediaUrl, mediaName, mediaNameType, mediaType, mediaSize, caption, alternative, description) {
         console.log('entered server');

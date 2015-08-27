@@ -13,7 +13,10 @@ Template.BHSICD.events({
             $('#chooseSectionName').fadeOut(500);
             Session.set('errorMessage', '');
             var sectionCode = (!$('#sectionCode').val() ) ? "-" : $('#sectionCode').val();
-            Meteor.call('insertSection', $('#sectionName').val(),sectionCode,"ICD");
+            var capitalizedSectionCode = sectionCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
+            var secName = $('#sectionName').val();
+            var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
+            Meteor.call('insertSection', capitalizedSection,capitalizedSectionCode,"ICD");
             Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');            
             $('#sectionName').val("");
             $('#sectionCode').val("");
@@ -33,20 +36,26 @@ Template.BHSICD.events({
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
         $('#sectionName').val("");
-        $('#sectionName').attr('placeholder','Section');        
+        $('#sectionName').attr('placeholder','Section');
+        $('#sectionCode').val("");
+        $('#sectionCode').attr('placeholder','Code');                   
     },
     'click #cancelSection' : function () {
         $('#minimizeAddNewSection').hide();
         $('#addNewSection').show();
         $('#chooseSectionName').fadeOut(500);
         $('#sectionName').val("");
-        $('#sectionName').attr('placeholder','Section');             
+        $('#sectionName').attr('placeholder','Section');
+        $('#sectionCode').val("");
+        $('#sectionCode').attr('placeholder','Code');                     
     },
     'click #saveCurrentICDPost': function () {
     	var sectionName = $('#sectionList :selected').text();
 		var sectionId = $('#sectionList').val();    	
     	var icdCode = $('#ICDCode').val();
+        var capitalizedIcdCode = icdCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
     	var ICDDetail = $('#ICDDetail').val();
+        var capitalizedIcdDetail = ICDDetail.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
 
 		if (sectionName == "Select") {
 			Session.set('errorMessage','Please select section');
@@ -56,7 +65,7 @@ Template.BHSICD.events({
 			Session.set('errorMessage','ICD Detail is Required');
 		} else {
             $('#cancelCurrentICDPost').hide()
-			Meteor.call('insertICD',sectionName,sectionId,icdCode,ICDDetail,Session.get('currentICDid'));
+			Meteor.call('insertICD',sectionName,sectionId,capitalizedIcdCode,capitalizedIcdDetail,Session.get('currentICDid'));
             if (Session.get('currentICDid')) {
                 Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully updated');               
             } else {
@@ -65,7 +74,7 @@ Template.BHSICD.events({
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
                 $('#ICDCode').val(""),$('#ICDDetail').val(""),$('#ICDCode').attr('placeholder',"ICD Code"),$('#ICDDetail').attr("placeholder",'Detail')
-            }, 2000);			
+            }, 2600);			
 		}
         Meteor.setTimeout(function () {
             Session.set('errorMessage','')
