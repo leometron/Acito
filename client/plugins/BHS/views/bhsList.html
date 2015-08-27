@@ -23,8 +23,8 @@
 		{{#if listIcd}}
 		{{#each sectionListICD}}
 			{{#if equals sectionCode "-"}}
-				<div class="list_heading_div" style="padding-left:1.8%">
-					<div class="listItem" style="margin-left:2%">{{sectionName}}</div>
+				<div class="list_heading_div">
+					<div class="listItem">{{sectionName}}</div>
 				</div>
 			{{else}}
 				<div class="list_heading_div">
@@ -39,7 +39,7 @@
 							<div class="list_item_left">{{code}}</div>
 							<div class="list_item_middle"></div>
 							<div class="list_item_right">
-								<div style="margin-left:15px;">{{detail}}</div>
+								<div>{{detail}}</div>
 							</div>
 						</div>
 					{{/if}}
@@ -52,7 +52,7 @@
 			{{#each sectionListDSM}}
 				{{#if equals sectionCode "-"}}
 					<div class="list_heading_main_div">
-						<div class="list_heading_right">{{sectionName}}</div>
+						<div>{{sectionName}}</div>
 					</div>
 				{{else}}
 					<div class="list_heading_main_div">
@@ -64,7 +64,7 @@
 					{{#each subSectionList}}
 						{{#if equals ../_id  sectionId}}
 							<div class="list_heading_div">
-								<div class="list_heading" style="margin-left:3.5%">{{subSectionName}}</div>
+								<div class="list_heading">{{subSectionName}}</div>
 							</div>
 							{{#each listDSM}}
 								{{#if equals ../_id subSectionId}}
@@ -86,12 +86,10 @@
 		{{#if listCodingRule}}
 		{{#each listCodingRule}}
 		<div class="list_heading_div">
-			<div class="list_heading_left_coding" style="padding-left:15px">{{guideline}}</div>
+			<div>{{guideline}}</div>
 		</div>
 		<div class="list_item_div">
-			<div class="list_item_right">
-				<div style="margin-left:15px;">{{definition}}</div>
-			</div>
+			<div>{{definition}}</div>
 		</div>
 		{{/each}}
 		{{/if}}
@@ -99,7 +97,7 @@
 		</div>
 		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
 			{{#each icdSectionAlphabet}}
-             <div class="alphabet" id="{{this}}" style="padding:5px;">{{this}}</div>  
+             <div class="alphabet" id="{{this}}" style="padding:5px">{{this}}</div>  
             {{/each}}
 		</div>
 	</div>
