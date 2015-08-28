@@ -166,11 +166,11 @@ Template.BHSlist.events({
 		history.back();
   	},
   	'click .alphabet':function(event){
-  		Session.set('selectedAlphabet',event.currentTarget.id);
-  // 		var isAvailable = false;
-		// var id = event.currentTarget.id;
-		// $('.alphabet').css('color','black');
-		// $('#'+id).css('color','#0758C3');
+  		// var isAvailable = false;
+		var id = event.currentTarget.id;
+		$('.alphabet').css('color','black');
+		$('#'+id).css('color','#0758C3');
+  		Session.set('selectedAlphabet',id);		
 		// if(id!=prevId){
 		// 	$(".listItem").each(function() {
 		// 		var text = $(this).text().charAt(0);
