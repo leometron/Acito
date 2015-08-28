@@ -85,7 +85,9 @@ Template.BHSlist.helpers({
 					});
 				}
 			}
-		return alphabetArray.sort();
+			alphabetArray.sort()
+			Session.set('firstAlphabetinList',alphabetArray[0])
+		return alphabetArray;
 	},
 
 	'listIcd' : function(){
@@ -105,7 +107,7 @@ Template.BHSlist.helpers({
 			} else if(Session.get('selectedAlphabet')) {
 				return codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{sort: {guideline: 1}});
 			} else {
-				return codingRules.find({},{ sort: { guideline: 1 } });
+				return codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{ sort: { guideline: 1 } });
 			}			
 		}
 	},
@@ -115,7 +117,7 @@ Template.BHSlist.helpers({
 		} else if(Session.get('selectedAlphabet')) {
 			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
 		} else {
-			return section.find({type:"ICD"},{sort: {sectionName: 1}});
+			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{sort: {sectionName: 1}});
 		}
 	},
 	'sectionListDSM' : function() {
@@ -124,7 +126,7 @@ Template.BHSlist.helpers({
 		} else if(Session.get('selectedAlphabet')) {
 			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
 		} else {
-			return section.find({type:"DSM"},{sort: {sectionName: 1}});
+			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{sort: {sectionName: 1}});
 		}		
 	},
 	'subSectionList' : function() {

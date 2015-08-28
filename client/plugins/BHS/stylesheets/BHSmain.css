@@ -285,9 +285,10 @@
 }
 
 .empty-results {
-	bottom: -20%;
+	/*bottom: -20%;*/
+	margin-top: 4%;
     font-size: 20px;
     font-weight: bold;
-    left: 45%;
-    position: absolute;
+    left: 39%;
+    /*position: absolute;*/
 }

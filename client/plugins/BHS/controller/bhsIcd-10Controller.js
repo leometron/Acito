@@ -62,7 +62,7 @@ Template.BHSICD.events({
 		} else if(!icdCode) {
 			Session.set('errorMessage','ICD Code is Required');
 		} else if(!ICDDetail) {
-			Session.set('errorMessage','ICD Detail is Required');
+			Session.set('errorMessage','ICD Description is Required');
 		} else {
             $('#cancelCurrentICDPost').hide()
 			Meteor.call('insertICD',sectionName,sectionId,capitalizedIcdCode,capitalizedIcdDetail,Session.get('currentICDid'));
@@ -73,7 +73,7 @@ Template.BHSICD.events({
             }            
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
-                $('#ICDCode').val(""),$('#ICDDetail').val(""),$('#ICDCode').attr('placeholder',"ICD Code"),$('#ICDDetail').attr("placeholder",'Detail')
+                $('#ICDCode').val(""),$('#ICDDetail').val(""),$('#ICDCode').attr('placeholder',"ICD Code"),$('#ICDDetail').attr("placeholder",'Description')
             }, 2600);			
 		}
         Meteor.setTimeout(function () {

@@ -5,6 +5,9 @@ var selectedIds = [];
 Template.pages.helpers({
     'lists': function () {
         return Pages.find();
+    },
+    'pageListCount': function() {
+        return Pages.find().count();
     }
 });
 

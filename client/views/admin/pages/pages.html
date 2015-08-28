@@ -67,37 +67,48 @@
                         <div class="col-md-2">comments</div>
                         <div class="col-md-1">Date</div>
                     </div>
-                    {{#each lists}}
-                    {{#if currentUser}}
-                    <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                        <div class="col-md-1 margin-top-10">
-                            <input type="checkbox" class="checkbox">
-                        </div>
-                        <div class="col-md-6 padding-left-zero margin-left-minus-30" id="list">
-                            {{#if deleted}}
-                            <strike>{{title}}</strike>
-                            {{#if equals parentId "(no parent)"}}
-                            {{else}}
-                            | Parent Page: {{parentId}}
-                            {{/if}}
-                            <div><a href="#" id="restorelist">Restore</a> | <a href="#" id="deletelist">Delete
-                                Permanently</a></div>
-                            {{else}}
-                            {{title}}
-                            <div><a href="/admin/pages/edit" id="editlist">Edit</a> | <a href="#" id="binlist">Bin</a>
+                    {{#if equals pageListCount 0}}
+                        <!-- <div class="empty-results">No Results</div> -->
+                      <div class="row padding-top-bottom-10 cursor-pointer">
+                        <div class="CodingRules-data-row">
+                             <div class="col-md-4 empty-results">
+                                <span style="font-size:16px">No Results</span>
                             </div>
-                            {{/if}}
                         </div>
-                        <div class="col-md-2">{{currentUser.username}}</div>
-                        <div class="col-md-2">comments</div>
-                        <div class="col-md-1">{{createdAt}}
-                            <br>
+                      </div>
+                    {{else}}
+                        {{#each lists}}
+                        {{#if currentUser}}
+                        <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                            <div class="col-md-1 margin-top-10">
+                                <input type="checkbox" class="checkbox">
+                            </div>
+                            <div class="col-md-6 padding-left-zero margin-left-minus-30" id="list">
+                                {{#if deleted}}
+                                <strike>{{title}}</strike>
+                                {{#if equals parentId "(no parent)"}}
+                                {{else}}
+                                | Parent Page: {{parentId}}
+                                {{/if}}
+                                <div><a href="#" id="restorelist">Restore</a> | <a href="#" id="deletelist">Delete
+                                    Permanently</a></div>
+                                {{else}}
+                                {{title}}
+                                <div><a href="/admin/pages/edit" id="editlist">Edit</a> | <a href="#" id="binlist">Bin</a>
+                                </div>
+                                {{/if}}
+                            </div>
+                            <div class="col-md-2">{{currentUser.username}}</div>
+                            <div class="col-md-2">comments</div>
+                            <div class="col-md-1">{{createdAt}}
+                                <br>
 
-                            <div>{{status}}</div>
+                                <div>{{status}}</div>
+                            </div>
                         </div>
-                    </div>
+                        {{/if}}
+                        {{/each}}
                     {{/if}}
-                    {{/each}}
                 </div>
             </div>
             <!--  <div class="row post-margin">

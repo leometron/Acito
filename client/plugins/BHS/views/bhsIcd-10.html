@@ -81,7 +81,14 @@
             </div>
         </div>
         {{#if equals ICDListCount 0}}
-            <div class="empty-results">No Results</div>
+            <!-- <div class="empty-results">No Results</div> -->
+         <div class="row padding-top-bottom-10 cursor-pointer">
+            <div class="CodingRules-data-row">
+                <div class="col-md-4 empty-results">
+                    <span style="font-size:16px">No Results</span>
+                </div>
+            </div>
+         </div>
         {{else}}
             {{#each ICDList}}
             	<div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
