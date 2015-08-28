@@ -69,6 +69,9 @@ Template.BHSCodingRules.helpers({
     'selectedCodingRules' : function () {
     	return codingRules.findOne(Session.get('currentCodingRulesid'));        
     },
+    'codingListCount': function() {
+        return codingRules.find().count();
+    }
    //  'codingRulesLimit' : function() {
    //  	return codingRules.find({},{limit: Session.get('numberOfCount')});
    //  },

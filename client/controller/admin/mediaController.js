@@ -166,6 +166,9 @@ Template.media.events({
 Template.media.helpers({
     'mediaList': function () {
         return Media.find();
+    },
+    'mediaListCount': function() {
+        return Media.find().count();
     }
 });
 

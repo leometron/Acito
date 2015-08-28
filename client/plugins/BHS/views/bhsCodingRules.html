@@ -70,25 +70,35 @@
                 <span style="font-size:18px">Definition</span>
             </div>
         </div>
-
-       {{#each codingRulesList}}
-        <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-            <div class="col-md-1">
-                <span><input id="checkbox" type="checkbox"></span>
-            </div>
+      {{#if equals codingListCount 0}}
+        <!-- <div class="empty-results">No Results</div> -->
+         <div class="row padding-top-bottom-10 cursor-pointer">
             <div class="CodingRules-data-row">
-            <div class="col-md-2">
-               	<span style="font-size:16px">{{code}}</span>
+                <div class="col-md-4 empty-results">
+                    <span style="font-size:16px">No Results</span>
+                </div>
             </div>
-            <div class="col-md-4">
-               	<span style="font-size:16px">{{guideline}}</span>
+         </div>
+       {{else}}  
+           {{#each codingRulesList}}
+            <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+                <div class="col-md-1">
+                    <span><input id="checkbox" type="checkbox"></span>
+                </div>
+                <div class="CodingRules-data-row">
+                <div class="col-md-2">
+                   	<span style="font-size:16px">{{code}}</span>
+                </div>
+                <div class="col-md-4">
+                   	<span style="font-size:16px">{{guideline}}</span>
+                </div>
+                <div class="col-md-4">
+                    <span style="font-size:16px">{{definition}}</span>
+                </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <span style="font-size:16px">{{definition}}</span>
-            </div>
-            </div>
-        </div>
-        {{/each}}
+            {{/each}}
+    {{/if}}
 <!--         <ul class="pager">
             <li class="previous"><a href="#">Previous</a></li>
             <li class="next"><a href="#">Next</a></li>

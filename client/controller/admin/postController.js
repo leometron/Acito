@@ -255,6 +255,9 @@ Template.posts.helpers({
     },
     'pageList': function () {
         return Pages.find();
+    },
+    'postListCount': function(){
+    	return Posts.find().count();
     }
 });
 
