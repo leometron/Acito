@@ -95,6 +95,8 @@ Template.BHSlist.helpers({
 		if(Session.get('title') == "Coding Rules") {
 			if (Session.get('searchString')) {
 				return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
+			} else if(Session.get('selectedAlphabet')) {
+				return codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{sort: {guideline: 1}});
 			} else {
 				return codingRules.find({},{ sort: { guideline: 1 } });
 			}			
@@ -103,6 +105,8 @@ Template.BHSlist.helpers({
 	'sectionListICD' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}})
+		} else if(Session.get('selectedAlphabet')) {
+			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{sort: {sectionName: 1}});
 		} else {
 			return section.find({type:"ICD"},{sort: {sectionName: 1}});
 		}
@@ -110,6 +114,8 @@ Template.BHSlist.helpers({
 	'sectionListDSM' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
+		} else if(Session.get('selectedAlphabet')) {
+			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{sort: {sectionName: 1}});
 		} else {
 			return section.find({type:"DSM"},{sort: {sectionName: 1}});
 		}		
@@ -148,6 +154,7 @@ Template.BHShome.events({
 		var title = event.currentTarget.id;
 		Session.set('title',title);
 		Session.set('searchString', '');
+		Session.set('selectedAlphabet', '');
     	Router.go('list');
   	}
 });
@@ -157,25 +164,27 @@ Template.BHSlist.events({
 		history.back();
   	},
   	'click .alphabet':function(event){
-  		var isAvailable = false;
-		var id = event.currentTarget.id;
-		$('.alphabet').css('color','black');
-		$('#'+id).css('color','#0758C3');
-		if(id!=prevId){
-			$(".listItem").each(function() {
-				var text = $(this).text().charAt(0);
-	 			if(id==text && !isAvailable){
-	 				$(this).attr('id',"list_"+text);
-	 				var currentId = $(this).attr('id');
-	 				prevId = id;
-	 				isAvailable = true;
-	 				$parentDiv = $('.listContainer');
-	 				$parentDiv.animate({
-    					scrollTop: $parentDiv.scrollTop() + $('#'+currentId).position().top - 111
-					}, 'slow');
-	 			}
-	 		});
-		}
+  		Session.set('selectedAlphabet',event.currentTarget.id);
+  // 		var isAvailable = false;
+		// var id = event.currentTarget.id;
+		// $('.alphabet').css('color','black');
+		// $('#'+id).css('color','#0758C3');
+		// if(id!=prevId){
+		// 	$(".listItem").each(function() {
+		// 		var text = $(this).text().charAt(0);
+	 // 			if(id==text && !isAvailable){
+	 // 				$(this).attr('id',"list_"+text);
+	 // 				var currentId = $(this).attr('id');
+	 // 				prevId = id;
+	 // 				isAvailable = true;
+	 // 				$parentDiv = $('.listContainer');
+	 // 				$parentDiv.animate({
+  //   					scrollTop: $parentDiv.scrollTop() + $('#'+currentId).position().top - 111
+		// 			}, 'slow');
+	 // 			}
+	 // 		});
+		// }
+
   	},
   	'keyup #searchString' : function(e){   
 		Session.set('searchString',$('#searchString').val());
