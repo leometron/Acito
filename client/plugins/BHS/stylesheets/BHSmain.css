@@ -50,9 +50,9 @@
   	cursor: pointer;
 }
 
-.bhs .button:hover{
+/*.bhs .button:hover{
 	background: #6495ED;
-}
+}*/
 
 .bhs .list_header{
 	display:table;
