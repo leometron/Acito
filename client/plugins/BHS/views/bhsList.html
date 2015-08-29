@@ -78,6 +78,19 @@
 								{{/if}}
 							{{/each}}
 						{{/if}}
+					{{/each}}
+					{{#each listDSM}}
+						{{#if equals sectionId ../_id}}
+						 {{#if equals subSectionName "Select"}}
+							<div class="list_item_div">
+								<div class="list_item_left">{{DSMCode}}</div>
+								<div class="list_item_middle"></div>
+								<div class="list_item_right">
+									<div style="margin-left:15px;">{{DSMDetail}}</div>
+								</div>
+							</div>
+						 {{/if}}
+						{{/if}}
 					{{/each}}	
 			{{/each}}	
 		{{/if}}

@@ -110,14 +110,12 @@ Template.BHSDSM.events({
 
         if (sectionName == "Select") {
             Session.set('errorMessage','Please select section');
-        } else if (subSectionName == "Select") {
-            Session.set('errorMessage','Please select sub section');            
         } else if(!dsmCode) {
             Session.set('errorMessage','DSM Code is Required');
         } else if(!dsmDetail) {
             Session.set('errorMessage','DSM Description is Required');
         } else {
-            $('#cancelCurrentDSMPost').hide();          
+            $('#cancelCurrentDSMPost').hide();      
             Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,capitalizedDsmCode,capitalizedDsmDetail,Session.get('currentDSMid'));
             if (Session.get('currentDSMid')) {
                 Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully updated');               
