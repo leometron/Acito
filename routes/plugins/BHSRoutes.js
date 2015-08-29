@@ -1,11 +1,11 @@
 //Routes related to plugin BHS admin 
-Router.route('/admin/BHS/CodingRules', function () {
+Router.route('/admin/CodingRules', function () {
     this.render('BHSCodingRules');
 });
-Router.route('/admin/BHS/DSM-5', function () {
+Router.route('/admin/DSM-5', function () {
     this.render('BHSDSM');
 });
-Router.route('/admin/BHS/ICD-10', function () {
+Router.route('/admin/ICD-10', function () {
     this.render('BHSICD');
 });
 

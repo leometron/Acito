@@ -188,6 +188,8 @@ Template.BHSlist.events({
 		var id = event.currentTarget.id;
 		$('.alphabet').css('color','black');
 		$('#'+id).css('color','#0758C3');
+  		Session.set('selectedAlphabet',id);		
+
 		// if(id!=prevId){
 		// 	$(".listItem").each(function() {
 		// 		var text = $(this).text().charAt(0);

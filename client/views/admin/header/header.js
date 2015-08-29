@@ -37,6 +37,9 @@ Template.adminHeader.helpers({
             // },
             // {'title': 'settings', 'maintitle': 'Settings', 'icon': 'fa-cog'},
             // {'title': 'themes', 'maintitle': 'Themes', 'icon': 'fa-paint-brush'},
+            {'title': 'ICD-10', 'maintitle': 'ICD-10'},
+            {'title': 'DSM-5', 'maintitle': 'DSM-5'},
+            {'title': 'CodingRules', 'maintitle': 'Coding Rules'},
         ]
     },
     'pluginList': function () {
@@ -77,6 +80,22 @@ Template.adminHeader.events({
     'click .item': function (events) {  
         var selectedId = $(events.currentTarget).attr("id");
 
+        if (selectedId == 'navBarICD-10') {
+            $('#navBarICD-10').addClass('selected');
+        } else {
+            $('#navBarICD-10').removeClass('selected');
+        }
+        if (selectedId == 'navBarDSM-5') {
+            $('#navBarDSM-5').addClass('selected');
+        } else {
+            $('#navBarDSM-5').removeClass('selected');
+        }
+        if (selectedId == 'navBarCodingRules') {
+            $('#navBarCodingRules').addClass('selected');
+        } else {
+            $('#navBarCodingRules').removeClass('selected');
+        }
+                        
         if (selectedId == 'navBardashboard') {
             $('#navBardashboard').addClass('selected');
         } else {
