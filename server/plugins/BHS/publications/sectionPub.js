@@ -4,11 +4,18 @@ Meteor.publish('section', function () {
 
 Meteor.methods({
     'insertSection': function (name, code, secType) {
-        if (typeof section.findOne({sectionName: name}) === "object") {
-        	console.log('section ' + name + ' already exists');    	
-        } else {
         	section.insert({sectionName: name, sectionCode: code, type: secType});
-	        console.log('Section ' + name + ' added successfully');        	
+    },
+    'updateSection': function (name, code, secType, currentSectionId) {
+       	section.update(currentSectionId,{$set:{sectionName: name,sectionCode: code,type: secType}});
+    },
+    'removeSelectSection' : function(selectedSectionAll, bulkAction) {
+        if (bulkAction == "Delete Permanently") {
+            for (i = 0; i < selectedSectionAll.length; i++) {
+                section.remove({
+                    _id: selectedSectionAll[i]
+                });
+            }
         }
     }
 });

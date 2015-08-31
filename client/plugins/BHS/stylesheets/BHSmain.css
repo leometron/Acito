@@ -285,10 +285,29 @@
 }
 
 .empty-results {
-	/*bottom: -20%;*/
 	margin-top: 4%;
     font-size: 20px;
     font-weight: bold;
     left: 39%;
-    /*position: absolute;*/
 }
+
+.closebtn {
+	background: #A6A6A6;
+	color: #FFFFFF;
+    border-radius: 37px;
+    cursor: pointer;
+    float: right;
+    font-size: 25px;
+    height: 40px;
+    position: absolute;
+    right: 48.5%;
+    text-align: center;
+    top: 6.4%;
+    width: 40px;
+}
+
+.closebtn:hover {
+	color: blue;
+}
+
+	

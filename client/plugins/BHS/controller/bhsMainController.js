@@ -30,7 +30,6 @@ Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
-	
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
 		if(Session.get('title') == "Coding Rules") {
@@ -108,7 +107,7 @@ Template.BHSlist.helpers({
 
 	'isExitsDSM' : function(){
 		if(Session.get('title') == "DSM-5 codes") {
-			return DSM.find({},{sort:{sectionName:1},limit:Session.get('pagination')});
+			return DSM.find({limit:Session.get('pagination')},{sort:{sectionName:1}});
 		}
 	},
 
@@ -124,14 +123,24 @@ Template.BHSlist.helpers({
 		}
 	},
 
+	'sectionListICD' : function() {
+		// return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit:pageCount},{sort: {sectionName: 1}});		
+		if (Session.get('searchString')) {
+			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}});
+		} else if(Session.get('selectedAlphabet')) {
+			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{sort: {sectionName: 1}});
+		} else {
+			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{sort: {sectionName: 1}});
+		}
+	},
 
 	'sectionListDSM' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
 		} else if(Session.get('selectedAlphabet')) {
-			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{sort: {sectionName: 1}});
+			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
 		} else {
-			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{sort: {sectionName: 1}});
+			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
 		}		
 	},
 
@@ -188,8 +197,6 @@ Template.BHSlist.events({
 		var id = event.currentTarget.id;
 		$('.alphabet').css('color','black');
 		$('#'+id).css('color','#0758C3');
-  		Session.set('selectedAlphabet',id);		
-
 		// if(id!=prevId){
 		// 	$(".listItem").each(function() {
 		// 		var text = $(this).text().charAt(0);
