@@ -4,14 +4,13 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
-	Session.set('countValue',5);
 	$('#'+Session.get('firstAlphabetinList')).css('color','#0758C3');
 	$('.listContainer').scroll(function(){
         if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight) {
-            Meteor.setTimeout(function(){
-            Session.set('countValue', Session.get('countValue') +5);
-            }, 1000);
-        }
+        	if($('.showMore').is(':visible')){
+        		Router.go($('.showMore').val());
+        	}
+		}
     });
    $('body').removeClass('bgImage');
    $('body').addClass('bgColor');
@@ -90,17 +89,16 @@ Template.BHShome.events({
 
 Template.BHSlist.events({
 	'click .backArrow': function(event) {
-		history.back();
+		Router.go("/");
   	},
   	'click .alphabet':function(event){
-  		Session.set('countValue',5);
   		$('.listContainer').scrollTop(0);
   		var isAvailable = false;
 		var id = event.currentTarget.id;
 		$('.alphabet').css('color','black');
 		$('#'+id).css('color','#0758C3');
-  		Session.set('selectedAlphabet',id);		
-
+  		Session.set('selectedAlphabet',id);
+		Session.set('searchString','');
 		// if(id!=prevId){
 		// 	$(".listItem").each(function() {
 		// 		var text = $(this).text().charAt(0);
@@ -119,6 +117,7 @@ Template.BHSlist.events({
 
   	},
   	'keyup #searchString' : function(e){   
+  		Session.set('selectedAlphabet','');
 		Session.set('searchString',$('#searchString').val());
   	}  
 });
