@@ -233,6 +233,16 @@ Template.BHSDSM.events({
             $('#actiondropdown2').text("Bulk Actions")
         }, 250);
     },
+    'click #closesection': function() {
+       Session.set('currentDSMSectionid', '');
+       $('#editDSMSectionList').hide();
+       $('#updateDSMSectionName').hide(); 
+    },
+    'click #closesubsection': function() {
+        Session.set('currentDSMSubSectionid', '');
+        $('#editDSMSubSectionList').hide();
+        $('#updateSubSectionName').hide();
+    },
     'change #sectionList': function() {
         if($('#sectionList :selected').val() != "Select"){
              Session.set("subsectionselectId", $('#sectionList :selected').val());

@@ -42,8 +42,11 @@
 		</div>
 
     <div class="row padding-bottom-10px padding-20px border-dashed" id="editDSMSectionList" style="margin-bottom:15px; margin-top: 30px;">
+        <div class="closesection">
+            <button id="closesection" type="button" class="btn btn-default">X</button>
+        </div>
         <div class="row">
-            <div class="col-md-10 padding-left-zero">
+            <div class="padding-left-zero" style="margin-bottom:8px">
                 <span class="dropdown margin-right">
                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown1"
                            data-toggle="dropdown">
@@ -98,9 +101,9 @@
     </div>
 	</div>
 	<div class="col-md-6">
-		<div class="margin-bottom-2pt" style="margin-left: -10px">
+		<div class="margin-bottom-2pt" style="margin-left: -25px">
 			<span class="font-size-20px padding-right-10px">Sub section :</span>
-			<select id="subSectionList" placeholder="Sub section" class="padding-10px font-size-16px" style="width:51%">
+			<select id="subSectionList" placeholder="Sub section" class="padding-10px font-size-16px" style="width:49%">
 				{{#if selectedDSM}}
     				<option class="font-size-16px" value="{{selectedDSM.subSectionId}}">{{selectedDSM.subSectionName}}</option>
                     <option class="font-size-16px">Select</option>
@@ -148,8 +151,11 @@
 			</div>
 
         <div class="row padding-bottom-10px padding-20px border-dashed" id="editDSMSubSectionList" style="margin-bottom:15px; margin-top: 30px;">
+          <div class="closesection">
+              <button id="closesubsection" type="button" class="btn btn-default">X</button>
+          </div>
           <div class="row">
-              <div class="col-md-10 padding-left-zero">
+              <div class="padding-left-zero" style="margin-bottom:8px">
                   <span class="dropdown margin-right">
                      <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown2"
                              data-toggle="dropdown">
