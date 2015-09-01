@@ -1,5 +1,13 @@
-Meteor.publish('ICD', function () {
+/*Meteor.publish('ICD', function () {
   return ICD.find();
+});
+*/
+Meteor.publish('ICD', function(options) {
+  check(options, {
+    sort: Object,
+    limit: Number
+  });
+  return ICD.find({}, options);
 });
 
 Meteor.methods({

@@ -21,31 +21,33 @@
 			</div>
 		<div class="listContainer">
 		{{#if listIcd}}
-		{{#each sectionListICD}}
-			{{#if equals sectionCode "-"}}
+				 {{#each listIcd}}
 				<div class="list_heading_div">
-					<div class="listItem">{{sectionName}}</div>
-				</div>
-			{{else}}
-				<div class="list_heading_div">
-					<div class="list_heading_left">{{sectionCode}}</div>
-					<div class="list_heading_middle">:</div>
+					<!-- <div class="list_heading_left"></div>
+					<div class="list_heading_middle">:</div> -->
+				{{#if sectionName}}
 					<div class="list_heading_right listItem">{{sectionName}}</div>
+				{{/if}}
+			</div>
+			<div class="list_item_div">
+				<div class="list_item_left">{{code}}</div>
+				<div class="list_item_middle"></div>
+				<div class="list_item_right">
+					<div>{{detail}}</div>
 				</div>
-			{{/if}}
-				{{#each listIcd}}
-					{{#if equals ../_id sectionId}}
-						<div class="list_item_div">
-							<div class="list_item_left">{{code}}</div>
-							<div class="list_item_middle"></div>
-							<div class="list_item_right">
-								<div>{{detail}}</div>
-							</div>
-						</div>
-					{{/if}}
-				{{/each}}
+			</div>
 		{{/each}}
+		 {{#if nextPath}}
+      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
+      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
+      		</a>
+		    {{else}}
+		      {{#unless ready}}
+		        {{> spinner}}
+		      {{/unless}}
+		    {{/if}}
 		{{/if}}
+
 
 
 		{{#if listDSM}}
