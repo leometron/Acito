@@ -18,7 +18,7 @@
 			</div>
 		<div class="listContainer">
 		{{#if listICD}}
-				 {{#each listICD}}
+			{{#each listICD}}
 				<div class="list_heading_div">
 					<!-- <div class="list_heading_left"></div>
 					<div class="list_heading_middle">:</div> -->
@@ -34,17 +34,13 @@
 				</div>
 			</div>
 		{{/each}}
-		 {{#if nextPath}}
-      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
-      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
-      		</a>
-		    {{else}}
-		      {{#unless ready}}
-		        {{> spinner}}
-		      {{/unless}}
-		    {{/if}}
+		{{#if nextPath}}
+      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+	 	{{/if}}
+	    {{#unless ready}}
+	       {{> spinner}}
+	     {{/unless}}
 		{{/if}}
-
 
 	{{#if listDSM}}
 		{{#each listDSM}}
@@ -68,15 +64,12 @@
 				</div>
 			</div>
 		{{/each}}
-		 {{#if nextPath}}
-      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
-      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
-      		</a>
-		    {{else}}
-		      {{#unless ready}}
-		        {{> spinner}}
-		      {{/unless}}
-		 {{/if}}
+		{{#if nextPath}}
+      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+      	 {{/if}}
+      {{#unless ready}}
+        {{> spinner}}
+      {{/unless}}
 	{{/if}}
 
 		{{#if listCodingRule}}
@@ -89,14 +82,11 @@
 				</div>
 			{{/each}}
 			{{#if nextPath}}
-	      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
-	      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
-	      		</a>
-			    {{else}}
-			      {{#unless ready}}
-			        {{> spinner}}
-			      {{/unless}}
-			{{/if}}
+	      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+	      	{{/if}}
+			{{#unless ready}}
+			     {{> spinner}}
+			{{/unless}}
 		{{/if}}
 		</div>
 		</div>

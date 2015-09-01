@@ -1,8 +1,3 @@
-/*Meteor.publish('codingRules', function () {
-    return codingRules.find();
-});
-*/
-
 Meteor.publish('codingRules', function(options) {
   check(options, {
     sort: Object,

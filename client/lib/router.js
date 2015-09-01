@@ -1,13 +1,14 @@
 
 BHSListController = RouteController.extend({
   template: 'BHSlist',
-  increment: 10, 
+  increment: 15, 
+
  postsLimit: function() { 
     return parseInt(this.params.postsLimit) || this.increment; 
   },
 
   findOptions: function() {
-    return {sort: this.sort, limit: this.postsLimit()};
+    return {sort: {sectionName: 1}, limit: this.postsLimit()};
   },
 
   subscriptions: function() {
@@ -54,8 +55,9 @@ BHSListController = RouteController.extend({
           listICD: arr,
           ready: self.ICDSubscribed.ready,
           nextPath: function() {
-            if (self.posts().count() === self.postsLimit())
-              return self.nextPath();
+            if (self.posts().count() === self.postsLimit()){
+                return self.nextPath();
+            }
           }
       };
     } else  if(Session.get('title') == "DSM-5 codes"){
@@ -81,8 +83,9 @@ BHSListController = RouteController.extend({
           listDSM: arr,
           ready: self.DSMSubscribed.ready,
           nextPath: function() {
-            if (self.posts().count() === self.postsLimit())
-              return self.nextPath();
+            if (self.posts().count() === self.postsLimit()){
+                return self.nextPath();
+              }
           }
       };
     }else{
@@ -98,18 +101,18 @@ BHSListController = RouteController.extend({
           listCodingRule: arr,
           ready: self.CodingRulesSubscribed.ready,
           nextPath: function() {
-            if (self.posts().count() === self.postsLimit())
+            if (self.posts().count() === self.postsLimit()){
               return self.nextPath();
+            }
           }
       };
     }
   }
 });
 
-NewBHSController = BHSListController.extend({
-   sort: {sectionName: 1},
+BHSController = BHSListController.extend({
     nextPath: function() {
-      return Router.routes.BHSlist.path({postsLimit: this.postsLimit() + this.increment})
+        return Router.routes.BHSlist.path({postsLimit: this.postsLimit() + this.increment});
     }
 });
 
@@ -119,14 +122,13 @@ Router.route('/', {
 });
 
 Router.route('/list', {
-  controller: NewBHSController,
+  controller: BHSController,
   layoutTemplate: ''
 });
 
 Router.route('/list/:postsLimit?', {
   name: 'BHSlist',
-  controller: NewBHSController,
+  controller: BHSController,
   layoutTemplate: ''
 });
-
 
