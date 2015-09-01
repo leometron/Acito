@@ -1,4 +1,12 @@
-Meteor.publish('DSM', function () {
+Meteor.publish('DSM', function(options) {
+  check(options, {
+    sort: Object,
+    limit: Number
+  });
+  return DSM.find({}, options);
+});
+
+Meteor.publish('allDSM', function () {
   return DSM.find();
 });
 

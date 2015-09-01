@@ -1,5 +1,4 @@
-Meteor.subscribe("codingRules");
-
+Meteor.subscribe('allCodingRules');
 var select_data = [];
 
 Template.BHSCodingRules.events({
