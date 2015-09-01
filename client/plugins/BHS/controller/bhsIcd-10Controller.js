@@ -55,6 +55,9 @@ Template.BHSICD.events({
     },
     'click #editSection' : function () {
         $('#updateSectionName').hide();
+        $('#chooseSectionName').hide();
+        $('#minimizeAddNewSection').hide();
+        $('#addNewSection').show();
         $('#bulkActionSection').fadeIn(500);
     },
     'click #minimizeAddNewSection' : function () {

@@ -27,15 +27,12 @@ Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
-<<<<<<< HEAD
-=======
 	'icdList' : function(){
 		return ICD.find();
 	},
 	'icdSectionList':function(){
 		return section.find({'type':'ICD'});
 	},
->>>>>>> 067d56216f4a90d0a75b751702c87114d6b7c22a
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
 		if(Session.get('title') == "Coding Rules") {
@@ -102,11 +99,7 @@ Template.BHSlist.helpers({
 	},
 	'listDSM' : function(){
 		if(Session.get('title') == "DSM-5 codes") {
-<<<<<<< HEAD
 			return DSM.find({limit:Session.get('pagination')},{sort:{sectionName:1}});
-=======
-			return DSM.find();
->>>>>>> 067d56216f4a90d0a75b751702c87114d6b7c22a
 		}
 	},
 	'listCodingRule' : function(){
@@ -120,8 +113,6 @@ Template.BHSlist.helpers({
 			}			
 		}
 	},
-<<<<<<< HEAD
-
 	'sectionListICD' : function() {
 		// return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit:pageCount},{sort: {sectionName: 1}});		
 		if (Session.get('searchString')) {
@@ -132,18 +123,6 @@ Template.BHSlist.helpers({
 			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{sort: {sectionName: 1}});
 		}
 	},
-
-=======
-	'sectionListICD' : function() {
-		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}});
-		} else if(Session.get('selectedAlphabet')) {
-			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
-		} else {
-			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
-		}
-	},
->>>>>>> 067d56216f4a90d0a75b751702c87114d6b7c22a
 	'sectionListDSM' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
