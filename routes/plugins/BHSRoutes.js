@@ -11,9 +11,9 @@ Router.route('/admin/ICD-10', function () {
 
 //Routes related to plugin BHS client 
 
-Router.route('/list', {
+/*Router.route('/list', {
 	layoutTemplate: '',
 	 data: function () {
 	 	this.render('BHSlist');
 	 }
-});
+});*/
