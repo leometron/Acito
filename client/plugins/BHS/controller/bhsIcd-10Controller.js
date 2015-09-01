@@ -1,4 +1,5 @@
 Meteor.subscribe("section");
+Meteor.subscribe("allICD");
 
 var select_data = [];
 var select_section_data = [];
@@ -85,14 +86,24 @@ Template.BHSICD.events({
         $('#bulkActionSection').fadeOut(500);
     },
     'click #saveCurrentICDPost': function () {
-    	var sectionName = $('#sectionList :selected').text();
+    	var section = $('#sectionList :selected').text();
+        var setionCode;
+        var sectionName;
+        if(section.match(/:/g)) {
+            var split = section.split(':');
+            setionCode = split[0];
+            sectionName = split[1];            
+        } else {
+            setionCode = "-";
+            sectionName = section;            
+        }
 		var sectionId = $('#sectionList').val();    	
     	var icdCode = $('#ICDCode').val();
         var capitalizedIcdCode = icdCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
     	var ICDDetail = $('#ICDDetail').val();
         var capitalizedIcdDetail = ICDDetail.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
 
-		if (sectionName == "Select") {
+		if (section == "Select") {
 			Session.set('errorMessage','Please select section');
 		} else if(!icdCode) {
 			Session.set('errorMessage','ICD Code is Required');
@@ -100,7 +111,7 @@ Template.BHSICD.events({
 			Session.set('errorMessage','ICD Description is Required');
 		} else {
             $('#cancelCurrentICDPost').hide()
-			Meteor.call('insertICD',sectionName,sectionId,capitalizedIcdCode,capitalizedIcdDetail,Session.get('currentICDid'));
+			Meteor.call('insertICD',setionCode,sectionName,sectionId,capitalizedIcdCode,capitalizedIcdDetail,Session.get('currentICDid'));
             if (Session.get('currentICDid')) {
                 Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully updated');               
             } else {

@@ -1,22 +1,22 @@
-/*Meteor.publish('ICD', function () {
+Meteor.publish('allICD', function () {
   return ICD.find();
 });
-*/
+
 Meteor.publish('ICD', function(options) {
   check(options, {
     sort: Object,
     limit: Number
   });
-  return ICD.find({}, options);
+  return ICD.find({}, options);        
 });
 
 Meteor.methods({
-    'insertICD': function (secName,secId,icdCode,icdDetail,currentId) {
+    'insertICD': function (secCode,secName,secId,icdCode,icdDetail,currentId) {
         if (typeof ICD.findOne(currentId) === "object") {
-        	ICD.update(currentId,{$set:{sectionName: secName,sectionId: secId,code: icdCode,detail: icdDetail}});        	
+        	ICD.update(currentId,{$set:{sectionCode: secCode,sectionName: secName,sectionId: secId,code: icdCode,detail: icdDetail}});        	
         	console.log('ICD ' + icdCode + ' updated successfully');    	
         } else {
-        	ICD.insert({sectionName: secName,sectionId: secId,code: icdCode,detail: icdDetail});
+        	ICD.insert({sectionCode: secCode,sectionName: secName,sectionId: secId,code: icdCode,detail: icdDetail});
 	        console.log('ICD ' + icdCode + ' added successfully');        	
         }
     },

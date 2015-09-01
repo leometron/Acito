@@ -8,7 +8,11 @@ BHSListController = RouteController.extend({
   },
 
   findOptions: function() {
-    return {sort: {sectionName: 1}, limit: this.postsLimit()};
+    if(Session.get('title') == "DSM-5 codes") {
+      return {sort: {sectionName: 1,subSectionName:1}, limit: this.postsLimit()};      
+    } else {
+      return {sort: {sectionName: 1}, limit: this.postsLimit()};
+    }
   },
 
   subscriptions: function() {
@@ -23,13 +27,41 @@ BHSListController = RouteController.extend({
 
   posts: function() {
     if(Session.get('title') == "ICD-10 codes"){
-      return ICD.find({}, this.findOptions());
-    }else if(Session.get('title') == "DSM-5 codes"){
-       return DSM.find({}, this.findOptions());
+      if(Session.get('selectedAlphabet')) {
+        return ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
+      } else if (Session.get('searchString')) {
+        return ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
+      } else {
+        return ICD.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+      }
+    } else if (Session.get('title') == "DSM-5 codes"){
+       if(Session.get('selectedAlphabet')) {
+        return DSM.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
+      } else if (Session.get('searchString')) {
+        return DSM.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
+      } else {
+        return DSM.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+      }
     }else{
-      return codingRules.find({}, this.findOptions());
+      if(Session.get('selectedAlphabet')) {
+        return codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') }, this.findOptions());
+      } else if (Session.get('searchString')) {
+        return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},this.findOptions());
+      } else {
+        return codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+      }
     }
   },
+
+  'resultCount' : function() {
+   if(Session.get('title') == "Coding Rules") {
+     return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')}).count();
+   } else if(Session.get('title') == "ICD-10 codes") {
+     return ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] }).count();
+   } else if(Session.get('title') == "DSM-5 codes") {
+     return DSM.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] }).count();
+   }
+ },
 
   data: function() {
     var self = this;
@@ -48,12 +80,14 @@ BHSListController = RouteController.extend({
             obj.code = data[i].code;
             obj.detail = data[i].detail;
             prevSectionName = data[i].sectionName;
+            obj.sectionCode = data[i].sectionCode;
             arr.push(obj);
           }
         }
         return {
           listICD: arr,
           ready: self.ICDSubscribed.ready,
+          searchDataEmpty : self.resultCount(),
           nextPath: function() {
             if (self.posts().count() === self.postsLimit()){
                 return self.nextPath();
@@ -82,6 +116,7 @@ BHSListController = RouteController.extend({
         return {
           listDSM: arr,
           ready: self.DSMSubscribed.ready,
+          searchDataEmpty : self.resultCount(),
           nextPath: function() {
             if (self.posts().count() === self.postsLimit()){
                 return self.nextPath();
@@ -100,6 +135,7 @@ BHSListController = RouteController.extend({
         return {
           listCodingRule: arr,
           ready: self.CodingRulesSubscribed.ready,
+          searchDataEmpty : self.resultCount(),
           nextPath: function() {
             if (self.posts().count() === self.postsLimit()){
               return self.nextPath();

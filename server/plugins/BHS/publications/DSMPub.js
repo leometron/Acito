@@ -6,6 +6,9 @@ Meteor.publish('DSM', function(options) {
   return DSM.find({}, options);
 });
 
+Meteor.publish('allDSM', function () {
+  return DSM.find();
+});
 
 Meteor.methods({
     'insertDSM': function (secId,secName,subSecId,subSecName,dsmCode,dsmDetail,currentId) {

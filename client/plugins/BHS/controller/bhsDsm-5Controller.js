@@ -1,5 +1,5 @@
-/*Meteor.subscribe("DSM");
-Meteor.subscribe("subSection");*/
+Meteor.subscribe("allDSM");
+Meteor.subscribe("subSection");
 
 var select_data = [];
 
@@ -232,6 +232,16 @@ Template.BHSDSM.events({
         Meteor.setTimeout(function () {
             $('#actiondropdown2').text("Bulk Actions")
         }, 250);
+    },
+    'click #closesection': function() {
+       Session.set('currentDSMSectionid', '');
+       $('#editDSMSectionList').hide();
+       $('#updateDSMSectionName').hide(); 
+    },
+    'click #closesubsection': function() {
+        Session.set('currentDSMSubSectionid', '');
+        $('#editDSMSubSectionList').hide();
+        $('#updateSubSectionName').hide();
     },
     'change #sectionList': function() {
         if($('#sectionList :selected').val() != "Select"){
