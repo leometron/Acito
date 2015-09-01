@@ -31,6 +31,7 @@ BHSListController = RouteController.extend({
         }
         obj.code = data[i].code;
         obj.detail = data[i].detail;
+        obj.sectionCode = data[i].sectionCode;
         prevSectionName = data[i].sectionName;
         arr.push(obj);
       }

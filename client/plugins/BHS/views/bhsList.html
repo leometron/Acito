@@ -23,10 +23,14 @@
 		{{#if listIcd}}
 				 {{#each listIcd}}
 				<div class="list_heading_div">
-					<!-- <div class="list_heading_left"></div>
-					<div class="list_heading_middle">:</div> -->
 				{{#if sectionName}}
+					{{#if equals sectionCode "-" }}
 					<div class="list_heading_right listItem">{{sectionName}}</div>
+					{{else}}
+					<div class="list_heading_left">{{sectionCode}}</div>
+					<div class="list_heading_middle">:</div>
+					<div class="list_heading_right listItem">{{sectionName}}</div>										
+					{{/if}}
 				{{/if}}
 			</div>
 			<div class="list_item_div">
