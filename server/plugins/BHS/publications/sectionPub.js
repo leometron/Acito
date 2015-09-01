@@ -17,5 +17,17 @@ Meteor.methods({
                 });
             }
         }
+    },
+    'removeDSMSelectSection' : function(selectedFileAll, bulkAction) {
+        if (bulkAction == "Delete Permanently") {
+            for (i = 0; i < selectedFileAll.length; i++) {
+                section.remove({
+                    _id: selectedFileAll[i]
+                });
+            }
+        }
+    },
+    'updateDSMSection': function(name, code, secType, secId) {
+        section.update(secId, {$set: {sectionName: name, sectionCode: code, type: secType}} );
     }
 });
