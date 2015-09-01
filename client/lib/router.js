@@ -7,7 +7,11 @@ BHSListController = RouteController.extend({
   },
 
   findOptions: function() {
-    return {sort: this.sort, limit: this.postsLimit()};
+    if(Session.get('title') == "DSM-5 codes") {
+      return {sort: {sectionName: 1,subSectionName:1}, limit: this.postsLimit()};      
+    } else {
+      return {sort: {sectionName: 1}, limit: this.postsLimit()};
+    }
   },
 
   subscriptions: function() {
@@ -22,11 +26,23 @@ BHSListController = RouteController.extend({
 
   posts: function() {
     if(Session.get('title') == "ICD-10 codes"){
-      return ICD.find({}, this.findOptions());
+      if (Session.get('searchString')) {
+        return ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
+      } else{      
+        return ICD.find({}, this.findOptions());
+      }
     }else if(Session.get('title') == "DSM-5 codes"){
-       return DSM.find({}, this.findOptions());
+      if (Session.get('searchString')) {
+        return DSM.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
+      } else{       
+        return DSM.find({}, this.findOptions());
+      }
     }else{
-      return codingRules.find({}, this.findOptions());
+      if (Session.get('searchString')) {
+        return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},this.findOptions());
+      } else{       
+        return codingRules.find({}, this.findOptions());
+      }
     }
   },
 
@@ -108,7 +124,6 @@ BHSListController = RouteController.extend({
 });
 
 NewBHSController = BHSListController.extend({
-   sort: {sectionName: 1},
     nextPath: function() {
       return Router.routes.BHSlist.path({postsLimit: this.postsLimit() + this.increment})
     }
