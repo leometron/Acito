@@ -40,18 +40,9 @@
         </div>
 
             <div class="border-dashed" id="bulkActionSection" style="width:50%; padding: 20px;">
-               <div class="closebtn">x</div>
-                <div class="row padding-bottom-10px padding-20px" id="updateSectionName">
-                    {{#if selectedSectionICD}}
-                   <div class="col-xs-2" ><input type="text" id="sectionCode" value="{{selectedSectionICD.sectionCode}}" class="form-control font-size-14 sectionCode" style="width:110%"></div>
-                   <div class="col-xs-6" ><input type="text" id="sectionName" value="{{selectedSectionICD.sectionName}}" class="form-control font-size-14 sectionName"></div>
-                    <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateSection" >Update</button></div>
-                    <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelCurrentId" >Cancel</button></div>
-                    {{/if}}
-                </div>
-
+               <!-- <div class="closebtn">x</div> -->
                 <div class="row">
-                <div class="col-md-12 padding-left-zero">
+                <div class="col-md-10 padding-left-zero">
                     <span class="dropdown margin-right">
                        <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdownSection"
                                data-toggle="dropdown">
@@ -67,6 +58,18 @@
                         <button id="applySection" type="button" class="btn btn-default">Apply</button>
                     </span>
                 </div>
+                <div class="col-md-1 closebtn">
+                    X
+                </div>
+                </div>
+
+                <div class="row" id="updateSectionName" style="margin-top:20px">
+                    {{#if selectedSectionICD}}
+                   <div class="col-xs-2" ><input type="text" id="sectionCode" value="{{selectedSectionICD.sectionCode}}" class="form-control font-size-14 sectionCode" style="width:110%"></div>
+                   <div class="col-xs-6" ><input type="text" id="sectionName" value="{{selectedSectionICD.sectionName}}" class="form-control font-size-14 sectionName"></div>
+                    <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateSection" >Update</button></div>
+                    <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelCurrentId" >Cancel</button></div>
+                    {{/if}}
                 </div>
 
                 <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF; margin-top:15px;">
