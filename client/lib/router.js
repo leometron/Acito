@@ -11,39 +11,99 @@ BHSListController = RouteController.extend({
   },
 
   subscriptions: function() {
-    this.icdSubscribed= Meteor.subscribe('ICD', this.findOptions());
+    if(Session.get('title') == "ICD-10 codes"){
+      this.ICDSubscribed= Meteor.subscribe('ICD', this.findOptions());
+    }else if(Session.get('title') == "DSM-5 codes"){
+       this.DSMSubscribed= Meteor.subscribe('DSM', this.findOptions());
+    }else{
+      this.CodingRulesSubscribed= Meteor.subscribe('codingRules', this.findOptions());
+    }
   },
 
   posts: function() {
-    return ICD.find({}, this.findOptions());
+    if(Session.get('title') == "ICD-10 codes"){
+      return ICD.find({}, this.findOptions());
+    }else if(Session.get('title') == "DSM-5 codes"){
+       return DSM.find({}, this.findOptions());
+    }else{
+      return codingRules.find({}, this.findOptions());
+    }
   },
 
   data: function() {
     var self = this;
-    var data = self.posts().fetch();
     var arr = [];
-    var prevSectionName="";
-    if(data.length>0){
-      for(var i=0;i<data.length;i++){
-        var obj = new  Object();
-        if(prevSectionName!=data[i].sectionName){
-          obj.sectionName = data[i].sectionName;
-        }
-        obj.code = data[i].code;
-        obj.detail = data[i].detail;
-        prevSectionName = data[i].sectionName;
-        arr.push(obj);
-      }
-    }
+    var data = self.posts().fetch();
+    
 
-    return {
-      listIcd: arr,
-      ready: self.icdSubscribed.ready,
-      nextPath: function() {
-        if (self.posts().count() === self.postsLimit())
-          return self.nextPath();
-      }
-    };
+    if(Session.get('title') == "ICD-10 codes"){
+        var prevSectionName="";
+        if(data.length>0){
+          for(var i=0;i<data.length;i++){
+            var obj = new  Object();
+            if(prevSectionName!=data[i].sectionName){
+              obj.sectionName = data[i].sectionName;
+            }
+            obj.code = data[i].code;
+            obj.detail = data[i].detail;
+            prevSectionName = data[i].sectionName;
+            obj.sectionCode = data[i].sectionCode;
+            arr.push(obj);
+          }
+        }
+        return {
+          listICD: arr,
+          ready: self.ICDSubscribed.ready,
+          nextPath: function() {
+            if (self.posts().count() === self.postsLimit())
+              return self.nextPath();
+          }
+      };
+    } else  if(Session.get('title') == "DSM-5 codes"){
+        var prevSectionName="";
+        var prevSubSectionName = "";
+        if(data.length>0){
+          for(var i=0;i<data.length;i++){
+            var obj=new Object();
+            if(prevSectionName!=data[i].sectionName){
+              obj.sectionName=data[i].sectionName;
+            }
+            if(prevSubSectionName!=data[i].subSectionName){
+               obj.subSectionName=data[i].subSectionName;
+            }
+            obj.DSMCode=data[i].DSMCode;
+            obj.DSMDetail=data[i].DSMDetail;
+            prevSectionName = data[i].sectionName;
+            prevSubSectionName = data[i].subSectionName;
+            arr.push(obj);
+          }
+        }
+        return {
+          listDSM: arr,
+          ready: self.DSMSubscribed.ready,
+          nextPath: function() {
+            if (self.posts().count() === self.postsLimit())
+              return self.nextPath();
+          }
+      };
+    }else{
+      if(data.length>0){
+          for(var i=0;i<data.length;i++){
+            var obj=new Object();
+            obj.guideline=data[i].guideline;
+            obj.definition=data[i].definition;
+            arr.push(obj);
+          }
+        }
+        return {
+          listCodingRule: arr,
+          ready: self.CodingRulesSubscribed.ready,
+          nextPath: function() {
+            if (self.posts().count() === self.postsLimit())
+              return self.nextPath();
+          }
+      };
+    }
   }
 });
 

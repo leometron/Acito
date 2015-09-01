@@ -220,6 +220,7 @@
 .margin-left-10px {
 	margin-left: 10px;
 }
+
 .font-size-20px {
 	font-size: 20px;
 }
@@ -292,21 +293,20 @@
 }
 
 .closebtn {
-	background: #A6A6A6;
-	color: #FFFFFF;
-    border-radius: 37px;
+	background: #FFFFFF;
+	border: 1px solid #DDDDDD;
+	color: #000000;
+    border-radius: 12px;
     cursor: pointer;
-    float: right;
-    font-size: 25px;
+    font-size: 20px;
     height: 40px;
-    position: absolute;
-    right: 48.5%;
-    text-align: center;
-    top: 13.4%;
     width: 40px;
+    padding: 6px 14px;
+    float: right;
 }
 
 .closebtn:hover {
+	background: #A6A6A6;
 	color: blue;
 }
 
