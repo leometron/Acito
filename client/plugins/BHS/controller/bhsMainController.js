@@ -27,23 +27,10 @@ Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
-	/*'icdList' : function(){
-		return ICD.find();
-	},*/
-	'icdSectionList':function(){
-		return section.find({'type':'ICD'});
-	},
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
 		if(Session.get('title') == "Coding Rules") {
-			var find = "";
-			if (Session.get('searchString')) {
-				find = { guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } };
-			}else{
-				find = {},{sort: { guideline: 1 }};
-			}
-
-			var data = codingRules.find(find).fetch();
+			var data = codingRules.find({},{sort: { guideline: 1 }}).fetch();
 			if(data.length>0){
 				$.each(data, function(i,row) {
 	    			var x = row.guideline.charAt(0).toUpperCase();
@@ -53,14 +40,7 @@ Template.BHSlist.helpers({
 				});
 			}
 		} else if(Session.get('title') == "ICD-10 codes"){
-			var find = "";
-			if (Session.get('searchString')) {
-				find = { $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}};
-			}else{
-				find = {type:"ICD"},{sort: {sectionName: 1}};
-			}
-
-			var data = section.find(find).fetch();
+			var data = section.find({type:"ICD"},{sort: {sectionName: 1}}).fetch();
 				if(data.length>0){
 					$.each(data, function(i,row) {
 		    			var x = row.sectionName.charAt(0).toUpperCase();
@@ -70,14 +50,7 @@ Template.BHSlist.helpers({
 					});
 				}
 		 }else if(Session.get('title') == "DSM-5 codes"){
-			var find = "";
-			if (Session.get('searchString')) {
-				find = { $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}};
-			}else{
-				find = {type:"DSM"},{sort: {sectionName: 1}};
-			}
-
-			var data = section.find(find).fetch();
+			var data = section.find({type:"DSM"},{sort: {sectionName: 1}}).fetch();
 				if(data.length>0){
 					$.each(data, function(i,row) {
 		    			var x = row.sectionName.charAt(0).toUpperCase();
@@ -92,17 +65,7 @@ Template.BHSlist.helpers({
 		return alphabetArray;
 	},
 
-	/*'listIcd' : function(){
-		if(Session.get('title') == "ICD-10 codes") {
-			return ICD.find();
-		}
-	},*/
-	'listDSM' : function(){
-		if(Session.get('title') == "DSM-5 codes") {
-			return DSM.find();
-		}
-	},
-	'listCodingRule' : function(){
+	/*'listCodingRule' : function(){
 		if(Session.get('title') == "Coding Rules") {
 			if (Session.get('searchString')) {
 				return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
@@ -112,7 +75,7 @@ Template.BHSlist.helpers({
 				return codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{ sort: { guideline: 1 } });
 			}			
 		}
-	},
+	},*/
 	/*'sectionListICD' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}});
@@ -122,7 +85,7 @@ Template.BHSlist.helpers({
 			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
 		}
 	},*/
-	'sectionListDSM' : function() {
+	/*'sectionListDSM' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
 		} else if(Session.get('selectedAlphabet')) {
@@ -133,10 +96,10 @@ Template.BHSlist.helpers({
 	},
 	'subSectionList' : function() {
 		return subSection.find();
-	},
-	'BHSLogo' : function() {
+	},*/
+	/*'BHSLogo' : function() {
 		return Media.findOne({name:"BHSlogo"});
-	}
+	}*/
 	/*'searchDataEmpty' : function() {
 		if(Session.get('title') == "Coding Rules") {
 			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')}).count();
@@ -148,7 +111,7 @@ Template.BHSlist.helpers({
 	}*/
 })
 
-Template.BHShome.helpers({
+/*Template.BHShome.helpers({
 	'bhsCode':function(){
 		return Pages.find({status: "Published"});
 	},
@@ -158,7 +121,7 @@ Template.BHShome.helpers({
 	'introText' : function() {
 		return Posts.find({tags:"Introduction"});
 	}	
-})
+})*/
 
 Template.BHShome.events({
 	'click .button': function(event, fview) {

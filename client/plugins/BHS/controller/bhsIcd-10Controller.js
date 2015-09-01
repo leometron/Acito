@@ -1,5 +1,4 @@
 Meteor.subscribe("section");
-Meteor.subscribe("ICD");
 
 var select_data = [];
 var select_section_data = [];

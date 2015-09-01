@@ -1,6 +1,11 @@
-Meteor.publish('DSM', function () {
-  return DSM.find();
+Meteor.publish('DSM', function(options) {
+  check(options, {
+    sort: Object,
+    limit: Number
+  });
+  return DSM.find({}, options);
 });
+
 
 Meteor.methods({
     'insertDSM': function (secId,secName,subSecId,subSecName,dsmCode,dsmDetail,currentId) {

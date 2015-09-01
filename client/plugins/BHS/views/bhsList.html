@@ -5,10 +5,7 @@
 				<img src="/images/left_arrow.png" width="25"/>
 			</div>
 			<div class="middleColmn backArrow">	
-<!-- 										{{#if BHSLogo}}				
-					<img src="{{BHSLogo.url}}" width="45"/>
-				{{/if}}	 -->
-					<img src="images/logo.png" width="45"/>				
+				<img src="images/logo.png" width="45"/>				
 			</div>
 			<div class="lastColmn"><div style="margin-right:80px;">{{title}}</div></div>
 		</div>
@@ -20,8 +17,8 @@
 	  			</div>
 			</div>
 		<div class="listContainer">
-		{{#if listIcd}}
-				 {{#each listIcd}}
+		{{#if listICD}}
+				 {{#each listICD}}
 				<div class="list_heading_div">
 					<!-- <div class="list_heading_left"></div>
 					<div class="list_heading_middle">:</div> -->
@@ -49,64 +46,57 @@
 		{{/if}}
 
 
-
-		{{#if listDSM}}
-			{{#each sectionListDSM}}
-				{{#if equals sectionCode "-"}}
-					<div class="list_heading_main_div">
-						<div class="listItem">{{sectionName}}</div>
-					</div>
-				{{else}}
-					<div class="list_heading_main_div">
-						<div class="list_heading_left">{{sectionCode}}</div>
-						<div class="list_heading_middle">:</div>
-						<div class="list_heading_right listItem">{{sectionName}}</div>
-					</div>
+	{{#if listDSM}}
+		{{#each listDSM}}
+			<div class="list_heading_main_div">
+				<!-- <div class="list_heading_left">{{sectionCode}}</div>
+				<div class="list_heading_middle">:</div> -->
+				{{#if sectionName}}
+					<div class="list_heading_right listItem">{{sectionName}}</div>
 				{{/if}}
-					{{#each subSectionList}}
-						{{#if equals ../_id  sectionId}}
-							<div class="list_heading_div">
-								<div class="list_heading">{{subSectionName}}</div>
-							</div>
-							{{#each listDSM}}
-								{{#if equals ../_id subSectionId}}
-									<div class="list_item_div">
-										<div class="list_item_left">{{DSMCode}}</div>
-										<div class="list_item_middle"></div>
-										<div class="list_item_right">
-											<div style="margin-left:15px;">{{DSMDetail}}</div>
-										</div>
-									</div>
-								{{/if}}
-							{{/each}}
-						{{/if}}
-					{{/each}}
-					{{#each listDSM}}
-						{{#if equals sectionId ../_id}}
-						 {{#if equals subSectionName "Select"}}
-							<div class="list_item_div">
-								<div class="list_item_left">{{DSMCode}}</div>
-								<div class="list_item_middle"></div>
-								<div class="list_item_right">
-									<div style="margin-left:15px;">{{DSMDetail}}</div>
-								</div>
-							</div>
-						 {{/if}}
-						{{/if}}
-					{{/each}}	
-			{{/each}}	
-		{{/if}}
-
-		
-		{{#if listCodingRule}}
-		{{#each listCodingRule}}
-		<div class="list_heading_div">
-			<div class="listItem">{{guideline}}</div>
-		</div>
-		<div class="list_item_div">
-			<div>{{definition}}</div>
-		</div>
+			</div>
+			<div class="list_heading_div">
+				{{#if subSectionName}}
+					<div class="list_heading">{{subSectionName}}</div>
+				{{/if}}
+			</div>
+			<div class="list_item_div">
+				<div class="list_item_left">{{DSMCode}}</div>
+				<div class="list_item_middle"></div>
+				<div class="list_item_right">
+					<div style="margin-left:15px;">{{DSMDetail}}</div>
+				</div>
+			</div>
 		{{/each}}
+		 {{#if nextPath}}
+      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
+      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
+      		</a>
+		    {{else}}
+		      {{#unless ready}}
+		        {{> spinner}}
+		      {{/unless}}
+		 {{/if}}
+	{{/if}}
+
+		{{#if listCodingRule}}
+			{{#each listCodingRule}}
+				<div class="list_heading_div">
+					<div class="listItem">{{guideline}}</div>
+				</div>
+				<div class="list_item_div">
+					<div>{{definition}}</div>
+				</div>
+			{{/each}}
+			{{#if nextPath}}
+	      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
+	      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
+	      		</a>
+			    {{else}}
+			      {{#unless ready}}
+			        {{> spinner}}
+			      {{/unless}}
+			{{/if}}
 		{{/if}}
 		</div>
 		</div>
