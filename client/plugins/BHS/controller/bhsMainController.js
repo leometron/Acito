@@ -27,11 +27,7 @@ Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
-<<<<<<< HEAD
-	'icdList' : function(){
-=======
 	/*'icdList' : function(){
->>>>>>> 21eaec10b38688d169e1d2b128cbbec571003b97
 		return ICD.find();
 	},*/
 	'icdSectionList':function(){
@@ -103,11 +99,7 @@ Template.BHSlist.helpers({
 	},*/
 	'listDSM' : function(){
 		if(Session.get('title') == "DSM-5 codes") {
-<<<<<<< HEAD
-			return DSM.find({limit:Session.get('pagination')},{sort:{sectionName:1}});
-=======
 			return DSM.find();
->>>>>>> 21eaec10b38688d169e1d2b128cbbec571003b97
 		}
 	},
 	'listCodingRule' : function(){
@@ -121,18 +113,6 @@ Template.BHSlist.helpers({
 			}			
 		}
 	},
-<<<<<<< HEAD
-	'sectionListICD' : function() {
-		// return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit:pageCount},{sort: {sectionName: 1}});		
-		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}});
-		} else if(Session.get('selectedAlphabet')) {
-			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{sort: {sectionName: 1}});
-		} else {
-			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{sort: {sectionName: 1}});
-		}
-	},
-=======
 	/*'sectionListICD' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}});
@@ -142,7 +122,6 @@ Template.BHSlist.helpers({
 			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
 		}
 	},*/
->>>>>>> 21eaec10b38688d169e1d2b128cbbec571003b97
 	'sectionListDSM' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
