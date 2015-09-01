@@ -1,5 +1,5 @@
 Meteor.subscribe("allDSM");
-// Meteor.subscribe("subSection");
+Meteor.subscribe("subSection");
 
 var select_data = [];
 

@@ -22,11 +22,23 @@ BHSListController = RouteController.extend({
 
   posts: function() {
     if(Session.get('title') == "ICD-10 codes"){
-      return ICD.find({}, this.findOptions());
-    }else if(Session.get('title') == "DSM-5 codes"){
-       return DSM.find({}, this.findOptions());
+      if(Session.get('selectedAlphabet')) {
+        return ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
+      } else{
+        return ICD.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+      }
+    } else if (Session.get('title') == "DSM-5 codes"){
+       if(Session.get('selectedAlphabet')) {
+        return DSM.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
+      }else{
+        return DSM.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+      }
     }else{
-      return codingRules.find({}, this.findOptions());
+      if(Session.get('selectedAlphabet')) {
+        return codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') }, this.findOptions());
+      }else{
+        return codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+      }
     }
   },
 
