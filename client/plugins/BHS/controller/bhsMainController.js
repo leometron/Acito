@@ -64,51 +64,6 @@ Template.BHSlist.helpers({
 			Session.set('firstAlphabetinList',alphabetArray[0])
 		return alphabetArray;
 	},
-
-	/*'listCodingRule' : function(){
-		if(Session.get('title') == "Coding Rules") {
-			if (Session.get('searchString')) {
-				return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},{ sort: { guideline: 1 } });
-			} else if(Session.get('selectedAlphabet')) {
-				return codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit: Session.get('countValue')},{sort: {guideline: 1}});
-			} else {
-				return codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{ sort: { guideline: 1 } });
-			}			
-		}
-	},*/
-	/*'sectionListICD' : function() {
-		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}});
-		} else if(Session.get('selectedAlphabet')) {
-			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
-		} else {
-			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
-		}
-	},*/
-	/*'sectionListDSM' : function() {
-		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
-		} else if(Session.get('selectedAlphabet')) {
-			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
-		} else {
-			return section.find({type:"DSM",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
-		}		
-	},
-	'subSectionList' : function() {
-		return subSection.find();
-	},*/
-	/*'BHSLogo' : function() {
-		return Media.findOne({name:"BHSlogo"});
-	}*/
-	/*'searchDataEmpty' : function() {
-		if(Session.get('title') == "Coding Rules") {
-			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')}).count();
-		} else if(Session.get('title') == "ICD-10 codes") {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] }).count();			
-		} else if(Session.get('title') == "DSM-5 codes") {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] }).count();						
-		}
-	}*/
 })
 
 /*Template.BHShome.helpers({

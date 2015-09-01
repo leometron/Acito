@@ -19,17 +19,18 @@
 		<div class="listContainer">
 		{{#if listICD}}
 				 {{#each listICD}}
-				<div class="list_heading_div">
 				{{#if sectionName}}
+				<div class="list_heading_div">
 					{{#if equals sectionCode "-" }}
 						<div class="list_heading listItem">{{sectionName}}</div>
 					{{else}}
 						<div class="list_heading_left">{{sectionCode}}</div>
 						<div class="list_heading_middle">:</div>
 						<div class="list_heading_right listItem">{{sectionName}}</div>										
+			
 					{{/if}}
+				</div>
 				{{/if}}
-			</div>
 			<div class="list_item_div">
 				<div class="list_item_left">{{code}}</div>
 				<div class="list_item_middle"></div>
@@ -52,18 +53,20 @@
 
 	{{#if listDSM}}
 		{{#each listDSM}}
-			<div class="list_heading_main_div">
+			
 				<!-- <div class="list_heading_left">{{sectionCode}}</div>
 				<div class="list_heading_middle">:</div> -->
 				{{#if sectionName}}
-					<div class="list_heading listItem">{{sectionName}}</div>
+					<div class="list_heading_main_div">	
+						<div class="list_heading listItem">{{sectionName}}</div>
+					</div>
 				{{/if}}
-			</div>
-			<div class="list_heading_div">
 				{{#if subSectionName}}
-					<div class="list_heading">{{subSectionName}}</div>
+					<div class="list_heading_div">
+						<div class="list_heading">{{subSectionName}}</div>
+					</div>
 				{{/if}}
-			</div>
+			
 			<div class="list_item_div">
 				<div class="list_item_left">{{DSMCode}}</div>
 				<div class="list_item_middle"></div>
