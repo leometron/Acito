@@ -27,15 +27,12 @@ Template.BHSlist.helpers({
 	'title':function(){
 		return Session.get('title');
 	},
-<<<<<<< HEAD
-=======
-	'icdList' : function(){
+	/*'icdList' : function(){
 		return ICD.find();
-	},
+	},*/
 	'icdSectionList':function(){
 		return section.find({'type':'ICD'});
 	},
->>>>>>> 067d56216f4a90d0a75b751702c87114d6b7c22a
 	'icdSectionAlphabet':function(){
 		var alphabetArray = new Array();
 		if(Session.get('title') == "Coding Rules") {
@@ -95,18 +92,14 @@ Template.BHSlist.helpers({
 		return alphabetArray;
 	},
 
-	'listIcd' : function(){
+	/*'listIcd' : function(){
 		if(Session.get('title') == "ICD-10 codes") {
 			return ICD.find();
 		}
-	},
+	},*/
 	'listDSM' : function(){
 		if(Session.get('title') == "DSM-5 codes") {
-<<<<<<< HEAD
-			return DSM.find({limit:Session.get('pagination')},{sort:{sectionName:1}});
-=======
 			return DSM.find();
->>>>>>> 067d56216f4a90d0a75b751702c87114d6b7c22a
 		}
 	},
 	'listCodingRule' : function(){
@@ -120,21 +113,7 @@ Template.BHSlist.helpers({
 			}			
 		}
 	},
-<<<<<<< HEAD
-
-	'sectionListICD' : function() {
-		// return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{limit:pageCount},{sort: {sectionName: 1}});		
-		if (Session.get('searchString')) {
-			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}});
-		} else if(Session.get('selectedAlphabet')) {
-			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },{sort: {sectionName: 1}});
-		} else {
-			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{sort: {sectionName: 1}});
-		}
-	},
-
-=======
-	'sectionListICD' : function() {
+	/*'sectionListICD' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"ICD"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"ICD"} ] },{sort: {sectionName: 1}});
 		} else if(Session.get('selectedAlphabet')) {
@@ -142,8 +121,7 @@ Template.BHSlist.helpers({
 		} else {
 			return section.find({type:"ICD",sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },{limit: Session.get('countValue')},{sort: {sectionName: 1}});
 		}
-	},
->>>>>>> 067d56216f4a90d0a75b751702c87114d6b7c22a
+	},*/
 	'sectionListDSM' : function() {
 		if (Session.get('searchString')) {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] },{sort: {sectionName: 1}})			
@@ -158,8 +136,8 @@ Template.BHSlist.helpers({
 	},
 	'BHSLogo' : function() {
 		return Media.findOne({name:"BHSlogo"});
-	},
-	'searchDataEmpty' : function() {
+	}
+	/*'searchDataEmpty' : function() {
 		if(Session.get('title') == "Coding Rules") {
 			return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')}).count();
 		} else if(Session.get('title') == "ICD-10 codes") {
@@ -167,7 +145,7 @@ Template.BHSlist.helpers({
 		} else if(Session.get('title') == "DSM-5 codes") {
 			return section.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i'), type:"DSM"}, { sectionCode : new RegExp(Session.get('searchString'),'i'), type:"DSM"} ] }).count();						
 		}
-	}
+	}*/
 })
 
 Template.BHShome.helpers({
@@ -203,6 +181,8 @@ Template.BHSlist.events({
 		var id = event.currentTarget.id;
 		$('.alphabet').css('color','black');
 		$('#'+id).css('color','#0758C3');
+  		Session.set('selectedAlphabet',id);		
+
 		// if(id!=prevId){
 		// 	$(".listItem").each(function() {
 		// 		var text = $(this).text().charAt(0);

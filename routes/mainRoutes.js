@@ -1,7 +1,7 @@
 // Home Route
-Router.route('/', {
+/*Router.route('/', {
     layoutTemplate: '',
     data: function () {
         this.render('BHShome');
     }              
-});
+});*/
