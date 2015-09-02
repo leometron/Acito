@@ -18,7 +18,7 @@
 			</div>
 		<div class="listContainer">
 		{{#if listICD}}
-				 {{#each listICD}}
+			{{#each listICD}}
 				{{#if sectionName}}
 				<div class="list_heading_div">
 					{{#if equals sectionCode "-" }}
@@ -39,16 +39,13 @@
 				</div>
 			</div>
 		{{/each}}
-		 {{#if nextPath}}
-      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
-      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
-      		</a>
-		    {{else}}
-		      {{#unless ready}}
-		        {{> spinner}}
-		      {{/unless}}
-		    {{/if}}
+		{{#if nextPath}}
+      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+	 	{{/if}}
 		{{/if}}
+	    {{#unless ready}}
+	       {{> spinner}}
+	     {{/unless}}		
 
 
 	{{#if listDSM}}
@@ -62,11 +59,13 @@
 					</div>
 				{{/if}}
 				{{#if subSectionName}}
+					{{#if equals subSectionName "Select"}}
+					{{else}}
 					<div class="list_heading_div">
 						<div class="list_heading">{{subSectionName}}</div>
 					</div>
+					{{/if}}
 				{{/if}}
-			
 			<div class="list_item_div">
 					<div class="list_item_left">{{DSMCode}}</div>
 				<div class="list_item_middle"></div>
@@ -75,17 +74,13 @@
 				</div>
 			</div>
 		{{/each}}
-		 {{#if nextPath}}
-      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
-      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
-      		</a>
-		    {{else}}
-		      {{#unless ready}}
-		        {{> spinner}}
-		      {{/unless}}
-		 {{/if}}
+		{{#if nextPath}}
+      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+      	 {{/if}}
 	{{/if}}
-
+      {{#unless ready}}
+        {{> spinner}}
+      {{/unless}}
 		{{#if listCodingRule}}
 			{{#each listCodingRule}}
 				<div class="list_heading_div">
@@ -96,15 +91,12 @@
 				</div>
 			{{/each}}
 			{{#if nextPath}}
-	      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
-	      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
-	      		</a>
-			    {{else}}
-			      {{#unless ready}}
-			        {{> spinner}}
-			      {{/unless}}
-			{{/if}}
-		{{/if}}
+	      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+	      	{{/if}}
+	{{/if}}
+		{{#unless ready}}
+			{{> spinner}}
+		{{/unless}}
 		</div>
 		</div>
 		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
@@ -115,7 +107,7 @@
 		</div>
 	</div>
 	{{#if equals searchDataEmpty 0}}
-	<div class="search-empty">No Results</div>
+		<div class="search-empty">No Results</div>
 	{{/if}}
 </div>
 </template>

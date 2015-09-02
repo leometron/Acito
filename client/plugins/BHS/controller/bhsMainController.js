@@ -4,10 +4,11 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
+	Session.set('searchString',"");
 	$('#'+Session.get('firstAlphabetinList')).css('color','#0758C3');
 	$('.listContainer').scroll(function(){
         if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight) {
-        	if($('.showMore').is(':visible')){
+        	if($("input:hidden").length==1){
         		Router.go($('.showMore').val());
         	}
 		}
