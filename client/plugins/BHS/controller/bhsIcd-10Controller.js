@@ -128,6 +128,7 @@ Template.BHSICD.events({
     },
     'click .ICD-data-row' : function () {
     	Session.set('currentICDid',this._id);
+        $(window).scrollTop(0);
     },
     'click .ICD-section-data-row' : function () {
         Session.set('currentICDSectionid',this._id);
@@ -166,6 +167,14 @@ Template.BHSICD.events({
     'click #apply': function () {
         Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
     },
+    // 'click #next' : function() {
+    //     Session.set('icdCodeCount', Session.get('icdCodeCount') + 10);
+    // },
+    // 'click #previous' : function() {
+    //     if(Session.get('icdCodeCount')>10){
+    //         Session.set('icdCodeCount', Session.get('icdCodeCount') - 10);
+    //     }
+    // }
 });
 
 
@@ -174,7 +183,7 @@ Template.BHSICD.helpers({
         return section.find({type:"ICD"});
     },
     'ICDList': function() {
-    	return ICD.find();
+    	return ICD.find({},{limit:Session.get('icdCodeCount')});
     },
     'selectedICD' : function () {
     	return ICD.findOne(Session.get('currentICDid'));    	
@@ -189,6 +198,15 @@ Template.BHSICD.helpers({
 
 
 Template.BHSICD.rendered = function () {
+    Session.set('icdCodeCount',10);
+    $(window).scroll(function(){
+        if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+            Meteor.setTimeout(function(){
+                Session.set('icdCodeCount', Session.get('icdCodeCount') +10);    
+            },1000);
+            
+        }
+    });
     $('#minimizeAddNewSection').hide();
     $('#chooseSectionName').hide();
     $('#bulkActionSection').hide();

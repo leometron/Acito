@@ -178,6 +178,7 @@ Template.BHSDSM.events({
     },
     'click .DSM-data-row' : function () {
         Session.set('currentDSMid',this._id);
+        $(window).scrollTop(0);
     },
     'click .section-data-row' : function() {
         Session.set('currentDSMSectionid', this._id);
@@ -267,7 +268,7 @@ Template.BHSDSM.helpers({
         return subSection.find();
     },
     'DSMList': function () {
-        return DSM.find();
+        return DSM.find({},{limit: Session.get('DsmCodeCount')});
     },
     'selectedDSM' : function () {
         return DSM.findOne(Session.get('currentDSMid'));        
@@ -283,6 +284,7 @@ Template.BHSDSM.helpers({
 
 
 Template.BHSDSM.rendered = function () {
+    Session.set('DsmCodeCount',10);
 	$('#chooseDSMSectionName').hide();
     $('#chooseDSMSubSectionName').hide();
     $('#minimizeDSMSection').hide();
@@ -291,4 +293,12 @@ Template.BHSDSM.rendered = function () {
     $('#editDSMSubSectionList').hide();
     $('#updateDSMSectionName').hide();
     $('#updateSubSectionName').hide();
+    $(window).scroll(function(){
+        if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+            Meteor.setTimeout(function(){
+                Session.set('DsmCodeCount', Session.get('DsmCodeCount') +10);    
+            },1000);
+            
+        }
+    });
 };

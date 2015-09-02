@@ -47,6 +47,7 @@
 	       {{> spinner}}
 	     {{/unless}}		
 
+
 	{{#if listDSM}}
 		{{#each listDSM}}
 			
@@ -66,7 +67,7 @@
 					{{/if}}
 				{{/if}}
 			<div class="list_item_div">
-				<div class="list_item_left">{{DSMCode}}</div>
+					<div class="list_item_left">{{DSMCode}}</div>
 				<div class="list_item_middle"></div>
 				<div class="list_item_right">
 					<div style="margin-left:15px;">{{DSMDetail}}</div>
@@ -92,8 +93,7 @@
 			{{#if nextPath}}
 	      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
 	      	{{/if}}
-
-		{{/if}}
+	{{/if}}
 		{{#unless ready}}
 			{{> spinner}}
 		{{/unless}}
@@ -101,7 +101,7 @@
 		</div>
 		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
 			{{#each icdSectionAlphabet}}
-             <div class="alphabet" id="{{this}}" style="padding:5px; cursor:pointer">{{this}}</div>  
+             <div class="alphabet" id="{{this}}" style="padding:5px; cursor:pointer;">{{this}}</div>  
             {{/each}}
              <div class="alphabet" style="padding:5px 0;">#</div>  
 		</div>
