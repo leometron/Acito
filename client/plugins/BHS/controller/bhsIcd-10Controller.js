@@ -82,7 +82,7 @@ Template.BHSICD.events({
     'click #cancelCurrentId' : function() {
         $('#updateSectionName').fadeOut(500);
     },
-    'click .closebtn' : function() {
+    'click .closesection' : function() {
         $('#bulkActionSection').fadeOut(500);
     },
     'click #saveCurrentICDPost': function () {
