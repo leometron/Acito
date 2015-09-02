@@ -71,12 +71,14 @@
 	vertical-align:middle;
 	text-align: center;
 	width:30px;
+	cursor: pointer;
 }
 
 .bhs .middleColmn{
 	display:table-cell; 
 	vertical-align:middle;
 	width:50px;
+	cursor: pointer;
 }
 
 .bhs .lastColmn{

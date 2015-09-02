@@ -18,12 +18,7 @@
 			</div>
 		<div class="listContainer">
 		{{#if listICD}}
-<<<<<<< HEAD
 				 {{#each listICD}}
-=======
-			{{#each listICD}}
-				<div class="list_heading_div">
->>>>>>> ef6f4e91db8507570ddc4173e4115cef38455262
 				{{#if sectionName}}
 				<div class="list_heading_div">
 					{{#if equals sectionCode "-" }}
@@ -44,13 +39,17 @@
 				</div>
 			</div>
 		{{/each}}
-		{{#if nextPath}}
-      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-	 	{{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}
+		 {{#if nextPath}}
+      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
+      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
+      		</a>
+		    {{else}}
+		      {{#unless ready}}
+		        {{> spinner}}
+		      {{/unless}}
+		    {{/if}}
 		{{/if}}
+
 
 	{{#if listDSM}}
 		{{#each listDSM}}
@@ -69,19 +68,22 @@
 				{{/if}}
 			
 			<div class="list_item_div">
-				<div class="list_item_left">{{DSMCode}}</div>
+					<div class="list_item_left">{{DSMCode}}</div>
 				<div class="list_item_middle"></div>
 				<div class="list_item_right">
 					<div style="margin-left:15px;">{{DSMDetail}}</div>
 				</div>
 			</div>
 		{{/each}}
-		{{#if nextPath}}
-      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-      	 {{/if}}
-      {{#unless ready}}
-        {{> spinner}}
-      {{/unless}}
+		 {{#if nextPath}}
+      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
+      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
+      		</a>
+		    {{else}}
+		      {{#unless ready}}
+		        {{> spinner}}
+		      {{/unless}}
+		 {{/if}}
 	{{/if}}
 
 		{{#if listCodingRule}}
@@ -94,17 +96,20 @@
 				</div>
 			{{/each}}
 			{{#if nextPath}}
-	      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-	      	{{/if}}
-			{{#unless ready}}
-			     {{> spinner}}
-			{{/unless}}
+	      		<a class="load-more" href="{{nextPath}}" style="text-decoration:none">
+	      			<div align="center" style="padding:10px; background:#CCC;">Load More</div>
+	      		</a>
+			    {{else}}
+			      {{#unless ready}}
+			        {{> spinner}}
+			      {{/unless}}
+			{{/if}}
 		{{/if}}
 		</div>
 		</div>
 		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
 			{{#each icdSectionAlphabet}}
-             <div class="alphabet" id="{{this}}" style="padding:5px">{{this}}</div>  
+             <div class="alphabet" id="{{this}}" style="padding:5px; cursor:pointer;">{{this}}</div>  
             {{/each}}
              <div class="alphabet" style="padding:5px 0;">#</div>  
 		</div>

@@ -32,6 +32,7 @@ Template.BHSCodingRules.events({
 	},
 	'click .CodingRules-data-row' : function() {
 		Session.set('currentCodingRulesid',this._id);
+        $(window).scrollTop(0);
 	},
 	'click .cancelCurrentId' : function () {
     	Session.set('currentCodingRulesid','');
@@ -63,7 +64,7 @@ Template.BHSCodingRules.events({
 
 Template.BHSCodingRules.helpers({
 	'codingRulesList': function () {
-        return codingRules.find({});
+        return codingRules.find({},{limit: Session.get('CodinRuleCount')});
     },
     'selectedCodingRules' : function () {
     	return codingRules.findOne(Session.get('currentCodingRulesid'));        
@@ -80,7 +81,15 @@ Template.BHSCodingRules.helpers({
 });
 
 Template.BHSCodingRules.rendered = function () {
-	// Session.set('numberOfCount', 3);
+    Session.set('CodinRuleCount',10);
+        $(window).scroll(function(){
+        if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+            Meteor.setTimeout(function(){
+                Session.set('CodinRuleCount', Session.get('CodinRuleCount') +10);    
+            },1000);
+            
+        }
+    });
 }
 
 Template.adminTop.helpers({
