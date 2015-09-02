@@ -1,4 +1,3 @@
-var prevId = "";
 Template.BHShome.rendered = function(){
    $('body').addClass('bgImage');
 }
@@ -13,9 +12,9 @@ Template.BHSlist.rendered = function(){
         	}
 		}
     });
-   $('body').removeClass('bgImage');
-   $('body').addClass('bgColor');
-   setListHeight();
+   	$('body').removeClass('bgImage');
+   	$('body').addClass('bgColor');
+   	setListHeight();
 }
 
 function setListHeight(){
@@ -64,27 +63,27 @@ Template.BHSlist.helpers({
 			Session.set('firstAlphabetinList',alphabetArray[0])
 		return alphabetArray;
 	},
-})
+	// 'networkConnection' : function() {
+	// 	if(!Meteor.status().connected) {
+	// 		return 1;
+	// 	} else {
 
-/*Template.BHShome.helpers({
-	'bhsCode':function(){
-		return Pages.find({status: "Published"});
-	},
-	'logo' : function() {
-		return Media.findOne({name:"BHSlogo"});
-	},
-	'introText' : function() {
-		return Posts.find({tags:"Introduction"});
-	}	
-})*/
+	// 	}
+	// }
+})
 
 Template.BHShome.events({
 	'click .button': function(event, fview) {
+	if(!Meteor.status().connected) {
+		alert('Please check your internet connection');
+	} else {
+		alert('success');		
 		var title = event.currentTarget.id;
 		Session.set('title',title);
 		Session.set('searchString', '');
 		Session.set('selectedAlphabet', '');
     	Router.go('list');
+  	}
   	}
 });
 
@@ -99,26 +98,8 @@ Template.BHSlist.events({
 		$('.alphabet').css('color','black');
 		$('#'+id).css('color','#0758C3');
   		Session.set('selectedAlphabet',id);
-		Session.set('searchString','');
-		// if(id!=prevId){
-		// 	$(".listItem").each(function() {
-		// 		var text = $(this).text().charAt(0);
-	 // 			if(id==text && !isAvailable){
-	 // 				$(this).attr('id',"list_"+text);
-	 // 				var currentId = $(this).attr('id');
-	 // 				prevId = id;
-	 // 				isAvailable = true;
-	 // 				$parentDiv = $('.listContainer');
-	 // 				$parentDiv.animate({
-  //   					scrollTop: $parentDiv.scrollTop() + $('#'+currentId).position().top - 111
-		// 			}, 'slow');
-	 // 			}
-	 // 		});
-		// }
-
   	},
   	'keyup #searchString' : function(e){   
-  		Session.set('selectedAlphabet','');
 		Session.set('searchString',$('#searchString').val());
   	}  
 });
