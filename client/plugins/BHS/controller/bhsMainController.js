@@ -74,16 +74,16 @@ Template.BHSlist.helpers({
 
 Template.BHShome.events({
 	'click .button': function(event, fview) {
-	if(!Meteor.status().connected) {
-		alert('Please check your internet connection');
-	} else {
-		alert('success');		
+	// if(!Meteor.status().connected) {
+	// 	alert('Please check your internet connection');
+	// } else {
+	// 	alert('success');		
 		var title = event.currentTarget.id;
 		Session.set('title',title);
 		Session.set('searchString', '');
 		Session.set('selectedAlphabet', '');
     	Router.go('list');
-  	}
+  	// }
   	}
 });
 
