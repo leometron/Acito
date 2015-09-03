@@ -84,7 +84,9 @@ Template.BHSICD.events({
         $('#sectionCode').attr('placeholder','Code');                     
     },
     'click #cancelCurrentId' : function() {
-        $('#updateSectionName').fadeOut(500);
+        Session.set('currentICDSectionid','');
+        // $('#updateSectionName').fadeOut(500);
+        $('#updateSectionName').hide();
     },
     'click .closesection' : function() {
         $('#bulkActionSection').fadeOut(500);
