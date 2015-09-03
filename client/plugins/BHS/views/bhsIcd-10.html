@@ -4,7 +4,11 @@
 			<span class="font-size-20px padding-right-10px">Section :</span>
 			<select id="sectionList" placeholder="Section" class="width30pt padding-10px font-size-16px">
 				{{#if selectedICD}}
-					<option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionName}}</option>
+					{{#if equals selectedICD.sectionCode "-"}}
+                       <option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionName}}</option>
+                    {{else}}
+                       <option class="font-size-16px" value="{{selectedICD.sectionId}}">{{selectedICD.sectionCode}}:{{selectedICD.sectionName}}</option>
+                    {{/if}}   
                     <option>Select</option>
                     {{#each sectionList}}
                         {{#if equals selectedICD.sectionId _id}}
@@ -64,8 +68,8 @@
 
                 <div class="row" id="updateSectionName" style="margin-top:20px">
                     {{#if selectedSectionICD}}
-                   <div class="col-xs-2" ><input type="text" id="sectionCode" value="{{selectedSectionICD.sectionCode}}" class="form-control font-size-14 sectionCode" style="width:110%"></div>
-                   <div class="col-xs-6" ><input type="text" id="sectionName" value="{{selectedSectionICD.sectionName}}" class="form-control font-size-14 sectionName"></div>
+                   <div class="col-xs-2" ><input type="text" id="updatesectionCode" value="{{selectedSectionICD.sectionCode}}" class="form-control font-size-14 sectionCode" style="width:110%"></div>
+                   <div class="col-xs-6" ><input type="text" id="updatesectionName" value="{{selectedSectionICD.sectionName}}" class="form-control font-size-14 sectionName"></div>
                     <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateSection" >Update</button></div>
                     <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelCurrentId" >Cancel</button></div>
                     {{/if}}
