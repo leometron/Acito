@@ -1,7 +1,7 @@
 
 BHSListController = RouteController.extend({
   template: 'BHSlist',
-  increment: 15, 
+  increment: 25, 
 
  postsLimit: function() { 
     return parseInt(this.params.postsLimit) || this.increment; 

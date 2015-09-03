@@ -100,10 +100,12 @@
 		</div>
 		</div>
 		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
-			{{#each icdSectionAlphabet}}
-             <div class="alphabet" id="{{this}}" style="padding:5px; cursor:pointer;">{{this}}</div>  
-            {{/each}}
-             <div class="alphabet" style="padding:5px 0;">#</div>  
+			<div class="alphabetDiv">
+				{{#each icdSectionAlphabet}}
+            		 <div class="alphabet" id="{{this}}" style="padding:5px; cursor:pointer;">{{this}}</div>  
+            	{{/each}}
+            	 <div class="alphabet" style="padding:5px 0;">#</div> 
+            </div> 
 		</div>
 	</div>
 	{{#if equals searchDataEmpty 0}}

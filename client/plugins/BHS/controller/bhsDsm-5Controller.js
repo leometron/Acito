@@ -155,9 +155,9 @@ Template.BHSDSM.events({
         if (sectionName == "Select") {
             Session.set('errorMessage','Please select section');
         } else if(!dsmCode) {
-            Session.set('errorMessage','DSM Code is Required');
+            Session.set('errorMessage','DSM Code is required');
         } else if(!dsmDetail) {
-            Session.set('errorMessage','DSM Description is Required');
+            Session.set('errorMessage','DSM Description is required');
         } else {
             $('#cancelCurrentDSMPost').hide();      
             Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,capitalizedDsmCode,capitalizedDsmDetail,Session.get('currentDSMid'));
@@ -221,6 +221,9 @@ Template.BHSDSM.events({
     },
     'click #apply': function () {
         Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
+         Meteor.setTimeout(function () {
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid','')
+        }, 250);
     },
     'click #sectionapply': function(){
         Meteor.call('removeDSMSelectSection', select_data, $('#actiondropdown1').text());
