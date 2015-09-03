@@ -29,7 +29,10 @@
 			</select>
 			<button id="addNewSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
             <button id="minimizeAddNewSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
-            <button id="editSection" class="btn btn-default margin-left-10px font-size-20px">Edit</button>          
+            {{#if equals sectionListCountICD 0}}
+            {{else}}
+                <button id="editSection" class="btn btn-default margin-left-10px font-size-20px">Edit</button>
+            {{/if}}
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseSectionName" style="margin-bottom:20px; width:50%">
@@ -75,32 +78,30 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-4">
-                        <span style="font-size:18px;">Section Code</span>
+                        <span style="font-size:18px;">Code</span>
                     </div>
                     <div class="col-md-7">
-                        <span style="font-size:18px;">Section Name</span>
+                        <span style="font-size:18px;">Name</span>
                     </div>
                 </div>
                 <div style="height:200px; overflow: auto">
                 {{#each sectionList}}
-                <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd; overflow: hidden">
-                    <div class="col-md-1">
-                        <span><input id="checkboxSection" type="checkbox"></span>
+                    <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd; overflow: hidden">
+                        <div class="col-md-1">
+                            <span><input id="checkboxSection" type="checkbox"></span>
+                        </div>
+                        <div class="ICD-section-data-row">
+                        <div class="col-md-4">
+                            <span style="font-size:16px">{{sectionCode}}</span>
+                        </div>
+                        <div class="col-md-7">
+                            <span style="font-size:16px;">{{sectionName}}</span>
+                        </div>
+                        </div>
                     </div>
-                    <div class="ICD-section-data-row">
-                    <div class="col-md-4">
-                        <span style="font-size:16px">{{sectionCode}}</span>
-                    </div>
-                    <div class="col-md-7">
-                        <span style="font-size:16px;">{{sectionName}}</span>
-                    </div>
-                    </div>
-                </div>
                 {{/each}}
                 </div>
-            </div>
-
-
+           </div>
 
 
 		<div class="row" style="padding-bottom:20px; margin-top:3%">
@@ -139,6 +140,7 @@
 
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
             <div class="col-md-1">
+                <span><input id="checkboxAll" type="checkbox"></span>
             </div>
             <div class="col-md-2">
                 <span style="font-size:18px;">ICD Code</span>

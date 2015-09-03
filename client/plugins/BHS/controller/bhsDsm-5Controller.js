@@ -225,14 +225,20 @@ Template.BHSDSM.events({
     'click #sectionapply': function(){
         Meteor.call('removeDSMSelectSection', select_data, $('#actiondropdown1').text());
         Meteor.setTimeout(function () {
-            $('#actiondropdown1').text("Bulk Actions")
-        }, 250);
+            $('#actiondropdown1').text("Bulk Actions");
+            if(Session.get('sectionTotalCountDSM')==0){
+                $('#editDSMSectionList').fadeOut(500);
+            }
+        }, 100);
     },
     'click #subsectionapply': function(){
         Meteor.call('removeSelectSubSection', select_data, $('#actiondropdown2').text());
         Meteor.setTimeout(function () {
-            $('#actiondropdown2').text("Bulk Actions")
-        }, 250);
+            $('#actiondropdown2').text("Bulk Actions");
+            if(Session.get('subSectionTotalCount')==0){
+                $('#editDSMSubSectionList').fadeOut(500);
+            }
+        }, 100);
     },
     'click #closesection': function() {
        Session.set('currentDSMSectionid', '');
@@ -261,11 +267,19 @@ Template.BHSDSM.helpers({
     'selectedSection': function(){
         return section.findOne(Session.get('currentDSMSectionid'));
     },
+    'sectionListCountDSM' : function () {
+        Session.set('sectionTotalCountDSM',section.find({type:"DSM"}).count());
+        return section.find({type:"DSM"}).count();  
+    },
     'selectSubSection': function(){
         return subSection.findOne(Session.get('currentDSMSubSectionid'));
     },
     'subSectionList': function () {
         return subSection.find();
+    },
+    'subSectionListCount' : function () {
+        Session.set('subSectionTotalCount',subSection.find().count());
+        return subSection.find().count();  
     },
     'DSMList': function () {
         return DSM.find({},{limit: Session.get('DsmCodeCount')});
