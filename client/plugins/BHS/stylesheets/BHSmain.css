@@ -5,9 +5,12 @@
 .bgImage{
 	background-image: url('/images/background.jpg');
 	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: center center;
-	background-color: #FFFFFF;
+	background-color: #FDFDFD;
+	background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
 }
 
 .bgColor{
@@ -22,11 +25,16 @@
 .bhs .heading{
 	font-weight:bold;
 	font-size:18px;
+	text-align: center;
+	margin-top:10px;
 }
 
 .bhs .content{
-	margin-top:20px;
+	margin-top:40px;
+	margin-left:15px;
+	margin-right:15px;
 	text-align:justify;
+	line-height:30px; 
 }
 
 .bhs .buttonRow{
