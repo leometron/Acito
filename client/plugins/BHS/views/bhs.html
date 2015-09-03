@@ -1,26 +1,25 @@
-<template name="BHShome">
-	<div style="padding-top: 4%;">
-	<div class="container">
-		<div class="bhs">
-			<div class="header">
-				<div>
+<template name="BHShome"> 
+<table style="height:100%; width:100%">
+	<tr>
+		<td style="vertical-align:middle;">
+			<div class="bhs">
+				<div style="margin-top:10px; text-align:center;">
 					<img src="images/logo.png" width="80"/>
 				</div>
-				<div class="heading" style="margin-top:1%">Introduction</div>
-			</div>
-
-			<div class="content" style="margin-top:3%">
-				<p>This app will let behavioral health and substance use clinicians look up DSM-5 codes and ICD-10 CM codes applicable to our work in the industry. No crosswalks or mappings. Why? You are solely responsible for choosing the diagnosis for your client. Leaving the "mapping" up to a a third party puts everyone at risk. To further mitigate risk, this app also gives you the coding and documentation rules that HIPAA mandates we follow.</p>
-				<p>Clean codes, complaint code utilization. Documentation guidelines. Practical and powerful.</p>
-			</div>
-				<div class="buttonRow" style="margin-top:4%">Mental Health's Unique Needs</div>
-
-				<div style="margin-top:3%" align="center">
-					<div class="button" id="ICD-10 codes">ICD-10 codes</div>
-					<div class="button" id="DSM-5 codes">DSM-5 codes</div>
-					<div class="button" id="Coding Rules">Coding Rules</div>
+				<div class="heading">Introduction</div>
+				<div class="content">
+					{{#each introText}}
+						<p>{{content}}</p>
+					{{/each}}
 				</div>
-		</div>
-	</div>
-	</div>
+				<div class="buttonRow" style="margin-top:40px; margin-left:15px; margin-right:15px;">Mental Health's Unique Needs</div>
+				<div style="margin-top:40px" align="center">
+					{{#each bhsButtons}}				
+						<div class="button" id="{{title}}">{{title}}</div>
+					{{/each}}								
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
 </template>
