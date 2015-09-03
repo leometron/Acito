@@ -1,7 +1,8 @@
 
 if(Meteor.isCordova){
 	document.addEventListener("backbutton", function(){
-	  if (window.location.href == "http://meteor.local/") {
+	alert(window.location.href);
+	  if (history.state && history.state.initial === true) {
 	    navigator.app.exitApp();
 	  } else {
 	    Router.go("/");
@@ -100,7 +101,8 @@ Template.BHShome.events({
 
 Template.BHSlist.events({
 	'click .backArrow': function(event) {
-		Router.go("/");
+	alert(window.location.href);
+		//Router.go("/");
   	},
   	'click .alphabet':function(event){
   		$('.listContainer').scrollTop(0);
