@@ -3,7 +3,7 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
-	Session.set('searchString',"");
+	// Session.set('searchString',"");
 	$('#'+Session.get('firstAlphabetinList')).css('color','#0758C3');
 	$('.listContainer').scroll(function(){
         if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight) {
@@ -59,8 +59,10 @@ Template.BHSlist.helpers({
 					});
 				}
 			}
-			alphabetArray.sort()
-			Session.set('firstAlphabetinList',alphabetArray[0])
+			alphabetArray.sort();
+        Meteor.setTimeout(function () {
+			Session.set('firstAlphabetinList',alphabetArray[0]);
+        }, 500);    
 		return alphabetArray;
 	},
 	// 'networkConnection' : function() {
@@ -99,8 +101,13 @@ Template.BHSlist.events({
 		$('#'+id).css('color','#0758C3');
   		Session.set('selectedAlphabet',id);
   	},
-  	'keyup #searchString' : function(e){   
-		Session.set('searchString',$('#searchString').val());
+  	'keyup #searchString' : function(e){
+  		if (!$('#searchString').val()) {
+  			Session.set('searchString',"");
+  		}
+  		if (e.which == 13) {
+			Session.set('searchString',$('#searchString').val());
+  		}
   	}  
 });
 

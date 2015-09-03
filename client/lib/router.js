@@ -54,7 +54,7 @@ BHSListController = RouteController.extend({
   },
 
   'resultCount' : function() {
-    if(Session.get('searchString')){
+    // if(Session.get('searchString')){
        if(Session.get('title') == "Coding Rules") {
          return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')}).count();
        } else if(Session.get('title') == "ICD-10 codes") {
@@ -62,7 +62,7 @@ BHSListController = RouteController.extend({
        } else if(Session.get('title') == "DSM-5 codes") {
          return DSM.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] }).count();
        }
-     }
+     // }
  },
 
   data: function() {
