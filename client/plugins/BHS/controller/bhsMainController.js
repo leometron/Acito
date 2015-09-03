@@ -4,7 +4,6 @@ Template.BHShome.rendered = function(){
 
 Template.BHSlist.rendered = function(){
 	// Session.set('searchString',"");
-	$('#'+Session.get('firstAlphabetinList')).css('color','#0758C3');
 	$('.listContainer').scroll(function(){
         if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight) {
         	if($("input:hidden").length==1){
@@ -15,6 +14,7 @@ Template.BHSlist.rendered = function(){
    	$('body').removeClass('bgImage');
    	$('body').addClass('bgColor');
    	setListHeight();
+	$('#'+Session.get('firstAlphabetinList')).css('color','#0758C3');   	
 }
 
 function setListHeight(){
@@ -60,9 +60,9 @@ Template.BHSlist.helpers({
 				}
 			}
 			alphabetArray.sort();
-        Meteor.setTimeout(function () {
+        // Meteor.setTimeout(function () {
 			Session.set('firstAlphabetinList',alphabetArray[0]);
-        }, 500);    
+        // }, 500);    
 		return alphabetArray;
 	},
 	// 'networkConnection' : function() {
@@ -94,6 +94,7 @@ Template.BHSlist.events({
 		Router.go("/");
   	},
   	'click .alphabet':function(event){
+  		Session.set('searchString',"");
   		$('.listContainer').scrollTop(0);
   		var isAvailable = false;
 		var id = event.currentTarget.id;
@@ -111,6 +112,17 @@ Template.BHSlist.events({
   	}  
 });
 
+Template.BHShome.helpers({
+	'bhsButtons':function(){
+		return Pages.find({status: "Published"});
+	},
+	// 'logo' : function() {
+	// 	return Media.findOne({name:"BHSlogo"});
+	// },
+	'introText' : function() {
+		return Posts.find({tags:"Introduction"});
+	}	
+})
 $(window).resize(function(evt) {
    setListHeight();
 });

@@ -6,17 +6,17 @@ Template.adminHeader.helpers({
     'navBarList': function () {
         return [
             // {'title': 'dashboard', 'maintitle': 'Dashboard', 'icon': 'fa-tachometer'},
-            // {
-            //     'title': 'posts',
-            //     'maintitle': 'Posts',
-            //     'icon': 'fa-thumb-tack',
-            //     'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}]                
+            {
+                'title': 'posts',
+                'maintitle': 'Posts',
+                'icon': 'fa-thumb-tack',
+                // 'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}]                
                 // 'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}, {
                 //     'sTitle': 'tags',
                 //     'title': 'posts',
                 //     'name': 'Tags'
                 // }, {'sTitle': 'image', 'title': 'posts', 'name': 'FeaturedImage'}]
-            // },
+            },
             // {
             //     'title': 'homeSliders',
             //     'maintitle': 'HomeSliders',
@@ -29,12 +29,12 @@ Template.adminHeader.helpers({
             //     'icon': 'fa-picture-o',
             //     'subtitle': [{'sTitle': 'add', 'title': 'media', 'name': 'AddNew'}]
             // },
-            // {
-            //     'title': 'pages',
-            //     'maintitle': 'Pages',
-            //     'icon': 'fa-file',
-            //     'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
-            // },
+            {
+                'title': 'pages',
+                'maintitle': 'Pages',
+                'icon': 'fa-file'
+                // 'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
+            },
             // {'title': 'settings', 'maintitle': 'Settings', 'icon': 'fa-cog'},
             // {'title': 'themes', 'maintitle': 'Themes', 'icon': 'fa-paint-brush'},
             {'title': 'ICD-10', 'maintitle': 'ICD-10'},
