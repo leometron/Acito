@@ -42,6 +42,9 @@
 		{{#if nextPath}}
       		<input type="hidden" class="showMore" value="{{nextPath}}"/>
 	 	{{/if}}
+	    {{#unless ready}}
+	       {{> spinner}}
+	     {{/unless}}		 	
 		{{/if}}
 	    {{#unless ready}}
 	       {{> spinner}}
@@ -77,6 +80,9 @@
 		{{#if nextPath}}
       		<input type="hidden" class="showMore" value="{{nextPath}}"/>
       	 {{/if}}
+	    {{#unless ready}}
+	       {{> spinner}}
+	     {{/unless}}	      	 
 	{{/if}}
       {{#unless ready}}
         {{> spinner}}
@@ -93,6 +99,9 @@
 			{{#if nextPath}}
 	      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
 	      	{{/if}}
+	    {{#unless ready}}
+	       {{> spinner}}
+	     {{/unless}}		      	
 	{{/if}}
 		{{#unless ready}}
 			{{> spinner}}

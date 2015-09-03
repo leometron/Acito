@@ -19,7 +19,7 @@ Template.BHSCodingRules.events({
                 if (Session.get('currentCodingRulesid')) {
                     Session.set('BHSSuccessMessage', 'Coding Rules successfully updated');               
                 } else {
-                    Session.set('BHSSuccessMessage', 'Coding Rules successfully Saved');
+                    Session.set('BHSSuccessMessage', 'Coding Rules successfully saved');
                 }                 
 				Meteor.setTimeout(function () {
 	                Session.set('BHSSuccessMessage', ''),$('#codingRulesCode').val(""),$('#codingRulesGuideline').val(""),
@@ -51,6 +51,9 @@ Template.BHSCodingRules.events({
     },
     'click #apply': function () {
         Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
+        Meteor.setTimeout(function () {
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', '')
+        }, 250);
     },
     // 'click .next' : function() {
     // 	if(Session.get('codingRulesCount')>3){

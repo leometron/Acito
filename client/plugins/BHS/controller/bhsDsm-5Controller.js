@@ -155,9 +155,9 @@ Template.BHSDSM.events({
         if (sectionName == "Select") {
             Session.set('errorMessage','Please select section');
         } else if(!dsmCode) {
-            Session.set('errorMessage','DSM Code is Required');
+            Session.set('errorMessage','DSM Code is required');
         } else if(!dsmDetail) {
-            Session.set('errorMessage','DSM Description is Required');
+            Session.set('errorMessage','DSM Description is required');
         } else {
             $('#cancelCurrentDSMPost').hide();      
             Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,capitalizedDsmCode,capitalizedDsmDetail,Session.get('currentDSMid'));
@@ -221,18 +221,27 @@ Template.BHSDSM.events({
     },
     'click #apply': function () {
         Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
+         Meteor.setTimeout(function () {
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid','')
+        }, 250);
     },
     'click #sectionapply': function(){
         Meteor.call('removeDSMSelectSection', select_data, $('#actiondropdown1').text());
         Meteor.setTimeout(function () {
-            $('#actiondropdown1').text("Bulk Actions")
-        }, 250);
+            $('#actiondropdown1').text("Bulk Actions");
+            if(Session.get('sectionTotalCountDSM')==0){
+                $('#editDSMSectionList').fadeOut(500);
+            }
+        }, 100);
     },
     'click #subsectionapply': function(){
         Meteor.call('removeSelectSubSection', select_data, $('#actiondropdown2').text());
         Meteor.setTimeout(function () {
-            $('#actiondropdown2').text("Bulk Actions")
-        }, 250);
+            $('#actiondropdown2').text("Bulk Actions");
+            if(Session.get('subSectionTotalCount')==0){
+                $('#editDSMSubSectionList').fadeOut(500);
+            }
+        }, 100);
     },
     'click #closesection': function() {
        Session.set('currentDSMSectionid', '');
@@ -261,11 +270,19 @@ Template.BHSDSM.helpers({
     'selectedSection': function(){
         return section.findOne(Session.get('currentDSMSectionid'));
     },
+    'sectionListCountDSM' : function () {
+        Session.set('sectionTotalCountDSM',section.find({type:"DSM"}).count());
+        return section.find({type:"DSM"}).count();  
+    },
     'selectSubSection': function(){
         return subSection.findOne(Session.get('currentDSMSubSectionid'));
     },
     'subSectionList': function () {
         return subSection.find();
+    },
+    'subSectionListCount' : function () {
+        Session.set('subSectionTotalCount',subSection.find().count());
+        return subSection.find().count();  
     },
     'DSMList': function () {
         return DSM.find({},{limit: Session.get('DsmCodeCount')});

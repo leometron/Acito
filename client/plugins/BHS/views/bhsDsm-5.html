@@ -31,7 +31,10 @@
 			</select>
 			<button id="addNewDSMSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
 			<button id="minimizeDSMSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
-      <button id="editDSMSection" class="btn btn-default margin-left-10px font-size-20px">Edit</button>
+      {{#if equals sectionListCountDSM 0}}
+      {{else}}
+        <button id="editDSMSection" class="btn btn-default margin-left-10px font-size-20px">Edit</button>
+      {{/if}}
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseDSMSectionName" style="margin-bottom:15px; margin-top: 30px;">
@@ -75,10 +78,10 @@
         </div>
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
             <div class="col-md-5">
-                <span style="font-size:18px">Section Code</span>
+                <span style="font-size:18px">Code</span>
             </div>
             <div class="col-md-7">
-                <span style="font-size:18px">Section Name</span>
+                <span style="font-size:18px">Name</span>
             </div>
         </div> 
         <div style="height: 200px; overflow: auto">
@@ -140,7 +143,10 @@
 			</select>
 			<button id="addNewDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
 			<button id="minimizeDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
-      <button id="editDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">Edit</button>
+      {{#if equals subSectionListCount 0}}
+      {{else}}
+        <button id="editDSMSubSection" class="btn btn-default margin-left-10px font-size-20px">Edit</button>
+      {{/if}}
 		</div>
 
 		<div class="row padding-bottom-10px padding-20px border-dashed" id="chooseDSMSubSectionName" style="margin-bottom:15px; margin-top: 30px;">
@@ -184,10 +190,10 @@
         </div>
           <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
               <div class="col-md-5">
-                  <span style="font-size:18px">Sub Section Code</span>
+                  <span style="font-size:18px">Code</span>
               </div>
               <div class="col-md-7">
-                  <span style="font-size:18px">Sub Section Name</span>
+                  <span style="font-size:18px">Name</span>
               </div>
           </div> 
           <div style="height: 200px; overflow: auto">
