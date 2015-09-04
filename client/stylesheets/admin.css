@@ -396,6 +396,20 @@ body, #main {
  margin-left:50px;
 }
 
+.logout {
+    cursor: pointer;
+}
+
+.logout-icon {
+    background-image: url(/images/ajax-loader.gif);
+    background-repeat: no-repeat;
+    position:absolute;
+    top:5px;
+    right:55px;
+    height: 35px;
+    width: 35px;
+}
+
 /*Ask Question*/
 
 /*.show-post {

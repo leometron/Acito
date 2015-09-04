@@ -1,19 +1,25 @@
 //Routes related to plugin BHS admin 
 Router.route('/admin/CodingRules', function () {
-    this.render('BHSCodingRules');
+    if(Meteor.userId()) {    
+    	this.render('BHSCodingRules');
+    } else {
+        alert('please login');
+        Router.go('admin');
+    }  	
 });
 Router.route('/admin/DSM-5', function () {
-    this.render('BHSDSM');
+    if(Meteor.userId()) {    
+    	this.render('BHSDSM');
+    } else {
+        alert('please login');
+        Router.go('admin');
+    }  	
 });
 Router.route('/admin/ICD-10', function () {
-    this.render('BHSICD');
+    if(Meteor.userId()) {    
+    	this.render('BHSICD');
+    } else {
+        alert('please login');
+        Router.go('admin');
+    }  	
 });
-
-//Routes related to plugin BHS client 
-
-/*Router.route('/list', {
-	layoutTemplate: '',
-	 data: function () {
-	 	this.render('BHSlist');
-	 }
-});*/
