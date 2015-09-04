@@ -198,6 +198,14 @@ Template.BHSICD.events({
     //         Session.set('icdCodeCount', Session.get('icdCodeCount') - 10);
     //     }
     // }
+    'change #sectionList': function() {
+        if($('#sectionList :selected').val() != "Select"){
+             Session.set("SectionICDId", $('#sectionList :selected').val());
+        } else {
+            Session.set("SectionICDId", "");
+        }
+    }
+
 });
 
 
@@ -221,6 +229,9 @@ Template.BHSICD.helpers({
         Session.set('sectionTotalCountICD',section.find({type:"ICD"}).count());
         return section.find({type:"ICD"}).count();  
     },
+    'sectionICDList' : function() {
+        return Session.get("SectionICDId");
+    }
 });
 
 
@@ -237,4 +248,5 @@ Template.BHSICD.rendered = function () {
     $('#minimizeAddNewSection').hide();
     $('#chooseSectionName').hide();
     $('#bulkActionSection').hide();
+    Session.set("SectionICDId", '');
 };

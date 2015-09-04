@@ -302,6 +302,7 @@ Template.BHSDSM.helpers({
 
 Template.BHSDSM.rendered = function () {
     Session.set('DsmCodeCount',10);
+    Session.set('subsectionselectId', '');
 	$('#chooseDSMSectionName').hide();
     $('#chooseDSMSubSectionName').hide();
     $('#minimizeDSMSection').hide();
