@@ -64,9 +64,9 @@ Template.BHSCodingRules.events({
     },
     'click #apply': function () {
         Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
+        $('input:checkbox').prop('checked',false);
         Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', ''),
-            $('input:checkbox').prop('checked',false);
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', '')
         }, 250);
     },
     // 'click .next' : function() {

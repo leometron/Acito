@@ -248,9 +248,9 @@ Template.BHSDSM.events({
     },
     'click #apply': function () {
         Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
+         $('input:checkbox').prop('checked',false);
          Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid',''),
-            $('input:checkbox').prop('checked',false);
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid','')
         }, 250);
     },
     'click #sectionapply': function(){

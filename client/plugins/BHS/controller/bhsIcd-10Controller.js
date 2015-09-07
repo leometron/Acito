@@ -193,9 +193,9 @@ Template.BHSICD.events({
     },
    'click #apply': function () {
         Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
+        $('input:checkbox').prop('checked',false);
         Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid',''),
-            $('input:checkbox').prop('checked',false);
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid','')
         }, 250);
     },
     'change #sectionList': function() {
