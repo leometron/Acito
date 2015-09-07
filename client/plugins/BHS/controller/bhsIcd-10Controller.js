@@ -214,7 +214,11 @@ Template.BHSICD.helpers({
         return section.find({type:"ICD"});
     },
     'ICDList': function() {
-    	return ICD.find({},{limit:Session.get('icdCodeCount')});
+        if(Session.get("SectionICDId")){
+            return ICD.find({sectionId:Session.get("SectionICDId")},{limit:Session.get('icdCodeCount')});
+        } else {
+            return ICD.find({},{limit:Session.get('icdCodeCount')});
+        }
     },
     'selectedICD' : function () {
     	return ICD.findOne(Session.get('currentICDid'));    	
@@ -228,9 +232,6 @@ Template.BHSICD.helpers({
     'sectionListCountICD' : function () {
         Session.set('sectionTotalCountICD',section.find({type:"ICD"}).count());
         return section.find({type:"ICD"}).count();  
-    },
-    'sectionICDList' : function() {
-        return Session.get("SectionICDId");
     }
 });
 

@@ -164,23 +164,6 @@
          </div>
         {{else}}
             {{#each ICDList}}
-                {{#if sectionICDList}}
-                    {{#if equals sectionId sectionICDList}}
-                        <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                            <div class="col-md-1">
-                                <span><input id="checkbox" type="checkbox"></span>
-                            </div>
-                            <div class="ICD-data-row">
-                            <div class="col-md-2">
-                                <span style="font-size:16px">{{code}}</span>
-                            </div>
-                            <div class="col-md-6">
-                                <span style="font-size:16px">{{detail}}</span>
-                            </div>
-                            </div>
-                        </div>  
-                    {{/if}}
-                {{else}}
                 <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
                     <div class="col-md-1">
                         <span><input id="checkbox" type="checkbox"></span>
@@ -194,7 +177,6 @@
                     </div>
                     </div>
                 </div>        
-                {{/if}}    
             {{/each}}
         {{/if}}
 <!--         <div class="row" style="padding:10px">
