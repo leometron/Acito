@@ -28,7 +28,7 @@ BHSListController = RouteController.extend({
   posts: function() {
     if(Session.get('title') == "ICD-10 codes"){
       if (Session.get('searchString')) {
-        return ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
+        return ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i') }, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
       } else if(Session.get('selectedAlphabet')) {
         return ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
       } else {
