@@ -11,11 +11,10 @@ if(Meteor.isCordova){
 
 Template.BHShome.rendered = function(){
 	$('#home_logo').attr('src','images/logo.png');
-   $('body').addClass('bgImage');
+   	$('body').addClass('bgImage');
 }
 
 Template.BHSlist.rendered = function(){
-	// Session.set('searchString',"");
 	$('.listContainer').scroll(function(){
         if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight) {
         	if($("input:hidden").length==1){
@@ -106,13 +105,15 @@ Template.BHSlist.events({
 		Router.go("/");
   	},
   	'click .alphabet':function(event){
-  		Session.set('searchString',"");
   		$('.listContainer').scrollTop(0);
-  		var isAvailable = false;
+  		// var isAvailable = false;
 		var id = event.currentTarget.id;
-		$('.alphabet').css('color','black');
-		$('#'+id).css('color','#0758C3');
-  		Session.set('selectedAlphabet',id);
+		if (id){
+  			Session.set('searchString',"");
+			$('.alphabet').css('color','black');
+			$('#'+id).css('color','#0758C3');			
+			Session.set('selectedAlphabet',id);
+		}
   	},
   	'keyup #searchString' : function(e){
   		if (!$('#searchString').val()) {

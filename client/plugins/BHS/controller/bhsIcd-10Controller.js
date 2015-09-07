@@ -3,6 +3,7 @@ Meteor.subscribe("allICD");
 
 var select_data = [];
 var select_section_data = [];
+var select_all = [];
 
 Template.BHSICD.events({
 	'click #saveSection': function () {
@@ -167,7 +168,7 @@ Template.BHSICD.events({
                 }    
             },100);
     },
-    'click #checkbox': function (event) {
+    'click .checkbox': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -175,37 +176,27 @@ Template.BHSICD.events({
             var index = select_data.indexOf(this._id);
             select_data.splice(index, 1);
         }
+    },   
+    'click #checkboxAll' : function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('input:checkbox').prop('checked',true);
+        }else{
+            $('input:checkbox').prop('checked',false);
+        }
+        $(":checkbox").each(function() {
+           if(this.checked){
+                select_data.push(this.id);
+           }
+       });
     },
-    // 'click #checkboxAll' : function(event){
-    //     var selectcheck = event.target.checked;
-    //         if (selectcheck == true) {
-    //             $('input:checkbox').attr('checked','checked');
-    //         }else{
-    //             $('input:checkbox').removeAttr('checked');     
-    //         }
-    // },
-    'click #apply': function () {
+   'click #apply': function () {
         Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
         Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid','')
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid',''),
+            $('input:checkbox').prop('checked',false);
         }, 250);
     },
-    // 'click #next' : function() {
-    //     Session.set('icdCodeCount', Session.get('icdCodeCount') + 10);
-    // },
-    // 'click #previous' : function() {
-    //     if(Session.get('icdCodeCount')>10){
-    //         Session.set('icdCodeCount', Session.get('icdCodeCount') - 10);
-    //     }
-    // }
-    'change #sectionList': function() {
-        if($('#sectionList :selected').val() != "Select"){
-             Session.set("SectionICDId", $('#sectionList :selected').val());
-        } else {
-            Session.set("SectionICDId", "");
-        }
-    }
-
 });
 
 
@@ -249,5 +240,4 @@ Template.BHSICD.rendered = function () {
     $('#minimizeAddNewSection').hide();
     $('#chooseSectionName').hide();
     $('#bulkActionSection').hide();
-    Session.set("SectionICDId", '');
 };
