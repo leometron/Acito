@@ -162,9 +162,9 @@ Template.BHSDSM.events({
             $('#cancelCurrentDSMPost').hide();      
             Meteor.call('insertDSM',sectionId,sectionName,subSectionId,subSectionName,capitalizedDsmCode,capitalizedDsmDetail,Session.get('currentDSMid'));
             if (Session.get('currentDSMid')) {
-                Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully updated');               
+                Session.set('BHSSuccessMessage', 'DSM successfully updated');               
             } else {
-                Session.set('BHSSuccessMessage', 'DSM '+ dsmCode + ' successfully saved');            
+                Session.set('BHSSuccessMessage', 'DSM successfully saved');            
             }
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage', ''),Session.set('currentDSMid',''),$('#sectionList').val("Select"),
