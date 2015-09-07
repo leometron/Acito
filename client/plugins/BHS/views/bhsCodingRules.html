@@ -59,6 +59,7 @@
 
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
             <div class="col-md-1">
+                <span><input id="checkboxAll" type="checkbox"></span>
             </div>
             <div class="col-md-2">
                 <span style="font-size:18px">Code</span>
@@ -83,7 +84,7 @@
            {{#each codingRulesList}}
             <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
                 <div class="col-md-1">
-                    <span><input id="checkbox" type="checkbox"></span>
+                    <span><input class="checkbox" id="{{_id}}" type="checkbox"></span>
                 </div>
                 <div class="CodingRules-data-row">
                 <div class="col-md-2">

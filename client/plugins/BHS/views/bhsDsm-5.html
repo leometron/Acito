@@ -123,21 +123,11 @@
                 {{else}}
 				    <option class="font-size-16px">Select</option>
                    	{{#each subSectionList}}
-                        {{#if subSectionSelectList}}
-                           {{#if equals sectionId subSectionSelectList}}
-                              {{#if equals subSectionCode "-" }}
-                                <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
-                               {{else}}    
-                             <option class="font-size-16px" value="{{_id}}">{{subSectionCode}}:{{subSectionName}}</option>
-                              {{/if}}
-                           {{/if}} 
-                          {{else}}
                             {{#if equals subSectionCode "-" }}
                              <option class="font-size-16px" value="{{_id}}">{{subSectionName}}</option>
                              {{else}}    
                               <option class="font-size-16px" value="{{_id}}">{{subSectionCode}}:{{subSectionName}}</option>
                             {{/if}}
-                        {{/if}}
                     {{/each}} 
           {{/if}}
 			</select>
@@ -250,6 +240,7 @@
 
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
             <div class="col-md-1">
+                <span><input id="checkboxAll" type="checkbox"></span>
             </div>
             <div class="col-md-2">
                 <span style="font-size:18px">DSM Code</span>
@@ -269,37 +260,19 @@
          </div>
         {{else}}
           {{#each DSMList}}
-            {{#if subSectionSelectList}}
-              {{#if equals sectionId subSectionSelectList}}
-                  <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                      <div class="col-md-1">
-                          <span><input id="checkbox" type="checkbox"></span>
-                      </div>
-                      <div class="DSM-data-row">
-                      <div class="col-md-2">
-                          <span style="font-size:16px">{{DSMCode}}</span>
-                      </div>
-                      <div class="col-md-6">
-                          <span style="font-size:16px">{{DSMDetail}}</span>
-                      </div>
-                      </div>
-                    </div>    
-              {{/if}}
-             {{else}}
-               <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                  <div class="col-md-1">
-                      <span><input id="checkbox" type="checkbox"></span>
-                  </div>
-                  <div class="DSM-data-row">
-                  <div class="col-md-2">
-                      <span style="font-size:16px">{{DSMCode}}</span>
-                  </div>
-                  <div class="col-md-6">
-                      <span style="font-size:16px">{{DSMDetail}}</span>
-                  </div>
-                  </div>
-                </div>    
-             {{/if}}        
+          	<div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
+              	<div class="col-md-1">
+                  	<span><input class="checkbox" id="{{_id}}" type="checkbox"></span>
+              	</div>
+              	<div class="DSM-data-row">
+              	<div class="col-md-2">
+                  	<span style="font-size:16px">{{DSMCode}}</span>
+              	</div>
+              	<div class="col-md-6">
+                  	<span style="font-size:16px">{{DSMDetail}}</span>
+              	</div>
+              	</div>
+            	</div>            
           {{/each}}
         {{/if}}
 	</div>					

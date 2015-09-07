@@ -3,6 +3,7 @@ Meteor.subscribe("allICD");
 
 var select_data = [];
 var select_section_data = [];
+var select_all = [];
 
 Template.BHSICD.events({
 	'click #saveSection': function () {
@@ -175,25 +176,25 @@ Template.BHSICD.events({
             var index = select_data.indexOf(this._id);
             select_data.splice(index, 1);
         }
-    },
+    },   
     'click #checkboxAll' : function(event){
         var selectcheck = event.target.checked;
-            if (selectcheck == true) {
-                $('input:checkbox').prop("checked", true);
-            }else{
-                $('input:checkbox').prop("checked", false);     
-            }
+        if(selectcheck == true){
+            $('input:checkbox').prop('checked',true);
+        }else{
+            $('input:checkbox').prop('checked',false);
+        }
         $(":checkbox").each(function() {
-            if(this.checked){
+           if(this.checked){
                 select_data.push(this.id);
-            }
-        });
-        // alert("checked: " + select_data);
+           }
+       });
     },
-    'click #apply': function () {
+   'click #apply': function () {
         Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
         Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid','')
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid',''),
+            $('input:checkbox').prop('checked',false);
         }, 250);
     },
     'change #sectionList': function() {
@@ -203,7 +204,6 @@ Template.BHSICD.events({
             Session.set("SectionICDId", "");
         }
     }
-
 });
 
 
@@ -212,7 +212,11 @@ Template.BHSICD.helpers({
         return section.find({type:"ICD"});
     },
     'ICDList': function() {
-    	return ICD.find({},{limit:Session.get('icdCodeCount')});
+        if(Session.get("SectionICDId")){
+            return ICD.find({sectionId:Session.get("SectionICDId")},{limit:Session.get('icdCodeCount')});
+        } else {
+            return ICD.find({},{limit:Session.get('icdCodeCount')});
+        }
     },
     'selectedICD' : function () {
     	return ICD.findOne(Session.get('currentICDid'));    	
@@ -226,9 +230,6 @@ Template.BHSICD.helpers({
     'sectionListCountICD' : function () {
         Session.set('sectionTotalCountICD',section.find({type:"ICD"}).count());
         return section.find({type:"ICD"}).count();  
-    },
-    'sectionICDList' : function() {
-        return Session.get("SectionICDId");
     }
 });
 
@@ -246,5 +247,5 @@ Template.BHSICD.rendered = function () {
     $('#minimizeAddNewSection').hide();
     $('#chooseSectionName').hide();
     $('#bulkActionSection').hide();
-    Session.set("SectionICDId", '');
+    Session.set("SectionICDId", "");
 };

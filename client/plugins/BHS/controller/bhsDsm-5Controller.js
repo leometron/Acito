@@ -210,7 +210,7 @@ Template.BHSDSM.events({
     'click .menuitem4': function (event) {
         $('#actiondropdown2').text($(event.target).text());
     },
-    'click #checkbox': function (event) {
+    'click .checkbox': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -219,10 +219,24 @@ Template.BHSDSM.events({
             select_data.splice(index, 1);
         }
     },
+    'click #checkboxAll' : function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('input:checkbox').prop('checked',true);
+        }else{
+            $('input:checkbox').prop('checked',false);
+        }
+        $(":checkbox").each(function() {
+           if(this.checked){
+                select_data.push(this.id);
+           }
+       });
+    },
     'click #apply': function () {
         Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
          Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid','')
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid',''),
+            $('input:checkbox').prop('checked',false);
         }, 250);
     },
     'click #sectionapply': function(){
@@ -255,9 +269,9 @@ Template.BHSDSM.events({
     },
     'change #sectionList': function() {
         if($('#sectionList :selected').val() != "Select"){
-             Session.set("subsectionselectId", $('#sectionList :selected').val());
+             Session.set("selectsectionId", $('#sectionList :selected').val());
         } else {
-            Session.set("subsectionselectId", "");
+            Session.set("selectsectionId", "");
         }
     }
 });
@@ -278,21 +292,25 @@ Template.BHSDSM.helpers({
         return subSection.findOne(Session.get('currentDSMSubSectionid'));
     },
     'subSectionList': function () {
-        return subSection.find();
+        if(Session.get('selectsectionId')) {
+            return subSection.find({sectionId:Session.get('selectsectionId')});
+        } else {
+            return subSection.find();
+        }
     },
     'subSectionListCount' : function () {
         Session.set('subSectionTotalCount',subSection.find().count());
         return subSection.find().count();  
     },
-    'DSMList': function () {
-        return DSM.find({},{limit: Session.get('DsmCodeCount')});
+    'DSMList': function () { 
+        if(Session.get('selectsectionId')){
+            return DSM.find({sectionId:Session.get('selectsectionId')},{limit: Session.get('DsmCodeCount')});
+        } else {
+            return DSM.find({},{limit: Session.get('DsmCodeCount')});
+        }
     },
     'selectedDSM' : function () {
         return DSM.findOne(Session.get('currentDSMid'));        
-    },
-    'subSectionSelectList' :function() {
-        var subvalue = Session.get("subsectionselectId");
-        return subvalue;
     },
     'DSMListCount': function() {
         return DSM.find().count();
@@ -302,7 +320,7 @@ Template.BHSDSM.helpers({
 
 Template.BHSDSM.rendered = function () {
     Session.set('DsmCodeCount',10);
-    Session.set('subsectionselectId', '');
+    Session.set('selectsectionId', '');
 	$('#chooseDSMSectionName').hide();
     $('#chooseDSMSubSectionName').hide();
     $('#minimizeDSMSection').hide();
