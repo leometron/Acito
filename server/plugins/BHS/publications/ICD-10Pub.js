@@ -28,5 +28,8 @@ Meteor.methods({
                 });
             }
         }
+    },
+    'updateSectionInICD' : function (secName,secCode,secId) {
+        ICD.update({sectionId:secId},{$set:{sectionCode: secCode,sectionName: secName}},{ multi: true });
     }
 });

@@ -39,6 +39,7 @@ Template.BHSICD.events({
             var secName = $('#updatesectionName').val();
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
             Meteor.call('updateSection', capitalizedSection,capitalizedSectionCode,"ICD", Session.get('currentICDSectionid'));
+            Meteor.call('updateSectionInICD', capitalizedSection,capitalizedSectionCode, Session.get('currentICDSectionid'));            
             if (Session.get('currentICDSectionid')) {
                 Session.set('BHSSuccessMessage', 'Section successfully updated');               
             } else {

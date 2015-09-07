@@ -88,7 +88,14 @@ Template.BHSDSM.events({
             var capitalizedSectionCode = sectionCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
             var secName = $('#updateSection').val();
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
+            var newSection;
+            if ($('#updateCode').val()) {
+                newSection = capitalizedSectionCode + ':' + capitalizedSection;
+            } else {
+                newSection = capitalizedSection;
+            }
             Meteor.call('updateDSMSection', capitalizedSection, capitalizedSectionCode, "DSM", Session.get('currentDSMSectionid'));
+            Meteor.call('updateSectionInDSM', newSection, Session.get('currentDSMSectionid'));                        
             Meteor.setTimeout(function () {
                 $('#updateDSMSectionName').hide()
             }, 1500);
@@ -107,7 +114,14 @@ Template.BHSDSM.events({
             var capitalSubSectionCode = subsectionCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
             var subsecName = $('#updateSubSection').val();
             var capitalSubSection = subsecName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
+            var newSubSection;
+            if ($('#updateSubCode').val()) {
+                newSubSection = capitalSubSectionCode + ':' + capitalSubSection;
+            } else {
+                newSubSection = capitalSubSection;
+            }            
             Meteor.call('updateDSMSubSection', capitalSubSection, capitalSubSectionCode, Session.get('currentDSMSubSectionid'));
+            Meteor.call('updateSubSectionInDSM', newSubSection, Session.get('currentDSMSubSectionid'));                                    
             Meteor.setTimeout(function () {
                $('#updateSubSectionName').hide()
             }, 1500);

@@ -28,5 +28,12 @@ Meteor.methods({
                 });
             }
         }
-    }
+    },
+    'updateSectionInDSM' : function (secName,secId) {
+        DSM.update({sectionId:secId},{$set:{sectionName: secName}},{ multi: true });
+    },
+    'updateSubSectionInDSM' : function (subSecName,subSecId) {
+        DSM.update({subSectionId:subSecId},{$set:{subSectionName: subSecName}},{ multi: true });
+    }    
+
 });
