@@ -19,7 +19,7 @@ Template.BHSICD.events({
             var secName = $('#sectionName').val();
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
             Meteor.call('insertSection', capitalizedSection,capitalizedSectionCode,"ICD");
-                Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');
+                Session.set('BHSSuccessMessage', 'Section successfully saved');
             $('#sectionName').val("");
             $('#sectionCode').val("");
             $('#sectionName').attr('placeholder','Section');
@@ -39,9 +39,9 @@ Template.BHSICD.events({
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
             Meteor.call('updateSection', capitalizedSection,capitalizedSectionCode,"ICD", Session.get('currentICDSectionid'));
             if (Session.get('currentICDSectionid')) {
-                Session.set('BHSSuccessMessage', 'Section '+ $('#updatesectionName').val() + ' successfully updated');               
+                Session.set('BHSSuccessMessage', 'Section successfully updated');               
             } else {
-                Session.set('BHSSuccessMessage', 'Section '+ $('#updatesectionName').val() + ' successfully saved');
+                Session.set('BHSSuccessMessage', 'Section successfully saved');
             }
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage',''),Session.set('currentICDSectionid','')
@@ -119,9 +119,9 @@ Template.BHSICD.events({
             $('#cancelCurrentICDPost').hide()
 			Meteor.call('insertICD',setionCode,sectionName,sectionId,capitalizedIcdCode,capitalizedIcdDetail,Session.get('currentICDid'));
             if (Session.get('currentICDid')) {
-                Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully updated');               
+                Session.set('BHSSuccessMessage', 'ICD successfully updated');               
             } else {
-                Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
+                Session.set('BHSSuccessMessage', 'ICD successfully saved');
             }            
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
@@ -167,7 +167,7 @@ Template.BHSICD.events({
                 }    
             },100);
     },
-    'click #checkbox': function (event) {
+    'click .checkbox': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -176,28 +176,26 @@ Template.BHSICD.events({
             select_data.splice(index, 1);
         }
     },
-    // 'click #checkboxAll' : function(event){
-    //     var selectcheck = event.target.checked;
-    //         if (selectcheck == true) {
-    //             $('input:checkbox').attr('checked','checked');
-    //         }else{
-    //             $('input:checkbox').removeAttr('checked');     
-    //         }
-    // },
+    'click #checkboxAll' : function(event){
+        var selectcheck = event.target.checked;
+            if (selectcheck == true) {
+                $('input:checkbox').prop("checked", true);
+            }else{
+                $('input:checkbox').prop("checked", false);     
+            }
+        $(":checkbox").each(function() {
+            if(this.checked){
+                select_data.push(this.id);
+            }
+        });
+        // alert("checked: " + select_data);
+    },
     'click #apply': function () {
         Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
         Meteor.setTimeout(function () {
             $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid','')
         }, 250);
     },
-    // 'click #next' : function() {
-    //     Session.set('icdCodeCount', Session.get('icdCodeCount') + 10);
-    // },
-    // 'click #previous' : function() {
-    //     if(Session.get('icdCodeCount')>10){
-    //         Session.set('icdCodeCount', Session.get('icdCodeCount') - 10);
-    //     }
-    // }
     'change #sectionList': function() {
         if($('#sectionList :selected').val() != "Select"){
              Session.set("SectionICDId", $('#sectionList :selected').val());
