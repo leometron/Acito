@@ -210,7 +210,7 @@ Template.BHSDSM.events({
     'click .menuitem4': function (event) {
         $('#actiondropdown2').text($(event.target).text());
     },
-    'click #checkbox': function (event) {
+    'click .checkbox': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -219,10 +219,24 @@ Template.BHSDSM.events({
             select_data.splice(index, 1);
         }
     },
+    'click #checkboxAll' : function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('input:checkbox').prop('checked',true);
+        }else{
+            $('input:checkbox').prop('checked',false);
+        }
+        $(":checkbox").each(function() {
+           if(this.checked){
+                select_data.push(this.id);
+           }
+       });
+    },
     'click #apply': function () {
         Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
          Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid','')
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid',''),
+            $('input:checkbox').prop('checked',false);
         }, 250);
     },
     'click #sectionapply': function(){

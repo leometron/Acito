@@ -40,7 +40,7 @@ Template.BHSCodingRules.events({
     'click .menuitem2': function (event) {
         $('#actiondropdown').text($(event.target).text());
     },
-    'click #checkbox': function (event) {
+    'click .checkbox': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -49,10 +49,24 @@ Template.BHSCodingRules.events({
             select_data.splice(index, 1);
         }
     },
+    'click #checkboxAll' : function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('input:checkbox').prop('checked',true);
+        }else{
+            $('input:checkbox').prop('checked',false);
+        }
+        $(":checkbox").each(function() {
+           if(this.checked){
+                select_data.push(this.id);
+           }
+       });
+    },
     'click #apply': function () {
         Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
         Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', '')
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', ''),
+            $('input:checkbox').prop('checked',false);
         }, 250);
     },
     // 'click .next' : function() {
