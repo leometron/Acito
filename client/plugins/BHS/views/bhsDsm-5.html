@@ -111,7 +111,9 @@
 			<select id="subSectionList" placeholder="Sub section" class="padding-10px font-size-16px" style="width:49%">
 				{{#if selectedDSM}}
     				<option class="font-size-16px" value="{{selectedDSM.subSectionId}}">{{selectedDSM.subSectionName}}</option>
+                    {{#unless equals selectedDSM.subSectionId "Select"}}
                     <option class="font-size-16px">Select</option>
+                    {{/unless}}
 				    {{#each subSectionList}}
                         {{#if equals selectedDSM.subSectionId _id}}
                         {{else}}
@@ -120,7 +122,7 @@
                                {{else}}    
                              <option class="font-size-16px" value="{{_id}}">{{subSectionCode}}:{{subSectionName}}</option>
                               {{/if}}
-                            {{/if}}
+                        {{/if}}
                     {{/each}}
                 {{else}}
 				    <option class="font-size-16px">Select</option>

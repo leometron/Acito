@@ -162,6 +162,7 @@ Template.BHSICD.events({
     },
     'click #applySection' : function() {
         Meteor.call('removeSelectSection', select_section_data, $('#actiondropdownSection').text());
+        Meteor.call('removeSelectSectionIcd', select_section_data, $('#actiondropdownSection').text());        
             Meteor.setTimeout(function(){
                 $('#actiondropdownSection').text("Bulk Actions");
                 if(Session.get('sectionTotalCountICD')==0){
