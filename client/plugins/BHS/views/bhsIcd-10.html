@@ -31,11 +31,11 @@
                     {{/each}}
                 {{/if}} 
 			</select>
-			<button id="addNewSection" class="btn btn-default margin-left-10px font-size-20px">+</button>
-            <button id="minimizeAddNewSection" class="btn btn-default margin-left-10px font-size-20px">-</button>
+			<button id="addNewSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">+</button>
+            <button id="minimizeAddNewSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">-</button>
             {{#if equals sectionListCountICD 0}}
             {{else}}
-                <button id="editSection" class="btn btn-default margin-left-10px font-size-20px">Edit</button>
+                <button id="editSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">Edit</button>
             {{/if}}
 		</div>
 
@@ -81,7 +81,7 @@
                 <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF; margin-top:15px;">
 <!--                     <div class="col-md-1">
                     </div> -->
-                    <div class="col-md-1">
+                    <div class="col-md-1" style="margin-top:3px;">
                       <span><input id="checkboxICDSectionAll" type="checkbox"></span>
                     </div>
                     <div class="col-md-4">
@@ -116,10 +116,10 @@
 			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" value="{{selectedICD.code}}"></div>			 
             <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" value="{{selectedICD.detail}}"></div>
 			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost" style="padding:7px 40px; margin-top:1px">Update</button></div>
-			<div class="col-xs-2"><button class="btn btn-default" id="cancelCurrentICDPost" style="padding:7px 40px; margin-top:1px">Cancel</button></div>            		
+			<div class="col-xs-2"><button class="btn btn-default" id="cancelCurrentICDPost" style="padding:7px 40px; margin-top:1px; margin-left:-23px">Cancel</button></div>            		
 			{{else}}
 			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" placeholder="ICD Code"></div>			 
-            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" placeholder="Description"></div>
+            <div class="col-xs-6"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" placeholder="Description"></div>
 			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost" style="padding:7px 40px; margin-top:1px">Save</button></div>
            {{/if}}            
         </div>    
@@ -146,7 +146,7 @@
         </div>
 
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
-            <div class="col-md-1">
+            <div class="col-md-1" style="margin-top:3px;">
                 <span><input id="checkboxICDAll" type="checkbox"></span>
             </div>
             <div class="col-md-2">
