@@ -255,6 +255,8 @@ Template.BHSDSM.events({
     },
     'click #sectionapply': function(){
         Meteor.call('removeDSMSelectSection', select_data, $('#actiondropdown1').text());
+        Meteor.call('removeDSMSelectSectionList', select_data, $('#actiondropdown1').text());
+        Meteor.call('removeSubsectionSelectSection', select_data, $('#actiondropdown1').text());
         Meteor.setTimeout(function () {
             $('#actiondropdown1').text("Bulk Actions");
             if(Session.get('sectionTotalCountDSM')==0){
@@ -264,6 +266,7 @@ Template.BHSDSM.events({
     },
     'click #subsectionapply': function(){
         Meteor.call('removeSelectSubSection', select_data, $('#actiondropdown2').text());
+        Meteor.call('removeDSMSelectSubSectionList', select_data, $('#actiondropdown2').text());
         Meteor.setTimeout(function () {
             $('#actiondropdown2').text("Bulk Actions");
             if(Session.get('subSectionTotalCount')==0){
