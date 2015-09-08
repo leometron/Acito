@@ -66,12 +66,23 @@ Template.BHSCodingRules.events({
        });
     },
     'click #apply': function () {
-        Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
-        $('#checkboxCodingRulesAll:checkbox').prop('checked',false);
+        if (select_data.length == 0 ) {
+            Session.set('errorMessage','Choose atleast any one Rule to delete');
+        } else {        
+            Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
+            $('#checkboxCodingRulesAll:checkbox').prop('checked',false);
+            select_data = [];
+        }
         Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', '')
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', ''),$('#apply').hide()
         }, 250);
+        Meteor.setTimeout(function () {
+            Session.set('errorMessage','')
+        }, 2000);         
     },
+    'click #deleteall' : function () {
+        $('#apply').fadeIn(500);
+    },    
 });
 
 Template.BHSCodingRules.helpers({
@@ -88,14 +99,14 @@ Template.BHSCodingRules.helpers({
 
 Template.BHSCodingRules.rendered = function () {
     Session.set('CodinRuleCount',10);
-        $(window).scroll(function(){
+    $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
             Meteor.setTimeout(function(){
                 Session.set('CodinRuleCount', Session.get('CodinRuleCount') +10);    
-            },1000);
-            
+            },1000);            
         }
     });
+    $('#apply').hide();        
 }
 
 Template.adminTop.helpers({

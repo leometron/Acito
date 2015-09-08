@@ -250,11 +250,19 @@ Template.BHSDSM.events({
        });
     },
     'click #apply': function () {
-        Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
-         $('#checkboxDSMAll:checkbox').prop('checked',false);
-         Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid','')
+        if(select_data.length == 0) {
+            Session.set('errorMessage','Choose atleast any one DSM to delete');
+        } else {
+            Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
+            $('#checkboxDSMAll:checkbox').prop('checked',false);
+            select_data = [];
+        }
+        Meteor.setTimeout(function () {
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid',''),$('#apply').hide()
         }, 250);
+        Meteor.setTimeout(function () {
+          Session.set('errorMessage','')
+        }, 2000);          
     },
     'click .checkboxDSMSection': function (event) {
         var selectcheck = event.target.checked;
@@ -282,16 +290,25 @@ Template.BHSDSM.events({
        });
     },
     'click #sectionapply': function(){
-        Meteor.call('removeDSMSelectSection', select_data, $('#actiondropdown1').text());
-        Meteor.call('removeDSMSelectSectionList', select_data, $('#actiondropdown1').text());
-        Meteor.call('removeSubsectionSelectSection', select_data, $('#actiondropdown1').text());
-        $('#checkboxDSMSectionAll:checkbox').prop('checked',false);
+        if(select_data.length == 0) {
+            Session.set('errorMessage','Choose atleast any one Section to delete');
+        } else {        
+            Meteor.call('removeDSMSelectSection', select_data, $('#actiondropdown1').text());
+            Meteor.call('removeDSMSelectSectionList', select_data, $('#actiondropdown1').text());
+            Meteor.call('removeSubsectionSelectSection', select_data, $('#actiondropdown1').text());
+            $('#checkboxDSMSectionAll:checkbox').prop('checked',false);
+            select_data = [];
+        }
         Meteor.setTimeout(function () {
             $('#actiondropdown1').text("Bulk Actions");
             if(Session.get('sectionTotalCountDSM')==0){
                 $('#editDSMSectionList').fadeOut(500);
             }
+            $('#sectionapply').hide();
         }, 100);
+        Meteor.setTimeout(function () {
+          Session.set('errorMessage','')
+        }, 2000);         
     },
     'click .checkboxDsmSubsection': function (event) {
         var selectcheck = event.target.checked;
@@ -319,15 +336,24 @@ Template.BHSDSM.events({
        });
     },
     'click #subsectionapply': function(){
-        Meteor.call('removeSelectSubSection', select_data, $('#actiondropdown2').text());
-        Meteor.call('removeDSMSelectSubSectionList', select_data, $('#actiondropdown2').text());
-        $('#checkboxDSMSubSectionAll:checkbox').prop('checked',false);
+        if(select_data.length == 0) {
+            Session.set('errorMessage','Choose atleast any one Sub Section to delete');
+        } else {          
+            Meteor.call('removeSelectSubSection', select_data, $('#actiondropdown2').text());
+            Meteor.call('removeDSMSelectSubSectionList', select_data, $('#actiondropdown2').text());
+            $('#checkboxDSMSubSectionAll:checkbox').prop('checked',false);
+            select_data = [];
+        }
         Meteor.setTimeout(function () {
             $('#actiondropdown2').text("Bulk Actions");
             if(Session.get('subSectionTotalCount')==0){
                 $('#editDSMSubSectionList').fadeOut(500);
             }
+            $('#subsectionapply').hide();
         }, 100);
+        Meteor.setTimeout(function () {
+          Session.set('errorMessage','')
+        }, 2000);        
     },
     'click #closesection': function() {
        Session.set('currentDSMSectionid', '');
@@ -345,6 +371,15 @@ Template.BHSDSM.events({
         } else {
             Session.set("selectsectionId", "");
         }
+    },
+    'click #deleteall' : function () {
+        $('#apply').fadeIn(500);
+    },
+    'click #deleteallSection' : function () {
+        $('#sectionapply').fadeIn(500);
+    },
+    'click #deleteallSubSection' : function () {
+        $('#subsectionapply').fadeIn(500);
     }
 });
 
@@ -409,4 +444,7 @@ Template.BHSDSM.rendered = function () {
             
         }
     });
+    $('#apply').hide();
+    $('#sectionapply').hide();
+    $('#subsectionapply').hide();
 };
