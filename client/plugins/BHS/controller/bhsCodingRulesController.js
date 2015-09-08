@@ -40,7 +40,7 @@ Template.BHSCodingRules.events({
     'click .menuitem2': function (event) {
         $('#actiondropdown').text($(event.target).text());
     },
-    'click .checkbox': function (event) {
+    'click .checkboxCodingRules': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -49,22 +49,25 @@ Template.BHSCodingRules.events({
             select_data.splice(index, 1);
         }
     },
-    'click #checkboxAll' : function(event){
+    'click #checkboxCodingRulesAll' : function(event){
         var selectcheck = event.target.checked;
         if(selectcheck == true){
-            $('input:checkbox').prop('checked',true);
+            $('.checkboxCodingRules:checkbox').prop('checked',true);
         }else{
-            $('input:checkbox').prop('checked',false);
+            $('.checkboxCodingRules:checkbox').prop('checked',false);
         }
-        $(":checkbox").each(function() {
+        $(".checkboxCodingRules:checkbox").each(function() {
            if(this.checked){
                 select_data.push(this.id);
+           }else{
+                var index = select_data.indexOf(this.id);
+                select_data.splice(index, 1);
            }
        });
     },
     'click #apply': function () {
         Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
-        $('input:checkbox').prop('checked',false);
+        $('#checkboxCodingRulesAll:checkbox').prop('checked',false);
         Meteor.setTimeout(function () {
             $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', '')
         }, 250);

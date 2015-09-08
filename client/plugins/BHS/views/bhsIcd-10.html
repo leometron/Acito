@@ -79,7 +79,10 @@
                 </div>
 
                 <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF; margin-top:15px;">
+<!--                     <div class="col-md-1">
+                    </div> -->
                     <div class="col-md-1">
+                      <span><input id="checkboxICDSectionAll" type="checkbox"></span>
                     </div>
                     <div class="col-md-4">
                         <span style="font-size:18px;">Code</span>
@@ -92,7 +95,7 @@
                 {{#each sectionList}}
                     <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd; overflow: hidden">
                         <div class="col-md-1">
-                            <span><input id="checkboxSection" type="checkbox"></span>
+                            <span><input class="checkboxICDSection" id="{{_id}}" type="checkbox"></span>
                         </div>
                         <div class="ICD-section-data-row">
                         <div class="col-md-4">
@@ -144,7 +147,7 @@
 
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
             <div class="col-md-1">
-                <span><input id="checkboxAll" type="checkbox"></span>
+                <span><input id="checkboxICDAll" type="checkbox"></span>
             </div>
             <div class="col-md-2">
                 <span style="font-size:18px;">ICD Code</span>
@@ -166,7 +169,7 @@
             {{#each ICDList}}
             	<div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
                 	<div class="col-md-1">
-                        <span><input class="checkbox" id="{{_id}}" type="checkbox"></span>
+                        <span><input class="checkboxICD" id="{{_id}}" type="checkbox"></span>
                     </div>
                     <div class="ICD-data-row">
                     <div class="col-md-2">

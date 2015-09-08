@@ -224,7 +224,7 @@ Template.BHSDSM.events({
     'click .menuitem4': function (event) {
         $('#actiondropdown2').text($(event.target).text());
     },
-    'click .checkbox': function (event) {
+    'click .checkboxDSM': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -233,30 +233,59 @@ Template.BHSDSM.events({
             select_data.splice(index, 1);
         }
     },
-    'click #checkboxAll' : function(event){
+    'click #checkboxDSMAll' : function(event){
         var selectcheck = event.target.checked;
         if(selectcheck == true){
-            $('input:checkbox').prop('checked',true);
+            $('.checkboxDSM:checkbox').prop('checked',true);
         }else{
-            $('input:checkbox').prop('checked',false);
+            $('.checkboxDSM:checkbox').prop('checked',false);
         }
-        $(":checkbox").each(function() {
+        $(".checkboxDSM:checkbox").each(function() {
            if(this.checked){
                 select_data.push(this.id);
+           }else{
+                var index = select_data.indexOf(this.id);
+                select_data.splice(index, 1);
            }
        });
     },
     'click #apply': function () {
         Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
-         $('input:checkbox').prop('checked',false);
+         $('#checkboxDSMAll:checkbox').prop('checked',false);
          Meteor.setTimeout(function () {
             $('#actiondropdown').text("Bulk Actions"), Session.set('currentDSMid','')
         }, 250);
+    },
+    'click .checkboxDSMSection': function (event) {
+        var selectcheck = event.target.checked;
+        if (selectcheck == true) {
+            select_data.push(this._id);
+        } else {
+            var index = select_data.indexOf(this._id);
+            select_data.splice(index, 1);
+        }
+    },
+    'click #checkboxDSMSectionAll' : function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('.checkboxDSMSection:checkbox').prop('checked',true);
+        }else{
+            $('.checkboxDSMSection:checkbox').prop('checked',false);
+        }
+        $(".checkboxDSMSection:checkbox").each(function() {
+           if(this.checked){
+                select_data.push(this.id);
+           }else{
+                var index = select_data.indexOf(this.id);
+                select_data.splice(index, 1);
+           }
+       });
     },
     'click #sectionapply': function(){
         Meteor.call('removeDSMSelectSection', select_data, $('#actiondropdown1').text());
         Meteor.call('removeDSMSelectSectionList', select_data, $('#actiondropdown1').text());
         Meteor.call('removeSubsectionSelectSection', select_data, $('#actiondropdown1').text());
+        $('#checkboxDSMSectionAll:checkbox').prop('checked',false);
         Meteor.setTimeout(function () {
             $('#actiondropdown1').text("Bulk Actions");
             if(Session.get('sectionTotalCountDSM')==0){
@@ -264,9 +293,35 @@ Template.BHSDSM.events({
             }
         }, 100);
     },
+    'click .checkboxDsmSubsection': function (event) {
+        var selectcheck = event.target.checked;
+        if (selectcheck == true) {
+            select_data.push(this._id);
+        } else {
+            var index = select_data.indexOf(this._id);
+            select_data.splice(index, 1);
+        }
+    },
+    'click #checkboxDSMSubSectionAll' : function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('.checkboxDsmSubsection:checkbox').prop('checked',true);
+        }else{
+            $('.checkboxDsmSubsection:checkbox').prop('checked',false);
+        }
+        $(".checkboxDsmSubsection:checkbox").each(function() {
+           if(this.checked){
+                select_data.push(this.id);
+           }else{
+                var index = select_data.indexOf(this.id);
+                select_data.splice(index, 1);
+           }
+       });
+    },
     'click #subsectionapply': function(){
         Meteor.call('removeSelectSubSection', select_data, $('#actiondropdown2').text());
         Meteor.call('removeDSMSelectSubSectionList', select_data, $('#actiondropdown2').text());
+        $('#checkboxDSMSubSectionAll:checkbox').prop('checked',false);
         Meteor.setTimeout(function () {
             $('#actiondropdown2').text("Bulk Actions");
             if(Session.get('subSectionTotalCount')==0){

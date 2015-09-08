@@ -151,7 +151,7 @@ Template.BHSICD.events({
     'click .menuitem3': function (event) {
         $('#actiondropdownSection').text($(event.target).text());
     },
-    'click #checkboxSection': function (event) {
+    'click .checkboxICDSection': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_section_data.push(this._id);
@@ -160,9 +160,26 @@ Template.BHSICD.events({
             select_section_data.splice(index, 1);
         }
     },
+    'click #checkboxICDSectionAll' : function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('.checkboxICDSection:checkbox').prop('checked',true);
+        }else{
+            $('.checkboxICDSection:checkbox').prop('checked',false);
+        }
+        $(".checkboxICDSection:checkbox").each(function() {
+           if(this.checked){
+                select_section_data.push(this.id);
+           }else{
+                var index = select_section_data.indexOf(this.id);
+                select_section_data.splice(index, 1);
+           }
+       });
+    },
     'click #applySection' : function() {
         Meteor.call('removeSelectSection', select_section_data, $('#actiondropdownSection').text());
         Meteor.call('removeSelectSectionIcd', select_section_data, $('#actiondropdownSection').text());
+        $('#checkboxICDSectionAll:checkbox').prop('checked',false);
             Meteor.setTimeout(function(){
                 $('#actiondropdownSection').text("Bulk Actions");
                 if(Session.get('sectionTotalCountICD')==0){
@@ -170,7 +187,7 @@ Template.BHSICD.events({
                 }    
             },100);
     },
-    'click .checkbox': function (event) {
+    'click .checkboxICD': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -179,22 +196,25 @@ Template.BHSICD.events({
             select_data.splice(index, 1);
         }
     },   
-    'click #checkboxAll' : function(event){
+    'click #checkboxICDAll' : function(event){
         var selectcheck = event.target.checked;
         if(selectcheck == true){
-            $('input:checkbox').prop('checked',true);
+            $('.checkboxICD:checkbox').prop('checked',true);
         }else{
-            $('input:checkbox').prop('checked',false);
+            $('.checkboxICD:checkbox').prop('checked',false);
         }
-        $(":checkbox").each(function() {
+        $(".checkboxICD:checkbox").each(function() {
            if(this.checked){
                 select_data.push(this.id);
+           }else{
+                var index = select_data.indexOf(this.id);
+                select_data.splice(index, 1);
            }
        });
     },
    'click #apply': function () {
         Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
-        $('input:checkbox').prop('checked',false);
+        $('#checkboxICDAll:checkbox').prop('checked',false);
         Meteor.setTimeout(function () {
             $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid','')
         }, 250);
