@@ -45,7 +45,7 @@ Template.BHSlist.helpers({
 				$.each(data, function(i,row) {
 	    			var x = row.guideline.charAt(0).toUpperCase();
 				    if ($.inArray(x, alphabetArray) === -1) {
-				        alphabetArray.push(x);
+					    alphabetArray.push(x);					    		
 				    }
 				});
 			}
@@ -55,7 +55,9 @@ Template.BHSlist.helpers({
 					$.each(data, function(i,row) {
 		    			var x = row.sectionName.charAt(0).toUpperCase();
 					    if ($.inArray(x, alphabetArray) === -1) {
-					        alphabetArray.push(x);
+					    	if(ICD.find({sectionName : new RegExp('^' + x,'i') }).count() > 0) {
+					        	alphabetArray.push(x);					    		
+					    	}
 					    }
 					});
 				}
@@ -65,7 +67,9 @@ Template.BHSlist.helpers({
 					$.each(data, function(i,row) {
 		    			var x = row.sectionName.charAt(0).toUpperCase();
 					    if ($.inArray(x, alphabetArray) === -1) {
-					        alphabetArray.push(x);
+					    	if(DSM.find({sectionName : new RegExp('^' + x,'i') }).count() > 0) {
+					        	alphabetArray.push(x);					    		
+					    	}					    
 					    }
 					});
 				}
@@ -106,7 +110,6 @@ Template.BHSlist.events({
   	},
   	'click .alphabet':function(event){
   		$('.listContainer').scrollTop(0);
-  		// var isAvailable = false;
 		var id = event.currentTarget.id;
 		if (id){
   			Session.set('searchString',"");

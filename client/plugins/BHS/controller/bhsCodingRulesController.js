@@ -72,14 +72,6 @@ Template.BHSCodingRules.events({
             $('#actiondropdown').text("Bulk Actions"), Session.set('currentCodingRulesid', '')
         }, 250);
     },
-    // 'click .next' : function() {
-    // 	if(Session.get('codingRulesCount')>3){
-	   // 		Session.set('numberOfCount',Session.get('numberOfCount')+3);
-   	// 	}
-    // },
-    // 'click .previous' : function() {
-    // 		Session.set('numberOfCount',Session.get('numberOfCount')-3);
-    // },
 });
 
 Template.BHSCodingRules.helpers({
@@ -92,12 +84,6 @@ Template.BHSCodingRules.helpers({
     'codingListCount': function() {
         return codingRules.find().count();
     }
-   //  'codingRulesLimit' : function() {
-   //  	return codingRules.find({},{limit: Session.get('numberOfCount')});
-   //  },
-   //  'codingRulesCount' : function() {
-   //    Session.set('codingRulesCount',codingRules.find().count());
-   // }
 });
 
 Template.BHSCodingRules.rendered = function () {
