@@ -20,6 +20,15 @@ Meteor.methods({
             }
         }
     },
+    'removeSubsectionSelectSection' : function(selectedFileAll, bulkAction) {
+        if (bulkAction == "Delete Permanently") {
+            for (i = 0; i < selectedFileAll.length; i++) {
+                subSection.remove({
+                    sectionId: selectedFileAll[i]
+                });
+            }
+        }
+    },
     'updateDSMSubSection': function(name, code, subSecId) {
         subSection.update(subSecId, {$set: {subSectionName: name, subSectionCode: code}} );
     }
