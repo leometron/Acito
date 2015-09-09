@@ -65,10 +65,6 @@
   	cursor: pointer;
 }
 
-/*.bhs .button:hover{
-	background: #6495ED;
-}*/
-
 .bhs .list_header{
 	display:table;
 	table-layout: fixed;
@@ -171,15 +167,6 @@
 	vertical-align:middle;
 }
 
-.listContainer ::-webkit-scrollbar { 
-    display: none; 
-}
-
-.alphabetical ::-webkit-scrollbar { 
-    display: none; 
-}
-
-
 .bhs .list_item_middle{
 	display:table-cell;
 	width:2px;
@@ -194,31 +181,15 @@
 	padding-left :10px;
 }
 
-.bhs .alphabetical{
-	text-align: center; 
-	font-size: 16px;
-	font-weight: bold;
-	background: #f7f7f7;
-	height: 100%;
-    position: fixed;
-    right: 0;
-    top: 46px;
-    overflow:auto; 
-}
-
-.bhs .alphabetDiv{
-	padding-bottom:25px;
-	padding-top:10px;
+.bhs .listLeftColmn{
+	/*float:left;*/
+	width: 88%;
 }
 
 .bhs .main_post{
 	background-color: white;
 	padding-left:0; 
 	padding-right:0
-}
-
-.bhs .listContainer{
-	overflow-y : auto;
 }
 
 .margin-top-4pt {
@@ -303,6 +274,7 @@
     right: 0;
     text-align: center;
     top: 50%;
+    z-index:2;
 }
 
 .empty-results {
@@ -335,8 +307,6 @@
     margin-top: -4.4%;
     margin-right: -4.4%;	
 }
-	
-
 
 .bhs .samplebtn{
 	background: -webkit-gradient(linear,left top, left bottom, from(#0b63a6), to(#0145f5));
@@ -354,4 +324,71 @@
 
 .search_box{
 	outline: none;  
+}
+
+#wrapper {
+	position: absolute;
+	z-index: 1;
+	top: 109px;
+	bottom:0;
+	left: 0;
+	right:59px;
+	background: #FFFFFF;
+	overflow: hidden;
+}
+
+#scroller {
+	position: absolute;
+	z-index: 1;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width: 100%;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+
+#rightWrapper {
+	position: absolute;
+	z-index: 3;
+	top: 46px;
+	bottom: 0;
+	right:0;
+	background: #F7F7F7;
+	overflow: hidden;
+	width:60px;
+}
+
+#rightScroller {
+	position: absolute;
+	z-index: 1;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width: 100%;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
 }

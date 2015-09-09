@@ -1,3 +1,5 @@
+var leftScroll;
+var rightScroll;
 
 if(Meteor.isCordova){
 	document.addEventListener("backbutton", function(){
@@ -15,22 +17,10 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
-	$('.listContainer').scroll(function(){
-        if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight) {
-        	if($("input:hidden").length==1){
-        		Router.go($('.showMore').val());
-        	}
-		}
-    });
+	initializeScroller();
    	$('body').removeClass('bgImage');
    	$('body').addClass('bgColor');
-   	setListHeight();
 	$('#'+Session.get('firstAlphabetinList')).css('color','#0758C3');   	
-}
-
-function setListHeight(){
-	$('.listContainer, .alphabetical').css('height', window.innerHeight-111);
-   	$('.alphabetical').css('height', window.innerHeight-45);
 }
 
 Template.BHSlist.helpers({
@@ -71,32 +61,18 @@ Template.BHSlist.helpers({
 				}
 			}
 			alphabetArray.sort();
-        // Meteor.setTimeout(function () {
 			Session.set('firstAlphabetinList',alphabetArray[0]);
-        // }, 500);    
 		return alphabetArray;
 	},
-	// 'networkConnection' : function() {
-	// 	if(!Meteor.status().connected) {
-	// 		return 1;
-	// 	} else {
-
-	// 	}
-	// }
 })
 
 Template.BHShome.events({
-	'click .button': function(event, fview) {
-	// if(!Meteor.status().connected) {
-	// 	alert('Please check your internet connection');
-	// } else {
-	// 	alert('success');		
+	'click .button': function(event, fview) {	
 		var title = event.currentTarget.id;
 		Session.set('title',title);
 		Session.set('searchString', '');
 		Session.set('selectedAlphabet', '');
     	Router.go('list');
-  	// }
   	}
 });
 
@@ -105,9 +81,15 @@ Template.BHSlist.events({
 		Router.go("/");
   	},
   	'click .alphabet':function(event){
-  		$('.listContainer').scrollTop(0);
-  		// var isAvailable = false;
 		var id = event.currentTarget.id;
+		leftScroll.scrollTo(0,0);
+		rightScroll.scrollTo(0,0);
+		
+		Meteor.setTimeout(function(){
+   			leftScroll.refresh();
+        	rightScroll.refresh();
+    	},500);
+
 		if (id){
   			Session.set('searchString',"");
 			$('.alphabet').css('color','black');
@@ -129,13 +111,43 @@ Template.BHShome.helpers({
 	'bhsButtons':function(){
 		return Pages.find({status: "Published"});
 	},
-	// 'logo' : function() {
-	// 	return Media.findOne({name:"BHSlogo"});
-	// },
 	'introText' : function() {
 		return Posts.find({tags:"Introduction"});
 	}	
-})
-$(window).resize(function(evt) {
-   setListHeight();
 });
+
+$(window).resize(function(evt) {
+   Meteor.setTimeout(function(){
+   		leftScroll.refresh();
+        rightScroll.refresh();
+    },500);
+});
+
+function initializeScroller () {
+    leftScroll = new IScroll('#wrapper', { 
+        scrollbars: false,
+		mouseWheel: true,
+		shrinkScrollbars: 'scale'
+    });
+
+     rightScroll = new IScroll('#rightWrapper', { 
+        scrollbars: false,
+		mouseWheel: true,
+		shrinkScrollbars: 'scale'
+    });
+
+    leftScroll.on('scrollEnd', function() {
+     	if($("input:hidden").length==1){
+        	Router.go($('.showMore').val());
+        }
+         Meteor.setTimeout(function(){
+         	 leftScroll.refresh();
+        },500);
+    });
+
+     rightScroll.on('scrollEnd', function() {
+      	Meteor.setTimeout(function(){
+       		rightScroll.refresh();
+        },500);
+    });
+}
