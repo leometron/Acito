@@ -65,18 +65,18 @@
   	cursor: pointer;
 }
 
-.bhs .button_hover {
-	background: -webkit-gradient(linear,left top, left bottom, from(#0145f5), to(#0b63a6));
-	background: -moz-linear-gradient(top, #0145f5,#0b63a6 );
-	background: linear-gradient(top, #0145f5,#0b63a6 );
-	color:#FFFFFF;
-	text-align: center;
-	width:200px;
-	padding:10px 5px;
-	border-radius:8px;
-	margin-bottom:15px;
-	font-size:18px;
-	cursor: pointer;
+.button_hover {
+    background: -webkit-linear-gradient(#f8a323, #f8a323);
+    background: -moz-linear-gradient(#f8a323, #f8a323);
+    background: linear-gradient(#f8a323, #f8a323);
+   	color:#FFFFFF;
+  	text-align: center;
+  	width:200px;
+  	padding:10px 5px;
+  	border-radius:8px;
+  	margin-bottom:15px;
+  	font-size:18px;
+  	cursor: pointer;
 }
 
 .bhs .list_header{

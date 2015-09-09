@@ -11,14 +11,6 @@ if(Meteor.isCordova){
 	});
 }
 
-$(document).on('touchstart','.button',function(){
-	$(this).addClass('button_hover');
-});
-
-$(document).on('touchend','.button',function(){
-  	$(this).removeClass('button_hover');
-}); 
-
 Template.BHShome.rendered = function(){
 	$('#home_logo').attr('src','images/logo.png');
    	$('body').addClass('bgImage');
@@ -94,6 +86,7 @@ Template.BHSlist.events({
   	},
   	'click .alphabet':function(event){
 		var id = event.currentTarget.id;
+		Router.go('list');
 		leftScroll.scrollTo(0,0);
 		
 		Meteor.setTimeout(function(){
@@ -138,12 +131,14 @@ function initializeScroller () {
     leftScroll = new IScroll('#wrapper', { 
         scrollbars: false,
 		mouseWheel: true,
+		click: true,
 		shrinkScrollbars: 'scale'
     });
 
      rightScroll = new IScroll('#rightWrapper', { 
         scrollbars: false,
 		mouseWheel: true,
+		click: true,
 		shrinkScrollbars: 'scale'
     });
 
