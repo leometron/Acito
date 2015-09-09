@@ -7,124 +7,97 @@
 			<div class="middleColmn backArrow">	
 				<img src="images/logo.png" width="45"/>				
 			</div>
-			<div class="lastColmn"><div style="margin-right:80px;">{{title}}</div></div>
+			<div class="lastColmn">
+				<div style="margin-right:80px;">{{title}}</div>
+			</div>
 		</div>
-		<div class="row"> 
-		<div class="col-md-11 col-sm-11 col-xs-10 main_post">
-			<div>
-			 	<div style="margin:15px;">
-	      			<input type="text" id="searchString" placeholder="Search" class="search_box"/>
-	  			</div>
-			</div>
-		<div class="listContainer">
-		{{#if listICD}}
-			{{#each listICD}}
-				{{#if sectionName}}
-				<div class="list_heading_div">
-					{{#if equals sectionCode "-" }}
-						<div class="list_heading listItem">{{sectionName}}</div>
-					{{else}}
-						<div class="list_heading_left">{{sectionCode}}</div>
-						<div class="list_heading_middle">:</div>
-						<div class="list_heading_right listItem">{{sectionName}}</div>										
-			
-					{{/if}}
-				</div>
+		<div class="searchColmn">
+      		<input type="text" id="searchString" placeholder="Search" class="search_box"/>
+  		</div>	
+  		<div id="wrapper">
+			<div id="scroller">
+				{{#if listICD}}
+						{{#each listICD}}
+							{{#if sectionName}}
+							<div class="list_heading_div">
+								{{#if equals sectionCode "-" }}
+									<div class="list_heading listItem">{{sectionName}}</div>
+								{{else}}
+									<div class="list_heading_left">{{sectionCode}}</div>
+									<div class="list_heading_middle">:</div>
+									<div class="list_heading_right listItem">{{sectionName}}</div>							
+								{{/if}}
+							</div>
+						{{/if}}
+							<div class="list_item_div">
+								<div class="list_item_left">{{code}}</div>
+								<div class="list_item_middle"></div>
+								<div class="list_item_right">
+									<div>{{detail}}</div>
+								</div>
+							</div>
+					{{/each}}
+					{{#if nextPath}}
+				  		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+				 	{{/if}} 	
 				{{/if}}
-			<div class="list_item_div">
-				<div class="list_item_left">{{code}}</div>
-				<div class="list_item_middle"></div>
-				<div class="list_item_right">
-					<div>{{detail}}</div>
-				</div>
-			</div>
-		{{/each}}
-		{{#if nextPath}}
-      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-	 	{{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}		 	
-		{{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}		
 
-
-	{{#if listDSM}}
-		{{#each listDSM}}
+			     {{#if listDSM}}
+					{{#each listDSM}}
+						{{#if sectionName}}
+							<div class="list_heading_main_div">	
+								<div class="list_heading listItem">{{sectionName}}</div>
+							</div>
+						{{/if}}
+						{{#if subSectionName}}
+							{{#if equals subSectionName "Select"}}
+							{{else}}
+							<div class="list_heading_div">
+								<div class="list_heading">{{subSectionName}}</div>
+							</div>
+							{{/if}}
+						{{/if}}
+							<div class="list_item_div">
+									<div class="list_item_left">{{DSMCode}}</div>
+								<div class="list_item_middle"></div>
+								<div class="list_item_right">
+									<div style="margin-left:15px;">{{DSMDetail}}</div>
+								</div>
+							</div>
+					{{/each}}
+					{{#if nextPath}}
+				  		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+				  	 {{/if}}  	 
+				{{/if}}
 			
-				<!-- <div class="list_heading_left">{{sectionCode}}</div>
-				<div class="list_heading_middle">:</div> -->
-				{{#if sectionName}}
-					<div class="list_heading_main_div">	
-						<div class="list_heading listItem">{{sectionName}}</div>
-					</div>
-				{{/if}}
-				{{#if subSectionName}}
-					{{#if equals subSectionName "Select"}}
-					{{else}}
-					<div class="list_heading_div">
-						<div class="list_heading">{{subSectionName}}</div>
-					</div>
-					{{/if}}
-				{{/if}}
-			<div class="list_item_div">
-					<div class="list_item_left">{{DSMCode}}</div>
-				<div class="list_item_middle"></div>
-				<div class="list_item_right">
-					<div style="margin-left:15px;">{{DSMDetail}}</div>
-				</div>
+				{{#if listCodingRule}}
+					{{#each listCodingRule}}
+						<div class="list_heading_div">
+							<div class="listItem">{{guideline}}</div>
+						</div>
+						<div class="list_item_div">
+							<div>{{definition}}</div>
+						</div>
+					{{/each}}
+					{{#if nextPath}}
+			      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
+			      	{{/if}}	      	
+			{{/if}}
 			</div>
-		{{/each}}
-		{{#if nextPath}}
-      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-      	 {{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}	      	 
-	{{/if}}
-      {{#unless ready}}
-        {{> spinner}}
-      {{/unless}}
-		{{#if listCodingRule}}
-			{{#each listCodingRule}}
-				<div class="list_heading_div">
-					<div class="listItem">{{guideline}}</div>
-				</div>
-				<div class="list_item_div">
-					<div>{{definition}}</div>
-				</div>
-			{{/each}}
-			{{#if nextPath}}
-	      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-	      	{{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}		      	
-	{{/if}}
-		{{#unless ready}}
-			{{> spinner}}
-		{{/unless}}
 		</div>
-		</div>
-		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
-			<div class="alphabetDiv">
+		<div id="rightWrapper">
+			<div id="rightScroller">
 				{{#each icdSectionAlphabet}}
-            		 <div class="alphabet" id="{{this}}" style="padding:5px; cursor:pointer;">{{this}}</div>  
-            	{{/each}}
-            	 <div class="alphabet" style="padding:5px 0;">#</div> 
-            </div> 
+	            	<div class="alphabet" id="{{this}}" style="padding: 7px 0; cursor:pointer; text-align:center; font-size:16px; font-weight:bold">{{this}}</div>  
+	            {{/each}}
+	            	<div class="alphabet" style="padding:7px 0; text-align:center; font-size:16px; font-weight:bold">#</div>
+			</div>
 		</div>
+		{{#if equals searchDataEmpty 0}}
+			<div class="search-empty">No Results</div>
+		{{/if}}
+		 {{#unless ready}}
+			  {{> spinner}}
+		{{/unless}}
 	</div>
-	{{#if equals searchDataEmpty 0}}
-		<div class="search-empty">No Results</div>
-	{{/if}}
-
-<!-- 	{{#if equals networkConnection 1}}
-		<p>error</p>
-	{{else}}
-		<p>connected</p>
-	{{/if}} -->
-</div>
 </template>

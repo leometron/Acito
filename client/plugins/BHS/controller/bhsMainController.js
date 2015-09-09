@@ -138,7 +138,7 @@ function initializeScroller () {
      rightScroll = new IScroll('#rightWrapper', { 
         scrollbars: false,
 		mouseWheel: true,
-		click: true,
+		click: true,		
 		shrinkScrollbars: 'scale'
     });
 
