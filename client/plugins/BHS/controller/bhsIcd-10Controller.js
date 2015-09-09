@@ -249,6 +249,12 @@ Template.BHSICD.events({
     },
     'click #deleteallSection' : function () {
         $('#applySection').fadeIn(500);
+    },
+    'click #bulkactionIcdSection' : function() {
+        $('#applySection').hide();
+    },
+    'click #bulkactionIcd' : function() {
+        $('#apply').hide();  
     }
 });
 

@@ -82,7 +82,10 @@ Template.BHSCodingRules.events({
     },
     'click #deleteall' : function () {
         $('#apply').fadeIn(500);
-    },    
+    },
+    'click #bulkactionCodingRules' : function () {
+        $('#apply').hide();
+    } 
 });
 
 Template.BHSCodingRules.helpers({

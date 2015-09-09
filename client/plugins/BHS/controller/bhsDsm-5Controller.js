@@ -380,6 +380,15 @@ Template.BHSDSM.events({
     },
     'click #deleteallSubSection' : function () {
         $('#subsectionapply').fadeIn(500);
+    },
+    'click #bulkactionDsmSection' : function () {
+        $('#sectionapply').hide();
+    },
+    'click #bulkactionDsmSubSection' : function () {
+        $('#subsectionapply').hide();
+    },
+    'click #bulkactionDsm' : function () {
+        $('#apply').hide();
     }
 });
 
