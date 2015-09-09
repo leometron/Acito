@@ -65,6 +65,20 @@
   	cursor: pointer;
 }
 
+.bhs .button_hover {
+	background: -webkit-gradient(linear,left top, left bottom, from(#0145f5), to(#0b63a6));
+	background: -moz-linear-gradient(top, #0145f5,#0b63a6 );
+	background: linear-gradient(top, #0145f5,#0b63a6 );
+	color:#FFFFFF;
+	text-align: center;
+	width:200px;
+	padding:10px 5px;
+	border-radius:8px;
+	margin-bottom:15px;
+	font-size:18px;
+	cursor: pointer;
+}
+
 .bhs .list_header{
 	display:table;
 	table-layout: fixed;
@@ -181,9 +195,11 @@
 	padding-left :10px;
 }
 
-.bhs .listLeftColmn{
-	/*float:left;*/
-	width: 88%;
+.bhs .searchColmn {
+	margin-left:15px; 
+	margin-right:75px; 
+	margin-bottom:15px; 
+	margin-top:15px;
 }
 
 .bhs .main_post{
@@ -392,3 +408,5 @@
 	-o-text-size-adjust: none;
 	text-size-adjust: none;
 }
+
+
