@@ -28,5 +28,15 @@ Meteor.methods({
                 });
             }
         }
-    }
+    },
+    'updateSectionInICD' : function (secName,secCode,secId) {
+        ICD.update({sectionId:secId},{$set:{sectionCode: secCode,sectionName: secName}},{ multi: true });
+    },
+    'removeSelectSectionIcd' : function(selectedFileAll, bulkAction) {
+        if (bulkAction == "Delete Permanently") {
+           for (i = 0; i < selectedFileAll.length; i++) {
+                ICD.remove({sectionId: selectedFileAll[i]});
+            }
+        }
+    }    
 });

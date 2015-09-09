@@ -28,5 +28,30 @@ Meteor.methods({
                 });
             }
         }
-    }
+    },
+    'removeDSMSelectSectionList' : function(selectedFileAll, bulkAction) {
+        if (bulkAction == "Delete Permanently") {
+            for (i = 0; i < selectedFileAll.length; i++) {
+                DSM.remove({
+                    sectionId: selectedFileAll[i]
+                });
+            }
+        }
+    },
+    'removeDSMSelectSubSectionList' : function(selectedFileAll, bulkAction) {
+        if (bulkAction == "Delete Permanently") {
+            for (i = 0; i < selectedFileAll.length; i++) {
+                DSM.remove({
+                    subSectionId: selectedFileAll[i]
+                });
+            }
+        }
+    },
+    'updateSectionInDSM' : function (secName,secId) {
+        DSM.update({sectionId:secId},{$set:{sectionName: secName}},{ multi: true });
+    },
+    'updateSubSectionInDSM' : function (subSecName,subSecId) {
+        DSM.update({subSectionId:subSecId},{$set:{subSectionName: subSecName}},{ multi: true });
+    }    
+
 });

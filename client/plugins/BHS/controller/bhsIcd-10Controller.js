@@ -20,7 +20,7 @@ Template.BHSICD.events({
             var secName = $('#sectionName').val();
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
             Meteor.call('insertSection', capitalizedSection,capitalizedSectionCode,"ICD");
-                Session.set('BHSSuccessMessage', 'Section '+ $('#sectionName').val() + ' successfully saved');
+                Session.set('BHSSuccessMessage', 'Section successfully saved');
             $('#sectionName').val("");
             $('#sectionCode').val("");
             $('#sectionName').attr('placeholder','Section');
@@ -39,10 +39,11 @@ Template.BHSICD.events({
             var secName = $('#updatesectionName').val();
             var capitalizedSection = secName.replace(/^[a-z]/, function(m){ return m.toUpperCase() });   
             Meteor.call('updateSection', capitalizedSection,capitalizedSectionCode,"ICD", Session.get('currentICDSectionid'));
+            Meteor.call('updateSectionInICD', capitalizedSection,capitalizedSectionCode, Session.get('currentICDSectionid'));            
             if (Session.get('currentICDSectionid')) {
-                Session.set('BHSSuccessMessage', 'Section '+ $('#updatesectionName').val() + ' successfully updated');               
+                Session.set('BHSSuccessMessage', 'Section successfully updated');               
             } else {
-                Session.set('BHSSuccessMessage', 'Section '+ $('#updatesectionName').val() + ' successfully saved');
+                Session.set('BHSSuccessMessage', 'Section successfully saved');
             }
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage',''),Session.set('currentICDSectionid','')
@@ -120,9 +121,9 @@ Template.BHSICD.events({
             $('#cancelCurrentICDPost').hide()
 			Meteor.call('insertICD',setionCode,sectionName,sectionId,capitalizedIcdCode,capitalizedIcdDetail,Session.get('currentICDid'));
             if (Session.get('currentICDid')) {
-                Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully updated');               
+                Session.set('BHSSuccessMessage', 'ICD successfully updated');               
             } else {
-                Session.set('BHSSuccessMessage', 'ICD '+ icdCode + ' successfully saved');
+                Session.set('BHSSuccessMessage', 'ICD successfully saved');
             }            
             Meteor.setTimeout(function () {
                 Session.set('BHSSuccessMessage', ''),Session.set('currentICDid',''),$('#sectionList').val("Select"),
@@ -150,7 +151,7 @@ Template.BHSICD.events({
     'click .menuitem3': function (event) {
         $('#actiondropdownSection').text($(event.target).text());
     },
-    'click #checkboxSection': function (event) {
+    'click .checkboxICDSection': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_section_data.push(this._id);
@@ -159,16 +160,44 @@ Template.BHSICD.events({
             select_section_data.splice(index, 1);
         }
     },
-    'click #applySection' : function() {
-        Meteor.call('removeSelectSection', select_section_data, $('#actiondropdownSection').text());
-            Meteor.setTimeout(function(){
-                $('#actiondropdownSection').text("Bulk Actions");
-                if(Session.get('sectionTotalCountICD')==0){
-                    $('#bulkActionSection').fadeOut(500);
-                }    
-            },100);
+    'click #checkboxICDSectionAll' : function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('.checkboxICDSection:checkbox').prop('checked',true);
+        }else{
+            $('.checkboxICDSection:checkbox').prop('checked',false);
+        }
+        $(".checkboxICDSection:checkbox").each(function() {
+           if(this.checked){
+                select_section_data.push(this.id);
+           }else{
+                var index = select_section_data.indexOf(this.id);
+                select_section_data.splice(index, 1);
+           }
+       });
     },
-    'click .checkbox': function (event) {
+    'click #applySection' : function() {
+        if (select_section_data.length == 0) {
+            Session.set('errorMessage','Choose atleast any one Section to delete');
+        } else {
+            Meteor.call('removeSelectSection', select_section_data, $('#actiondropdownSection').text());
+            Meteor.call('removeSelectSectionIcd', select_section_data, $('#actiondropdownSection').text());
+            $('#checkboxICDSectionAll:checkbox').prop('checked',false);
+            select_section_data = [];
+        }
+        Meteor.setTimeout(function(){
+            $('#actiondropdownSection').text("Bulk Actions");
+            if(Session.get('sectionTotalCountICD')==0){
+                $('#bulkActionSection').fadeOut(500);
+            }
+            $('#applySection').hide();
+        },100);
+
+    Meteor.setTimeout(function () {
+          Session.set('errorMessage','')
+        }, 2000);             
+    },
+    'click .checkboxICD': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -177,26 +206,50 @@ Template.BHSICD.events({
             select_data.splice(index, 1);
         }
     },   
-    'click #checkboxAll' : function(event){
+    'click #checkboxICDAll' : function(event){
         var selectcheck = event.target.checked;
         if(selectcheck == true){
-            $('input:checkbox').prop('checked',true);
+            $('.checkboxICD:checkbox').prop('checked',true);
         }else{
-            $('input:checkbox').prop('checked',false);
+            $('.checkboxICD:checkbox').prop('checked',false);
         }
-        $(":checkbox").each(function() {
+        $(".checkboxICD:checkbox").each(function() {
            if(this.checked){
                 select_data.push(this.id);
+           }else{
+                var index = select_data.indexOf(this.id);
+                select_data.splice(index, 1);
            }
        });
     },
    'click #apply': function () {
-        Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
+        if (select_data.length == 0 ) {
+            Session.set('errorMessage','Choose atleast any one ICD to delete');
+        } else {
+            Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
+            $('#checkboxICDAll:checkbox').prop('checked',false);
+            select_data = [];                   
+        }
         Meteor.setTimeout(function () {
-            $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid',''),
-            $('input:checkbox').prop('checked',false);
-        }, 250);
+            $('#actiondropdown').text("Bulk Actions"), Session.set('currentICDid',''),$('#apply').hide()
+        }, 250);         
+        Meteor.setTimeout(function () {
+            Session.set('errorMessage','')
+        }, 2000);                  
     },
+    'change #sectionList': function() {
+        if($('#sectionList :selected').val() != "Select"){
+             Session.set("SectionICDId", $('#sectionList :selected').val());
+        } else {
+            Session.set("SectionICDId", "");
+        }
+    },
+    'click #deleteall' : function () {
+        $('#apply').fadeIn(500);
+    },
+    'click #deleteallSection' : function () {
+        $('#applySection').fadeIn(500);
+    }
 });
 
 
@@ -240,4 +293,7 @@ Template.BHSICD.rendered = function () {
     $('#minimizeAddNewSection').hide();
     $('#chooseSectionName').hide();
     $('#bulkActionSection').hide();
+    Session.set("SectionICDId", "");
+    $('#apply').hide();
+    $('#applySection').hide();
 };

@@ -28,7 +28,7 @@ BHSListController = RouteController.extend({
   posts: function() {
     if(Session.get('title') == "ICD-10 codes"){
       if (Session.get('searchString')) {
-        return ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
+        return ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i') }, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
       } else if(Session.get('selectedAlphabet')) {
         return ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
       } else {
@@ -38,9 +38,9 @@ BHSListController = RouteController.extend({
       if (Session.get('searchString')) {
         return DSM.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
       } else if(Session.get('selectedAlphabet')) {
-        return DSM.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
+        return DSM.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet') + '|:' + Session.get('selectedAlphabet'),'i') },this.findOptions());
       } else {
-        return DSM.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        return DSM.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList') + '|:' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
       }
     }else{
       if (Session.get('searchString')) {
