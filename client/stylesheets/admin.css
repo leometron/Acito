@@ -410,6 +410,22 @@ body, #main {
     width: 35px;
 }
 
+.loginalert {
+    background-color: #ffffff;
+    font-size: 18px;
+    margin-left: 35%;
+    padding: 5%;
+    position: absolute;
+    text-align: center;
+    top: 109px;
+    width: 30%;
+}
+
+.loginalertbtn {
+    padding:2px 25px;
+    margin-top:30px
+}
+
 /*Ask Question*/
 
 /*.show-post {

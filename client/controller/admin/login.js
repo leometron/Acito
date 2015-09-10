@@ -20,6 +20,9 @@ Template.adminLogin.events({
             }
         });
         return false;
+    },
+    'click .loginalertbtn' : function() {
+        $('.loginalert').hide();
     }
 });
 
@@ -36,4 +39,8 @@ Template.adminTop.events({
 
 Template.adminTop.rendered = function(){
     $('.logout-icon').hide();
+}
+
+Template.adminLogin.rendered = function(){
+    $('.loginalert').hide();
 }

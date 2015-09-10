@@ -110,7 +110,6 @@ Template.BHSICD.events({
         var capitalizedIcdCode = icdCode.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
     	var ICDDetail = $('#ICDDetail').val();
         var capitalizedIcdDetail = ICDDetail.replace(/^[a-z]/, function(m){ return m.toUpperCase() });
-
 		if (section == "Select") {
 			Session.set('errorMessage','Please select section');
 		} else if(!icdCode) {
@@ -192,7 +191,6 @@ Template.BHSICD.events({
             }
             $('#applySection').hide();
         },100);
-
     Meteor.setTimeout(function () {
           Session.set('errorMessage','')
         }, 2000);             
@@ -258,7 +256,6 @@ Template.BHSICD.events({
     }
 });
 
-
 Template.BHSICD.helpers({
     'sectionList': function () {
         return section.find({type:"ICD"});
@@ -285,7 +282,6 @@ Template.BHSICD.helpers({
     }
 });
 
-
 Template.BHSICD.rendered = function () {
     Session.set('icdCodeCount',10);
     $(window).scroll(function(){
@@ -293,7 +289,6 @@ Template.BHSICD.rendered = function () {
             Meteor.setTimeout(function(){
                 Session.set('icdCodeCount', Session.get('icdCodeCount') +10);    
             },1000);
-            
         }
     });
     $('#minimizeAddNewSection').hide();
