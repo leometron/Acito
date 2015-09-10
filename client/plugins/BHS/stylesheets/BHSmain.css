@@ -216,6 +216,10 @@
 	margin-bottom: 4%;
 }
 
+.margin-top-2px {
+	margin-top: 2px;
+}
+
 .margin-bottom-2pt {
 	margin-bottom: 2%;
 }
@@ -250,6 +254,10 @@
 
 .padding-8px {
 	padding: 8px;
+}
+
+.padding-6px {
+	padding: 6px;
 }
 
 .padding-20px {
@@ -322,6 +330,12 @@
 	float: right;
     margin-top: -4.4%;
     margin-right: -4.4%;	
+}
+
+.editbtn {
+	font-size: 18px;
+	margin-top: -3px;
+	padding: 7px 10px;
 }
 
 .bhs .samplebtn{

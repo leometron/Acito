@@ -35,7 +35,7 @@
             <button id="minimizeAddNewSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">-</button>
             {{#if equals sectionListCountICD 0}}
             {{else}}
-                <button id="editSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">Edit</button>
+                <button id="editSection" class="btn btn-default margin-left-10px editbtn">Edit</button>
             {{/if}}
 		</div>
 
@@ -73,8 +73,8 @@
                     {{#if selectedSectionICD}}
                    <div class="col-xs-2" ><input type="text" id="updatesectionCode" value="{{selectedSectionICD.sectionCode}}" class="form-control font-size-14 sectionCode" style="width:110%" placeholder="Code"></div>
                    <div class="col-xs-6" ><input type="text" id="updatesectionName" value="{{selectedSectionICD.sectionName}}" class="form-control font-size-14 sectionName" placeholder="Name"></div>
-                    <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateSection" >Update</button></div>
-                    <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelCurrentId" >Cancel</button></div>
+                    <div class="col-xs-2"><button class="btn btn-default padding-6px margin-top-2px" id="updateSection" >Update</button></div>
+                    <div class="col-xs-2"><button class="btn btn-default padding-6px margin-top-2px" id="cancelCurrentId" >Cancel</button></div>
                     {{/if}}
                 </div>
 

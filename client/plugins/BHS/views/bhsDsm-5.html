@@ -33,7 +33,7 @@
 			<button id="minimizeDSMSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">-</button>
       {{#if equals sectionListCountDSM 0}}
       {{else}}
-        <button id="editDSMSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">Edit</button>
+        <button id="editDSMSection" class="btn btn-default margin-left-10px editbtn">Edit</button>
       {{/if}}
 		</div>
 
@@ -72,8 +72,8 @@
             value="{{selectedSection.sectionCode}}" style="width:125%" placeholder="Code"></div>
           <div class="col-xs-6"><input type="text" id="updateSection" class="form-control font-size-14" 
             value="{{selectedSection.sectionName}}" placeholder="Name"></div>
-          <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateDSMSection" >Update</button></div>
-          <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelSection" >Cancel</button></div>
+          <div class="col-xs-2"><button class="btn btn-default padding-6px margin-top-2px" id="updateDSMSection" >Update</button></div>
+          <div class="col-xs-2"><button class="btn btn-default padding-6px margin-top-2px" id="cancelSection" >Cancel</button></div>
         {{/if}}
         </div>
         <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
@@ -140,7 +140,7 @@
 			<button id="minimizeDSMSubSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">-</button>
       {{#if equals subSectionListCount 0}}
       {{else}}
-        <button id="editDSMSubSection" class="btn btn-default margin-left-10px font-size-20px" style="margin-top:-4px">Edit</button>
+        <button id="editDSMSubSection" class="btn btn-default margin-left-10px editbtn">Edit</button>
       {{/if}}
 		</div>
 
@@ -179,8 +179,8 @@
                 value="{{selectSubSection.subSectionCode}}" style="width:125%" placeholder="Code"></div>
               <div class="col-xs-6"><input type="text" id="updateSubSection" class="form-control font-size-14" 
                 value="{{selectSubSection.subSectionName}}" placeholder="Name"></div>
-          <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateDSMSubSection" >Update</button></div>
-          <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelSubSection" >Cancel</button></div>
+          <div class="col-xs-2"><button class="btn btn-default padding-6px margin-top-2px" id="updateDSMSubSection" >Update</button></div>
+          <div class="col-xs-2"><button class="btn btn-default padding-6px margin-top-2px" id="cancelSubSection" >Cancel</button></div>
            {{/if}}
         </div>
           <div class="row padding-top-bottom-10 cursor-pointer" style="background:#FFFFFF">
