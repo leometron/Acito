@@ -22,7 +22,7 @@ Router.route('/admin/posts', function () {
     if(Meteor.userId()) {
         this.render('posts');
     } else {
-        alert('please login');
+        $('.loginalert').show();
         Router.go('admin');
     }
 
@@ -31,7 +31,7 @@ Router.route('/admin/pages', function () {
     if(Meteor.userId()) {    
         this.render('pages');
     } else {
-        alert('please login');
+        $('.loginalert').show();
         Router.go('admin');
     }    
 });

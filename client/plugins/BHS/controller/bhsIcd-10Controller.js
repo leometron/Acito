@@ -177,7 +177,7 @@ Template.BHSICD.events({
     },
     'click #applySection' : function() {
         if (select_section_data.length == 0) {
-            Session.set('errorMessage','Choose atleast any one Section to delete');
+            Session.set('errorMessage','Choose at least a ICD Section');
         } else {
             Meteor.call('removeSelectSection', select_section_data, $('#actiondropdownSection').text());
             Meteor.call('removeSelectSectionIcd', select_section_data, $('#actiondropdownSection').text());
@@ -222,7 +222,7 @@ Template.BHSICD.events({
     },
    'click #apply': function () {
         if (select_data.length == 0 ) {
-            Session.set('errorMessage','Choose atleast any one ICD to delete');
+            Session.set('errorMessage','Choose at least a ICD code');
         } else {
             Meteor.call('removeSelectIcd', select_data, $('#actiondropdown').text());
             $('#checkboxICDAll:checkbox').prop('checked',false);

@@ -251,7 +251,7 @@ Template.BHSDSM.events({
     },
     'click #apply': function () {
         if(select_data.length == 0) {
-            Session.set('errorMessage','Choose atleast any one DSM to delete');
+            Session.set('errorMessage','Choose at least a DSM code');
         } else {
             Meteor.call('removeSelectDsm', select_data, $('#actiondropdown').text());
             $('#checkboxDSMAll:checkbox').prop('checked',false);
@@ -291,7 +291,7 @@ Template.BHSDSM.events({
     },
     'click #sectionapply': function(){
         if(select_data.length == 0) {
-            Session.set('errorMessage','Choose atleast any one Section to delete');
+            Session.set('errorMessage','Choose at least a DSM Section');
         } else {        
             Meteor.call('removeDSMSelectSection', select_data, $('#actiondropdown1').text());
             Meteor.call('removeDSMSelectSectionList', select_data, $('#actiondropdown1').text());
@@ -337,7 +337,7 @@ Template.BHSDSM.events({
     },
     'click #subsectionapply': function(){
         if(select_data.length == 0) {
-            Session.set('errorMessage','Choose atleast any one Sub Section to delete');
+            Session.set('errorMessage','Choose at least a DSM SubSection');
         } else {          
             Meteor.call('removeSelectSubSection', select_data, $('#actiondropdown2').text());
             Meteor.call('removeDSMSelectSubSectionList', select_data, $('#actiondropdown2').text());

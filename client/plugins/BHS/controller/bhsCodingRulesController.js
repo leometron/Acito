@@ -67,7 +67,7 @@ Template.BHSCodingRules.events({
     },
     'click #apply': function () {
         if (select_data.length == 0 ) {
-            Session.set('errorMessage','Choose atleast any one Rule to delete');
+            Session.set('errorMessage','Choose at least a Rule');
         } else {        
             Meteor.call('removeSelectCodingRules', select_data, $('#actiondropdown').text());
             $('#checkboxCodingRulesAll:checkbox').prop('checked',false);
