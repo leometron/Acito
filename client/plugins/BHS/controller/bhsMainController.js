@@ -16,8 +16,9 @@ Template.BHShome.rendered = function(){
 
 Template.BHSlist.rendered = function(){
 	$('.listContainer').scroll(function(){
-        if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight) {
+        if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight-20) {
         	if($("input:hidden").length==1){
+        		$('#loading').css('display','block');
         		Router.go($('.showMore').val());
         	}
 		}
@@ -95,6 +96,8 @@ Template.BHSlist.events({
 		Router.go("/");
   	},
   	'click .alphabet':function(event){
+  		event.preventDefault();
+  		$('#loading').css('display','block');
   		$('.listContainer').scrollTop(0);
 		var id = event.currentTarget.id;
 		Router.go('list');
@@ -110,6 +113,7 @@ Template.BHSlist.events({
   			Session.set('searchString',"");
   		}
   		if (e.which == 13) {
+  			$('#loading').css('display','block');
 			Session.set('searchString',$('#searchString').val());
   		}
   	}  

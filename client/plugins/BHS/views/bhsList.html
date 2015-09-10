@@ -19,18 +19,18 @@
 		<div class="listContainer">
 		{{#if listICD}}
 			{{#each listICD}}
-				{{#if sectionName}}
-				<div class="list_heading_div">
-					{{#if equals sectionCode "-" }}
-						<div class="list_heading listItem">{{sectionName}}</div>
-					{{else}}
-						<div class="list_heading_left">{{sectionCode}}</div>
-						<div class="list_heading_middle">:</div>
-						<div class="list_heading_right listItem">{{sectionName}}</div>										
-			
-					{{/if}}
-				</div>
+			{{#if sectionName}}
+			<div class="list_heading_div">
+				{{#if equals sectionCode "-" }}
+					<div class="list_heading listItem">{{sectionName}}</div>
+				{{else}}
+					<div class="list_heading_left">{{sectionCode}}</div>
+					<div class="list_heading_middle">:</div>
+					<div class="list_heading_right listItem">{{sectionName}}</div>										
+		
 				{{/if}}
+			</div>
+			{{/if}}
 			<div class="list_item_div">
 				<div class="list_item_left">{{code}}</div>
 				<div class="list_item_middle"></div>
@@ -41,34 +41,23 @@
 		{{/each}}
 		{{#if nextPath}}
       		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-	 	{{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}		 	
+	 	{{/if}}	 	
 		{{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}		
-
-
-	{{#if listDSM}}
+		{{#if listDSM}}
 		{{#each listDSM}}
-			
-				<!-- <div class="list_heading_left">{{sectionCode}}</div>
-				<div class="list_heading_middle">:</div> -->
-				{{#if sectionName}}
-					<div class="list_heading_main_div">	
-						<div class="list_heading listItem">{{sectionName}}</div>
-					</div>
+			{{#if sectionName}}
+				<div class="list_heading_main_div">	
+					<div class="list_heading listItem">{{sectionName}}</div>
+				</div>
+			{{/if}}
+			{{#if subSectionName}}
+				{{#if equals subSectionName "Select"}}
+				{{else}}
+				<div class="list_heading_div">
+					<div class="list_heading">{{subSectionName}}</div>
+				</div>
 				{{/if}}
-				{{#if subSectionName}}
-					{{#if equals subSectionName "Select"}}
-					{{else}}
-					<div class="list_heading_div">
-						<div class="list_heading">{{subSectionName}}</div>
-					</div>
-					{{/if}}
-				{{/if}}
+			{{/if}}
 			<div class="list_item_div">
 					<div class="list_item_left">{{DSMCode}}</div>
 				<div class="list_item_middle"></div>
@@ -79,14 +68,8 @@
 		{{/each}}
 		{{#if nextPath}}
       		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-      	 {{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}	      	 
-	{{/if}}
-      {{#unless ready}}
-        {{> spinner}}
-      {{/unless}}
+      	 {{/if}}   	 
+		{{/if}}
 		{{#if listCodingRule}}
 			{{#each listCodingRule}}
 				<div class="list_heading_div">
@@ -98,33 +81,22 @@
 			{{/each}}
 			{{#if nextPath}}
 	      		<input type="hidden" class="showMore" value="{{nextPath}}"/>
-	      	{{/if}}
-	    {{#unless ready}}
-	       {{> spinner}}
-	     {{/unless}}		      	
-	{{/if}}
-		{{#unless ready}}
-			{{> spinner}}
-		{{/unless}}
+	      	{{/if}}	      	
+		{{/if}}
 		</div>
 		</div>
-		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical">
-			<div class="alphabetDiv">
-				{{#each icdSectionAlphabet}}
-            		 <div class="alphabet" id="{{this}}" style="padding:5px; cursor:pointer;">{{this}}</div>  
-            	{{/each}}
-            	 <div class="alphabet" style="padding:5px 0;">#</div> 
-            </div> 
+		<div class="col-md-1 col-sm-1 col-xs-2 alphabetical" style="padding-left:0; padding-right:0;">
+			{{#each icdSectionAlphabet}}
+        		<div class="alphabet" id="{{this}}" style="padding:8px 0; cursor:pointer;">{{this}}</div>  
+        	{{/each}}
+        	 <div class="alphabet" style="padding:5px 0;">#</div> 
 		</div>
 	</div>
 	{{#if equals searchDataEmpty 0}}
 		<div class="search-empty">No Results</div>
 	{{/if}}
-
-<!-- 	{{#if equals networkConnection 1}}
-		<p>error</p>
-	{{else}}
-		<p>connected</p>
-	{{/if}} -->
+	<div id="loading" style="display:none">
+	      {{> spinner}}
+	</div>
 </div>
 </template>

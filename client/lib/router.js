@@ -1,7 +1,7 @@
 
 BHSListController = RouteController.extend({
   template: 'BHSlist',
-  increment: 25, 
+  increment: 30, 
 
  postsLimit: function() { 
     return parseInt(this.params.postsLimit) || this.increment; 
@@ -26,30 +26,37 @@ BHSListController = RouteController.extend({
   },
 
   posts: function() {
+    var postData = "";
     if(Session.get('title') == "ICD-10 codes"){
       if (Session.get('searchString')) {
-        return ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i') }, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
+        postData = ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i') }, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
       } else if(Session.get('selectedAlphabet')) {
-        return ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
+        postData = ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
       } else {
-        return ICD.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        postData = ICD.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
       }
+      $('#loading').css('display','none');
+      return postData;
     } else if (Session.get('title') == "DSM-5 codes"){
       if (Session.get('searchString')) {
-        return DSM.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
+        postData =  DSM.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
       } else if(Session.get('selectedAlphabet')) {
-        return DSM.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet') + '|:' + Session.get('selectedAlphabet'),'i') },this.findOptions());
+        postData =  DSM.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet') + '|:' + Session.get('selectedAlphabet'),'i') },this.findOptions());
       } else {
-        return DSM.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList') + '|:' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        postData =  DSM.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList') + '|:' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
       }
+       $('#loading').css('display','none');
+      return postData;
     }else{
       if (Session.get('searchString')) {
-        return codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},this.findOptions());
+        postData =  codingRules.find({ guideline : new RegExp(Session.get('searchString'),'i')},this.findOptions());
       } else if(Session.get('selectedAlphabet')) {
-        return codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') }, this.findOptions());
+        postData =  codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') }, this.findOptions());
       } else {
-        return codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        postData =  codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
       }
+       $('#loading').css('display','none');
+      return postData;
     }
   },
 
