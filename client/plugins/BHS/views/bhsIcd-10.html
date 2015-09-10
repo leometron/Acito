@@ -71,8 +71,8 @@
 
                 <div class="row" id="updateSectionName" style="margin-top:20px">
                     {{#if selectedSectionICD}}
-                   <div class="col-xs-2" ><input type="text" id="updatesectionCode" value="{{selectedSectionICD.sectionCode}}" class="form-control font-size-14 sectionCode" style="width:110%"></div>
-                   <div class="col-xs-6" ><input type="text" id="updatesectionName" value="{{selectedSectionICD.sectionName}}" class="form-control font-size-14 sectionName"></div>
+                   <div class="col-xs-2" ><input type="text" id="updatesectionCode" value="{{selectedSectionICD.sectionCode}}" class="form-control font-size-14 sectionCode" style="width:110%" placeholder="Code"></div>
+                   <div class="col-xs-6" ><input type="text" id="updatesectionName" value="{{selectedSectionICD.sectionName}}" class="form-control font-size-14 sectionName" placeholder="Name"></div>
                     <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateSection" >Update</button></div>
                     <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelCurrentId" >Cancel</button></div>
                     {{/if}}
@@ -113,8 +113,8 @@
 
 		<div class="row" style="padding-bottom:20px; margin-top:3%">
 			{{#if selectedICD}}
-			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" value="{{selectedICD.code}}"></div>			 
-            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" value="{{selectedICD.detail}}"></div>
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="ICDCode" class="form-control font-size-14" style="width:100%" value="{{selectedICD.code}}" placeholder="ICD Code"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="ICDDetail" class="form-control font-size-14" style="width:100%" value="{{selectedICD.detail}}" placeholder="Description"></div>
 			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentICDPost" style="padding:7px 40px; margin-top:1px">Update</button></div>
 			<div class="col-xs-2"><button class="btn btn-default" id="cancelCurrentICDPost" style="padding:7px 40px; margin-top:1px; margin-left:-23px">Cancel</button></div>            		
 			{{else}}

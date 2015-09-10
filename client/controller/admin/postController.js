@@ -90,6 +90,22 @@ Template.posts.events({
 			selectedIds.splice(index, 1);
 		}
 	},
+	'click #checkboxPostsAll' : function(event) {
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('.checkbox:checkbox').prop('checked',true);
+        }else{
+            $('.checkbox:checkbox').prop('checked',false);
+        }
+        $(".checkbox:checkbox").each(function() {
+           if(this.checked){
+                selectedIds.push(this.id);
+           }else{
+                var index = selectedIds.indexOf(this.id);
+                selectedIds.splice(index, 1);
+           }
+       });
+    },
    'click #bulkApplyBtn': function() {
 		Meteor.call('bulkActions', selectedIds, $('#dropdown').text());
 		Meteor._reload.reload(); 

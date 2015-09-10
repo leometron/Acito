@@ -20,7 +20,7 @@
                       <a id="binFilter">Bin</a>
                 </span>
             </div>
-            <div class="row post-margin margin-top-10">
+            <div class="row post-margin">
                 <div class="col-md-3 padding-left-zero">
                  <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdown"
@@ -46,9 +46,9 @@
                 <span class="dropdown margin-right">
                     <select id="dateFilter" class="selctionButton">
                         <option value="All dates" selected="selected">All dates</option>
-                        <option value="/5/2015">May 2015</option>
-                        <option value="/6/2015">June 2015</option>
-                        <option value="/7/2015">July 2015</option>
+                        <option value="/9/2015">September 2015</option>
+                        <option value="/10/2015">October 2015</option>
+                        <option value="/11/2015">November 2015</option>
                     </select>
                 </span>
                     <span><button type="button" class="btn btn-default" id="filter" style="margin-top:-5px">Filter</button></span>
@@ -91,7 +91,9 @@
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">
-                        <div class="col-md-1"></div>
+                        <div class="col-md-1">
+                            <span><input id="checkboxPostsAll" type="checkbox"></span>
+                        </div>
                         <div class="col-md-4 padding-left-zero margin-left-minus-30">Title</div>
                         <div class="col-md-2">Author</div>
                         <div class="col-md-2">Page</div>
@@ -113,7 +115,7 @@
                         {{#if currentUser}}
                         <div id="{{_id}}" class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
                             <div class="col-md-1 margin-top-10">
-                                <input type="checkbox" class="checkbox">
+                                <input type="checkbox" class="checkbox" id="{{_id}}">
                             </div>
                             {{#if deleted}}
                             <div class="post">

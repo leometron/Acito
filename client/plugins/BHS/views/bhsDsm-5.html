@@ -69,9 +69,9 @@
         <div class="row padding-bottom-10px padding-20px" id="updateDSMSectionName">
         {{#if selectedSection}}
           <div class="col-xs-2" ><input type="text" id="updateCode" class="form-control font-size-14" 
-            value="{{selectedSection.sectionCode}}" style="width:125%"></div>
+            value="{{selectedSection.sectionCode}}" style="width:125%" placeholder="Code"></div>
           <div class="col-xs-6"><input type="text" id="updateSection" class="form-control font-size-14" 
-            value="{{selectedSection.sectionName}}"></div>
+            value="{{selectedSection.sectionName}}" placeholder="Name"></div>
           <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateDSMSection" >Update</button></div>
           <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelSection" >Cancel</button></div>
         {{/if}}
@@ -176,9 +176,9 @@
         <div class="row padding-bottom-10px padding-20px" id="updateSubSectionName">
            {{#if selectSubSection}}
               <div class="col-xs-2" ><input type="text" id="updateSubCode" class="form-control font-size-14" 
-                value="{{selectSubSection.subSectionCode}}" style="width:125%"></div>
+                value="{{selectSubSection.subSectionCode}}" style="width:125%" placeholder="Code"></div>
               <div class="col-xs-6"><input type="text" id="updateSubSection" class="form-control font-size-14" 
-                value="{{selectSubSection.subSectionName}}"></div>
+                value="{{selectSubSection.subSectionName}}" placeholder="Name"></div>
           <div class="col-xs-2"><button class="btn btn-default padding-8px" id="updateDSMSubSection" >Update</button></div>
           <div class="col-xs-2"><button class="btn btn-default padding-8px" id="cancelSubSection" >Cancel</button></div>
            {{/if}}
@@ -216,8 +216,8 @@
 	</div>
 		<div class="row" style="padding-bottom:20px; margin-top:20px;">
 			{{#if selectedDSM}}
-			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="DSMCode" class="form-control font-size-14" style="width:100%" value="{{selectedDSM.DSMCode}}"></div>			 
-            <div class="col-xs-6" style="margin-left:"><input type="text" id="DSMDetail" class="form-control font-size-14" style="width:100%" value="{{selectedDSM.DSMDetail}}"></div>
+			<div class="col-xs-2" style="margin-left:-1.5%"> <input type="text" id="DSMCode" class="form-control font-size-14" style="width:100%" value="{{selectedDSM.DSMCode}}" placeholder="DSM Code"></div>			 
+            <div class="col-xs-6" style="margin-left:"><input type="text" id="DSMDetail" class="form-control font-size-14" style="width:100%" value="{{selectedDSM.DSMDetail}}" placeholder="Description"></div>
 			<div class="col-xs-2"><button class="btn btn-default" id="saveCurrentDSMPost" style="padding:7px 40px; margin-top:1px">Update</button></div>
 			<div class="col-xs-2"><button class="btn btn-default" id="cancelCurrentDSMPost" style="padding:7px 40px; margin-top:1px; margin-left:-23px">Cancel</button></div>            		
 			{{else}}

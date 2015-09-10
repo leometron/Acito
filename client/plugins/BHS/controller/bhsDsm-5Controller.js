@@ -415,8 +415,13 @@ Template.BHSDSM.helpers({
         }
     },
     'subSectionListCount' : function () {
-        Session.set('subSectionTotalCount',subSection.find().count());
-        return subSection.find().count();  
+        if(Session.get('selectsectionId')) {
+            Session.set('subSectionTotalCount',subSection.find({sectionId:Session.get('selectsectionId')}).count());
+            return subSection.find({sectionId:Session.get('selectsectionId')}).count();
+        }else{
+            return subSection.find().count();  
+        }
+        
     },
     'DSMList': function () { 
         if(Session.get('selectsectionId')){

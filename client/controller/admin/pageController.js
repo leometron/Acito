@@ -109,7 +109,22 @@ Template.pages.events ({
               selectedIds.splice(index, 1);
             }
         },
-
+        'click #checkboxPagesAll' : function(event) {
+            var selectcheck = event.target.checked;
+            if(selectcheck == true){
+                $('.checkbox:checkbox').prop('checked',true);
+            }else{
+                $('.checkbox:checkbox').prop('checked',false);
+            }
+            $(".checkbox:checkbox").each(function() {
+               if(this.checked){
+                    selectedIds.push(this.id);
+               }else{
+                    var index = selectedIds.indexOf(this.id);
+                    selectedIds.splice(index, 1);
+               }
+           });
+        },
         'click #Bulkapply' : function () {
           Meteor.call('bulkMethod', selectedIds, $('#dropdownMenu1').text());
           Meteor._reload.reload();
