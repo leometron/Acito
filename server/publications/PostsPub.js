@@ -14,7 +14,8 @@ Meteor.publish('Posts', function () {
         }
     } else if (querystr) {
         temp = querystr;
-        querystr = "";        
+        querystr = "";
+        return Posts.find({createdBy: loginUserId, title:new RegExp(temp,'i')});        
        // return Posts.find({ createdBy: loginUserId, $text: { $search: temp } });
     } else if(categorystr) {
         temp = categorystr;
