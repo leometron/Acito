@@ -57,7 +57,7 @@ Template.BHSlist.helpers({
 					$.each(data, function(i,row) {
 		    			var x = row.sectionName.charAt(0).toUpperCase();
 					    if ($.inArray(x, alphabetArray) === -1) {
-					    	if(DSM.find({sectionName : new RegExp('^' + x,'i') }).count() > 0) {
+					    	if(DSM.find({sectionName : new RegExp('^' + x + '|:' + x,'i') }).count() > 0) {
 					        	alphabetArray.push(x);					    		
 					    	}					    
 					    }
@@ -131,14 +131,13 @@ function initializeScroller () {
     leftScroll = new IScroll('#wrapper', { 
         scrollbars: false,
 		mouseWheel: true,
-		click: true,
 		shrinkScrollbars: 'scale'
     });
 
      rightScroll = new IScroll('#rightWrapper', { 
         scrollbars: false,
 		mouseWheel: true,
-		click: true,		
+		click: true,	
 		shrinkScrollbars: 'scale'
     });
 
