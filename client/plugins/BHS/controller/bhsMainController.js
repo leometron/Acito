@@ -1,5 +1,3 @@
-var leftScroll;
-var rightScroll;
 
 if(Meteor.isCordova){
 	document.addEventListener("backbutton", function(){
@@ -17,10 +15,22 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
-	initializeScroller();
+	$('.listContainer').scroll(function(){
+        if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight) {
+        	if($("input:hidden").length==1){
+        		Router.go($('.showMore').val());
+        	}
+		}
+    });
    	$('body').removeClass('bgImage');
    	$('body').addClass('bgColor');
+   	setListHeight();
 	$('#'+Session.get('firstAlphabetinList')).css('color','#0758C3');   	
+}
+
+function setListHeight(){
+	$('.listContainer, .alphabetical').css('height', window.innerHeight-111);
+   	$('.alphabetical').css('height', window.innerHeight-45);
 }
 
 Template.BHSlist.helpers({
@@ -85,15 +95,9 @@ Template.BHSlist.events({
 		Router.go("/");
   	},
   	'click .alphabet':function(event){
+  		$('.listContainer').scrollTop(0);
 		var id = event.currentTarget.id;
 		Router.go('list');
-		leftScroll.scrollTo(0,0);
-		
-		Meteor.setTimeout(function(){
-   			leftScroll.refresh();
-        	rightScroll.refresh();
-    	},500);
-
 		if (id){
   			Session.set('searchString',"");
 			$('.alphabet').css('color','black');
@@ -121,38 +125,5 @@ Template.BHShome.helpers({
 });
 
 $(window).resize(function(evt) {
-   Meteor.setTimeout(function(){
-   		leftScroll.refresh();
-        rightScroll.refresh();
-    },500);
+   setListHeight();
 });
-
-function initializeScroller () {
-    leftScroll = new IScroll('#wrapper', { 
-        scrollbars: false,
-		mouseWheel: true,
-		shrinkScrollbars: 'scale'
-    });
-
-     rightScroll = new IScroll('#rightWrapper', { 
-        scrollbars: false,
-		mouseWheel: true,
-		click: true,	
-		shrinkScrollbars: 'scale'
-    });
-
-    leftScroll.on('scrollEnd', function() {
-     	if($("input:hidden").length==1){
-        	Router.go($('.showMore').val());
-        }
-         Meteor.setTimeout(function(){
-         	 leftScroll.refresh();
-        },500);
-    });
-
-     rightScroll.on('scrollEnd', function() {
-      	Meteor.setTimeout(function(){
-       		rightScroll.refresh();
-        },500);
-    });
-}

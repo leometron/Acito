@@ -19,6 +19,7 @@ Meteor.publish('Pages', function () {
     } else if (searchtext) {
         temp = searchtext;
         searchtext = "";
+        return Pages.find({createdBy: currentUserId, title:new RegExp(temp,'i')});                
         // return Pages.find({createdBy: currentUserId, $text: {$search: temp}});
     } else if (datetext) {
         temp = datetext;
