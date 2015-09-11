@@ -16,7 +16,7 @@ Template.adminLogin.events({
             if(err){
                 $('#errorMsg').html("Invalid user name or Password");
             } else {
-                $(location).attr('href', '/admin/ICD-10');
+                $(location).attr('href', '/admin/dashboard');
             }
         });
         return false;

@@ -5,30 +5,30 @@ var flag = true;
 Template.adminHeader.helpers({
     'navBarList': function () {
         return [
-            // {'title': 'dashboard', 'maintitle': 'Dashboard', 'icon': 'fa-tachometer'},
+            {'title': 'dashboard', 'maintitle': 'Dashboard', 'icon': 'fa-tachometer'},
             {
                 'title': 'posts',
                 'maintitle': 'Posts',
                 'icon': 'fa-thumb-tack',
                 // 'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}]                
-                // 'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}, {
-                //     'sTitle': 'tags',
-                //     'title': 'posts',
-                //     'name': 'Tags'
-                // }, {'sTitle': 'image', 'title': 'posts', 'name': 'FeaturedImage'}]
+                'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}, {
+                    'sTitle': 'tags',
+                    'title': 'posts',
+                    'name': 'Tags'
+                }, {'sTitle': 'image', 'title': 'posts', 'name': 'FeaturedImage'}]
             },
-            // {
-            //     'title': 'homeSliders',
-            //     'maintitle': 'HomeSliders',
-            //     'icon': 'fa-bars',
-            //     'subtitle': [{'sTitle': 'add', 'title': 'HomeSliders', 'name': 'AddNew'}]
-            // },
-            // {
-            //     'title': 'media',
-            //     'maintitle': 'Media',
-            //     'icon': 'fa-picture-o',
-            //     'subtitle': [{'sTitle': 'add', 'title': 'media', 'name': 'AddNew'}]
-            // },
+            {
+                'title': 'homeSliders',
+                'maintitle': 'HomeSliders',
+                'icon': 'fa-bars',
+                // 'subtitle': [{'sTitle': 'add', 'title': 'HomeSliders', 'name': 'AddNew'}]
+            },
+            {
+                'title': 'media',
+                'maintitle': 'Media',
+                'icon': 'fa-picture-o',
+                // 'subtitle': [{'sTitle': 'add', 'title': 'media', 'name': 'AddNew'}]
+            },
             {
                 'title': 'pages',
                 'maintitle': 'Pages',
@@ -37,9 +37,9 @@ Template.adminHeader.helpers({
             },
             // {'title': 'settings', 'maintitle': 'Settings', 'icon': 'fa-cog'},
             // {'title': 'themes', 'maintitle': 'Themes', 'icon': 'fa-paint-brush'},
-            {'title': 'ICD-10', 'maintitle': 'ICD-10'},
-            {'title': 'DSM-5', 'maintitle': 'DSM-5'},
-            {'title': 'CodingRules', 'maintitle': 'Coding Rules'},
+            // {'title': 'ICD-10', 'maintitle': 'ICD-10'},
+            // {'title': 'DSM-5', 'maintitle': 'DSM-5'},
+            // {'title': 'CodingRules', 'maintitle': 'Coding Rules'},
         ]
     },
     'pluginList': function () {
