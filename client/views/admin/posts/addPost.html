@@ -145,7 +145,7 @@
                                     <span><a href="#">Choose from the most used tags</a></span>
                                 </div> -->
             </div>
-<!-- 
+
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">Feature image <span class="caret pull-right margin-top-10"></span>
                 </div>
@@ -165,11 +165,13 @@
                               </span>
                     {{/if}}
                     {{else}}
-                <span class="cursor-pointer set-img" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
-                            {{#if getpostUrl}}
+                    {{#if getpostUrl}}
+                <span class="cursor-pointer set-img" id="removeImage">Remove featured image
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
-                            {{/if}}
                 </span>
+                            {{else}}
+                               <span class="cursor-pointer set-img" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image</span>
+                            {{/if}}
                     {{/if}}
                     <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog model-width">
@@ -192,8 +194,7 @@
 
                                                 <p class="text-center">or</p>
 
-                                                <div style="margin: 20px auto 0; width: 19%;"><input type="file"
-                                                                                                     id="selectMediaUrl">
+                                                <div style="margin: 20px auto 0; width: 19%;"><input type="file" id="selectMediaUrl">
                                                 </div>
                                                 <div class="text-center margin-top-10 font-size-12"><p>Maximum upload
                                                     file size: 24 MB.</p></div>
@@ -290,7 +291,7 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </template>

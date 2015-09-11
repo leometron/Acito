@@ -28,7 +28,7 @@ Template.posts.rendered = function(){
 
 Template.posts.events({
 	'click #addNewPost': function () {
-		Session.set('selectImage', "");
+		Session.set('postImage', "");
 		Session.set('selectedPostId', "");
 		Router.go("/admin/posts/add");
 	},
