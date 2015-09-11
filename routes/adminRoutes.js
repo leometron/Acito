@@ -16,7 +16,12 @@ Router.route('/admin', {
 //     this.render('adminLogin');
 // });
 Router.route('/admin/dashboard', function () {
-    this.render('dashBoard');
+    if(Meteor.userId()) {    
+        this.render('dashBoard');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    }    
 });
 Router.route('/admin/posts', function () {
     if(Meteor.userId()) {
@@ -35,12 +40,26 @@ Router.route('/admin/pages', function () {
         Router.go('admin');
     }    
 });
+
+
+
 Router.route('/admin/media', function () {
-    this.render('media');
+    if(Meteor.userId()) {    
+        this.render('media');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    }
 });
 Router.route('/admin/homeSliders', function () {
-    this.render('homeSlider');
+    if(Meteor.userId()) {    
+        this.render('homeSlider');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    }    
 });
+
 Router.route('/admin/settings', function () {
     this.render('settings');
 });
@@ -48,7 +67,12 @@ Router.route('/admin/themes', function () {
     this.render('themes');
 });
 Router.route('/admin/posts/add', function () {
-    this.render('addNewPost');
+    if(Meteor.userId()) {    
+        this.render('addNewPost');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    }  
 });
 Router.route('/admin/pages/add', function () {
     this.render('addNewPage');
@@ -78,13 +102,28 @@ Router.route('/admin/posts/categories/edit', function () {
     this.render('editCategory');
 });
 Router.route('/admin/posts/tags', function () {
-    this.render('tags');
+    if(Meteor.userId()) {    
+        this.render('tags');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    } 
 });
 Router.route('/admin/posts/tags/edit', function () {
-    this.render('editTags');
+    if(Meteor.userId()) {    
+        this.render('editTags');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    }
 });
 Router.route('/admin/posts/image', function () {
-    this.render('featuredImage');
+    if(Meteor.userId()) {    
+        this.render('featuredImage');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    }
 });
 
 

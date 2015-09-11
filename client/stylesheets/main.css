@@ -325,6 +325,19 @@ body, #main {
     color:#ffffff;
 }
 
+.homeslider-title {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: none;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    left: 20%;
+    position: absolute;
+    text-align: center;
+    top: 43%;
+    width: 60%;
+}
+
 .padding-100{
    padding: 100px 0;
 }

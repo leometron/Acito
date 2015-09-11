@@ -24,17 +24,19 @@
                 {{#if equals _id singlehomeSlider._id }}
                 <div class="item active" id="someid">
                   <img src="{{sliderImage}}" class="slider-image">
+                  <pre class="homeslider-title">{{title}}</pre>
                 </div>
                 {{else}}
                 <div class="item">
                   <img src="{{sliderImage}}" class="slider-image">
+                  <pre class="homeslider-title">{{title}}</pre>
                 </div>
                 {{/if}}
           {{/each}}
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="background-image:none">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>  
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <a class="carousel-control right" href="#myCarousel" data-slide="next" style="background-image:none">
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a> 
       {{else}} 
@@ -76,9 +78,9 @@
         <div class="header-content">
             <div class="header-content-inner">
                 <!-- <h1 class="slider-main-text">Your Favorite Source of Free Bootstrap Themes</h1> -->
-                <h1 class="slider-main-text">GrannyTherapy in Tamil Medicine</h1>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download
-                    your template and start going, no strings attached!</p>
+                <h1 class="slider-main-text">GrannyTherapy</h1>
+                <!-- <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download
+                    your template and start going, no strings attached!</p> -->
             </div>
         </div>
     </header>
