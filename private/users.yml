@@ -1,8 +1,4 @@
 user_admin:
-  email: admin@test.com
+  email: metron@gmail.com
   username: admin
-  password: supersecret
-user_test:
-  email: test@test.com
-  username: test
-  password: testtest
+  password: metron01

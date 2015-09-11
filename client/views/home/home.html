@@ -1,13 +1,4 @@
-<template name="home">
-    <div id="main">
-<!--         <header>
-            {{> header}}
-        </header> -->
-
-        <!-- <footer>
-            {{> footer}}
-        </footer> -->
-    </div>  
+<template name="home"> 
      <div id="Pages" class="row bg-color" >     
          <div class="container padding-left-right-zero theme-width">
                <div class="row equal image image-center theme-left-20">              
@@ -16,12 +7,7 @@
                 {{#if equals featuredImage '-'}}
                 {{else}}             
                     <img src="{{featuredImage}}" class="feature-image"/>
-                {{/if}}                  
-                 <!--  {{#each imageList}} 
-                    {{#if equals postId ../_id}}                 
-                      <img src="{{url}}" class="feature-image"/>                  
-                    {{/if}}                  
-                  {{/each}}  -->                 
+                {{/if}}                                 
                   <div class="post-thumb post-width">
                       <span id="postTitle" class="post-header-theme">{{title}}</span>
                       <p class="break-word text-ellipsis">
@@ -32,39 +18,6 @@
                </div>
               {{/each}}
               </div>  
-            <div class="loading-icon">
-            </div>
-            <!-- <div class="load-content-design">
-                <button class='give-more-content'>Click To Load More Content</button>
-            </div> -->
-            <div class="posts-Over">Posts Over</div>
         </div>
     </div>
-
-
-<!--     <div id="xLoader" class="padding-100 bg-dynamic-color">
-        <div class="google-spin-wrapper">
-            <div class="google-spin"></div>
-        </div>
-    </div> -->
-
-<!-- <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">
-<div class="owl-carousel">   
-   {{#each mediaList}}
-      <div  class="item margin-left-right-5 border">
-        <img src="{{url}}" class="height-250">
-      </div>
-   {{/each}}   
-</div>
-</div> -->
-
-<!-- <div id="showPost" class="show-post">     
-      <div class="col-md-10 col-xs-10">
-          <textarea rows="5" cols="5" class="form-control" placeholder="Post Your Question"></textarea>
-      </div>
-      <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" class="btn btn-default">Ask</a></div>
-      <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
-</div>
-<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
-
  </template>

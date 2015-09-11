@@ -7,11 +7,8 @@ Meteor.publish('homeslider', function () {
 
 	var currentUserId = this.userId;
   	var temp;
-  	if(searchstr) {
-  		temp = searchstr;
-  		searchstr = "";
-  		// return homeslider.find({ createdBy: currentUserId, $text: { $search: temp }});
-  	} else if(datestr) {
+    
+  	 if(datestr) {
   		temp = datestr;
   		datestr = "";
   		if(temp == "All dates"){
@@ -84,12 +81,7 @@ Meteor.methods({
         homeslider.remove({_id: sliderId});
     },
     'unbinSliderData': function (sliderId, status) {
-        // if(status){
         homeslider.update(sliderId, {$set: {deleted: false, status: "Published"}});
-        // } else {
-        // 	homeslider.update(sliderId, {$set: {deleted: false, status:"Draft"}});
-        // }
-
     },
     'searchSlider': function (searchString) {
         searchstr = searchString;

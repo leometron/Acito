@@ -1,13 +1,138 @@
 <template name="basicLayout">
     <div id="main">
-        <header>
-            {{> header}}
-        </header>
+    	{{#if showSelectedPost}}    
+		    <div>
+		       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
+		          <div class="container-fluid">       
+		              <div class="navbar-header">
+		                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		                      <span class="sr-only">Toggle navigation</span>
+		                      <span class="icon-bar"></span>
+		                      <span class="icon-bar"></span>
+		                      <span class="icon-bar"></span>
+		                  </button>
+		                  <span id="backToPage" class="back">Back</span>                       
+		              </div>
+		            </div>
+		        </nav>
+		      </div>
+		{{else}}   
+		<div class="container padding-zero full-width">
+		  <div id="myCarousel" class="carousel slide bannerDesign" data-ride="carousel">
+		    <div class="carousel-inner" role="listbox">
+		      {{#if isHomeSlider}}      
+		          {{#each homeSliderList}}
+		                {{#if equals _id singlehomeSlider._id }}
+		                <div class="item active" id="someid">
+		                  <img src="{{sliderImage}}" class="slider-image">
+		                </div>
+		                {{else}}
+		                <div class="item">
+		                  <img src="{{sliderImage}}" class="slider-image">
+		                </div>
+		                {{/if}}
+		          {{/each}}
+		        <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="background-image:none;">
+		          <span class="glyphicon glyphicon-chevron-left"></span>
+		        </a>  
+		        <a class="carousel-control right" href="#myCarousel" data-slide="next" style="background-image:none;">
+		          <span class="glyphicon glyphicon-chevron-right"></span>
+		        </a> 
+		      {{else}} 
+		        <img  class="slider-image default-image">
+		      {{/if}}  
+		    </div>
+		  </div>
+		  </div>
+		<nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
+		  <div class="container-fluid">
+		      <div class="navbar-header">
+		        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		          <span class="sr-only">Toggle navigation</span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		        </button>
+		        <a class="navbar-brand page-scroll font-xlarge" href="#">ACITO</a>
+		      </div>
 
-        {{> yield}}
+		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		          <ul class="nav navbar-nav navbar-right"> 
+		            {{#each pagesList}}
+		            <li>
+		              <a class="page-scroll">{{title}}</a>
+		            </li>                    
+		            {{/each}}                      
+		          </ul>
+		      </div> 
+		  </div>
+		</nav>
+	{{/if}}
 
-        <!-- <footer>
-            {{> footer}}
-        </footer> -->
-    </div>
+	<section id="about" class="container ">
+        	<div class="row text-center" style="padding-bottom:25px;padding-top:0px; margin-bottom:25px;">
+              <div class="navy-line"></div>
+            	<h2>About Us</h2>
+            	<div class="col-md-12 text-center"> 
+		            <p>Metron Labs is the division of <b>Metron consulting</b> that handles mobility, IOT, big data, analytics 	and computation intensive distributed solutions. 
+		            </p>
+					<p>Our team consists of world class hands-on technology experts who have built scalable applications globally. We have worked for large product companies including Yahoo, Netflix, Oracle as well as worked in C-level positions in startups funded by top-tier venture funds like Sequoia, Warburg Pincus and many more. We’ve built products in both the consumer and enterprise domain – healthcare, ecommerce, telecom, and IOT applications. 
+					</p>
+					<p>Metron Labs is located in California, USA, and has development centers located in Bangalore, India. </p>
+		 		</div>
+			</div>
+	</section>
+			
+	<section class="gray-section contact" id="contact" style="margin-top:0px; padding-top:85px; background-color:#d9d9d9; padding-bottom:85px" >
+	<div class="container" style="  " >
+		<div class="col-md-4 col-sm-4">
+		<img src="images/metron_logo.png"/><br>
+		
+		Metron builds next generation<br> technologies in mobility, IOT, <br>big data, analytics and <br>computation intensive <br>distributed solutions. 
+		</div>
+		<div class="col-md-2 col-sm-2" style="margin-top:15px">
+		
+		<h3>COMPANY</h3>
+		<ul style="padding:0px; list-style:none">
+		<li>
+		<a href="#about">LEADERSHIP</a>
+		</li>
+		<li>
+		<a href="#about">PARTNERS</a>
+		</li>
+		<li>
+		<a href="#about">CAREERS</a>
+		</li>
+		</ul>
+
+		</div>
+		<div class="col-md-3 col-sm-2" style="margin-top:15px">
+		
+		<h3>RESOURCES</h3>
+		<ul style="padding:0px; list-style:none">
+		<li><a href="blog.html">Blog Posts</a></li>
+		<li><a href="#about">Case Studies</a></li>
+		<li> <a href="#about">Videos</a></li>
+		</ul>
+
+
+		</div>
+		<div class="col-md-3 col-sm-4" style="margin-top:15px">
+		<h3>Metron Labs </h3>
+1300 Grant Ave, <br>
+Suite 201, Novato<br>
+CA 94947, USA<br>
+Phone: 415 – 602 – 6514, <br>
+           <span style="margin-left:52px"> 1- 800-796-0478</span><br>
+<a href="mailto:sales@metronlabs.io" style="text-decoration:underline">info@metronlabs.io</a><br>
+<ul class="list-inline social-icon">
+						<li><a target="_blank" href="https://twitter.com/metronconsult"><i class="fa fa-twitter"></i></a></li>
+						<li><a target="_blank"  href="https://www.linkedin.com/company/metron-consulting-limited"><i class="fa fa-linkedin"></i></a></li>
+					</ul>
+
+		</div>
+	</div>
+	
+	</section>
+ </div>
 </template>

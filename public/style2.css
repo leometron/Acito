@@ -1,0 +1,58 @@
+﻿ 
+/*================================
+    GENERAL STYLES
+    ============================  */
+
+ /* GOOGLE FREE FONTS */
+        @import url(http://fonts.googleapis.com/css?family=Oxygen);
+        /* BODY STYLE - JUST FOR GOOD LOOK */
+        /*body {
+            margin-top: 120px;
+            background-color: #0094ff;
+            color: #fff;
+            font-family: 'Oxygen', sans-serif;
+            min-height:700px;
+            line-height:25px;
+        }*/
+
+/*================================
+    TESTIMONIAL STYLES
+    ============================  */
+         .testimonial-section {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: relative;
+    border: 1px solid #ccc;
+    font-size:12px;
+}
+.testimonial-section:after {
+    top: 100%;
+    left: 10%;
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+    border-top-color: #ccc;
+    border-width: 15px;
+    margin-left: -15px;
+}
+
+.testimonial-section-name {
+  
+    margin-left: 60px;
+    text-align:left;
+    color:#000;
+}
+    .testimonial-section-name img {
+        max-width:40px;
+        border: 1px solid #ccc;
+    }
+.carousel-indicators-set {
+    position:static;
+    margin-left:0px;
+    width:100%;
+}
+

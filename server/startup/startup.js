@@ -1,16 +1,4 @@
-/*
-
- Created by LingaRaja.
-
- Has the functinalities to create a index.
-
- */
 Meteor.startup(function () {
-    // Posts._ensureIndex({title: "text"});
-    // tags._ensureIndex({name: "text"});
-    // Pages._ensureIndex({title: "text"});
-    // Media._ensureIndex({name: "text"});
-    // homeslider._ensureIndex({title: "text"});
 
     Meteor.publish('plugin', function () {
         return plugin.find();
@@ -33,7 +21,6 @@ Meteor.startup(function () {
                 if (myRe.exec(file)) {
                     var data = YAML.eval(filesystem.readFileSync(file, 'utf8'));
                     for (key in data) if (data.hasOwnProperty(key)) {
-                        // plugin.insert({title: data[key].title,subtitle:[{sTitle:'dsfs'},{sTitle:'gd'}]});
                         var titleData = data[key].title;
                         var subtitleData = data[key].subtitle;
                         for (key in subtitleData) if (subtitleData.hasOwnProperty(key)) {
@@ -53,7 +40,5 @@ Meteor.startup(function () {
             }
         });
     }
-
-    // getAllFilesFromFolder('../../../../../client/plugins');
     getAllFilesFromFolder(process.cwd()+"/assets/app");    
 });

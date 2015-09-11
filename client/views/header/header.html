@@ -31,10 +31,10 @@
                 </div>
                 {{/if}}
           {{/each}}
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="background-image:none;">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>  
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <a class="carousel-control right" href="#myCarousel" data-slide="next" style="background-image:none;">
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a> 
       {{else}} 
@@ -55,33 +55,28 @@
         <a class="navbar-brand page-scroll font-xlarge" href="#">ACITO</a>
       </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <!-- <a class="page-scroll" href="#DashBoard">DashBoard</a> -->
-            </li>
+      <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right"> 
             {{#each pagesList}}
             <li>
               <a id="pageName" class="page-scroll" href="#Pages">{{title}}</a>
             </li>                    
             {{/each}}                      
-            <li>
-              <!-- <a class="page-scroll" href="#Media">Media</a> -->
-            </li>
+          </ul>
+      </div> -->
+
+      <div id="navbar" class="navbar-collapse collapse col-xs-12 col-sm-9 col-md-8 pull-right"  >
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a class="page-scroll" href="#page-top">Home</a></li>
+            <li><a class="page-scroll" href="#about">ABOUT US</a></li>
+            <li onClick="select()"><a class="page-scroll summarymenu" href="solutions.html">SOLUTIONS</a></li>
+            <li><a class="page-scroll" href="#overview">TECHNOLOGY</a></li>
+            <li><a class="page-scroll blogmenu" href="blog.html">BLOG</a></li>
+            <li><a class="page-scroll" href="#contact">Contact</a></li>
           </ul>
       </div>
   </div>
 </nav>
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <!-- <h1 class="slider-main-text">Your Favorite Source of Free Bootstrap Themes</h1> -->
-                <h1 class="slider-main-text">GrannyTherapy in Tamil Medicine</h1>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download
-                    your template and start going, no strings attached!</p>
-            </div>
-        </div>
-    </header>
 {{/if}}
 </template>
 
