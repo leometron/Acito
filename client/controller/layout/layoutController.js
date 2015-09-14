@@ -112,15 +112,15 @@ Template.home.helpers({
 })
 
 Template.postDetail.helpers({
-   'showSelectedPost' : function() {
-       if(Session.get('selectedPostId')){
-           // var temp = Session.get('selectedPostId');
-           // Session.set('selectedPostId',"");
-           // console.log('temp.........'+temp);
-           return Posts.findOne({_id: Session.get('selectedPostId')});            
-       }
-       $('#postDetail').fadeIn(10000);          
-   },
+   // 'showSelectedPost' : function() {
+   //     if(Session.get('selectedPostId')){
+   //         // var temp = Session.get('selectedPostId');
+   //         // Session.set('selectedPostId',"");
+   //         // console.log('temp.........'+temp);
+   //         return Posts.findOne({_id: Session.get('selectedPostId')});            
+   //     }
+   //     $('#postDetail').fadeIn(10000);          
+   // },
    'imageList' : function() {
        return featuredimage.find();
    },
@@ -211,4 +211,23 @@ $('#postIntroduction').offset().top - $('#postasas').offset().top
     });
   }
 };
+
+Template.postDetail.rendered = function() {
+   addTwitterWidget();
+};
+
+function addTwitterWidget() {
+    !function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0], 
+            p = /^http:/.test(d.location) ? 'http' : 'https';
+            // console.log("all" + d.getElementById(id));
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + '://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, 'script', 'twitter-wjs');
+}
+
 

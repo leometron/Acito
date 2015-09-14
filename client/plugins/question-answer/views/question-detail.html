@@ -1,37 +1,115 @@
 <template name="questionDetail">
-	<div>
-		<span>Your Question:</span>
-		<textarea id="question"></textarea>
+	<div class="question-detail">
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 margin-top-15 font-size-16">
+				<span>Your Question:</span>
+			</div>
+			<div class="col-md-7">
+				<textarea id="question" cols="70"></textarea>
+			</div>
+		</div>
+
+		<div class="row emptyQuestionInfo">
+			<div class="col-md-5">
+			</div>
+			<div class="col-md-7 font-size-16 margin-top-15-min color-red">
+				<span>required field</span>
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 margin-top-15 font-size-16">
+				<span>Question Details</span>
+			</div>
+			<div class="col-md-7">
+				<textarea id="questionDetails" cols="70"></textarea>
+			</div>
+		</div>
+
+		<div class="row emptyDetailInfo">
+			<div class="col-md-5">
+			</div>
+			<div class="col-md-7 font-size-16 margin-top-15-min color-red">
+				<span>required field</span>
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 margin-top-15 font-size-16">
+				<span>What is your major Complaint?</span>
+			</div>
+			<div class="col-md-7">
+				<textarea id="majorComplaint" cols="70"></textarea>
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 margin-top-15 font-size-16">
+				<span>Give detail explanations about Complaint?</span>
+			</div>
+			<div class="col-md-7">
+				<textarea id="detailExplanation" cols="70"></textarea>
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16 margin-top-4">
+				<span>How long have you had this complaint?</span>
+			</div>
+			<div class="col-md-7">
+				<input type="text" id="complaintPeriod" size="71">
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16 margin-top-4">
+				<span>What symptoms are you exhibiting?</span>
+			</div>
+			<div class="col-md-7">
+				<input type="text" id="symptoms" size="71">
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16 margin-top-4">
+				<span>Are there any secondary complaints?</span>
+			</div>
+			<div class="col-md-7">
+				<input type="text" id="secondaryComplaint" size="71">
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16 margin-top-4">
+				<span>What medication are you currently taking?</span>
+			</div>
+			<div class="col-md-7">
+				<input type="text" id="medicineTaking" size="71">
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-5">
+			</div>
+			<div class="col-md-2">
+	        	<button type="button" id="postQuestion" class="btn btn-primary submitbtn">Submit</button>
+	        </div>
+		</div>						
 	</div>
-	<div>
-		<span>Question Details</span>
-		<textarea id="questionDetails"></textarea>
-	</div>
-	<div>
-		<span>What is your major Complaint?</span>
-		<textarea id="majorComplaint"></textarea>
-	</div>	
-	<div>
-		<span>Give detail explanations about Complaint?</span>
-		<textarea id="detailExplanation"></textarea>
-	</div>
-	<div>
-		<span>How long have you had this complaint?</span>
-		<input type="text" id="complaintPeriod">
-	</div>	
-	<div>
-		<span>What symptoms are you exhibiting?</span>
-		<input type="text" id="symptoms">
-	</div>		
-	<div>
-		<span>Are there any secondary complaints?</span>
-		<input type="text" id="secondaryComplaint">
-	</div>	
-	<div>
-		<span>What medication are you currently taking?</span>
-		<input type="text" id="medicineTaking">
-	</div>
-	<div>
-        <button type="button" id="postQuestion" class="btn btn-primary">Submit</button>
-	</div>						
 </template>

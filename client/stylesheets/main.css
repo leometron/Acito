@@ -259,7 +259,7 @@ body, #main {
     padding: 0px;
     overflow-x: hidden;
     color: #1f1f1f;
-    font-family: 'Fauna One', serif;
+    /*font-family: 'Fauna One', serif;*/
     background-color:  #F2F1F1;
 }
 
@@ -485,4 +485,11 @@ body, #main {
 #errorMsg {
     color: #FF0000;
     padding: 25px 0px 10px 0;
+}
+
+.empty-results {
+  margin-top: 4%;
+    font-size: 20px;
+    font-weight: bold;
+    left: 39%;
 }
