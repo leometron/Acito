@@ -1,5 +1,5 @@
 <template name="home">
-    <div id="main">
+    <!-- <div id="main"> -->
 <!--         <header>
             {{> header}}
         </header> -->
@@ -7,7 +7,7 @@
         <!-- <footer>
             {{> footer}}
         </footer> -->
-    </div>  
+    <!-- </div>   -->
      <div id="Pages" class="row bg-color" >     
          <div class="container padding-left-right-zero theme-width">
                <div class="row equal image image-center theme-left-20">              
@@ -58,13 +58,16 @@
 </div>
 </div> -->
 
-<!-- <div id="showPost" class="show-post">     
+<div id="showPost" class="show-post">     
       <div class="col-md-10 col-xs-10">
           <textarea rows="5" cols="5" class="form-control" placeholder="Post Your Question"></textarea>
       </div>
-      <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" class="btn btn-default">Ask</a></div>
+      <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" id="askQuestion" class="btn btn-default">Ask</a></div>
       <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
 </div>
-<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
+<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div>
 
+<div id="questionDetail">
+  {{> questionDetail}}
+</div>
  </template>

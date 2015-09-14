@@ -4,7 +4,7 @@ body, #main {
     /*overflow-x: hidden;*/
     color: #1f1f1f;
     /*font-family: 'Fauna One', serif;*/
-    background-color:  #F2F1F1;
+    background-color:  #FDFEFB;
 }
 
 .row{
@@ -347,6 +347,29 @@ pre {
   padding: 8% 0 0;
   margin: auto;
 }
+
+.admin-login {
+  border: 1px solid #000000;
+  position: absolute; 
+  bottom: 15px; 
+  left: 15%; 
+  width: 70%; 
+  padding: 10% 0% 7%
+}
+
+.admin-login-content{
+  background: #111111; 
+  height: 25px; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  position: absolute; 
+  color: white;
+  text-align: center;
+  font-weight: bold; 
+  padding-top: 2px;
+}
+
 .form-control{
   font-size: 18px;
   width: 100%;

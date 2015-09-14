@@ -413,22 +413,35 @@ body, #main {
 .loginalert {
     background-color: #ffffff;
     font-size: 18px;
-    margin-left: 35%;
-    padding: 7%;
+    margin-left: 27%;
+    padding: 10%;
     position: absolute;
     text-align: center;
-    top: 90px;
-    width: 30%;
+    top: 23%;
+    width: 45%;
+    border: 1px solid #E5E5E5;
 }
 
 .loginalertbtn {
     padding:2px 25px;
-    margin-top:30px
+    margin-top:30px;
+}
+
+.granny-logo {
+    background-image: url(/images/granny.jpg);
+    background-repeat: no-repeat;
+    height: 140px;
+    margin-top: -300px;
+}
+
+.logo-back {
+    background-image: url(/images/bg1.png);
+    height: 300px;
 }
 
 /*Ask Question*/
 
-/*.show-post {
+.show-post {
     position: fixed;
     top: 30%;
     border: 1px solid white;
@@ -449,7 +462,7 @@ body, #main {
     top: 30%;
     z-index: 1;
 }
-*/
+
 
 
 

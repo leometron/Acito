@@ -37,12 +37,12 @@ Template.header.helpers({
 
 Template.home.events({
     'click #postTitle': function () {
-        var userId = this._id;
+        var postId = this._id;
         Session.set('selectedPageId', Session.get("pageId"));
-        Session.set('selectedPostId', userId);
+        Session.set('selectedPostId', postId);
         $('.image').animate({width: 'toggle'}, 770);
         setTimeout(function () {
-            Router.go("/post/" + userId);
+            Router.go("/post/" + postId);
         }, 1000);
     },
     'click .Ask': function () {
@@ -66,6 +66,9 @@ Template.home.events({
             Router.go("/post/"+userId);
        }, 1000);  
    },
+   'click #askQuestion' : function() {
+      $('#questionDetail').show();
+   }
 });
 
 Template.home.helpers({
@@ -145,6 +148,7 @@ Template.home.rendered = function () {
 
     $('.posts-Over').hide();
     $('.loading-icon').hide();
+    $('#questionDetail').hide();
 
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
