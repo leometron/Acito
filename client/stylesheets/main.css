@@ -294,6 +294,7 @@ body, #main {
   padding: 35px 35px 50px;
   margin: 0 auto;
   background-color: #ffffff;
+  border: 1px solid #E5E5E5;
 }
 
 .ui.header {
