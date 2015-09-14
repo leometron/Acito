@@ -1,0 +1,47 @@
+
+.question-detail {
+	position: absolute;
+	top: 70px;
+	left: 10%;
+	width:80%;
+	background-color: #ffffff;
+	padding-top: 40px;
+	padding-bottom: 15px; 
+}
+
+.question-detail textarea {
+	resize: none;
+}
+
+.question-detail input{
+	border: 1px solid #848484;
+	padding: 6px;
+}
+
+.margin-top-15 {
+	margin-top: 15px;
+}
+
+.margin-top-15-min {
+	margin-top: -15px;
+}
+
+.font-size-16 {
+	font-size: 16px;
+}
+.margin-top-4{
+	margin-top: 4px;
+}
+
+.color-red {
+	color: red;
+}
+	
+.padding-15 {
+	padding: 15px;
+}
+
+.submitbtn {
+	font-size: 16px;
+	padding: 8px 36px;
+}

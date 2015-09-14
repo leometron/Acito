@@ -439,6 +439,15 @@ body, #main {
     height: 300px;
 }
 
+.login-body {
+    background-color:#FDFEFB;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
 /*Ask Question*/
 
 .show-post {
