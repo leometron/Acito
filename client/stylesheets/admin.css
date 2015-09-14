@@ -428,7 +428,7 @@ body, #main {
 
 /*Ask Question*/
 
-/*.show-post {
+.show-post {
     position: fixed;
     top: 30%;
     border: 1px solid white;
@@ -449,7 +449,7 @@ body, #main {
     top: 30%;
     z-index: 1;
 }
-*/
+
 
 
 
