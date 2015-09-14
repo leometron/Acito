@@ -19,11 +19,11 @@ Template.questionDetail.events({
 		Meteor.setTimeout(function () {
 			$('#emptyQuestionInfo').hide(),
 			$('#emptyDetailInfo').hide()		
-		},2000);
+		},5000);
 	}
 });
 
-Template.posts.rendered = function() {
+Template.questionDetail.rendered = function() {
 	$('#emptyQuestionInfo').hide();
 	$('#emptyDetailInfo').hide();	
 }
