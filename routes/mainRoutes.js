@@ -30,11 +30,16 @@ Router.route('/', {
 Router.route('/post/:_id', {    
   layoutTemplate: 'basicLayout',	
   name: 'postDetail',
-  action: function () {
-    // this.render('home');
-    console.log('user id............'+Meteor.userId());    
-    this.render('postDetail');    
-    SEO.set({ title: 'postdetails - ' + Meteor.App.NAME });
-    console.log(Meteor.App.NAME);
+  // action: function () {
+  //   // this.render('home');
+  //   console.log('user id............'+Meteor.userId());    
+  //   this.render('postDetail');    
+  //   SEO.set({ title: 'postdetails - ' + Meteor.App.NAME });
+  //   console.log(Meteor.App.NAME);
+  // }
+
+  data: function() {
+    return Posts.findOne({ _id: this.params._id });
+
   }    
 });
