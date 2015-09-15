@@ -436,8 +436,8 @@ body, #main {
   text-decoration: none;
 }
 
-.loading-icon {
-  background-image: url(/images/loading_anim.gif);
+.post-loading-icon {
+  background-image: url(/images/ajax-loader.gif);
   text-align: center;
   margin-left: 48%;
   margin-bottom: 2%;
@@ -446,10 +446,15 @@ body, #main {
   height: 34px;
 }
 
-.posts-Over {
+.posts-Over-text {
   font-size: 25px;
   text-align: center;
   color: red;
+  padding-bottom: 30px;
+}
+
+.post-view {
+  padding: 30px 0px 25px;
 }
 
 /*.postError {*/

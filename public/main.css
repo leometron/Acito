@@ -73,16 +73,6 @@ pre {
   text-decoration: none;
 }
 
-.loading-icon {
-  background-image: url(/images/loading_anim.gif);
-  text-align: center;
-  margin-left: 48%;
-  margin-bottom: 2%;
-  margin-top: 2%;
-  width:34px;
-  height: 34px;
-}
-
 .posts-Over {
   font-size: 25px;
   text-align: center;
