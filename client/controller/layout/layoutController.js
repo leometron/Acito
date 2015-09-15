@@ -57,7 +57,7 @@ Template.home.events({
         }
     },
     'click .right-arrow' : function(){
-     var userId = this._id;
+      var userId = this._id;
        Session.set('selectedPageId',Session.get("pageId"));
        // Session.set("pageId","");        
        Session.set('selectedPostId', userId);
