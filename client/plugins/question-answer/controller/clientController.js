@@ -15,15 +15,16 @@ Template.questionDetail.events({
 			var medicineTaking = (!$('#medicineTaking').val() ) ? "-" : $('#medicineTaking').val();							
 			Meteor.call('postQuestion',question,details,majorComplaint,detailExplanation,complaintPeriod,symptoms,secondaryComplaint,medicineTaking);
 			$('#questionDetail').hide();
+			Session.set('question','');
 		}
 		Meteor.setTimeout(function () {
 			$('#emptyQuestionInfo').hide(),
-			$('#emptyDetailInfo').hide()		
+			$('#emptyDetailInfo').hide();		
 		},5000);
 	}
 });
 
 Template.questionDetail.rendered = function() {
 	$('#emptyQuestionInfo').hide();
-	$('#emptyDetailInfo').hide();	
+	$('#emptyDetailInfo').hide();
 }

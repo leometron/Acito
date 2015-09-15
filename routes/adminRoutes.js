@@ -127,4 +127,18 @@ Router.route('/admin/posts/image', function () {
 });
 
 
+Router.route('/admin/questions', function () {
+    if(Meteor.userId()) {    
+        this.render('questions');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    }
+});
 
+Router.route('/admin/question/:questionId', {    
+  name: 'editQuestion',
+  data: function() {
+    return questionDetail.findOne({ _id: this.params.questionId });
+  }    
+});

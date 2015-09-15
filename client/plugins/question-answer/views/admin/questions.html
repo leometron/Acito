@@ -1,0 +1,32 @@
+<template name="questions">
+    <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
+        <div class="col-md-1">
+            <span><input type="checkbox"></span>
+        </div>
+        <!-- <div class="col-md-6 padding-left-zero margin-left-minus-30">Sl.no</div> -->
+        <div class="col-md-2">Questions</div>
+        <div class="col-md-2">Status</div>
+        <div class="col-md-1">Options</div>
+    </div>
+   	{{#if equals questionListCount 0}}
+        <div class="row padding-top-bottom-10 cursor-pointer">
+            <div class="CodingRules-data-row">
+                <div class="col-md-4 empty-results">
+                    <span style="font-size:16px">No Results</span>
+                </div>
+            </div>
+        </div>
+    {{else}}
+    	{{#each questionList}}
+			<div id="{{_id}}" class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
+			    <div class="col-md-1">
+            		<span><input type="checkbox"></span>
+        		</div>
+        		<!-- <div class="col-md-6 padding-left-zero margin-left-minus-30">Sl.no</div> -->
+        		<div class="col-md-2">{{question}}</div>
+        		<div class="col-md-2">{{status}}</div>
+        		<div class="col-md-1"><span id="editQuestion">Edit</span></div>
+    		</div>
+    	{{/each}}
+    {{/if}}    
+</template>

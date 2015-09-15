@@ -37,14 +37,16 @@ Template.adminHeader.helpers({
             },
             // {'title': 'settings', 'maintitle': 'Settings', 'icon': 'fa-cog'},
             // {'title': 'themes', 'maintitle': 'Themes', 'icon': 'fa-paint-brush'},
-            // {'title': 'ICD-10', 'maintitle': 'ICD-10'},
-            // {'title': 'DSM-5', 'maintitle': 'DSM-5'},
-            // {'title': 'CodingRules', 'maintitle': 'Coding Rules'},
+            {
+                'title': 'questions',
+                'maintitle': 'Questions'
+                // 'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
+            },
         ]
     },
-    'pluginList': function () {
-        return plugin.find();
-    }
+    // 'pluginList': function () {
+    //     return plugin.find();
+    // }
 
 });
 

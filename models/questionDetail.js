@@ -2,6 +2,9 @@ questionDetail = new Mongo.Collection('questionDetail');
 
 questionDetail.attachSchema(
     new SimpleSchema({
+    status: {
+      type: String
+    },
     question: {
       type: String
     },
@@ -24,6 +27,12 @@ questionDetail.attachSchema(
       type: String
     },
     medicine: {
+      type: String
+    },
+    createdBy: {
+      type: String
+    },
+    createdAt: {
       type: String
     }        
   })
