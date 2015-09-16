@@ -1,9 +1,15 @@
 <template name="addNewPost">
-    <div>      
+    <div class="main-content-box">
+        {{#if showSelectedPost}}
+                <div class="content-box-menu">Edit Post</div>
+                {{else}}
+                <div class="content-box-menu">Add a new Post</div>
+                {{/if}}
            <!--  {{#if errormsg}}
             <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
             <span  id="showError">{{errormsg}}</span></div>  
             {{/if}} -->
+            <div class="row" style="margin-left: 2.5%; width: 95%;margin-bottom:30px">
         <div class="margin-top-40">
             <div class="row post-margin">
                 {{#if showSelectedPost}}
@@ -293,5 +299,6 @@
                 </div>
             </div>
         </div>
+    </div> 
     </div>
 </template>

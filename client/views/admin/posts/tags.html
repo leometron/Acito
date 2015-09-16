@@ -1,9 +1,11 @@
 <template name="tags" id="tags">
-    <div>
+    <div class="main-content-box">
+        <div class="content-box-menu">Tags</div>
         {{#if errormsg}}
         <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
             <span id="showError">{{errormsg}}</span></div>
         {{/if}}
+        <div style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
         <div class="margin-top-40">
             <div class="row">
                 <span class="main-header">Tags</span>
@@ -91,6 +93,7 @@
                    </div> -->
             </div>
         </div>
+    </div>
     </div>
 </template>
 

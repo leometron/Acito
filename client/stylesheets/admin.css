@@ -434,19 +434,61 @@ body, #main {
     margin-top: -300px;
 }
 
+.granny-logo-admin {
+    background-image: url("/images/granny.jpg");
+    background-repeat: no-repeat;
+    height: 140px;
+    margin-left: 14%;
+    margin-top: 3%;
+    position: absolute;
+    width: 86%;
+}
+
 .logo-back {
     background-image: url(/images/bg1.png);
     height: 300px;
 }
 
-.login-body {
+.main-logo-admin {
+    background-image: url("/images/bg1.png");
+    height: 300px;
+    margin-left: 14%;
+    margin-top: 3%;
+    position: absolute;
+    width: 86%;
+}
+
+/*.login-body {
     background-color:#FDFEFB;
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
+}*/
+
+.admin-login {
+  border: 1px solid #000000;
+  position: absolute; 
+  bottom: 15px; 
+  left: 15%; 
+  width: 70%; 
+  padding: 10% 0% 7%
 }
+
+.admin-login-content{
+  background: #111111; 
+  height: 25px; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  position: absolute; 
+  color: white;
+  text-align: center;
+  font-weight: bold; 
+  padding-top: 2px;
+}
+
 
 /*Ask Question*/
 

@@ -1,12 +1,14 @@
 <template name="questions">
-    <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
+    <div class="main-content-box">
+    <div class="content-box-menu">Questions</div>
+    <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd; margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
         <div class="col-md-1">
-            <span><input type="checkbox"></span>
+            <!-- <span><input type="checkbox"></span> -->
         </div>
         <!-- <div class="col-md-6 padding-left-zero margin-left-minus-30">Sl.no</div> -->
-        <div class="col-md-2">Questions</div>
+        <div class="col-md-6" style="margin-left:-2%">Questions</div>
         <div class="col-md-2">Status</div>
-        <div class="col-md-1">Options</div>
+        <div class="col-md-3">Options</div>
     </div>
    	{{#if equals questionListCount 0}}
         <div class="row padding-top-bottom-10 cursor-pointer">
@@ -18,15 +20,17 @@
         </div>
     {{else}}
     	{{#each questionList}}
-			<div id="{{_id}}" class="row  padding-top-bottom-10" style="border: 1px solid #ddd">
+            <div id="{{_id}}" class="row  padding-top-bottom-10" style="border: 1px solid #ddd; margin-left: 2.5%;width: 95%; margin-bottom:30px; margin-top:-31px;">
 			    <div class="col-md-1">
-            		<span><input type="checkbox"></span>
+            		<!-- <span><input type="checkbox"></span> -->
         		</div>
         		<!-- <div class="col-md-6 padding-left-zero margin-left-minus-30">Sl.no</div> -->
-        		<div class="col-md-2">{{question}}</div>
+        		<div class="col-md-6" style="margin-left:-2%">{{question}}</div>
         		<div class="col-md-2">{{status}}</div>
-        		<div class="col-md-1"><span id="editQuestion">Edit</span></div>
+        		<div class="col-md-3"><a id="editQuestion" class="cursor">Edit</a> | <a id="delete" class="cursor">Delete</a> | <a id="reply" class="cursor">Reply</a></div>
     		</div>
     	{{/each}}
-    {{/if}}    
+    {{/if}}
+    </div>
+        
 </template>

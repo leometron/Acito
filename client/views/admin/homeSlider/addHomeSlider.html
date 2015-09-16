@@ -1,10 +1,15 @@
 <template name="addNewHomeSlider">
-    <div>
+    <div class="main-content-box">
+        {{#if showSelectedSlider}}
+        <div class="content-box-menu">Edit Home Slider</div>
+        {{else}}
+        <div class="content-box-menu">Add Home Slider</div>
+        {{/if}}
         <!-- {{#if errormsg}}
         <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
             <span id="showError">{{errormsg}}</span></div>
         {{/if}} -->
-        <div class="margin-top-40">
+<!--         <div class="margin-top-40">
             <div class="row">
                 {{#if showSelectedSlider}}
                 <span style="font-size: 30px;">Edit Home Slider</span>
@@ -12,7 +17,8 @@
                 <span style="font-size: 30px;">Add New Home Slider</span>
                 {{/if}}
             </div>
-        </div>
+        </div> -->
+        <div class="row" style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
         <div class="col-md-8  padding-left-zero">
             {{#if showSelectedSlider}}
             <input type="text" class="form-control" id="sliderTitle" value="{{showSelectedSlider.title}}">
@@ -266,5 +272,6 @@
                </div>
            </div> -->
         </div>
+    </div>
     </div>
 </template>

@@ -1,12 +1,17 @@
 <template name="editQuestion">
-		<div class="row padding-15">
+	<div class="edit-question-detail main-content-box">
+		<div class="content-box-menu">Edit question</div>
+		<div class="row padding-15" style="margin-top:5%">
 			<div class="col-md-1">
 			</div>
 			<div class="col-md-4 margin-top-15 font-size-16">
 				<span>Status</span>
 			</div>
 			<div class="col-md-7">
-				<textarea id="status" cols="70">{{status}}</textarea>
+				<select id="pageName" placeholder="page" style="padding:5px 20px">
+				    <option>active</option>
+				    <option>deactive</option>
+				</select>
 			</div>
 		</div>
 
@@ -120,5 +125,9 @@
 			<div class="col-md-2">
 	        	<button type="button" id="updateQuestion" class="btn btn-primary submitbtn">Update</button>
 	        </div>
-		</div>						
+	        <div class="col-md-2">
+	        	<button type="button" id="updateQuestion" class="btn btn-primary submitbtn">Cancel</button>
+	        </div>
+		</div>
+	</div>						
 </template>

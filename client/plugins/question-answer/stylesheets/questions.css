@@ -13,7 +13,16 @@
 	resize: none;
 }
 
+.edit-question-detail textarea {
+	resize: none;
+}
+
 .question-detail input{
+	border: 1px solid #848484;
+	padding: 6px;
+}
+
+.edit-question-detail input{
 	border: 1px solid #848484;
 	padding: 6px;
 }
@@ -67,3 +76,28 @@
 .close-icon:hover {
 	color: white;
 }
+
+.main-content-box {
+	border: 1px solid #000000;
+    margin-top: 13%;
+    width: 98%;
+    position: relative;
+    background: #F6FAEB;
+}
+
+.content-box-menu {
+  background: #111111; 
+  height: 25px; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  position: absolute; 
+  color: white;
+  text-align: left;
+  font-weight: bold; 
+  padding: 2px 30px;
+}
+
+.cursor {
+	cursor: pointer;
+} 
