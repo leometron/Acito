@@ -69,12 +69,15 @@ Template.home.events({
    'click #askQuestion' : function() {
       if (!$('#questionArea').val()) {
         $('#questionEmptyInfo').show();
+      } else if (!Meteor.userId()) {
+        $('#showPost').hide().animate({"width": "-50%"}, "slow");
+        $('#loginDetail').show();
       } else {
         Session.set('question',$('#questionArea').val());
         $('#questionArea').val("");
         $('#post').show();
         $('#showPost').hide().animate({"width": "-50%"}, "slow");
-        $('#question').val(Session.get('question'));            
+        $('#question').val(Session.get('question'));           
         $('#questionDetail').show();
       }
       Meteor.setTimeout(function(){
@@ -162,6 +165,7 @@ Template.home.rendered = function () {
     $('.post-loading-icon').hide();
     $('#questionDetail').hide();
     $('#questionEmptyInfo').hide();
+    $('#loginDetail').hide();
 
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {

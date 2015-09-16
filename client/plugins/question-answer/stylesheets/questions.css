@@ -67,3 +67,33 @@
 .close-icon:hover {
 	color: white;
 }
+
+#Usererr {
+	color: #FF0000;
+    padding: 14px 0px 10px 0;
+}
+
+.userlogin {
+	width:40%; 
+	border: 1px solid #E5E5E5; 
+	padding: 14px 35px 14px; 
+	float:left; 
+	background-color: #ffffff;
+}
+
+.usersignup {
+	width:50%; 
+	border: 1px solid #E5E5E5; 
+	padding: 14px 35px 14px; 
+	float:left; 
+	background-color: #ffffff;
+}
+
+.memberlogin {
+	position:absolute; 
+	top:63px; 
+	width: 80%; 
+	padding: 25px; 
+	left: 10%; 
+	background-color: #ffffff;
+}
