@@ -1,17 +1,12 @@
-<template name="editQuestion">
-	<div class="edit-question-detail main-content-box">
-		<div class="content-box-menu">Edit question</div>
-		<div class="row padding-15" style="margin-top:5%">
+<template name="replyQuestion">
+		<div class="row padding-15">
 			<div class="col-md-1">
 			</div>
 			<div class="col-md-4 margin-top-15 font-size-16">
 				<span>Status</span>
 			</div>
 			<div class="col-md-7">
-				<select id="pageName" placeholder="page" style="padding:5px 20px">
-				    <option>active</option>
-				    <option>deactive</option>
-				</select>
+				{{status}}
 			</div>
 		</div>
 
@@ -22,15 +17,7 @@
 				<span>Your Question:</span>
 			</div>
 			<div class="col-md-7">
-				<textarea id="question" cols="70">{{question}}</textarea>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-5">
-			</div>
-			<div class="col-md-7 font-size-16 margin-top-15-min color-red" id="emptyQuestionInfo">
-				<span>question required</span>
+				{{question}}
 			</div>
 		</div>
 
@@ -41,15 +28,7 @@
 				<span>Question Details</span>
 			</div>
 			<div class="col-md-7">
-				<textarea id="questionDetails" cols="70">{{detail}}</textarea>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-5">
-			</div>
-			<div class="col-md-7 font-size-16 margin-top-15-min color-red" id="emptyDetailInfo">
-				<span>question detail required</span>
+				{{detail}}
 			</div>
 		</div>
 
@@ -60,7 +39,7 @@
 				<span>What is your major Complaint?</span>
 			</div>
 			<div class="col-md-7">
-				<textarea id="majorComplaint" cols="70">{{complaint}}</textarea>
+				{{complaint}}
 			</div>
 		</div>
 
@@ -71,7 +50,7 @@
 				<span>Give detail explanations about Complaint?</span>
 			</div>
 			<div class="col-md-7">
-				<textarea id="detailExplanation" cols="70">{{complaintDetail}}</textarea>
+				{{complaintDetail}}
 			</div>
 		</div>
 
@@ -82,7 +61,7 @@
 				<span>How long have you had this complaint?</span>
 			</div>
 			<div class="col-md-7">
-				<input type="text" id="complaintPeriod" size="71" value="{{complaintPeriod}}">
+				{{complaintPeriod}}
 			</div>
 		</div>
 
@@ -93,7 +72,7 @@
 				<span>What symptoms are you exhibiting?</span>
 			</div>
 			<div class="col-md-7">
-				<input type="text" id="symptoms" size="71" value="{{symptoms}}">
+				{{symptoms}}
 			</div>
 		</div>
 
@@ -104,7 +83,7 @@
 				<span>Are there any secondary complaints?</span>
 			</div>
 			<div class="col-md-7">
-				<input type="text" id="secondaryComplaint" size="71" value="{{secondaryComplaint}}">
+				{{secondaryComplaint}}
 			</div>
 		</div>
 
@@ -115,7 +94,26 @@
 				<span>What medication are you currently taking?</span>
 			</div>
 			<div class="col-md-7">
-				<input type="text" id="medicineTaking" size="71" value="{{medicine}}">
+				{{medicine}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16 margin-top-4">
+				<span>Post Answer</span>
+			</div>
+			<div class="col-md-7">
+				<textarea id="answer" cols="70"></textarea>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-5">
+			</div>
+			<div class="col-md-7 font-size-16 margin-top-15-min color-red" id="emptyAnswerInfo">
+				<span>answer required</span>
 			</div>
 		</div>
 
@@ -123,11 +121,7 @@
 			<div class="col-md-5">
 			</div>
 			<div class="col-md-2">
-	        	<button type="button" id="updateQuestion" class="btn btn-primary submitbtn">Update</button>
+	        	<button type="button" id="postReply" class="btn btn-primary submitbtn">Post</button>
 	        </div>
-	        <div class="col-md-2">
-	        	<button type="button" id="updateQuestion" class="btn btn-primary submitbtn">Cancel</button>
-	        </div>
-		</div>
-	</div>						
+		</div>		
 </template>
