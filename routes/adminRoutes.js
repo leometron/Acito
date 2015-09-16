@@ -136,9 +136,16 @@ Router.route('/admin/questions', function () {
     }
 });
 
-Router.route('/admin/question/:questionId', {    
-  name: 'editQuestion',
-  data: function() {
-    return questionDetail.findOne({ _id: this.params.questionId });
-  }    
+Router.route('/admin/question/edit', {    
+    name: 'editQuestion',
+    data: function() {
+        return questionDetail.findOne({ _id: this.params.query.id});
+    }    
+});
+
+Router.route('/admin/question/reply', {
+    name: 'replyQuestion',
+    data: function() {
+        return questionDetail.findOne({ _id: this.params.query.id});
+    }
 });

@@ -4,7 +4,18 @@ Template.questions.events({
 	'click #editQuestion' : function () {
 		var questionId = this._id;
 		Session.set('currentQuestionId',questionId);
-        Router.go("/admin/question/" + questionId);		
+        Router.go("/admin/question/edit?id=" + questionId);		
+	},
+	'click #deleteQuestion' : function () {
+		var del = confirm("Do you really want to Delete this question?");
+		if (del == true) {
+			Meteor.call('removeQuestion',this._id);
+		}
+	},
+	'click #replyQuestion' : function () {
+		var questionId = this._id;
+		Session.set('currentQuestionId',questionId);		
+		Router.go('/admin/question/reply?id='+questionId);
 	}
 })
 
@@ -47,4 +58,24 @@ Template.editQuestion.events({
 Template.editQuestion.rendered = function() {
 	$('#emptyQuestionInfo').hide();
 	$('#emptyDetailInfo').hide();
-}
+};
+
+Template.replyQuestion.events({
+	'click #postReply' : function () {
+		var answer = $('#answer').val();
+		if(!answer) {
+			$('#emptyAnswerInfo').show();
+		} else {
+			Meteor.call('postAnswer',answer,Session.get('currentQuestionId'),'-');
+			Session.set('currentQuestionId','');		
+			Router.go('/admin/questions');			
+		}
+		Meteor.setTimeout(function () {
+			$('#emptyAnswerInfo').hide()
+		},5000);			
+	}
+});
+
+Template.replyQuestion.rendered = function() {
+	$('#emptyAnswerInfo').hide();
+};
