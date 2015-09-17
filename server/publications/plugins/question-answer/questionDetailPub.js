@@ -1,5 +1,5 @@
 Meteor.publish('questionDetail', function () {
-  return questionDetail.find();
+    return questionDetail.find();
 });
 
 Meteor.methods({

@@ -149,3 +149,19 @@ Router.route('/admin/question/reply', {
         return questionDetail.findOne({ _id: this.params.query.id});
     }
 });
+
+Router.route('/admin/answers', function () {
+    if(Meteor.userId()) {    
+        this.render('answers');
+    } else {
+        $('.loginalert').show();
+        Router.go('admin');
+    }
+});
+
+Router.route('admin/answer/edit', {    
+    name: 'editAnswer',
+    data: function() {
+        return answer.findOne({ _id: this.params.query.id});
+    }    
+});

@@ -42,6 +42,11 @@ Template.adminHeader.helpers({
                 'maintitle': 'Questions'
                 // 'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
             },
+            {
+                'title': 'answers',
+                'maintitle': 'Answers'
+                // 'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
+            },            
         ]
     },
     // 'pluginList': function () {

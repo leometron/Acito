@@ -8,9 +8,14 @@
 				<span>Status</span>
 			</div>
 			<div class="col-md-7">
-				<select id="pageName" placeholder="page" style="padding:5px 20px">
-				    <option>active</option>
-				    <option>deactive</option>
+				<select id="status" style="padding:5px 20px">
+					{{#if equals status "active"}}
+				    	<option>active</option>
+				    	<option>deactive</option>
+				    {{else}}
+				    	<option>deactive</option>				    				    
+				    	<option>active</option>
+				    {{/if}}
 				</select>
 			</div>
 		</div>
@@ -19,7 +24,7 @@
 			<div class="col-md-1">
 			</div>
 			<div class="col-md-4 margin-top-15 font-size-16">
-				<span>Your Question:</span>
+				<span>Your Question</span>
 			</div>
 			<div class="col-md-7">
 				<textarea id="question" cols="70">{{question}}</textarea>
@@ -126,7 +131,7 @@
 	        	<button type="button" id="updateQuestion" class="btn btn-primary submitbtn">Update</button>
 	        </div>
 	        <div class="col-md-2">
-	        	<button type="button" id="updateQuestion" class="btn btn-primary submitbtn">Cancel</button>
+	        	<button type="button" id="cancelEditQuestion" class="btn btn-primary submitbtn">Cancel</button>
 	        </div>
 		</div>
 	</div>						

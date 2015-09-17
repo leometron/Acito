@@ -1,0 +1,41 @@
+<template name="userLogin">
+    <div class="memberlogin">
+        <div class="userlogin">
+            <div style="text-align:center; padding:8px; font-weight:bold;">LOGIN</div>
+                <form id="userLogin">
+                    <div>Username/Email</div>
+                    <div><input type="text" class="form-control" id="email"/></div>
+                    <div>Password</div>
+                    <div><input type="password" id="password" class="form-control"/></div>
+                    <div align="center">
+                            <button class="btn btn-info" type="submit">Login</button>
+                    </div>
+                    <div align="center">
+                        <div id="errorMsg"></div>
+                    </div>
+                </form>
+        </div>
+        <div style="width:7%; padding:10px; float:left"></div>
+        <div class = "usersignup">
+            <div style="text-align:center; padding:8px; font-weight:bold;">Registration Form</div>
+                <form id="signUp">
+                    <div>First Name</div>
+                    <div><input type="text" class="form-control" id="firstname"/></div>
+                    <div>Last Name</div>
+                    <div><input type="text" class="form-control" id="lastname"/></div>
+                     <div>Email Id</div>
+                    <div><input type="text" class="form-control" id="upemail"/></div>
+                     <div>Password</div>
+                    <div><input type="password" id="signpassword" class="form-control"/></div>
+                    <div>Confirm Password</div>
+                    <div><input type="password" id="re-password" class="form-control"/></div>
+                    <div align="center">
+                            <button class="btn btn-info" type="submit">Register</button>
+                    </div>
+                    <div align="center">
+                        <div id="Usererr"></div>
+                    </div>
+                </form>
+         </div>
+    </div>  
+</template>
