@@ -8,11 +8,59 @@
             {{> footer}}
         </footer> -->
     <!-- </div>   -->
-     <div id="Pages" class="row bg-color" >     
-         <div class="container padding-left-right-zero theme-width">
-               <div class="row equal image image-center theme-left-20 post-view">              
+    <div style="position:absolute; top:56px; right:7px; width:19%;">
+
+    <div style="background: #81915B none repeat scroll 0 0; box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; height:428px; overflow:hidden">
+      <div class="row">
+        <div class="col-md-12" style="text-align:center; font-size: 18px; padding: 10px;">
+          Answers
+        </div>
+      </div>
+      <div style="background:#FFFFFF; width:90%; margin-left:14px; border-radius:20px; height:362px; overflow:hidden">
+      {{#each questionList}}
+      
+      <div class="row">
+        <div class="col-md-12" style="padding:10px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; ">
+          {{question}}
+        </div>
+        <div class="col-md-12" style="border-top: 1px solid #D1D1D1; margin-left: 10px; width: 90%; padding-bottom:5px;border-top-width:1px;">
+        </div>
+      </div>
+      {{/each}}
+      </div>
+    </div>
+
+    <div style="background: #81915B none repeat scroll 0 0;  box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; height:185px; overflow:hidden; margin-top:8px;">
+      <div class="row">
+        <div class="col-md-12" style="text-align:center; font-size: 18px; padding: 10px;">
+          Search
+        </div>
+      </div>
+      <div style="background:#FFFFFF; width:90%; margin-left:14px; border-radius:20px; height:123px; overflow:hidden">
+      <div class="row">
+        <div class="col-md-12" style="margin-top:10px">
+          <span>Search for :</span>
+        </div>
+        <div class="col-md-12" style="margin-top:4px">
+          <textarea id="questionSearch" style="width:200px; height:30px; resize:none;"></textarea>
+        </div>
+        <div class="col-md-12" style="padding:7px; text-align:center;">
+          <button type="button" id="Search" class="btn btn-primary submitbtn" style="padding:4px 12px;">Search</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    </div>
+
+
+
+    <div style="width:65%; margin-left:200px; background: #81915B; box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; margin-top:7px; padding:10px">
+     <!-- <div id="Pages" class="row" style="background: #81915B;">      -->
+         <!-- <div class="padding-left-right-zero"> -->
+               <div class="row image image-center  post-view">              
               {{#each postsList}}
-               <div class="col-md-3 col-sm-6 col-xs-12 equal-child margin-bottom-15 postLists" id="postLists" style=" padding-right: 5px; padding-left: 5px;">     
+               <div class="col-md-4 margin-bottom-15 postLists" id="postLists" style=" padding-right: 5px; padding-left: 5px;">
                 {{#if equals featuredImage '-'}}
                 {{else}}             
                     <img src="{{featuredImage}}" class="feature-image"/>
@@ -37,9 +85,9 @@
                 <button class='give-more-content'>Click To Load More Content</button>
             </div> -->
             <div class="posts-Over-text">Posts Over</div>
-        </div>
-    </div>
-
+        <!-- </div> -->
+    <!-- </div> -->
+</div>
 
 <!--     <div id="xLoader" class="padding-100 bg-dynamic-color">
         <div class="google-spin-wrapper">

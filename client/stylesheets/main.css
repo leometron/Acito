@@ -362,7 +362,7 @@ body, #main {
     padding: 15px 0px 16px 20px; 
     background: #ffffff;
 }
-.equal-child:nth-child(4n+1) {
+.equal-child:nth-child(3n+1) {
     clear: left;      
 }
 .break-word{
@@ -454,7 +454,7 @@ body, #main {
 }
 
 .post-view {
-  padding: 30px 0px 25px;
+  padding: 12px 6px;
 }
 
 /*.postError {*/

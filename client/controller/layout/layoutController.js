@@ -10,10 +10,11 @@ Has the events and helpers related to home page.
 var showPost = true;
 
 Meteor.subscribe('featuredimage');
+// Meteor.subscribe("questionDetail");
 
 Template.header.events({
     'click #pageName': function () {
-        Session.set('numberOfCount', 4);
+        Session.set('numberOfCount', 3);
         Session.set('selectedPostId', "");
         Session.set("pageId", this._id);
     },
@@ -21,7 +22,7 @@ Template.header.events({
         Session.set('selectedPostId', "");
         Session.set("pageId", Session.get("selectedPageId"));
         history.back();
-    }
+    },
 });
 
 Template.header.helpers({
@@ -90,6 +91,9 @@ Template.home.helpers({
    },  
   'mediaList' : function() {
     return Media.find();
+   },
+   'questionList': function () {
+        return questionDetail.find();
    },
 
    // 'showSelectedPost' : function() {
@@ -169,7 +173,7 @@ Template.home.rendered = function () {
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();  
                   Meteor.setTimeout(function(){
-                  Session.set('numberOfCount', Session.get('numberOfCount') +4);
+                  Session.set('numberOfCount', Session.get('numberOfCount') +3);
                       if(Session.get('postCount')<=Session.get('numberOfCount')){
                           $('.post-loading-icon').hide();
                           $('.posts-Over-text').show();
