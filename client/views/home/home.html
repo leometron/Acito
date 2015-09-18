@@ -1,13 +1,4 @@
 <template name="home">
-    <!-- <div id="main"> -->
-<!--         <header>
-            {{> header}}
-        </header> -->
-
-        <!-- <footer>
-            {{> footer}}
-        </footer> -->
-    <!-- </div>   -->
     <div style="position:absolute; top:56px; right:7px; width:19%;">
 
     
@@ -20,10 +11,13 @@
       <div style="background:#FFFFFF; width:90%; margin-left:14px; border-radius:20px; height:135px; overflow:hidden">
       <div class="row">
         <div class="col-md-12" style="margin-top:4px">
-          <textarea id="questionSearch" style="width:200px; height:65px; resize:none; padding:5px; margin-top:10px;" placeholder="Post Your Question"></textarea>
+          <textarea id="questionArea" style="width:200px; height:65px; resize:none; padding:5px; margin-top:10px;" placeholder="Post Your Question"></textarea>
+          <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
+            <span>question required</span>
+          </div>            
         </div>
         <div class="col-md-12" style="padding:7px; text-align:center;">
-          <button type="button" id="Search" class="btn btn-primary button-home">Ask</button>
+          <button type="button" id="askQuestion" class="btn btn-primary button-home">Ask</button>
         </div>
       </div>
       </div>
@@ -77,29 +71,9 @@
     <div style="width:61%; background: #81915B; box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; padding:10px; position:absolute; top:574px; left:254px">
      <!-- <div id="Pages" class="row" style="background: #81915B;">      -->
          <!-- <div class="padding-left-right-zero"> -->
-               <div class="row image image-center  post-view">              
-              {{#each postsList}}
-               <div class="col-md-4 margin-bottom-15 postLists" id="postLists" style=" padding-right: 5px; padding-left: 5px;">
-                {{#if equals featuredImage '-'}}
-                {{else}}             
-                    <img src="{{featuredImage}}" class="feature-image"/>
-                {{/if}}                  
-                  <!--{{#each imageList}} 
-                    {{#if equals postId ../_id}}                 
-                      <img src="{{url}}" class="feature-image"/>                  
-                    {{/if}}                  
-                  {{/each}}-->                 
-                  <div class="post-thumb post-width">
-                      <span id="postTitle" class="post-header-theme">{{title}}</span>
-                      <p class="break-word text-ellipsis">
-                         {{content}}
-                      </p>
-                      <span class="right-arrow"></span> 
-                   </div>                   
-               </div>
-              {{/each}}
-              </div>  
-            <div class="post-loading-icon"></div>
+        {{> yield}}
+
+           <div class="post-loading-icon"></div>
             <!-- <div class="load-content-design">
                 <button class='give-more-content'>Click To Load More Content</button>
             </div> -->
@@ -124,7 +98,7 @@
 </div>
 </div> -->
 
-<div id="showPost" class="show-post">     
+<!-- <div id="showPost" class="show-post">     
       <div class="col-md-10 col-xs-10">
           <textarea rows="5" cols="5" class="form-control" id="questionArea" placeholder="Post Your Question"></textarea>
         <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
@@ -134,7 +108,7 @@
       <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" id="askQuestion" class="btn btn-default">Ask</a></div>
       <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
 </div>
-<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div>
+<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
 
 <div id="questionDetail">
   {{> questionDetail}}

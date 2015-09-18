@@ -2,7 +2,7 @@
 var themeName;
 Router.route('/', {
   layoutTemplate: 'basicLayout',	
-  name: 'home',
+  // name: 'postList',
   data: function() {          
        // var themeObj =  theme.findOne({userId: Meteor.userId()});
        // if (themeObj) {
@@ -10,7 +10,7 @@ Router.route('/', {
        // console.log('themeObj..............'+themeObj.themeName);
        //         this.render(themeObj.themeName);        
        // } else {
-        this.render('home');        
+        // this.render('postList');        
        // }
     },
   action: function () {
@@ -43,3 +43,13 @@ Router.route('/post/:_id', {
 
   }    
 });
+
+Router.route('/ask', {
+  layoutTemplate: 'basicLayout',  
+  name: 'questionDetail'  
+});
+
+Router.route('/pages', {
+  layoutTemplate: 'basicLayout',  
+  name: 'postList'  
+})

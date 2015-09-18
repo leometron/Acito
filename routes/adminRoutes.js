@@ -165,3 +165,15 @@ Router.route('admin/answer/edit', {
         return answer.findOne({ _id: this.params.query.id});
     }    
 });
+
+// Router.route('admin/get', {    
+//     data: function() {
+//         console.log('server side response..............'+answer.findOne());
+//         return answer.find();
+//     }    
+// });
+
+Router.route('/admin/get', function () {
+        console.log('server side response..............'+answer.findOne());
+        // return answer.find();
+});

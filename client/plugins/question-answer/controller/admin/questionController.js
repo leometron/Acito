@@ -78,6 +78,10 @@ Template.replyQuestion.events({
 		Meteor.setTimeout(function () {
 			$('#emptyAnswerInfo').hide()
 		},5000);			
+	},
+	'click #cancelReplyQuestion' : function () {
+		Session.set('currentQuestionId','');		
+		Router.go('/admin/questions');			
 	}
 });
 
