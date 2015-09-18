@@ -457,6 +457,15 @@ body, #main {
   padding: 12px 6px;
 }
 
+.button-home {
+  background: #f5f3ee none repeat scroll 0 0;
+  border: medium none #e0e1d7;
+  color: #447F8C;
+  float: right;
+  margin-right: 7px;
+  padding: 5px 27px;
+}
+
 /*.postError {*/
   /*background-color: #99CCFF; */
   /*color: #F00; 
