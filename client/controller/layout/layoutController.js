@@ -2,16 +2,18 @@ Meteor.subscribe('featuredimage');
 
 Template.basicLayout.events({
     'click .page-scroll': function (event) {
-      var id = event.currentTarget.textContent;
-      var page = "";
-      if(id=="CONTACT"){
-        page = "contact";
-      }else{
-        page="about";
+      var page = event.currentTarget.textContent;
+      var pageId = "";
+      if(page=="CONTACT"){
+        pageId = "contact";
+      }else if(page=="ABOUT US"){
+        pageId="about";
+      }else if(page=="TECHNOLOGY"){
+        pageId="technology";
       }
-      event.preventDefault();
+     // event.preventDefault();
       $('html, body').stop().animate({
-          'scrollTop': $('#'+page).offset().top
+          'scrollTop': $('#'+pageId).offset().top
       }, 500);
     }
 });
