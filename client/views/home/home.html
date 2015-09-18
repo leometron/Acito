@@ -86,9 +86,13 @@
         <div class="post-loading-icon"></div>
 
 
-        <div style="border:1px solid red; height:100px; width:100px;"></div>
+   <div style="width:61%; background: #81915B; box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; padding:10px; position:absolute; top:574px; left:254px">
+     <!-- <div id="Pages" class="row" style="background: #81915B;">      -->
+         <!-- <div class="padding-left-right-zero"> -->
+        {{> yield}}
 
-
+           <div class="post-loading-icon"></div>
+           </div>
     </div>
 
 <!--<div id="xLoader" class="padding-100 bg-dynamic-color">
@@ -106,17 +110,17 @@
 </div>
 </div> -->
 
-    <div id="showPost" class="show-post">     
-        <div class="col-md-10 col-xs-10">
-            <textarea rows="5" cols="5" class="form-control" id="questionArea" placeholder="Post Your Question"></textarea>
-            <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
-              <span>question required</span>
-            </div>          
-        </div>
-          <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" id="askQuestion" class="btn btn-default">Ask</a></div>
-          <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
-    </div>
-    <div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div>
+<!-- <div id="showPost" class="show-post">     
+      <div class="col-md-10 col-xs-10">
+          <textarea rows="5" cols="5" class="form-control" id="questionArea" placeholder="Post Your Question"></textarea>
+        <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
+          <span>question required</span>
+        </div>          
+      </div>
+      <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" id="askQuestion" class="btn btn-default">Ask</a></div>
+      <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
+</div>
+<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
 
     <div id="questionDetail">
       {{> questionDetail}}

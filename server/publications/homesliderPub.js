@@ -28,7 +28,7 @@ Meteor.publish('homeslider', function () {
   			return homeslider.find({createdBy: currentUserId, status: temp});	
   		}
     } else {
-        return homeslider.find({createdBy: currentUserId});
+        return homeslider.find();
     }
 
 });
