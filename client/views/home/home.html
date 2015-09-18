@@ -1,119 +1,101 @@
 <template name="home">
-    <!-- <div id="main"> -->
-<!--         <header>
-            {{> header}}
-        </header> -->
 
-        <!-- <footer>
-            {{> footer}}
-        </footer> -->
-    <!-- </div>   -->
-    <div style="position:absolute; top:56px; right:7px; width:19%;">
+    <div class="home-right-fields">
+        <div class="home-ask-field">
+            <div class="row">
+                <div class="col-md-12 home-right-fields-header">
+                    Ask your Community
+                </div>
+            </div>
+            <div class="home-ask-inner-field">
+                <div class="row">
+                    <div class="col-md-12 margin-top-4">
+                        <textarea id="questionSearch" placeholder="Post Your Question"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" id="Search" class="btn btn-primary button-home">Ask</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    
-      <div style="background: #81915B none repeat scroll 0 0;  box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; height:197px; overflow:hidden">
-      <div class="row">
-        <div class="col-md-12" style="text-align:center; font-size: 18px; padding: 10px;">
-          Ask your Community
+        <div class="home-search-field">
+            <div class="row">
+                <div class="col-md-12 home-right-fields-header">
+                    Search
+                </div>
+            </div>
+            <div class="home-search-inner-field">
+                <div class="row">
+                    <div class="col-md-12 margin-top-10">
+                        <span>Search for :</span>
+                    </div>
+                    <div class="col-md-12 margin-top-4">
+                        <textarea id="questionSearch"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" id="Search" class="btn btn-primary button-home">Search</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div style="background:#FFFFFF; width:90%; margin-left:14px; border-radius:20px; height:135px; overflow:hidden">
-      <div class="row">
-        <div class="col-md-12" style="margin-top:4px">
-          <textarea id="questionSearch" style="width:200px; height:65px; resize:none; padding:5px; margin-top:10px;" placeholder="Post Your Question"></textarea>
+
+        <div class="home-answer-field">
+            <div class="row">
+                <div class="col-md-12 home-right-fields-header">
+                    Answers
+                </div>
+            </div>
+            <div class="home-answer-inner-field">
+            {{#each questionList}}
+                <div class="row">
+                    <div class="col-md-12 home-answer-inner-field-content">
+                        {{question}}
+                    </div>
+                    <div class="col-md-12 border-top">
+                    </div>
+                </div>
+            {{/each}}
+            </div>
         </div>
-        <div class="col-md-12" style="padding:7px; text-align:center;">
-          <button type="button" id="Search" class="btn btn-primary button-home">Ask</button>
-        </div>
-      </div>
-      </div>
     </div>
 
-        <div style="background: #81915B none repeat scroll 0 0;  box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; height:185px; overflow:hidden; margin-top:8px;">
-      <div class="row">
-        <div class="col-md-12" style="text-align:center; font-size: 18px; padding: 10px;">
-          Search
-        </div>
-      </div>
-      <div style="background:#FFFFFF; width:90%; margin-left:14px; border-radius:20px; height:123px; overflow:hidden">
-      <div class="row">
-        <div class="col-md-12" style="margin-top:10px">
-          <span>Search for :</span>
-        </div>
-        <div class="col-md-12" style="margin-top:4px">
-          <textarea id="questionSearch" style="width:200px; height:30px; resize:none;"></textarea>
-        </div>
-        <div class="col-md-12" style="padding:7px; text-align:center;">
-          <button type="button" id="Search" class="btn btn-primary button-home">Search</button>
-        </div>
-      </div>
-      </div>
-    </div>
-
-    <div style="background: #81915B none repeat scroll 0 0; box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; height:428px; overflow:hidden; margin-top:8px;">
-      <div class="row">
-        <div class="col-md-12" style="text-align:center; font-size: 18px; padding: 10px;">
-          Answers
-        </div>
-      </div>
-      <div style="background:#FFFFFF; width:90%; margin-left:14px; border-radius:20px; height:362px; overflow:hidden">
-      {{#each questionList}}
-      
-      <div class="row">
-        <div class="col-md-12" style="padding:10px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; ">
-          {{question}}
-        </div>
-        <div class="col-md-12" style="border-top: 1px solid #D1D1D1; margin-left: 10px; width: 90%; padding-bottom:5px;border-top-width:1px;">
-        </div>
-      </div>
-      {{/each}}
-      </div>
-    </div>
-
-    </div>
-
-
-
-    <div style="width:61%; background: #81915B; box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; padding:10px; position:absolute; top:574px; left:254px">
-     <!-- <div id="Pages" class="row" style="background: #81915B;">      -->
-         <!-- <div class="padding-left-right-zero"> -->
-               <div class="row image image-center  post-view">              
-              {{#each postsList}}
-               <div class="col-md-4 margin-bottom-15 postLists" id="postLists" style=" padding-right: 5px; padding-left: 5px;">
-                {{#if equals featuredImage '-'}}
-                {{else}}             
-                    <img src="{{featuredImage}}" class="feature-image"/>
+    <div class="home-post-field">
+        <div class="row image image-center  post-view">              
+        {{#each postsList}}
+           <div class="col-md-4 margin-bottom-15 postLists" id="postLists" style=" padding-right: 5px; padding-left: 5px;">
+            {{#if equals featuredImage '-'}}
+            {{else}}             
+                <img src="{{featuredImage}}" class="feature-image"/>
+            {{/if}}                  
+              <!--{{#each imageList}} 
+                {{#if equals postId ../_id}}                 
+                  <img src="{{url}}" class="feature-image"/>                  
                 {{/if}}                  
-                  <!--{{#each imageList}} 
-                    {{#if equals postId ../_id}}                 
-                      <img src="{{url}}" class="feature-image"/>                  
-                    {{/if}}                  
-                  {{/each}}-->                 
-                  <div class="post-thumb post-width">
-                      <span id="postTitle" class="post-header-theme">{{title}}</span>
-                      <p class="break-word text-ellipsis">
-                         {{content}}
-                      </p>
-                      <span class="right-arrow"></span> 
-                   </div>                   
-               </div>
-              {{/each}}
-              </div>  
-            <div class="post-loading-icon"></div>
-            <!-- <div class="load-content-design">
-                <button class='give-more-content'>Click To Load More Content</button>
-            </div> -->
-            <div class="posts-Over-text">Posts Over</div>
-        <!-- </div> -->
-    <!-- </div> -->
-</div>
+              {{/each}}-->                 
+              <div class="post-thumb post-width">
+                  <span id="postTitle" class="post-header-theme">{{title}}</span>
+                  <p class="break-word text-ellipsis">
+                     {{content}}
+                  </p>
+                  <span class="right-arrow"></span> 
+               </div>                   
+           </div>
+        {{/each}}
+        </div>  
+        <div class="post-loading-icon"></div>
 
-<!--     <div id="xLoader" class="padding-100 bg-dynamic-color">
+
+        <div style="border:1px solid red; height:100px; width:100px;"></div>
+
+
+    </div>
+
+<!--<div id="xLoader" class="padding-100 bg-dynamic-color">
         <div class="google-spin-wrapper">
             <div class="google-spin"></div>
         </div>
     </div> -->
-
 <!-- <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">
 <div class="owl-carousel">   
    {{#each mediaList}}
@@ -124,23 +106,24 @@
 </div>
 </div> -->
 
-<div id="showPost" class="show-post">     
-      <div class="col-md-10 col-xs-10">
-          <textarea rows="5" cols="5" class="form-control" id="questionArea" placeholder="Post Your Question"></textarea>
-        <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
-          <span>question required</span>
-        </div>          
-      </div>
-      <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" id="askQuestion" class="btn btn-default">Ask</a></div>
-      <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
-</div>
-<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div>
+    <div id="showPost" class="show-post">     
+        <div class="col-md-10 col-xs-10">
+            <textarea rows="5" cols="5" class="form-control" id="questionArea" placeholder="Post Your Question"></textarea>
+            <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
+              <span>question required</span>
+            </div>          
+        </div>
+          <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" id="askQuestion" class="btn btn-default">Ask</a></div>
+          <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
+    </div>
+    <div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div>
 
-<div id="questionDetail">
-  {{> questionDetail}}
-</div>
+    <div id="questionDetail">
+      {{> questionDetail}}
+    </div>
 
-<div id="loginDetail">
-  {{> userLogin}}
-</div>
- </template>
+    <div id="loginDetail">
+      {{> userLogin}}
+    </div>
+
+</template>

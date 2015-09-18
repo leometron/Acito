@@ -173,19 +173,19 @@ Template.home.rendered = function () {
 
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
-            // if(Session.get('numberOfCount')){
-                // if(Session.get('postCount') >= Session.get('numberOfCount')){
-                  // $('.post-loading-icon').show();  
+            if(Session.get('numberOfCount')){
+                if(Session.get('postCount') >= Session.get('numberOfCount')){
+                  $('.post-loading-icon').show();  
                   Meteor.setTimeout(function(){
                   Session.set('numberOfCount', Session.get('numberOfCount') +3);
-                      // if(Session.get('postCount')<=Session.get('numberOfCount')){
-                          // $('.post-loading-icon').hide();
+                      if(Session.get('postCount')<=Session.get('numberOfCount')){
+                          $('.post-loading-icon').hide();
                           // $('.posts-Over-text').show();
                           // Meteor.setTimeout(function(){$('.posts-Over-text').hide()},3000);
-                      // }
-                  }, 3000);
-                // }
-            // }
+                      }
+                  }, 1000);
+                }
+            }
         }
     });
 
