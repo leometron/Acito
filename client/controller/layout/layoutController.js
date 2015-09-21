@@ -26,16 +26,16 @@ Template.header.events({
     },
 });
 
-Template.header.helpers({
-   'pagesList' : function() {
-       return Pages.find();
-   },
-   'showSelectedPost' : function() {
-       if(Session.get('selectedPostId')){
-           return Posts.findOne({_id: Session.get('selectedPostId')});            
-       }
-   },    
-});
+// Template.header.helpers({
+//    'pagesList' : function() {
+//        return Pages.find();
+//    },
+//    'showSelectedPost' : function() {
+//        if(Session.get('selectedPostId')){
+//            return Posts.findOne({_id: Session.get('selectedPostId')});            
+//        }
+//    },    
+// });
 
 Template.home.events({
     'click #postTitle': function () {
@@ -73,7 +73,11 @@ Template.home.events({
         $('#questionEmptyInfo').show();
       } else if (!Meteor.userId()) {
         // $('#showPost').hide().animate({"width": "-50%"}, "slow");
-        $('#loginDetail').show();
+        // $('#loginDetail').show();
+         Meteor.setTimeout(function() {
+            $(window).scrollTop(500);  
+          },300);
+          Router.go('/login');
       } else {
           Meteor.setTimeout(function(){
             $(window).scrollTop(500);  
@@ -182,25 +186,6 @@ Template.allQuestions.helpers({
    'questionList': function () {
         return questionDetail.find({status:"active"});
    }
-});
-
-Template.postDetail.helpers({
-   // 'showImagePost' : function() {
-   //     if(Session.get('selectedPostId')){
-   //         // var temp = Session.get('selectedPostId');
-   //         // Session.set('selectedPostId',"");
-   //         // console.log('temp.........'+temp);
-   //         return Posts.findOne({_id: Session.get('selectedPostId')});            
-   //     }
-   //     // $('#postDetail').fadeIn(10000);          
-   // },
-   'imageList' : function() {
-       // console.log("img " + this.images);
-       return this.images;
-   }
-   // 'singlePostSlider' : function(){
-   //  return featuredimage.findOne({postId:Session.get('selectedPostId')}, { limit:1 });
-   // }
 });
 
 Template.home.rendered = function () {

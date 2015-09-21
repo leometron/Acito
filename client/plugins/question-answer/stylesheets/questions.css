@@ -101,12 +101,12 @@
 }
 
 .memberlogin {
-	position:absolute; 
+	/*position:absolute; */
 	top:63px; 
-	width: 80%; 
+	/*width: 80%; */
 	padding: 25px; 
 	left: 10%; 
-	background-color: #ffffff;
+	/*background-color: #ffffff;*/
 }
 
 .main-content-box {

@@ -30,19 +30,6 @@ Router.route('/', {
 Router.route('/post/:_id', {    
   layoutTemplate: 'basicLayout',	
   name: 'postDetail',
-  // action: function () {
-  //   // this.render('home');
-  //   console.log('user id............'+Meteor.userId());    
-  //   this.render('postDetail');    
-  //   SEO.set({ title: 'postdetails - ' + Meteor.App.NAME });
-  //   console.log(Meteor.App.NAME);
-  // }
-
-  // data: function() {
-  //   return Posts.findOne({ _id: this.params._id });
-
-  // }
-
    data: function() {
       return {
         images: featuredimage.find({postId:this.params._id}, { limit:3 }),    
@@ -77,4 +64,9 @@ Router.route('/pages', {
 Router.route('/allquestions', {
   layoutTemplate: 'basicLayout',  
   name: 'allQuestions'  
+});
+
+Router.route('/login', {
+  layoutTemplate: 'basicLayout',
+  name: 'userLogin'
 });
