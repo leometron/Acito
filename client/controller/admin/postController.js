@@ -292,6 +292,9 @@ Template.addNewPost.helpers({
 	},
     'showUploadMediaUrl' : function() {
         return Session.get('uploadMediaUrl');
+    },
+    'subPageList' : function(){
+    	return Pages.find({parentId:{$ne:'null'}});
     }
 });
 
