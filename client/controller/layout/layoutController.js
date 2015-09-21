@@ -77,8 +77,9 @@ Template.home.events({
       } else {
           Meteor.setTimeout(function(){
             $(window).scrollTop(500);  
+            Router.go('/ask');
           },300);
-          Router.go('/ask');
+          
         // Session.set('question',$('#questionArea').val());
         // $('#questionArea').val("");
         // $('#post').show();

@@ -293,12 +293,12 @@ pre {
 }*/
 
 .post-success {
-  color: #FFFFFF;  
+  color: red;  
   padding: 1px;
-  background-color: #36DB5C;
+  /*background-color: #36DB5C;*/
   position: fixed;
   z-index: 999;
-  margin-top: 32px; 
+  margin-top: 8px; 
   font-weight: bold;
   font-size: 16px;
   font-family: arial;
