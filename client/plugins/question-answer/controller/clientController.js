@@ -1,16 +1,5 @@
 Template.questionDetail.events({
 	'click #postQuestion' : function () {
-		console.log('s click');
-		$.ajax({
-			url : "http://localhost:3000/admin/get",
-			dataType : "json",
-			success : function (data) {
-				console.log("............data.............."+JSON.stringify(data));
-			},
-			error : function () {
-				console.log('error');
-			}
-		});
 		var question = $('#question').val();
 		var details = $('#questionDetails').val();
 		if (!question) {
@@ -27,23 +16,27 @@ Template.questionDetail.events({
 			Meteor.call('postQuestion',question,details,majorComplaint,detailExplanation,complaintPeriod,symptoms,secondaryComplaint,medicineTaking);
 			$('#questionDetail').hide();
 			Session.set('question','');
-			clearQuestionContent();			
+			clearQuestionContent();
+			history.back();										
 		}
 		Meteor.setTimeout(function () {
 			$('#emptyQuestionInfo').hide(),
-			$('#emptyDetailInfo').hide();		
+			$('#emptyDetailInfo').hide();
 		},5000);
 	},
 	'click #closeAskQuestion': function () {
-        $('#questionDetail').hide();
+        // $('#questionDetail').hide();
        	Session.set('question','');
 		clearQuestionContent();
+		history.back();
+		Meteor._reload.reload();
 	}
 });
 
 Template.questionDetail.rendered = function() {
 	$('#emptyQuestionInfo').hide();
 	$('#emptyDetailInfo').hide();
+    $('#question').val(Session.get('question'));           	
 	clearQuestionContent();
 }
 
@@ -55,4 +48,24 @@ function clearQuestionContent() {
 	$('#symptoms').val("");
 	$('#secondaryComplaint').val("");
 	$('#medicineTaking').val("");
+}
+
+Template.questionAnswer.events({
+	'click #client-post-answer' : function () {
+		var answer = $('#answer').val();
+		if(!answer) {
+			$('#emptyAnswerInfo').show();
+		} else {
+			Meteor.call('postAnswer',answer,$('#quetionId').val(),'-');
+			$('#answer').val("");
+			history.back();
+		}
+		Meteor.setTimeout(function () {
+			$('#emptyAnswerInfo').hide()
+		},5000);			
+	},
+});
+
+Template.questionAnswer.rendered = function() {
+	$('#emptyAnswerInfo').hide()
 }

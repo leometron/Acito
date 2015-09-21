@@ -34,12 +34,13 @@ Meteor.publish('Posts', function () {
             return Posts.find({createdBy: loginUserId, createdAt: new RegExp(temp)});
         }
     } else {
-        if (loginUserId) {
-            return Posts.find({createdBy: loginUserId});
-        } else {
-            var adminObj = Meteor.users.findOne({username: 'admin'});
-            return Posts.find({createdBy: adminObj._id});
-        }
+        // if (loginUserId) {
+        //     return Posts.find({createdBy: loginUserId});
+        // } else {
+        //     var adminObj = Meteor.users.findOne({username: 'admin'});
+        //     return Posts.find({createdBy: adminObj._id});
+        // }
+        return Posts.find();
     }
 });
 

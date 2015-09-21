@@ -31,12 +31,13 @@ Meteor.publish('Pages', function () {
         }
     }
     else {
-        if (currentUserId) {
-            return Pages.find({createdBy: currentUserId});
-        } else {
-            var adminObj = Meteor.users.findOne({username: 'admin'});
-            return Pages.find({createdBy: adminObj._id})
-        }
+        // if (currentUserId) {
+        //     return Pages.find({createdBy: currentUserId});
+        // } else {
+        //     var adminObj = Meteor.users.findOne({username: 'admin'});
+        //     return Pages.find({createdBy: adminObj._id})
+        // }
+        return Pages.find();
     }
 });
 
