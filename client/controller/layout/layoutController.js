@@ -101,11 +101,13 @@ Template.home.events({
         }, 5000);        
     },
    'click .select-question-row' : function() {
-      Router.go('/question?id='+ this._id);
-   },
+      if (this._id) {
+        Router.go('/question?id='+ this._id);      
+      }
+   	},
    'click .all-questions-content' : function() {
       Router.go('/allquestions');
-   },
+    },
    'click .parent-page' : function(){
     if($('#page'+this._id).hasClass('page-selection')){
       $('#page'+this._id).removeClass('page-selection');
@@ -125,7 +127,7 @@ Template.home.events({
       Session.set('numberOfCount', 3);
       Session.set('selectedPostId', "");
       Session.set("pageId", $(event.target).attr("id"));
-      Router.go('/pages');
+      Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
    }    
 });
 

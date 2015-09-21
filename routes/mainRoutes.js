@@ -54,7 +54,7 @@ Router.route('/question', {
   name: 'questionAnswer',  
   data: function() {
         return {
-          answer: answer.findOne({ questionId: this.params.query.id }),
+          answer: answer.find({ questionId: this.params.query.id,status:"active"}),
           question: questionDetail.findOne({ _id:this.params.query.id })
         }
 

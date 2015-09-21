@@ -16,11 +16,12 @@ Template.questionDetail.events({
 			Meteor.call('postQuestion',question,details,majorComplaint,detailExplanation,complaintPeriod,symptoms,secondaryComplaint,medicineTaking);
 			$('#questionDetail').hide();
 			Session.set('question','');
-			clearQuestionContent();			
+			clearQuestionContent();
+			history.back();										
 		}
 		Meteor.setTimeout(function () {
 			$('#emptyQuestionInfo').hide(),
-			$('#emptyDetailInfo').hide();		
+			$('#emptyDetailInfo').hide();
 		},5000);
 	},
 	'click #closeAskQuestion': function () {
@@ -47,4 +48,24 @@ function clearQuestionContent() {
 	$('#symptoms').val("");
 	$('#secondaryComplaint').val("");
 	$('#medicineTaking').val("");
+}
+
+Template.questionAnswer.events({
+	'click #client-post-answer' : function () {
+		var answer = $('#answer').val();
+		if(!answer) {
+			$('#emptyAnswerInfo').show();
+		} else {
+			Meteor.call('postAnswer',answer,$('#quetionId').val(),'-');
+			$('#answer').val("");
+			history.back();
+		}
+		Meteor.setTimeout(function () {
+			$('#emptyAnswerInfo').hide()
+		},5000);			
+	},
+});
+
+Template.questionAnswer.rendered = function() {
+	$('#emptyAnswerInfo').hide()
 }
