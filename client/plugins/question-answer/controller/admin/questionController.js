@@ -71,7 +71,7 @@ Template.replyQuestion.events({
 		if(!answer) {
 			$('#emptyAnswerInfo').show();
 		} else {
-			Meteor.call('postAnswer',answer,Session.get('currentQuestionId'),'-');
+			Meteor.call('postAnswer',answer,Session.get('currentQuestionId'),'admin');
 			Session.set('currentQuestionId','');		
 			Router.go('/admin/questions');			
 		}

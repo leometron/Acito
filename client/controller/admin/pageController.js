@@ -159,10 +159,10 @@ Template.addNewPage.events({
             Session.set('errorMessage', 'Page title is required');
         } else {
             Session.set('errorMessage', '');
-            var ParentTitle = Session.get('ParentTitle');
-            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
+            var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
+            var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#comments').val()) ? "-" : $('#comments').val();
-            Meteor.call('draftPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentinsert);
+            Meteor.call('draftPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle);
             Router.go('/admin/pages');
         }
     },
@@ -172,11 +172,9 @@ Template.addNewPage.events({
             Session.set('errorMessage', 'Page title is required');
         } else {
             Session.set('errorMessage', '');
-            var ParentTitle = Session.get('ParentTitle');
-            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
             var selectedPages = Session.get('selectedPages');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
-            Meteor.call('deletePagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentinsert);
+            Meteor.call('deletePagesData', $('#pageTitle').val(), pagecomment, selectedPages);
             Router.go('/admin/pages');
         }
     },
@@ -186,10 +184,10 @@ Template.addNewPage.events({
             Session.set('errorMessage', 'Page title is required');
         } else {
             Session.set('errorMessage', '');
-            var ParentTitle = Session.get('ParentTitle');
-            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
+            var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
+            var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#comments').val()) ? "-" : $('#comments').val();
-            Meteor.call('binPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentinsert);
+            Meteor.call('binPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle);
             Router.go('/admin/pages');
         }
     },
@@ -199,11 +197,9 @@ Template.addNewPage.events({
             Session.set('errorMessage', 'Page title is required');
         } else {
             Session.set('errorMessage', '');
-            var ParentTitle = Session.get('ParentTitle');
-            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
             var selectedPages = Session.get('selectedPages');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
-            Meteor.call('updatePagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentinsert);
+            Meteor.call('updatePagesData', $('#pageTitle').val(), pagecomment, selectedPages);
             Router.go('/admin/pages');
         }
     },
@@ -224,11 +220,9 @@ Template.addNewPage.events({
             Session.set('errorMessage', 'Page title is required');
         } else {
             Session.set('errorMessage', '');
-            var ParentTitle = Session.get('ParentTitle');
-            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
             var selectedPages = Session.get('selectedPages');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
-            Meteor.call('RePublishPagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentinsert);
+            Meteor.call('RePublishPagesData', $('#pageTitle').val(), pagecomment, selectedPages);
             Router.go('/admin/pages');
         }
     },

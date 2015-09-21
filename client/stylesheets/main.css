@@ -71,7 +71,8 @@
 }
 
 .side_bar_menu{
-  background-color: #447F8C;
+  /*background-image: url("/images/bg1.png");*/
+  background-color: #F1F8E2;
   border-color: #080808;
   height:100%;
   position: absolute;
@@ -98,28 +99,28 @@
   margin-bottom: 40px;
 }
 .nav li a{
-  color:#ffffff;
+  color:#000000;
  text-decoration: none;
 }
 
 .nav li a:hover{ 
   text-decoration: none;
-  background-color: #1B5B69;
+  background-color: #619F18;
 }
 .nav li a:hover,.nav li a:focus{  
-  background-color:#1B5B69;
+  background-color:#619F18;
 }
 
 .selected{
-  background-color:#1B5B69;;
+  background-color:#619F18;
 }
 
 .pos-padding{
   padding: 10px;
-  background-color: #1B5B69;
+  background-color: #8bc608;
   position: fixed;
   z-index: 999;
-  border: 1px solid #447F8C;
+  border: 1px solid #8BC608;
 }
 
 .padding-left-zero{ 
@@ -469,6 +470,7 @@ body, #main {
   float: right;
   margin-top: 10px;
   padding: 5px 27px;
+  margin-right: 8px;
 }
 
 .home-right-fields {
@@ -532,9 +534,9 @@ body, #main {
 }
 
 .home-search-inner-field textarea {
-  width:200px; 
-  height:30px; 
-  resize:none;
+  width: 200px; 
+  height: 30px; 
+  resize: none;
 }
 
 .home-answer-field {
@@ -543,73 +545,98 @@ body, #main {
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -o-box-shadow: 0 0 10px; 
-  height:440px; 
-  overflow:hidden; 
-  margin-top:8px;
+  overflow: hidden; 
+  margin-top: 8px;
   margin-bottom: 15px;
+  /*max-height: 440px;
+  height: auto; */
+  height: 440px;
 }
 
 .home-answer-inner-field {
-  background:#FFFFFF; 
-  width:90%; 
-  margin-left:14px; 
-  border-radius:10px; 
-  height:362px; 
-  overflow:hidden
+  background: #FFFFFF; 
+  width: 90%; 
+  margin-left: 14px; 
+  border-radius: 10px; 
+  overflow: hidden;
+  /*height: auto; 
+  max-height: 362px;*/
+  height: 362px; 
 }
 
 .home-answer-inner-field-content {
-  padding:10px; 
-  text-overflow: 
-  ellipsis; 
+  padding: 10px; 
+  text-overflow: ellipsis; 
   white-space: nowrap; 
   overflow: hidden;
-  cursor:pointer
+  cursor: pointer;
 }
 
 .border-top {
   border-top: 1px solid #D1D1D1; 
   margin-left: 10px; 
   width: 90%; 
-  padding-bottom:5px;
-  border-top-width:1px;
+  padding-bottom: 5px;
+  border-top-width: 1px;
 }
 
 .home-post-field {
-  width:59%; 
+  width: 59%; 
   background: #F2F6E8; 
   box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -o-box-shadow: 0 0 10px; 
-  padding:10px; 
-  position:absolute; 
-  top:574px; 
-  left:20%;
+  padding: 10px; 
+  position: absolute; 
+  top: 574px; 
+  left: 20%;
   padding-bottom: 15px;
 }
 
 .all-questions{
-  margin-top:7px; 
-  text-align:center
+  margin-top: 7px; 
+  text-align: center
 }
 
 .all-questions-content{
-  cursor:pointer;
-  color:black
+  cursor: pointer;
+  color: black
 }
 
 .border-top-allquestion {
   border-top: 2px solid #D1D1D1; 
-  padding-bottom:5px;
+  padding-bottom: 5px;
 }
 
 .home-left-field {
-  position:absolute; 
-  top:572px; 
-  left:7px; 
-  width:18%; 
-  border:2px solid #81915B;
+  position: absolute; 
+  top: 566px; 
+  left: 7px; 
+  width: 18%; 
+  /*border: 2px solid #81915B;*/
+}
+
+.home-categories-field{
+    background: #81915B none repeat scroll 0 0;  
+    box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+    -o-box-shadow: 0 0 10px; 
+    height:auto; 
+    overflow:hidden; 
+    margin-top:8px;
+    padding-bottom: 15px;
+}
+
+.home-categories-inner-field {
+    background: #FFFFFF; 
+    width: 90%; 
+    margin-left: 12px; 
+    border-radius: 10px; 
+    overflow: hidden;
+    height: auto;
+    border: 1px solid #FFFFFF; 
 }
 
 .category-title {
@@ -635,11 +662,11 @@ body, #main {
 
 .err-padding{
   padding: 1px;
-  background-color: #E22727;
+  /*background-color: #E22727;*/
   position: fixed;
   z-index: 999;
-  margin-top: 32px;
-  color: #FFFFFF;  
+  margin-top: 8px;
+  color: red;  
   font-weight: bold;
   font-size: 16px;
   font-family: arial;

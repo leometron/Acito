@@ -76,7 +76,9 @@ pre {
 }
 
 .side_bar_menu{
-  background-color: #447F8C;
+  /*background-image: url("/images/bg1.png");*/
+  /*background-repeat: no-repeat;*/
+  background-color: #F1F8E2;
   border-color: #080808;
   height:100%;
   position: absolute;
@@ -92,28 +94,28 @@ pre {
 }
 
 .nav li a{
-  color: #ffffff;
+  color: #000000;
  text-decoration: none;
 }
 
 .nav li a:hover{ 
   text-decoration: none;
-  background-color: #1B5B69;
+  background-color: #619F18;
 }
 .nav li a:hover,.nav li a:focus{  
-  background-color:#1B5B69;
+  background-color:#619F18;
 }
 
 .selected{
-  background-color:#1B5B69;;
+  background-color:#619F18;
 }
 
 .pos-padding{
   padding: 10px;
-  background-color: #1B5B69;
+  background-color: #8bc608;
   position: fixed;
   z-index: 999;
-  border: 1px solid #447F8C;
+  border: 1px solid #8BC608;
 }
 
 .padding-left-zero{ 

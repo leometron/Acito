@@ -31,12 +31,13 @@ Meteor.publish('Pages', function () {
         }
     }
     else {
-        if (currentUserId) {
-            return Pages.find({createdBy: currentUserId});
-        } else {
-            var adminObj = Meteor.users.findOne({username: 'admin'});
-            return Pages.find({createdBy: adminObj._id})
-        }
+        // if (currentUserId) {
+        //     return Pages.find({createdBy: currentUserId});
+        // } else {
+        //     var adminObj = Meteor.users.findOne({username: 'admin'});
+        //     return Pages.find({createdBy: adminObj._id})
+        // }
+        return Pages.find();
     }
 });
 
@@ -62,7 +63,7 @@ Meteor.methods({
         }        
     },
 
-    'draftPagesData': function (title, content, date, parent) {
+    'draftPagesData': function (title, content, date, parentId, parentTitle) {
         var currentUserId = Meteor.userId();
         Pages.insert({
             title: title,
@@ -72,11 +73,12 @@ Meteor.methods({
             createdBy: currentUserId,
             createdAt: date,
             status: "Draft",
-            parentId: parent
+            parentId: parentId,
+            parentTitle: parentTitle
         });
     },
 
-    'binPagesData': function (title, content, date, parent) {
+    'binPagesData': function (title, content, date, parentId, parentTitle) {
         var currentUserId = Meteor.userId();
         Pages.insert({
             title: title,
@@ -86,25 +88,25 @@ Meteor.methods({
             createdBy: currentUserId,
             createdAt: date,
             status: "Bin",
-            parentId: parent
+            parentId: parentId,
+            parentTitle: parentTitle
         });
     },
 
-    'deletePagesData': function (pageTitle, pageComments, selectedPages, parent) {
+    'deletePagesData': function (pageTitle, pageComments, selectedPages) {
         Pages.update(selectedPages, {
             $set: {
                 title: pageTitle,
                 content: pageComments,
                 deleted: true,
                 published: false,
-                status: "Bin",
-                parentId: parent
+                status: "Bin"
             }
         });
     },
 
-    'updatePagesData': function (pageTitle, pageComments, selectedPages, parent) {
-        Pages.update(selectedPages, {$set: {title: pageTitle, content: pageComments, parentId: parent}});
+    'updatePagesData': function (pageTitle, pageComments, selectedPages) {
+        Pages.update(selectedPages, {$set: {title: pageTitle, content: pageComments}});
     },
 
     'trashPagesData': function (selectedPages) {
@@ -116,14 +118,13 @@ Meteor.methods({
     },
 
 
-    'RePublishPagesData': function (pageTitle, pageComments, selectedPages, parent) {
+    'RePublishPagesData': function (pageTitle, pageComments, selectedPages) {
         Pages.update(selectedPages, {
             $set: {
                 title: pageTitle,
                 content: pageComments,
                 published: true,
-                status: "Published",
-                parentId: parent
+                status: "Published"
             }
         });
     },
