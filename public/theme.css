@@ -100,14 +100,14 @@ pre {
 
 .nav li a:hover{ 
   text-decoration: none;
-  background-color: #619F18;
+  /*background-color: #AB897F;*/
 }
 .nav li a:hover,.nav li a:focus{  
-  background-color:#619F18;
+  /*background-color:#AB897F;*/
 }
 
 .selected{
-  background-color:#619F18;
+  /*background-color:#AB897F;*/
 }
 
 .pos-padding{

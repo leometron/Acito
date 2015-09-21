@@ -10,10 +10,10 @@
             <div class="home-categories-inner-field">
                 {{#if parentPageList}}
                 {{#each parentPageList}}
-                    <div class="row parent-page" id="page{{_id}}">
+                    <div class="row parent-page" id="page{{_id}}" style="font-size:16px; padding:8px 15px;">
                         {{title}}
                     </div>
-                    <div id="subpage{{_id}}"></div>
+                    <div id="subpage{{_id}}" style="margin-left:10px; font-size:15px;"></div>
                 {{/each}}
                 {{else}}
                     <div>No categories</div>
@@ -78,7 +78,7 @@
         <div class="home-answer-inner-field">
           {{#each questionList}}
           <div class="row">
-            <div class="col-md-12 home-answer-inner-field-content select-question-row">
+            <div class="col-md-12 home-answer-inner-field-content select-question-row" style="padding:15px 20px">
               {{question}}
             </div>
                 <div class="col-md-12 border-top">

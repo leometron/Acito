@@ -105,14 +105,14 @@
 
 .nav li a:hover{ 
   text-decoration: none;
-  background-color: #619F18;
+  /*background-color: #AB897F;*/
 }
 .nav li a:hover,.nav li a:focus{  
-  background-color:#619F18;
+  /*background-color:#AB897F;*/
 }
 
 .selected{
-  background-color:#619F18;
+  /*background-color:#AB897F;*/
 }
 
 .pos-padding{
@@ -572,6 +572,11 @@ body, #main {
   cursor: pointer;
 }
 
+.home-answer-inner-field-content:hover{
+  font-size: 16px;
+  color:blue;
+}
+
 .border-top {
   border-top: 1px solid #D1D1D1; 
   margin-left: 10px; 
@@ -631,12 +636,16 @@ body, #main {
 
 .home-categories-inner-field {
     background: #FFFFFF; 
-    width: 90%; 
-    margin-left: 12px; 
-    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+    -o-box-shadow: 0 0 10px; 
+    /*width: 90%; */
+    /*margin-left: 12px; */
+    /*border-radius: 10px; */
     overflow: hidden;
     height: auto;
-    border: 1px solid #FFFFFF; 
+    /*border: 1px solid #FFFFFF; */
 }
 
 .category-title {
