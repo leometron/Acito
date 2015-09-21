@@ -84,16 +84,23 @@
                 </button></span>
                 {{/if}}
             </div>
-<!--             <div class="bg-white margin-top-20">
+            <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span>
                 </div>
                 <div class="board-view">Parent</div>
                 <div class="dropdown board-view">
                     {{#if PublishedPages}}
+                    {{#if equals PublishedPages.parentId "null"}}
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert"
                             data-toggle="dropdown">
-                        {{PublishedPages.parentId}}
+                        (no parent)
                     </button>
+                    {{else}}
+                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert"
+                            data-toggle="dropdown">
+                        {{PublishedPages.parentTitle}}
+                    </button>
+                    {{/if}}
                     {{else}}
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert"
                             data-toggle="dropdown">
@@ -111,7 +118,7 @@
                         {{/each}}
                     </ul>
                 </div>
-            </div> -->
+            </div> 
             <!-- <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">Feature image <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">

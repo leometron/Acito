@@ -604,7 +604,21 @@ body, #main {
   padding-bottom:5px;
 }
 
+.home-left-field {
+  position:absolute; 
+  top:572px; 
+  left:7px; 
+  width:18%; 
+  border:2px solid #81915B;
+}
 
+.category-title {
+  background: #81915B;
+  color: #ffffff; 
+  padding: 10px; 
+  margin-bottom: 10px; 
+  text-align: center;
+}
 
 /*.postError {*/
   /*background-color: #99CCFF; */

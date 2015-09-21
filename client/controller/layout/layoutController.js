@@ -95,6 +95,27 @@ Template.home.events({
    },
    'click .all-questions-content' : function() {
       Router.go('/allquestions');
+   },
+   'click .parent-page' : function(){
+    if($('#page'+this._id).hasClass('page-selection')){
+      $('#page'+this._id).removeClass('page-selection');
+      $("#subpage"+this._id).html('');
+    } else {
+      $('#page'+this._id).addClass('page-selection');
+      var subPages = Pages.find({parentId: this._id});
+      var t ="";
+      subPages.forEach(function(item){
+        t += '<div class="sub-page" id="'+item._id+'">'+item.title+'</div>';
+      });
+      $("#subpage"+this._id).html(t);
+    }
+   },
+   'click .sub-page' : function(event){
+      Session.set("pageId", "");
+      Session.set('numberOfCount', 3);
+      Session.set('selectedPostId', "");
+      Session.set("pageId", $(event.target).attr("id"));
+      Router.go('/pages');
    }
 });
 
@@ -102,14 +123,10 @@ Template.postList.helpers({
    'postsList' : function() {
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
       return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
-   }
+    }
 });
 
 Template.home.helpers({
-   'postsList' : function() {
-      Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
-      return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
-   },  
   'mediaList' : function() {
     return Media.find();
    },
@@ -119,6 +136,9 @@ Template.home.helpers({
    'answerList': function () {
         return answer.find({status:"active"});
    },
+   'parentPageList' : function() {
+       return Pages.find({parentId:'null'});
+   }
 
    // 'showSelectedPost' : function() {
    //     if(Session.get('selectedPostId')){
@@ -131,6 +151,13 @@ Template.home.helpers({
    // 'imageList' : function() {
    //     return featuredimage.find();
    // }
+});
+
+Template.postList.helpers({
+  'postsList': function(){
+    Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+    return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
+  }
 });
 
 Template.header.helpers({
@@ -176,6 +203,7 @@ Template.postDetail.helpers({
 });
 
 Template.home.rendered = function () {
+  console.log("home render");
 
    // var currentUserId;
    //          if (Meteor.userId()){
