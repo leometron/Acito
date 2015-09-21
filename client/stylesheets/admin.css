@@ -513,10 +513,18 @@ body, #main {
     top: 30%;
     z-index: 1;
 }
-
-
-
-
+.page-selection {
+    background-color: #81915B;
+    color: #ffffff;
+}
+.parent-page {
+    cursor: pointer;
+    padding: 5px;
+}
+.sub-page {
+    padding-left: 20px;
+    cursor: pointer;
+}
 
 
 

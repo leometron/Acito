@@ -4,38 +4,44 @@
           <div id="postDetail" class="container padding-zero full-width" >
 
             <div class="animateclass">
-                <div id="myPost" class="carousel slide bannerDesign" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        {{#each imageList}}
-                        {{#if equals showSelectedPost._id postId}}
-                        {{#if equals _id singlePostSlider._id}}
-                        <div class="item active">
-                            <img src="{{url}}" class="slider-post-image">
-                        </div>
-                        {{else}}
-                        <div class="item">
-                            <img src="{{url}}" class="slider-post-image">
-                        </div>
-                        {{/if}}
-                        {{/if}}
-                        {{/each}}
-                        <a class="carousel-control left" href="#myPost" data-slide="prev">
+                <!-- <div id="myPost" class="carousel slide bannerDesign" data-ride="carousel"> -->
+                    <!-- <div class="carousel-inner" role="listbox"> -->
+                        <!-- {{#each imageList}} -->
+                        <!-- {{#if equals showImagePost._id postId}}
+                          {{#if equals _id singlePostSlider._id}} -->
+                          <!-- {{#each imageList}} -->
+                          <!-- <div class="item active">
+                              <img src="{{url}}" class="slider-post-image">
+                          </div> -->
+                          <!-- {{else}} -->
+                         <!--  <div class="item">
+                              <img src="{{url}}" class="slider-post-image">
+                          </div> -->
+                          <div class="gallery-icon" style="text-align:center;">
+                          {{#each imageList}} 
+                            <img width="150" height="150" src="{{url}}" >
+                            {{/each}}
+                          </div>
+                          <!-- {{/if}}
+                        {{/if}} -->
+                        <!-- {{/each}} -->
+                        <!-- <a class="carousel-control left" href="#myPost" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </a>
                         <a class="carousel-control right" href="#myPost" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
-                </div>
+                        </a> -->
+                    <!-- </div> -->
+                <!-- </div> -->
               <div class="col-md-12 post-list-header-theme text-center black font-xxlarge upper-case">
-               {{title}}
+               {{post.title}}
               </div>
               <div class="row margin-left-right-theme" style=" margin-top: 5%; padding: 5px 100px 0px 100px;">
               <!--     <textarea disabled rows="40" cols="150" style="border: none">
                   {{showSelectedPost.content}}
               </textarea>  -->
               <pre style=" background-color: white;border:none">  
-               {{content}}                  
+               {{post.content}}                  
              </pre>
              <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis">Tweet</a>
                 </div>

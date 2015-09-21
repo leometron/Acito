@@ -19,21 +19,44 @@ Template.userLogin.events( {
 		var repassword = t.find('#re-password').value;
 
 		if(firstname == '') {
-			$('#Usererr').html("Please enter First Name");
+			$('#Usererr').html("Please enter first name");
 			return;
 		} else if(lastname == '') {
-			$('#Usererr').html("Please enter Last Name");
+			$('#Usererr').html("Please enter last name");
 			return;
 		} else if(email == '') {
-			$('#Usererr').html("Please enter Email Id");
+			$('#Usererr').html("Please enter email id");
 			return;
 		} else if(password == '') {
-			$('#Usererr').html("Please enter Password");
+			$('#Usererr').html("Please enter password");
 			return;
 		} else if(repassword == '') {
-			$('#Usererr').html("Please enter Confirm Password");
+			$('#Usererr').html("Please enter confirm password");
+			return;
+		} else if (password != repassword) {
+			$('#Usererr').html("Password and confirm password are not same");
 			return;
 		}
 
+		// user = {
+		// 	username: firstname,
+		// 	password: password,
+		// 	email: email,
+		// 	profile: {
+		// 		name: lastname
+		// 	}
+		// }
+		
+		// Accounts.createUser({ firstname: firstname, lastname: lastname, email: email, password:password,
+		// repassword: repassword }, function(error){
+  //           if(error){
+  //               console.log(error.reason);
+  //               $('#Usererr').html(error.reason);
+  //           } else {
+  //               //Router.go("login");
+  //               console.log("Register Success");
+  //           }
+  //       });
+  //       return false;
 	}
 });

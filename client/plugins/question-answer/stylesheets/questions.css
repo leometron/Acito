@@ -1,12 +1,14 @@
 
 .question-detail {
-	position: absolute;
-	top: 70px;
-	left: 10%;
-	width:80%;
+	/*position: absolute;*/
+	/*top: 70px;*/
+	/*left: 10%;*/
+	width:98%;
 	background-color: #ffffff;
 	padding-top: 40px;
 	padding-bottom: 15px; 
+	margin-top: 8px;
+	margin-left: 8px;
 }
 
 .question-detail textarea {

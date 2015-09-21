@@ -45,7 +45,7 @@ Meteor.publish('Pages', function () {
 //Define all the methods interact with the PAGES object
 Meteor.methods({
 
-    'insertPagesData': function (title, content, date, parent) {
+    'insertPagesData': function (title, content, date, parentId, parentTitle) {
         var currentUserId = Meteor.userId();
         Pages.insert({
             title: title,
@@ -55,7 +55,8 @@ Meteor.methods({
             createdBy: currentUserId,
             createdAt: date,
             status: "Published",
-            parentId: parent
+            parentId: parentId,
+            parentTitle: parentTitle
         });
         if (Pages.find().count() == 1) {
             Pages._ensureIndex({title: "text"});

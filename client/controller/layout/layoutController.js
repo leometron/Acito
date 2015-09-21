@@ -73,8 +73,12 @@ Template.home.events({
         $('#loginDetail').show();
       } else {
         Session.set('question',$('#questionArea').val());
-        $('#questionArea').val("");        
+        $('#questionArea').val("");
+        Meteor.setTimeout(function(){
+          $(window).scrollTop(500);  
+        },300);                
         Router.go('/ask');
+
         // Session.set('question',$('#questionArea').val());
         // $('#questionArea').val("");
         // $('#post').show();
@@ -95,16 +99,42 @@ Template.home.events({
         Meteor.setTimeout(function(){
           $('#searchEmptyInfo').hide();
         }, 5000);        
+    },
+   'click .select-question-row' : function() {
+      Router.go('/question?id='+ this._id);
+   },
+   'click .all-questions-content' : function() {
+      Router.go('/allquestions');
+   },
+   'click .parent-page' : function(){
+    if($('#page'+this._id).hasClass('page-selection')){
+      $('#page'+this._id).removeClass('page-selection');
+      $("#subpage"+this._id).html('');
+    } else {
+      $('#page'+this._id).addClass('page-selection');
+      var subPages = Pages.find({parentId: this._id});
+      var t ="";
+      subPages.forEach(function(item){
+        t += '<div class="sub-page" id="'+item._id+'">'+item.title+'</div>';
+      });
+      $("#subpage"+this._id).html(t);
     }
+   },
+   'click .sub-page' : function(event){
+      Session.set("pageId", "");
+      Session.set('numberOfCount', 3);
+      Session.set('selectedPostId', "");
+      Session.set("pageId", $(event.target).attr("id"));
+      Router.go('/pages');
+   }    
 });
 
-Template.postList.helpers({
-   // 'postsList' : function() {
-   //      // alert(JSON.stringify(this.postsList));
-   //    Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
-   //    return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
-   // }
-});
+// Template.postList.helpers({
+//    'postsList' : function() {
+//       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+//       return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
+//     }
+// });
 
 Template.home.helpers({
   'mediaList' : function() {
@@ -113,7 +143,32 @@ Template.home.helpers({
    'questionList': function () {
         return questionDetail.find({status:"active"});
    },
+   'answerList': function () {
+        return answer.find({status:"active"});
+   },
+   'parentPageList' : function() {
+       return Pages.find({parentId:'null'});
+   }
+
+   // 'showSelectedPost' : function() {
+   //     if(Session.get('selectedPostId')){
+   //         // var temp = Session.get('selectedPostId');
+   //         // Session.set('selectedPostId',"");
+   //         // console.log('temp.........'+temp);
+   //         return Posts.findOne({_id: Session.get('selectedPostId')});            
+   //     }
+   // },
+   // 'imageList' : function() {
+   //     return featuredimage.find();
+   // }
 });
+
+// Template.postList.helpers({
+//   'postsList': function(){
+//     Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+//     return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
+//   }
+// });
 
 Template.header.helpers({
     'homeSliderList' : function() {
@@ -127,18 +182,15 @@ Template.header.helpers({
     },    
 });
 
-Template.home.helpers({
-  'imageList' : function() {
-       return featuredimage.find();
+Template.allQuestions.helpers({
+   'questionList': function () {
+        return questionDetail.find({status:"active"});
    }
-})
+});
 
 Template.postDetail.helpers({
    'imageList' : function() {
-       return featuredimage.find();
-   },
-   'singlePostSlider' : function(){
-    return featuredimage.findOne({postId:Session.get('selectedPostId')}, { limit:1 });
+      return this.images;
    }
 });
 
