@@ -184,7 +184,13 @@ Template.allQuestions.helpers({
 Template.postDetail.helpers({
    'imageList' : function() {
       return this.images;
-   }
+      }, 
+      formatDate: function(dateStr){
+       var dateArr = dateStr.split('/');
+       var date = new Date(dateArr[1]+'/'+dateArr[0]+'/'+dateArr[2]);
+       var monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+       return monthArr[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+      }
 });
 
 Template.postList.rendered = function () {

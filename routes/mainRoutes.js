@@ -18,9 +18,12 @@ Router.route('/post/:_id', {
   layoutTemplate: 'basicLayout',	
   name: 'postDetail',
    data: function() {
+      var postDoc = Posts.findOne({ _id: this.params._id });
+      var userDoc = Meteor.users.findOne({_id: postDoc.createdBy});
+      postDoc.publisherName = userDoc.username;
       return {
         images: featuredimage.find({postId:this.params._id}, { limit:3 }),    
-        post: Posts.findOne(this.params._id)
+        post: postDoc
       };
     }       
 });
