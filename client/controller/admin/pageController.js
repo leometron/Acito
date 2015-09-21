@@ -146,10 +146,10 @@ Template.addNewPage.events({
             Session.set('errorMessage', 'Page title is required');
         } else {
             Session.set('errorMessage', '');
-            var ParentTitle = Session.get('ParentTitle');
-            var parentinsert = (!ParentTitle) ? "(no parent)" : ParentTitle;
+            var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
+            var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#comments').val()) ? "-" : $('#comments').val();
-            Meteor.call('insertPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentinsert);
+            Meteor.call('insertPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle);
             Router.go('/admin/pages');
         }
     },
@@ -234,9 +234,15 @@ Template.addNewPage.events({
     },
 
     'click .parentlist': function (event) {
+        Session.set('parentId', "");
+        Session.set('parentTitle', "");
         var parentName = $(event.target).text();
-        $('#parentinsert').text($(event.target).text());
-        Session.set('ParentTitle', parentName);
+        if(parentName != "(no parent)"){
+            var parentId = this._id;
+            $('#parentinsert').text($(event.target).text());
+            Session.set('parentId', parentId);
+            Session.set('parentTitle', parentName);
+        }
     }
 });
 
@@ -247,7 +253,7 @@ Template.addNewPage.helpers({
     },
 
     'NoParentPages': function () {
-        return Pages.find();
+        return Pages.find({parentId: 'null'});
     }
 
     // 'errormsg': function () {

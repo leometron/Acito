@@ -89,6 +89,11 @@
 .margin-top-40{
   margin-top: 40px;
 }
+
+.margin-top-4{
+  margin-top: 4px;
+}
+
 .margin-bottom-40{
   margin-bottom: 40px;
 }
@@ -326,17 +331,17 @@ body, #main {
     color:#ffffff;
 }
 
-.homeslider-title {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: none;
-    color: white;
+.homeslider-sub-content {
+    color: #52366A;
     font-size: 30px;
-    font-weight: bold;
-    left: 20%;
-    position: absolute;
-    text-align: center;
-    top: 43%;
-    width: 60%;
+    text-align: left;
+    padding: 3px 10px;
+    height:24%; 
+    width:50%; 
+    position:absolute; 
+    right:50px; 
+    bottom:50px; 
+    background-image: url(/images/logo-sub.png);
 }
 
 .padding-100{
@@ -362,7 +367,7 @@ body, #main {
     padding: 15px 0px 16px 20px; 
     background: #ffffff;
 }
-.equal-child:nth-child(4n+1) {
+.equal-child:nth-child(3n+1) {
     clear: left;      
 }
 .break-word{
@@ -454,7 +459,165 @@ body, #main {
 }
 
 .post-view {
-  padding: 30px 0px 25px;
+  padding: 12px 6px;
+}
+
+.button-home {
+  background: #f5f3ee none repeat scroll 0 0;
+  border: medium none #e0e1d7;
+  color: #447F8C;
+  float: right;
+  margin-top: 10px;
+  padding: 5px 27px;
+}
+
+.home-right-fields {
+  position:absolute; 
+  top:56px; 
+  right:7px;
+  width:19%;  
+}
+
+.home-ask-field {
+  background: #81915B none repeat scroll 0 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -o-box-shadow: 0 0 10px; 
+  height:197px; 
+  overflow:hidden
+}
+
+.home-right-fields-header {
+  text-align:center; 
+  font-size: 18px; 
+  padding: 10px;
+}
+ 
+.home-ask-inner-field {
+    background:#FFFFFF; 
+    width:90%; 
+    margin-left:14px; 
+    border-radius:10px; 
+    height:135px; 
+    overflow:hidden;
+ }
+
+.home-ask-inner-field textarea {
+     width:200px; 
+     height:65px; 
+     resize:none; 
+     padding:5px; 
+     margin-top:10px;
+}
+
+.home-search-field {
+  background: #81915B none repeat scroll 0 0;  
+  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -o-box-shadow: 0 0 10px; 
+  height:185px; 
+  overflow:hidden; 
+  margin-top:8px;
+}
+
+.home-search-inner-field {
+  background:#FFFFFF; 
+  width:90%; 
+  margin-left:14px; 
+  border-radius:10px; 
+  height:123px; 
+  overflow:hidden
+}
+
+.home-search-inner-field textarea {
+  width:200px; 
+  height:30px; 
+  resize:none;
+}
+
+.home-answer-field {
+  background: #81915B none repeat scroll 0 0; 
+  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -o-box-shadow: 0 0 10px; 
+  height:440px; 
+  overflow:hidden; 
+  margin-top:8px;
+  margin-bottom: 15px;
+}
+
+.home-answer-inner-field {
+  background:#FFFFFF; 
+  width:90%; 
+  margin-left:14px; 
+  border-radius:10px; 
+  height:362px; 
+  overflow:hidden
+}
+
+.home-answer-inner-field-content {
+  padding:10px; 
+  text-overflow: 
+  ellipsis; 
+  white-space: nowrap; 
+  overflow: hidden;
+  cursor:pointer
+}
+
+.border-top {
+  border-top: 1px solid #D1D1D1; 
+  margin-left: 10px; 
+  width: 90%; 
+  padding-bottom:5px;
+  border-top-width:1px;
+}
+
+.home-post-field {
+  width:59%; 
+  background: #F2F6E8; 
+  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+  -o-box-shadow: 0 0 10px; 
+  padding:10px; 
+  position:absolute; 
+  top:574px; 
+  left:20%;
+  padding-bottom: 15px;
+}
+
+.all-questions{
+  margin-top:7px; 
+  text-align:center
+}
+
+.all-questions-content{
+  cursor:pointer;
+  color:black
+}
+
+.border-top-allquestion {
+  border-top: 2px solid #D1D1D1; 
+  padding-bottom:5px;
+}
+
+.home-left-field {
+  position:absolute; 
+  top:572px; 
+  left:7px; 
+  width:18%; 
+  border:2px solid #81915B;
+}
+
+.category-title {
+  background: #81915B;
+  color: #ffffff; 
+  padding: 10px; 
+  margin-bottom: 10px; 
+  text-align: center;
 }
 
 /*.postError {*/

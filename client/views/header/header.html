@@ -1,5 +1,5 @@
 <template name="header">
-{{#if showSelectedPost}}    
+<!-- {{#if showSelectedPost}}    
     <div>
        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
           <div class="container-fluid">       
@@ -15,8 +15,10 @@
             </div>
         </nav>
       </div>
-{{else}}   
-<div class="container padding-zero full-width">
+{{else}} -->
+<div style="background: #BFBCB2 none repeat scroll 0 0;  box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; height:502px; width:79%; position:absolute; top:58px; left:10px">
+
+<div class="padding-zero" style="border-radius: 80px; margin-left: 10px; margin-top: 11px; overflow: hidden; width: 98%;">
   <div id="myCarousel" class="carousel slide bannerDesign" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
       {{#if isHomeSlider}}      
@@ -24,12 +26,12 @@
                 {{#if equals _id singlehomeSlider._id }}
                 <div class="item active" id="someid">
                   <img src="{{sliderImage}}" class="slider-image">
-                  <pre class="homeslider-title">{{title}}</pre>
+                  <div class="homeslider-sub-content">{{title}}</div>
                 </div>
                 {{else}}
                 <div class="item">
                   <img src="{{sliderImage}}" class="slider-image">
-                  <pre class="homeslider-title">{{title}}</pre>
+                  <div class="homeslider-sub-content">{{title}}</div>
                 </div>
                 {{/if}}
           {{/each}}
@@ -45,7 +47,9 @@
     </div>
   </div>
   </div>
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
+</div>   
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav" style="background:black">
   <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -54,7 +58,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand page-scroll font-xlarge" href="#">ACITO</a>
+        <a class="navbar-brand page-scroll font-xlarge" href="#">Grannytherapy</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -64,7 +68,7 @@
             </li>
             {{#each pagesList}}
             <li>
-              <a id="pageName" class="page-scroll" href="#Pages">{{title}}</a>
+              <a id="pageName" class="page-scroll">{{title}}</a>
             </li>                    
             {{/each}}                      
             <li>
@@ -74,16 +78,16 @@
       </div>
   </div>
 </nav>
-    <header>
+<!--     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <!-- <h1 class="slider-main-text">Your Favorite Source of Free Bootstrap Themes</h1> -->
-                <h1 class="slider-main-text">GrannyTherapy</h1>
+ -->                <!-- <h1 class="slider-main-text">Your Favorite Source of Free Bootstrap Themes</h1> -->
+                <!-- <h1 class="slider-main-text">GrannyTherapy</h1> -->
                 <!-- <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download
                     your template and start going, no strings attached!</p> -->
-            </div>
+<!--             </div>
         </div>
-    </header>
-{{/if}}
+    </header> -->
+<!-- {{/if}} -->
 </template>
 

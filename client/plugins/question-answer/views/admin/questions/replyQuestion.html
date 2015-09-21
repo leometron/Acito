@@ -1,0 +1,153 @@
+<template name="replyQuestion">
+	<div class="main-content-box">
+		<div class="content-box-menu">Posts</div>
+		<div style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>Status</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{status}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>Your Question</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{question}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>Question Details</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{detail}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>What is your major Complaint?</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{complaint}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>Give detail explanations about Complaint?</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{complaintDetail}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>How long have you had this complaint?</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{complaintPeriod}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>What symptoms are you exhibiting?</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{symptoms}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>Are there any secondary complaints?</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{secondaryComplaint}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16">
+				<span>What medication are you currently taking?</span>
+			</div>
+			<div class="col-md-1" style="font-weight:bold; font-size:16px; margin-right:-30px">:
+			</div>
+			<div class="col-md-6">
+				{{medicine}}
+			</div>
+		</div>
+
+		<div class="row padding-15 margin-top-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-5 font-size-16">
+				<span style="font-weight:bold; font-size:18px">Post Answer</span>
+			</div>
+			<div class="col-md-6">
+				<textarea id="answer" cols="70" style="resize:none;margin-left:-30px;height:100px"></textarea>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+			</div>
+			<div class="col-md-6 font-size-16 margin-top-15-min color-red" id="emptyAnswerInfo">
+				<span>answer required</span>
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-6">
+			</div>
+			<div class="col-md-2">
+	        	<button type="button" id="postReply" class="btn btn-primary submitbtn">Post</button>
+	        </div>
+	        <div class="col-md-2">
+	        	<button type="button" id="cancelReplyQuestion" class="btn btn-primary submitbtn" style="margin-left:-40px">Cancel</button>
+	        </div>
+		</div>
+		</div>	
+		</div>	
+</template>

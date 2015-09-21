@@ -119,7 +119,7 @@ pre {
 
 .slider-image {
     width: 100% !important;
-    height: 600px !important;
+    height: 500px !important;
 }
 
 .slider-main-text {
@@ -146,7 +146,7 @@ pre {
 
 .header-content-inner {
     margin-right: auto;
-    margin-left: auto;
+    margin-left: 50px;
     max-width: 1000px;
     color: #ffffff;
 }

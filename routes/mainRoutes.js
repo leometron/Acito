@@ -2,7 +2,7 @@
 var themeName;
 Router.route('/', {
   layoutTemplate: 'basicLayout',	
-  name: 'home',
+  // name: 'postList',
   data: function() {          
        // var themeObj =  theme.findOne({userId: Meteor.userId()});
        // if (themeObj) {
@@ -10,7 +10,7 @@ Router.route('/', {
        // console.log('themeObj..............'+themeObj.themeName);
        //         this.render(themeObj.themeName);        
        // } else {
-        this.render('home');        
+        // this.render('postList');        
        // }
     },
   action: function () {
@@ -48,5 +48,33 @@ Router.route('/post/:_id', {
         images: featuredimage.find({postId:this.params._id}, { limit:3 }),    
         post: Posts.findOne(this.params._id)
       };
-    }    
+    }       
+});
+
+Router.route('/ask', {
+  layoutTemplate: 'basicLayout',  
+  name: 'questionDetail'  
+});
+
+Router.route('/question', {
+  layoutTemplate: 'basicLayout',  
+  name: 'questionAnswer',  
+  data: function() {
+        return {
+          answer: answer.findOne({ questionId: this.params.query.id }),
+          question: questionDetail.findOne({ _id:this.params.query.id })
+        }
+
+    } 
+});
+
+
+Router.route('/pages', {
+  layoutTemplate: 'basicLayout',  
+  name: 'postList'  
+});
+
+Router.route('/allquestions', {
+  layoutTemplate: 'basicLayout',  
+  name: 'allQuestions'  
 });

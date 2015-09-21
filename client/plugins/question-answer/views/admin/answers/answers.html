@@ -1,0 +1,35 @@
+<template name="answers">
+    <div class="main-content-box">
+    <div class="content-box-menu">Answers</div>
+    <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd; margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
+        <div class="col-md-1">
+            <!-- <span><input type="checkbox"></span> -->
+        </div>
+        <!-- <div class="col-md-6 padding-left-zero margin-left-minus-30">Sl.no</div> -->
+        <div class="col-md-6" style="margin-left:-2%">Answer</div>
+        <div class="col-md-2">Status</div>
+        <div class="col-md-3">Options</div>
+    </div>
+   	{{#if equals answerListCount 0}}
+        <div class="row padding-top-bottom-10 cursor-pointer">
+            <div class="CodingRules-data-row">
+                <div class="col-md-4 empty-results">
+                    <span style="font-size:16px">No Results</span>
+                </div>
+            </div>
+        </div>
+    {{else}}
+    	{{#each answerList}}
+            <div id="{{_id}}" class="row  padding-top-bottom-10" style="border: 1px solid #ddd; margin-left: 2.5%;width: 95%; margin-bottom:30px; margin-top:-31px;">
+			    <div class="col-md-1">
+            		<!-- <span><input type="checkbox"></span> -->
+        		</div>
+        		<!-- <div class="col-md-6 padding-left-zero margin-left-minus-30">Sl.no</div> -->
+        		<div class="col-md-6" style="margin-left:-2%">{{answerDetail}}</div>
+        		<div class="col-md-2">{{status}}</div>
+        		<div class="col-md-3"><a id="editAnswer" class="cursor">Edit</a> | <a id="deleteAnswer" class="cursor">Delete</a></div>
+    		</div>
+    	{{/each}}
+    {{/if}}
+    </div>	
+</template>

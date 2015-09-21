@@ -1,0 +1,64 @@
+<template name="editAnswer">
+	<div class="edit-question-detail main-content-box">
+		<div class="content-box-menu">Edit Answer</div>
+		<div class="row padding-15" style="margin-top:5%">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 margin-top-15 font-size-16">
+				<span>Status</span>
+			</div>
+			<div class="col-md-7">
+				<select id="status" style="padding:5px 20px">
+					{{#if equals status "active"}}
+				    	<option>active</option>
+				    	<option>deactive</option>
+				    {{else}}
+				    	<option>deactive</option>				    				    
+				    	<option>active</option>
+				    {{/if}}
+				</select>
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 margin-top-15 font-size-16">
+				<span>Question</span>
+			</div>
+			<div class="col-md-7">
+				{{currentQuestion.question}}
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-4 font-size-16 margin-top-4">
+				<span>Post Answer</span>
+			</div>
+			<div class="col-md-7">
+				<textarea id="answerDetail" cols="70">{{answerDetail}}</textarea>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-5">
+			</div>
+			<div class="col-md-7 font-size-16 margin-top-15-min color-red" id="emptyAnswerInfo">
+				<span>answer required</span>
+			</div>
+		</div>
+
+		<div class="row padding-15">
+			<div class="col-md-5">
+			</div>
+			<div class="col-md-2">
+	        	<button type="button" id="updateAnswer" class="btn btn-primary submitbtn">Update</button>
+	        </div>
+	        <div class="col-md-2">
+	        	<button type="button" id="cancelEditAnswer" class="btn btn-primary submitbtn">Cancel</button>
+	        </div>
+		</div>
+	</div>	
+</template>

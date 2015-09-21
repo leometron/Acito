@@ -31,6 +31,9 @@ Pages.attachSchema(
         },
         parentId: {
             type: String
+        },
+        parentTitle: {
+            type: String
         }
 
 

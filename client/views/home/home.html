@@ -1,79 +1,120 @@
-<template name="home">
-    <!-- <div id="main"> -->
-<!--         <header>
-            {{> header}}
-        </header> -->
+  <template name="home">
 
-        <!-- <footer>
-            {{> footer}}
-        </footer> -->
-    <!-- </div>   -->
-     <div id="Pages" class="row bg-color" >     
-         <div class="container padding-left-right-zero theme-width">
-               <div class="row equal image image-center theme-left-20 post-view">              
-              {{#each postsList}}
-               <div class="col-md-3 col-sm-6 col-xs-12 equal-child margin-bottom-15 postLists" id="postLists" style=" padding-right: 5px; padding-left: 5px;">     
-                {{#if equals featuredImage '-'}}
-                {{else}}             
-                    <img src="{{featuredImage}}" class="feature-image"/>
-                {{/if}}                  
-                  <!--{{#each imageList}} 
-                    {{#if equals postId ../_id}}                 
-                      <img src="{{url}}" class="feature-image"/>                  
-                    {{/if}}                  
-                  {{/each}}-->                 
-                  <div class="post-thumb post-width">
-                      <span id="postTitle" class="post-header-theme">{{title}}</span>
-                      <p class="break-word text-ellipsis">
-                         {{content}}
-                      </p>
-                      <span class="right-arrow"></span> 
-                   </div>                   
-               </div>
-              {{/each}}
-              </div>  
-            <div class="post-loading-icon"></div>
-            <!-- <div class="load-content-design">
-                <button class='give-more-content'>Click To Load More Content</button>
-            </div> -->
-            <div class="posts-Over-text">Posts Over</div>
-        </div>
+    <div class="home-left-field">
+      <div class="category-title">Categories</div>
+      {{#if parentPageList}}
+      {{#each parentPageList}}
+      <div class="row parent-page" id="page{{_id}}">
+        {{title}}
+      </div>
+      <div id="subpage{{_id}}"></div>
+      {{/each}}
+      {{else}}
+      <div>No categories</div>
+      {{/if}}
     </div>
 
-
-<!--     <div id="xLoader" class="padding-100 bg-dynamic-color">
-        <div class="google-spin-wrapper">
-            <div class="google-spin"></div>
+    <div class="home-right-fields">
+      <div class="home-ask-field">
+        <div class="row">
+          <div class="col-md-12 home-right-fields-header">
+            Ask your Community
+          </div>
         </div>
-    </div> -->
-
-<!-- <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">
-<div class="owl-carousel">   
-   {{#each mediaList}}
-      <div  class="item margin-left-right-5 border">
-        <img src="{{url}}" class="height-250">
+        <div class="home-ask-inner-field">
+          <div class="row">
+            <div class="col-md-12 margin-top-4">
+              <textarea id="questionArea" style="width:200px; height:65px; resize:none; padding:5px; margin-top:10px;" placeholder="Post Your Question"></textarea>
+              <div class="col-md-12 font-size-12 margin-top-15-min color-red" id="questionEmptyInfo" style="margin-left: -8px; margin-top: -20px;">
+                <span>question required</span>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <button type="button" id="askQuestion" class="btn btn-primary button-home">Ask</button>
+            </div>
+          </div>
+        </div>
       </div>
-   {{/each}}   
-</div>
+
+      <div class="home-search-field">
+        <div class="row">
+          <div class="col-md-12 home-right-fields-header">
+            Search
+          </div>
+        </div>
+        <div class="home-search-inner-field">
+          <div class="row">
+            <div class="col-md-12 margin-top-10">
+              <span>Search for :</span>
+            </div>
+            <div class="col-md-12 margin-top-4">
+              <textarea id="questionSearch"></textarea>
+            </div>
+            <div class="col-md-12">
+              <button type="button" id="Search" class="btn btn-primary button-home">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-answer-field">
+        <div class="row">
+          <div class="col-md-12 home-right-fields-header">
+            Answers
+          </div>
+        </div>
+        <div class="home-answer-inner-field">
+          {{#each questionList}}
+          <div class="row">
+            <div class="col-md-12 home-answer-inner-field-content select-question-row">
+              {{question}}
+            </div>
+                <div class="col-md-12 border-top">
+                </div>
+          </div>
+          {{/each}}
+        </div><div class="all-questions"><a class="all-questions-content">View all answers</a></div>
+      </div>
+
+    </div>
+
+    <div class="home-post-field">
+      {{> yield}}
+    </div>
+
+  <!--<div id="xLoader" class="padding-100 bg-dynamic-color">
+          <div class="google-spin-wrapper">
+              <div class="google-spin"></div>
+          </div>
+        </div> -->
+  <!-- <div id="media" class="padding-bottom-10 padding-top-50 bg-dynamic-color">
+  <div class="owl-carousel">   
+     {{#each mediaList}}
+        <div  class="item margin-left-right-5 border">
+          <img src="{{url}}" class="height-250">
+        </div>
+     {{/each}}   
+  </div>
 </div> -->
 
-<div id="showPost" class="show-post">     
-      <div class="col-md-10 col-xs-10">
-          <textarea rows="5" cols="5" class="form-control" id="questionArea" placeholder="Post Your Question"></textarea>
-        <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
-          <span>question required</span>
-        </div>          
-      </div>
-      <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" id="askQuestion" class="btn btn-default">Ask</a></div>
-      <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
-</div>
-<div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div>
+  <!-- <div id="showPost" class="show-post">     
+        <div class="col-md-10 col-xs-10">
+            <textarea rows="5" cols="5" class="form-control" id="questionArea" placeholder="Post Your Question"></textarea>
+          <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
+            <span>question required</span>
+          </div>          
+        </div>
+        <div class="col-md-2 col-xs-2 margin-top-45"><a href="#" id="askQuestion" class="btn btn-default">Ask</a></div>
+        <div class="Ask cursor-pointer"><img src="images/close-button.png" class="close-button"></div>
+  </div>
+  <div id="post" class="Ask cursor-pointer"><img src="images/post.png" class="post-icon"></div> -->
 
-<div id="questionDetail">
-  {{> questionDetail}}
-</div>
+  <div id="questionDetail">
+    {{> questionDetail}}
+  </div>
 
-<div id="loginDetail">
-  {{> userLogin}}
-</div>
- </template>
+  <div id="loginDetail">
+    {{> userLogin}}
+  </div>
+
+</template>

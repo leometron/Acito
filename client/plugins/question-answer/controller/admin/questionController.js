@@ -37,7 +37,8 @@ Template.editQuestion.events({
 		} else if (!details) {
 			$('#emptyDetailInfo').show();
 		} else {
-			var status = (!$('#status').val() ) ? "-" : $('#status').val();
+			// var status = (!$('#status').val() ) ? "-" : $('#status').val();
+			var status = $('#status :selected').text();			
 			var majorComplaint = (!$('#majorComplaint').val() ) ? "-" : $('#majorComplaint').val();		
 			var detailExplanation = (!$('#detailExplanation').val() ) ? "-" : $('#detailExplanation').val();			
 			var complaintPeriod = (!$('#complaintPeriod').val() ) ? "-" : $('#complaintPeriod').val();			
@@ -52,6 +53,10 @@ Template.editQuestion.events({
 			$('#emptyQuestionInfo').hide(),
 			$('#emptyDetailInfo').hide()
 		},5000);		
+	},
+	'click #cancelEditQuestion' : function () {
+		Session.set('currentQuestionId','');		
+		Router.go('/admin/questions');		
 	}
 });
 
@@ -73,6 +78,10 @@ Template.replyQuestion.events({
 		Meteor.setTimeout(function () {
 			$('#emptyAnswerInfo').hide()
 		},5000);			
+	},
+	'click #cancelReplyQuestion' : function () {
+		Session.set('currentQuestionId','');		
+		Router.go('/admin/questions');			
 	}
 });
 

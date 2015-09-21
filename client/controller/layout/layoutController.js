@@ -7,21 +7,23 @@ Has the events and helpers related to home page.
 
 */
 
-var showPost = true;
+// var showPost = true;
 
 Meteor.subscribe('featuredimage');
+// Meteor.subscribe("questionDetail");
 
 Template.header.events({
     'click #pageName': function () {
-        Session.set('numberOfCount', 4);
+        Session.set('numberOfCount', 3);
         Session.set('selectedPostId', "");
         Session.set("pageId", this._id);
+        Router.go('/pages');        
     },
     'click #backToPage': function () {
         Session.set('selectedPostId', "");
         Session.set("pageId", Session.get("selectedPageId"));
         history.back();
-    }
+    },
 });
 
 Template.header.helpers({
@@ -46,17 +48,17 @@ Template.home.events({
             Router.go("/post/" + postId);
         }, 1590);
     },
-    'click .Ask': function () {
-        if (showPost) {
-            $('#post').hide();
-            $('#showPost').show().animate({"width": "50%"}, "fast");
-            showPost = false;
-        } else {
-            $('#post').show();
-            $('#showPost').hide().animate({"width": "-50%"}, "slow");
-            showPost = true;
-        }
-    },
+    // 'click .Ask': function () {
+    //     if (showPost) {
+    //         $('#post').hide();
+    //         $('#showPost').show().animate({"width": "50%"}, "fast");
+    //         showPost = false;
+    //     } else {
+    //         $('#post').show();
+    //         $('#showPost').hide().animate({"width": "-50%"}, "slow");
+    //         showPost = true;
+    //     }
+    // },
     'click .right-arrow' : function(){
        var userId = this._id;
        $('.image').animate({width: 'toggle'}, 1600);
@@ -70,31 +72,73 @@ Template.home.events({
       if (!$('#questionArea').val()) {
         $('#questionEmptyInfo').show();
       } else if (!Meteor.userId()) {
-        $('#showPost').hide().animate({"width": "-50%"}, "slow");
+        // $('#showPost').hide().animate({"width": "-50%"}, "slow");
         $('#loginDetail').show();
       } else {
-        // console.log("user Id "+ Meteor.userId());
-        Session.set('question',$('#questionArea').val());
-        $('#questionArea').val("");
-        $('#post').show();
-        $('#showPost').hide().animate({"width": "-50%"}, "slow");
-        $('#question').val(Session.get('question'));           
-        $('#questionDetail').show();
+          Meteor.setTimeout(function(){
+            $(window).scrollTop(500);  
+          },300);
+          Router.go('/ask');
+        // Session.set('question',$('#questionArea').val());
+        // $('#questionArea').val("");
+        // $('#post').show();
+        // // $('#showPost').hide().animate({"width": "-50%"}, "slow");
+        // $('#question').val(Session.get('question'));           
+        // $('#questionDetail').show();
       }
       Meteor.setTimeout(function(){
           $('#questionEmptyInfo').hide();
       }, 5000);        
+   },
+   'click .select-question-row' : function() {
+      Router.go('/question?id='+ this._id);
+   },
+   'click .all-questions-content' : function() {
+      Router.go('/allquestions');
+   },
+   'click .parent-page' : function(){
+    if($('#page'+this._id).hasClass('page-selection')){
+      $('#page'+this._id).removeClass('page-selection');
+      $("#subpage"+this._id).html('');
+    } else {
+      $('#page'+this._id).addClass('page-selection');
+      var subPages = Pages.find({parentId: this._id});
+      var t ="";
+      subPages.forEach(function(item){
+        t += '<div class="sub-page" id="'+item._id+'">'+item.title+'</div>';
+      });
+      $("#subpage"+this._id).html(t);
+    }
+   },
+   'click .sub-page' : function(event){
+      Session.set("pageId", "");
+      Session.set('numberOfCount', 3);
+      Session.set('selectedPostId', "");
+      Session.set("pageId", $(event.target).attr("id"));
+      Router.go('/pages');
    }
 });
 
-Template.home.helpers({
+Template.postList.helpers({
    'postsList' : function() {
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
       return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
-   },  
+    }
+});
+
+Template.home.helpers({
   'mediaList' : function() {
     return Media.find();
    },
+   'questionList': function () {
+        return questionDetail.find({status:"active"});
+   },
+   'answerList': function () {
+        return answer.find({status:"active"});
+   },
+   'parentPageList' : function() {
+       return Pages.find({parentId:'null'});
+   }
 
    // 'showSelectedPost' : function() {
    //     if(Session.get('selectedPostId')){
@@ -107,6 +151,13 @@ Template.home.helpers({
    // 'imageList' : function() {
    //     return featuredimage.find();
    // }
+});
+
+Template.postList.helpers({
+  'postsList': function(){
+    Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+    return Posts.find({pageId:Session.get("pageId")}, { limit: Session.get('numberOfCount') });
+  }
 });
 
 Template.header.helpers({
@@ -125,7 +176,13 @@ Template.home.helpers({
   'imageList' : function() {
        return featuredimage.find();
    }
-})
+});
+
+Template.allQuestions.helpers({
+   'questionList': function () {
+        return questionDetail.find({status:"active"});
+   }
+});
 
 Template.postDetail.helpers({
    // 'showImagePost' : function() {
@@ -147,6 +204,7 @@ Template.postDetail.helpers({
 });
 
 Template.home.rendered = function () {
+  console.log("home render");
 
    // var currentUserId;
    //          if (Meteor.userId()){
@@ -175,13 +233,13 @@ Template.home.rendered = function () {
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();  
                   Meteor.setTimeout(function(){
-                  Session.set('numberOfCount', Session.get('numberOfCount') +4);
+                  Session.set('numberOfCount', Session.get('numberOfCount') +3);
                       if(Session.get('postCount')<=Session.get('numberOfCount')){
                           $('.post-loading-icon').hide();
-                          $('.posts-Over-text').show();
-                          Meteor.setTimeout(function(){$('.posts-Over-text').hide()},3000);
+                          // $('.posts-Over-text').show();
+                          // Meteor.setTimeout(function(){$('.posts-Over-text').hide()},3000);
                       }
-                  }, 3000);
+                  }, 1000);
                 }
             }
         }
@@ -209,7 +267,7 @@ Template.home.rendered = function () {
         }
 });  
   
-$('#showPost').hide();
+// $('#showPost').hide();
 $('#postIntroduction').offset().top - $('#postasas').offset().top
    
   $('a[href*=#]:not([href=#])').click(function () {
