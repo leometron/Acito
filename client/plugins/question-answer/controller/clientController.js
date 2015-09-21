@@ -1,16 +1,5 @@
 Template.questionDetail.events({
 	'click #postQuestion' : function () {
-		console.log('s click');
-		$.ajax({
-			url : "http://localhost:3000/admin/get",
-			dataType : "json",
-			success : function (data) {
-				console.log("............data.............."+JSON.stringify(data));
-			},
-			error : function () {
-				console.log('error');
-			}
-		});
 		var question = $('#question').val();
 		var details = $('#questionDetails').val();
 		if (!question) {
@@ -35,15 +24,18 @@ Template.questionDetail.events({
 		},5000);
 	},
 	'click #closeAskQuestion': function () {
-        $('#questionDetail').hide();
+        // $('#questionDetail').hide();
        	Session.set('question','');
 		clearQuestionContent();
+		history.back();
+		Meteor._reload.reload();
 	}
 });
 
 Template.questionDetail.rendered = function() {
 	$('#emptyQuestionInfo').hide();
 	$('#emptyDetailInfo').hide();
+    $('#question').val(Session.get('question'));           	
 	clearQuestionContent();
 }
 

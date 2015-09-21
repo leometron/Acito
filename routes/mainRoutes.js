@@ -3,7 +3,10 @@ var themeName;
 Router.route('/', {
   layoutTemplate: 'basicLayout',	
   // name: 'postList',
-  data: function() {          
+  data: function() {  
+    return {
+        postsList: Posts.find({pageId:"none"})
+    };          
        // var themeObj =  theme.findOne({userId: Meteor.userId()});
        // if (themeObj) {
        //  themeName = themeObj.themeName;
@@ -14,7 +17,7 @@ Router.route('/', {
        // }
     },
   action: function () {
-        // this.render('home');        
+        this.render('postList');        
     
     // var themeObj = theme.findOne({userId: Meteor.userId()});
     //   console.log('themeobject............'+Meteor.userId());
@@ -49,7 +52,21 @@ Router.route('/ask', {
   name: 'questionDetail'  
 });
 
-Router.route('/pages', {
+Router.route('/posts', {
   layoutTemplate: 'basicLayout',  
-  name: 'postList'  
-})
+  name: 'postList',
+  data: function() {
+    if (this.params.query.pageId) {
+        var postCount = parseInt(this.params.query.count);
+        return {
+            postsList: Posts.find({pageId:this.params.query.pageId,status:"Published"}, { limit: postCount })
+        };      
+    } else if (this.params.query.queryString) {
+        return {
+            postsList : Posts.find({title:new RegExp(this.params.query.queryString,'i'),status:"Published"}),
+            searchResultCount : Posts.find({title:new RegExp(this.params.query.queryString,'i'),status:"Published"}).count()
+        }        
+    }
+
+   }   
+});
