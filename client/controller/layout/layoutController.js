@@ -72,6 +72,7 @@ Template.home.events({
         // $('#showPost').hide().animate({"width": "-50%"}, "slow");
         $('#loginDetail').show();
       } else {
+        Session.set('question',$('#questionArea').val());
           Meteor.setTimeout(function(){
             $(window).scrollTop(500);  
             Router.go('/ask');
