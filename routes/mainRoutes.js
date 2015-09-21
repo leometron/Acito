@@ -74,3 +74,8 @@ Router.route('/allquestions', {
   layoutTemplate: 'basicLayout',  
   name: 'allQuestions'  
 });
+
+Router.route('/login', {
+  layoutTemplate: 'basicLayout',
+  name: 'userLogin'
+});
