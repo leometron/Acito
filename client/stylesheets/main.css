@@ -635,7 +635,8 @@ body, #main {
     margin-left: 12px; 
     border-radius: 10px; 
     overflow: hidden;
-    height: auto; 
+    height: auto;
+    border: 1px solid #FFFFFF; 
 }
 
 .category-title {
