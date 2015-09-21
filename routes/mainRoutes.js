@@ -38,8 +38,15 @@ Router.route('/post/:_id', {
   //   console.log(Meteor.App.NAME);
   // }
 
-  data: function() {
-    return Posts.findOne({ _id: this.params._id });
+  // data: function() {
+  //   return Posts.findOne({ _id: this.params._id });
 
-  }    
+  // }
+
+   data: function() {
+      return {
+        images: featuredimage.find({postId:this.params._id}, { limit:3 }),    
+        post: Posts.findOne(this.params._id)
+      };
+    }    
 });

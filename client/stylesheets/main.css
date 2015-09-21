@@ -498,3 +498,11 @@ body, #main {
     font-weight: bold;
     left: 39%;
 }
+
+.gallery-icon img {
+  display:inline-block; 
+  margin:5px 20px; 
+  padding:5px; 
+  border:2px solid #cfcfcf; 
+  background: #DEE8C5;
+}

@@ -73,6 +73,7 @@ Template.home.events({
         $('#showPost').hide().animate({"width": "-50%"}, "slow");
         $('#loginDetail').show();
       } else {
+        // console.log("user Id "+ Meteor.userId());
         Session.set('question',$('#questionArea').val());
         $('#questionArea').val("");
         $('#post').show();
@@ -127,21 +128,22 @@ Template.home.helpers({
 })
 
 Template.postDetail.helpers({
-   // 'showSelectedPost' : function() {
+   // 'showImagePost' : function() {
    //     if(Session.get('selectedPostId')){
    //         // var temp = Session.get('selectedPostId');
    //         // Session.set('selectedPostId',"");
    //         // console.log('temp.........'+temp);
    //         return Posts.findOne({_id: Session.get('selectedPostId')});            
    //     }
-   //     $('#postDetail').fadeIn(10000);          
+   //     // $('#postDetail').fadeIn(10000);          
    // },
    'imageList' : function() {
-       return featuredimage.find();
-   },
-   'singlePostSlider' : function(){
-    return featuredimage.findOne({postId:Session.get('selectedPostId')}, { limit:1 });
+       // console.log("img " + this.images);
+       return this.images;
    }
+   // 'singlePostSlider' : function(){
+   //  return featuredimage.findOne({postId:Session.get('selectedPostId')}, { limit:1 });
+   // }
 });
 
 Template.home.rendered = function () {
