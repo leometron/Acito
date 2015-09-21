@@ -26,12 +26,12 @@
                 {{#if equals _id singlehomeSlider._id }}
                 <div class="item active" id="someid">
                   <img src="{{sliderImage}}" class="slider-image">
-                  <pre class="homeslider-title">{{title}}</pre>
+                  <div class="homeslider-sub-content">{{title}}</div>
                 </div>
                 {{else}}
                 <div class="item">
                   <img src="{{sliderImage}}" class="slider-image">
-                  <pre class="homeslider-title">{{title}}</pre>
+                  <div class="homeslider-sub-content">{{title}}</div>
                 </div>
                 {{/if}}
           {{/each}}
@@ -47,7 +47,6 @@
     </div>
   </div>
   </div>
-
 </div>   
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav" style="background:black">

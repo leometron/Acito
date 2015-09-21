@@ -49,7 +49,25 @@ Router.route('/ask', {
   name: 'questionDetail'  
 });
 
+Router.route('/question', {
+  layoutTemplate: 'basicLayout',  
+  name: 'questionAnswer',  
+  data: function() {
+        return {
+          answer: answer.findOne({ questionId: this.params.query.id }),
+          question: questionDetail.findOne({ _id:this.params.query.id })
+        }
+
+    } 
+});
+
+
 Router.route('/pages', {
   layoutTemplate: 'basicLayout',  
   name: 'postList'  
-})
+});
+
+Router.route('/allquestions', {
+  layoutTemplate: 'basicLayout',  
+  name: 'allQuestions'  
+});

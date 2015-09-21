@@ -75,7 +75,10 @@ Template.home.events({
         // $('#showPost').hide().animate({"width": "-50%"}, "slow");
         $('#loginDetail').show();
       } else {
-        Router.go('/ask');
+          Meteor.setTimeout(function(){
+            $(window).scrollTop(500);  
+          },300);
+          Router.go('/ask');
         // Session.set('question',$('#questionArea').val());
         // $('#questionArea').val("");
         // $('#post').show();
@@ -86,6 +89,12 @@ Template.home.events({
       Meteor.setTimeout(function(){
           $('#questionEmptyInfo').hide();
       }, 5000);        
+   },
+   'click .select-question-row' : function() {
+      Router.go('/question?id='+ this._id);
+   },
+   'click .all-questions-content' : function() {
+      Router.go('/allquestions');
    }
 });
 
@@ -106,6 +115,9 @@ Template.home.helpers({
    },
    'questionList': function () {
         return questionDetail.find({status:"active"});
+   },
+   'answerList': function () {
+        return answer.find({status:"active"});
    },
 
    // 'showSelectedPost' : function() {
@@ -137,7 +149,13 @@ Template.home.helpers({
   'imageList' : function() {
        return featuredimage.find();
    }
-})
+});
+
+Template.allQuestions.helpers({
+   'questionList': function () {
+        return questionDetail.find({status:"active"});
+   }
+});
 
 Template.postDetail.helpers({
    // 'showSelectedPost' : function() {

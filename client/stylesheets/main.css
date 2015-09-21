@@ -331,17 +331,17 @@ body, #main {
     color:#ffffff;
 }
 
-.homeslider-title {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: none;
-    color: white;
+.homeslider-sub-content {
+    color: #52366A;
     font-size: 30px;
-    font-weight: bold;
-    left: 20%;
-    position: absolute;
-    text-align: center;
-    top: 43%;
-    width: 60%;
+    text-align: left;
+    padding: 3px 10px;
+    height:24%; 
+    width:50%; 
+    position:absolute; 
+    right:50px; 
+    bottom:50px; 
+    background-image: url(/images/logo-sub.png);
 }
 
 .padding-100{
@@ -498,7 +498,7 @@ body, #main {
     background:#FFFFFF; 
     width:90%; 
     margin-left:14px; 
-    border-radius:20px; 
+    border-radius:10px; 
     height:135px; 
     overflow:hidden;
  }
@@ -526,7 +526,7 @@ body, #main {
   background:#FFFFFF; 
   width:90%; 
   margin-left:14px; 
-  border-radius:20px; 
+  border-radius:10px; 
   height:123px; 
   overflow:hidden
 }
@@ -543,16 +543,17 @@ body, #main {
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -o-box-shadow: 0 0 10px; 
-  height:428px; 
+  height:440px; 
   overflow:hidden; 
   margin-top:8px;
+  margin-bottom: 15px;
 }
 
 .home-answer-inner-field {
   background:#FFFFFF; 
   width:90%; 
   margin-left:14px; 
-  border-radius:20px; 
+  border-radius:10px; 
   height:362px; 
   overflow:hidden
 }
@@ -563,6 +564,7 @@ body, #main {
   ellipsis; 
   white-space: nowrap; 
   overflow: hidden;
+  cursor:pointer
 }
 
 .border-top {
@@ -574,7 +576,7 @@ body, #main {
 }
 
 .home-post-field {
-  width:61%; 
+  width:59%; 
   background: #F2F6E8; 
   box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
@@ -583,8 +585,26 @@ body, #main {
   padding:10px; 
   position:absolute; 
   top:574px; 
-  left:254px;
+  left:20%;
+  padding-bottom: 15px;
 }
+
+.all-questions{
+  margin-top:7px; 
+  text-align:center
+}
+
+.all-questions-content{
+  cursor:pointer;
+  color:black
+}
+
+.border-top-allquestion {
+  border-top: 2px solid #D1D1D1; 
+  padding-bottom:5px;
+}
+
+
 
 /*.postError {*/
   /*background-color: #99CCFF; */

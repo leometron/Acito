@@ -1,5 +1,4 @@
 <template name="home">
-<<<<<<< HEAD
 
     <div class="home-right-fields">
         <div class="home-ask-field">
@@ -12,7 +11,7 @@
                 <div class="row">
                     <div class="col-md-12 margin-top-4">
                         <textarea id="questionArea" style="width:200px; height:65px; resize:none; padding:5px; margin-top:10px;" placeholder="Post Your Question"></textarea>
-                        <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo">
+                        <div class="col-md-12 font-size-16 margin-top-15-min color-red" id="questionEmptyInfo" style="margin-left: -8px; margin-top: -30px;">
                             <span>question required</span>
                         </div>
                     </div>
@@ -53,7 +52,7 @@
             <div class="home-answer-inner-field">
             {{#each questionList}}
                 <div class="row">
-                    <div class="col-md-12 home-answer-inner-field-content">
+                    <div class="col-md-12 home-answer-inner-field-content select-question-row">
                         {{question}}
                     </div>
                     <div class="col-md-12 border-top">
@@ -61,6 +60,7 @@
                 </div>
             {{/each}}
             </div>
+            <div class="all-questions"><a class="all-questions-content">View all answers</a></div>
         </div>
     </div>
 
