@@ -55,21 +55,12 @@ Template.home.events({
     //         showPost = true;
     //     }
     // },
-   //  'click .right-arrow' : function(){
-   //     var userId = this._id;
-   //     $('.image').animate({width: 'toggle'}, 1600);
-   //     Meteor.setTimeout(function(){
-   //        Session.set('selectedPageId',Session.get("pageId"));         
-   //        Session.set('selectedPostId', userId);
-   //          Router.go("/post/"+userId)
-   //     }, 1590);  
-   // },
+
    'click #askQuestion' : function() {
       if (!$('#questionArea').val()) {
         $('#questionEmptyInfo').show();
       } else if (!Meteor.userId()) {
-        // $('#showPost').hide().animate({"width": "-50%"}, "slow");
-        // $('#loginDetail').show();
+        Session.set('question',$('#questionArea').val());
          Meteor.setTimeout(function() {
             $(window).scrollTop(500);  
           },300);
@@ -87,8 +78,10 @@ Template.home.events({
    },
    'click #search' : function () {
         if(!$('#searchQuery').val()) {
+            $(window).scrollTop(500);
             $('#searchEmptyInfo').show();
         } else {
+            $(window).scrollTop(500);
             Router.go('/posts?queryString='+$('#searchQuery').val());
         }
         Meteor.setTimeout(function(){

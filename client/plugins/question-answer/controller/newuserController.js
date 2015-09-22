@@ -13,8 +13,10 @@ Template.userLogin.events( {
         Meteor.loginWithPassword(email, password, function (err) {
             if(err){
                 $('#errorMsg').html("Invalid email or Password");
+            } else if(!$('#questionArea').val()) {
+            	history.back();
             } else {
-                $(location).attr('href', '/ask');
+            	Router.go('/ask');
             }
         });
         return false;
@@ -23,7 +25,7 @@ Template.userLogin.events( {
 
 	'submit #signUp' : function(e, t) {
 		e.preventDefault();
-		var firstname = t.find('#firstname').value;
+		var first_name = t.find('#firstname').value;
 		var new_email = t.find('#upemail').value, new_password = t.find('#signpassword').value;
 		var repassword = t.find('#re-password').value;
 
@@ -47,9 +49,13 @@ Template.userLogin.events( {
 		// console.log(userEmailExists);
 
 		var userDetail = { 
-        		email: new_email, 
-        		password: new_password 
+        		"email": new_email,
+        		"username":  first_name,
+        		"password": new_password 
         	}
+        	
+        	// console.log("......... "+ userDetail);
+        	// console.log("........ " + JSON.stringify(userDetail));
 		
 			if(!userEmailExists){
 	        	Accounts.createUser(userDetail, function(error){

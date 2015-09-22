@@ -61,21 +61,26 @@
         <a class="navbar-brand page-scroll font-xlarge" href="#">Grannytherapy</a>
       </div>
 
-      <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
-          <!-- <ul class="nav navbar-nav navbar-right"> -->
-            <!-- <li> -->
-              <!-- <a class="page-scroll" href="#DashBoard">DashBoard</a> -->
-           <!--  </li>
-            {{#each pagesList}}
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        {{#if currentUser}}
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a class="page-scroll">{{currentUser.username}}</a>
+            </li>
+            <li>
+              <a class="page-scroll">Logout</a>
+            </li>
+            <!-- {{#each pagesList}}
             <li>
               <a id="pageName" class="page-scroll">{{title}}</a>
             </li>                    
-            {{/each}}                      
-            <li> -->
+            {{/each}}  -->                     
+            <!-- <li> -->
               <!-- <a class="page-scroll" href="#Media">Media</a> -->
             <!-- </li> -->
-          <!-- </ul> -->
-      <!-- </div> -->
+          </ul>
+        {{/if}}
+      </div>
   </div>
 </nav>
 <!--     <header>
