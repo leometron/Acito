@@ -35,9 +35,8 @@ Template.header.events({
 // });
 
 Template.home.events({
-    'click #postTitle': function () {
+    'click #postTitle,.right-arrow,.feature-image': function () {
         var postId = this._id;
-        // $('.image').animate({width: 'toggle'}, 770);
         $('.image').animate({width: 'toggle'}, 1600);
         setTimeout(function () {
             Session.set('selectedPageId', Session.get("pageId"));
@@ -56,15 +55,15 @@ Template.home.events({
     //         showPost = true;
     //     }
     // },
-    'click .right-arrow' : function(){
-       var userId = this._id;
-       $('.image').animate({width: 'toggle'}, 1600);
-       Meteor.setTimeout(function(){
-          Session.set('selectedPageId',Session.get("pageId"));         
-          Session.set('selectedPostId', userId);
-            Router.go("/post/"+userId)
-       }, 1590);  
-   },
+   //  'click .right-arrow' : function(){
+   //     var userId = this._id;
+   //     $('.image').animate({width: 'toggle'}, 1600);
+   //     Meteor.setTimeout(function(){
+   //        Session.set('selectedPageId',Session.get("pageId"));         
+   //        Session.set('selectedPostId', userId);
+   //          Router.go("/post/"+userId)
+   //     }, 1590);  
+   // },
    'click #askQuestion' : function() {
       if (!$('#questionArea').val()) {
         $('#questionEmptyInfo').show();
