@@ -57,13 +57,14 @@ Template.home.events({
     //     }
     // },
     'click .right-arrow' : function(){
-       var userId = this._id;
-       $('.image').animate({width: 'toggle'}, 1600);
-       Meteor.setTimeout(function(){
+      var userId = this._id;
+       // $('.image').animate({width: 'toggle'}, 1600);
+      Meteor.setTimeout(function(){
+          $(window).scrollTop(500);
           Session.set('selectedPageId',Session.get("pageId"));         
           Session.set('selectedPostId', userId);
-            Router.go("/post/"+userId)
-       }, 1590);  
+      }, 100);
+      Router.go("/post/"+userId);       
    },
    'click #askQuestion' : function() {
       if (!$('#questionArea').val()) {
@@ -88,8 +89,10 @@ Template.home.events({
    },
    'click #search' : function () {
         if(!$('#searchQuery').val()) {
+            $(window).scrollTop(500);
             $('#searchEmptyInfo').show();
         } else {
+            $(window).scrollTop(500);
             Router.go('/posts?queryString='+$('#searchQuery').val());
         }
         Meteor.setTimeout(function(){

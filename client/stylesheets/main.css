@@ -72,7 +72,7 @@
 
 .side_bar_menu{
   /*background-image: url("/images/bg1.png");*/
-  background-color: #F1F8E2;
+  background-color: #DEE8C5;
   border-color: #080808;
   height:100%;
   position: absolute;
@@ -105,14 +105,14 @@
 
 .nav li a:hover{ 
   text-decoration: none;
-  /*background-color: #AB897F;*/
+  background-color: #8BC608;
 }
 .nav li a:hover,.nav li a:focus{  
-  /*background-color:#AB897F;*/
+  background-color: #8BC608;
 }
 
 .selected{
-  /*background-color:#AB897F;*/
+  background-color: #8BC608;
 }
 
 .pos-padding{
@@ -468,7 +468,7 @@ body, #main {
   border: medium none #e0e1d7;
   color: #447F8C;
   float: right;
-  margin-top: 10px;
+  margin-top: 18px;
   padding: 5px 27px;
   margin-right: 8px;
 }
@@ -501,7 +501,7 @@ body, #main {
     width:90%; 
     margin-left:14px; 
     border-radius:10px; 
-    height:135px; 
+    height:138px; 
     overflow:hidden;
  }
 
@@ -654,6 +654,14 @@ body, #main {
   padding: 10px; 
   margin-bottom: 10px; 
   text-align: center;
+}
+
+.post-published-design {
+  margin-left: -16px; 
+  margin-top: 20px; 
+  padding-bottom: 8px; 
+  text-align: right;
+  color: #F09C09;
 }
 
 /*.postError {*/
