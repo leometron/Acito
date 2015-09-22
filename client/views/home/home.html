@@ -10,10 +10,10 @@
             <div class="home-categories-inner-field">
                 {{#if parentPageList}}
                 {{#each parentPageList}}
-                    <div class="row parent-page" id="page{{_id}}">
+                    <div class="row parent-page" id="page{{_id}}" style="font-size:16px; padding:8px 15px;">
                         {{title}}
                     </div>
-                    <div id="subpage{{_id}}"></div>
+                    <div id="subpage{{_id}}" style="margin-left:10px; font-size:15px;"></div>
                 {{/each}}
                 {{else}}
                     <div>No categories</div>
@@ -33,11 +33,13 @@
           <div class="row">
             <div class="col-md-12 margin-top-4" style="text-align:center">
               <textarea id="questionArea" style="width:180px; height:65px; resize:none; padding:5px; margin-top:10px;" placeholder="Post Your Question"></textarea>
-              <div class="col-md-12 font-size-12 margin-top-15-min color-red" id="questionEmptyInfo" style="margin-left: -8px; margin-top: -20px;">
-                <span>question required</span>
-              </div>
             </div>
-            <div class="col-md-12">
+          </div>
+          <div class="row">
+            <div class="col-md-8 font-size-12 color-red" id="questionEmptyInfo">
+                <span style="margin-left:10px">question required</span>
+            </div>
+            <div class="col-md-4 pull-right">
               <button type="button" id="askQuestion" class="btn btn-primary button-home">Ask</button>
             </div>
           </div>
@@ -58,16 +60,18 @@
             </div>
                 <div class="col-md-12 margin-top-4">
                     <textarea id="searchQuery" style="width:180px; height:30px; resize:none;"></textarea>
-                    <div class="col-md-7 font-size-16 margin-top-15-min color-red" id="searchEmptyInfo">
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-9 font-size-12 color-red" id="searchEmptyInfo">
                         <span>type any string to search</span>
-                    </div>                        
-                </div>
-                    <div class="col-md-12">
+                  </div>
+                  <div class="col-md-3 pull-right">
                         <button type="button" id="search" class="btn btn-primary button-home">Search</button>
-                    </div>
-                </div>
-             </div>
+                  </div>
+              </div>
         </div>
+      </div>
 
       <div class="home-answer-field">
         <div class="row">
@@ -78,7 +82,7 @@
         <div class="home-answer-inner-field">
           {{#each questionList}}
           <div class="row">
-            <div class="col-md-12 home-answer-inner-field-content select-question-row">
+            <div class="col-md-12 home-answer-inner-field-content select-question-row" style="padding:15px 20px">
               {{question}}
             </div>
                 <div class="col-md-12 border-top">

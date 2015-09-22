@@ -78,7 +78,7 @@ pre {
 .side_bar_menu{
   /*background-image: url("/images/bg1.png");*/
   /*background-repeat: no-repeat;*/
-  background-color: #F1F8E2;
+  background-color: #DEE8C5;
   border-color: #080808;
   height:100%;
   position: absolute;
@@ -100,14 +100,14 @@ pre {
 
 .nav li a:hover{ 
   text-decoration: none;
-  background-color: #619F18;
+  background-color: #8BC608;
 }
 .nav li a:hover,.nav li a:focus{  
-  background-color:#619F18;
+  background-color: #8BC608;
 }
 
 .selected{
-  background-color:#619F18;
+  background-color: #8BC608;
 }
 
 .pos-padding{
