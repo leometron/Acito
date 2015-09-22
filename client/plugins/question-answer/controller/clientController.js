@@ -17,7 +17,8 @@ Template.questionDetail.events({
 			$('#questionDetail').hide();
 			Session.set('question','');
 			clearQuestionContent();
-			history.back();										
+			// history.back();
+			Router.go('/');
 		}
 		Meteor.setTimeout(function () {
 			$('#emptyQuestionInfo').hide(),
@@ -28,7 +29,7 @@ Template.questionDetail.events({
         // $('#questionDetail').hide();
        	Session.set('question','');
 		clearQuestionContent();
-		history.back();
+		Router.go('/');
 		Meteor._reload.reload();
 	}
 });
@@ -48,6 +49,7 @@ function clearQuestionContent() {
 	$('#symptoms').val("");
 	$('#secondaryComplaint').val("");
 	$('#medicineTaking').val("");
+	$('#questionArea').val("");
 }
 
 Template.questionAnswer.events({
@@ -55,6 +57,9 @@ Template.questionAnswer.events({
 		var answer = $('#answer').val();
 		if(!answer) {
 			$('#emptyAnswerInfo').show();
+			console.log("user " + Meteor.userId());
+		} else if(!Meteor.userId()) {
+			Router.go('/login');
 		} else {
 			Meteor.call('postAnswer',answer,$('#quetionId').val(),'-');
 			$('#answer').val("");

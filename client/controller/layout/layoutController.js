@@ -69,8 +69,7 @@ Template.home.events({
       if (!$('#questionArea').val()) {
         $('#questionEmptyInfo').show();
       } else if (!Meteor.userId()) {
-        // $('#showPost').hide().animate({"width": "-50%"}, "slow");
-        // $('#loginDetail').show();
+        Session.set('question',$('#questionArea').val());
          Meteor.setTimeout(function() {
             $(window).scrollTop(500);  
           },300);
