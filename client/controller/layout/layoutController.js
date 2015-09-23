@@ -21,6 +21,13 @@ Template.header.events({
         Session.set("pageId", Session.get("selectedPageId"));
         history.back();
     },
+    'click #logout': function() {
+      Meteor.setTimeout(function () {
+            Meteor.logout();
+            Router.go('/');
+            Meteor._reload.reload();                                    
+      }, 250); 
+    }
 });
 
 // Template.header.helpers({

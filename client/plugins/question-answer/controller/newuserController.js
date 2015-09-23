@@ -45,27 +45,30 @@ Template.userLogin.events( {
 			$('#Usererr').html("Password and confirm password are not same");
 			return;
 		}
-		var userEmailExists = typeof Meteor.users.findOne({email: new_email}) === 'object';
+		// var userEmailExists = typeof Meteor.users.findOne({email: new_email}) === 'object';
 		// console.log(userEmailExists);
 
-		var userDetail = { 
-        		"email": new_email,
-        		"username":  first_name,
-        		"password": new_password 
-        	}
-        	
-        	// console.log("......... "+ userDetail);
-        	// console.log("........ " + JSON.stringify(userDetail));
-		
-			if(!userEmailExists){
-	        	Accounts.createUser(userDetail, function(error){
-		            if(error){
-		                $('#Usererr').html(error.reason);
-		            } else {
-		                console.log("Register Success");
-		            }
-	        	});
-	        	return false;	
-        	}
+		var userDetail = { "email": new_email, "username":  first_name, "password": new_password }
+
+	    Accounts.createUser(userDetail, function(error){
+		    if(error){
+		        $('#Usererr').html(error.reason);
+		    } else if(!$('#questionArea').val()) {
+		        $('#Usererr').html("Account has been created and logged in successfully.");
+		        Meteor.setTimeout(function () {
+		        	history.back()
+		        },2000);
+		      } else {
+		        $('#Usererr').html("Account has been created and logged in successfully.");
+		        Meteor.setTimeout(function () {
+		        	Router.go('/ask')
+		        },2000);
+		      }
+	    });
+	    return false;
+
+	    // Meteor.setTimeout(function () {
+				  //   $('#firstname').val(''), $('#upemail').val(''), $('#signpassword').val(''), $('#re-password').val(''), $('#Usererr').html("")
+				  // },3000);  
 	}
 });

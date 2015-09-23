@@ -1,3 +1,7 @@
+Meteor.publish('users', function () {
+   return Meteor.users.find();
+});
+
 var currentPostId = "";
 var querystr = "", filterstr = "", categorystr = "", dateString = "";
 

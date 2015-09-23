@@ -1,3 +1,5 @@
+Meteor.subscribe("users");
+
 // Home Route
 var themeName;
 Router.route('/', {

@@ -65,10 +65,10 @@
         {{#if currentUser}}
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a class="page-scroll">{{currentUser.username}}</a>
+              <a class="page-scroll">Welcome {{currentUser.username}}</a>
             </li>
             <li>
-              <a class="page-scroll">Logout</a>
+              <a class="page-scroll logout" id="logout">Logout</a>
             </li>
             <!-- {{#each pagesList}}
             <li>
