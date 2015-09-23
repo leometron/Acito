@@ -20,6 +20,7 @@ Router.route('/post/:_id', {
   layoutTemplate: 'basicLayout',	
   name: 'postDetail',
    data: function() {
+    console.log('s post id....'+this.params._id);
       var postDoc = Posts.findOne({ _id: this.params._id });
       var userDoc = Meteor.users.findOne({_id: postDoc.createdBy});
       postDoc.publisherName = userDoc.username;

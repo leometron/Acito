@@ -10,7 +10,7 @@ Meteor.publish('homeslider', function () {
   	if(searchstr) {
   		temp = searchstr;
   		searchstr = "";
-  		// return homeslider.find({ createdBy: currentUserId, $text: { $search: temp }});
+        return homeslider.find({createdBy: currentUserId, title:new RegExp(temp,'i')});              
   	} else if(datestr) {
   		temp = datestr;
   		datestr = "";

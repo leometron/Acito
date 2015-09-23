@@ -139,7 +139,7 @@ Template.postList.rendered = function () {
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
             if(Session.get('numberOfCount')){
-          console.log('entered if'+Session.get('postCount')+'.........'+Session.get('numberOfCount'));
+          // alert('entered if'+Session.get('postCount')+'.........'+Session.get('numberOfCount'));
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();  
                   Meteor.setTimeout(function(){

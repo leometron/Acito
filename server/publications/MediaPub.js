@@ -9,7 +9,7 @@ Meteor.publish('Media', function () {
     if (querystr) {
         temp = querystr;
         querystr = "";
-       // return Media.find({createdBy: currentUserId, $text: {$search: temp}});
+        return Media.find({createdBy: currentUserId, name:new RegExp(temp,'i')});                      
     } else if (date) {
         temp = date;
         date = "";
