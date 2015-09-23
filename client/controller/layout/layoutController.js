@@ -58,13 +58,21 @@ Template.home.events({
     // },
     'click .right-arrow' : function(){
       var userId = this._id;
-       // $('.image').animate({width: 'toggle'}, 1600);
+      Session.set('selectedPageId',Session.get("pageId"));         
+      Session.set('selectedPostId', userId);
+      // $('.image').animate({width: 'toggle'}, 1000);
+      $('.image').css('-webkit-animation','mymove 2s').css('animation','mymove 2s').css('position','relative');
+
       Meteor.setTimeout(function(){
-          $(window).scrollTop(500);
-          Session.set('selectedPageId',Session.get("pageId"));         
-          Session.set('selectedPostId', userId);
-      }, 100);
-      Router.go("/post/"+userId);       
+        // $(window).scrollTop(500);
+        // $('.animateclass').css('-webkit-animation','mymoveone 1s').css('animation','mymoveone 1s').css('position','relative');
+        // $('.sampleanimation').css('-webkit-animation','mymoveone 5s').css('animation','mymoveone 5s').css('position','relative');
+        Router.go("/post/"+userId);
+          Meteor.setTimeout(function(){
+            $(window).scrollTop(500);
+            // $('.home-post-field').css('-webkit-animation','mymoveone 2s').css('animation','mymoveone 2s').css('position','relative');
+          },10);
+      }, 1000);
    },
    'click #askQuestion' : function() {
       if (!$('#questionArea').val()) {
@@ -89,7 +97,6 @@ Template.home.events({
    },
    'click #search' : function () {
         if(!$('#searchQuery').val()) {
-            $(window).scrollTop(500);
             $('#searchEmptyInfo').show();
         } else {
             $(window).scrollTop(500);

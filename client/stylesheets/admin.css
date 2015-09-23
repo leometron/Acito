@@ -514,13 +514,20 @@ body, #main {
     z-index: 1;
 }
 .page-selection {
-    background-color: #81915B;
+    background-color: #B8B8B8;
     color: #ffffff;
+    font-weight: bold;
 }
 .parent-page {
     cursor: pointer;
     padding: 5px;
 }
+
+.parent-page:hover {
+    background-color: #B8B8B8;
+    color: #ffffff;
+}
+
 .sub-page {
     padding-left: 20px;
     cursor: pointer;
