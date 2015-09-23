@@ -475,17 +475,17 @@ body, #main {
 
 .home-right-fields {
   position:absolute; 
-  top:56px; 
+  top:58px; 
   right:7px;
   width:19%;  
 }
 
 .home-ask-field {
   background: #81915B none repeat scroll 0 0;
-  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+/*  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
-  -o-box-shadow: 0 0 10px; 
+  -o-box-shadow: 0 0 10px; */
   height:197px; 
   overflow:hidden
 }
@@ -515,10 +515,10 @@ body, #main {
 
 .home-search-field {
   background: #81915B none repeat scroll 0 0;  
-  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+/*  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
-  -o-box-shadow: 0 0 10px; 
+  -o-box-shadow: 0 0 10px; */
   height:185px; 
   overflow:hidden; 
   margin-top:8px;
@@ -541,10 +541,10 @@ body, #main {
 
 .home-answer-field {
   background: #81915B none repeat scroll 0 0; 
-  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+/*  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
-  -o-box-shadow: 0 0 10px; 
+  -o-box-shadow: 0 0 10px; */
   overflow: hidden; 
   margin-top: 8px;
   margin-bottom: 15px;
@@ -573,8 +573,7 @@ body, #main {
 }
 
 .home-answer-inner-field-content:hover{
-  font-size: 16px;
-  color:blue;
+  color:#81915B;
 }
 
 .border-top {
@@ -588,13 +587,13 @@ body, #main {
 .home-post-field {
   width: 59%; 
   background: #F2F6E8; 
-  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+/*  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
-  -o-box-shadow: 0 0 10px; 
+  -o-box-shadow: 0 0 10px; */
   padding: 10px; 
   position: absolute; 
-  top: 574px; 
+  top: 568px; 
   left: 20%;
   padding-bottom: 15px;
 }
@@ -616,7 +615,7 @@ body, #main {
 
 .home-left-field {
   position: absolute; 
-  top: 566px; 
+  top: 560px; 
   left: 7px; 
   width: 18%; 
   /*border: 2px solid #81915B;*/
@@ -624,24 +623,24 @@ body, #main {
 
 .home-categories-field{
     background: #81915B none repeat scroll 0 0;  
-    box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+/*    box-shadow: 0 0 10px rgba(0,0,0,0.6); 
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
-    -o-box-shadow: 0 0 10px; 
+    -o-box-shadow: 0 0 10px;*/ 
     height:auto; 
     overflow:hidden; 
     margin-top:8px;
-    padding-bottom: 15px;
+    /*padding-bottom: 15px;*/
 }
 
 .home-categories-inner-field {
-    background: #FFFFFF; 
-    box-shadow: 0 0 10px rgba(0,0,0,0.6); 
+    background: #D8D8D8; 
+/*    box-shadow: 0 0 10px rgba(0,0,0,0.6); 
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
-    -o-box-shadow: 0 0 10px; 
-    /*width: 90%; */
-    /*margin-left: 12px; */
+    -o-box-shadow: 0 0 10px; */
+    /*width: 99.4%; */
+    /*margin-left: 1px; */
     /*border-radius: 10px; */
     overflow: hidden;
     height: auto;
@@ -712,4 +711,24 @@ body, #main {
   padding:5px; 
   border:2px solid #cfcfcf; 
   background: #DEE8C5;
+}
+
+@-webkit-keyframes mymove {
+    from {right: 0px;}
+    to {right: 1300px;}
+}
+
+@keyframes mymove {
+    from {right: 0px;}
+    to {right: 1300px;}
+}
+
+@-webkit-keyframes mymoveone {
+    from {left: -1300px;}
+    to {left: 0px;}
+}
+
+@keyframes mymoveone {
+    from {left: -1300px;}
+    to {left: 0px;}
 }

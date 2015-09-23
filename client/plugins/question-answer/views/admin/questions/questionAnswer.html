@@ -1,6 +1,6 @@
 <template name="questionAnswer">
     <div class="row">
-        <div class="col-md-12" style="padding:25px;">
+        <div class="col-md-12" style="padding:25px 15px;">
         	<u>{{question.question}}</u>
         </div>
 <!--         <div class="col-md-12 border-top">
@@ -18,15 +18,13 @@
         	<textarea id="answer" style="width:100%; height:10%; resize:none"></textarea>
         </div>
         <div class="row">
-            <div class="col-md-6">
-            </div>
-            <div class="col-md-6 font-size-16-min color-red" id="emptyAnswerInfo">
+            <div class="col-md-9 font-size-16-min color-red text-center" id="emptyAnswerInfo" style="margin-left:7%">
                 <span>answer required</span>
             </div>
+            <div class="col-md-2 pull-right" style="margin-top:10px; margin-right: 5px;">
+                <button type="button" id="client-post-answer" class="btn btn-primary">Post Answer</button>
+            </div>
         </div>        
-        <div class="col-md-4" style="margin-top:10px;">
-	        	<button type="button" id="client-post-answer" class="btn btn-primary">Post Answer</button>
-	   </div>
     </div>
     <input type="hidden" id="quetionId" value="{{question._id}}">
 </template>
