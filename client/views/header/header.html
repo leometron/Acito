@@ -16,8 +16,7 @@
         </nav>
       </div>
 {{else}} -->
-<div style="background: #BFBCB2 none repeat scroll 0 0;  box-shadow: 0 0 10px rgba(0,0,0,0.6); -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); -o-box-shadow: 0 0 10px; height:502px; width:79%; position:absolute; top:58px; left:10px">
-
+<div style="background: #BFBCB2 none repeat scroll 0 0; height:502px; width:79.3%; position:absolute; top:58px; left:8px">
 <div class="padding-zero" style="border-radius: 80px; margin-left: 10px; margin-top: 11px; overflow: hidden; width: 98%;">
   <div id="myCarousel" class="carousel slide bannerDesign" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
@@ -65,10 +64,10 @@
         {{#if currentUser}}
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a class="page-scroll">{{currentUser.username}}</a>
+              <a class="page-scroll">Welcome {{currentUser.username}}</a>
             </li>
             <li>
-              <a class="page-scroll">Logout</a>
+              <a class="page-scroll logout" id="logout">Logout</a>
             </li>
             <!-- {{#each pagesList}}
             <li>

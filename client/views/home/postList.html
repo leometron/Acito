@@ -1,7 +1,7 @@
 <template name="postList">
     <div class="row image image-center post-view">
         {{#if equals searchResultCount 0}}  
-            No results found
+            <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
         {{else}}
         {{#each postsList}}
             <div class="col-md-4 margin-bottom-15 postLists" id="postLists" style=" padding-right: 5px; padding-left: 5px;">

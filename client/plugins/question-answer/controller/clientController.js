@@ -17,6 +17,7 @@ Template.questionDetail.events({
 			$('#questionDetail').hide();
 			Session.set('question','');
 			clearQuestionContent();
+			$('#questionArea').val("");
 			// history.back();
 			Router.go('/');
 		}
@@ -49,7 +50,6 @@ function clearQuestionContent() {
 	$('#symptoms').val("");
 	$('#secondaryComplaint').val("");
 	$('#medicineTaking').val("");
-	$('#questionArea').val("");
 }
 
 Template.questionAnswer.events({
