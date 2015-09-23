@@ -29,11 +29,6 @@
                                 placeholder="Enter category name here"></div>
                     <em class="font-size-12">The name is how it appears on your site.</em>
                 </div>
-                <!--                 <div class="row padding-top-bottom-10">
-                                    <div class="font-size-12">Slug</div>
-                                    <div><input type="text" class="form-control margin-bottom-zero" id="categorySlug"></div>
-                                    <em class="font-size-12">The “slug” is the URL-friendly version of the name.</em>
-                                </div> -->
                 <div class="row padding-top-bottom-10">
                     <div class="font-size-12">Description</div>
                     <div><textarea rows="5" cols="10" class="form-control margin-bottom-zero"
@@ -46,51 +41,25 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <!-- <div class="row">
-                     <div class="padding-left-zero">
-                         <span class="dropdown">
-                             <button class="btn btn-default dropdown-toggle" type="button" id="categories2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                 Bulk Actions
-                                 <span class="caret"></span>
-                             </button>
-                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                 <li><a href="#">Bulk Actions</a></li>
-                                 <li><a href="#">Delete</a></li>
-                             </ul>
-                         </span>
-                         <span><button type="button" class="btn btn-default">Apply</button></span>
-                     </div>
-                 </div> -->
                 <div class="row padding-top-bottom-10">
                     <div class="bs-example" data-example-id="striped-table">
                         <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
                             <div class="col-md-2">Name</div>
                             <div class="col-md-6">Description</div>
+                            <div class="col-md-2">Options</div>                            
                         </div>
                         {{#each tagList}}
-                        <div id="{{_id}}" class="tag row  padding-top-bottom-10 cursor-pointer"
+                        <div id="{{_id}}" class="tag row  padding-top-bottom-10"
                              style="border: 1px solid #ddd">
                             <div class="col-md-2">
                                 {{name}}
                             </div>
                             <div class="col-md-6">{{description}}</div>
+                            <div class="col-md-4"><a id="editTag" class="cursor-pointer">Edit</a> | <a id="deleteTag" class="cursor-pointer">Delete</a></div>                   
                         </div>
                         {{/each}}
                     </div>
                 </div>
-                <!--   <div class="row">
-                       <span class="dropdown">
-                           <button class="btn btn-default dropdown-toggle" type="button" id="categories3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                               Bulk Actions
-                               <span class="caret"></span>
-                           </button>
-                           <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                               <li><a href="#">Bulk Actions</a></li>
-                               <li><a href="#">Delete</a></li>
-                           </ul>
-                       </span>
-                       <span><button type="button" class="btn btn-default">Apply</button></span>
-                   </div> -->
             </div>
         </div>
     </div>

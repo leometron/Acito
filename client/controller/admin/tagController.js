@@ -18,7 +18,7 @@ Template.tags.events({
             Meteor._reload.reload();
         }
     },
-    'click .tag.row': function () {
+    'click #editTag': function () {
         Session.set('selectedTagId', this._id);
         Router.go("/admin/posts/tags/edit");
     },
@@ -31,6 +31,10 @@ Template.tags.events({
         event.preventDefault();
         Meteor.call('showAllTags');
         Meteor._reload.reload();
+    },
+    'click #deleteTag': function () {
+        Meteor.call('removeTag', this._id);
+        Router.go("/admin/posts/tags");        
     }
 });
 
@@ -54,9 +58,6 @@ Template.tags.helpers({
     'tagList': function () {
         return tags.find();
     }
-    // 'errormsg': function () {
-    //     return Session.get('errorMessage');
-    // }
 });
 
 Template.editTags.helpers({
