@@ -3,8 +3,9 @@
 }
 
 pre {
-  white-space:pre-wrap !important;
+/*  white-space:pre-wrap !important;
   word-wrap:break-word !important;
+  text-align: justify !important;*/
 }
 
 /*
@@ -28,7 +29,7 @@ pre {
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-    height: 6.9em;
+    height: 9em;
     overflow: hidden;
     padding: 5px 20px 15px 0px;
     font-size: small;
@@ -170,7 +171,7 @@ pre {
 .post-thumb {
     padding: 25px 0px 35px 20px;
     background: #ffffff;
-    height: 170px;
+    height: 190px;
 }
 
 .bg-dynamic-color {

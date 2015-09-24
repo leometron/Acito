@@ -7,18 +7,6 @@ Has the events and helpers related to home page.
 Meteor.subscribe('featuredimage');
 
 Template.header.events({
-    'click #pageName': function () {
-        Session.set('numberOfCount', 3);
-        Session.set('selectedPostId', "");
-        Session.set("pageId", this._id);
-      Session.set('postCount',Posts.find({pageId:this._id}).count());        
-        Router.go('/posts?pageId='+this._id+'&count='+Session.get('numberOfCount'));        
-    },
-    'click #backToPage': function () {
-        Session.set('selectedPostId', "");
-        Session.set("pageId", Session.get("selectedPageId"));
-        history.back();
-    },
     'click #logout': function() {
       Meteor.setTimeout(function () {
             Meteor.logout();
@@ -87,7 +75,7 @@ Template.home.events({
       $("#subpage"+this._id).html('');
     } else {
       $('#page'+this._id).addClass('page-selection');
-      var subPages = Pages.find({parentId: this._id});
+      var subPages = Pages.find({parentId: this._id,status:'Published'});
       var t ="";
       subPages.forEach(function(item){
         t += '<div class="sub-page" id="'+item._id+'">'+item.title+'</div>';
@@ -100,6 +88,7 @@ Template.home.events({
       Session.set('numberOfCount', 3);
       Session.set('selectedPostId', "");
       Session.set("pageId", $(event.target).attr("id"));
+      Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
       Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
    }    
 });
@@ -124,7 +113,7 @@ Template.home.helpers({
         return new_count;
    },
    'parentPageList' : function() {
-       return Pages.find({parentId:'null'});
+       return Pages.find({parentId:'null',status:'Published'});
    }
 });
 
@@ -160,6 +149,7 @@ Template.postList.rendered = function () {
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
             if(Session.get('numberOfCount')){
+          // alert('entered if'+Session.get('postCount')+'.........'+Session.get('numberOfCount'));
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();  
                   Meteor.setTimeout(function(){

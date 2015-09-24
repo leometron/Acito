@@ -3,7 +3,7 @@ Meteor.publish('tags', function () {
     if (querystr) {
         var temp = querystr;
         querystr = "";
-        // return tags.find({$text: {$search: temp}});
+        return tags.find({name:new RegExp(temp,'i')});        
     } else {
         return tags.find();
     }
