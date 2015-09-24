@@ -74,6 +74,7 @@ Template.home.events({
     },
    'click .select-question-row' : function() {
       if (this._id) {
+        Meteor.call('countQuestion', this._id);
         Router.go('/question?id='+ this._id);      
       }
    	},
@@ -110,8 +111,17 @@ Template.home.helpers({
    'questionList': function () {
         return questionDetail.find({status:"active"});
    },
+   'questionName': function(nameStr) {
+      var user = Meteor.users.findOne({ _id: nameStr});
+      return user.username;
+   },
    'answerList': function () {
         return answer.find({status:"active"});
+   },
+   'answercount': function(Id) {
+        var count = answer.find({status:"active", questionId: Id}).count();
+        var new_count = (count == 0)?'': (count == 1) ? ' , ' + count + ' Answer' : ' , ' + count + ' Answers';
+        return new_count;
    },
    'parentPageList' : function() {
        return Pages.find({parentId:'null'});

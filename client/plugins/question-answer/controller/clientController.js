@@ -57,11 +57,10 @@ Template.questionAnswer.events({
 		var answer = $('#answer').val();
 		if(!answer) {
 			$('#emptyAnswerInfo').show();
-			console.log("user " + Meteor.userId());
 		} else if(!Meteor.userId()) {
 			Router.go('/login');
 		} else {
-			Meteor.call('postAnswer',answer,$('#quetionId').val(),'-');
+			Meteor.call('postAnswer',answer,$('#quetionId').val(), Meteor.userId());
 			$('#answer').val("");
 			history.back();
 		}

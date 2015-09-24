@@ -83,7 +83,8 @@
           {{#each questionList}}
           <div class="row">
             <div class="col-md-12 home-answer-inner-field-content select-question-row" style="padding:15px 20px">
-              {{question}}
+              {{question}} by <b style="color:black">{{questionName createdBy}}</b>, {{views}} Views 
+              {{answercount _id}}
             </div>
                 <div class="col-md-12 border-top">
                 </div>

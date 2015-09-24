@@ -90,6 +90,7 @@
 	padding: 14px 35px 14px; 
 	float:left; 
 	background-color: #ffffff;
+	margin-top:25px;
 }
 
 .usersignup {
@@ -98,6 +99,7 @@
 	padding: 14px 35px 14px; 
 	float:left; 
 	background-color: #ffffff;
+	margin-top:25px;
 }
 
 .memberlogin {
@@ -133,3 +135,23 @@
 .cursor {
 	cursor: pointer;
 } 
+
+.memberBenefit {
+	width: 97%; 
+	border: 1px solid #CCCCCC; 
+	padding: 0px; 
+	float: left;
+    background-color: #ffffff;
+}
+
+.memberBenefit .memberTitle {
+	text-align: center; 
+	background-color: #DDDAA4; 
+	padding: 8px; 
+	font-weight: bold;
+}
+
+.memberlist {
+	padding: 6px; 
+	border-bottom: 1px solid #E5E5E5;
+}

@@ -3,7 +3,7 @@ Template.userLogin.events( {
 		 e.preventDefault();
         var email = t.find('#email').value, password = t.find('#password').value;
         if(email == ''){
-            $('#errorMsg').html("Please enter email id");
+            $('#errorMsg').html("Please enter email or username");
             return;
         } else if(password == '') {
             $('#errorMsg').html("Please enter password");
@@ -29,11 +29,11 @@ Template.userLogin.events( {
 		var new_email = t.find('#upemail').value, new_password = t.find('#signpassword').value;
 		var repassword = t.find('#re-password').value;
 
-		if(firstname == '') {
-			$('#Usererr').html("Please enter name");
+		if(first_name == '') {
+			$('#Usererr').html("Please enter username");
 			return;
 		} else if(new_email == '') {
-			$('#Usererr').html("Please enter email id");
+			$('#Usererr').html("Please enter email");
 			return;
 		} else if(new_password == '') {
 			$('#Usererr').html("Please enter password");

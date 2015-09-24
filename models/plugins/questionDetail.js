@@ -34,6 +34,9 @@ questionDetail.attachSchema(
     },
     createdAt: {
       type: String
+    },
+    views: {
+      type: Number
     }        
   })
 );

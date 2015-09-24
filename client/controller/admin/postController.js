@@ -7,6 +7,7 @@
  */
 
 Meteor.subscribe("Posts");
+Meteor.subscribe("users");
 
 var selectedIds = [];
 
