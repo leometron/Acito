@@ -86,6 +86,16 @@ Template.home.events({
       });
       $("#subpage"+this._id).html(t);
     }
+
+      Session.set("pageId", "");
+      Session.set('numberOfCount', 3);
+      Session.set('selectedPostId', "");
+      Session.set("pageId",this._id);
+      Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+      Session.set('parentCount', Pages.find({parentId:Session.get("pageId")}).count()); 
+      if(Session.get('parentCount') == 0) {
+        Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
+      }
    },
    'click .sub-page' : function(event){
       Session.set("pageId", "");
@@ -120,6 +130,11 @@ Template.home.helpers({
    'parentPageList' : function() {
        return Pages.find({parentId:'null',status:'Published'});
    }
+   // 'time': function(dateStr) {
+   //      var current_date = new Date();
+   //      seconds = Math.floor((current_date - dateStr)/10000);
+   //      console.log(current_date);
+   // }
 });
 
 Template.header.helpers({
