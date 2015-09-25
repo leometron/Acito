@@ -114,7 +114,7 @@
                         {{/each}}       --> 
                          {{#if showSelectedPost}}
                             <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
-                            {{#each subPageList}}
+                            {{#each pageList}}
                                 {{#if equals showSelectedPost.pageId _id}}
                                 <option>none</option>
                                 {{else}}
@@ -123,7 +123,7 @@
                             {{/each}} 
                          {{else}}
                             <option>none</option>
-                            {{#each subPageList}}
+                            {{#each pageList}}
                                 <option value="{{_id}}">{{title}}</option>                        
                             {{/each}}
                          {{/if}}
