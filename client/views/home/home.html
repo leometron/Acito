@@ -79,8 +79,11 @@
         <div class="home-answer-inner-field">
           {{#each questionList}}
           <div class="row">
-            <div class="col-md-12 home-answer-inner-field-content select-question-row" style="padding:15px 20px">
-              {{question}} by <b style="color:black">{{questionName createdBy}}</b>, {{views}} Views 
+            <div class="col-md-12 home-answer-inner-field-content select-question-row">
+              {{question}}
+            </div>
+            <div class="col-md-12 home-answer-inner-field-detail">
+              by <b style="color:black">{{questionName createdBy}}</b>, {{views}} Views 
               {{answercount _id}}
             </div>
                 <div class="col-md-12 border-top">
@@ -91,7 +94,7 @@
         <div class="all-questions"><a class="all-questions-content">View all answers</a></div>
       </div>
     </div>
-
+    <!-- <div style="border: 1px solid red; height:100px; width:100px;"></div> -->
     <div class="home-post-field">
       {{> yield}}
     </div>
