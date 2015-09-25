@@ -34,6 +34,14 @@ Router.route('/ask', {
   name: 'questionDetail'  
 });
 
+Router.route('/readmore', {
+  layoutTemplate: 'basicLayout',  
+  name: 'readMore', 
+  data: function() {
+     return homeslider.findOne({ _id:this.params.query.id });
+  } 
+});
+
 Router.route('/posts', {
   layoutTemplate: 'basicLayout',  
   name: 'postList',

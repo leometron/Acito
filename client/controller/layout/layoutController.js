@@ -13,6 +13,10 @@ Template.header.events({
             Router.go('/');
             Meteor._reload.reload();                                    
       }, 250); 
+    },
+    'click .read-more' : function() {
+        $(window).scrollTop(500);
+        Router.go('/readmore?id='+ this._id);
     }
 });
 
@@ -90,7 +94,8 @@ Template.home.events({
       Session.set("pageId", $(event.target).attr("id"));
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
       Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
-   }    
+   },
+
 });
 
 Template.home.helpers({
@@ -127,6 +132,12 @@ Template.header.helpers({
     'isHomeSlider' : function() {
         return homeslider.findOne({status:"Published"});
     },    
+});
+
+Template.readMore.helpers({
+    'homeSliderList' : function() {
+        return homeslider.find({status:"Published"});
+    },
 });
 
 Template.allQuestions.helpers({
