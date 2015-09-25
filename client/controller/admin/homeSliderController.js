@@ -72,7 +72,8 @@ Template.addNewHomeSlider.events({
         } else {
             Session.set('errorMessage', '');
             var sliderImage = $('#sliderImage').attr('src');
-            Meteor.call('insertSliderData', $('#sliderTitle').val(), Session.get('selectimgName'), sliderImage, getCurrentDate());
+            var description = (!$('#details').val() ) ? "-" : $('#details').val();                        
+            Meteor.call('insertSliderData', $('#sliderTitle').val(), Session.get('selectimgName'), sliderImage, getCurrentDate(),description);
             Router.go('/admin/homeSliders');
         }
     },
@@ -84,7 +85,8 @@ Template.addNewHomeSlider.events({
         } else {
             Session.set('errorMessage', '');
             var sliderImage = $('#sliderImage').attr('src');
-            Meteor.call('publishSliderData', $('#sliderTitle').val(), Session.get('selectimgName'), sliderImage, getCurrentDate());
+            var description = (!$('#details').val() ) ? "-" : $('#details').val();                        
+            Meteor.call('publishSliderData', $('#sliderTitle').val(), Session.get('selectimgName'), sliderImage, getCurrentDate(),description);
             Router.go('/admin/homeSliders');
         }
     },
@@ -97,7 +99,8 @@ Template.addNewHomeSlider.events({
             Session.set('errorMessage', '');
             var sliderImage = $('#sliderImage').attr('src');
             var sliderId = Session.get('selectedSliderId');
-            Meteor.call('republishSliderData', $('#sliderTitle').val(), $('#sliderName').val(), sliderImage, getCurrentDate(), sliderId);
+            var description = (!$('#details').val() ) ? "-" : $('#details').val();                                    
+            Meteor.call('republishSliderData', $('#sliderTitle').val(), $('#sliderName').val(), sliderImage, getCurrentDate(), sliderId,description);
             Router.go('/admin/homeSliders');
         }
     },
@@ -110,7 +113,8 @@ Template.addNewHomeSlider.events({
             Session.set('errorMessage', '');
             var sliderImage = $('#sliderImage').attr('src');
             var sliderId = Session.get('selectedSliderId');
-            Meteor.call('updateSliderData', $('#sliderTitle').val(), $('#sliderName').val(), sliderImage, getCurrentDate(), sliderId);
+            var description = (!$('#details').val() ) ? "-" : $('#details').val();                                                
+            Meteor.call('updateSliderData', $('#sliderTitle').val(), $('#sliderName').val(), sliderImage, getCurrentDate(), sliderId,description);
             Router.go('/admin/homeSliders');
         }
     },

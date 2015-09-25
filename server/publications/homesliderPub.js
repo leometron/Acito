@@ -34,7 +34,8 @@ Meteor.publish('homeslider', function () {
 });
 
 Meteor.methods({
-    'insertSliderData': function (title, imgname, imgfile, date) {
+    'insertSliderData': function (title, imgname, imgfile, date, detail) {
+      console.log('insertSliderData');
         homeslider.insert({
             title: title,
             sliderName: imgname,
@@ -43,13 +44,12 @@ Meteor.methods({
             deleted: false,
             published: false,
             status: "Draft",
-            createdBy: Meteor.userId()
-        });
-        if (homeslider.find().count() == 1) {
-          homeslider._ensureIndex({title: "text"});
-        }        
+            createdBy: Meteor.userId(),
+            description: detail
+        });    
     },
-    'publishSliderData': function (title, imgname, imgfile, date) {
+    'publishSliderData': function (title, imgname, imgfile, date, detail) {
+      console.log('publishSliderData');
         homeslider.insert({
             title: title,
             sliderName: imgname,
@@ -58,10 +58,12 @@ Meteor.methods({
             deleted: false,
             published: true,
             status: "Published",
-            createdBy: Meteor.userId()
+            createdBy: Meteor.userId(),
+            description: detail            
         });
     },
-    'republishSliderData': function (title, imgname, imgfile, date, sliderId) {
+    'republishSliderData': function (title, imgname, imgfile, date, sliderId,detail) {
+      console.log('republishSliderData');      
         homeslider.update(sliderId, {
             $set: {
                 title: title,
@@ -70,12 +72,13 @@ Meteor.methods({
                 createdAt: date,
                 deleted: false,
                 published: true,
-                status: "Published"
+                status: "Published",
+                description: detail
             }
         });
     },
-    'updateSliderData': function (title, imgname, imgfile, date, sliderId) {
-        homeslider.update(sliderId, {$set: {title: title, sliderName: imgname, sliderImage: imgfile, createdAt: date}});
+    'updateSliderData': function (title, imgname, imgfile, date, sliderId,detail) {
+        homeslider.update(sliderId, {$set: {title: title, sliderName: imgname, sliderImage: imgfile, createdAt: date, description: detail}});
     },
     'binSliderData': function (sliderId) {
         homeslider.update(sliderId, {$set: {deleted: true, status: "Bin"}});

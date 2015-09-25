@@ -25,6 +25,9 @@ homeslider.attachSchema(
         },
         status: {
             type: String
+        },
+        description: {
+            type: String
         }
     })
 );
