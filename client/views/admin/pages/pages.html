@@ -89,9 +89,9 @@
                             <div class="col-md-6 padding-left-zero margin-left-minus-30" id="list">
                                 {{#if deleted}}
                                 <strike>{{title}}</strike>
-                                {{#if equals parentId "(no parent)"}}
+                                {{#if equals parentId "null"}}
                                 {{else}}
-                                | Parent Page: {{parentId}}
+                                | Parent Page: {{parentTitle}}
                                 {{/if}}
                                 <div><a href="#" id="restorelist">Restore</a> | <a href="#" id="deletelist">Delete
                                     Permanently</a></div>
