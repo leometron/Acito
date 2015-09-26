@@ -334,16 +334,35 @@ body, #main {
 
 .homeslider-sub-content {
     color: #52366A;
-    font-size: 30px;
+    font-size: 26px;
     text-align: left;
     padding: 3px 10px;
-    height:24%; 
+    height:25%; 
     width:50%; 
     position:absolute; 
     right:35px; 
     bottom:35px; 
     background-image: url(/images/logo-sub.png);
     border-bottom-right-radius: 50px;
+}
+
+.homeslider-description {
+    font-size: 15px;
+    padding: 0px 35px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.read-more {
+    float:right;
+    background: #79b107 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    margin-right: 35px;
+    padding: 3px 15px;
+    margin-top: 5px;
 }
 
 .padding-100{
@@ -566,15 +585,24 @@ body, #main {
 }
 
 .home-answer-inner-field-content {
-  padding: 10px; 
   text-overflow: ellipsis; 
   white-space: nowrap; 
   overflow: hidden;
   cursor: pointer;
+  padding:13px 20px;
+  font-weight: bold;
+}
+
+.home-answer-inner-field-detail {
+  padding: 10px;
+  font-size: 12px; 
+  margin-left: 10px; 
+  margin-top: -22px;
 }
 
 .home-answer-inner-field-content:hover{
   color:#81915B;
+  text-decoration: underline;
 }
 
 .border-top {
@@ -618,7 +646,10 @@ body, #main {
   position: absolute; 
   top: 560px; 
   left: 7px; 
-  width: 18%; 
+  width: 18%;
+  /*height: 100%;*/
+  background: #ffffff; 
+  z-index: 100;
   /*border: 2px solid #81915B;*/
 }
 
@@ -722,14 +753,4 @@ body, #main {
 @keyframes mymove {
     from {right: 0px;}
     to {right: 1300px;}
-}
-
-@-webkit-keyframes mymoveone {
-    from {left: -1300px;}
-    to {left: 0px;}
-}
-
-@keyframes mymoveone {
-    from {left: -1300px;}
-    to {left: 0px;}
 }
