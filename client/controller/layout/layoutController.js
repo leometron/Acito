@@ -151,10 +151,10 @@ Template.postList.rendered = function () {
             if(Session.get('numberOfCount')){
           // alert('entered if'+Session.get('postCount')+'.........'+Session.get('numberOfCount'));
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
-                  $('.post-loading-icon').show();  
+                  $('.post-loading-icon').show();
+                    Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount'));                                                      
                   Meteor.setTimeout(function(){
                   Session.set('numberOfCount', Session.get('numberOfCount') +3);
-                    Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount'));        
                       if(Session.get('postCount')<=Session.get('numberOfCount')){
                           $('.post-loading-icon').hide();
                       }
@@ -181,7 +181,7 @@ Template.home.rendered = function () {
     }, 5500);
 
     $(function () {
-        console.log(Session.get('themeName'));
+        console.log(Session.get('themeName'));      
         var theme = Session.get('themeName');
         if (theme === 'theme1') {
             $('#currentTheme').remove();
