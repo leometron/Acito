@@ -15,7 +15,7 @@ Template.header.events({
       }, 250); 
     },
     'click .read-more' : function() {
-        $(window).scrollTop(500);
+        $(window).scrollTop(572);
         Router.go('/readmore?id='+ this._id);
     }
 });
@@ -25,13 +25,13 @@ Template.home.events({
       var postId = this._id;
       Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
-      $('.image').css('-webkit-animation','mymove 2s').css('animation','mymove 2s').css('position','relative');
+      // $('.image').css('-webkit-animation','mymove 2s').css('animation','mymove 2s').css('position','relative');
       Meteor.setTimeout(function(){
         Router.go("/post/"+postId);
           Meteor.setTimeout(function(){
-            $(window).scrollTop(500);
+            $(window).scrollTop(572);
           },10);
-      }, 1000);
+      }, 100);
     },
    'click #askQuestion' : function() {
       if (!$('#questionArea').val()) {
@@ -39,13 +39,13 @@ Template.home.events({
       } else if (!Meteor.userId()) {
         Session.set('question',$('#questionArea').val());
          Meteor.setTimeout(function() {
-            $(window).scrollTop(500);  
+            $(window).scrollTop(572);  
           },300);
           Router.go('/login');
       } else {
         Session.set('question',$('#questionArea').val());
           Meteor.setTimeout(function(){
-            $(window).scrollTop(500);  
+            $(window).scrollTop(572);  
             Router.go('/ask');
           },300);
       }
@@ -57,7 +57,7 @@ Template.home.events({
         if(!$('#searchQuery').val()) {
             $('#searchEmptyInfo').show();
         } else {
-            $(window).scrollTop(500);
+            $(window).scrollTop(572);
             Router.go('/posts?queryString='+$('#searchQuery').val());
         }
         Meteor.setTimeout(function(){
@@ -66,11 +66,13 @@ Template.home.events({
     },
    'click .select-question-row' : function() {
       if (this._id) {
+        $(window).scrollTop(572);
         Meteor.call('countQuestion', this._id);
         Router.go('/question?id='+ this._id);      
       }
    	},
    'click .all-questions-content' : function() {
+      $(window).scrollTop(572);
       Router.go('/allquestions');
     },
    'click .parent-page' : function(){
