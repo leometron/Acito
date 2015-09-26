@@ -173,8 +173,10 @@ Template.addNewPage.events({
         } else {
             Session.set('errorMessage', '');
             var selectedPages = Session.get('selectedPages');
+            var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
+            var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
-            Meteor.call('deletePagesData', $('#pageTitle').val(), pagecomment, selectedPages);
+            Meteor.call('deletePagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentId, parentTitle);
             Router.go('/admin/pages');
         }
     },
@@ -198,8 +200,10 @@ Template.addNewPage.events({
         } else {
             Session.set('errorMessage', '');
             var selectedPages = Session.get('selectedPages');
+            var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
+            var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
-            Meteor.call('updatePagesData', $('#pageTitle').val(), pagecomment, selectedPages);
+            Meteor.call('updatePagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentId, parentTitle);
             Router.go('/admin/pages');
         }
     },
@@ -221,8 +225,10 @@ Template.addNewPage.events({
         } else {
             Session.set('errorMessage', '');
             var selectedPages = Session.get('selectedPages');
+            var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
+            var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
-            Meteor.call('RePublishPagesData', $('#pageTitle').val(), pagecomment, selectedPages);
+            Meteor.call('RePublishPagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentId, parentTitle);
             Router.go('/admin/pages');
         }
     },
@@ -231,12 +237,10 @@ Template.addNewPage.events({
         Session.set('parentId', "");
         Session.set('parentTitle', "");
         var parentName = $(event.target).text();
-        if(parentName != "(no parent)"){
-            var parentId = this._id;
-            $('#parentinsert').text($(event.target).text());
-            Session.set('parentId', parentId);
-            Session.set('parentTitle', parentName);
-        }
+        var parentId = this._id;
+        $('#parentinsert').text($(event.target).text());
+        Session.set('parentId', parentId);
+        Session.set('parentTitle', parentName);
     }
 });
 
@@ -247,7 +251,7 @@ Template.addNewPage.helpers({
     },
 
     'NoParentPages': function () {
-        return Pages.find({parentId: 'null'});
+        return Pages.find();
     }
 
     // 'errormsg': function () {

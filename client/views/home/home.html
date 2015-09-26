@@ -80,11 +80,10 @@
           {{#each questionList}}
           <div class="row">
             <div class="col-md-12 home-answer-inner-field-content select-question-row">
-              {{question}}
+              {{question}} 
             </div>
             <div class="col-md-12 home-answer-inner-field-detail">
-              by <b style="color:black">{{questionName createdBy}}</b>, {{views}} Views 
-              {{answercount _id}}
+              {{timeanalysis createdAt}} by <b style="color:black">{{questionName createdBy}}</b>, {{views}} Views {{answercount _id}}
             </div>
                 <div class="col-md-12 border-top">
                 </div>

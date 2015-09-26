@@ -132,11 +132,6 @@ Template.home.helpers({
    'parentPageList' : function() {
        return Pages.find({parentId:'null',status:'Published'});
    }
-   // 'time': function(dateStr) {
-   //      var current_date = new Date();
-   //      seconds = Math.floor((current_date - dateStr)/10000);
-   //      console.log(current_date);
-   // }
 });
 
 Template.header.helpers({
@@ -179,10 +174,10 @@ Template.postList.rendered = function () {
             if(Session.get('numberOfCount')){
           // alert('entered if'+Session.get('postCount')+'.........'+Session.get('numberOfCount'));
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
-                  $('.post-loading-icon').show();  
+                  $('.post-loading-icon').show();
+                    Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount'));                                                      
                   Meteor.setTimeout(function(){
                   Session.set('numberOfCount', Session.get('numberOfCount') +3);
-                    Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount'));        
                       if(Session.get('postCount')<=Session.get('numberOfCount')){
                           $('.post-loading-icon').hide();
                       }
@@ -209,7 +204,7 @@ Template.home.rendered = function () {
     }, 5500);
 
     $(function () {
-        console.log(Session.get('themeName'));
+        console.log(Session.get('themeName'));      
         var theme = Session.get('themeName');
         if (theme === 'theme1') {
             $('#currentTheme').remove();
@@ -263,4 +258,44 @@ function addTwitterWidget() {
     }(document, 'script', 'twitter-wjs');
 }
 
+Template.registerHelper ("timeanalysis", function(date) {
+    if(date)
+       
+       var current_date = new Date();
+       var previous_date = new Date(date);
 
+       var date1_ms = current_date.getTime();
+       var date2_ms = previous_date.getTime(); 
+        
+       var difference_ms = date1_ms - date2_ms;
+           difference_ms = difference_ms/1000;
+
+       var seconds = Math.floor(difference_ms % 60);
+          difference_ms = difference_ms/60; 
+       
+       var minutes = Math.floor(difference_ms % 60);
+        minutes = (minutes == 0)?'': (minutes == 1) ? minutes + ' minute' : minutes + '  minutes';
+          difference_ms = difference_ms/60;
+       
+       var hours = Math.floor(difference_ms % 24);
+        hours = (hours == 0)?'': (hours == 1) ? hours + ' hour, ' : hours + '  hours, ';
+          difference_ms = difference_ms/24;
+
+       var days = Math.floor(difference_ms % 7);
+        days = (days == 0)?'': (days == 1) ? days + ' day, ' : days + '  days, '; 
+          difference_ms = difference_ms/7;
+
+       var weeks = Math.floor(difference_ms % 4.5);
+        weeks = (weeks == 0)?'': (weeks == 1) ? weeks + ' week, ' : weeks + '  weeks, '; 
+          difference_ms = difference_ms/4.5;
+
+       var months = Math.floor(difference_ms % 12);
+        months = (months == 0)?'': (months == 1) ? months + ' month, ' : months + '  months, ';
+          difference_ms = difference_ms/12;
+       
+       var years = Math.floor(difference_ms);
+        years = (years == 0)?'': (years == 1) ? years + ' year, ' : years + '  years, '; 
+
+      return years + months + weeks + days + hours + minutes + ' ago';
+
+});

@@ -92,20 +92,22 @@ Meteor.methods({
         });
     },
 
-    'deletePagesData': function (pageTitle, pageComments, selectedPages) {
+    'deletePagesData': function (pageTitle, pageComments, selectedPages, parentId, parentTitle) {
         Pages.update(selectedPages, {
             $set: {
                 title: pageTitle,
                 content: pageComments,
                 deleted: true,
                 published: false,
-                status: "Bin"
+                status: "Bin",
+                parentId: parentId,
+                parentTitle: parentTitle
             }
         });
     },
 
-    'updatePagesData': function (pageTitle, pageComments, selectedPages) {
-        Pages.update(selectedPages, {$set: {title: pageTitle, content: pageComments}});
+    'updatePagesData': function (pageTitle, pageComments, selectedPages, parentId, parentTitle) {
+        Pages.update(selectedPages, {$set: {title: pageTitle, content: pageComments, parentId: parentId, parentTitle: parentTitle}});
     },
 
     'trashPagesData': function (selectedPages) {
@@ -117,13 +119,15 @@ Meteor.methods({
     },
 
 
-    'RePublishPagesData': function (pageTitle, pageComments, selectedPages) {
+    'RePublishPagesData': function (pageTitle, pageComments, selectedPages, parentId, parentTitle) {
         Pages.update(selectedPages, {
             $set: {
                 title: pageTitle,
                 content: pageComments,
                 published: true,
-                status: "Published"
+                status: "Published",
+                parentId: parentId,
+                parentTitle: parentTitle
             }
         });
     },
