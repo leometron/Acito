@@ -89,19 +89,20 @@ Template.home.events({
       $("#subpage"+this._id).html(t);
     }
 
+      Session.set('parentCount', Pages.find({parentId:Session.get("pageId")}).count());         
+
+      if(Session.get('parentCount') == 0) {
       Session.set("pageId", "");
-      Session.set('numberOfCount', 3);
+      Session.set('numberOfCount', 6);
       Session.set('selectedPostId', "");
       Session.set("pageId",this._id);
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
-      Session.set('parentCount', Pages.find({parentId:Session.get("pageId")}).count()); 
-      if(Session.get('parentCount') == 0) {
         Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
       }
    },
    'click .sub-page' : function(event){
       Session.set("pageId", "");
-      Session.set('numberOfCount', 3);
+      Session.set('numberOfCount', 6);
       Session.set('selectedPostId', "");
       Session.set("pageId", $(event.target).attr("id"));
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
@@ -173,17 +174,15 @@ Template.postList.rendered = function () {
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
             if(Session.get('numberOfCount')){
                     Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount'));                                                                                      
-          // alert('entered if'+Session.get('postCount')+'.........'+Session.get('numberOfCount'));
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();
                   Meteor.setTimeout(function(){
                   Session.set('numberOfCount', Session.get('numberOfCount') +3);
-                  // alert(Session.get('numberOfCount'));
                     $(window).scrollTop();                                                        
                       if(Session.get('postCount')<=Session.get('numberOfCount')){
                           $('.post-loading-icon').hide();                         
                       }
-                  }, 1000);
+                  }, 200);
                 }
             }
         }
