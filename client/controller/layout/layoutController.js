@@ -242,6 +242,7 @@ Template.home.rendered = function () {
 };
 
 Template.postDetail.rendered = function() {
+$('.raty').raty();  
    addTwitterWidget();
 };
 

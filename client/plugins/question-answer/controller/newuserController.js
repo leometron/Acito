@@ -42,7 +42,7 @@ Template.userLogin.events( {
 			$('#Usererr').html("Please enter confirm password");
 			return;
 		} else if (new_password != repassword) {
-			$('#Usererr').html("Password and confirm password are not same");
+			$('#Usererr').html("Your password and confirmation password do not match");
 			return;
 		}
 		// var userEmailExists = typeof Meteor.users.findOne({email: new_email}) === 'object';
