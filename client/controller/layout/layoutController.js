@@ -64,6 +64,19 @@ Template.home.events({
           $('#searchEmptyInfo').hide();
         }, 5000);        
     },
+    'keyup #searchQuery' : function(e){
+
+      if (e.which == 13) {
+          if (!$('#searchQuery').val()) {
+              $('#searchEmptyInfo').show();
+          }        
+          $(window).scrollTop(572);
+          Router.go('/posts?queryString='+$('#searchQuery').val());
+      }
+      Meteor.setTimeout(function(){
+        $('#searchEmptyInfo').hide();
+      }, 5000);       
+    },     
    'click .select-question-row' : function() {
       if (this._id) {
         $(window).scrollTop(0);
@@ -89,19 +102,20 @@ Template.home.events({
       $("#subpage"+this._id).html(t);
     }
 
+      Session.set('parentCount', Pages.find({parentId:Session.get("pageId")}).count());         
+
+      if(Session.get('parentCount') == 0) {
       Session.set("pageId", "");
-      Session.set('numberOfCount', 3);
+      Session.set('numberOfCount', 6);
       Session.set('selectedPostId', "");
       Session.set("pageId",this._id);
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
-      Session.set('parentCount', Pages.find({parentId:Session.get("pageId")}).count()); 
-      if(Session.get('parentCount') == 0) {
         Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
       }
    },
    'click .sub-page' : function(event){
       Session.set("pageId", "");
-      Session.set('numberOfCount', 3);
+      Session.set('numberOfCount', 6);
       Session.set('selectedPostId', "");
       Session.set("pageId", $(event.target).attr("id"));
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
@@ -180,7 +194,7 @@ Template.postList.rendered = function () {
                       if(Session.get('postCount')<=Session.get('numberOfCount')){
                           $('.post-loading-icon').hide();                         
                       }
-                  }, 3000);
+                  }, 300);
                 }
             }
         }
@@ -240,6 +254,7 @@ Template.home.rendered = function () {
 };
 
 Template.postDetail.rendered = function() {
+$('.raty').raty();  
    addTwitterWidget();
 };
 
