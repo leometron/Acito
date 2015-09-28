@@ -32,7 +32,10 @@ pre {
     height: 9em;
     overflow: hidden;
     padding: 5px 20px 15px 0px;
-    font-size: small;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: bold;
+    color: gray;
 }
 
 .post-width {
@@ -40,11 +43,15 @@ pre {
 }
 
 .post-header-theme {
-    height: 1.2em;
-    overflow: hidden;
+    color: #ffffff;
     cursor: pointer;
-    color: rgb(255, 56, 0);
-    font-size: 20px;
+    font-size: 35px;
+    height: 1.2em;
+    left: 30px;
+    overflow: hidden;
+    position: absolute;
+    top: 110px;
+    font-weight: bold;
 }
 
 
@@ -171,7 +178,8 @@ pre {
 .post-thumb {
     padding: 25px 0px 35px 20px;
     background: #ffffff;
-    height: 190px;
+    box-shadow: 0 2px 3px gray;
+    max-height: 280px;
 }
 
 .bg-dynamic-color {
@@ -194,7 +202,7 @@ pre {
 
 .feature-image {
     width: 100%;
-    height: 175px;
+    height: 200px;
     cursor: pointer;
 }
 
@@ -211,13 +219,13 @@ pre {
 }
 
 .post-title-des-design{
-  height: 135px; 
+  height: 112px; 
   overflow: hidden; 
-  width: 90%;
+  /*width: 90%;*/
 }
 
 
-.postLists:hover > img{
+/*.postLists:hover > img{
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%); 
     -webkit-opacity: 0.6;
@@ -232,7 +240,7 @@ pre {
 .postLists:hover > .post-thumb > .post-title-des-design > .right-arrow{
     background-position:  0px -108px;
     transition-duration: 0.3s;
-}
+}*/
 
 
 @media(max-width:992px){    
