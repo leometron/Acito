@@ -46,6 +46,9 @@
               <p style="line-height: 26px; padding: 0 5% 20px; white-space: pre-line; border-top: 1px solid #bfbcb2; border-bottom: 1px solid #bfbcb2;">  
                {{post.content}}                  
              </p>
+     <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false"  data-rateit-ispreset="true"></div><br>
+              <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
+                ({{ratings.count}} votes cast)</span><br>
              <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis">Tweet</a>
                 </div>
             </div>
