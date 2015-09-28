@@ -64,6 +64,19 @@ Template.home.events({
           $('#searchEmptyInfo').hide();
         }, 5000);        
     },
+    'keyup #searchQuery' : function(e){
+
+      if (e.which == 13) {
+          if (!$('#searchQuery').val()) {
+              $('#searchEmptyInfo').show();
+          }        
+          $(window).scrollTop(572);
+          Router.go('/posts?queryString='+$('#searchQuery').val());
+      }
+      Meteor.setTimeout(function(){
+        $('#searchEmptyInfo').hide();
+      }, 5000);       
+    },     
    'click .select-question-row' : function() {
       if (this._id) {
         $(window).scrollTop(572);
@@ -173,11 +186,11 @@ Template.postList.rendered = function () {
     $(window).scroll(function(){
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
             if(Session.get('numberOfCount')){
-                    Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount'));                                                                                      
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();
                   Meteor.setTimeout(function(){
                   Session.set('numberOfCount', Session.get('numberOfCount') +3);
+                    Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount'));                                                                                                                            
                     $(window).scrollTop();                                                        
                       if(Session.get('postCount')<=Session.get('numberOfCount')){
                           $('.post-loading-icon').hide();                         
