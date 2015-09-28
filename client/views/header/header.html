@@ -1,101 +1,4 @@
 <template name="header">
-<!-- {{#if showSelectedPost}}    
-    <div>
-       <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav">
-          <div class="container-fluid">       
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
-                  <span id="backToPage" class="back">Back</span>                       
-              </div>
-            </div>
-        </nav>
-      </div>
-{{else}} -->
-<div style="background:#DEE8C5; width:100%; height:625px;"></div>
-<div style="background: #F7FAF2 none repeat scroll 0 0; border:2px solid #DEE8C5; height:567px; width:75%; position:absolute; top:58px; left:13%">
-
-
-  <div class="row">
-    <div class="col-md-4" style="text-align:center">
-      <img src="images/grannylogo.png" style="height: 120px; padding-top: 25px; width: 25%;">
-      <span style="color: #7f9103; font-size: 25px; font-weight: bold;">Granny Therapy</span>
-    </div>
-    <div class="col-md-8">
-      <img src="images/homebanner.png" style="height:120px;">
-    </div>
-  </div>
-
-
-<div class="padding-zero" style="margin-left: 10px; margin-top: 11px; overflow: hidden; width: 98%;">
-
-
-  <div id="myCarouselmain" data-ride="carousel" style="background: #393939 none repeat scroll 0 0; bottom: 10px; height: 90px; position: absolute; width: 98%; z-index: 100;">
-    <div class="carousel-inner" role="listbox">
-    <div class="row" style="padding: 10px 50px">
-      {{#each homeSliderList}}
-        <div class="col-md-2">
-          <img src="{{sliderImage}}" id="" style="height:70px; width:100%; box-shadow: 1px 1px 10px #ffffff;">
-        </div>
-      {{/each}}
-    </div>
-
-        <a class="carousel-control left" href="#myCarouselmain" data-slide="prev" style="background-image:none">
-          <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
-        </a>  
-        <a class="carousel-control right" href="#myCarouselmain" data-slide="next" style="background-image:none">
-          <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
-        </a>
-
-    </div>
-  </div>
-
-
-  <div id="myCarousel" class="carousel slide bannerDesign" data-ride="carousel">
-    <div class="carousel-inner" role="listbox">
-      {{#if isHomeSlider}}      
-          {{#each homeSliderList}}
-                {{#if equals _id singlehomeSlider._id }}
-                <div class="item active" id="someid">
-                  <img src="{{sliderImage}}" class="slider-image">
-                  <div class="homeslider-sub-content">{{title}}
-                  {{#if equals description "-"}}
-                  {{else}}
-                  <div class="homeslider-description">{{description}}</div>
-                  {{/if}}
-                  <div><button class="read-more">Read More</button></div>
-                  </div>
-                </div>
-                {{else}}
-                <div class="item">
-                  <img src="{{sliderImage}}" class="slider-image">
-                  <div class="homeslider-sub-content">{{title}}
-                  {{#if equals description "-"}}
-                  {{else}}
-                  <div class="homeslider-description">{{description}}</div>
-                  {{/if}}
-                  <div><button class="read-more">Read More</button></div>
-                  </div>
-                </div>
-                {{/if}}
-          {{/each}}
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="background-image:none">
-          <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
-        </a>  
-        <a class="carousel-control right" href="#myCarousel" data-slide="next" style="background-image:none">
-          <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
-        </a> 
-      {{else}} 
-        <img  class="slider-image default-image">
-      {{/if}}  
-    </div>
-  </div>
-  </div>
-</div>   
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav" style="background:#ffffff">
   <div class="container-fluid">
@@ -118,29 +21,10 @@
             <li>
               <a class="page-scroll logout" style="color:#6E9103" id="logout">Logout</a>
             </li>
-            <!-- {{#each pagesList}}
-            <li>
-              <a id="pageName" class="page-scroll">{{title}}</a>
-            </li>                    
-            {{/each}}  -->                     
-            <!-- <li> -->
-              <!-- <a class="page-scroll" href="#Media">Media</a> -->
-            <!-- </li> -->
           </ul>
         {{/if}}
       </div>
   </div>
 </nav>
-<!--     <header>
-        <div class="header-content">
-            <div class="header-content-inner">
- -->                <!-- <h1 class="slider-main-text">Your Favorite Source of Free Bootstrap Themes</h1> -->
-                <!-- <h1 class="slider-main-text">GrannyTherapy</h1> -->
-                <!-- <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download
-                    your template and start going, no strings attached!</p> -->
-<!--             </div>
-        </div>
-    </header> -->
-<!-- {{/if}} -->
-</template>
 
+</template>

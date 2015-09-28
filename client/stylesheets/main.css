@@ -266,7 +266,8 @@ body, #main {
     overflow-x: hidden;
     color: #1f1f1f;
     /*font-family: 'Fauna One', serif;*/
-    background-color:  #FDFEFB;
+    /*background-color:  #FDFEFB;*/
+    background-color:  #F5F5F5;
 }
 
 .bg-white{
@@ -355,17 +356,13 @@ body, #main {
 }
 
 .read-more {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: medium none;
-    border-radius: 5px;
-    bottom: 0;
-    color: green;
-    font-size: 15px;
-    margin-right: 35px;
-    padding: 3px 15px;
-    position: absolute;
-    right: -35px;
-    z-index: 100;
+    background: #6E9103 none repeat scroll 0 0; 
+    border: medium none; 
+    border-radius: 3px;  
+    color: #ffffff; 
+    font-weight: bold; 
+    margin: 10px -3px 20px; 
+    padding: 6px 10px;
 }
 
 .padding-100{
@@ -498,7 +495,7 @@ body, #main {
 
 .home-right-fields {
   position:absolute; 
-  top:640px; 
+  top:60px; 
   right:7px;
   width:19%;  
 }
@@ -617,16 +614,16 @@ body, #main {
 }
 
 .home-post-field {
-  width: 59%; 
-  background: #94bf94; 
+  width: 90%; 
+  /*background: #94bf94; */
 /*  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -o-box-shadow: 0 0 10px; */
   padding: 10px; 
   position: absolute; 
-  top: 640px; 
-  left: 20%;
+  top: 75px; 
+  left: 5%;
   padding-bottom: 15px;
 }
 
@@ -641,13 +638,13 @@ body, #main {
 }
 
 .border-top-allquestion {
-  border-top: 2px solid #D1D1D1; 
+  border-top: 2px solid #ffffff; 
   padding-bottom: 5px;
 }
 
 .home-left-field {
   position: absolute; 
-  top: 632px; 
+  top: 52px; 
   left: 7px; 
   width: 18%;
   /*height: 100%;*/
@@ -695,7 +692,7 @@ body, #main {
   margin-top: 20px; 
   padding-bottom: 8px; 
   text-align: right;
-  color: #F09C09;
+  color: #000000;
 }
 
 /*.postError {*/
