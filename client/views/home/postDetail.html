@@ -48,7 +48,7 @@
              </p>
      <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false"  data-rateit-ispreset="true"></div><br>
               <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
-                ({{ratings.count}} votes cast)</span><br>
+                {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br>
              <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis">Tweet</a>
                 </div>
             </div>

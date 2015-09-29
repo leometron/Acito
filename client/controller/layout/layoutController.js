@@ -189,7 +189,7 @@ Template.postDetail.helpers({
           sum = sum + item.points;
         });
         // console.log("sum of points " + sum);
-        // console.log("counts " + count);
+        // console.log("counts " + counts);
         var average = sum/counts;
         // console.log("average " + average);
         return {
@@ -271,8 +271,7 @@ Template.home.rendered = function () {
     }
 };
 
-Template.postDetail.rendered = function() {
-$('.raty').raty();  
+Template.postDetail.rendered = function() { 
    addTwitterWidget();
    this.$('.rateit').rateit();
 
