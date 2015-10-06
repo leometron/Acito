@@ -2,15 +2,15 @@ rating = new Mongo.Collection('rating');
 
 rating.attachSchema(
     new SimpleSchema({
-    title: {
+    userId: {
       type: String
     },
-    content: {
+    postId: {
       type: String
     },
-    createdAt: {
-      type: Date,
-      denyUpdate: true
+    points: {
+      type: Number,
+      decimal:true
     }
   })
 );

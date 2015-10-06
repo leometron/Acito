@@ -5,6 +5,7 @@ Has the events and helpers related to home page.
 */
 
 Meteor.subscribe('featuredimage');
+Meteor.subscribe('rating');
 
 Template.header.events({
     'click #logout': function() {
@@ -282,6 +283,23 @@ Template.postDetail.helpers({
        var date = new Date(dateArr[1]+'/'+dateArr[0]+'/'+dateArr[2]);
        var monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
        return monthArr[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+      },
+
+      ratings: function() {
+        var counts = rating.find({postId: Session.get('selectedPostId')}).count();
+        var rate = rating.find({postId: Session.get('selectedPostId')});
+        var sum = 0;
+        rate.forEach(function(item)  {
+          sum = sum + item.points;
+        });
+        // console.log("sum of points " + sum);
+        // console.log("counts " + counts);
+        var average = sum/counts;
+        // console.log("average " + average);
+        return {
+          rating : average,
+          count: counts
+        };
       }
 });
 
@@ -357,9 +375,18 @@ Template.home.rendered = function () {
     }*/
 };
 
-Template.postDetail.rendered = function() {
-$('.raty').raty();  
+Template.postDetail.rendered = function() { 
    addTwitterWidget();
+   this.$('.rateit').rateit();
+
+    $('.rateit').bind('rated', function(event, value) {
+          if(!Meteor.userId()){
+            Router.go('/login');
+          } else {
+            // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
+            Meteor.call('insertrating', Meteor.userId(), Session.get('selectedPostId'), value);
+          }
+    });
 };
 
 function addTwitterWidget() {
