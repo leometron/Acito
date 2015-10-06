@@ -1,5 +1,5 @@
 <template name="adminLayout">
-    <div id="main">
+<!--     <div id="main">
         <div class="row">
             <div id="header">
                 <header>
@@ -12,9 +12,11 @@
             <div id="main_view" class="col-md-10 padding-left-zero margin-top-40">
                 {{> yield}}
             </div>
-            <!--<footer>-->
-            <!--{{> footer}}-->
-            <!--</footer>-->
         </div>
+    </div> -->
+
+    {{> adminlayout}}
+    <div id="main_view">
+        {{> yield}}
     </div>
 </template>

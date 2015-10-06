@@ -9,7 +9,7 @@
             </button></span>
             </div>
             <div class="row post-margin padding-top-bottom-10">
-                <div class="col-md-12 bg-white padding-top-bottom-10 ">
+                <div class="col l12 bg-white padding-top-bottom-10 ">
                     <span class="dropdown margin-right">
                         <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="allMedia"
                                 data-toggle="dropdown">
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="row post-margin" id="list">
-                <div class="col-md-3 padding-left-zero">
+                <div class="col l3 padding-left-zero">
                 <span class="dropdown margin-right">
                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="actiondropdown"
                            data-toggle="dropdown">
@@ -55,19 +55,23 @@
                         <li><a class="menuitem2" href="#" id="deleteall">Delete Permanently</a></li>
                     </ul>
                 </span>
+                </div>
+                <div class="col l2">
                     <span class="margin-left-10">
                       <button id="apply" type="button" class="btn btn-default">Apply</button>
                     </span>
                 </div>
-                <div class="col-md-6">
+                <div class="col l5">
                 <span class="dropdown">
-                    <select id="filterdate" class="selctionButton">
+                    <select id="filterdate" class="selctionButton browser-default">
                         <option value="All dates" selected="selected">All dates</option>
                         <option value="/5/2015">May 2015</option>
                         <option value="/6/2015">June 2015</option>
                         <option value="/7/2015">July 2015</option>
                     </select>
                 </span>
+                </div>
+                <div class="col l2">
                     <span><button type="button" class="btn btn-default" id="filter">Filter</button></span>
                 </div>
             </div>
@@ -76,42 +80,42 @@
         <div class="row padding-top-bottom-10">
             <div class="bs-example" data-example-id="striped-table">
                 <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
-                    <div class="col-md-2">
+                    <div class="col l2">
                         <!-- <span><input type="checkbox"></span> -->
                     </div>
-                    <div class="col-md-5">file</div>
-                    <div class="col-md-1">Author</div>
-                    <div class="col-md-2">Uploaded to</div>
-                    <div class="col-md-1">comments</div>
-                    <div class="col-md-1">Date</div>
+                    <div class="col l5">file</div>
+                    <div class="col l1">Author</div>
+                    <div class="col l2">Uploaded to</div>
+                    <div class="col l1">comments</div>
+                    <div class="col l1">Date</div>
                 </div>
               {{#if equals mediaListCount 0}}
                 <!-- <div class="empty-results">No Results</div> -->
-                <div class="row padding-top-bottom-10 cursor-pointer">
+                <div class="row cursor-pointer">
                     <div class="CodingRules-data-row">
-                        <div class="col-md-4 empty-results">
-                            <span style="font-size:16px">No Results</span>
+                        <div class="col l12 center empty-results">
+                            <span>No Results</span>
                         </div>
                     </div>
                 </div>
                {{else}} 
                 {{#each mediaList}}
                 {{#if currentUser}}
-                <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                    <div class="col-md-2">
+                <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd; margin-top:-21px">
+                    <div class="col l2">
                         <span><input id="checkbox" type="checkbox"></span><span class="padding-left-20"><img
                             src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
                     </div>
-                    <div class="col-md-5" style="line-height: 200%;">
+                    <div class="col l5" style="line-height: 200%;">
                         <div>{{name}}</div>
                         <div>{{fullName}}</div>
                         <div><a href="/admin/media/edit" id="edit">Edit</a> | <a href="#" id="delete">Delete
                             Permanently</a></div>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col l1">
                         <div>{{currentUser.username}}</div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col l2">
                         <div>@mdo</div>
                         <!--    <div data-toggle="modal" data-target="#myModal">attach</div>
                               <div class="modal fade" id="myModal" role="dialog">
@@ -132,10 +136,10 @@
                               </div>
                             </div> -->
                     </div>
-                    <div class="col-md-1">
+                    <div class="col l1">
                         <div>comments</div>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col l1">
                         <div>{{createdAt}}</div>
                     </div>
                 </div>

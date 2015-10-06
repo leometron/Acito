@@ -2,13 +2,13 @@
 	<div class="edit-question-detail main-content-box">
 		<div class="content-box-menu">Edit question</div>
 		<div class="row padding-15" style="margin-top:5%">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 margin-top-15 font-size-16">
+			<div class="col l4 margin-top-15 font-size-16">
 				<span>Status</span>
 			</div>
-			<div class="col-md-7">
-				<select id="status" style="padding:5px 20px">
+			<div class="col l7">
+				<select id="status" class="browser-default">
 					{{#if equals status "active"}}
 				    	<option>active</option>
 				    	<option>deactive</option>
@@ -21,116 +21,116 @@
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 margin-top-15 font-size-16">
+			<div class="col l4 margin-top-15 font-size-16">
 				<span>Your Question</span>
 			</div>
-			<div class="col-md-7">
+			<div class="col l7">
 				<textarea id="question" cols="70">{{question}}</textarea>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col l5">
 			</div>
-			<div class="col-md-7 font-size-16 margin-top-15-min color-red" id="emptyQuestionInfo">
+			<div class="col l7 font-size-16 margin-top-15-min color-red" id="emptyQuestionInfo">
 				<span>Enter a question</span>
 			</div>
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 margin-top-15 font-size-16">
+			<div class="col l4 margin-top-15 font-size-16">
 				<span>Question Details</span>
 			</div>
-			<div class="col-md-7">
+			<div class="col l7">
 				<textarea id="questionDetails" cols="70">{{detail}}</textarea>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col l5">
 			</div>
-			<div class="col-md-7 font-size-16 margin-top-15-min color-red" id="emptyDetailInfo">
+			<div class="col l7 font-size-16 margin-top-15-min color-red" id="emptyDetailInfo">
 				<span>question detail required</span>
 			</div>
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 margin-top-15 font-size-16">
+			<div class="col l4 margin-top-15 font-size-16">
 				<span>What is your major Complaint?</span>
 			</div>
-			<div class="col-md-7">
+			<div class="col l7">
 				<textarea id="majorComplaint" cols="70">{{complaint}}</textarea>
 			</div>
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 margin-top-15 font-size-16">
+			<div class="col l4 margin-top-15 font-size-16">
 				<span>Give detail explanations about Complaint?</span>
 			</div>
-			<div class="col-md-7">
+			<div class="col l7">
 				<textarea id="detailExplanation" cols="70">{{complaintDetail}}</textarea>
 			</div>
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 font-size-16 margin-top-4">
+			<div class="col l4 font-size-16 margin-top-4">
 				<span>How long have you had this complaint?</span>
 			</div>
-			<div class="col-md-7">
+			<div class="col l7">
 				<input type="text" id="complaintPeriod" size="71" value="{{complaintPeriod}}">
 			</div>
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 font-size-16 margin-top-4">
+			<div class="col l4 font-size-16 margin-top-4">
 				<span>What symptoms are you exhibiting?</span>
 			</div>
-			<div class="col-md-7">
+			<div class="col l7">
 				<input type="text" id="symptoms" size="71" value="{{symptoms}}">
 			</div>
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 font-size-16 margin-top-4">
+			<div class="col l4 font-size-16 margin-top-4">
 				<span>Are there any secondary complaints?</span>
 			</div>
-			<div class="col-md-7">
+			<div class="col l7">
 				<input type="text" id="secondaryComplaint" size="71" value="{{secondaryComplaint}}">
 			</div>
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-1">
+			<div class="col l1">
 			</div>
-			<div class="col-md-4 font-size-16 margin-top-4">
+			<div class="col l4 font-size-16 margin-top-4">
 				<span>What medication are you currently taking?</span>
 			</div>
-			<div class="col-md-7">
+			<div class="col l7">
 				<input type="text" id="medicineTaking" size="71" value="{{medicine}}">
 			</div>
 		</div>
 
 		<div class="row padding-15">
-			<div class="col-md-5">
+			<div class="col l5">
 			</div>
-			<div class="col-md-2">
+			<div class="col l2">
 	        	<button type="button" id="updateQuestion" class="btn btn-primary submitbtn">Update</button>
 	        </div>
-	        <div class="col-md-2">
+	        <div class="col l2">
 	        	<button type="button" id="cancelEditQuestion" class="btn btn-primary submitbtn">Cancel</button>
 	        </div>
 		</div>

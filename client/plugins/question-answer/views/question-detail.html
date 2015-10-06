@@ -1,103 +1,69 @@
 <template name="questionDetail">
 	<div class="question-detail">
 		<!-- <div id="closeAskQuestion" style="position:relative"><p class="close-icon">x</p></div> -->
-		<div class="row padding-15">
-			<div class="col-md-4 margin-top-15 font-size-16">
-				<span>Your Question:</span>
-			</div>
-			<div class="col-md-7">
-				<textarea id="question" style="width:116%"></textarea>
-			</div>
-		</div>
-
+    <div class="row">
 		<div class="row">
-			<div class="col-md-5">
-			</div>
-			<div class="col-md-7 font-size-16 margin-top-15-min color-red" id="emptyQuestionInfo">
-				<span>Enter a Question</span>
-			</div>
-		</div>
-
-		<div class="row padding-15">
-			<div class="col-md-4 margin-top-15 font-size-16">
-				<span>Question Details</span>
-			</div>
-			<div class="col-md-7">
-				<textarea id="questionDetails" style="width:116%"></textarea>
-			</div>
-		</div>
-
+	      <div class="input-field col s12">
+	       <textarea id="question" class="materialize-textarea"></textarea>
+	       <label for="question">Your Question:</label>
+	      </div>
+        </div>
+        <div class="row">
+         <label id="emptyQuestionInfo" for="question" style="color:red;">Enter a Question</label>
+        </div>
+        <div class="row">
+	     <div class="input-field col s12">
+	      <textarea id="questionDetails" class="materialize-textarea"></textarea>
+	       <label for="questionDetails">Question Details</label>
+	     </div>
+        </div>
+        <div class="row">
+          <label id="emptyDetailInfo" for="questionDetails" style="color:red;">Enter a question details</label>
+        </div>
+        <div class="row">
+	     <div class="input-field col s12">
+	      <textarea id="majorComplaint" class="materialize-textarea"></textarea>
+	      <label for="majorComplaint">What is your major Complaint?</label>
+	     </div>
+        </div>
+        <div class="row">
+	     <div class="input-field col s12">
+	      <textarea id="detailExplanation" class="materialize-textarea"></textarea>
+	      <label for="detailExplanation">Give detail explanations about Complaint?</label>
+	     </div>
+        </div>
+        <div class="row">
+	     <div class="input-field col s12">
+	      <input id="complaintPeriod" type="text" class="validate">
+          <label for="complaintPeriod">How long have you had this complaint?</label>
+	     </div>
+        </div>
+        <div class="row">
+	     <div class="input-field col s12">
+	      <input id="symptoms" type="text" class="validate">
+          <label for="symptoms">What symptoms are you exhibiting?</label>
+	     </div>
+        </div>
+        <div class="row">
+	     <div class="input-field col s12">
+	      <input id="secondaryComplaint" type="text" class="validate">
+          <label for="secondaryComplaint">Are there any secondary complaints?</label>
+	     </div>
+        </div>
+        <div class="row">
+	     <div class="input-field col s12">
+	      <input id="medicineTaking" type="text" class="validate">
+          <label for="medicineTaking">What medication are you currently taking?</label>
+	     </div>
+        </div>
 		<div class="row">
-			<div class="col-md-5">
-			</div>
-			<div class="col-md-7 font-size-16 margin-top-15-min color-red" id="emptyDetailInfo">
-				<span>Enter a question details</span>
-			</div>
-		</div>
-
-		<div class="row padding-15">
-			<div class="col-md-4 margin-top-15 font-size-16">
-				<span>What is your major Complaint?</span>
-			</div>
-			<div class="col-md-7">
-				<textarea id="majorComplaint" style="width:116%"></textarea>
-			</div>
-		</div>
-
-		<div class="row padding-15">
-			<div class="col-md-4 margin-top-15 font-size-16">
-				<span>Give detail explanations about Complaint?</span>
-			</div>
-			<div class="col-md-7">
-				<textarea id="detailExplanation" style="width:116%"></textarea>
-			</div>
-		</div>
-
-		<div class="row padding-15">
-			<div class="col-md-4 font-size-16 margin-top-4">
-				<span>How long have you had this complaint?</span>
-			</div>
-			<div class="col-md-7">
-				<input type="text" id="complaintPeriod" style="width:116%">
-			</div>
-		</div>
-
-		<div class="row padding-15">
-			<div class="col-md-4 font-size-16 margin-top-4">
-				<span>What symptoms are you exhibiting?</span>
-			</div>
-			<div class="col-md-7">
-				<input type="text" id="symptoms" style="width:116%">
-			</div>
-		</div>
-
-		<div class="row padding-15">
-			<div class="col-md-4 font-size-16 margin-top-4">
-				<span>Are there any secondary complaints?</span>
-			</div>
-			<div class="col-md-7">
-				<input type="text" id="secondaryComplaint" style="width:116%">
-			</div>
-		</div>
-
-		<div class="row padding-15">
-			<div class="col-md-4 font-size-16 margin-top-4">
-				<span>What medication are you currently taking?</span>
-			</div>
-			<div class="col-md-7">
-				<input type="text" id="medicineTaking" style="width:116%">
-			</div>
-		</div>
-
-		<div class="row padding-15">
-			<div class="col-md-4">
-			</div>
-			<div class="col-md-3">
-	        	<button type="button" id="postQuestion" class="btn btn-primary submitbtn">Submit</button>
-	        </div>
-	        <div class="col-md-3">
-	        	<button type="button" id="closeAskQuestion" class="btn btn-primary submitbtn">Cancel</button>
-	        </div>
-		</div>						
+		 <div class="col s6 l2">
+		  <button type="button" id="postQuestion" class="btn btn-primary submitbtn">Submit</button>
+		 </div>
+		 <div class="col s6 l2">
+		   <button type="button" id="closeAskQuestion" class="btn btn-primary submitbtn">Cancel</button>
+		 </div>	
+		</div>	
+	  </div>					
 	</div>
 </template>

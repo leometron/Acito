@@ -38,9 +38,15 @@ Template.questionDetail.events({
 Template.questionDetail.rendered = function() {
 	$('#emptyQuestionInfo').hide();
 	$('#emptyDetailInfo').hide();
-    $('#question').val(Session.get('question'));           	
+    // $('#question').val(Session.get('question'));           	
 	clearQuestionContent();
 }
+
+Template.questionDetail.helpers({
+	'question' : function () {
+		return Session.get('question');
+	}
+});
 
 function clearQuestionContent() {
 	$('#questionDetails').val("");

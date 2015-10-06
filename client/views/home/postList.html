@@ -1,47 +1,53 @@
 <template name="postList">
-    <div class="row image image-center post-view">
-        {{#if equals searchResultCount 0}}  
-            <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
-        {{else}}
-        {{#each postsList}}
-            <div class="col-md-4 margin-bottom-15 postLists" id="postLists" style="padding-right: 5px; padding-left: 5px;">
+    <div class="row home-post-field hide-on-med-only hide-on-small-only">
+      {{#if equals searchResultCount 0}}
+        <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
+      {{else}}
+      {{#each postsList}}
+        <div class="col s12 m6 l4">
+            <div class="card white">
                 {{#if equals featuredImage '-'}}
-                {{else}}             
-                    <img src="{{featuredImage}}" class="feature-image"/>
-                    <span id="postTitle" class="post-header-theme">{{title}}</span>
-                {{/if}}                                
-                <div class="post-thumb post-width row">
-                    <div class="post-title-des-design row">
-                        <div class="col-md-12">
-                            <p class="break-word text-ellipsis">
-                                {{content}}
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-12 pull-left">
-                            <button class="read-more">READ MORE</button>
-                        </div>
-                    </div>
-                    
-                    <div style="border-top: 1px solid #e5e5e5; margin-left: -20px;">
-                    </div>
-
-                    <div class="row" style="margin-top: 15px;">
-                        <div class="col-md-2" style="margin-top:10px">
-                            <img src="images/grannylogo.png" width="45" height="60">
-                        </div>
-                        <div class="col-md-4" style="font-size:15px; font-weight:bold">
-                            <p>{{currentUser.username}}</p>
-                            <p>{{createdAt}}</p>
-                        </div>
-                    </div>
-
-                </div>                   
-            </div>
-        {{/each}}        
+                {{else}}
+                <div class="card-image">
+                  <img src="{{featuredImage}}" style="width:100%;height:200px">
+                  <span class="card-title">{{title}}</span>
+                </div>
+                {{/if}}
+                <div class="card-content">
+                  <p>{{content}}</p>
+                </div>
+                <div class="card-action">
+                  <a href="#" class="right" id="read-more">Read More</a>
+                </div>
+              </div>
+        </div>
+        {{/each}}
         {{/if}}
-    </div> 
+    </div>
+    <div class="row hide-on-large-only">
+      {{#if equals searchResultCount 0}}
+        <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
+      {{else}}
+      {{#each postsList}}
+        <div class="col s12 m6">
+            <div class="card white">
+                {{#if equals featuredImage '-'}}
+                {{else}}
+                <div class="card-image">
+                  <img src="{{featuredImage}}" style="width:100%;height:200px">
+                  <span class="card-title">{{title}}</span>
+                </div>
+                {{/if}}
+                <div class="card-content">
+                  <p>{{content}}</p>
+                </div>
+                <div class="card-action">
+                  <a href="#" class="right" id="read-more">Read More</a>
+                </div>
+              </div>
+        </div>
+        {{/each}}
+        {{/if}}
+      </div>
     <div class="post-loading-icon"></div>
-</template>              
+</template>

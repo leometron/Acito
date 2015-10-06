@@ -108,6 +108,7 @@ pre {
 
 .selected{
   background-color: #8BC608;
+  padding: 4px 15px;
 }
 
 .pos-padding{

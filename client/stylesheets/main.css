@@ -614,7 +614,7 @@ body, #main {
 }
 
 .home-post-field {
-  width: 90%; 
+  width: 65%; 
   /*background: #94bf94; */
 /*  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
@@ -623,7 +623,7 @@ body, #main {
   padding: 10px; 
   position: absolute; 
   top: 75px; 
-  left: 5%;
+  left: 20%;
   padding-bottom: 15px;
 }
 
@@ -731,10 +731,8 @@ body, #main {
 }
 
 .empty-results {
-  margin-top: 4%;
-    font-size: 20px;
-    font-weight: bold;
-    left: 39%;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .gallery-icon img {

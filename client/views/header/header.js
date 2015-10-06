@@ -34,7 +34,17 @@
 // });
 
 Template.header.rendered = function () {
-    $(document).on('click', 'a[href^="#"]', function (e) {
+
+   $('.button-collapse').sideNav();
+
+   $('.search').click(function(){
+        $('#search_modal').openModal();
+     });
+     $('.question').click(function(){
+        $('#question_modal').openModal();
+     });
+
+   /* $(document).on('click', 'a[href^="#"]', function (e) {
         // target element id
         var id = $(this).attr('href');
 
@@ -49,7 +59,7 @@ Template.header.rendered = function () {
 
         // $('body, html').animate({scrollTop: pos});
     });
-
+*/
 $(window).scroll(function(){
 
   // if($(window).scrollTop() + $(window).height() == $(document).height()) {

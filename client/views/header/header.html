@@ -1,30 +1,55 @@
 <template name="header">
 
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top fixed-nav" style="background:#ffffff">
-  <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand page-scroll font-xlarge" href="#" style="color:#6E9103">Grannytherapy</a>
-      </div>
+<div class="navbar-fixed">
+     <nav class="light-green darken-3" role="navigation">
+        <div class="nav-wrapper" style="margin:0 15px;">
+          <div class="header_logo hide-on-med-only hide-on-small-only">
+              <img src="/images/grannylogo.png" class="header_img"/>
+          </div>
+          <a href="#" class="header_title title">Grannytheraphy</a>
+          <a href="#" data-activates="slide-out" class="margintop20 button-collapse side-icon ">
+            <i class="mdi-navigation-menu"></i>
+          </a>
+          <div id="slide-out" class="side-nav light-green darken-4">
+            <div class="leftMenuTitle light-green darken-2">Category</div>
+            {{#if parentPageList}}
+            {{#each parentPageList}}
+              <div class="parent-page leftMenuContent page{{_id}}" id="page{{_id}}">
+                {{title}}
+                <img src="images/downarrow.png" class="leftMenuArrow right downarrow">
+              </div>
+              <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
+              {{/each}}
+              {{else}}
+                  <div>No categories</div>
+              {{/if}}
+          </div>
+        </div>
+      </nav>
+    </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        {{#if currentUser}}
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a class="page-scroll" style="color:#6E9103">Welcome {{currentUser.username}}</a>
-            </li>
-            <li>
-              <a class="page-scroll logout" style="color:#6E9103" id="logout">Logout</a>
-            </li>
-          </ul>
-        {{/if}}
+      <div class="hide-on-med-only hide-on-small-only">
+      <div class="row">
+        <div class="col l2 padding0">
+          <div class="leftMenu light-green darken-4">
+            <div class="light-green darken-3 sm_leftMenuTitle">Category</div>
+          {{#if parentPageList}}
+          {{#each parentPageList}}
+            <div class="parent-page sm_leftMenuContent page{{_id}}" id="page{{_id}}">
+              {{title}}
+              <img src="images/downarrow.png" class="sm_leftMenuArrow right downarrow">
+            </div>
+            <div class="subpage{{_id}} sm_letfMenuSubTitle" id="subpage{{_id}}"></div>
+            {{/each}}
+            {{else}}
+                <div>No categories</div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="col l10">
+          
+        </div>
       </div>
-  </div>
-</nav>
+    </div>
 
 </template>

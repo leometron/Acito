@@ -22,7 +22,7 @@
                 </span>
             </div>
             <div class="row post-margin">
-                <div class="col-md-3 padding-left-zero">
+                <div class="col l3 padding-left-zero">
                  <span class="dropdown margin-right">
                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdown"
                             data-toggle="dropdown">Bulk Actions
@@ -40,18 +40,22 @@
                         </li>
                     </ul>
                 </span>
+                </div>
+                <div class="col l2 padding-left-zero">
                     <span class="margin-left-10"><button type="button" class="btn btn-default" id="bulkApplyBtn">Apply
                     </button></span>
                 </div>
-                <div class="col-md-4 margin-left-minus-5">
+                <div class="col l4 margin-left-minus-5">
                 <span class="dropdown margin-right">
-                    <select id="dateFilter" class="selctionButton">
+                    <select id="dateFilter" class="selctionButton browser-default">
                         <option value="All dates" selected="selected">All dates</option>
                         <option value="/9/2015">September 2015</option>
                         <option value="/10/2015">October 2015</option>
                         <option value="/11/2015">November 2015</option>
                     </select>
                 </span>
+                </div>
+                <div class="col l2 margin-left-minus-5">
                     <span><button type="button" class="btn btn-default" id="filter" style="margin-top:-5px">Filter</button></span>
                 </div>
                 <!-- <div class="col-md-4 margin-left-minus-10"> -->
@@ -92,68 +96,68 @@
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">
-                        <div class="col-md-1">
+                        <div class="col l1">
                             <span><input id="checkboxPostsAll" type="checkbox"></span>
                         </div>
-                        <div class="col-md-4 padding-left-zero margin-left-minus-30">Title</div>
-                        <div class="col-md-2">Author</div>
-                        <div class="col-md-2">Page</div>
-                        <div class="col-md-1">Tags</div>
-                        <div class="col-md-1">Status</div>
-                        <div class="col-md-1">Date</div>
+                        <div class="col l4 padding-left-zero margin-left-minus-30">Title</div>
+                        <div class="col l2">Author</div>
+                        <div class="col l2">Page</div>
+                        <div class="col l1">Tags</div>
+                        <div class="col l1">Status</div>
+                        <div class="col l1">Date</div>
                     </div>
                     {{#if equals postListCount 0}}
-                      <div class="row padding-top-bottom-10 cursor-pointer">
+                      <div class="row cursor-pointer">
                             <div class="CodingRules-data-row">
-                                <div class="col-md-4 empty-results">
-                                    <span style="font-size:16px">No Results</span>
+                                <div class="col 12 center empty-results">
+                                    <span>No Results</span>
                                 </div>
                             </div>
                       </div>
                      {{else}} 
                         {{#each postList}}
                         {{#if currentUser}}
-                        <div id="{{_id}}" class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd">
-                            <div class="col-md-1 margin-top-10">
+                        <div id="{{_id}}" class="row cursor-pointer" style="border: 1px solid #ddd; margin-top:-21px">
+                            <div class="col l1 margin-top-10">
                                 <input type="checkbox" class="checkbox" id="{{_id}}">
                             </div>
                             {{#if deleted}}
                             <div class="post">
                                 <div class="row padding-top-bottom-10">
-                                    <div class="col-md-4 padding-left-zero margin-left-minus-30">
+                                    <div class="col l4 padding-left-zero margin-left-minus-30">
                                         <strike>{{title}}</strike>
                                     </div>
-                                    <div class="col-md-2"><strike>{{currentUser.username}}</strike></div>
-                                    <div class="col-md-2"><strike>
+                                    <div class="col l2"><strike>{{currentUser.username}}</strike></div>
+                                    <div class="col l2"><strike>
                                       {{#if equals pageName "none"}}
                                          -
                                         {{else}}
                                          {{pageName}}  
                                       {{/if}}
                                     </strike></div>
-                                    <div class="col-md-1"><strike>{{tags}}</strike></div>
-                                    <div class="col-md-1"><strike>{{status}}</strike></div>
-                                    <div class="col-md-1"><strike>{{createdAt}}</strike></div>
+                                    <div class="col l1"><strike>{{tags}}</strike></div>
+                                    <div class="col l1"><strike>{{status}}</strike></div>
+                                    <div class="col l1"><strike>{{createdAt}}</strike></div>
                                 </div>
                             </div>
                             {{else}}
 
                             <div class="post">
                                 <div class="row padding-top-bottom-10">
-                                    <div class="col-md-4 padding-left-zero margin-left-minus-30">
+                                    <div class="col l4 padding-left-zero margin-left-minus-30">
                                         {{title}}
                                     </div>
-                                    <div class="col-md-2">{{currentUser.username}}</div>
-                                    <div class="col-md-2">
+                                    <div class="col l2">{{currentUser.username}}</div>
+                                    <div class="col l2">
                                       {{#if equals pageName "none"}}
                                          -
                                        {{else}}
                                          {{pageName}}  
                                       {{/if}}
                                     </div>
-                                    <div class="col-md-1">{{tags}}</div>
-                                    <div class="col-md-1">{{status}}</div>
-                                    <div class="col-md-1">{{createdAt}}</div>
+                                    <div class="col l1">{{tags}}</div>
+                                    <div class="col l1">{{status}}</div>
+                                    <div class="col l1">{{createdAt}}</div>
                                 </div>
                             </div>
                             {{/if}}

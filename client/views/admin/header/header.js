@@ -2,7 +2,7 @@ Meteor.subscribe("plugin");
 
 var mainTitle;
 var flag = true;
-Template.adminHeader.helpers({
+Template.adminlayout.helpers({
     'navBarList': function () {
         return [
             {'title': 'dashboard', 'maintitle': 'Dashboard', 'icon': 'fa-tachometer'},
@@ -56,7 +56,7 @@ Template.adminHeader.helpers({
 });
 
 
-Template.adminHeader.rendered = function () {
+Template.adminlayout.rendered = function () {
     // $('.plugin-submenu').hide();    
     $('#subNavBarpostsadd').hide();
     $('#subNavBarpostscategories').hide();
@@ -83,7 +83,7 @@ Template.adminHeader.rendered = function () {
     // }, 500);
 };
 
-Template.adminHeader.events({
+Template.adminlayout.events({
     'click .item': function (events) {  
         var selectedId = $(events.currentTarget).attr("id");
 

@@ -514,9 +514,8 @@ body, #main {
     z-index: 1;
 }
 .page-selection {
-    background-color: #B8B8B8;
+    background-color: #558B2F;
     color: #ffffff;
-    font-weight: bold;
 }
 .parent-page {
     cursor: pointer;
@@ -524,7 +523,7 @@ body, #main {
 }
 
 .parent-page:hover {
-    background-color: #B8B8B8;
+    background-color: #558B2F;
     color: #ffffff;
 }
 
@@ -533,9 +532,4 @@ body, #main {
     cursor: pointer;
 }
 
-
-
-
-
-/*mainCsss*/
 

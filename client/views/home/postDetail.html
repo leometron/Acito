@@ -1,62 +1,30 @@
 
 <template name="postDetail">
-     <div id="Pages" class="row set-color bg-gradient" style="border:1px solid red">     
-          <div id="postDetail" class="container padding-zero full-width" >
-
-            <div class="animateclass">
-                <!-- <div id="myPost" class="carousel slide bannerDesign" data-ride="carousel"> -->
-                    <!-- <div class="carousel-inner" role="listbox"> -->
-                        <!-- {{#each imageList}} -->
-                        <!-- {{#if equals showImagePost._id postId}}
-                          {{#if equals _id singlePostSlider._id}} -->
-                          <!-- {{#each imageList}} -->
-                          <!-- <div class="item active">
-                              <img src="{{url}}" class="slider-post-image">
-                          </div> -->
-                          <!-- {{else}} -->
-                         <!--  <div class="item">
-                              <img src="{{url}}" class="slider-post-image">
-                          </div> -->
-                          <!-- {{/if}}
-                        {{/if}} -->
-                        <!-- {{/each}} -->
-                        <!-- <a class="carousel-control left" href="#myPost" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="carousel-control right" href="#myPost" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a> -->
-                    <!-- </div> -->
-                <!-- </div> -->
-              <div class="col-md-12 text-center black font-xxlarge upper-case" style="margin-top:2%;">
-               {{post.title}}
-              </div>
-              <div class="gallery-icon" style="text-align:center; padding: 80px 10px 10px;">
-              {{#each images}} 
-                <img width="150" height="150" src="{{url}}" >
-                {{/each}}
-              </div>
-              <div class="col-md-12 post-published-design">
-               published on {{formatDate post.createdAt}} | by {{post.publisherName}}
-              </div>
-              <div class="row margin-left-right-theme" style=" margin-top: 5%; padding: 5px 30px 0px 30px;">
-              <!--     <textarea disabled rows="40" cols="150" style="border: none">
-                  {{showSelectedPost.content}}
-              </textarea>  -->
-              <p style="line-height: 26px; padding: 0 5% 20px; white-space: pre-line; border-top: 1px solid #ffffff; border-bottom: 1px solid #ffffff;">  
-               {{post.content}}                  
-             </p>
-<div class="raty"></div>             
-             
-             <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis">Tweet</a>
-                </div>
-            </div>
-            <!-- <span class='st_sharethis_hcount' displayText='ShareThis'></span>
-            <span class='st_facebook_hcount' displayText='Facebook'></span>
-            <span class='st_twitter_hcount' displayText='Tweet'></span>
-            <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
-            <span class='st_pinterest_hcount' displayText='Pinterest'></span>
-            <span class='st_email_hcount' displayText='Email'></span> -->
-        </div>
+  <div class="home-post-detail-field home-post-field">
+    <div class="row" style="border-bottom: 1px solid #ccc; padding: 15px;">
+      <div class="col s1 m1 l1 back-arrow">
+          <img src="images/arrow-left.png">
+      </div>
+      <div class="col s11 m11 l11" style="font-size:27px">
+          {{post.title}}
+      </div>
     </div>
+    {{#if equals featuredImage '-'}}
+      <div class="row">
+      {{#each images}} 
+        <div class="col s12 m4 l4">
+            <img src="{{url}}" style="width:100%;height:200px">
+        </div>
+      {{/each}}
+      </div>
+     {{/if}}
+    <span class="right" style="color:#7A7A7A">published on {{formatDate post.createdAt}} | by {{post.publisherName}}</span>
+    <div class="row">
+      <div class="col s12 m12 l12">
+          <p style="line-height: 26px; white-space: pre-line;">  
+               {{post.content}}                  
+          </p>
+      </div>
+    </div>
+  </div>
 </template>

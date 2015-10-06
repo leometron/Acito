@@ -5,10 +5,10 @@
 	/*left: 10%;*/
 	width:98%;
 	background-color: #ffffff;
-	padding-top: 40px;
+	/*padding-top: 40px;*/
 	padding-bottom: 15px; 
-	margin-top: 8px;
-	margin-left: 8px;
+	/*margin-top: 8px;*/
+	/*margin-left: 8px;*/
 }
 
 .question-detail textarea {
@@ -84,7 +84,7 @@
     padding: 14px 0px 10px 0;
 }
 
-.userlogin {
+/*.userlogin {
 	width:40%; 
 	border: 1px solid #E5E5E5; 
 	padding: 14px 35px 14px; 
@@ -101,26 +101,27 @@
 	background-color: #ffffff;
 	margin-top:25px;
 }
-
-.memberlogin {
+*/
+/*.memberlogin {*/
 	/*position:absolute; */
-	top:63px; 
+	/*top:63px; */
 	/*width: 80%; */
-	padding: 25px; 
-	left: 10%; 
+	/*padding: 25px; */
+	/*left: 10%; */
 	/*background-color: #ffffff;*/
-}
+/*}*/
 
 .main-content-box {
-	border: 1px solid #000000;
-    margin-top: 13%;
-    width: 98%;
+	background: #f6faeb none repeat scroll 0 0;
+    border: 1px solid #CCCCCC;
+    margin-left: 21%;
+    margin-top: 30px;
     position: relative;
-    background: #F6FAEB;
+    width: 75%;
 }
 
 .content-box-menu {
-  background: #111111; 
+  background: #558B2F; 
   height: 25px; 
   left: 0; 
   top: 0; 
