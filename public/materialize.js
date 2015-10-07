@@ -704,7 +704,7 @@ else {
       else {
         $.Velocity.hook($modal, "scaleX", 0.7);
         $modal.css({ top: options.starting_top });
-        $modal.velocity({top: "40%", opacity: 1, scaleX: '1'}, {
+        $modal.velocity({top: "25%", opacity: 1, scaleX: '1'}, {
           duration: options.in_duration,
           queue: false,
           ease: "easeOutCubic",
