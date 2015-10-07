@@ -1,13 +1,16 @@
 <template name="header">
 
 <div class="navbar-fixed">
-     <nav class="light-green darken-3" role="navigation">
+     <nav class="light-green darken-3" role="navigation" style="border:1px solid">
         <div class="nav-wrapper" style="margin:0 15px;">
           <div class="header_logo hide-on-med-only hide-on-small-only">
               <img src="/images/grannylogo.png" class="header_img"/>
           </div>
-          <a href="#" class="header_title title">Grannytheraphy</a>
-          <a href="#" data-activates="slide-out" class="margintop20 button-collapse side-icon ">
+          <div class="hide-on-med-only hide-on-small-only" style="position: absolute; right: 0; top: 0;">
+            <a href="#" class="header_title title">Grannytheraphy</a>
+          </div>
+          <a href="#" class="header_title title hide-on-large-only">Grannytheraphy</a>
+          <a href="#" data-activates="slide-out" class="margintop20 button-collapse side-icon">
             <i class="mdi-navigation-menu"></i>
           </a>
           <div id="slide-out" class="side-nav light-green darken-4">
@@ -16,7 +19,7 @@
             {{#each parentPageList}}
               <div class="parent-page leftMenuContent page{{_id}}" id="page{{_id}}">
                 {{title}}
-                <img src="images/downarrow.png" class="leftMenuArrow right downarrow">
+                <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="width:20px">
               </div>
               <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
               {{/each}}
@@ -37,7 +40,7 @@
           {{#each parentPageList}}
             <div class="parent-page sm_leftMenuContent page{{_id}}" id="page{{_id}}">
               {{title}}
-              <img src="images/downarrow.png" class="sm_leftMenuArrow right downarrow">
+              <img src="images/downarrow.png" class="sm_leftMenuArrow right downarrow" style="width:20px">
             </div>
             <div class="subpage{{_id}} sm_letfMenuSubTitle" id="subpage{{_id}}"></div>
             {{/each}}

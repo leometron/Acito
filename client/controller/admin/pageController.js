@@ -12,6 +12,16 @@ Template.pages.helpers({
 });
 
   Template.pages.rendered = function(){
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );    
      Session.set('errorMessage', '');
     var status = Session.get('pageStatus');
     if ( status == "all" ) {
@@ -136,6 +146,11 @@ Template.pages.events ({
            Meteor.call('dateFilter', date);
            Meteor._reload.reload();
            Session.set('pageStatus', "all");
+        },
+        'click .dropdown-content li' : function(event) {
+            // alert($(event.target).text());
+            // $('dropdownsample').text($(event.target).text());
+            $('#bulkActionDropdown').text($(event.target).text());
         }
 });
 
