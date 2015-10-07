@@ -96,6 +96,9 @@ Template.home.events({
             $(window).scrollTop(0);
               $('#question_modal').closeModal();
               $('#questionArea').val("");
+              if($("label").hasClass("active")) {
+               $("label").removeClass("active")
+              }  
             Router.go('/ask');
           },300);
       }
@@ -110,7 +113,10 @@ Template.home.events({
             $(window).scrollTop(572);
             $('#search_modal').closeModal();
             Router.go('/posts?queryString='+$('#searchQuery').val());
-            $('#searchQuery').val("");            
+            $('#searchQuery').val("");
+            if($("label").hasClass("active")) {
+               $("label").removeClass("active")
+            }            
         }
         Meteor.setTimeout(function(){
           $('#searchEmptyInfo').hide();

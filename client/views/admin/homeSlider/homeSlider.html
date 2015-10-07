@@ -1,8 +1,7 @@
 <template name="homeSlider" id="homeSlider">
-    <div class="main-content-box">
-        <div class="content-box-menu">Home Sliders</div>
-        <div class="margin-top-40" style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
-            <div class="row post-margin">
+    <div class="main-content-box  z-depth-2">
+        <div style="margin-left: 2.5%; margin-top: 3%;width: 95%;margin-bottom:30px">
+<!--             <div class="row post-margin">
                 <span class="main-header">Home Sliders</span>
                 <span><button type="button" id="addNew" class="btn btn-default">Add New</button></span>
             </div>
@@ -11,34 +10,45 @@
                     <input type="text" class="form-control" id="searchString" style="width:54%; display:inline"/>
                     <span><button type="button" id="searchSlider" class="btn btn-default">Search</button></span>
                 </div>
-            </div>
-            <div class="cursor-pointer">
-                <span><a id="sliderAll">All</a> | 
-                      <a id="sliderPublish">Published</a> |
-                      <a id="sliderDraft">Draft</a> |
-                      <a id="sliderBin">Bin</a>
-                </span>
-            </div>
+            </div> -->
+
             <div class="row post-margin">
-                <div class="col l3 padding-left-zero">
+                <div class="col l4">
+                    <span class="main-header">Home Sliders</span>
+                    <span><button type="button" id="addNew" class="admin-btn">Add New</button></span>
+                </div>
+            
+            <div class="col l8 post-margin">
+                <div style="float: right">
+                    <input type="text" class="form-control" id="pagesearch" style="width:60%; display:inline"/>
+                    <span>
+                        <!-- <button type="button" id="searchSlider" class="admin-btn" style="margin-top:-5px">Search</button> -->
+                        <i class="small material-icons" id="searchSlider">search</i>
+                    </span>
+                </div>
+            </div>
+            </div>
+
+            <div class="row post-margin">
+                <div class="col l2 padding-left-zero">
                <span class="dropdown">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdownMenu1"
+                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="dropdownMenu1"
                             data-toggle="dropdown">
                         Bulk Actions
                     </button>
                      <span class="caret margin-left-minus-20"></span>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+<!--                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li><a href="#" class="menuitem">Bulk Actions</a></li>
                         <li><a href="#" class="menuitem">Delete</a></li>
                         <li><a href="#" class="menuitem">Move to Bin</a></li>
-                    </ul>
+                    </ul> -->
                 </span>
                 </div>
-                <div class="col l2 padding-left-zero">
-                    <span class="margin-left-10"><button type="button" id="Bulkapply" class="btn btn-default">Apply
+<!--                 <div class="col l2 padding-left-zero">
+                    <span><button type="button" id="Bulkapply" class="admin-btn">Apply
                     </button></span>
-                </div>
-                <div class="col l5">
+                </div> -->
+                <div class="col l2">
                 <span class="dropdown">
                     <!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         All dates
@@ -47,7 +57,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <li><a href="#">All dates</a></li>
                     </ul> -->
-                    <select id="filterdate" class="selctionButton browser-default">
+                    <select id="filterdate" class="selctionButton browser-default" style="height:33px">
                         <option value="All dates" selected="selected">All dates</option>
                         <option value="/6/2015">June 2015</option>
                         <option value="/7/2015">July 2015</option>
@@ -55,10 +65,21 @@
                     </select>
                 </span>
                 </div>
-                <div class="col l2">
-                    <span><button type="button" class="btn btn-default" id="Datefilter">Filter</button></span>
+<!--                 <div class="col l1">
+                    <span><button type="button" class="admin-btn" id="Datefilter">Filter</button></span>
+                </div> -->
+            </div>
+
+            <div class="cursor-pointer row">
+                <div class="col l12">
+                <span class="right" style="margin-bottom: -19px; margin-right:-9px"><a id="sliderAll">All</a> | 
+                      <a id="sliderPublish">Published</a> |
+                      <a id="sliderDraft">Draft</a> |
+                      <a id="sliderBin">Bin</a>
+                </span>
                 </div>
             </div>
+
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">

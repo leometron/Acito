@@ -1,34 +1,35 @@
 <template name="posts" id="post">
-    <div class="main-content-box">
-      <div class="content-box-menu">Posts</div>
-        <div class="margin-top-40" style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
+    <div class="main-content-box  z-depth-2">
+        <div style="margin-left: 2.5%; margin-top: 3%;width: 95%;margin-bottom:30px">
+
             <div class="row post-margin">
-                <span class="main-header">Posts</span> <span><button type="button" id="addNewPost"
-                                                                     class="btn btn-default">Add New
-            </button></span>
-            </div>
-            <div class="row post-margin">
-                <div style="float: right">
+                <div class="col l4">
+                    <span class="main-header">Posts</span>
+                    <span><button type="button" id="addNewPost" class="admin-btn">Add New</button>
+                    </span>
+                </div>
+            
+                <div class="col l8 post-margin">
+                  <div style="float: right">
                     <input type="text" class="form-control" id="queryString" value="{{queryString}}"
                            style="width:60%; display:inline"/>
-                    <span><button type="button" id="searchPost" class="btn btn-default" style="margin-top:-5px">Search</button></span>
+                    <span>
+                      <!-- <button type="button" id="searchPost" class="admin-btn" style="margin-top:-5px">Search</button> -->
+                      <i class="small material-icons" id="searchPost">search</i>
+                    </span>
+                  </div>
                 </div>
             </div>
-            <div class="cursor-pointer">
-                <span><a id="showAll">All</a> | 
-                      <a id="publishFilter">Published</a> |
-                      <a id="draftFilter">Draft</a> |
-                      <a id="binFilter">Bin</a>
-                </span>
-            </div>
+
+
             <div class="row post-margin">
-                <div class="col l3 padding-left-zero">
+                <div class="col l2 padding-left-zero">
                  <span class="dropdown margin-right">
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="dropdown"
+                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="dropdown"
                             data-toggle="dropdown">Bulk Actions
                     </button>
                      <span class="caret" style=" margin-left: -20px;"></span>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+<!--                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                         <li>
                             <a class="menuitem" href="#">Bulk Actions</a>
                         </li>
@@ -38,16 +39,16 @@
                         <li>
                             <a class="menuitem" href="#">Move to Bin</a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </span>
                 </div>
-                <div class="col l2 padding-left-zero">
-                    <span class="margin-left-10"><button type="button" class="btn btn-default" id="bulkApplyBtn">Apply
+<!--                 <div class="col l2 padding-left-zero">
+                    <span><button type="button" class="admin-btn" id="bulkApplyBtn">Apply
                     </button></span>
-                </div>
-                <div class="col l4 margin-left-minus-5">
+                </div> -->
+                <div class="col l2 margin-left-minus-5">
                 <span class="dropdown margin-right">
-                    <select id="dateFilter" class="selctionButton browser-default">
+                    <select id="dateFilter" class="selctionButton browser-default" style="height:33px">
                         <option value="All dates" selected="selected">All dates</option>
                         <option value="/9/2015">September 2015</option>
                         <option value="/10/2015">October 2015</option>
@@ -55,9 +56,9 @@
                     </select>
                 </span>
                 </div>
-                <div class="col l2 margin-left-minus-5">
-                    <span><button type="button" class="btn btn-default" id="filter" style="margin-top:-5px">Filter</button></span>
-                </div>
+<!--                 <div class="col l1 margin-left-minus-5">
+                    <span><button type="button" class="admin-btn" id="filter">Filter</button></span>
+                </div> -->
                 <!-- <div class="col-md-4 margin-left-minus-10"> -->
                 <!--                 <span class="dropdown margin-right">
                                     <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="datedropdown"
@@ -93,6 +94,17 @@
                                     </span>
                                 </div> -->
             </div>
+
+            <div class="cursor-pointer row">
+              <div class="col l12">
+                <span class="right" style="margin-bottom: -19px; margin-right:-9px"><a id="showAll">All</a> | 
+                      <a id="publishFilter">Published</a> |
+                      <a id="draftFilter">Draft</a> |
+                      <a id="binFilter">Bin</a>
+                </span>
+              </div>
+            </div>
+
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">

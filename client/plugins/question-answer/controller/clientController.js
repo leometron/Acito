@@ -38,6 +38,7 @@ Template.questionDetail.events({
 Template.questionDetail.rendered = function() {
 	$('#emptyQuestionInfo').hide();
 	$('#emptyDetailInfo').hide();
+	$("#questioncol label").addClass("active");
     // $('#question').val(Session.get('question'));           	
 	clearQuestionContent();
 }

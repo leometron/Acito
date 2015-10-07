@@ -5,123 +5,43 @@
     <div id="questionDetail">
       {{> questionDetail}}
     </div>
-    <div style="position:fixed;bottom:0; right: 15px;">
-        <ul>
-          <li style="display:inline-block; margin-top:10px;">
-            <a class="btn-floating green darken-3">
-              <i class="material-icons search">search</i>
-            </a>
-          </li>
-          <li style="display:inline-block; margin-left:10px;">
-            <a class="btn-floating green darken-3" style="padding-left:7px;">
-              <i class="material-icons question">edit_mode</i>
-            </a>
-          </li>
-          <li style="display:inline-block; margin-left:10px;">
-            <a class="btn-floating green all-questions-content darken-3">
-              <i class="material-icons">list</i>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div id="search_modal" class="modal">
-        <div class="modal-content">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="searchQuery" type="text" class="validate">
-              <label for="searchQuery">Search Text</label>
-            </div>
-          </div>
-            <div class="row">
-              <div class="col s12 m12 l12">
-                <label id="searchEmptyInfo" for="searchQuery" style="position:fixed;color:red;margin-top:-10px">Please enter search string</label>
-              </div>
-            </div>
-            <div class="row">
-              <div align="center">
-                  <a id="search" class="waves-effect waves-light btn">Search</a>
-              </div>
-            </div>
-        </div>
-      </div>
-      <div id="question_modal" class="modal">
-        <div class="modal-content">
-          <div class="row">
-            <div class="input-field col s12">
-              <textarea id="questionArea" class="materialize-textarea"></textarea>
-              <label for="questionArea">Your Question:</label>
-            </div>
-          </div>
-          <div class="row">
-            <label id="questionEmptyInfo" for="questionArea" style="position:fixed;color:red;margin-top:-10px">Please enter question</label>
-          </div>
-          <div class="row">
-            <div align="center">
-              <a id="askQuestion" class="waves-effect waves-light btn">Ask</a>
-            </div>
-          </div>
-        </div>
-      </div>
-<div class="memberlogin modal" id="userLoginForm">
-    <div class="modal-content">
-        <div class="userlogin" style="background-color: #ffffff;
-    margin: 0 auto; max-width: 280px; padding: 15px 23px 6px;">
-            <div style="text-align:center; padding:8px; font-weight:bold;">LOGIN</div>
-                <form id="userLogin">
-                 <div class="input-field col s6">
-                  <input id="email" type="text" class="validate">
-                  <label for="email">Username/Email</label>
-                 </div>
-                 <div class="input-field col s6">
-                  <input id="password" type="password" class="validate">
-                  <label for="password">Password</label>
-                 </div>
-                 <div class="row">
-                  <div class="col s5 l2">
-                    <button class="btn btn-info" type="submit">Login</button>
-                  </div>
-                  <div class="col s5 l2 right" style="margin-top:8px;">
-                    <a id="registerNewUser" href="">Register</a>
-                  </div>
-                 </div>                    
-                 <div align="center">
-                  <div id="errorMsg"></div>
-                 </div>
-                </form>
-        </div>
+    <div  style="position:fixed;bottom:0; right: 15px;">
+      <ul>
+        <li style="display:inline-block; margin-top:10px;">
+          <a class="btn-floating green darken-3">
+            <i class="material-icons search">search</i>
+          </a>
+        </li>
+        <li style="display:inline-block; margin-left:10px;">
+          <a class="btn-floating green darken-3" style="padding-left:7px;">
+            <i class="material-icons question">edit_mode</i>
+          </a>
+        </li>
+        <li style="display:inline-block; margin-left:10px;">
+          <a class="btn-floating green darken-3">
+            <i class="material-icons">list</i>
+          </a>
+        </li>
+      </ul>
     </div>
-</div>
-
-        <div class="usersignup modal" id="userRegistrationForm">
-          <div class="modal-content">
-           <div style="background-color: #ffffff; margin: 0 auto; max-width: 280px; padding: 15px 23px 6px;"> 
-            <div style="text-align:center; padding:8px; font-weight:bold;">Registration Form</div>
-              <form id="signUp">
-                <div class="input-field col s6">
-                  <input id="firstname" type="text" class="validate">
-                  <label for="firstname">Username</label>
-                </div>
-                <div class="input-field col s6">
-                <input id="upemail" type="email" class="validate">
-                  <label for="upemail">Email</label>
-                </div>
-                <div class="input-field col s6">
-                <input id="signpassword" type="password" class="validate">
-                  <label for="signpassword">Password</label>
-                </div>
-                <div class="input-field col s6">
-                <input id="re-password" type="password" class="validate">
-                 <label for="re-password">Confirm Password</label>
-                </div>
-                <div align="center">
-                 <button class="btn btn-info" type="submit">Register</button>
-                </div>
-                <div align="center">
-                  <div id="Usererr"></div>
-                </div>
-              </form>
-            </div>
+    <div id="search_modal" class="modal">
+      <div class="modal-content">
+        <div>
+            <input type="text" id="searh" placeholder="Search Text"/>
           </div>
-        </div>
+          <div align="center">
+            <a class="waves-effect waves-light btn">Search</a>
+          </div>
+      </div>
+    </div>
+    <div id="question_modal" class="modal">
+      <div class="modal-content">
+        <div>
+            <textarea id="question" class="materialize-textarea"  placeholder="Your Question"></textarea>
+          </div>
+          <div align="center">
+            <a class="waves-effect waves-light btn">Ask</a>
+          </div>
+      </div>
+    </div>
 </template>

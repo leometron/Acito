@@ -3,7 +3,7 @@
 		<!-- <div id="closeAskQuestion" style="position:relative"><p class="close-icon">x</p></div> -->
     <div class="row">
 		<div class="row">
-	      <div class="input-field col s12">
+	      <div class="input-field col s12" id="questioncol">
 	       <textarea id="question" class="materialize-textarea">{{question}}</textarea>
 	       <label for="question">Your Question:</label>
 	      </div>
@@ -35,32 +35,32 @@
         <div class="row">
 	     <div class="input-field col s12">
 	      <input id="complaintPeriod" type="text" class="validate">
-          <label for="complaintPeriod">How long have you had this complaint?</label>
+          <label for="complaintPeriod" style="white-space:nowrap;">How long have you had this complaint?</label>
 	     </div>
         </div>
         <div class="row">
 	     <div class="input-field col s12">
 	      <input id="symptoms" type="text" class="validate">
-          <label for="symptoms">What symptoms are you exhibiting?</label>
+          <label for="symptoms" style="white-space:nowrap;">What symptoms are you exhibiting?</label>
 	     </div>
         </div>
         <div class="row">
 	     <div class="input-field col s12">
 	      <input id="secondaryComplaint" type="text" class="validate">
-          <label for="secondaryComplaint">Are there any secondary complaints?</label>
+          <label for="secondaryComplaint" style="white-space:nowrap;">Are there any secondary complaints?</label>
 	     </div>
         </div>
         <div class="row">
 	     <div class="input-field col s12">
 	      <input id="medicineTaking" type="text" class="validate">
-          <label for="medicineTaking">What medication are you currently taking?</label>
+          <label for="medicineTaking" style="white-space:nowrap;">What medication are you currently taking?</label>
 	     </div>
         </div>
 		<div class="row">
-		 <div class="col s6 l2">
+		 <div class="col s6 l2" style="position:absolute; left:5px;">
 		  <button type="button" id="postQuestion" class="btn btn-primary submitbtn">Submit</button>
 		 </div>
-		 <div class="col s6 l2">
+		 <div class="col s6 l2" style="position:absolute; left:130px;">
 		   <button type="button" id="closeAskQuestion" class="btn btn-primary submitbtn">Cancel</button>
 		 </div>	
 		</div>	

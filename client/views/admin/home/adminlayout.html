@@ -1,9 +1,9 @@
 <template name="adminlayout">
 
 <div class="navbar-fixed">
-     <nav class="light-green darken-3" role="navigation">
+     <nav role="navigation" style="background:#009933">
         <div class="nav-wrapper" style="margin:0 15px;">
-           <a href="#" style="font-size:22px;font-weight:bold;" class="title">Grannytheraphy</a>
+           <a href="#" style="font-size:22px;font-weight:bold; color:#ffffff" class="title">Grannytheraphy</a>
           <a href="#" data-activates="slide-out" style="margin-right:20px;" class="button-collapse side-icon  "><i class="mdi-navigation-menu"></i></a>
         <div id="slide-out" class="side-nav">
           <div style="text-align:center; font-weight:bold; font-size:18px;" class="light-green darken-2">Category</div>
@@ -27,19 +27,19 @@
       <div class="hide-on-med-only hide-on-small-only">
       <div class="row">
         <div class="col l2 padding0">
-          <div class="leftMenu">
+          <div class="leftMenu z-depth-2">
             {{#each navBarList}}
               <li id="navBar{{title}}" class="item" style="padding: 4px 15px;">
                   <a href="/admin/{{title}}">
                       <div>
                         <!-- <i class="fa {{icon}} icons"></i> -->
-                        <span>{{maintitle}}</span>
+                        <span style="color:#000000; font-size:16px;">{{maintitle}}</span>
                       </div>
                   </a>
                   <ul style="list-style: none;" id="showSubTitle">
                       {{#each subtitle}}
                       <li class="padding-bottom-10" id="subNavBar{{title}}{{sTitle}}"><a
-                              href="/admin/{{title}}/{{sTitle}}"><span>{{name}}</span></a></li>
+                              href="/admin/{{title}}/{{sTitle}}"><span style="color:#000000; font-size:16px;">{{name}}</span></a></li>
                       {{/each}}
                   </ul>
               </li>
