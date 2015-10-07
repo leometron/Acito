@@ -121,16 +121,15 @@
 }
 
 .content-box-menu {
-  background: #558B2F; 
-  height: 25px; 
-  left: 0; 
-  top: 0; 
-  width: 100%; 
-  position: absolute; 
-  color: white;
-  text-align: left;
-  font-weight: bold; 
-  padding: 2px 30px;
+	font-size: 20px;
+    font-weight: bold;
+    height: 35px;
+    left: 0;
+    padding: 15px 26px;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 100%;
 }
 
 .cursor {
