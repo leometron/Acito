@@ -385,7 +385,7 @@ Template.postDetail.rendered = function() {
    addTwitterWidget();
    this.$('.rateit').rateit();
 
-    $('.rateit').bind('rated', function(event, value) {
+    this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
             Router.go('/login');
           } else {
@@ -399,6 +399,7 @@ function addTwitterWidget() {
     !function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0], 
             p = /^http:/.test(d.location) ? 'http' : 'https';
+            id="";
             // console.log("all" + d.getElementById(id));
         if (!d.getElementById(id)) {
             js = d.createElement(s);
