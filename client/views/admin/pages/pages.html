@@ -19,19 +19,19 @@
             </div>
             <div class="row post-margin">
                 <div class="col l2 padding-left-zero">
-                <span class="dropdown">
-<!--                     <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="dropdownMenu1"
-                            data-activates='dropdownBulkAction'>
-                        Bulk Actions
-                    </button>  -->                   
-  <a class='dropdown-button btn' href='#' id="dropdownMenu1" data-activates='dropdownBulkAction'>Bulk Actions</a> 
-                    <ul class="dropdown-content" id="dropdownBulkAction">
-                        <li><a href="#" class="menuitem">Bulk Actions</a></li>
-                        <li><a href="#" class="menuitem">Delete</a></li>
-                        <li><a href="#" class="menuitem">Move to Bin</a></li>
+                    <div class='dropdown-button btn' data-activates='bulkActions' style="width:150px; padding-left: 0px; padding-right: 5px;">
+                        <span id="bulkOptionDropDown" style="padding-left: 4px;">Bulk Actions</span>
+                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                    </div>
+                    
+                    <!-- Dropdown Structure -->
+                    <ul id='bulkActions' class='dropdown-content'>
+                        <li class="action-item">Bulk Actions</li>
+                        <li class="action-item">Delete</li>
+                        <li class="action-item">Move to Bin</li>
                     </ul>
-                </span>
                 </div>
+
                 <div class="col l2" id="apply">
                     <span><button type="button" id="Bulkapply" class="admin-btn">Apply
                     </button></span>

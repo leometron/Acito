@@ -14,13 +14,12 @@ var selectedIds = [];
 Template.posts.rendered = function(){
   	$('#apply').hide();
   	$('.dropdown-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: false,
-      hover: false,
-      gutter: 0,
-      belowOrigin: true,
-      alignment: 'left'
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: true,
+        gutter: 0,
+        belowOrigin: true,
+        alignment: 'center'
     });	
 	Session.set('errorMessage','');
 	var status = Session.get('checkStatus');
@@ -71,15 +70,15 @@ Template.posts.events({
 		Meteor.call('searchPost',$('#queryString').val());
 		Meteor._reload.reload();        
 	},  
-    'click .menuitem': function (event) {            
-       $('#dropdownMenu1').text( $(event.target).text());
-       if($('#dropdownMenu1').text() != "Bulk Actions") {
+    'click .action-item': function (event) {            
+       $('#bulkOptionDropDown').text( $(event.target).text());
+       if($('#bulkOptionDropDown').text() != "Bulk Actions") {
         $('#apply').fadeIn(500);
        } else {
         $('#apply').fadeOut(500);
        }           
     },
-	'click .menuitem1': function (event) {                            
+	/*'click .menuitem1': function (event) {                            
 		$('#datedropdown').text( $(event.target).text());    
 	},
 	'click .menuitem2': function (event) {                
@@ -87,7 +86,7 @@ Template.posts.events({
 	},
 	'click .menuitem3': function (event) {    
 		$('#dropdownmenu').text( $(event.target).text());        
-	},
+	},*/
 	'click #showAll' : function(event) {
 		event.preventDefault();                
 		Meteor.call('statusFilter',"All");
@@ -142,7 +141,7 @@ Template.posts.events({
        });
     },
    'click #bulkApplyBtn': function() {
-		Meteor.call('bulkActions', selectedIds, $('#dropdownMenu1').text());
+		Meteor.call('bulkActions', selectedIds, $('#bulkOptionDropDown').text());
 		Meteor._reload.reload(); 
    },
 	// 'click #filter': function(event) {
@@ -163,9 +162,7 @@ Template.posts.events({
 Template.addNewPost.events({
 	'click #savePost' : function () {
 		if (!$('#postName').val()) {
-			Session.set('errorMessage','Post title is required');
-			Meteor.setTimeout(function () {
-				Session.set('errorMessage','')},2000);
+			Materialize.toast('Post title is required', 3000);
 		} else {  
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
 			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
@@ -183,10 +180,9 @@ Template.addNewPost.events({
 	},
 	'click #publishPost' : function () {
 		if(!$('#postName').val()) {
-			Session.set('errorMessage','Post title is required');
-			Meteor.setTimeout(function () {
-				Session.set('errorMessage','')},2000);
-		} else {                   
+			Materialize.toast('Post title is required', 4000);
+		} else {  
+		alert('else')                 ;
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
 			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
 			var pageName = $('#pageName :selected').text();
@@ -203,9 +199,7 @@ Template.addNewPost.events({
 	},
 	'click #updatePost' : function() {
 		if (!$('#postName').val()) {
-			Session.set('errorMessage','Post title is required');
-			Meteor.setTimeout(function () {
-				Session.set('errorMessage','')},2000);
+			Materialize.toast('Post title is required', 4000);
 		} else {             
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
 			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
@@ -347,7 +341,7 @@ Template.adminHeader.events({
 	}
 });
 
-Template.adminTop.helpers({
+Template.adminlayout.helpers({
 	'errormsg' : function() {
 		return Session.get('errorMessage');
 	}
