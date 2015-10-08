@@ -179,13 +179,23 @@ Template.homeSlider.events({
         Meteor._reload.reload();
         Session.set('sliderStatus', "all");
     },
-    'click #Datefilter': function () {
+    // 'click #Datefilter': function () {
+    //     Meteor.call('dateSlider', $('#filterdate').val());
+    //     Meteor._reload.reload();
+    //     Session.set('sliderStatus', "all");
+    // },
+    'change #filterdate' : function() {
         Meteor.call('dateSlider', $('#filterdate').val());
         Meteor._reload.reload();
         Session.set('sliderStatus', "all");
-    },
-    'click .menuitem': function (event) {
-        $('#dropdownMenu1').text($(event.target).text());
+    },    
+     'click .action-item': function (event) {            
+       $('#bulkOptionDropDown').text( $(event.target).text());
+       if($('#bulkOptionDropDown').text() != "Bulk Actions") {
+        $('#apply').fadeIn(500);
+       } else {
+        $('#apply').fadeOut(500);
+       }           
     },
     'click .checkbox': function (event) {
         if (event.target.checked == true) {
@@ -196,7 +206,7 @@ Template.homeSlider.events({
         }
     },
     'click #Bulkapply' : function () {
-          Meteor.call('bulkSlider', selectedIds, $('#dropdownMenu1').text());
+          Meteor.call('bulkSlider', selectedIds, $('#bulkOptionDropDown').text());
           Meteor._reload.reload();
           Session.set('sliderStatus', "all");
     },
@@ -234,6 +244,15 @@ Template.adminHeader.events({
 });
 
  Template.homeSlider.rendered = function(){
+    $('#apply').hide();
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: true,
+        gutter: 0,
+        belowOrigin: true,
+        alignment: 'center'
+    });   
     var status = Session.get('sliderStatus');
      Session.set('errorMessage', '');
     if ( status == "all" ) {

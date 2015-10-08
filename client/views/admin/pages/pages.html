@@ -19,23 +19,23 @@
             </div>
             <div class="row post-margin">
                 <div class="col l2 padding-left-zero">
-                <span class="dropdown">
-                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="dropdownMenu1"
-                            data-toggle="dropdown">
-                        Bulk Actions
-                    </button>
-                     <span class="caret margin-left-minus-20"></span>
-<!--                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#" class="menuitem">Bulk Actions</a></li>
-                        <li><a href="#" class="menuitem">Delete</a></li>
-                        <li><a href="#" class="menuitem">Move to Bin</a></li>
-                    </ul> -->
-                </span>
+                    <div class='dropdown-button btn' data-activates='bulkActions' style="width:150px; padding-left: 0px; padding-right: 5px;">
+                        <span id="bulkOptionDropDown" style="padding-left: 4px;">Bulk Actions</span>
+                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                    </div>
+                    
+                    <!-- Dropdown Structure -->
+                    <ul id='bulkActions' class='dropdown-content'>
+                        <li class="action-item">Bulk Actions</li>
+                        <li class="action-item">Delete</li>
+                        <li class="action-item">Move to Bin</li>
+                    </ul>
                 </div>
-<!--                 <div class="col l2">
+
+                <div class="col l2" id="apply">
                     <span><button type="button" id="Bulkapply" class="admin-btn">Apply
                     </button></span>
-                </div> -->
+                </div>
 
                 <div class="col l2 margin-left-minus-5">
                 <span class="dropdown margin-right">

@@ -24,28 +24,22 @@
 
             <div class="row post-margin">
                 <div class="col l2 padding-left-zero">
-                 <span class="dropdown margin-right">
-                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="dropdown"
-                            data-toggle="dropdown">Bulk Actions
-                    </button>
-                     <span class="caret" style=" margin-left: -20px;"></span>
-<!--                     <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                        <li>
-                            <a class="menuitem" href="#">Bulk Actions</a>
-                        </li>
-                        <li>
-                            <a class="menuitem" href="#">Delete</a>
-                        </li>
-                        <li>
-                            <a class="menuitem" href="#">Move to Bin</a>
-                        </li>
-                    </ul> -->
-                </span>
+                    <div class='dropdown-button btn' data-activates='bulkActions' style="width:150px; padding-left: 0px; padding-right: 5px;">
+                        <span id="bulkOptionDropDown" style="padding-left: 4px;">Bulk Actions</span>
+                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                    </div>
+                    
+                    <!-- Dropdown Structure -->
+                    <ul id='bulkActions' class='dropdown-content'>
+                        <li class="action-item">Bulk Actions</li>
+                        <li class="action-item">Delete</li>
+                        <li class="action-item">Move to Bin</li>
+                    </ul>
                 </div>
-<!--                 <div class="col l2 padding-left-zero">
+                <div class="col l2 padding-left-zero" id="apply">
                     <span><button type="button" class="admin-btn" id="bulkApplyBtn">Apply
                     </button></span>
-                </div> -->
+                </div>
                 <div class="col l2 margin-left-minus-5">
                 <span class="dropdown margin-right">
                     <select id="dateFilter" class="selctionButton browser-default" style="height:33px">
