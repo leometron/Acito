@@ -105,18 +105,14 @@ Template.media.events({
         $(location).attr('href', 'media/add');
         // Router.go('/admin/media/add');
     },
-    // 'click .menuitem': function (event) {
-    //      $('#alldropdown').text( $(event.target).text());
-    // },
-    // 'click .menuitem1': function (event) {
-    //      $('#alldatedropdown').text( $(event.target).text());
-    // },
-    'click .menuitem2': function (event) {
-        $('#actiondropdown').text($(event.target).text());
-    },
-    // 'click .menuitem3': function (event) {
-    //      $('#bulkactiondropdown').text( $(event.target).text());
-    // },
+     'click .menuitem': function (event) {            
+       $('#dropdownMenu1').text( $(event.target).text());
+       if($('#dropdownMenu1').text() != "Bulk Actions") {
+        $('#applybtn').fadeIn(500);
+       } else {
+        $('#applybtn').fadeOut(500);
+       }           
+    },    
     'click #allMedia': function (event) {
         event.preventDefault();
         Meteor.call('showAllMedia');
@@ -153,13 +149,18 @@ Template.media.events({
         }
     },
     'click #apply': function () {
-        Meteor.call('removeSelectMediaData', select_data, $('#actiondropdown').text());
+        Meteor.call('removeSelectMediaData', select_data, $('#dropdownMenu1').text());
     },
-    'click #filter': function (event) {
+    // 'click #filter': function (event) {
+    //     var date = $('#filterdate').val();
+    //     Meteor.call('selectDateFilter', date);
+    //     Meteor._reload.reload();
+    // },
+    'change #filterdate' : function() {
         var date = $('#filterdate').val();
         Meteor.call('selectDateFilter', date);
         Meteor._reload.reload();
-    }
+    }    
 
 });
 
@@ -181,4 +182,15 @@ Template.adminHeader.events({
 
 Template.media.rendered = function(){
     Session.set('errorMessage', '');
+    $('#applybtn').hide();
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false,
+      hover: false,
+      gutter: 0,
+      belowOrigin: true,
+      alignment: 'left'
+    }
+  );       
 };
