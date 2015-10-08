@@ -27,6 +27,25 @@ Template.posts.rendered = function(){
 	}
 };
 
+Template.addNewPost.rendered = function() {
+	var selectedPost = Posts.findOne(Session.get('selectedPostId'));
+	if(selectedPost){
+		Session.set('postPageId', selectedPost.pageId);
+	} else {
+		Session.set('postPageId', 'Category');
+	}
+	$('.dropdown-button').dropdown({
+		inDuration: 300,
+		outDuration: 225,
+		constrain_width: true, // Does not change width of dropdown to that of the activator
+		//hover: true, // Activate on hover
+		gutter: 0, // Spacing from edge
+		belowOrigin: true, // Displays dropdown below the button
+		alignment: 'center' // Displays dropdown with edge aligned to the left of button
+    });
+    $('.modal-trigger').leanModal();
+}
+
 // Template.addNewPost.rendered = function(){
 // tinymce.init({
 //     selector: "textarea",
@@ -149,8 +168,8 @@ Template.addNewPost.events({
 				Session.set('errorMessage','')},2000);
 		} else {  
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
-			var pageName = $('#pageName :selected').text();        
+			var pageId = (Session.get('postPageId') == "Category") ? "Uncategorized" : Session.get('postPageId');
+			var pageName = $('#pageDropDown').text();        
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
 			var featuredImage;
 			if($('#featureImage').length == 0) {
@@ -169,8 +188,8 @@ Template.addNewPost.events({
 				Session.set('errorMessage','')},2000);
 		} else {                   
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
-			var pageName = $('#pageName :selected').text();
+			var pageId = (Session.get('postPageId') == "Category") ? "Uncategorized" : Session.get('postPageId');
+			var pageName = $('#pageDropDown').text();
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
 			var featuredImage;
 			if($('#featureImage').length == 0) {
@@ -189,8 +208,8 @@ Template.addNewPost.events({
 				Session.set('errorMessage','')},2000);
 		} else {             
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-			var pageId = ($('#pageName').val() == "Category") ? "Uncategorized" : $('#pageName').val();
-			var pageName = $('#pageName :selected').text();        
+			var pageId = (Session.get('postPageId') == "Category") ? "Uncategorized" : Session.get('postPageId');
+			var pageName = $('#pageDropDown').text();        
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
 			var featuredImage;
 			if($('#featureImage').length == 0) {
@@ -276,7 +295,17 @@ Template.addNewPost.events({
     'click #removeImage': function () {
         Meteor.call('removeFeaturedImage', Session.get('selectedPostId'));
         Session.set('postImage', '');
-    }
+},
+     'click .drop-down-page': function(event) {
+     	var id = event.target.id;
+     	if(id != '') {
+     		$('#pageDropDown').html($('#'+id).html()+ '<i class="mdi-navigation-arrow-drop-down right"></i>');
+     	} else {
+     		$('#pageDropDown').html('no parent <i class="mdi-navigation-arrow-drop-down right"></i>');
+     	}
+     	Session.set('postPageId', id);
+     	console.log(Session.get('postPageId'));
+     }  
 });
 
 /*

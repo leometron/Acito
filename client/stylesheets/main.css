@@ -623,17 +623,23 @@ body, #main {
 }
 
 .home-post-field {
-  width: 65%; 
+ /* width: 65%; */
   /*background: #94bf94; */
 /*  box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6); 
   -o-box-shadow: 0 0 10px; */
-  padding: 10px; 
+  /*padding: 10px; 
   position: absolute; 
   top: 75px; 
   left: 20%;
-  padding-bottom: 15px;
+  padding-bottom: 15px;*/
+
+    left: 10px;
+    padding: 10px 10px 15px;
+    position: absolute;
+    top: 10px;
+    width: 99%;
 }
 
 .all-questions{
