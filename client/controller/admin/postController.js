@@ -12,6 +12,16 @@ Meteor.subscribe("users");
 var selectedIds = [];
 
 Template.posts.rendered = function(){
+  	$('#apply').hide();
+  	$('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false,
+      hover: false,
+      gutter: 0,
+      belowOrigin: true,
+      alignment: 'left'
+    });	
 	Session.set('errorMessage','');
 	var status = Session.get('checkStatus');
 	if( status == "all" ){
@@ -61,9 +71,14 @@ Template.posts.events({
 		Meteor.call('searchPost',$('#queryString').val());
 		Meteor._reload.reload();        
 	},  
-	'click .menuitem': function (event) {            
-		$('#dropdown').text( $(event.target).text());            
-	},
+    'click .menuitem': function (event) {            
+       $('#dropdownMenu1').text( $(event.target).text());
+       if($('#dropdownMenu1').text() != "Bulk Actions") {
+        $('#apply').fadeIn(500);
+       } else {
+        $('#apply').fadeOut(500);
+       }           
+    },
 	'click .menuitem1': function (event) {                            
 		$('#datedropdown').text( $(event.target).text());    
 	},
@@ -127,13 +142,17 @@ Template.posts.events({
        });
     },
    'click #bulkApplyBtn': function() {
-		Meteor.call('bulkActions', selectedIds, $('#dropdown').text());
+		Meteor.call('bulkActions', selectedIds, $('#dropdownMenu1').text());
 		Meteor._reload.reload(); 
    },
-	'click #filter': function(event) {
+	// 'click #filter': function(event) {
+	// 	Meteor.call('showDateFilterPost', $('#dateFilter').val());
+	// 	Meteor._reload.reload();
+ //   }
+   'change #dateFilter' : function() {
 		Meteor.call('showDateFilterPost', $('#dateFilter').val());
 		Meteor._reload.reload();
-   }
+   	}   
 });
 
 /*

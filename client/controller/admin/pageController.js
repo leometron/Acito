@@ -12,14 +12,15 @@ Template.pages.helpers({
 });
 
   Template.pages.rendered = function(){
+    $('#apply').hide();
   $('.dropdown-button').dropdown({
       inDuration: 300,
       outDuration: 225,
-      constrain_width: false, // Does not change width of dropdown to that of the activator
-      hover: false, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: false, // Displays dropdown below the button
-      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+      constrain_width: false,
+      hover: false,
+      gutter: 0,
+      belowOrigin: true,
+      alignment: 'left'
     }
   );    
      Session.set('errorMessage', '');
@@ -108,7 +109,12 @@ Template.pages.events ({
         },
 
          'click .menuitem': function (event) {            
-           $('#dropdownMenu1').text( $(event.target).text());            
+           $('#dropdownMenu1').text( $(event.target).text());
+           if($('#dropdownMenu1').text() != "Bulk Actions") {
+            $('#apply').fadeIn(500);
+           } else {
+            $('#apply').fadeOut(500);
+           }           
         },
 
          'click .checkbox': function(event) {
@@ -141,16 +147,17 @@ Template.pages.events ({
           Session.set('pageStatus', "all");
         },
 
-        'click #Datefilter': function(event) {
+        // 'click #Datefilter': function(event) {
+        //    var date = $('#filterdate').val();
+        //    Meteor.call('dateFilter', date);
+        //    Meteor._reload.reload();
+        //    Session.set('pageStatus', "all");
+        // },
+        'change #filterdate' : function() {
            var date = $('#filterdate').val();
            Meteor.call('dateFilter', date);
            Meteor._reload.reload();
            Session.set('pageStatus', "all");
-        },
-        'click .dropdown-content li' : function(event) {
-            // alert($(event.target).text());
-            // $('dropdownsample').text($(event.target).text());
-            $('#bulkActionDropdown').text($(event.target).text());
         }
 });
 

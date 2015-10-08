@@ -23,22 +23,22 @@
             <div class="row post-margin" id="list">
                 <div class="col l2 padding-left-zero">
                 <span class="dropdown margin-right">
-                   <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="actiondropdown"
+<!--                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="actiondropdown"
                            data-toggle="dropdown">
                        Bulk Actions
-                   </button>
-                     <span class="caret margin-left-minus-20"></span>
-<!--                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <li><a class="menuitem2" href="#">Bulk Actions</a></li>
-                        <li><a class="menuitem2" href="#" id="deleteall">Delete Permanently</a></li>
-                    </ul> -->
-                </span>
+                   </button> -->
+  <a class='dropdown-button btn' href='#' id="dropdownMenu1" data-activates='dropdownBulkAction'>Bulk Actions</a> 
+                    <ul class="dropdown-content" id="dropdownBulkAction">
+                        <li><a href="#" class="menuitem">Bulk Actions</a></li>
+                        <li><a href="#" class="menuitem">Delete</a></li>
+                    </ul> 
+                    </span>                  
                 </div>
-<!--                 <div class="col l2">
+                <div class="col l2" id="applybtn">
                     <span>
                       <button id="apply" type="button" class="admin-btn">Apply</button>
                     </span>
-                </div> -->
+                </div>
                 <div class="col l2">
                 <span class="dropdown">
                     <select id="filterdate" class="selctionButton browser-default" style="height:33px;">
