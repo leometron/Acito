@@ -171,7 +171,8 @@ Template.home.events({
             if(err){
                 $('#errorMsg').html("Invalid email or Password");
             } else if(!$('#questionArea').val()) {
-              history.back();
+              // history.back();
+               $('#userLoginForm').closeModal();
             } else {
               $('#userLoginForm').closeModal();
               Router.go('/ask');
@@ -214,7 +215,8 @@ Template.home.events({
         } else if(!$('#questionArea').val()) {
             $('#Usererr').html("Account has been created and logged in successfully.");
             Meteor.setTimeout(function () {
-              history.back()
+              // history.back()
+              $('#userRegistrationForm').closeModal();
             },2000);
           } else {
             $('#Usererr').html("Account has been created and logged in successfully.");
@@ -387,7 +389,8 @@ Template.postDetail.rendered = function() {
 
     this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
-            Router.go('/login');
+            // Router.go('/login');
+            $('#userLoginForm').openModal();
           } else {
             // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
             Meteor.call('insertrating', Meteor.userId(), Session.get('selectedPostId'), value);
