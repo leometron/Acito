@@ -110,7 +110,6 @@ Template.home.events({
     // },
 
     'click #read-more': function () {
-      alert("enter");
       var postId = this._id;
       Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
