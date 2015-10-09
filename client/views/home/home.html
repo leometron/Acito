@@ -1,7 +1,54 @@
   <template name="home">
-    <div class="home-post-field">
+    <div>
       {{> yield}}
     </div>
+
+    <!-- <div class="hide-on-med-only hide-on-small-only">
+      <div class="row">
+        <div class="col l2">
+          <div class="leftMenu">
+            <div align="center">
+              <div class="white_bg">
+                <img src="images/grannylogo.png" class="logo"/>
+              </div>
+              <div class="logo_title">Granny Theraphy</div>
+            </div>
+            <div class="hrClass"></div>
+            <div class="leftContent">
+            {{#if parentPageList}}
+            {{#each parentPageList}}
+              <div class="content parent-page leftMenuContent page{{_id}}" id="page{{_id}}">
+                <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
+                margin-bottom:2px">{{title}}</p>
+                {{#if equals isChild "Yes"}}
+                  <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;">
+                {{/if}}
+              </div>
+                <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
+              {{/each}}
+              {{else}}
+                  <div>No categories</div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <div class="col l10">
+          <div class="rightMenu">
+            <div class="header">
+              <div class="headerTitle">Home</div>
+            </div>
+            <div class="innerContainer">
+              <div class="fluid-container">
+                {{> yield}}
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+    </div>
+ -->
+   
+
     <div id="questionDetail">
       {{> questionDetail}}
     </div>

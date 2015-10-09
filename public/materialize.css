@@ -5823,7 +5823,7 @@ small {
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: #33ad5c;
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: .2s ease-out;
@@ -5833,7 +5833,7 @@ small {
   transition: .2s ease-out;
   cursor: pointer; }
   .btn:hover, .btn-large:hover {
-    background-color: #2bbbad; }
+    background-color: #33ad5c; }
 
 .btn-floating {
   display: inline-block;
@@ -7118,6 +7118,9 @@ select {
   position: relative;
   width: 48px;
   height: 48px; }
+  .preloader-wrapper.smaller {
+    width: 25px;
+    height: 25px; }
   .preloader-wrapper.small {
     width: 36px;
     height: 36px; }
@@ -7155,6 +7158,9 @@ select {
 
 .spinner-green, .spinner-green-only {
   border-color: #0f9d58; }
+
+.spinner-white, .spinner-white-only {
+  border-color: #ffffff; }
 
 /**
  * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):

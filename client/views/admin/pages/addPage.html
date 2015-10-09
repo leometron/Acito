@@ -19,29 +19,29 @@
             </div>
         </div> -->
         <div class="row" style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
-        <div class="col-md-8  padding-left-zero">
+        <div class="col l8  padding-left-zero">
             {{#if PublishedPages}}
             <input type="text" class="form-control" id="pageTitle" value={{PublishedPages.title}}>
 
             <div>
-                <textarea name="area1" cols="80" rows="20" id="pageComments" class="form-control">{{PublishedPages.content}}</textarea>
+                <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="pageComments" class="form-control">{{PublishedPages.content}}</textarea>
             </div>
             {{else}}
             <input type="text" class="form-control" placeholder="Enter title here" id="title">
 
             <div>
-                <textarea name="area1" cols="80" rows="20" id="comments" class="form-control"></textarea>
+                <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="comments" class="form-control"></textarea>
             </div>
             {{/if}}
         </div>
-        <div class="col-md-4 padding-bottom-40">
-            <div class="bg-white">
+        <div class="col l4 padding-bottom-40">
+            <div class="bg-white" style="border:1px solid #DDDDDD">
                 <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span>
                 </div>
                 <div class="board-view">
                     {{#if PublishedPages}}
                     {{else}}
-                    <span><button type="button" class="btn btn-default" id="draft">Save Draft</button></span>
+                    <span><button type="button" class="admin-btn" id="draft">Save Draft</button></span>
                     {{/if}}
                     <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
                 </div>
@@ -68,41 +68,41 @@
 
                 {{#if PublishedPages}}
                 {{#if PublishedPages.deleted}}
-                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="restore">Restore
+                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="restore">Restore
                 </button></span>
                 {{else}}
                 {{#if PublishedPages.published}}
-                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="update">Update
+                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="update">Update
                 </button></span>
                 {{else}}
-                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="republish">Publish
+                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="republish">Publish
                 </button></span>
                 {{/if}}
                 {{/if}}
                 {{else}}
-                <span style="padding-left: 40%"><button type="button" class="btn btn-primary" id="publish">Publish
+                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="publish">Publish
                 </button></span>
                 {{/if}}
             </div>
-            <div class="bg-white margin-top-20">
+            <div class="bg-white margin-top-20" style="border:1px solid #DDDDDD">
                 <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span>
                 </div>
                 <div class="board-view">Parent</div>
                 <div class="dropdown board-view">
                     {{#if PublishedPages}}
                     {{#if equals PublishedPages.parentId "null"}}
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert"
+                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="parentinsert"
                             data-toggle="dropdown">
                         (no parent)
                     </button>
                     {{else}}
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert"
+                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="parentinsert"
                             data-toggle="dropdown">
                         {{PublishedPages.parentTitle}}
                     </button>
                     {{/if}}
                     {{else}}
-                    <button class="btn btn-default dropdown-toggle padding-right-20" type="button" id="parentinsert"
+                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="parentinsert"
                             data-toggle="dropdown">
                         (no parent)
                     </button>

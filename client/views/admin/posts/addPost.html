@@ -9,8 +9,8 @@
             <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
             <span  id="showError">{{errormsg}}</span></div>  
             {{/if}} -->
-            <div class="row" style="margin-left: 2.5%; width: 95%;margin-bottom:30px">
-        <div class="margin-top-40">
+            <div class="row" style="margin-left: 2.5%; margin-top: 5%; width: 95%;margin-bottom:30px">
+<!--         <div class="margin-top-40">
             <div class="row post-margin">
                 {{#if showSelectedPost}}
                 <span style="font-size: 30px;">Edit Post</span>
@@ -18,23 +18,23 @@
                 <span style="font-size: 30px;">Add a New Post</span>
                 {{/if}}
             </div>
-        </div>
-        <div class="col-md-8  padding-left-zero">
+        </div> -->
+        <div class="col l8  padding-left-zero">
             {{#if showSelectedPost}}
             <input type="text" class="form-control" id="postName" value="{{showSelectedPost.title}}">
 
             <div>
-                <textarea name="area1" cols="80" rows="20" id="postContent" class="form-control">{{showSelectedPost.content}}</textarea>
+                <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="postContent" class="form-control">{{showSelectedPost.content}}</textarea>
             </div>
             {{else}}
             <input type="text" class="form-control" placeholder="Enter title here" id="postName">
 
             <div>
-                <textarea name="area1" cols="80" rows="20" id="postContent" class="form-control"></textarea>
+                <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="postContent" class="form-control"></textarea>
             </div>
             {{/if}}
         </div>
-        <div class="col-md-4 padding-bottom-40">
+        <div class="col l4 padding-bottom-40">
             <div class="bg-white">
                 <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span>
                 </div>
@@ -42,7 +42,7 @@
                     <span>
                     {{#if showSelectedPost}}
                     {{else}}   
-                        <button type="button" id="savePost" class="btn btn-default">Save Draft</button>
+                        <button type="button" id="savePost" class="admin-btn">Save Draft</button>
                     {{/if}}            
                     </span>
                     <span class="pull-right">
@@ -56,8 +56,8 @@
                 <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
             </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0; padding-bottom: 40px;">
-                <div class="col-md-12 padding-left-zero">
-                    <div class="col-md-8 padding-left-zero cursor-pointer">
+                <div class="col l12 padding-left-zero">
+                    <div class="col l8 padding-left-zero cursor-pointer">
                         {{#if showSelectedPost}}
                         {{#if showSelectedPost.deleted}}
                        <a id="removePost">                                 
@@ -73,20 +73,20 @@
                         {{/if}}
                         {{/if}}
                     </div>
-                    <div class="col-md-4 padding-right-zero">
+                    <div class="col l4 padding-right-zero">
                        <span style="padding-left: 25%">
                        {{#if showSelectedPost}}
                            {{#if showSelectedPost.deleted}}                                    
-                           <button type="button" id="restorePost" class="btn btn-primary">Publish</button>
+                           <button type="button" id="restorePost" class="admin-btn">Publish</button>
                            {{else}}
                                {{#if showSelectedPost.publish}}                                    
-                                   <button type="button" id="updatePost" class="btn btn-primary">Update</button>
+                                   <button type="button" id="updatePost" class="admin-btn">Update</button>
                                {{else}}
-                                   <button type="button" id="publishPost" class="btn btn-primary">Publish</button>
+                                   <button type="button" id="publishPost" class="admin-btn">Publish</button>
                                {{/if}}                            
                            {{/if}}                            
                        {{else}}
-                           <button type="button" id="publishPost" class="btn btn-primary">Publish</button>
+                           <button type="button" id="publishPost" class="admin-btn">Publish</button>
                        {{/if}}                            
                        </span>
                     </div>
@@ -95,6 +95,23 @@
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">pages <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
+                    <!-- Dropdown Trigger -->
+                    <div id="pageDropDown" class='dropdown-button btn' data-activates='dropdown1' style="width:150px; padding-left: 0px; padding-right: 5px;">
+                        {{#if showSelectedPost}}
+                            <span>{{showSelectedPost.pageName}}</span>
+                        {{else}}
+                            <span>(no parent)</span>
+                        {{/if}}
+                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                    </div>
+                    
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li class="drop-down-page">(no parent)</li>
+                        {{#each pageList}}
+                            <li class="drop-down-page" id="{{_id}}">{{title}}</li>                 
+                        {{/each}}
+                    </ul>
                     <select id="pageName" placeholder="page">
                         <!--                     {{#if showSelectedPost}}
                                                 <option>{{showSelectedPost.categoryName}}</option>
@@ -159,7 +176,7 @@
 
                     {{#if showSelectedPost}}
                     {{#if equals showSelectedPost.featuredImage "-"}}
-                               <span class="cursor-pointer set-img" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image
+                               <span class="cursor-pointer set-img modal-trigger" id="selectImage" data-toggle="modal" data-target="myModal">Set featured image
                             {{#if getpostUrl}}
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                             {{/if}}
@@ -176,7 +193,7 @@
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                 </span>
                             {{else}}
-                               <span class="cursor-pointer set-img" id="selectImage" data-toggle="modal" data-target="#myModal">Set featured image</span>
+                               <span class="cursor-pointer set-img modal-trigger" id="selectImage" data-toggle="modal" data-target="myModal">Set featured image</span>
                             {{/if}}
                     {{/if}}
                     <div class="modal fade" id="myModal" role="dialog">

@@ -105,9 +105,9 @@ Template.media.events({
         $(location).attr('href', 'media/add');
         // Router.go('/admin/media/add');
     },
-     'click .menuitem': function (event) {            
-       $('#dropdownMenu1').text( $(event.target).text());
-       if($('#dropdownMenu1').text() != "Bulk Actions") {
+     'click .action-item': function (event) {            
+       $('#bulkOptionDropDown').text( $(event.target).text());
+       if($('#bulkOptionDropDown').text() != "Bulk Actions") {
         $('#applybtn').fadeIn(500);
        } else {
         $('#applybtn').fadeOut(500);
@@ -165,7 +165,7 @@ Template.media.events({
        });
     },
     'click #apply': function () {
-        Meteor.call('removeSelectMediaData', select_data, $('#dropdownMenu1').text());
+        Meteor.call('removeSelectMediaData', select_data, $('#bulkOptionDropDown').text());
     },
     // 'click #filter': function (event) {
     //     var date = $('#filterdate').val();
@@ -199,14 +199,12 @@ Template.adminHeader.events({
 Template.media.rendered = function(){
     Session.set('errorMessage', '');
     $('#applybtn').hide();
-  $('.dropdown-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: false,
-      hover: false,
-      gutter: 0,
-      belowOrigin: true,
-      alignment: 'left'
-    }
-  );       
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: true,
+        gutter: 0,
+        belowOrigin: true,
+        alignment: 'center'
+    });       
 };
