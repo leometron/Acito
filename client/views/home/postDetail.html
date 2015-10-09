@@ -1,14 +1,15 @@
 
 <template name="postDetail">
-  <div class="home-post-detail-field">
-    <div class="row" style="border-bottom: 1px solid #ccc; padding: 15px;">
-      <div class="col s1 m1 l1 back-arrow">
-          <img src="images/arrow-left.png">
-      </div>
-      <div class="col s11 m11 l11" style="font-size:27px">
-          {{post.title}}
-      </div>
+  <div class="home-post-detail-field hide-on-large-only">
+    <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
+        <div style="display:table-cell; width:40px; vertical-align:middle; text-align:center" class="back-arrow">
+            <img src="images/arrow-left.png" width="20px" style="margin-top:6px;">
+        </div>
+        <div style="display:table-cell; width:auto; vertical-align:middle;font-size:26px; font-weight:bold;">
+             {{post.title}} 
+        </div>
     </div>
+    <div class="divider" style="margin:13px 0;"></div>
     {{#if equals featuredImage '-'}}
       <div class="row">
       {{#each images}} 
@@ -18,8 +19,42 @@
       {{/each}}
       </div>
      {{/if}}
-    <span class="right" style="color:#7A7A7A">published on {{formatDate post.createdAt}} | by {{post.publisherName}}</span>
+    <span class="right" style="color:#7A7A7A; margin-right:10px;">published on {{formatDate post.createdAt}} | by {{post.publisherName}}</span>
     <div class="row">
+      <div class="col s12 m12 l12">
+          <p style="line-height: 26px; white-space: pre-line;">  
+               {{post.content}}                  
+          </p>
+           <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
+           <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
+           {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
+           <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a>
+          </div>
+    </div>
+  </div>
+
+
+  <div class="hide-on-med-only hide-on-small-only" style="margin-left:16%">
+    <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
+        <div style="display:table-cell; width:65px; vertical-align:middle; text-align:center" class="back-arrow">
+            <img src="images/arrow-left.png" width="20px" style="margin-top:6px;">
+        </div>
+        <div style="display:table-cell; width:auto; vertical-align:middle; font-size:26px; font-weight:bold;">
+             {{post.title}} 
+        </div>
+    </div>
+    <div class="divider" style="margin:13px 0;"></div>
+    {{#if equals featuredImage '-'}}
+      <div class="row">
+      {{#each images}} 
+        <div class="col s12 m4 l4">
+            <img src="{{url}}" style="width:100%;height:200px">
+        </div>
+      {{/each}}
+      </div>
+     {{/if}}
+    <span class="right" style="color:#7A7A7A; margin-right:10px;">published on {{formatDate post.createdAt}} | by {{post.publisherName}}</span>
+    <div class="row" style="margin-left:10px;">
       <div class="col s12 m12 l12">
           <p style="line-height: 26px; white-space: pre-line;">  
                {{post.content}}                  

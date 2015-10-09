@@ -1,11 +1,24 @@
 <template name="allQuestions">
-    {{#each questionList}}
-        <div class="row">
-            <div class="col-md-12 home-answer-inner-field-content select-question-row">
-                {{question}}
-            </div>
-            <div class="col-md-12 border-top-allquestion">
-            </div>
-        </div>
-    {{/each}}
+	<div class="hide-on-med-only hide-on-small-only" style="margin-left:19%;margin-top:26px;">
+	    {{#each questionList}}
+	        <div class="row">
+	            <div class="col-md-12 home-answer-inner-field-content select-question-row">
+	                {{question}}
+	            </div>
+	            <div class="col-md-12 border-top-allquestion">
+	            </div>
+	        </div>
+	    {{/each}}
+	  </div>
+	  <div class="hide-on-large-only" style="margin-top:26px;">
+	    {{#each questionList}}
+	        <div class="row">
+	            <div class="col-md-12 home-answer-inner-field-content select-question-row">
+	                {{question}}
+	            </div>
+	            <div class="col-md-12 border-top-allquestion">
+	            </div>
+	        </div>
+	    {{/each}}
+	  </div>
 </template>

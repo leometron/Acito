@@ -16,7 +16,7 @@ Template.header.events({
             Meteor._reload.reload();                                    
       }, 250); 
     },
-    'click .parent-page' : function(){
+    'click .parent-page' : function(event){
    if($('.page'+this._id).hasClass('page-selection')){
      $('.page'+this._id).removeClass('page-selection');
      $(".subpage"+this._id).html('');
@@ -24,6 +24,7 @@ Template.header.events({
      $('.page'+this._id).addClass('page-selection');
      var subPagesCount = Pages.find({parentId:this._id}).count();
      if(subPagesCount == 0) {
+       Session.set('categoryName',$(event.target).attr("name"));      
        Session.set("pageId", "");
        Session.set('numberOfCount', 6);
        Session.set('selectedPostId', "");
@@ -34,13 +35,15 @@ Template.header.events({
        var subPages = Pages.find({parentId: this._id,status:'Published'});
        var t ="";
        subPages.forEach(function(item){
-           t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1" id="'+item._id+'">'+item.title+'</div>';
+           t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1" name="'+item.title+'" id="'+item._id+'">'+item.title+'</div>';
        });
        $(".subpage"+this._id).html(t);        
      }      
    }     
   },
    'click .sub-page' : function(event){
+      Session.set('categoryName',$(event.target).attr("name"));
+      // alert(Session.set('postName',this._id));
       $('.button-collapse').sideNav('hide');
       Session.set("pageId", "");
       Session.set('numberOfCount', 6);
@@ -57,39 +60,39 @@ Template.header.events({
 
 Template.home.events({
 
-   'click .parent-page' : function(){
-   if($('.page'+this._id).hasClass('page-selection')){
-     $('.page'+this._id).removeClass('page-selection');
-     $(".subpage"+this._id).html('');
-   } else {
-     $('.page'+this._id).addClass('page-selection');
-     var subPagesCount = Pages.find({parentId:this._id}).count();
-     if(subPagesCount == 0) {
-       Session.set("pageId", "");
-       Session.set('numberOfCount', 6);
-       Session.set('selectedPostId', "");
-       Session.set("pageId",this._id);
-       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
-       Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
-     } else {
-       var subPages = Pages.find({parentId: this._id,status:'Published'});
-       var t ="";
-       subPages.forEach(function(item){
-           t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1" id="'+item._id+'">'+item.title+'</div>';
-       });
-       $(".subpage"+this._id).html(t);        
-     }      
-   }     
-  },
-   'click .sub-page' : function(event){
-      $('.button-collapse').sideNav('hide');
-      Session.set("pageId", "");
-      Session.set('numberOfCount', 6);
-      Session.set('selectedPostId', "");
-      Session.set("pageId", $(event.target).attr("id"));
-      Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
-      Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
-   },
+  //  'click .parent-page' : function(){
+  //  if($('.page'+this._id).hasClass('page-selection')){
+  //    $('.page'+this._id).removeClass('page-selection');
+  //    $(".subpage"+this._id).html('');
+  //  } else {
+  //    $('.page'+this._id).addClass('page-selection');
+  //    var subPagesCount = Pages.find({parentId:this._id}).count();
+  //    if(subPagesCount == 0) {
+  //      Session.set("pageId", "");
+  //      Session.set('numberOfCount', 6);
+  //      Session.set('selectedPostId', "");
+  //      Session.set("pageId",this._id);
+  //      Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+  //      Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
+  //    } else {
+  //      var subPages = Pages.find({parentId: this._id,status:'Published'});
+  //      var t ="";
+  //      subPages.forEach(function(item){
+  //          t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1;" id="'+item._id+'">'+item.title+'</div>';
+  //      });
+  //      $(".subpage"+this._id).html(t);        
+  //    }      
+  //  }     
+  // },
+  //  'click .sub-page' : function(event){
+  //     $('.button-collapse').sideNav('hide');
+  //     Session.set("pageId", "");
+  //     Session.set('numberOfCount', 6);
+  //     Session.set('selectedPostId', "");
+  //     Session.set("pageId", $(event.target).attr("id"));
+  //     Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
+  //     Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
+  //  },
     // 'click #postTitle,.read-more,.feature-image': function () {
     //   var postId = this._id;
     //   Session.set('selectedPageId',Session.get("pageId"));         
@@ -330,7 +333,10 @@ Template.header.helpers({
         });
       }
       return data;       
-   }    
+   },
+   'category' : function() {
+      return Session.get('categoryName');
+   }
 });
 
 Template.readMore.helpers({
@@ -397,6 +403,7 @@ Template.home.rendered = function () {
     $('#questionEmptyInfo').hide();
     $('#searchEmptyInfo').hide();
     $('#loginDetail').hide();
+    $('.leftContent').css('height',window.innerHeight-141);
 
    /* Meteor.setTimeout(function () {
         $('#xLoader').hide();
