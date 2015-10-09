@@ -73,38 +73,47 @@
       </div>
 
       <div id="search_modal" class="modal">
+
         <div class="modal-content">
+            <div style="position: absolute; right: 1px; top: 0px" class="close_search">
+              <img src="images/index.png" style="width: 30px; cursor: pointer">
+            </div>
             <div class="input-field col s12">
               <input id="searchQuery" type="text" class="validate">
               <label for="searchQuery">Search Text</label>
             </div>
               <div class="col s12 m12 l12">
-                <label id="searchEmptyInfo" for="searchQuery" style="position:fixed;color:red;margin-top:-10px">Please enter search string</label>
+                <label id="searchEmptyInfo" for="searchQuery" style="position:fixed;color:red;margin-top:-10px; font-size:12px;">Please enter search string</label>
               </div>
               <div align="center">
-                  <button id="search" class="admin-btn" type="button">Search</button>
+                  <!-- <button id="search" class="home-btn" type="button">Search</button> -->
+                <div class="waves-effect waves-light btn" id="search" style="margin-top:10px;">Search</div>
               </div>
         </div>
       </div>
       <div id="question_modal" class="modal">
         <div class="modal-content">
+            <div style="position: absolute; right: 1px; top: 0px" class="close_ask">
+              <img src="images/index.png" style="width: 30px; cursor: pointer">
+            </div>
             <div class="input-field col s12">
               <textarea id="questionArea" class="materialize-textarea"></textarea>
               <label for="questionArea">Your Question:</label>
             </div>
           <div class="col s12 m12 l12">
-            <label id="questionEmptyInfo" for="questionArea" style="position:fixed;color:red;margin-top:-10px">Please enter question</label>
+            <label id="questionEmptyInfo" for="questionArea" style="position:fixed;color:red;margin-top:-10px; font-size:12px;">Please enter question</label>
           </div>
             <div align="center">
-              <button id="askQuestion" class="admin-btn" type="button">Ask</button>
+              <!-- <button id="askQuestion" class="home-btn" type="button">Ask</button> -->
+              <div class="waves-effect waves-light btn" id="askQuestion" style="margin-top:10px;">Ask</div>
             </div>
         </div>
       </div>
 <div class="memberlogin modal" id="userLoginForm">
      <div class="modal-content">
-        <!-- <div class="userlogin" style="background-color: #ffffff; -->
-    <!-- margin: 0 auto; max-width: 280px; padding: 15px 23px 6px;"> -->
-        <!-- <div class="row"> -->
+         <div style="position: absolute; right: 1px; top: 0px" class="close_login">
+              <img src="images/index.png" style="width: 30px; cursor: pointer">
+         </div>
          <div style="text-align:center; padding:8px; font-weight:bold;">LOGIN</div>
            <form id="userLogin" class="col s12">
             <div class="input-field col s12">
@@ -115,11 +124,13 @@
               <input id="password" type="password" class="validate">
               <label for="password">Password</label>
             </div>
-            <div class="col s12" align="center">
-              <button class="admin-btn" type="submit" style="width: 100px;">Login</button>
-            </div>
-            <div class="col s12" align="center" style="margin-top:10px;">
-              <button id="registerNewUser" class="admin-btn" type="button" style="width: 100px;">Signup</button>
+            <div align="center">
+              <div style="display:inline-block; margin-top:10px;">
+               <button class="btn waves-effect waves-light" type="submit" style="width:115px;">Login</button>
+              </div>
+              <div style="display:inline-block; margin-top:10px;">
+                <div class="waves-effect waves-light btn" id="registerNewUser" style="width:115px;">Signup</div>
+              </div>
             </div>
             <div align="center">
               <div id="errorMsg"></div>
@@ -131,8 +142,9 @@
 
         <div class="usersignup modal" id="userRegistrationForm">
           <div class="modal-content">
-           <!-- <div class="row"> -->
-           <!-- <div style="background-color: #ffffff; margin: 0 auto; max-width: 280px; padding: 15px 23px 6px;">  -->
+            <div style="position: absolute; right: 1px; top: 0px" class="close_register">
+              <img src="images/index.png" style="width: 30px; cursor: pointer">
+            </div>
             <div style="text-align:center; padding:8px; font-weight:bold;">Registration Form</div>
               <form id="signUp" class="col s12">
                 <div class="input-field col s12">
@@ -152,7 +164,8 @@
                  <label for="re-password">Confirm Password</label>
                 </div>
                 <div align="center">
-                 <button class="admin-btn" type="submit">Register</button>
+                 <!-- <button class="home-btn" type="submit">Register</button> -->
+                 <button class="btn waves-effect waves-light" type="submit">Register</button>
                  <div id="Usererr"></div>
                 </div>
               </form>

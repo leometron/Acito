@@ -197,6 +197,18 @@ Template.home.events({
       $('#userLoginForm').closeModal();   
       $('#userRegistrationForm').openModal();
   },
+  'click .close_search' : function() {
+      $('#search_modal').closeModal();
+  },
+  'click .close_ask' : function() {
+      $('#question_modal').closeModal();
+  },
+  'click .close_login' : function() {
+    $('#userLoginForm').closeModal();
+  },
+  'click .close_register' : function() {
+    $('#userRegistrationForm').closeModal();
+  },
   'submit #userLogin': function(e, t) {
      e.preventDefault();
         var email = t.find('#email').value, password = t.find('#password').value;
