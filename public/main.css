@@ -132,3 +132,7 @@
     left:0;
     border-right:1px solid #CCC;
 }
+
+.action-item {
+  padding: 5px 6px;
+}
