@@ -17,29 +17,32 @@ Template.header.events({
       }, 250); 
     },
     'click .parent-page' : function(event){
-   if($('.page'+this._id).hasClass('page-selection')){
-     $('.page'+this._id).removeClass('page-selection');
-     $(".subpage"+this._id).html('');
-   } else {
-     $('.page'+this._id).addClass('page-selection');
-     var subPagesCount = Pages.find({parentId:this._id}).count();
-     if(subPagesCount == 0) {
-       Session.set('categoryName',$(event.target).attr("name"));      
-       Session.set("pageId", "");
-       Session.set('numberOfCount', 6);
-       Session.set('selectedPostId', "");
-       Session.set("pageId",this._id);
-       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
-       Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
-     } else {
-       var subPages = Pages.find({parentId: this._id,status:'Published'});
-       var t ="";
-       subPages.forEach(function(item){
-           t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1" name="'+item.title+'" id="'+item._id+'">'+item.title+'</div>';
-       });
-       $(".subpage"+this._id).html(t);        
-     }      
-   }     
+
+       if($('.page'+this._id).hasClass('page-selection')){
+         $('.page'+this._id).removeClass('page-selection');
+         $(".subpage"+this._id).html('');
+       } else {
+      $('.parent-page').removeClass('page-selection');
+      $(".leftMenuSubTitle").html('');         
+         $('.page'+this._id).addClass('page-selection');
+         var subPagesCount = Pages.find({parentId:this._id}).count();
+         if(subPagesCount == 0) {
+           Session.set('categoryName',$(event.target).attr("name"));      
+           Session.set("pageId", "");
+           Session.set('numberOfCount', 6);
+           Session.set('selectedPostId', "");
+           Session.set("pageId",this._id);
+           Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+           Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
+         } else {
+           var subPages = Pages.find({parentId: this._id,status:'Published'});
+           var t ="";
+           subPages.forEach(function(item){
+               t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1" name="'+item.title+'" id="'+item._id+'">'+item.title+'</div>';
+           });
+           $(".subpage"+this._id).html(t);        
+         }      
+       }     
   },
    'click .sub-page' : function(event){
       Session.set('categoryName',$(event.target).attr("name"));
@@ -396,6 +399,14 @@ Template.postList.rendered = function () {
         }
     });     
 };
+
+// Template.header.rendered = function () {
+//    $(document).ready(function(){
+//     $('.collapsible').collapsible({
+//       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+//     });
+//   });     
+// };
 
 Template.home.rendered = function () {
    $('.posts-Over-text').hide();
