@@ -201,7 +201,6 @@ Template.addNewPost.events({
 		if(!$('#postName').val()) {
 			Materialize.toast('Post title is required', 4000);
 		} else {  
-		alert('else')                 ;
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
 			var pageId = (Session.get('postPageId') == "Category") ? "Uncategorized" : Session.get('postPageId');
 			var pageName = $('#pageDropDown').text();
