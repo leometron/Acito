@@ -205,6 +205,22 @@ Template.homeSlider.events({
             selectedIds.splice(index, 1);
         }
     },
+    'click #checkboxSliderAll': function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('.checkbox:checkbox').prop('checked',true);
+        }else{
+            $('.checkbox:checkbox').prop('checked',false);
+        }
+        $(".checkbox:checkbox").each(function() {
+           if(this.checked){
+                selectedIds.push(this.value);
+           }else{
+                var index = selectedIds.indexOf(this.value);
+                selectedIds.splice(index, 1);
+           }
+       });
+    },
     'click #Bulkapply' : function () {
           Meteor.call('bulkSlider', selectedIds, $('#dropdownMenu1').text());
           Meteor._reload.reload();

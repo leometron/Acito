@@ -116,7 +116,7 @@
                     {{#if equals postListCount 0}}
                       <div class="row cursor-pointer">
                             <div class="CodingRules-data-row">
-                                <div class="col 12 center empty-results">
+                                <div class="col l12 center empty-results">
                                     <span>No Results</span>
                                 </div>
                             </div>
@@ -126,9 +126,8 @@
                         {{#if currentUser}}
                         <div id="{{_id}}" class="row cursor-pointer" style="border: 1px solid #ddd; margin-top:-21px">
                             <div class="col l1 margin-top-10">
-                                <!-- <input type="checkbox" class="checkbox" id="{{_id}}"> -->
-                            <input type="checkbox" id="value{{_id}}" class="filled-in checkbox" value="{{_id}}"/>
-                            <label for="value{{_id}}"></label>
+                          <input type="checkbox" id="post{{_id}}" class="filled-in checkbox" value="{{_id}}"/>
+                            <label for="post{{_id}}"></label>
                             </div>
                             {{#if deleted}}
                             <div class="post">

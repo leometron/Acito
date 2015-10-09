@@ -139,7 +139,7 @@ Template.media.events({
     'click #delete': function () {
         Meteor.call('removeMediaData', this._id);
     },
-    'click #checkbox': function (event) {
+    'click .checkbox': function (event) {
         var selectcheck = event.target.checked;
         if (selectcheck == true) {
             select_data.push(this._id);
@@ -147,6 +147,22 @@ Template.media.events({
             var index = select_data.indexOf(this._id);
             select_data.splice(index, 1);
         }
+    },
+    'click #checkboxMediaAll': function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('.checkbox:checkbox').prop('checked',true);
+        }else{
+            $('.checkbox:checkbox').prop('checked',false);
+        }
+        $(".checkbox:checkbox").each(function() {
+           if(this.checked){
+                select_data.push(this.value);
+           }else{
+                var index = select_data.indexOf(this.value);
+                select_data.splice(index, 1);
+           }
+       });
     },
     'click #apply': function () {
         Meteor.call('removeSelectMediaData', select_data, $('#dropdownMenu1').text());

@@ -89,17 +89,22 @@
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
-                        <div class="col l1"></div>
-                        <div class="col l7 padding-left-zero margin-left-minus-30">Title</div>
-                        <div class="col l2">Status</div>
-                        <div class="col l2">Date</div>
+                        <div class="col l1">
+                            <input type="checkbox" id="checkboxSliderAll" class="filled-in"/>
+                            <label for="checkboxSliderAll"></label>
+                        </div>
+                        <div class="col l5 padding-left-zero margin-left-minus-30">Title</div>
+                        <div class="col l3">Status</div>
+                        <div class="col l3">Date</div>
                     </div>
 
                     {{#each sliderList}}
                     {{#if currentUser}}
                     <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd; margin-top:-21px">
                         <div class="col l1">
-                            <input type="checkbox" class="checkbox">
+                            <!-- <input type="checkbox" class="checkbox"> -->
+                        <input type="checkbox" id="slider{{_id}}" class="filled-in checkbox" value="{{_id}}"/>
+                        <label for="slider{{_id}}"></label>
                         </div>
                         <div class="col l7 padding-left-zero margin-left-minus-30" id="slider">
                             {{#if deleted}}

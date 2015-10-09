@@ -134,9 +134,9 @@ Template.pages.events ({
             }
             $(".checkbox:checkbox").each(function() {
                if(this.checked){
-                    selectedIds.push(this.id);
+                    selectedIds.push(this.value);
                }else{
-                    var index = selectedIds.indexOf(this.id);
+                    var index = selectedIds.indexOf(this.value);
                     selectedIds.splice(index, 1);
                }
            });
