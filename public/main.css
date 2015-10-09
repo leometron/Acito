@@ -152,7 +152,11 @@
     left:0;
     top:0;
     background-color: #558b2f;
-    z-index:999;
+    z-index:999;  
+}
+
+.action-item {
+  padding: 5px 6px;
 }
 
 .header{
