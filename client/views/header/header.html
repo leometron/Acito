@@ -46,10 +46,10 @@
       {{#if parentPageList}}
         {{#each parentPageList}}
           <div class="content parent-page leftMenuContent page{{_id}}" id="page{{_id}}" name="{{title}}">
-            <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
-            margin-bottom:2px; line-height:2;" name="{{title}}">{{title}}</p>
+            <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; margin-bottom:0px;
+            line-height:1.8;" name="{{title}}">{{title}}</p>
             {{#if equals isChild "Yes"}}
-              <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-top: -21px; width: 15px;">
+              <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-top: -19px; width: 15px;">
             {{/if}}
           </div>
             <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
@@ -60,6 +60,21 @@
     </div>
   </div>
 
+  <!-- <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>
+  </ul> -->
+        
 
  <!-- <div class="hide-on-med-only hide-on-small-only">
       <div class="row">
