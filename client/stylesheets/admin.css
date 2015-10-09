@@ -514,17 +514,18 @@ body, #main {
     z-index: 1;
 }
 .page-selection {
-    background-color: #558B2F;
-    color: #ffffff;
+    background: #7cb342;
+    /*color: #558B2F;*/
 }
 .parent-page {
     cursor: pointer;
     padding: 5px;
+    color: #fff;
 }
 
 .parent-page:hover {
-    background-color: #558B2F;
-    color: #ffffff;
+    background: #7cb342 ;
+    /*color: #558B2F;*/
 }
 
 .sub-page {

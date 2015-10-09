@@ -1,6 +1,67 @@
 <template name="header">
+    <div class="navbar-fixed">
+       <nav class="light-green darken-3" role="navigation">
+          <div class="nav-wrapper nav_wrapper_margin">
+             <a href="#" class="sm_headerTitle">{{category}}</a>
+            <a href="#" data-activates="slide-out" style="margin-right:20px;" class="button-collapse">
+              <i class="mdi-navigation-menu"></i>
+            </a>
+          <div id="slide-out" class="side-nav light-green darken-3">
+            <div align="center">
+              <div class="white_bg">
+                <img src="images/grannylogo.png" class="logo"/>
+              </div>
+              <div class="logo_title">Granny Theraphy</div>
+            </div>
+            <div class="hrClass"></div>
+            <div class="">
+                {{#if parentPageList}}
+                  {{#each parentPageList}}
+                    <div class="sm_content parent-page leftMenuContent page{{_id}}" id="page{{_id}}" name="{{title}}">
+                      <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
+                      margin-bottom:2px;" name="{{title}}">{{title}}</p>
+                      {{#if equals isChild "Yes"}}
+                        <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-top: -17px; width: 15px;">
+                      {{/if}}
+                    </div>
+                      <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}" style="line-height:1.8"></div>
+                    {{/each}}
+                    {{else}}
+                        <div>No categories</div>
+                    {{/if}}
+            </div>
+          </div>
+          </div>
+        </nav>
+    </div>
+  <div class="leftMenu hide-on-med-only hide-on-small-only">
+    <div align="center">
+      <div class="white_bg">
+        <img src="images/grannylogo.png" class="logo"/>
+      </div>
+      <div class="logo_title">Granny Theraphy</div>
+    </div>
+    <div class="hrClass"></div>
+    <div class="leftContent">
+      {{#if parentPageList}}
+        {{#each parentPageList}}
+          <div class="content parent-page leftMenuContent page{{_id}}" id="page{{_id}}" name="{{title}}">
+            <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
+            margin-bottom:2px; line-height:2;" name="{{title}}">{{title}}</p>
+            {{#if equals isChild "Yes"}}
+              <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-top: -21px; width: 15px;">
+            {{/if}}
+          </div>
+            <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
+          {{/each}}
+          {{else}}
+              <div>No categories</div>
+          {{/if}}
+    </div>
+  </div>
 
-<!-- <div class="hide-on-med-only hide-on-small-only">
+
+ <!-- <div class="hide-on-med-only hide-on-small-only">
       <div class="row">
         <div class="col l2">
           <div class="leftMenu">
@@ -35,8 +96,8 @@
               <div class="headerTitle">Home</div>
             </div>
             
-           <div class="innerContainer"> -->
-             <!--  <div class="fluid-container">
+           <div class="innerContainer">
+              <div class="fluid-container">
                 <div class="row margin10">
                   {{#if equals searchResultCount 0}}
                     <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
@@ -61,16 +122,16 @@
                         </div>
                   {{/each}}
                   {{/if}}
-                </div> -->
-             <!--  </div> 
+                </div>
+              </div> 
             </div>
           </div>
         </div>
       </div> 
-    </div> -->
+    </div> 
+ -->
 
-
-    <div class="hide-on-large-only" >
+    <!-- <div class="hide-on-large-only" >
       <div class="navbar-fixed">
          <nav class="light-green darken-3" role="navigation">
             <div class="nav-wrapper nav_wrapper_margin">
@@ -95,8 +156,8 @@
                 {{#if equals parentPageList._id parentId}}
                   <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;">
                   {{else}}
-                  <!-- <p>some</p> -->
-                  <!-- <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;"> -->
+                   <p>some</p> -->
+                  <!-- <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;"> 
                 {{/if}}
               </div>
                 <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
@@ -110,7 +171,7 @@
           </nav>
       </div>
     </div>
-
+ -->
    <!-- <div class="fluid-container hide-on-large-only">
       <div class="row margin10">
         {{#if equals searchResultCount 0}}
@@ -139,7 +200,7 @@
           </div>
       </div>
  -->
-    <div  class="footer_icon">
+   <!--  <div  class="footer_icon">
         <ul>
           <li class="footer_icon_row">
             <a class="btn-floating light-green darken-3">
@@ -157,6 +218,6 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
 
 </template>

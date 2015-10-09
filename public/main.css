@@ -150,8 +150,9 @@
     height:100%;
     width:16.6667%;
     left:0;
-    border-right:1px solid #CCC;
-    background-color: #558b2f;    
+    top:0;
+    background-color: #558b2f;
+    z-index:999;  
 }
 
 .action-item {
@@ -225,21 +226,24 @@
 
 .leftContent{
    position: fixed;
-   height:78%;
-   overflow-y:scroll;
-   width:18.6667%;
+   overflow-y:hidden;
+   width:16.667%;
    z-index:1;
 }
 
-.sm_leftContent{
+.leftContent:hover{
+   overflow-y:scroll;
+}
+
+/*.sm_leftContent{
    position: fixed;
    height:69%;
    overflow-y:scroll;
    width:240px;
    z-index:1;
 }
-
-.sm_leftContent .sm_content{
+*/
+.sm_content{
   padding:10px;
   border-bottom:1px solid #C1C1C1;
   color:#fff;
@@ -249,7 +253,7 @@
 .leftContent .content{
   padding:10px;
   border-bottom:1px solid #C1C1C1;
-  color:#fff;
+  /*color:#fff;*/
 }  
 
 .footer_icon{
