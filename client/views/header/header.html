@@ -1,58 +1,162 @@
 <template name="header">
 
-<div class="navbar-fixed">
-     <nav class="light-green darken-3" role="navigation" style="border:1px solid">
-        <div class="nav-wrapper" style="margin:0 15px;">
-          <div class="header_logo hide-on-med-only hide-on-small-only">
-              <img src="/images/grannylogo.png" class="header_img"/>
-          </div>
-          <div class="hide-on-med-only hide-on-small-only" style="position: absolute; right: 0; top: 0;">
-            <a href="#" class="header_title title">Grannytheraphy</a>
-          </div>
-          <a href="#" class="header_title title hide-on-large-only">Grannytheraphy</a>
-          <a href="#" data-activates="slide-out" class="margintop20 button-collapse side-icon">
-            <i class="mdi-navigation-menu"></i>
-          </a>
-          <div id="slide-out" class="side-nav light-green darken-4">
-            <div class="leftMenuTitle light-green darken-2">Category</div>
+<!-- <div class="hide-on-med-only hide-on-small-only">
+      <div class="row">
+        <div class="col l2">
+          <div class="leftMenu">
+            <div align="center">
+              <div class="white_bg">
+                <img src="images/grannylogo.png" class="logo"/>
+              </div>
+              <div class="logo_title">Granny Theraphy</div>
+            </div>
+            <div class="hrClass"></div>
+            <div class="leftContent">
             {{#if parentPageList}}
             {{#each parentPageList}}
-              <div class="parent-page leftMenuContent page{{_id}}" id="page{{_id}}">
-                {{title}}
-                <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="width:20px">
+              <div class="content parent-page leftMenuContent page{{_id}}" id="page{{_id}}">
+                <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
+                margin-bottom:2px">{{title}}</p>
+                {{#if equals isChild "Yes"}}
+                  <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;">
+                {{/if}}
               </div>
-              <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
+                <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
               {{/each}}
               {{else}}
                   <div>No categories</div>
               {{/if}}
-          </div>
-        </div>
-      </nav>
-    </div>
-
-      <div class="hide-on-med-only hide-on-small-only">
-      <div class="row">
-        <div class="col l2 padding0">
-          <div class="leftMenu light-green darken-4">
-            <div class="light-green darken-3 sm_leftMenuTitle">Category</div>
-          {{#if parentPageList}}
-          {{#each parentPageList}}
-            <div class="parent-page sm_leftMenuContent page{{_id}}" id="page{{_id}}">
-              {{title}}
-              <img src="images/downarrow.png" class="sm_leftMenuArrow right downarrow" style="width:20px">
             </div>
-            <div class="subpage{{_id}} sm_letfMenuSubTitle" id="subpage{{_id}}"></div>
-            {{/each}}
-            {{else}}
-                <div>No categories</div>
-            {{/if}}
           </div>
         </div>
         <div class="col l10">
-          
+          <div class="rightMenu">
+            <div class="header">
+              <div class="headerTitle">Home</div>
+            </div>
+            
+           <div class="innerContainer"> -->
+             <!--  <div class="fluid-container">
+                <div class="row margin10">
+                  {{#if equals searchResultCount 0}}
+                    <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
+                  {{else}}
+                  {{#each postsList}}
+                  <div class="col l4">
+                    <div class="card white hoverable">
+                      {{#if equals featuredImage '-'}}
+                      {{else}}
+                        <div class="card-image">
+                            <img src="{{featuredImage}}" style="width:100%;height:200px">
+                            <span class="card-title">{{title}}</span>
+                        </div>
+                      {{/if}}
+                          <div class="card-content">
+                            <p>{{content}}</p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#" class="right" id="read-more">Read More</a>
+                          </div>
+                          </div>
+                        </div>
+                  {{/each}}
+                  {{/if}}
+                </div> -->
+             <!--  </div> 
+            </div>
+          </div>
         </div>
+      </div> 
+    </div> -->
+
+
+    <div class="hide-on-large-only" >
+      <div class="navbar-fixed">
+         <nav class="light-green darken-3" role="navigation">
+            <div class="nav-wrapper nav_wrapper_margin">
+               <a href="#" class="sm_headerTitle">Granny theraphy</a>
+              <a href="#" data-activates="slide-out" style="margin-right:20px;" class="button-collapse">
+                <i class="mdi-navigation-menu"></i>
+              </a>
+            <div id="slide-out" class="side-nav light-green darken-3">
+              <div align="center">
+                <div class="white_bg">
+                  <img src="images/grannylogo.png" class="logo"/>
+                </div>
+                <div class="logo_title">Granny Theraphy</div>
+              </div>
+              <div class="hrClass"></div>
+              <div class="sm_leftContent">
+              {{#if parentPageList}}
+              {{#each parentPageList}}
+              <div class="sm_content content parent-page leftMenuContent page{{_id}}" id="page{{_id}}">
+                <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
+                margin-bottom:2px">{{title}}</p>
+                {{#if equals parentPageList._id parentId}}
+                  <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;">
+                  {{else}}
+                  <!-- <p>some</p> -->
+                  <!-- <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;"> -->
+                {{/if}}
+              </div>
+                <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
+              {{/each}}
+              {{else}}
+                  <div>No categories</div>
+              {{/if}}
+            </div>
+            </div>
+            </div>
+          </nav>
       </div>
     </div>
+
+   <!-- <div class="fluid-container hide-on-large-only">
+      <div class="row margin10">
+        {{#if equals searchResultCount 0}}
+          <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
+        {{else}}
+        {{#each postsList}}
+        <div class="col l4">
+          <div class="card white">
+            {{#if equals featuredImage '-'}}
+            {{else}}
+                  <div class="card-image">
+                      <img src="{{featuredImage}}" style="width:100%;height:200px">
+                      <span class="card-title">Card Title</span>
+                  </div>
+            {{/if}}
+                  <div class="card-content">
+                    <p>{{content}}</p>
+                  </div>
+                  <div class="card-action">
+                    <a href="#" class="right" id="read-more">Read More</a>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            {{/if}}
+          </div>
+      </div>
+ -->
+    <div  class="footer_icon">
+        <ul>
+          <li class="footer_icon_row">
+            <a class="btn-floating light-green darken-3">
+              <i class="material-icons search">search</i>
+            </a>
+          </li>
+          <li class="footer_icon_row">
+            <a class="btn-floating light-green darken-3 paddingleft7">
+              <i class="material-icons question">edit_mode</i>
+            </a>
+          </li>
+          <li class="footer_icon_row">
+            <a class="btn-floating light-green darken-3">
+              <i class="material-icons">list</i>
+            </a>
+          </li>
+        </ul>
+      </div>
 
 </template>

@@ -4,7 +4,7 @@
         <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
       {{else}}
       {{#each postsList}}
-        <div class="col s12 m6 l4">
+        <div class="col l4">
             <div class="card white">
                 {{#if equals featuredImage '-'}}
                 {{else}}
@@ -24,7 +24,8 @@
         {{/each}}
         {{/if}}
     </div>
-    <div class="row hide-on-large-only">
+
+    <div class="row home-post-field hide-on-large-only">
       {{#if equals searchResultCount 0}}
         <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
       {{else}}
@@ -49,5 +50,6 @@
         {{/each}}
         {{/if}}
       </div>
+
     <div class="post-loading-icon"></div>
 </template>

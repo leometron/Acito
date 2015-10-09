@@ -65,6 +65,7 @@ Template.adminlayout.rendered = function () {
     $('#subNavBarpagesadd').hide();
     $('#subNavBarHomeSlidersadd').hide();
     $('#subNavBarpostsimage').hide();
+    $('#logoutSpinner').hide();
     var path = $(location).attr('pathname');
     var pathname = $(location).attr('pathname').split('/')[1];
     var pathname1 = $(location).attr('pathname').split('/')[2];    
@@ -189,5 +190,13 @@ Template.adminlayout.events({
             // console.log("antoher link ");
             flag = true;
           }
+      },
+      'click #logout': function() {
+            $('#logoutSpinner').show();
+            Meteor.setTimeout(function () {
+                $('#logoutSpinner').hide();
+                Meteor.logout();
+                Router.go('admin');                                    
+        }, 2000); 
       }
 });

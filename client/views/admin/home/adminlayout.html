@@ -20,6 +20,21 @@
                 <div>No categories</div>
             {{/if}}
         </div>
+        
+        <div class="pull-right">
+          <div id="logoutSpinner" class="preloader-wrapper smaller active v-align-middle">
+            <div class="spinner-layer spinner-white-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+          <span id="logout" class="logout">Logout</span>
+        </div>
         </div>
       </nav>
     </div>
@@ -27,7 +42,7 @@
       <div class="hide-on-med-only hide-on-small-only">
       <div class="row">
         <div class="col l2 padding0">
-          <div class="leftMenu z-depth-2">
+          <div class="leftMenu z-depth-2" style="background:#ffffff">
             {{#each navBarList}}
               <li id="navBar{{title}}" class="item" style="padding: 4px 15px;">
                   <a href="/admin/{{title}}">
