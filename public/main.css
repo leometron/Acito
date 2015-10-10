@@ -234,14 +234,14 @@
 
 .leftContent{
    position: fixed;
-   overflow:hidden;
-   width:16.665%;
+   overflow-y:scroll;
+   width:18%;
    z-index:1;
 }
 
-.leftContent:hover{
+/*.leftContent:hover{
   overflow-y:scroll;
-}
+}*/
 
 .sm_content{
   padding:10px;

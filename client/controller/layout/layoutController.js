@@ -38,7 +38,7 @@ Template.header.events({
            var subPages = Pages.find({parentId: this._id,status:'Published'});
            var t ="";
            subPages.forEach(function(item){
-               t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1" name="'+item.title+'" id="'+item._id+'">'+item.title+'</div>';
+               t += '<div class="sub-page" name="'+item.title+'" id="'+item._id+'">'+item.title+'</div>';
            });
            $(".subpage"+this._id).html(t);        
          }      
