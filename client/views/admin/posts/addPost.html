@@ -42,7 +42,8 @@
                     <span>
                     {{#if showSelectedPost}}
                     {{else}}   
-                        <button type="button" id="savePost" class="admin-btn">Save Draft</button>
+                <!-- <button type="button" id="savePost" class="admin-btn">Save Draft</button> -->
+                    <button class="btn waves-effect waves-light" type="button" id="savePost">Save Draft</button>
                     {{/if}}            
                     </span>
                     <span class="pull-right">
@@ -55,42 +56,36 @@
                 <div class="board-view">Visibility: public</div>
                 <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
             </div>
-            <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0; padding-bottom: 40px;">
-                <div class="col l12 padding-left-zero">
-                    <div class="col l8 padding-left-zero cursor-pointer">
-                        {{#if showSelectedPost}}
-                        {{#if showSelectedPost.deleted}}
-                       <a id="removePost">                                 
-                           Delete Post
-                       </a>
+            <div class="board-view border-bottom" style=" border: 1px solid #ddd;border-top: 0;">
+              {{#if showSelectedPost}}
+                 {{#if showSelectedPost.deleted}}
+                   <a id="removePost" style="cursor:pointer">Delete Post</a>
+                    {{else}}
+                   <a id="moveBin" style="cursor:pointer">Move to Bin</a>
+                   <a id="deletePost" class="padding-left-10" style="cursor:pointer">Delete</a>
+                 {{/if}}
+              {{/if}}
+              {{#if showSelectedPost}}
+                {{#if showSelectedPost.deleted}}
+                <span style="padding-left: 25%">                                    
+                 <button class="btn waves-effect waves-light" type="button" id="restorePost">Publish</button>
+                </span>
+                    {{else}}
+                    {{#if showSelectedPost.publish}}
+                    <span style="padding-left: 6%">                                       
+                       <button class="btn waves-effect waves-light" type="button" id="updatePost">Update</button>
+                    </span>   
                         {{else}}
-                       <a id="moveBin">                                 
-                           Move to Bin 
-                       </a>
-                       <a id="deletePost" class="padding-left-10">                                 
-                           Delete 
-                       </a>
-                        {{/if}}
-                        {{/if}}
-                    </div>
-                    <div class="col l4 padding-right-zero">
-                       <span style="padding-left: 25%">
-                       {{#if showSelectedPost}}
-                           {{#if showSelectedPost.deleted}}                                    
-                           <button type="button" id="restorePost" class="admin-btn">Publish</button>
-                           {{else}}
-                               {{#if showSelectedPost.publish}}                                    
-                                   <button type="button" id="updatePost" class="admin-btn">Update</button>
-                               {{else}}
-                                   <button type="button" id="publishPost" class="admin-btn">Publish</button>
-                               {{/if}}                            
-                           {{/if}}                            
-                       {{else}}
-                           <button type="button" id="publishPost" class="admin-btn">Publish</button>
-                       {{/if}}                            
-                       </span>
-                    </div>
-                </div>
+                    <span style="padding-left: 25%">   
+                        <button class="btn waves-effect waves-light" type="button" id="publishPost">Publish</button>
+                    </span>
+                    {{/if}}                            
+                {{/if}}                            
+                {{else}}
+                <span style="padding-left: 25%">   
+                 <button class="btn waves-effect waves-light" type="button" id="publishPost">Publish</button>
+                </span>
+              {{/if}} 
             </div>
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">pages <span class="caret pull-right margin-top-10"></span></div>

@@ -4,12 +4,17 @@
         <div>
 
             <div class="row post-margin">
-                <div class="col l4">
+                <!-- <div class="col l4">
                     <span class="main-header">Media Library</span>
                     <span><button type="button" id="addNewMedia" class="admin-btn">Add New</button></span>
+                </div> -->
+                <div class="col l3">
+                  <span style="font-weight:bold; font-size:25px;">Media Library</span>
+                </div> 
+                <div class="col l2" style="margin-left:-63px">
+                  <button class="btn waves-effect waves-light" type="button" id="addNewMedia">Add New</button>
                 </div>
-            
-            <div class="col l8 post-margin">
+            <div class="col l7 post-margin">
                 <div style="float: right">
                     <input type="search" class="padding-top-10" id="queryString" value="{{queryString}}" style="width:60%;"/>
                     <span>
@@ -23,8 +28,8 @@
             <div class="row post-margin" id="list">
                 <div class="col l2 padding-left-zero">
                     <div class='dropdown-button btn' data-activates='bulkActions' style="width:150px; padding-left: 0px; padding-right: 5px;">
-                        <span id="bulkOptionDropDown" style="padding-left: 4px;">Bulk Actions</span>
-                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                        <span id="bulkOptionDropDown" style="margin-left: 17px; float:left;">Bulk Actions</span>
+                        <i class="mdi-navigation-arrow-drop-down"></i>
                     </div>
                     
                   <!-- Dropdown Structure -->
@@ -36,7 +41,8 @@
                 </div>
                 <div class="col l2" id="applybtn">
                     <span>
-                      <button id="apply" type="button" class="admin-btn">Apply</button>
+                      <!-- <button id="apply" type="button" class="admin-btn">Apply</button> -->
+                      <button class="btn waves-effect waves-light" type="button" id="apply">Apply</button>
                     </span>
                 </div>
                 <div class="col l2">
@@ -72,8 +78,8 @@
                         <input type="checkbox" id="checkboxMediaAll" class="filled-in"/>
                             <label for="checkboxMediaAll"></label>
                     </div>
-                    <div class="col l4">File</div>
-                    <div class="col l2">Author</div>
+                    <div class="col l5">File</div>
+                    <div class="col l1">Author</div>
                     <div class="col l2">Uploaded to</div>
                     <div class="col l2">comments</div>
                     <div class="col l1">Date</div>
@@ -92,14 +98,12 @@
                 {{#if currentUser}}
                 <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd; margin-top:-21px">
                     <div class="col l1">
-                      <span>
                        <!-- <input id="checkbox" type="checkbox"> -->
                        <input type="checkbox" id="media{{_id}}" class="filled-in checkbox" value="{{_id}}"/>
                        <label for="media{{_id}}"></label>
-                      </span>
-                      <span class="padding-left-20">
+                    </div>
+                    <div class="col l1">
                         <img src="{{url}}" style="width:70px;height:80px" class="img-rounded">
-                      </span>
                     </div>
                     <div class="col l4" style="line-height: 200%;">
                         <div>{{name}}</div>
@@ -107,7 +111,7 @@
                         <div><a href="/admin/media/edit" id="edit">Edit</a> | <a href="#" id="delete">Delete
                             Permanently</a></div>
                     </div>
-                    <div class="col l2">
+                    <div class="col l1">
                         <div>{{currentUser.username}}</div>
                     </div>
                     <div class="col l2">

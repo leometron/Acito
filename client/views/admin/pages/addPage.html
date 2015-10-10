@@ -41,7 +41,8 @@
                 <div class="board-view">
                     {{#if PublishedPages}}
                     {{else}}
-                    <span><button type="button" class="admin-btn" id="draft">Save Draft</button></span>
+                    <!-- <button type="button" class="admin-btn" id="draft">Save Draft</button> -->
+                    <button class="btn waves-effect waves-light" type="button" id="draft">Save Draft</button>
                     {{/if}}
                     <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
                 </div>
@@ -54,7 +55,7 @@
                 <div class="board-view">Visibility: public</div>
                 <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
             </div>
-            <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
+            <div class="board-view border-bottom" style=" border: 1px solid #ddd;border-top: 0;">
 
                 {{#if PublishedPages}}
                 {{#if PublishedPages.deleted}}
@@ -68,20 +69,35 @@
 
                 {{#if PublishedPages}}
                 {{#if PublishedPages.deleted}}
-                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="restore">Restore
-                </button></span>
+                <span style="padding-left: 25%">
+                   <!--  <button type="button" class="admin-btn" id="restore">Restore
+                </button> -->
+                <button class="btn waves-effect waves-light" type="button" id="restore">Restore</button>
+                </span>
                 {{else}}
                 {{#if PublishedPages.published}}
-                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="update">Update
-                </button></span>
+                <span style="padding-left: 25%">
+                    <!-- <button type="button" class="admin-btn" id="update">Update
+                </button> -->
+                <button class="btn waves-effect waves-light" type="button" id="update">Update
+                </button>
+                </span>
                 {{else}}
-                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="republish">Publish
-                </button></span>
+                <span style="padding-left: 25%">
+                    <!-- <button type="button" class="admin-btn" id="republish">Publish
+                </button> -->
+                <button class="btn waves-effect waves-light" type="button" id="republish">Publish
+                </button>
+                </span>
                 {{/if}}
                 {{/if}}
                 {{else}}
-                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="publish">Publish
-                </button></span>
+                <span style="padding-left: 25%">
+                   <!--  <button type="button" class="admin-btn" id="publish">Publish
+                </button> -->
+                <button class="btn waves-effect waves-light" type="button" id="publish">Publish
+                </button>
+                </span>
                 {{/if}}
             </div>
             <div class="bg-white margin-top-20" style="border:1px solid #DDDDDD">

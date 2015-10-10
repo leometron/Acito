@@ -93,11 +93,15 @@
             <div class="board-view border-bottom" style="border: 1px solid #ddd;border-top: 0;">
                 Delete Permanently
                 {{#if showSelectedMedia}}
-                <span style="padding-left: 15%"><button id="update" type="button" class="admin-btn">update
-                </button></span>
+                <span style="padding-left: 6%">
+                    <!-- <button id="update" type="button" class="admin-btn">update</button> -->
+             <button class="btn waves-effect waves-light" type="button" id="update">update</button>
+                </span>
                 {{else}}
-                <span style="padding-left: 15%"><button id="publish" type="button" class="admin-btn">publish
-                </button></span>
+                <span style="padding-left: 6%">
+            <button class="btn waves-effect waves-light" type="button" id="publish">publish</button>      
+                    <!-- <button id="publish" type="button" class="admin-btn">publish</button> -->
+                </span>
                 {{/if}}
             </div>
         </div>

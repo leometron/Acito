@@ -2,11 +2,16 @@
     <div class="main-content-box z-depth-2">
         <div style="margin-left: 2.5%; margin-top: 3%;width: 95%;margin-bottom:30px">
             <div class="row post-margin">
-                <div class="col l4">
+                <!-- <div class="col l4">
                     <span class="main-header">Pages</span>
                     <span><button type="button" id="addNew" class="admin-btn">Add New</button></span>
+                </div> -->
+                 <div class="col l1">
+                  <span style="font-weight:bold; font-size:25px;">Pages</span>
+                </div> 
+                <div class="col l2" style="margin-left:5px">
+                  <button class="btn waves-effect waves-light" type="button" id="addNew">Add New</button>
                 </div>
-            
             <div class="col l8 post-margin">
                 <div style="float: right">
                     <input type="text" class="form-control" id="pagesearch" style="width:60%; display:inline"/>
@@ -20,8 +25,8 @@
             <div class="row post-margin">
                 <div class="col l2 padding-left-zero">
                     <div class='dropdown-button btn' data-activates='bulkActions' style="width:150px; padding-left: 0px; padding-right: 5px;">
-                        <span id="bulkOptionDropDown" style="padding-left: 4px;">Bulk Actions</span>
-                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                        <span id="bulkOptionDropDown" style="margin-left: 17px; float:left;">Bulk Actions</span>
+                        <i class="mdi-navigation-arrow-drop-down"></i>
                     </div>
                     
                     <!-- Dropdown Structure -->
@@ -35,8 +40,10 @@
                 </div>
 
                 <div class="col l2" id="apply">
-                    <span><button type="button" id="Bulkapply" class="admin-btn">Apply
-                    </button></span>
+                  <span>
+                    <!-- <button type="button" id="Bulkapply" class="admin-btn">Apply</button> -->
+                     <button class="btn waves-effect waves-light" type="button" id="Bulkapply">Apply</button>
+                  </span>
                 </div>
 
                 <div class="col l2 margin-left-minus-5">

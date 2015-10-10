@@ -124,7 +124,7 @@ Template.home.events({
 
    'click #askQuestion' : function() {
       if (!$('#questionArea').val()) {
-        $('#questionEmptyInfo').show();
+          $('#questionEmptyInfo').html('Please enter question');
       } else if (!Meteor.userId()) {
         Session.set('question',$('#questionArea').val());
          Meteor.setTimeout(function() {
@@ -146,12 +146,12 @@ Template.home.events({
           },300);
       }
       Meteor.setTimeout(function(){
-          $('#questionEmptyInfo').hide();
-      }, 5000);        
+          $('#questionEmptyInfo').html('');
+      }, 3200);        
    },
    'click #search' : function () {
         if(!$('#searchQuery').val()) {
-            $('#searchEmptyInfo').show();
+            $('#searchEmptyInfo').html('Please enter search string');
         } else {
             $(window).scrollTop(572);
             $('#search_modal').closeModal();
@@ -162,14 +162,13 @@ Template.home.events({
             }            
         }
         Meteor.setTimeout(function(){
-          $('#searchEmptyInfo').hide();
-        }, 5000);        
+          $('#searchEmptyInfo').html('');
+        }, 3500);        
     },
     'keyup #searchQuery' : function(e){
       if (e.which == 13) {
           if (!$('#searchQuery').val()) {
-            // $('#searchLabel').attr('data-error','please enter search string');
-              $('#searchEmptyInfo').show();
+              $('#searchEmptyInfo').html('Please enter search string');
           } else {
             $(window).scrollTop(572);
             $('#search_modal').closeModal();
@@ -178,8 +177,8 @@ Template.home.events({
           }        
       }
       Meteor.setTimeout(function(){
-        $('#searchEmptyInfo').hide();
-      }, 5000);       
+        $('#searchEmptyInfo').html('');
+      }, 3500);       
     },     
    'click .select-question-row' : function() {
       if (this._id) {
@@ -424,8 +423,8 @@ Template.postList.rendered = function () {
 Template.home.rendered = function () {
    $('.posts-Over-text').hide();
     $('#questionDetail').hide();
-    $('#questionEmptyInfo').hide();
-    $('#searchEmptyInfo').hide();
+    // $('#questionEmptyInfo').hide();
+    // $('#searchEmptyInfo').hide();
     $('#loginDetail').hide();
     $('.leftContent').css('height',window.innerHeight-141);
 

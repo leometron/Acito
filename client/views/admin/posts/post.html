@@ -3,12 +3,17 @@
         <div style="margin-left: 2.5%; margin-top: 3%;width: 95%;margin-bottom:30px">
 
             <div class="row post-margin">
-                <div class="col l4">
+                <!-- <div class="col l4">
                     <span class="main-header">Posts</span>
                     <span><button type="button" id="addNewPost" class="admin-btn">Add New</button>
                     </span>
+                </div> -->
+                <div class="col l1">
+                  <span style="font-weight:bold; font-size:25px;">Posts</span>
+                </div> 
+                <div class="col l2" style="margin-left:5px">
+                  <button class="btn waves-effect waves-light" type="button" id="addNewPost">Add New</button>
                 </div>
-            
                 <div class="col l8 post-margin">
                   <div style="float: right">
                     <input type="text" class="form-control" id="queryString" value="{{queryString}}"
@@ -25,8 +30,8 @@
             <div class="row post-margin">
                 <div class="col l2 padding-left-zero">
                     <div class='dropdown-button btn' data-activates='bulkActions' style="width:150px; padding-left: 0px; padding-right: 5px;">
-                        <span id="bulkOptionDropDown" style="padding-left: 4px;">Bulk Actions</span>
-                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                        <span id="bulkOptionDropDown" style="margin-left: 17px; float:left;">Bulk Actions</span>
+                        <i class="mdi-navigation-arrow-drop-down"></i>
                     </div>
                     
                     <!-- Dropdown Structure -->
@@ -39,8 +44,10 @@
                     </ul>
                 </div>
                 <div class="col l2 padding-left-zero" id="apply">
-                    <span><button type="button" class="admin-btn" id="bulkApplyBtn">Apply
-                    </button></span>
+                 <span>
+                  <!-- <button type="button" class="admin-btn" id="bulkApplyBtn">Apply</button> -->
+                  <button class="btn waves-effect waves-light" type="button" id="bulkApplyBtn">Apply</button>
+                 </span>
                 </div>
                 <div class="col l2 margin-left-minus-5">
                 <span class="dropdown margin-right">

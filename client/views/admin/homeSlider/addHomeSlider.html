@@ -46,9 +46,12 @@
                     <input type="text" class="form-control" style="width: 70%; display: inline;">
                     {{/if}}
                     {{/if}}
-                    <span><button type="button" id="selectImage" class="admin-btn" data-toggle="modal"
+                    <span>
+                    <!-- <button type="button" id="selectImage" class="admin-btn" data-toggle="modal"
                                   data-target="#myModal">Select image
-                    </button></span>
+                    </button> -->
+                    <button class="btn waves-effect waves-light" type="button" id="selectImage"   data-toggle="modal" data-target="#myModal">Select image</button>
+                    </span>
             <div class="padding-top-bottom-10">
                 <p>Description</p>
                 {{#if showSelectedSlider}}
@@ -223,7 +226,8 @@
                     </span> -->
                     {{#if showSelectedSlider}}
                     {{else}}
-                    <button type="button" id="saveSlider" class="admin-btn">Save Draft</button>
+                    <!-- <button type="button" id="saveSlider" class="admin-btn">Save Draft</button> -->
+                    <button class="btn waves-effect waves-light" type="button" id="saveSlider">Save Draft</button>
                     {{/if}}
                     <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
                 </div>
@@ -256,16 +260,20 @@
                         <span style="padding-left: 55%">
                            {{#if showSelectedSlider}}
                              {{#if showSelectedSlider.deleted}}
-                             <button type="button" class="admin-btn" id="restoreSlider">Publish</button> 
+                             <!-- <button type="button" class="admin-btn" id="restoreSlider">Publish</button> -->
+                               <button class="btn waves-effect waves-light" type="button" id="restoreSlider">Publish</button>
                               {{else}}
                                 {{#if showSelectedSlider.published}}
-                                    <button type="button" class="admin-btn" id="updateSlider">Update</button> 
+                                   <!--  <button type="button" class="admin-btn" id="updateSlider">Update</button>  -->
+                                    <button class="btn waves-effect waves-light" type="button" id="updateSlider">Update</button>
                                     {{else}}
-                                    <button type="button" class="admin-btn" id="republishSlider">Publish</button> 
+                                   <!--  <button type="button" class="admin-btn" id="republishSlider">Publish</button>  -->
+                                    <button class="btn waves-effect waves-light" type="button" id="republishSlider">Publish</button>
                                 {{/if}}
                              {{/if}}
                                 {{else}}
-                                    <button type="button" class="admin-btn" id="publishSlider">Publish</button>
+                                   <!--  <button type="button" class="admin-btn" id="publishSlider">Publish</button> -->
+                                    <button class="btn waves-effect waves-light" type="button" id="publishSlider">Publish</button>
                                {{/if}}              
                         </span>
                     </div>
