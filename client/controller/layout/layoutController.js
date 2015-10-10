@@ -38,7 +38,7 @@ Template.header.events({
            var subPages = Pages.find({parentId: this._id,status:'Published'});
            var t ="";
            subPages.forEach(function(item){
-               t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1" name="'+item.title+'" id="'+item._id+'">'+item.title+'</div>';
+               t += '<div class="sub-page" name="'+item.title+'" id="'+item._id+'">'+item.title+'</div>';
            });
            $(".subpage"+this._id).html(t);        
          }      
@@ -214,16 +214,16 @@ Template.home.events({
      e.preventDefault();
         var email = t.find('#email').value, password = t.find('#password').value;
         if(email == ''){
-            $('#errorMsg').html("Please enter email or username");
+            Materialize.toast('Please enter email or username', 3000, 'error-toast');
             return;
         } else if(password == '') {
-            $('#errorMsg').html("Please enter password");
+            Materialize.toast('Please enter password', 3000, 'error-toast');
             return;
         }
 
         Meteor.loginWithPassword(email, password, function (err) {
             if(err){
-                $('#errorMsg').html("Invalid email or Password");
+                Materialize.toast('Invalid email or Password', 3000, 'error-toast');
             } else if(!$('#questionArea').val()) {
               // history.back();
                $('#userLoginForm').closeModal();

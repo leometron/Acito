@@ -1,30 +1,62 @@
 <template name="questionAnswer">
-    <div class="row">
-        <div class="col-md-12" style="padding:25px 15px;">
+    <div class="hide-on-med-only hide-on-small-only">
+     <div class="row" style="width: 80%; margin-left: 18%">
+        <div class="col l12" style="padding:25px 12px;">
         	<u>{{question.question}}</u>
         </div>
 <!--         <div class="col-md-12 border-top">
         </div> -->
        
         {{#each answer}}
-        <div class="col-md-12" style="margin-left: 5%; margin-bottom:25px; width: 93%; font-weight:bold;">
+        <div class="col l12" style="margin-left: 5%; margin-bottom:25px; width: 93%; font-weight:bold;">
             {{answerDetail}}
         </div>
         {{/each}}
-        <div class="col-md-12" style="padding-bottom:10px; font-weight:bold;">
+        <div class="col l12" style="padding-bottom:10px; font-weight:bold;">
         	<p>Post Your Answer</p>
         </div>
-        <div class="col-md-12">
-        	<textarea id="answer" style="width:100%; height:10%; resize:none"></textarea>
+        <div class="col l12">
+        	<textarea id="answer" style="border: 1px solid gray; height: 100px; resize: none; width: 100%; margin-bottom: 15px;"></textarea>
         </div>
-        <div class="row">
-            <div class="col-md-9 font-size-16-min color-red text-center" id="emptyAnswerInfo" style="margin-left:7%">
+        <div>
+            <div class="font-size-16-min color-red text-center" id="emptyAnswerInfo" style="margin-left:47%; margin-bottom: 5px; display;inline-block">
                 <span>Enter a answer</span>
             </div>
-            <div class="col-md-2 pull-right" style="margin-top:10px; margin-right: 5px;">
-                <button type="button" id="client-post-answer" class="btn btn-primary">Post Answer</button>
+            <div style="display;inline-block; margin-right:41.5%;">
+                <button type="button" id="client-post-answer" class="btn right">Post Answer</button>
             </div>
         </div>        
     </div>
+</div>
+
+<div class="hide-on-large-only">
+     <div class="row" style="width: 95%;">
+        <div class="col s12 m12" style="padding:25px 12px;">
+            <u>{{question.question}}</u>
+        </div>
+<!--         <div class="col-md-12 border-top">
+        </div> -->
+       
+        {{#each answer}}
+        <div class="col s12 m12" style="margin-left: 5%; margin-bottom:25px; width: 93%; font-weight:bold;">
+            {{answerDetail}}
+        </div>
+        {{/each}}
+        <div class="col s12 m12" style="padding-bottom:10px; font-weight:bold;">
+            <p>Post Your Answer</p>
+        </div>
+        <div class="col s12 m12">
+            <textarea id="answer" style="border: 1px solid gray; height: 75px; resize: none; width: 93%; margin-bottom: 15px;"></textarea>
+        </div>
+        <div>
+            <div class="font-size-16-min color-red text-center" id="emptyAnswerInfo" style="margin-left:32%; margin-bottom: 5px; display;inline-block">
+                <span>Enter a answer</span>
+            </div>
+            <div style="display;inline-block; margin-right:25.5%;">
+                <button type="button" id="client-post-answer" class="btn right">Post Answer</button>
+            </div>
+        </div>        
+    </div>
+</div>
     <input type="hidden" id="quetionId" value="{{question._id}}">
 </template>

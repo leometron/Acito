@@ -1,6 +1,14 @@
 Template.featuredImage.rendered = function () {
     Session.set('errorImage', '');
     Session.set('selectFeaturedImage', '');
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: true,
+        gutter: 0,
+        belowOrigin: true,
+        alignment: 'center'
+    }); 
 }
 
 
@@ -20,29 +28,26 @@ Template.featuredImage.events({
     },
     'click #publishFeaturedImage': function () {
         if (!Session.get('selectFeaturedImage')) {
-            Session.set('errorImage', 'Image is required');
-        } else if ($('#pageId').val() == "none") {
-            Session.set('errorImage', 'post title is required');
+            Materialize.toast('Image is required', 3000, 'error-toast');
+        } else if ($('.drop-down-label').text() == "None") {
+            Materialize.toast('Post title is required', 3000, 'error-toast');
         } else {
-            Session.set('errorImage', '');
-            Session.set('sucessMessage', 'Featured Image Saved');
-            Meteor.call('insertFeaturedImage', Session.get('selectFeaturedImage'), $('#pageId').val(), getUserName());
+            Materialize.toast('Featured Image Saved', 3000, 'success-toast');
+            Meteor.call('insertFeaturedImage', Session.get('selectFeaturedImage'), Session.get('postId'), getUserName());
             Meteor.setTimeout(function () {
-                Session.set('sucessMessage', ''), $('#pageId').val("none"), Session.set('selectFeaturedImage', ''), $('#selectFeaturedImage').val("")
+                Session.set('postId', ''), $('.drop-down-label').text("None"), Session.set('selectFeaturedImage', ''), $('#selectFeaturedImage').val("")
             }, 2000);
         }
-    }
+    },
+    'click .drop-down-item': function(event) {
+        $('.drop-down-label').text($(event.target).text());
+        Session.set('postId', event.target.id);
+     } 
 });
 
 
 Template.featuredImage.helpers({
     'postList': function () {
         return Posts.find();
-    },
-    'errorimg': function () {
-        return Session.get('errorImage');
-    },
-    'successmsg': function () {
-        return Session.get('sucessMessage');
     }
 });

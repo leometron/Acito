@@ -9,10 +9,8 @@ Meteor.subscribe('tags');
 Template.tags.events({
     'click #addTag': function () {
         if (!$('#tagName').val()) {
-            Session.set('errorMessage', 'Tag name is required');
+            Materialize.toast('Tag name is required', 3000, 'error-toast');
         } else {
-            console.log('s crct');
-            Session.set('errorMessage', '');
             var description = (!$('#tagDescription').val()) ? "-" : $('#tagDescription').val();
             Meteor.call('addNewTag', $('#tagName').val(), description);
             Meteor._reload.reload();
@@ -41,7 +39,7 @@ Template.tags.events({
 Template.editTags.events({
     'click #updateTag': function () {
         if (!$('#tagName').val()) {
-            Session.set('errorMessage', 'Tag name is required');
+            Materialize.toast('Tag name is required', 3000, 'error-toast');
         } else {
             var description = (!$('#tagDescription').val()) ? "" : $('#tagDescription').val();
             Meteor.call('updateTag', Session.get('selectedTagId'), $('#tagName').val(), description);

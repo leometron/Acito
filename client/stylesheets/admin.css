@@ -515,6 +515,7 @@ body, #main {
 }
 .page-selection {
     background: #7cb342;
+    font-weight: bold;
     /*color: #558B2F;*/
 }
 .parent-page {
@@ -529,10 +530,24 @@ body, #main {
 }
 
 .sub-page {
-    padding-left: 20px;
+    /*padding-left: 20px;*/
     cursor: pointer;
+    padding:8px 30px;
+    color:#ffffff; 
+    border-bottom:1px solid #D1D1D1; 
+    background:#7CB342    
 }
 
 .v-align-middle {
     vertical-align: middle;
 }
+
+.drop-down-item {
+    padding: 5px 6px;
+    font-size: 11px;    
+}
+
+.margin-left-10 {
+    margin-left:10px;
+}
+

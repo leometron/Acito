@@ -21,7 +21,6 @@ Template.pages.helpers({
         belowOrigin: true,
         alignment: 'center'
     }); 
-    Session.set('errorMessage', '');
     var status = Session.get('pageStatus');
     if ( status == "all" ) {
        $('#pageAll').css('color','red');
@@ -37,7 +36,23 @@ Template.pages.helpers({
 };
 
   Template.addNewPage.rendered = function(){
-    Session.set('errorMessage','');
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: true,
+        gutter: 0,
+        belowOrigin: true,
+        alignment: 'center'
+    });
+    var selectedPages = Session.get('selectedPages');
+    var pageDoc = Pages.findOne(selectedPages);
+    if(pageDoc) {
+        Session.set('parentId', pageDoc.parentId);
+        Session.set('parentTitle', pageDoc.parentTitle);
+    } else {
+        Session.set('parentId', '');
+        Session.set('parentTitle', '');
+    }
   };
 
 Template.pages.events ({
@@ -45,7 +60,6 @@ Template.pages.events ({
         'click #list': function() {
             var userId = this._id;
             Session.set('selectedPages', userId);
-            Session.set('errorMessage', "");
             Router.go('/admin/pages/edit');
         },
 
@@ -163,68 +177,73 @@ Template.pages.events ({
 Template.addNewPage.events({
     'click #publish': function () {
         if (!$('#title').val()) {
-            Session.set('errorMessage', 'Page title is required');
+            Materialize.toast('Page title is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#comments').val()) ? "-" : $('#comments').val();
             Meteor.call('insertPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle);
             Router.go('/admin/pages');
+            Session.set('parentId', '');
+            Session.set('parentTitle', '');
         }
     },
 
     'click #draft': function () {
         if (!$('#title').val()) {
-            Session.set('errorMessage', 'Page title is required');
+            Materialize.toast('Page title is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#comments').val()) ? "-" : $('#comments').val();
             Meteor.call('draftPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle);
             Router.go('/admin/pages');
+            Session.set('parentId', '');
+            Session.set('parentTitle', '');
         }
     },
 
     'click #updatebin': function () {
         if (!$('#pageTitle').val()) {
-            Session.set('errorMessage', 'Page title is required');
+            Materialize.toast('Page title is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var selectedPages = Session.get('selectedPages');
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
             Meteor.call('deletePagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentId, parentTitle);
             Router.go('/admin/pages');
+            Session.set('parentId', '');
+            Session.set('parentTitle', '');
         }
     },
 
     'click #insertbin': function () {
         if (!$('#title').val()) {
-            Session.set('errorMessage', 'Page title is required');
+            Materialize.toast('Page title is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#comments').val()) ? "-" : $('#comments').val();
             Meteor.call('binPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle);
             Router.go('/admin/pages');
+            Session.set('parentId', '');
+            Session.set('parentTitle', '');
         }
     },
 
     'click #update': function () {
         if (!$('#pageTitle').val()) {
-            Session.set('errorMessage', 'Page title is required');
+            Materialize.toast('Page title is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var selectedPages = Session.get('selectedPages');
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
             Meteor.call('updatePagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentId, parentTitle);
             Router.go('/admin/pages');
+            Session.set('parentId', '');
+            Session.set('parentTitle', '');
         }
     },
 
@@ -241,24 +260,22 @@ Template.addNewPage.events({
 
     'click #republish': function () {
         if (!$('#pageTitle').val()) {
-            Session.set('errorMessage', 'Page title is required');
+            Materialize.toast('Page title is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var selectedPages = Session.get('selectedPages');
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
             Meteor.call('RePublishPagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentId, parentTitle);
             Router.go('/admin/pages');
+            Session.set('parentId', '');
+            Session.set('parentTitle', '');
         }
     },
-
-    'click .parentlist': function (event) {
-        Session.set('parentId', "");
-        Session.set('parentTitle', "");
+    'click .drop-down-item': function(event) {
         var parentName = $(event.target).text();
         var parentId = this._id;
-        $('#parentinsert').text($(event.target).text());
+        $('.drop-down-label').text($(event.target).text());
         Session.set('parentId', parentId);
         Session.set('parentTitle', parentName);
     }
@@ -273,19 +290,12 @@ Template.addNewPage.helpers({
     'NoParentPages': function () {
         return Pages.find();
     }
-
-    // 'errormsg': function () {
-    //     return Session.get('errorMessage');
-    // }
 });
 
 
 Template.adminHeader.events({
     'click #subNavBarpagesadd': function () {
         Session.set('selectedPages', "");
-    },
-    'click #navBarpages': function () {
-        Session.set('errorMessage', "");
     }
 });
 
