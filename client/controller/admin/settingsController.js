@@ -1,27 +1,22 @@
 Meteor.subscribe("settings");
 
 Template.settings.rendered = function () {
-    Session.set('errorMessage', '');
 }
 
 Template.settings.events({
     'click #savesetting': function () {
         if (!$('#sitetitle').val()) {
-            Session.set('errorMessage', 'site title is required');
+            Materialize.toast('site title is required', 3000, 'error-toast');
         } else if (!$('#tagline').val()) {
-            Session.set('errorMessage', 'tag line is required');
+            Materialize.toast('tag line is required', 3000, 'error-toast');
         } else if (!$('#wpaddress').val()) {
-            Session.set('errorMessage', 'word press address is required');
+            Materialize.toast('word press address is required', 3000, 'error-toast');
         } else if (!$('#siteaddress').val()) {
-            Session.set('errorMessage', 'site address is required');
+            Materialize.toast('site address is required', 3000, 'error-toast');
         } else if (!$('#email').val()) {
-            Session.set('errorMessage', 'email is required');
+            Materialize.toast('email is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
-            Session.set('sucessMessage', 'Settings saved');
-            Meteor.setTimeout(function () {
-                Session.set('sucessMessage', '')
-            }, 1500);
+            Materialize.toast('Settings saved', 3000, 'successtoast');
             var language = (!Session.get('languageName')) ? "English" : Session.get('languageName');
             Meteor.call('saveSettingData', $('#sitetitle').val(), $('#tagline').val(), $('#wpaddress').val(), $('#siteaddress').val(), $('#email').val(), language);
         }
@@ -34,12 +29,6 @@ Template.settings.events({
 
 
 Template.settings.helpers({
-    // 'errormsg': function () {
-    //     return Session.get('errorMessage');
-    // },
-    'successmsg': function () {
-        return Session.get('sucessMessage');
-    },
     'settingsList': function () {
         var userId = Meteor.userId();
         return settings.findOne({createdBy: userId});
@@ -51,7 +40,6 @@ Template.settings.helpers({
 
 Template.adminHeader.events({
     'click #navBarsettings': function () {
-        Session.set('errorMessage', '');
         Session.set('languageName', '');
     }
 });

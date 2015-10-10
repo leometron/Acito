@@ -95,56 +95,20 @@
             <div class="bg-white margin-top-20">
                 <div class="board-view border-bottom">pages <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
-                    <!-- Dropdown Trigger -->
-                    <div id="pageDropDown" class='dropdown-button btn' data-activates='dropdown1' style="width:150px; padding-left: 0px; padding-right: 5px;">
+                    <div class='dropdown-button btn drop-down-list' data-activates='pages'>
                         {{#if showSelectedPost}}
-                            <span>{{showSelectedPost.pageName}}</span>
+                            <span class="drop-down-label">{{showSelectedPost.pageName}}</span>
                         {{else}}
-                            <span>(no parent)</span>
+                            <span class="drop-down-label">(no parent)</span>
                         {{/if}}
                         <i class="mdi-navigation-arrow-drop-down right"></i>
                     </div>
-                    
-                    <!-- Dropdown Structure -->
-                    <ul id='dropdown1' class='dropdown-content'>
-                        <li class="drop-down-page">(no parent)</li>
+                    <ul id='pages' class='dropdown-content'>
+                        <li class="drop-down-item" id="none">(no parent)</li>
                         {{#each pageList}}
-                            <li class="drop-down-page" id="{{_id}}">{{title}}</li>                 
+                            <li class="drop-down-item" id="{{_id}}">{{title}}</li>                 
                         {{/each}}
                     </ul>
-                    <select id="pageName" placeholder="page">
-                        <!--                     {{#if showSelectedPost}}
-                                                <option>{{showSelectedPost.categoryName}}</option>
-                                            {{else}}   -->
-                        <!-- <option>none</option> -->
-                        <!-- {{/if}}    -->
-
-                      
-                            <!-- {{#if showSelectedPost.pageName}}
-                                <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
-                                {{else}}
-                                    <option>none</option>
-                            {{/if}}
-                        
-                        {{#each pageList}}
-                            <option value="{{_id}}">{{title}}</option>                        
-                        {{/each}}       --> 
-                         {{#if showSelectedPost}}
-                            <option value="{{showSelectedPost.pageId}}">{{showSelectedPost.pageName}}</option>
-                            {{#each pageList}}
-                                {{#if equals showSelectedPost.pageId _id}}
-                                <option>none</option>
-                                {{else}}
-                                <option value="{{_id}}">{{title}}</option>
-                                {{/if}}                        
-                            {{/each}} 
-                         {{else}}
-                            <option>none</option>
-                            {{#each pageList}}
-                                <option value="{{_id}}">{{title}}</option>                        
-                            {{/each}}
-                         {{/if}}
-                    </select>
                 </div>
             </div>
             <!-- <div class="board-view bg-white"><a href="/admin/posts/categories">+ Add New Category</a></div> -->

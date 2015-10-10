@@ -215,16 +215,16 @@ Template.home.events({
      e.preventDefault();
         var email = t.find('#email').value, password = t.find('#password').value;
         if(email == ''){
-            $('#errorMsg').html("Please enter email or username");
+            Materialize.toast('Please enter email or username', 3000, 'error-toast');
             return;
         } else if(password == '') {
-            $('#errorMsg').html("Please enter password");
+            Materialize.toast('Please enter password', 3000, 'error-toast');
             return;
         }
 
         Meteor.loginWithPassword(email, password, function (err) {
             if(err){
-                $('#errorMsg').html("Invalid email or Password");
+                Materialize.toast('Invalid email or Password', 3000, 'error-toast');
             } else if(!$('#questionArea').val()) {
               // history.back();
                $('#userLoginForm').closeModal();

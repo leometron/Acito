@@ -2,15 +2,6 @@
     <div class="main-content-box">
         <div class="content-box-menu">Add Featured Image</div>
         <div style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
-    {{#if errorimg}}
-    <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
-        <span id="showError">{{errorimg}}</span></div>
-    {{/if}}
-    {{#if successmsg}}
-    <div id="showMsg"
-         style="background-color: #009933;color: #FFF;text-align: center;margin-left: 174px;padding:7px 95px;width: 50%;margin-top: 20px;">
-        <span>{{successmsg}}</span></div>
-    {{/if}}
 <!--     <div class="margin-top-20">
         <div class="row post-margin">
             <span style="font-size: 30px;">Add Featured Image</span>
@@ -23,12 +14,17 @@
     <div class="bg-white margin-top-20">
         <div class="board-view border-bottom">Posts <span class="caret pull-right margin-top-10"></span></div>
         <div class="board-view">
-            <select id="pageId" placeholder="Posts">
-                <option>none</option>
+            <div class='dropdown-button btn drop-down-list' data-activates='posts' style="width:200px">
+                <span class="drop-down-label">None</span>
+                <i class="mdi-navigation-arrow-drop-down right"></i>
+            </div>
+            <ul id='posts' class='dropdown-content'>
+                <li class="drop-down-item">None</li>
                 {{#each postList}}
-                <option value="{{_id}}">{{title}}</option>
+                <li class="divider"></li>                        
+                <li class="drop-down-item" id="{{_id}}">{{title}}</li>
                 {{/each}}
-            </select>
+            </ul>
         </div>
     </div>
 

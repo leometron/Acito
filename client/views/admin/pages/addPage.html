@@ -8,7 +8,7 @@
        <!--  {{#if errormsg}}
         <div style="background-color: #F00;color: #FFF;text-align: center;margin-left: 174px;padding: 11px 95px;width: 50%;margin-top: -10px;">
             <span id="showError">{{errormsg}}</span></div>
-        {{/if}} -->
+            {{/if}} -->
 <!--         <div class="margin-top-40">
             <div class="row post-margin">
                 {{#if PublishedPages}}
@@ -19,113 +19,102 @@
             </div>
         </div> -->
         <div class="row" style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
-        <div class="col l8  padding-left-zero">
-            {{#if PublishedPages}}
-            <input type="text" class="form-control" id="pageTitle" value={{PublishedPages.title}}>
-
-            <div>
-                <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="pageComments" class="form-control">{{PublishedPages.content}}</textarea>
-            </div>
-            {{else}}
-            <input type="text" class="form-control" placeholder="Enter title here" id="title">
-
-            <div>
-                <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="comments" class="form-control"></textarea>
-            </div>
-            {{/if}}
-        </div>
-        <div class="col l4 padding-bottom-40">
-            <div class="bg-white" style="border:1px solid #DDDDDD">
-                <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span>
-                </div>
-                <div class="board-view">
-                    {{#if PublishedPages}}
-                    {{else}}
-                    <span><button type="button" class="admin-btn" id="draft">Save Draft</button></span>
-                    {{/if}}
-                    <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
-                </div>
-                <div class="board-view">Status: {{#if PublishedPages}}
-                    {{PublishedPages.status}}
-                    {{else}}
-                    Draft
-                    {{/if}}
-                </div>
-                <div class="board-view">Visibility: public</div>
-                <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
-            </div>
-            <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
-
+            <div class="col l8  padding-left-zero">
                 {{#if PublishedPages}}
-                {{#if PublishedPages.deleted}}
-                <a href="/admin/pages" id="delete">Delete Pages</a>
-                {{else}}
-                <a id="updatebin" style="cursor:pointer">Move to Bin</a>
-                {{/if}}
-                {{else}}
-                <a id="insertbin" style="cursor:pointer">Move to Bin</a>
-                {{/if}}
+                <input type="text" class="form-control" id="pageTitle" value={{PublishedPages.title}}>
 
-                {{#if PublishedPages}}
-                {{#if PublishedPages.deleted}}
-                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="restore">Restore
-                </button></span>
+                <div>
+                    <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="pageComments" class="form-control">{{PublishedPages.content}}</textarea>
+                </div>
                 {{else}}
-                {{#if PublishedPages.published}}
-                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="update">Update
-                </button></span>
-                {{else}}
-                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="republish">Publish
-                </button></span>
-                {{/if}}
-                {{/if}}
-                {{else}}
-                <span style="padding-left: 34%"><button type="button" class="admin-btn" id="publish">Publish
-                </button></span>
+                <input type="text" class="form-control" placeholder="Enter title here" id="title">
+
+                <div>
+                    <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="comments" class="form-control"></textarea>
+                </div>
                 {{/if}}
             </div>
-            <div class="bg-white margin-top-20" style="border:1px solid #DDDDDD">
-                <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span>
+            <div class="col l4 padding-bottom-40">
+                <div class="bg-white" style="border:1px solid #DDDDDD">
+                    <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span>
+                    </div>
+                    <div class="board-view">
+                        {{#if PublishedPages}}
+                        {{else}}
+                        <span><button type="button" class="admin-btn" id="draft">Save Draft</button></span>
+                        {{/if}}
+                        <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
+                    </div>
+                    <div class="board-view">Status: {{#if PublishedPages}}
+                        {{PublishedPages.status}}
+                        {{else}}
+                        Draft
+                        {{/if}}
+                    </div>
+                    <div class="board-view">Visibility: public</div>
+                    <!-- <div class="board-view">Publish immediately <a href="#">Edit</a></div> -->
                 </div>
-                <div class="board-view">Parent</div>
-                <div class="dropdown board-view">
+                <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
+
                     {{#if PublishedPages}}
-                    {{#if equals PublishedPages.parentId "null"}}
-                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="parentinsert"
-                            data-toggle="dropdown">
-                        (no parent)
-                    </button>
+                    {{#if PublishedPages.deleted}}
+                    <a href="/admin/pages" id="delete">Delete Pages</a>
                     {{else}}
-                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="parentinsert"
-                            data-toggle="dropdown">
-                        {{PublishedPages.parentTitle}}
-                    </button>
+                    <a id="updatebin" style="cursor:pointer">Move to Bin</a>
                     {{/if}}
                     {{else}}
-                    <button class="admin-btn dropdown-toggle padding-right-20" type="button" id="parentinsert"
-                            data-toggle="dropdown">
-                        (no parent)
-                    </button>
+                    <a id="insertbin" style="cursor:pointer">Move to Bin</a>
                     {{/if}}
-                    <span class="caret" style=" margin-left: -20px;"></span>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <li><a href="#" class="parentlist">(no parent)</a></li>
+
+                    {{#if PublishedPages}}
+                    {{#if PublishedPages.deleted}}
+                    <span style="padding-left: 34%"><button type="button" class="admin-btn" id="restore">Restore
+                    </button></span>
+                    {{else}}
+                    {{#if PublishedPages.published}}
+                    <span style="padding-left: 34%"><button type="button" class="admin-btn" id="update">Update
+                    </button></span>
+                    {{else}}
+                    <span style="padding-left: 34%"><button type="button" class="admin-btn" id="republish">Publish
+                    </button></span>
+                    {{/if}}
+                    {{/if}}
+                    {{else}}
+                    <span style="padding-left: 34%"><button type="button" class="admin-btn" id="publish">Publish
+                    </button></span>
+                    {{/if}}
+                </div>
+                <div class="bg-white margin-top-20" style="border:1px solid #DDDDDD; padding: 10px;">
+                    <div class="board-view border-bottom">Page Attribute<span class="caret pull-right margin-top-10"></span>
+                    </div>
+                    <div class="board-view">Parent</div>
+                    <!-- Dropdown Trigger -->
+                    <div class='dropdown-button btn drop-down-list margin-left-10' data-activates='pages'>
+                        {{#if PublishedPages}}
+                        {{#if equals PublishedPages.parentId "null"}}
+                        <span class="drop-down-label">(no parent)</span>
+                        {{else}}
+                        <span class="drop-down-label">{{PublishedPages.parentTitle}}</span>
+                        {{/if}}
+                        {{else}}
+                        <span class="drop-down-label">(no parent)</span>
+                        {{/if}}
+                        <i class="mdi-navigation-arrow-drop-down right"></i>
+                    </div>
+
+                    <!-- Dropdown Structure -->
+                    <ul id='pages' class='dropdown-content margin-left-10'>
+                        <li class="drop-down-item">(no parent)</li>
                         {{#each NoParentPages}}
                         {{#if equals PublishedPages._id _id}}
                         {{else}}
-                        <li><a href="#" class="parentlist">{{title}}</a></li>
-                        {{/if}}
+                        <li class="divider"></li>
+                        <li class="drop-down-item" id="{{_id}}">{{title}}</li> 
+                        {{/if}}                
                         {{/each}}
                     </ul>
                 </div>
-            </div> 
-            <!-- <div class="bg-white margin-top-20">
-                <div class="board-view border-bottom">Feature image <span class="caret pull-right margin-top-10"></span></div>
-                <div class="board-view">
-                    <span><a href="#">Set featured image</a></span>
-                </div>
-            </div> -->
+            </div>
         </div>
-    </div>
     </div>
 </template>

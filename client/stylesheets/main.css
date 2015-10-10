@@ -746,11 +746,6 @@ body, #main {
   margin-left:80px;
 }
 
-#errorMsg {
-    color: #FF0000;
-    padding: 25px 0px 10px 0;
-}
-
 .empty-results {
   font-size: 20px;
   font-weight: bold;
