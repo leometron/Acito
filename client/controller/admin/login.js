@@ -3,10 +3,10 @@ Template.adminLogin.events({
         e.preventDefault();
         var email = t.find('#login-email').value, password = t.find('#login-password').value;
         if(email == ''){
-            $('#errorMsg').html("Please enter user name");
+            Materialize.toast('Please enter user name', 3000, 'error-toast');
             return;
         } else if(password == '') {
-            $('#errorMsg').html("Please enter password");
+            Materialize.toast('Please enter password', 3000, 'error-toast');
             return;
         }
 
@@ -14,7 +14,7 @@ Template.adminLogin.events({
         // Meteor.loginWithPassword() function.
         Meteor.loginWithPassword(email, password, function (err) {
             if(err){
-                $('#errorMsg').html("Invalid user name or Password");
+                Materialize.toast('Invalid user name or Password', 3000, 'error-toast');
             } else {
                 $(location).attr('href', '/admin/dashboard');
             }

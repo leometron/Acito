@@ -7,7 +7,6 @@ Template.addNewMedia.rendered = function () {
 };
 
 Template.addNewHomeSlider.rendered = function () {
-    Session.set('errorMessage', '');
 };
 
 Template.addNewHomeSlider.events({
@@ -66,11 +65,10 @@ Template.addNewHomeSlider.events({
     },
     'click #saveSlider': function () {
         if (!$('#sliderTitle').val()) {
-            Session.set('errorMessage', 'Home Slider title is required');
+            Materialize.toast('Home Slider title is required', 3000, 'error-toast');
         } else if (!Session.get('selectimgName')) {
-            Session.set('errorMessage', 'Home Slider image is required');
+            Materialize.toast('Home Slider image is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var sliderImage = $('#sliderImage').attr('src');
             var description = (!$('#details').val() ) ? "-" : $('#details').val();                        
             Meteor.call('insertSliderData', $('#sliderTitle').val(), Session.get('selectimgName'), sliderImage, getCurrentDate(),description);
@@ -79,11 +77,10 @@ Template.addNewHomeSlider.events({
     },
     'click #publishSlider': function () {
         if (!$('#sliderTitle').val()) {
-            Session.set('errorMessage', 'Home Slider title is required');
+            Materialize.toast('Home Slider title is required', 3000, 'error-toast');
         } else if (!Session.get('selectimgName')) {
-            Session.set('errorMessage', 'Home Slider image is required');
+            Materialize.toast('Home Slider image is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var sliderImage = $('#sliderImage').attr('src');
             var description = (!$('#details').val() ) ? "-" : $('#details').val();                        
             Meteor.call('publishSliderData', $('#sliderTitle').val(), Session.get('selectimgName'), sliderImage, getCurrentDate(),description);
@@ -92,11 +89,10 @@ Template.addNewHomeSlider.events({
     },
     'click #republishSlider': function () {
         if (!$('#sliderTitle').val()) {
-            Session.set('errorMessage', 'Home Slider title is required');
+            Materialize.toast('Home Slider title is required', 3000, 'error-toast');
         } else if (!$('#sliderName').val()) {
-            Session.set('errorMessage', 'Home Slider image is required');
+            Materialize.toast('Home Slider image is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var sliderImage = $('#sliderImage').attr('src');
             var sliderId = Session.get('selectedSliderId');
             var description = (!$('#details').val() ) ? "-" : $('#details').val();                                    
@@ -106,11 +102,10 @@ Template.addNewHomeSlider.events({
     },
     'click #updateSlider': function () {
         if (!$('#sliderTitle').val()) {
-            Session.set('errorMessage', 'Home Slider title is required');
+            Materialize.toast('Home Slider title is required', 3000, 'error-toast');
         } else if (!$('#sliderName').val()) {
-            Session.set('errorMessage', 'Home Slider image is required');
+            Materialize.toast('Home Slider image is required', 3000, 'error-toast');
         } else {
-            Session.set('errorMessage', '');
             var sliderImage = $('#sliderImage').attr('src');
             var sliderId = Session.get('selectedSliderId');
             var description = (!$('#details').val() ) ? "-" : $('#details').val();                                                
@@ -140,9 +135,6 @@ Template.addNewHomeSlider.helpers({
     'mediaList': function () {
         return Media.find();
     },
-    // 'errormsg': function () {
-    //     return Session.get('errorMessage');
-    // },
     'getUrlValue': function () {
         return Session.get('selectImage');
     },
@@ -169,7 +161,6 @@ Template.homeSlider.events({
     'click #slider': function () {
         Session.set('selectedSliderId', this._id);
         Session.set('SliderPublishId', this.published);
-        Session.set('errorMessage', "");
         Session.set('selectImage', '');
         Session.set('selectimgName', '');
         Router.go("/admin/homeSliders/edit");
@@ -205,6 +196,22 @@ Template.homeSlider.events({
             selectedIds.splice(index, 1);
         }
     },
+    'click #checkboxSliderAll': function(event){
+        var selectcheck = event.target.checked;
+        if(selectcheck == true){
+            $('.checkbox:checkbox').prop('checked',true);
+        }else{
+            $('.checkbox:checkbox').prop('checked',false);
+        }
+        $(".checkbox:checkbox").each(function() {
+           if(this.checked){
+                selectedIds.push(this.value);
+           }else{
+                var index = selectedIds.indexOf(this.value);
+                selectedIds.splice(index, 1);
+           }
+       });
+    },
     'click #Bulkapply' : function () {
           Meteor.call('bulkSlider', selectedIds, $('#bulkOptionDropDown').text());
           Meteor._reload.reload();
@@ -237,7 +244,6 @@ Template.adminHeader.events({
         Session.set('selectedSliderId', '');
     },
     'click #navBarHomeSliders': function () {
-        Session.set('errorMessage', "");
         Session.set('selectImage', '');
         Session.set('selectimgName', '');
     }
@@ -254,7 +260,6 @@ Template.adminHeader.events({
         alignment: 'center'
     });   
     var status = Session.get('sliderStatus');
-     Session.set('errorMessage', '');
     if ( status == "all" ) {
        $('#sliderAll').css('color','red');
     } else if ( status == "published" ) {

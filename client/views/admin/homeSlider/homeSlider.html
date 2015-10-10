@@ -31,7 +31,7 @@
 
             <div class="row post-margin">
                 <div class="col l2 padding-left-zero">
-                    <div class='dropdown-button btn' data-activates='bulkActions' style="width:150px; padding-left: 0px; padding-right: 5px;">
+                    <div class='dropdown-button btn drop-down-list' data-activates='bulkActions'>
                         <span id="bulkOptionDropDown" style="padding-left: 4px;">Bulk Actions</span>
                         <i class="mdi-navigation-arrow-drop-down right"></i>
                     </div>
@@ -50,7 +50,6 @@
                     </button></span>
                 </div>
                 <div class="col l2">
-                <span class="dropdown">
                     <!-- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         All dates
                         <span class="caret"></span>
@@ -58,13 +57,12 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <li><a href="#">All dates</a></li>
                     </ul> -->
-                    <select id="filterdate" class="selctionButton browser-default" style="height:33px">
+                    <select id="filterdate" class="selctionButton browser-default margin-left-10" style="height:33px">
                         <option value="All dates" selected="selected">All dates</option>
                         <option value="/6/2015">June 2015</option>
                         <option value="/7/2015">July 2015</option>
                         <option value="/8/2015">August 2015</option>
                     </select>
-                </span>
                 </div>
 <!--                 <div class="col l1">
                     <span><button type="button" class="admin-btn" id="Datefilter">Filter</button></span>
@@ -84,17 +82,22 @@
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
-                        <div class="col l1"></div>
-                        <div class="col l7 padding-left-zero margin-left-minus-30">Title</div>
-                        <div class="col l2">Status</div>
-                        <div class="col l2">Date</div>
+                        <div class="col l1">
+                            <input type="checkbox" id="checkboxSliderAll" class="filled-in"/>
+                            <label for="checkboxSliderAll"></label>
+                        </div>
+                        <div class="col l5 padding-left-zero margin-left-minus-30">Title</div>
+                        <div class="col l3">Status</div>
+                        <div class="col l3">Date</div>
                     </div>
 
                     {{#each sliderList}}
                     {{#if currentUser}}
                     <div class="row  padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd; margin-top:-21px">
                         <div class="col l1">
-                            <input type="checkbox" class="checkbox">
+                            <!-- <input type="checkbox" class="checkbox"> -->
+                        <input type="checkbox" id="slider{{_id}}" class="filled-in checkbox" value="{{_id}}"/>
+                        <label for="slider{{_id}}"></label>
                         </div>
                         <div class="col l7 padding-left-zero margin-left-minus-30" id="slider">
                             {{#if deleted}}

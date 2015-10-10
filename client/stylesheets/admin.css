@@ -541,3 +541,13 @@ body, #main {
 .v-align-middle {
     vertical-align: middle;
 }
+
+.drop-down-item {
+    padding: 5px 6px;
+    font-size: 11px;    
+}
+
+.margin-left-10 {
+    margin-left:10px;
+}
+

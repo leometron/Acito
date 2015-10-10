@@ -104,20 +104,24 @@
             <div class="row post-margin padding-top-bottom-10">
                 <div class="bs-example" data-example-id="striped-table">
                     <div class="row bg-white padding-top-bottom-10" style="border: 1px solid #ddd">
-                        <div class="col l1">
+                        <!-- <div class="col l1">
                             <span><input id="checkboxPostsAll" type="checkbox"></span>
+                        </div> -->
+                        <div class="col l1">
+                            <input type="checkbox" id="checkboxPostsAll" class="filled-in"/>
+                            <label for="checkboxPostsAll"></label>
                         </div>
-                        <div class="col l4 padding-left-zero margin-left-minus-30">Title</div>
+                        <div class="col l3 padding-left-zero margin-left-minus-30">Title</div>
                         <div class="col l2">Author</div>
                         <div class="col l2">Page</div>
-                        <div class="col l1">Tags</div>
+                        <div class="col l2">Tags</div>
                         <div class="col l1">Status</div>
                         <div class="col l1">Date</div>
                     </div>
                     {{#if equals postListCount 0}}
                       <div class="row cursor-pointer">
                             <div class="CodingRules-data-row">
-                                <div class="col 12 center empty-results">
+                                <div class="col l12 center empty-results">
                                     <span>No Results</span>
                                 </div>
                             </div>
@@ -127,12 +131,13 @@
                         {{#if currentUser}}
                         <div id="{{_id}}" class="row cursor-pointer" style="border: 1px solid #ddd; margin-top:-21px">
                             <div class="col l1 margin-top-10">
-                                <input type="checkbox" class="checkbox" id="{{_id}}">
+                          <input type="checkbox" id="post{{_id}}" class="filled-in checkbox" value="{{_id}}"/>
+                            <label for="post{{_id}}"></label>
                             </div>
                             {{#if deleted}}
                             <div class="post">
                                 <div class="row padding-top-bottom-10">
-                                    <div class="col l4 padding-left-zero margin-left-minus-30">
+                                    <div class="col l3 padding-left-zero margin-left-minus-30">
                                         <strike>{{title}}</strike>
                                     </div>
                                     <div class="col l2"><strike>{{currentUser.username}}</strike></div>
@@ -143,7 +148,7 @@
                                          {{pageName}}  
                                       {{/if}}
                                     </strike></div>
-                                    <div class="col l1"><strike>{{tags}}</strike></div>
+                                    <div class="col l2"><strike>{{tags}}</strike></div>
                                     <div class="col l1"><strike>{{status}}</strike></div>
                                     <div class="col l1"><strike>{{createdAt}}</strike></div>
                                 </div>
@@ -152,7 +157,7 @@
 
                             <div class="post">
                                 <div class="row padding-top-bottom-10">
-                                    <div class="col l4 padding-left-zero margin-left-minus-30">
+                                    <div class="col l3 padding-left-zero margin-left-minus-30">
                                         {{title}}
                                     </div>
                                     <div class="col l2">{{currentUser.username}}</div>
@@ -163,7 +168,7 @@
                                          {{pageName}}  
                                       {{/if}}
                                     </div>
-                                    <div class="col l1">{{tags}}</div>
+                                    <div class="col l2">{{tags}}</div>
                                     <div class="col l1">{{status}}</div>
                                     <div class="col l1">{{createdAt}}</div>
                                 </div>

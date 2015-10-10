@@ -199,22 +199,35 @@ Template.home.events({
       $('#userLoginForm').closeModal();   
       $('#userRegistrationForm').openModal();
   },
+  'click .close_search' : function() {
+      $('#search_modal').closeModal();
+  },
+  'click .close_ask' : function() {
+      $('#question_modal').closeModal();
+  },
+  'click .close_login' : function() {
+    $('#userLoginForm').closeModal();
+  },
+  'click .close_register' : function() {
+    $('#userRegistrationForm').closeModal();
+  },
   'submit #userLogin': function(e, t) {
      e.preventDefault();
         var email = t.find('#email').value, password = t.find('#password').value;
         if(email == ''){
-            $('#errorMsg').html("Please enter email or username");
+            Materialize.toast('Please enter email or username', 3000, 'error-toast');
             return;
         } else if(password == '') {
-            $('#errorMsg').html("Please enter password");
+            Materialize.toast('Please enter password', 3000, 'error-toast');
             return;
         }
 
         Meteor.loginWithPassword(email, password, function (err) {
             if(err){
-                $('#errorMsg').html("Invalid email or Password");
+                Materialize.toast('Invalid email or Password', 3000, 'error-toast');
             } else if(!$('#questionArea').val()) {
-              history.back();
+              // history.back();
+               $('#userLoginForm').closeModal();
             } else {
               $('#userLoginForm').closeModal();
               Router.go('/ask');
@@ -257,7 +270,8 @@ Template.home.events({
         } else if(!$('#questionArea').val()) {
             $('#Usererr').html("Account has been created and logged in successfully.");
             Meteor.setTimeout(function () {
-              history.back()
+              // history.back()
+              $('#userRegistrationForm').closeModal();
             },2000);
           } else {
             $('#Usererr').html("Account has been created and logged in successfully.");
@@ -466,7 +480,8 @@ Template.postDetail.rendered = function() {
 
     this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
-            Router.go('/login');
+            // Router.go('/login');
+            $('#userLoginForm').openModal();
           } else {
             // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
             Meteor.call('insertrating', Meteor.userId(), Session.get('selectedPostId'), value);

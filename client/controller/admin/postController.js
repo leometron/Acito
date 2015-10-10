@@ -20,8 +20,7 @@ Template.posts.rendered = function(){
         gutter: 0,
         belowOrigin: true,
         alignment: 'center'
-    });	
-	Session.set('errorMessage','');
+    });
 	var status = Session.get('checkStatus');
 	if( status == "all" ){
 		$('#showAll').css('color','red');
@@ -40,8 +39,10 @@ Template.addNewPost.rendered = function() {
 	var selectedPost = Posts.findOne(Session.get('selectedPostId'));
 	if(selectedPost){
 		Session.set('postPageId', selectedPost.pageId);
+		Session.set('postPageTitle', selectedPost.pageTitle);
 	} else {
-		Session.set('postPageId', 'Category');
+		Session.set('postPageId', 'none');
+		Session.set('postPageTitle', '(no parent)');
 	}
 	$('.dropdown-button').dropdown({
 		inDuration: 300,
@@ -152,9 +153,9 @@ Template.posts.events({
         }
         $(".checkbox:checkbox").each(function() {
            if(this.checked){
-                selectedIds.push(this.id);
+                selectedIds.push(this.value);
            }else{
-                var index = selectedIds.indexOf(this.id);
+                var index = selectedIds.indexOf(this.value);
                 selectedIds.splice(index, 1);
            }
        });
@@ -181,11 +182,11 @@ Template.posts.events({
 Template.addNewPost.events({
 	'click #savePost' : function () {
 		if (!$('#postName').val()) {
-			Materialize.toast('Post title is required', 3000);
+			Materialize.toast('Post title is required', 3000, 'error-toast');
 		} else {  
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-			var pageId = (Session.get('postPageId') == "Category") ? "Uncategorized" : Session.get('postPageId');
-			var pageName = $('#pageDropDown').text();        
+			var pageId = Session.get('postPageId');
+			var pageName = Session.get('postPageTitle');       
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
 			var featuredImage;
 			if($('#featureImage').length == 0) {
@@ -194,16 +195,17 @@ Template.addNewPost.events({
 				featuredImage = $('#featureImage').attr('src');
 			}                     
 			Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
-			Router.go("/admin/posts");  
+			Router.go("/admin/posts");
+			Session.set('postPageId', '');  
 		}
 	},
 	'click #publishPost' : function () {
 		if(!$('#postName').val()) {
-			Materialize.toast('Post title is required', 4000);
+			Materialize.toast('Post title is required', 3000, 'error-toast');
 		} else {  
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-			var pageId = (Session.get('postPageId') == "Category") ? "Uncategorized" : Session.get('postPageId');
-			var pageName = $('#pageDropDown').text();
+			var pageId = Session.get('postPageId');
+			var pageName = Session.get('postPageTitle');  
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
 			var featuredImage;
 			if($('#featureImage').length == 0) {
@@ -213,15 +215,16 @@ Template.addNewPost.events({
 			}              
 			Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
 			Router.go("/admin/posts");
+			Session.set('postPageId', '');
 		}       
 	},
 	'click #updatePost' : function() {
 		if (!$('#postName').val()) {
-			Materialize.toast('Post title is required', 4000);
+			Materialize.toast('Post title is required', 3000, 'error-toast');
 		} else {             
 			var tag = (!$('#postTags').val() ) ? "-" : $('#postTags').val();
-			var pageId = (Session.get('postPageId') == "Category") ? "Uncategorized" : Session.get('postPageId');
-			var pageName = $('#pageDropDown').text();        
+			var pageId = Session.get('postPageId');
+			var pageName = Session.get('postPageTitle');  
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
 			var featuredImage;
 			if($('#featureImage').length == 0) {
@@ -231,6 +234,7 @@ Template.addNewPost.events({
 			}                                 
 			Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName,featuredImage);
 			Router.go("/admin/posts");
+			Session.set('postPageId', '');
 		}        
 	},
 	'click #moveBin' : function() {
@@ -307,16 +311,12 @@ Template.addNewPost.events({
     'click #removeImage': function () {
         Meteor.call('removeFeaturedImage', Session.get('selectedPostId'));
         Session.set('postImage', '');
-},
-     'click .drop-down-page': function(event) {
+	},
+     'click .drop-down-item': function(event) {
      	var id = event.target.id;
-     	if(id != '') {
-     		$('#pageDropDown').html($('#'+id).html()+ '<i class="mdi-navigation-arrow-drop-down right"></i>');
-     	} else {
-     		$('#pageDropDown').html('no parent <i class="mdi-navigation-arrow-drop-down right"></i>');
-     	}
+     	$('.drop-down-label').text($(event.target).text());
      	Session.set('postPageId', id);
-     	console.log(Session.get('postPageId'));
+     	Session.set('postPageTitle', $(event.target).text());
      }  
 });
 
@@ -366,11 +366,5 @@ Template.adminHeader.events({
 	},
 	'click #subNavBarmediaadd' : function() {
     	$("#editPage").hide();
-	}
-});
-
-Template.adminlayout.helpers({
-	'errormsg' : function() {
-		return Session.get('errorMessage');
 	}
 });

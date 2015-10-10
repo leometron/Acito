@@ -22,7 +22,7 @@
 
             <div class="row post-margin" id="list">
                 <div class="col l2 padding-left-zero">
-                    <div class='dropdown-button btn' data-activates='bulkActions' style="width:150px; padding-left: 0px; padding-right: 5px;">
+                    <div class='dropdown-button btn drop-down-list' data-activates='bulkActions'>
                         <span id="bulkOptionDropDown" style="padding-left: 4px;">Bulk Actions</span>
                         <i class="mdi-navigation-arrow-drop-down right"></i>
                     </div>
@@ -40,14 +40,12 @@
                     </span>
                 </div>
                 <div class="col l2">
-                <span class="dropdown">
-                    <select id="filterdate" class="selctionButton browser-default" style="height:33px;">
+                    <select id="filterdate" class="selctionButton browser-default margin-left-10" style="height:33px;">
                         <option value="All dates" selected="selected">All dates</option>
                         <option value="/5/2015">May 2015</option>
                         <option value="/6/2015">June 2015</option>
                         <option value="/7/2015">July 2015</option>
                     </select>
-                </span>
                 </div>
 <!--                 <div class="col l1">
                     <span><button type="button" class="admin-btn" id="filter">Filter</button></span>
@@ -67,13 +65,15 @@
         <div class="row padding-top-bottom-10">
             <div class="bs-example" data-example-id="striped-table">
                 <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd">
-                    <div class="col l2">
+                    <div class="col l1">
                         <!-- <span><input type="checkbox"></span> -->
+                        <input type="checkbox" id="checkboxMediaAll" class="filled-in"/>
+                            <label for="checkboxMediaAll"></label>
                     </div>
-                    <div class="col l5">file</div>
-                    <div class="col l1">Author</div>
+                    <div class="col l4">File</div>
+                    <div class="col l2">Author</div>
                     <div class="col l2">Uploaded to</div>
-                    <div class="col l1">comments</div>
+                    <div class="col l2">comments</div>
                     <div class="col l1">Date</div>
                 </div>
               {{#if equals mediaListCount 0}}
@@ -89,17 +89,23 @@
                 {{#each mediaList}}
                 {{#if currentUser}}
                 <div class="row padding-top-bottom-10 cursor-pointer" style="border: 1px solid #ddd; margin-top:-21px">
-                    <div class="col l2">
-                        <span><input id="checkbox" type="checkbox"></span><span class="padding-left-20"><img
-                            src="{{url}}" style="width:70px;height:80px" class="img-rounded"></span>
+                    <div class="col l1">
+                      <span>
+                       <!-- <input id="checkbox" type="checkbox"> -->
+                       <input type="checkbox" id="media{{_id}}" class="filled-in checkbox" value="{{_id}}"/>
+                       <label for="media{{_id}}"></label>
+                      </span>
+                      <span class="padding-left-20">
+                        <img src="{{url}}" style="width:70px;height:80px" class="img-rounded">
+                      </span>
                     </div>
-                    <div class="col l5" style="line-height: 200%;">
+                    <div class="col l4" style="line-height: 200%;">
                         <div>{{name}}</div>
                         <div>{{fullName}}</div>
                         <div><a href="/admin/media/edit" id="edit">Edit</a> | <a href="#" id="delete">Delete
                             Permanently</a></div>
                     </div>
-                    <div class="col l1">
+                    <div class="col l2">
                         <div>{{currentUser.username}}</div>
                     </div>
                     <div class="col l2">
@@ -123,7 +129,7 @@
                               </div>
                             </div> -->
                     </div>
-                    <div class="col l1">
+                    <div class="col l2">
                         <div>comments</div>
                     </div>
                     <div class="col l1">
