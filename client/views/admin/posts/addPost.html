@@ -135,24 +135,24 @@
 
                     {{#if showSelectedPost}}
                     {{#if equals showSelectedPost.featuredImage "-"}}
-                               <span class="cursor-pointer set-img modal-trigger" id="selectImage" data-toggle="modal" data-target="myModal">Set featured image
+                               <a class="cursor-pointer set-img modal-trigger" id="selectImage" data-toggle="modal" data-target="myModal">Set featured image
                             {{#if getpostUrl}}
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
                             {{/if}}
-                                </span>
+                                </a>
                     {{else}}
-                              <span class="cursor-pointer set-img" id="removeImage">Remove featured image
+                              <a class="cursor-pointer set-img" id="removeImage">Remove featured image
                                 <img src="{{showSelectedPost.featuredImage}}" id="featureImage"
                                      style="width:100px; height:100px;"/>
-                              </span>
+                              </a>
                     {{/if}}
                     {{else}}
                     {{#if getpostUrl}}
-                <span class="cursor-pointer set-img" id="removeImage">Remove featured image
+                <a class="cursor-pointer set-img" id="removeImage">Remove featured image
                                 <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
-                </span>
+                </a>
                             {{else}}
-                               <span class="cursor-pointer set-img modal-trigger" id="selectImage" data-toggle="modal" data-target="myModal">Set featured image</span>
+                               <a class="cursor-pointer set-img modal-trigger" id="selectImage" data-toggle="modal" data-target="myModal">Set featured image</a>
                             {{/if}}
                     {{/if}}
                     <div class="modal fade" id="myModal" role="dialog">

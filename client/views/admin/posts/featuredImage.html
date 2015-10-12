@@ -13,17 +13,25 @@
 
     <div class="bg-white margin-top-20">
         <div class="board-view border-bottom">Posts <span class="caret pull-right margin-top-10"></span></div>
-        <div class="board-view">
-            <div class='dropdown-button btn drop-down-list' data-activates='posts' style="width:200px">
-                <span class="drop-down-label">None</span>
+        <div id="postSelection" class="board-view">
+            <span>Page : </span>
+            <div class='dropdown-button btn drop-down-list' data-activates='pages'>
+                <span class="drop-down-label page">None</span>
                 <i class="mdi-navigation-arrow-drop-down right"></i>
             </div>
-            <ul id='posts' class='dropdown-content'>
-                <li class="drop-down-item">None</li>
-                {{#each postList}}
+            <ul id='pages' class='dropdown-content' style="margin-left: 45px;">
+                <li class="drop-down-item page">None</li>
+                {{#each pagesList}}
                 <li class="divider"></li>                        
-                <li class="drop-down-item" id="{{_id}}">{{title}}</li>
+                <li class="drop-down-item page" id="{{_id}}">{{title}}</li>
                 {{/each}}
+            </ul>
+            <span>Posts : </span>
+            <div class='dropdown-button btn drop-down-list' data-activates='posts' style="width:200px">
+                <span class="drop-down-label post">None</span>
+                <i class="mdi-navigation-arrow-drop-down right"></i>
+            </div>
+            <ul id="posts" class="dropdown-content" style="margin-left: 251px;">
             </ul>
         </div>
     </div>
