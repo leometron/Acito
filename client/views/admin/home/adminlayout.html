@@ -48,13 +48,13 @@
                   <a href="/admin/{{title}}">
                       <div>
                         <!-- <i class="fa {{icon}} icons"></i> -->
-                        <span style="color:#000000; font-size:16px;">{{maintitle}}</span>
+                      <span style="color:#000000; font-size:16px;" id="nav{{title}}">{{maintitle}}</span>
                       </div>
                   </a>
                   <ul style="list-style: none;" id="showSubTitle">
                       {{#each subtitle}}
                       <li class="padding-bottom-10" id="subNavBar{{title}}{{sTitle}}"><a
-                              href="/admin/{{title}}/{{sTitle}}"><span style="color:#000000; font-size:16px;">{{name}}</span></a></li>
+                              href="/admin/{{title}}/{{sTitle}}"><span style="color:#FFFFFF; font-size:16px;">{{name}}</span></a></li>
                       {{/each}}
                   </ul>
               </li>
