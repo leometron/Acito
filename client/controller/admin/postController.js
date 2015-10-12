@@ -39,7 +39,7 @@ Template.addNewPost.rendered = function() {
 	var selectedPost = Posts.findOne(Session.get('selectedPostId'));
 	if(selectedPost){
 		Session.set('postPageId', selectedPost.pageId);
-		Session.set('postPageTitle', selectedPost.pageTitle);
+		Session.set('postPageTitle', selectedPost.pageName);
 	} else {
 		Session.set('postPageId', 'none');
 		Session.set('postPageTitle', '(no parent)');

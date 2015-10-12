@@ -39,15 +39,29 @@ Template.featuredImage.events({
             }, 2000);
         }
     },
-    'click .drop-down-item': function(event) {
-        $('.drop-down-label').text($(event.target).text());
+    'click .drop-down-item.page': function(event) {
+        $('.drop-down-label.page').text($(event.target).text());
+        $('.drop-down-label.post').text('None');
+        $('ul#posts').html('');   
+
+        Session.set('postId', '');
+        var posts = Posts.find({pageId: event.target.id});
+        var t = '<li class="drop-down-item post">None</li>';
+        posts.forEach(function(item){
+            t += '<li class="divider"></li>'+
+                 '<li class="drop-down-item post" id="' + item._id + '">' + item.title + '</li>';
+        });
+        $('ul#posts').append(t);         
+     },
+     'click .drop-down-item.post': function(event) {
+        $('.drop-down-label.post').text($(event.target).text());
         Session.set('postId', event.target.id);
      } 
 });
 
 
 Template.featuredImage.helpers({
-    'postList': function () {
-        return Posts.find();
+    'pagesList': function() {
+        return Pages.find();
     }
 });

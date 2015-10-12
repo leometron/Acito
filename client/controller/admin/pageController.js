@@ -287,8 +287,8 @@ Template.addNewPage.helpers({
         return Pages.findOne(selectedPages);
     },
 
-    'NoParentPages': function () {
-        return Pages.find();
+    'parentPages': function () {
+        return Pages.find({parentId: 'null'});
     }
 });
 
