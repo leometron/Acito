@@ -768,3 +768,19 @@ body, #main {
     from {right: 0px;}
     to {right: 1300px;}
 }
+
+.description_1 ul {
+  padding: 0 0 0 30px;
+}
+
+.description_2 ul {
+  padding: 0 0 0 30px;
+}
+
+.description_1 ul li {
+  list-style: disc;
+}
+
+.description_2 ul li {
+  list-style: disc;
+}

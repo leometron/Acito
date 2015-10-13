@@ -49,7 +49,7 @@ Meteor.publish('Posts', function () {
 
 //Define all the methods interact with the POSTS object
 Meteor.methods({
-    'insertPostData': function (title, content, tags, currentDate, pageid, pagename, image) {
+    'insertPostData': function (title, content, tags, currentDate, pageid, pagename, image, shortdesc) {
         Posts.insert({
             title: title,
             content: content,
@@ -61,7 +61,8 @@ Meteor.methods({
             status: "Draft",
             pageId: pageid,
             pageName: pagename,
-            featuredImage: image
+            featuredImage: image,
+            description: shortdesc
         }, function (err, id) {
             currentPostId = id;
         });
@@ -70,7 +71,7 @@ Meteor.methods({
             Posts._ensureIndex({title: "text"});
         }        
     },
-    'publishPostData': function (id, title, content, tags, currentDate, pageid, pagename, image) {
+    'publishPostData': function (id, title, content, tags, currentDate, pageid, pagename, image, shortdesc) {
         currentPostId = id;
         if (currentPostId) {
             Posts.update({_id: currentPostId}, {
@@ -86,7 +87,8 @@ Meteor.methods({
                     status: "Published",
                     pageId: pageid,
                     pageName: pagename,
-                    featuredImage: image
+                    featuredImage: image,
+                    description: shortdesc
                 }
             });
         } else {
@@ -101,12 +103,13 @@ Meteor.methods({
                 status: "Published",
                 pageId: pageid,
                 pageName: pagename,
-                featuredImage: image
+                featuredImage: image,
+                description: shortdesc
             });
         }
         console.log('successfully published post...' + title);
     },
-    'updatePostData': function (postid, title, content, tags, pageid, pagename, image) {
+    'updatePostData': function (postid, title, content, tags, pageid, pagename, image, shortdesc) {
         Posts.update(postid, {
             $set: {
                 title: title,
@@ -114,7 +117,8 @@ Meteor.methods({
                 tags: tags,
                 pageId: pageid,
                 pageName: pagename,
-                featuredImage: image
+                featuredImage: image,
+                description: shortdesc
             }
         });
         console.log('successfully updated post...' + title);

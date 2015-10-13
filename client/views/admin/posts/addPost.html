@@ -21,16 +21,24 @@
         </div> -->
         <div class="col l8  padding-left-zero">
             {{#if showSelectedPost}}
-            <input type="text" class="form-control" id="postName" value="{{showSelectedPost.title}}">
+        <input type="text" class="form-control" id="postName" value="{{showSelectedPost.title}}">
 
             <div>
                 <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="postContent" class="form-control">{{showSelectedPost.content}}</textarea>
+            </div>
+            <div>
+            <span style="font-size:20px;">Description</span>
+            <textarea name="editor" id="postDescription">{{showSelectedPost.description}}</textarea>
             </div>
             {{else}}
             <input type="text" class="form-control" placeholder="Enter title here" id="postName">
 
             <div>
                 <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="postContent" class="form-control"></textarea>
+            </div>
+             <div>
+                <span style="font-size:20px;">Description</span>
+                <textarea name="editor" id="postDescription"></textarea>
             </div>
             {{/if}}
         </div>
