@@ -16,7 +16,6 @@ audit-argument-checks
 fastclick
 zimme:iron-router-active
 manuelschoebel:ms-seo
-browser-policy
 natestrauser:animate-css
 dburles:collection-helpers
 meteorhacks:fast-render
@@ -36,3 +35,4 @@ sacha:spin
 raix:iscroll
 dandv:jquery-rateit
 
+browser-policy

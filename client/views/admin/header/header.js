@@ -106,28 +106,52 @@ Template.adminlayout.events({
                         
         if (selectedId == 'navBardashboard') {
             $('#navBardashboard').addClass('selected');
+            $('#navdashboard').css("color", "#FFFFFF");
         } else {
             $('#navBardashboard').removeClass('selected');
+            $('#navdashboard').css("color", "#000000");
         }
         if (selectedId == 'navBarposts') {
             $('#navBarposts').addClass('selected');
+            $('#navposts').css("color", "#FFFFFF");
         } else {
             $('#navBarposts').removeClass('selected');
+            $('#navposts').css("color", "#000000");
         }
         if (selectedId == 'navBarmedia') {
             $('#navBarmedia').addClass('selected');
+            $('#navmedia').css("color", "#FFFFFF");
         } else {
             $('#navBarmedia').removeClass('selected');
+            $('#navmedia').css("color", "#000000");
         }
         if (selectedId == 'navBarpages') {
             $('#navBarpages').addClass('selected');
+            $('#navpages').css("color", "#FFFFFF");
         } else {
             $('#navBarpages').removeClass('selected');
+             $('#navpages').css("color", "#000000");
         }
         if (selectedId == 'navBarhomeSliders') {
             $('#navBarhomeSliders').addClass('selected');
+            $('#navhomeSliders').css("color", "#FFFFFF");
         } else {
             $('#navBarhomeSliders').removeClass('selected');
+            $('#navhomeSliders').css("color", "#000000");
+        }
+        if(selectedId == 'navBarquestions') {
+            $('#navBarquestions').addClass('selected');
+            $('#navquestions').css("color", "#FFFFFF");    
+        } else {
+            $('#navBarquestions').removeClass('selected');
+            $('#navquestions').css("color", "#000000");
+        }
+        if(selectedId == 'navBaranswers') {
+            $('#navBaranswers').addClass('selected');
+            $('#navanswers').css("color", "#FFFFFF");
+        } else {
+            $('#navBaranswers').removeClass('selected');
+            $('#navanswers').css("color", "#000000")
         }
         if (selectedId == 'navBarsettings') {
             $('#navBarsettings').addClass('selected');

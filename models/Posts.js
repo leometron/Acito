@@ -8,6 +8,9 @@ Posts.attachSchema(
         content: {
             type: String
         },
+        description: {
+            type: String
+        },
         publish: {
             type: Boolean
         },

@@ -57,6 +57,7 @@ Template.addNewPost.rendered = function() {
     $('ul.tabs').tabs();
     $('.indicator').css('right', '498px');
     $('.indicator').css('left', '0px');
+    CKEDITOR.replace('postDescription');
 }
 
 // Template.addNewPost.rendered = function(){
@@ -191,13 +192,15 @@ Template.addNewPost.events({
 			var pageId = Session.get('postPageId');
 			var pageName = Session.get('postPageTitle');       
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var value = CKEDITOR.instances['postDescription'].getData();
+			var description = (!value) ? "-" : value;
 			var featuredImage;
 			if($('#featureImage').length == 0) {
 				featuredImage = "-";
 			} else {
 				featuredImage = $('#featureImage').attr('src');
-			}                     
-			Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
+			}                 
+			Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage,description);
 			Router.go("/admin/posts");
 			Session.set('postPageId', '');  
 		}
@@ -210,13 +213,15 @@ Template.addNewPost.events({
 			var pageId = Session.get('postPageId');
 			var pageName = Session.get('postPageTitle');  
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var value = CKEDITOR.instances['postDescription'].getData();
+			var description = (!value) ? "-" : value;
 			var featuredImage;
 			if($('#featureImage').length == 0) {
 				featuredImage = "-";
 			} else {
 				featuredImage = $('#featureImage').attr('src');
 			}              
-			Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
+			Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage,description);
 			Router.go("/admin/posts");
 			Session.set('postPageId', '');
 		}       
@@ -229,13 +234,15 @@ Template.addNewPost.events({
 			var pageId = Session.get('postPageId');
 			var pageName = Session.get('postPageTitle');  
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var value = CKEDITOR.instances['postDescription'].getData();
+			var description = (!value) ? "-" : value;
 			var featuredImage;
 			if($('#featureImage').length == 0) {
 				featuredImage = "-";
 			} else {
 				featuredImage = $('#featureImage').attr('src');
 			}                                 
-			Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName,featuredImage);
+			Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName,featuredImage,description);
 			Router.go("/admin/posts");
 			Session.set('postPageId', '');
 		}        

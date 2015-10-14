@@ -8,16 +8,24 @@
             <div class="row" style="margin-left: 2.5%; margin-top: 5%; width: 95%;margin-bottom:30px">
         <div class="col l8  padding-left-zero">
             {{#if showSelectedPost}}
-            <input type="text" class="form-control" id="postName" value="{{showSelectedPost.title}}">
+        <input type="text" class="form-control" id="postName" value="{{showSelectedPost.title}}">
 
             <div>
                 <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="postContent" class="form-control">{{showSelectedPost.content}}</textarea>
+            </div>
+            <div>
+            <span style="font-size:20px;">Description</span>
+            <textarea name="editor" id="postDescription">{{showSelectedPost.description}}</textarea>
             </div>
             {{else}}
             <input type="text" class="form-control" placeholder="Enter title here" id="postName">
 
             <div>
                 <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="postContent" class="form-control"></textarea>
+            </div>
+             <div>
+                <span style="font-size:20px;">Description</span>
+                <textarea name="editor" id="postDescription"></textarea>
             </div>
             {{/if}}
         </div>
@@ -43,10 +51,10 @@
             <div class="board-view border-bottom" style=" border: 1px solid #ddd;border-top: 0;">
               {{#if showSelectedPost}}
                  {{#if showSelectedPost.deleted}}
-                   <a id="removePost" style="cursor:pointer">Delete Post</a>
+                   <a id="removePost">Delete Post</a>
                     {{else}}
-                   <a id="moveBin" style="cursor:pointer">Move to Bin</a>
-                   <a id="deletePost" class="padding-left-10" style="cursor:pointer">Delete</a>
+                   <a id="moveBin">Move to Bin</a>
+                   <a id="deletePost" class="padding-left-10">Delete</a>
                  {{/if}}
               {{/if}}
               {{#if showSelectedPost}}
@@ -60,7 +68,7 @@
                        <button class="btn waves-effect waves-light" type="button" id="updatePost">Update</button>
                     </span>   
                         {{else}}
-                    <span style="padding-left: 25%">   
+                    <span style="padding-left: 6%">   
                         <button class="btn waves-effect waves-light" type="button" id="publishPost">Publish</button>
                     </span>
                     {{/if}}                            
