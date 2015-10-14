@@ -551,3 +551,8 @@ body, #main {
     margin-left:10px;
 }
 
+.selected-img {
+    width: 100px; 
+    height: 100px;
+    padding: 10px;
+}

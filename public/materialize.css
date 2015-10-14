@@ -5609,7 +5609,8 @@ small {
       position: absolute;
       bottom: 0;
       left: 0;
-      padding: 20px; }
+      padding: 20px;
+      cursor: pointer; }
   .card .card-content {
     padding: 20px;
     border-radius: 0 0 2px 2px; }
@@ -5715,7 +5716,7 @@ small {
   display: flex;
   position: relative;
   height: 48px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   margin: 0 auto;
   width: 100%;
   white-space: nowrap; }
@@ -5723,7 +5724,7 @@ small {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
-    flex-grow: 1;
+    /*flex-grow: 1;*/
     display: block;
     float: left;
     text-align: center;
@@ -5753,7 +5754,8 @@ small {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #f6b2b5;
+    /*background-color: #f6b2b5;*/
+    background-color: #004c19;
     will-change: left, right; }
 
 .tabs .tab {
@@ -8222,6 +8224,6 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
 .success-toast {
     height: 30px;
-    background-color: red;
+    background-color: green;
     margin-top: 30px;
 }

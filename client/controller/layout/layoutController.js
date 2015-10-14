@@ -33,8 +33,9 @@ Template.header.events({
            Session.set('selectedPostId', "");
            Session.set("pageId",this._id);
            Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
-           Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
+           Router.go('/tam/category/'+Session.get('categoryName')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
          } else {
+          Session.set('mainCategory',$(event.target).attr("name"));
            var subPages = Pages.find({parentId: this._id,status:'Published'});
            var t ="";
            subPages.forEach(function(item){
@@ -46,15 +47,19 @@ Template.header.events({
   },
    'click .sub-page' : function(event){
       Session.set('categoryName',$(event.target).attr("name"));
-      // alert(Session.set('postName',this._id));
+      Session.set('subCategory',$(event.target).attr("name"));
       $('.button-collapse').sideNav('hide');
       Session.set("pageId", "");
       Session.set('numberOfCount', 6);
       Session.set('selectedPostId', "");
       Session.set("pageId", $(event.target).attr("id"));
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
-      Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
-   }, 
+      Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
+   },
+   'click #grannyLogo' : function()  {
+      Session.set('categoryName','');    
+      Router.go('/');
+   }
     // 'click .read-more' : function() {
     //     $(window).scrollTop(572);
     //     Router.go('/readmore?id='+ this._id);
@@ -109,13 +114,14 @@ Template.home.events({
     //   }, 100);
     // },
 
-    'click #read-more': function () {
+    'click #read-more,.card-title': function () {
       var postId = this._id;
+      var postTitle = this.title;
       Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
       // $('.image').css('-webkit-animation','mymove 2s').css('animation','mymove 2s').css('position','relative');
       Meteor.setTimeout(function(){
-        Router.go("/post/"+postId);
+        Router.go("/tam/post/"+postTitle+"/"+postId);
           Meteor.setTimeout(function(){
             $(window).scrollTop(0);
           },10);
@@ -401,7 +407,12 @@ Template.postList.rendered = function () {
                   $('.post-loading-icon').show();
                   Meteor.setTimeout(function(){
                   Session.set('numberOfCount', Session.get('numberOfCount') +3);
-                  Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount')); 
+                  if(Session.get('subCategory')) {
+                    Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
+                  } else {
+                    Router.go('/tam/category/'+Session.get('categoryName')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
+                  }
+                  // Router.go('/posts?pageId='+Session.get('pageId')+'&count='+Session.get('numberOfCount')); 
                       if(Session.get('postCount')<=Session.get('numberOfCount')){
                           $('.post-loading-icon').hide();                         
                       }

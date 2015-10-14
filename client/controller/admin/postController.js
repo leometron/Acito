@@ -54,6 +54,9 @@ Template.addNewPost.rendered = function() {
 		alignment: 'center' // Displays dropdown with edge aligned to the left of button
     });
     $('.modal-trigger').leanModal();
+    $('ul.tabs').tabs();
+    $('.indicator').css('right', '498px');
+    $('.indicator').css('left', '0px');
 }
 
 // Template.addNewPost.rendered = function(){
@@ -256,29 +259,9 @@ Template.addNewPost.events({
 	'click #addNewTag' : function() {
 		Router.go("/admin/posts/tags");                       
 	},
-	'click #selectImage': function () {             
-		 $('#uploadFile').addClass('border');
-		 $('#media').hide();
-		 $('#mediaLibrary').removeClass('border');
-		 $('#dropFile').show();             
-	},
-	'click #mediaLibrary': function(){
-		console.log("media");
-		$('#uploadFile').removeClass('border');
-		$('#dropFile').hide() ;
-		$('#mediaLibrary').addClass('border');
-		$('#media').show();
-		$("#popupMediadetail").hide();
-	},
-	'click #uploadFile': function(){
-		$('#media').hide();
-		$('#mediaLibrary').removeClass('border');
-		$('#uploadFile').addClass('border');
-		$('#dropFile').show();
-	},
-    'click .selectedImg': function(e) {
+    'click .selected-img': function(e) {
         if(this._id){
-            $('.selectedImg').removeClass('selected-border');
+            $('.selected-img').removeClass('selected-border');
             $(e.currentTarget).addClass('selected-border');
             Session.set('postImageUrl', this.url);
         }
@@ -317,7 +300,10 @@ Template.addNewPost.events({
      	$('.drop-down-label').text($(event.target).text());
      	Session.set('postPageId', id);
      	Session.set('postPageTitle', $(event.target).text());
-     }  
+     },
+     'click #selectImage': function() {
+     	$('.modal-trigger').leanModal();
+     }
 });
 
 /*
