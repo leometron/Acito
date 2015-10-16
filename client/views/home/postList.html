@@ -1,8 +1,28 @@
 <template name="postList">
     <div class="row home-post-field hide-on-med-only hide-on-small-only" >
       {{#if equals searchResultCount 0}}
-        <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
+      <div style="display:table;width:100%; table-layout:fixed;">
+        <div style="display:table-cell; width:40px; vertical-align:middle; text-align:center" class="back-arrow">
+            <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
+        </div>
+        <div style="display:table-cell; width:auto; vertical-align:middle;font-size:20px; font-weight:bold;">
+             Search Result 
+        </div>
+      </div>
+      <div class="divider" style="margin:13px 0;"></div>
+        <div style="text-align:center; color: #B96618; font-size: 22px; margin-top:4%;"><span>No results found</span></div>
       {{else}}
+      {{#if searchResultCount}}
+          <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
+            <div style="display:table-cell; width:40px; vertical-align:middle; text-align:center" class="back-arrow">
+                <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
+            </div>
+            <div style="display:table-cell; width:auto; vertical-align:middle;font-size:20px; font-weight:bold;">
+                 Search Result 
+            </div>
+          </div>
+          <div class="divider" style="margin:13px 0;"></div>
+      {{/if}}
       {{#each postsList}}
         <div class="col s12 m6 l4">
             <div class="card white">
@@ -24,8 +44,19 @@
         {{/each}}
         {{/if}}
     </div>
-    <div class="row hide-on-large-only">
+
+
+    <div class="row hide-on-large-only" style="margin-top:175px">
       {{#if equals searchResultCount 0}}
+        <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
+        <div style="display:table-cell; width:40px; vertical-align:middle; text-align:center" class="back-arrow">
+            <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
+        </div>
+        <div style="display:table-cell; width:auto; vertical-align:middle;font-size:20px; font-weight:bold;">
+             Search Result 
+        </div>
+      </div>
+      <div class="divider" style="margin:13px 0;"></div>
         <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
       {{else}}
       {{#each postsList}}

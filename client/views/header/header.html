@@ -9,7 +9,7 @@
           <div id="slide-out" class="side-nav light-green darken-3">
             <div align="center">
               <div class="white_bg">
-                <img src="images/grannylogo.png" class="logo"/>
+                <img src="/images/grannylogo.png" class="logo"/>
               </div>
               <div class="logo_title">Granny Theraphy</div>
             </div>
@@ -21,7 +21,7 @@
                       <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
                       margin-bottom:2px;" name="{{title}}">{{title}}</p>
                       {{#if equals isChild "Yes"}}
-                        <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-top: -17px; width: 15px;">
+                        <img src="/images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-top: -17px; width: 15px;">
                       {{/if}}
                     </div>
                       <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}" style="line-height:1.8"></div>
@@ -32,18 +32,61 @@
             </div>
           </div>
           </div>
+
+<!--           <div style="background: #FDFEFB none repeat scroll 0 0; height: 11px; position: absolute;
+                width: 100%; z-index: 10;"></div> -->
+            <div class="hide-on-med-only hide-on-small-only" style="background: #87c540 none repeat scroll 0 0; margin-left: 16.7%;width: 83.3%; height:95px">
+                <div style="left: 13.5%; position: absolute; top: 111%; transform: rotate(-45deg);">
+                <span style="background: #558b2f none repeat scroll 0 0; font-weight: bold; padding: 10px 42px;">Ask Question</span></div>
+              <textarea id="" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 62px; line-height: 1.5; margin-left: 11%;
+                margin-top: 1.6%; overflow: hidden; resize: none; width: 50%;">
+              </textarea>
+              <button class="btn waves-effect waves-light" type="button" id="" style="margin-top: -43px;
+              margin-left: 7px; padding: 0 12px;">Ask</button>
+              <span style="position:absolute; right:17%; height:95px; width:100px"> 
+              <img src="/images/dr.png" width="115" height="95">
+              </span>
+              <span style="line-height: 1.5; position: absolute; right: 10px; text-align: center; margin-top:45px;
+              font-weight:bold; color:#000">Dr.Sankar Narayanan<br>B.S.M.S, D.P.N.H.E, D.Yoga</span>
+            </div>
+
+
+            <div class="hide-on-large-only" style="background: #87c540 none repeat scroll 0 0; width: 100%;">
+              <!--div style="left: 13.5%; position: absolute; top: 111%; transform: rotate(-45deg);">
+                <span style="background: #558b2f none repeat scroll 0 0; font-weight: bold; padding: 10px 42px;">Ask Question</span></div> -->
+                <div class="row">
+              <div class=" col s12 m12" style="height:75px; width:100px; margin-left:31%; padding-top:5px;"> 
+                <img src="images/dr.png" width="105" height="70">
+              </div>
+              <div class=" col s12 m12" style="line-height: 1.5; text-align: center; font-weight:bold; font-size: 12px; color:#000">Dr.Sankar Narayanan<br>B.S.M.S, D.P.N.H.E, D.Yoga</div>
+              <div class="col s9 m9">
+              <textarea id="" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 35px; line-height: 1.5;                 margin-top: 1.6%; overflow: hidden; resize: none;">
+              </textarea>
+            </div>
+              <div class="col s3 m3">
+              <button class="btn waves-effect waves-light" type="button" id="" style="margin-left: -7px;
+              margin-top: -10px; padding: 0 12px;">Ask</button>
+              </div>
+              </div>
+              
+            </div>
         </nav>
+
     </div>
+
   <div class="leftMenu hide-on-med-only hide-on-small-only">
     <div align="center">
       <div class="white_bg">
-        <img src="images/grannylogo.png" class="logo"/>
+        <img src="/images/grannylogo.png" class="logo"/>
       </div>
       <div class="logo_title">Granny Theraphy</div>
     </div>
     <div class="hrClass"></div>
+    <div style="background: #558b2f none repeat scroll 0 0; height: 18.5px; position: absolute; right: -17px;
+        width: 17px; z-index: 11;"></div>
     <div style="background: #FDFEFB none repeat scroll 0 0; height: 100%; position: absolute; right: -18px;
-    width: 18px; z-index: 10;"></div>
+    width: 18px; z-index: 10; top:159px;"></div>
+
     <div class="leftContent">
       {{#if parentPageList}}
         {{#each parentPageList}}
@@ -51,7 +94,7 @@
             <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; margin-bottom:0px;
             line-height:1.8;" name="{{title}}">{{title}}</p>
             {{#if equals isChild "Yes"}}
-              <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-top: -19px; width: 15px;">
+              <img src="/images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-top: -19px; width: 15px;">
             {{/if}}
           </div>
             <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
