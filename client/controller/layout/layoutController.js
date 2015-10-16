@@ -59,26 +59,11 @@ Template.header.events({
    'click #grannyLogo' : function()  {
       Session.set('categoryName','');    
       Router.go('/');
-   }
-});
-
-Template.home.events({
-    'click #read-more,.card-title': function () {
-      var postId = this._id;
-      var postTitle = this.title;
-      Session.set('selectedPageId',Session.get("pageId"));         
-      Session.set('selectedPostId', postId);
-      Meteor.setTimeout(function(){
-        Router.go("/tam/post/"+postTitle+"/"+postId);
-          Meteor.setTimeout(function(){
-            $(window).scrollTop(0);
-          },10);
-      }, 100);
-    },
-
+   },
    'click #askQuestion' : function() {
       if (!$('#questionArea').val()) {
-          $('#questionEmptyInfo').html('Please enter question');
+          // $('#questionEmptyInfo').html('Please enter question');
+            Materialize.toast('Please enter your question', 3000, 'error-toast');          
       } else if (!Meteor.userId()) {
         Session.set('question',$('#questionArea').val());
          Meteor.setTimeout(function() {
@@ -101,7 +86,24 @@ Template.home.events({
       Meteor.setTimeout(function(){
           $('#questionEmptyInfo').html('');
       }, 3200);        
-   },
+   },   
+});
+
+Template.home.events({
+    'click #read-more,.card-title': function () {
+      var postId = this._id;
+      var postTitle = this.title;
+      Session.set('selectedPageId',Session.get("pageId"));         
+      Session.set('selectedPostId', postId);
+      Meteor.setTimeout(function(){
+        // Router.go("/tam/post/"+postTitle+"/"+postId);
+            $(location).attr('href',"tam/post/"+postTitle+"/"+postId);
+
+          Meteor.setTimeout(function(){
+            $(window).scrollTop(0);
+          },10);
+      }, 100);
+    },
    'click #search' : function () {
         if(!$('#searchQuery').val()) {
             $('#searchEmptyInfo').html('Please enter search string');
@@ -319,8 +321,8 @@ Template.postDetail.helpers({
       },
 
       ratings: function() {
-        var counts = rating.find({postId: Session.get('selectedPostId')}).count();
-        var rate = rating.find({postId: Session.get('selectedPostId')});
+        var counts = rating.find({postId: Session.get('routePostId')}).count();
+        var rate = rating.find({postId: Session.get('routePostId')});
         var sum = 0;
         rate.forEach(function(item)  {
           sum = sum + item.points;
@@ -336,10 +338,11 @@ Template.postDetail.helpers({
         return userDoc.username;        
       },
       locationUrl: function() {
-        console.log(window.location.href);
-        return "http://www.google.com";
+        // console.log('location by router.go...........'+window.location.href);
+        // return "http://www.google.com";
+        return window.location.href;
         // return "http://www.grannytherapy.com/tam/மணலிக்கீரை/";
-      }      
+      }
 });
 
 Template.postList.rendered = function () {
@@ -367,6 +370,17 @@ Template.postList.rendered = function () {
     });     
 };
 
+Template.header.rendered = function () {
+  $('#questionArea').val("");
+  $('.button-collapse').sideNav();
+
+  $('.search').click(function(){
+      $('#search_modal').openModal();
+  });
+  $('.question').click(function(){
+      $('#question_modal').openModal();
+  });
+};
 
 Template.home.rendered = function () {
    $('.posts-Over-text').hide();
@@ -380,12 +394,14 @@ Template.postDetail.rendered = function() {
    addFbLikeWidget();
    this.$('.rateit').rateit();
 
+   alert(Session.get('routePostId'));
+
     this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
             $('#userLoginForm').openModal();
           } else {
             // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
-            Meteor.call('insertrating', Meteor.userId(), Session.get('selectedPostId'), value);
+            Meteor.call('insertrating', Meteor.userId(), Session.get('routePostId'), value);
           }
     });
 };
@@ -394,7 +410,7 @@ function addTwitterWidget() {
     !function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0], 
             p = /^http:/.test(d.location) ? 'http' : 'https';
-            id="";
+            // id="";
         if (!d.getElementById(id)) {
             js = d.createElement(s);
             js.id = id;

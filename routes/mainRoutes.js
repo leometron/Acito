@@ -25,6 +25,8 @@ Router.route('/tam/post/:title/:_postId', {
           $('#list'+postDoc._id).html(postDoc.description);
           $('#detail'+postDoc._id).html(postDoc.description);
       }, 200);
+
+      Session.set('routePostId', this.params._postId);
     //   // console.log('meteor user.......'+Meteor.users.find().count());
     //   if (typeof Meteor.users.findOne({_id: postDoc.createdBy}) === "object") {
     //     var userDoc = Meteor.users.findOne({_id: postDoc.createdBy});

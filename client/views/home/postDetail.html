@@ -27,7 +27,16 @@
            <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
            <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
            {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
-           <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a>
+<!--            <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a> -->
+<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
+
+<span class='st_sharethis_hcount' displayText='ShareThis' st_title="{{post.title}}"></span>
+    <span class='st_facebook_hcount' displayText='Facebook' st_title="{{post.title}}"></span>
+    <span class='st_twitter_hcount' displayText='Tweet' st_title="{{post.title}}"></span>
+    <span class='st_linkedin_hcount' displayText='LinkedIn' st_title="{{post.title}}"></span>
+    <span class='st_email_hcount' displayText='Email' st_title="{{post.title}}"></span>
+           <div id="fb-root"></div>
+           <div class="fb-like" data-href="{{locationUrl}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
           </div>
     </div>
   </div>
@@ -61,7 +70,14 @@
            <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
            <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
            {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
-           <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a>
+<!--            <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a> -->
+<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
+
+<span class='st_sharethis_hcount' displayText='ShareThis' st_title="{{post.title}}"></span>
+    <span class='st_facebook_hcount' displayText='Facebook' st_title="{{post.title}}"></span>
+    <span class='st_twitter_hcount' displayText='Tweet' st_title="{{post.title}}"></span>
+    <span class='st_linkedin_hcount' displayText='LinkedIn' st_title="{{post.title}}"></span>
+    <span class='st_email_hcount' displayText='Email' st_title="{{post.title}}"></span>
            <div id="fb-root"></div>
            <div class="fb-like" data-href="{{locationUrl}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
            </div>
