@@ -1,4 +1,4 @@
-Posts = new Mongo.Collection('posts');
+Posts = new Meteor.Collection('posts');
 
 Posts.attachSchema(
     new SimpleSchema({

@@ -14,26 +14,65 @@ Router.route('/', {
     }
 });
 
-Router.route('/tam/post/:title/:_id', {    
+Router.route('/tam/post/:title/:_postId', {    
   layoutTemplate: 'basicLayout',	
   name: 'postDetail',
    data: function() {
-      var postDoc = Posts.findOne({ _id: this.params._id });
+    console.log('posts count...........'+Posts.find({}).count());
+      var postDoc = Posts.findOne({ _id: this.params._postId });
       
       Meteor.setTimeout(function() {
           $('#list'+postDoc._id).html(postDoc.description);
           $('#detail'+postDoc._id).html(postDoc.description);
       }, 200);
-      
-      var userDoc = Meteor.users.findOne({_id: postDoc.createdBy});
-      postDoc.publisherName = userDoc.username;
+    //   // console.log('meteor user.......'+Meteor.users.find().count());
+    //   if (typeof Meteor.users.findOne({_id: postDoc.createdBy}) === "object") {
+    //     var userDoc = Meteor.users.findOne({_id: postDoc.createdBy});
+    //     postDoc.publisherName = userDoc.username;        
+    //   }
+    //   console.log(postDoc);
       return {
-        images: featuredimage.find({postId:this.params._id}, { limit:3 }),    
-        post: postDoc
+        images: featuredimage.find({postId:this.params._postId}, { limit:3 }),    
+        // post: postDoc
+        post: Posts.findOne({ _id: this.params._postId })
       };
     }       
 });
 
+// Router.map(function() {
+//     this.route('singlePost', { 
+//         path: '/tam/post/:title/:_postId',
+//         layoutTemplate: 'basicLayout',         
+//         template: 'postDetail', // <-- to be explicit
+//         data: function() {
+//       //     console.log(this.params._postId);
+//       // console.log('total posts ........'+Posts.find({}).count());
+//       // var postDoc;
+//       // Meteor.setTimeout(function() {
+//       //     postDoc = Posts.findOne({ _id: this.params._postId });        
+//       //     $('#list'+postDoc._id).html(postDoc.description);
+//       //     $('#detail'+postDoc._id).html(postDoc.description);
+//       //     var userDoc = Meteor.users.findOne({_id: postDoc.createdBy});
+//       //     postDoc.publisherName = userDoc.username; 
+//       //           return {
+//       //   images: featuredimage.find({postId:this.params._postId}, { limit:3 }),    
+//       //   post: postDoc
+//       //   // post: Posts.findOne({ _id: this.params._postId })
+//       // };         
+//       // }, 500);
+//       // if (typeof Meteor.users.findOne({_id: postDoc.createdBy}) === "object") {
+        
+//       // }
+//       // console.log(postDoc.content);
+//       // console.log(postDoc.publisherName);
+//       return {
+//         images: featuredimage.find({postId:this.params._postId}, { limit:3 }),    
+//         // post: postDoc
+//         post: Posts.findOne({ _id: this.params._postId })
+//       };
+//         }
+//     });
+// });
 Router.route('/ask', {
   layoutTemplate: 'basicLayout',  
   name: 'questionDetail'  
@@ -74,15 +113,8 @@ Router.route('/question', {
           answer: answer.find({ questionId: this.params.query.id,status:"active"}),
           question: questionDetail.findOne({ _id:this.params.query.id })
         }
-
     } 
 });
-
-
-// Router.route('/pages', {
-//   layoutTemplate: 'basicLayout',  
-//   name: 'postList'  
-// });
 
 Router.route('/allquestions', {
   layoutTemplate: 'basicLayout',  

@@ -60,66 +60,14 @@ Template.header.events({
       Session.set('categoryName','');    
       Router.go('/');
    }
-    // 'click .read-more' : function() {
-    //     $(window).scrollTop(572);
-    //     Router.go('/readmore?id='+ this._id);
-    // }
 });
 
 Template.home.events({
-
-  //  'click .parent-page' : function(){
-  //  if($('.page'+this._id).hasClass('page-selection')){
-  //    $('.page'+this._id).removeClass('page-selection');
-  //    $(".subpage"+this._id).html('');
-  //  } else {
-  //    $('.page'+this._id).addClass('page-selection');
-  //    var subPagesCount = Pages.find({parentId:this._id}).count();
-  //    if(subPagesCount == 0) {
-  //      Session.set("pageId", "");
-  //      Session.set('numberOfCount', 6);
-  //      Session.set('selectedPostId', "");
-  //      Session.set("pageId",this._id);
-  //      Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
-  //      Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
-  //    } else {
-  //      var subPages = Pages.find({parentId: this._id,status:'Published'});
-  //      var t ="";
-  //      subPages.forEach(function(item){
-  //          t += '<div class="sub-page" style="padding:8px 20px; color:#ffffff; border-bottom:1px solid #D1D1D1;" id="'+item._id+'">'+item.title+'</div>';
-  //      });
-  //      $(".subpage"+this._id).html(t);        
-  //    }      
-  //  }     
-  // },
-  //  'click .sub-page' : function(event){
-  //     $('.button-collapse').sideNav('hide');
-  //     Session.set("pageId", "");
-  //     Session.set('numberOfCount', 6);
-  //     Session.set('selectedPostId', "");
-  //     Session.set("pageId", $(event.target).attr("id"));
-  //     Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
-  //     Router.go('/posts?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
-  //  },
-    // 'click #postTitle,.read-more,.feature-image': function () {
-    //   var postId = this._id;
-    //   Session.set('selectedPageId',Session.get("pageId"));         
-    //   Session.set('selectedPostId', postId);
-    //   // $('.image').css('-webkit-animation','mymove 2s').css('animation','mymove 2s').css('position','relative');
-    //   Meteor.setTimeout(function(){
-    //     Router.go("/post/"+postId);
-    //       Meteor.setTimeout(function(){
-    //         $(window).scrollTop(0);
-    //       },10);
-    //   }, 100);
-    // },
-
     'click #read-more,.card-title': function () {
       var postId = this._id;
       var postTitle = this.title;
       Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
-      // $('.image').css('-webkit-animation','mymove 2s').css('animation','mymove 2s').css('position','relative');
       Meteor.setTimeout(function(){
         Router.go("/tam/post/"+postTitle+"/"+postId);
           Meteor.setTimeout(function(){
@@ -136,7 +84,6 @@ Template.home.events({
          Meteor.setTimeout(function() {
             $(window).scrollTop(0);  
           },300);
-          // Router.go('/login');
           $('#question_modal').closeModal();
           $('#userLoginForm').openModal();
       } else {
@@ -231,7 +178,6 @@ Template.home.events({
             if(err){
                 Materialize.toast('Invalid email or Password', 3000, 'error-toast');
             } else if(!$('#questionArea').val()) {
-              // history.back();
                $('#userLoginForm').closeModal();
             } else {
               $('#userLoginForm').closeModal();
@@ -264,8 +210,6 @@ Template.home.events({
       $('#Usererr').html("Your password and confirmation password do not match");
       return;
     }
-    // var userEmailExists = typeof Meteor.users.findOne({email: new_email}) === 'object';
-    // console.log(userEmailExists);
 
     var userDetail = { "email": new_email, "username":  first_name, "password": new_password }
 
@@ -275,7 +219,6 @@ Template.home.events({
         } else if(!$('#questionArea').val()) {
             $('#Usererr').html("Account has been created and logged in successfully.");
             Meteor.setTimeout(function () {
-              // history.back()
               $('#userRegistrationForm').closeModal();
             },2000);
           } else {
@@ -287,10 +230,6 @@ Template.home.events({
           }
       });
       return false;
-
-      // Meteor.setTimeout(function () {
-          //   $('#firstname').val(''), $('#upemail').val(''), $('#signpassword').val(''), $('#re-password').val(''), $('#Usererr').html("")
-          // },3000);  
   }      
 });
 
@@ -325,7 +264,6 @@ Template.home.helpers({
             }
         });
       }
-       // return Pages.find({parentId:'null',status:'Published'});
        return data;
    }
 });
@@ -376,7 +314,7 @@ Template.postDetail.helpers({
       formatDate: function(dateStr){
        var dateArr = dateStr.split('/');
        var date = new Date(dateArr[1]+'/'+dateArr[0]+'/'+dateArr[2]);
-       var monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'];
+       var monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December'];
        return monthArr[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
       },
 
@@ -387,15 +325,21 @@ Template.postDetail.helpers({
         rate.forEach(function(item)  {
           sum = sum + item.points;
         });
-        // console.log("sum of points " + sum);
-        // console.log("counts " + counts);
         var average = sum/counts;
-        // console.log("average " + average);
         return {
           rating : average,
           count: counts
         };
-      }
+      },
+      postCreatedBy : function(createdById) {
+        var userDoc = Meteor.users.findOne({_id: createdById});
+        return userDoc.username;        
+      },
+      locationUrl: function() {
+        console.log(window.location.href);
+        return "http://www.google.com";
+        // return "http://www.grannytherapy.com/tam/மணலிக்கீரை/";
+      }      
 });
 
 Template.postList.rendered = function () {
@@ -423,74 +367,21 @@ Template.postList.rendered = function () {
     });     
 };
 
-// Template.header.rendered = function () {
-//    $(document).ready(function(){
-//     $('.collapsible').collapsible({
-//       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-//     });
-//   });     
-// };
 
 Template.home.rendered = function () {
    $('.posts-Over-text').hide();
     $('#questionDetail').hide();
-    // $('#questionEmptyInfo').hide();
-    // $('#searchEmptyInfo').hide();
     $('#loginDetail').hide();
     $('.leftContent').css('height',window.innerHeight-141);
-
-   /* Meteor.setTimeout(function () {
-        $('#xLoader').hide();
-        $(".owl-carousel").owlCarousel({
-            autoPlay: 3000,
-            items: 5,
-        });
-    }, 5500);
-
-    $(function () {
-        console.log(Session.get('themeName'));      
-        var theme = Session.get('themeName');
-        if (theme === 'theme1') {
-            $('#currentTheme').remove();
-            var themesheet = $('<link href="/theme.css" rel="stylesheet" id="currentTheme1"/>');
-            themesheet.appendTo('head');
-        } else {
-            $('#currentTheme1').remove();
-            var themesheet = $('<link href="/main.css" rel="stylesheet" id="currentTheme"/>');
-            themesheet.appendTo('head');
-        }
-    });  
-  
-    $('#postIntroduction').offset().top - $('#postasas').offset().top  
-    $('a[href*=#]:not([href=#])').click(function () {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 1000);
-                return false;
-            }
-        }
-        return true;
-    });
-
-    var instance = this;
-    if(Session.get("selected_item") === this._id){
-        Meteor.defer(function() {  
-            $(instance.firstNode).addClass("selected"); //use "instance" instead of "this"
-        });
-    }*/
 };
 
 Template.postDetail.rendered = function() { 
-   addTwitterWidget();
+  addTwitterWidget();
+   addFbLikeWidget();
    this.$('.rateit').rateit();
 
     this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
-            // Router.go('/login');
             $('#userLoginForm').openModal();
           } else {
             // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
@@ -504,7 +395,6 @@ function addTwitterWidget() {
         var js, fjs = d.getElementsByTagName(s)[0], 
             p = /^http:/.test(d.location) ? 'http' : 'https';
             id="";
-            // console.log("all" + d.getElementById(id));
         if (!d.getElementById(id)) {
             js = d.createElement(s);
             js.id = id;
@@ -555,3 +445,18 @@ Template.registerHelper ("timeanalysis", function(date) {
       return years + months + weeks + days + hours + minutes + ' ago';
 
 });
+
+function addFbLikeWidget() { 
+  (function(d, s, id) {    
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        Meteor.setTimeout(function() {
+            Meteor._reload.reload();
+        }, 100);
+        return;
+      }
+      js = d.createElement(s); js.id = id;
+      js.src = "http://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
+      fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+}
