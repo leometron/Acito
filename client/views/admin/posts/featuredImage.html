@@ -20,7 +20,7 @@
                 <i class="mdi-navigation-arrow-drop-down right"></i>
             </div>
             <ul id='pages' class='dropdown-content' style="margin-left: 45px;">
-                <li class="drop-down-item page">None</li>
+                <li class="drop-down-item page" id="none">None</li>
                 {{#each pagesList}}
                 <li class="divider"></li>                        
                 <li class="drop-down-item page" id="{{_id}}">{{title}}</li>
@@ -32,6 +32,11 @@
                 <i class="mdi-navigation-arrow-drop-down right"></i>
             </div>
             <ul id="posts" class="dropdown-content" style="margin-left: 251px;">
+                <li class="drop-down-item post">None</li>
+                {{#each postList}}
+                <li class="divider"></li>                        
+                <li class="drop-down-item post" id="{{_id}}">{{title}}</li>
+                {{/each}}
             </ul>
         </div>
     </div>

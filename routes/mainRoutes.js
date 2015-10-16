@@ -14,12 +14,17 @@ Router.route('/', {
     }
 });
 
-Router.route('/post/:_id', {    
+Router.route('/tam/post/:title/:_id', {    
   layoutTemplate: 'basicLayout',	
   name: 'postDetail',
    data: function() {
-    console.log('s post id....'+this.params._id);
       var postDoc = Posts.findOne({ _id: this.params._id });
+      
+      Meteor.setTimeout(function() {
+          $('#list'+postDoc._id).html(postDoc.description);
+          $('#detail'+postDoc._id).html(postDoc.description);
+      }, 200);
+      
       var userDoc = Meteor.users.findOne({_id: postDoc.createdBy});
       postDoc.publisherName = userDoc.username;
       return {
@@ -42,7 +47,7 @@ Router.route('/readmore', {
   } 
 });
 
-Router.route('/posts', {
+Router.route('/tam/category/:mainCategory/:subCategory?', {
   layoutTemplate: 'basicLayout',  
   name: 'postList',
   data: function() {

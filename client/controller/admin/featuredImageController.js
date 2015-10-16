@@ -63,5 +63,8 @@ Template.featuredImage.events({
 Template.featuredImage.helpers({
     'pagesList': function() {
         return Pages.find();
+    },
+    'postList': function() {
+        return Posts.find({pageId: 'none'});
     }
 });

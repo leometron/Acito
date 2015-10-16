@@ -54,6 +54,10 @@ Template.addNewPost.rendered = function() {
 		alignment: 'center' // Displays dropdown with edge aligned to the left of button
     });
     $('.modal-trigger').leanModal();
+    $('ul.tabs').tabs();
+    $('.indicator').css('right', '498px');
+    $('.indicator').css('left', '0px');
+    CKEDITOR.replace('postDescription');
 }
 
 // Template.addNewPost.rendered = function(){
@@ -188,13 +192,15 @@ Template.addNewPost.events({
 			var pageId = Session.get('postPageId');
 			var pageName = Session.get('postPageTitle');       
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var value = CKEDITOR.instances['postDescription'].getData();
+			var description = (!value) ? "-" : value;
 			var featuredImage;
 			if($('#featureImage').length == 0) {
 				featuredImage = "-";
 			} else {
 				featuredImage = $('#featureImage').attr('src');
-			}                     
-			Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
+			}                 
+			Meteor.call('insertPostData',$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage,description);
 			Router.go("/admin/posts");
 			Session.set('postPageId', '');  
 		}
@@ -207,13 +213,15 @@ Template.addNewPost.events({
 			var pageId = Session.get('postPageId');
 			var pageName = Session.get('postPageTitle');  
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var value = CKEDITOR.instances['postDescription'].getData();
+			var description = (!value) ? "-" : value;
 			var featuredImage;
 			if($('#featureImage').length == 0) {
 				featuredImage = "-";
 			} else {
 				featuredImage = $('#featureImage').attr('src');
 			}              
-			Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage);
+			Meteor.call('publishPostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,getCurrentDate(),pageId,pageName,featuredImage,description);
 			Router.go("/admin/posts");
 			Session.set('postPageId', '');
 		}       
@@ -226,13 +234,15 @@ Template.addNewPost.events({
 			var pageId = Session.get('postPageId');
 			var pageName = Session.get('postPageTitle');  
 			var postContent = (!$('#postContent').val()) ? "-" : $('#postContent').val();
+			var value = CKEDITOR.instances['postDescription'].getData();
+			var description = (!value) ? "-" : value;
 			var featuredImage;
 			if($('#featureImage').length == 0) {
 				featuredImage = "-";
 			} else {
 				featuredImage = $('#featureImage').attr('src');
 			}                                 
-			Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName,featuredImage);
+			Meteor.call('updatePostData',Session.get('selectedPostId'),$('#postName').val(),postContent,tag,pageId,pageName,featuredImage,description);
 			Router.go("/admin/posts");
 			Session.set('postPageId', '');
 		}        
@@ -256,29 +266,9 @@ Template.addNewPost.events({
 	'click #addNewTag' : function() {
 		Router.go("/admin/posts/tags");                       
 	},
-	'click #selectImage': function () {             
-		 $('#uploadFile').addClass('border');
-		 $('#media').hide();
-		 $('#mediaLibrary').removeClass('border');
-		 $('#dropFile').show();             
-	},
-	'click #mediaLibrary': function(){
-		console.log("media");
-		$('#uploadFile').removeClass('border');
-		$('#dropFile').hide() ;
-		$('#mediaLibrary').addClass('border');
-		$('#media').show();
-		$("#popupMediadetail").hide();
-	},
-	'click #uploadFile': function(){
-		$('#media').hide();
-		$('#mediaLibrary').removeClass('border');
-		$('#uploadFile').addClass('border');
-		$('#dropFile').show();
-	},
-    'click .selectedImg': function(e) {
+    'click .selected-img': function(e) {
         if(this._id){
-            $('.selectedImg').removeClass('selected-border');
+            $('.selected-img').removeClass('selected-border');
             $(e.currentTarget).addClass('selected-border');
             Session.set('postImageUrl', this.url);
         }
@@ -317,7 +307,10 @@ Template.addNewPost.events({
      	$('.drop-down-label').text($(event.target).text());
      	Session.set('postPageId', id);
      	Session.set('postPageTitle', $(event.target).text());
-     }  
+     },
+     'click #selectImage': function() {
+     	$('.modal-trigger').leanModal();
+     }
 });
 
 /*
