@@ -42,7 +42,7 @@
   </div>
 
 
-  <div class="hide-on-med-only hide-on-small-only" style="margin-left:17%; margin-top:9%;">
+  <div class="hide-on-med-only hide-on-small-only" style="margin-left:17%; margin-top:6.5%;">
     <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
         <div style="display:table-cell; width:65px; vertical-align:middle; text-align:center" class="back-arrow">
             <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
@@ -55,22 +55,25 @@
     <!-- {{#if equals post.featuredImage '-'}} -->
       <div class="row">
       {{#each images}} 
-        <div class="col s12 m4 l4">
+        <div class="col s12 m4 l3" style="margin-left:6%; margin-top:15px;">
             <img src="{{url}}" style="width:100%;height:200px">
         </div>
       {{/each}}
       </div>
      <!-- {{/if}} -->
     <span class="right" style="color:#7A7A7A; margin-right:10px;">published on {{formatDate post.createdAt}} | by {{postCreatedBy post.createdBy}}</span>
-    <div class="row" style="margin-left:17px;">
-      <div class="col s12 m12 l12">
+    <div class="row" style="margin-left:17px; margin-top:40px">
+      <div class="col s12 m12 l3">
           <div id="detail{{post._id}}" class="description_2">  
           </div>
-          <div class="right" style="margin-top:20px; margin-bottom: 45px;">
+          <div style="margin-top:20px; margin-bottom: 45px;">
            <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
            <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
            {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
 <!--            <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a> -->
+</div>
+</div>
+<div class="col s12 m12 l9" style="margin-top:20px">
 <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
 
 <span class='st_sharethis_hcount' displayText='ShareThis' st_title="{{post.title}}"></span>
@@ -82,6 +85,5 @@
            <div class="fb-like" data-href="{{locationUrl}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
            </div>
       </div>
-    </div>
   </div>
 </template>

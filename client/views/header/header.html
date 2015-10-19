@@ -1,8 +1,13 @@
 <template name="header">
     <div class="navbar-fixed">
-       <nav class="light-green darken-3" role="navigation">
+       <nav class="light-green darken-3" role="navigation" style="height:45px">
           <div class="nav-wrapper nav_wrapper_margin">
              <a href="#" class="sm_headerTitle">{{category}}</a>
+             <div style="left: 19%; position: absolute; top: -9px; z-index:1">
+               <a href="#" class="" style="padding-right: 15px;">Home</a>
+               <a href="#" class="" style="padding-right: 15px;">Contact</a>
+               <a href="#" class="" style="padding-right: 15px;">About</a>
+             </div>
             <a href="#" data-activates="slide-out" style="margin-right:20px;" class="button-collapse">
               <i class="mdi-navigation-menu"></i>
             </a>
@@ -35,19 +40,18 @@
 
 <!--           <div style="background: #FDFEFB none repeat scroll 0 0; height: 11px; position: absolute;
                 width: 100%; z-index: 10;"></div> -->
-            <div class="hide-on-med-only hide-on-small-only" style="background: #87c540 none repeat scroll 0 0; margin-left: 16.7%;width: 83.3%; height:95px">
-                <div style="left: 13.5%; position: absolute; top: 111%; transform: rotate(-45deg);">
-                <span style="background: #558b2f none repeat scroll 0 0; font-weight: bold; padding: 10px 42px;">Ask Question</span></div>
-              <textarea id="questionArea" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 62px; line-height: 1.5; margin-left: 11%;
-                margin-top: 1.6%; overflow: hidden; resize: none; width: 50%;">
+            <div class="hide-on-med-only hide-on-small-only" style="background: #87c540 none repeat scroll 0 0; margin-left: 16.7%;width: 83.3%; height:85px">
+                <div style="left: 11.9%; position: absolute; top: 103%; transform: rotate(-31deg);">
+                <span style="background: #558b2f none repeat scroll 0 0; font-weight: bold; padding: 10px 64px; color: yellow;">Ask Question</span></div>
+              <textarea id="questionArea" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 45px; line-height: 1.5; margin-left: 13%; margin-top: 2%; overflow: hidden; resize: none; width: 50%;">
               </textarea>
-              <button class="btn waves-effect waves-light" type="button" id="askQuestion" style="margin-top: -43px;
-              margin-left: 7px; padding: 0 12px;">Ask</button>
-              <span style="position:absolute; right:17%; height:95px; width:100px"> 
-              <img src="/images/dr.png" width="115" height="95">
+              <button class="btn waves-effect waves-light" type="button" id="askQuestion" style="margin-top: -28px;
+              margin-left: 5px; padding: 0 20px; background: #558B2F none repeat scroll 0 0;color: yellow;">Ask</button>
+              <!-- <img src="/images/ask.png" width="80" height="60" style="margin-bottom:-19px; cursor:pointer"> -->
+              <span style="position:absolute; right:13%; height:95px; margin-top:3px;"> 
+              <img src="/images/dr.png" width="100" height="80">
               </span>
-              <span style="line-height: 1.5; position: absolute; right: 10px; text-align: center; margin-top:45px;
-              font-weight:bold; color:#000">Dr.Sankar Narayanan<br>B.S.M.S, D.P.N.H.E, D.Yoga</span>
+              <span style="font-size: 14px; font-weight: bold; line-height: 1.3; margin-top: 46px; position: absolute; right: 10px; text-align: left;">Dr.Sankar Narayanan<br><span style="font-size:11px">B.S.M.S, D.P.N.H.E, D.Yoga</span></span>
             </div>
 
 
@@ -82,10 +86,10 @@
       <div class="logo_title">Granny Theraphy</div>
     </div>
     <div class="hrClass"></div>
-    <div style="background: #558b2f none repeat scroll 0 0; height: 18.5px; position: absolute; right: -17px;
-        width: 17px; z-index: 11;"></div>
+<!--     <div style="background: #558b2f none repeat scroll 0 0; height: 9.5px; position: absolute; right: -17px;
+        width: 17px; z-index: 11;"></div> -->
     <div style="background: #FDFEFB none repeat scroll 0 0; height: 100%; position: absolute; right: -18px;
-    width: 18px; z-index: 10; top:159px;"></div>
+    width: 18px; z-index: 10; top:140px;"></div>
 
     <div class="leftContent">
       {{#if parentPageList}}

@@ -97,7 +97,7 @@ Template.home.events({
       Session.set('selectedPostId', postId);
       Meteor.setTimeout(function(){
         // Router.go("/tam/post/"+postTitle+"/"+postId);
-            $(location).attr('href',"tam/post/"+postTitle+"/"+postId);
+            $(location).attr('href',"/tam/post/"+postTitle+"/"+postId);
 
           Meteor.setTimeout(function(){
             $(window).scrollTop(0);
