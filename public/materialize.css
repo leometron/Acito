@@ -5595,7 +5595,8 @@ small {
     .card.large .card-content {
       height: 170px; }
   .card .card-image {
-    position: relative; }
+    position: relative;
+    cursor: pointer; }
     .card .card-image img {
       display: block;
       border-radius: 2px 2px 0 0;
