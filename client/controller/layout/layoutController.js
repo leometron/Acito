@@ -5,7 +5,7 @@ Has the events and helpers related to home page.
 */
 
 Meteor.subscribe('featuredimage');
-Meteor.subscribe('rating');
+// Meteor.subscribe('rating');
 
 Template.header.events({
 
@@ -17,7 +17,7 @@ Template.header.events({
       }, 250); 
     },
     'click .parent-page' : function(event){
-
+      $(window).scrollTop(0)
        if($('.page'+this._id).hasClass('page-selection')){
          $('.page'+this._id).removeClass('page-selection');
          $(".subpage"+this._id).html('');
@@ -46,6 +46,7 @@ Template.header.events({
        }     
   },
    'click .sub-page' : function(event){
+      $(window).scrollTop(0)    
       Session.set('categoryName',$(event.target).attr("name"));
       Session.set('subCategory',$(event.target).attr("name"));
       $('.button-collapse').sideNav('hide');
@@ -66,6 +67,7 @@ Template.header.events({
             Materialize.toast('Please enter your question', 3000, 'error-toast');          
       } else if (!Meteor.userId()) {
         Session.set('question',$('#questionArea').val());
+        // Session.setPersistent('question',$('#questionArea').val()) 
          Meteor.setTimeout(function() {
             $(window).scrollTop(0);  
           },300);
@@ -90,14 +92,14 @@ Template.header.events({
 });
 
 Template.home.events({
-    'click #read-more,.card-title': function () {
+    'click #read-more,.card-image': function () {
       var postId = this._id;
       var postTitle = this.title;
       Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
       Meteor.setTimeout(function() {
         // Router.go("/tam/post/"+postTitle+"/"+postId);
-            $(location).attr('href',"tam/post/"+postTitle+"/"+postId);
+            $(location).attr('href',"/tam/post/"+postTitle+"/"+postId);
 
           Meteor.setTimeout(function(){
             $(window).scrollTop(0);
@@ -360,9 +362,11 @@ Template.postList.rendered = function () {
             if(Session.get('numberOfCount')){
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();
+                    $(window).scrollTop($(document).height() - $(window).height() - 10);                  
                   Meteor.setTimeout(function(){
                   Session.set('numberOfCount', Session.get('numberOfCount') +3);
                   if(Session.get('subCategory')) {
+                    // alert('scroll value.....'+(window).scrollTop()+'........'+$(document).height() - $(window).height());
                     Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
                   } else {
                     Router.go('/tam/category/'+Session.get('categoryName')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
