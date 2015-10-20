@@ -95,7 +95,7 @@ Template.home.events({
       var postTitle = this.title;
       Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
-      Meteor.setTimeout(function(){
+      Meteor.setTimeout(function() {
         // Router.go("/tam/post/"+postTitle+"/"+postId);
             $(location).attr('href',"tam/post/"+postTitle+"/"+postId);
 
@@ -320,19 +320,27 @@ Template.postDetail.helpers({
        return monthArr[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
       },
 
-      ratings: function() {
-        var counts = rating.find({postId: Session.get('routePostId')}).count();
-        var rate = rating.find({postId: Session.get('routePostId')});
-        var sum = 0;
-        rate.forEach(function(item)  {
-          sum = sum + item.points;
-        });
-        var average = sum/counts;
-        return {
-          rating : average,
-          count: counts
-        };
-      },
+      // ratings: function() {
+        // console.log("functionalities " + this.postId);
+        // var counts = rating.find({postId: Session.get('routePostId')}).count();
+        // var rate = rating.find({postId: Session.get('routePostId')});
+
+        // var counts = rating.find({postId: this.postId}).count();
+        // var rate = rating.find({postId: this.postId});
+        // var sum = 0;
+        // rate.forEach(function(item)  {
+        //   sum = sum + item.points;
+        // });
+        // var average = sum/counts;
+
+        // console.log("Average Rating " + average);
+        
+        // return {
+        //   rating : average,
+        //   count: counts
+        // };
+      // },
+
       postCreatedBy : function(createdById) {
         var userDoc = Meteor.users.findOne({_id: createdById});
         return userDoc.username;        
@@ -383,25 +391,26 @@ Template.header.rendered = function () {
 };
 
 Template.home.rendered = function () {
-   $('.posts-Over-text').hide();
-    $('#questionDetail').hide();
-    $('#loginDetail').hide();
-    $('.leftContent').css('height',window.innerHeight-141);
+   // $('.posts-Over-text').hide();
+    // $('#questionDetail').hide();
+    // $('#loginDetail').hide();
+    // $('.leftContent').css('height',window.innerHeight-141);
 };
 
 Template.postDetail.rendered = function() { 
   addTwitterWidget();
    addFbLikeWidget();
    this.$('.rateit').rateit();
+   var routepostId = this.data.postId;
 
-   alert(Session.get('routePostId'));
-
-    this.$('.rateit').bind('rated', function(event, value) {
+   this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
             $('#userLoginForm').openModal();
           } else {
             // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
-            Meteor.call('insertrating', Meteor.userId(), Session.get('routePostId'), value);
+            // Meteor.call('insertrating', Meteor.userId(), Session.get('routePostId'), value);
+            // alert(Meteor.userId() +  " , " + routepostId + " , " + value);
+            Meteor.call('insertrating', Meteor.userId(), routepostId, value);
           }
     });
 };
@@ -466,9 +475,9 @@ function addFbLikeWidget() {
   (function(d, s, id) {    
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {
-        Meteor.setTimeout(function() {
-            Meteor._reload.reload();
-        }, 100);
+        // Meteor.setTimeout(function() {
+        //     Meteor._reload.reload();
+        // }, 100);
         return;
       }
       js = d.createElement(s); js.id = id;

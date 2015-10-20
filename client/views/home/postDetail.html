@@ -24,11 +24,14 @@
       <div class="col s12 m12 l12">
           <div id="list{{post._id}}" class="description_1">  
           </div>
-           <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
-           <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
-           {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
-<!--            <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a> -->
-<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
+           {{#if rating}} 
+            <div class="rateit" data-rateit-value="{{rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
+           {{else}} 
+            <div class="rateit" data-rateit-value="0" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
+           {{/if}}
+           <span>Rating: {{#if rating}}{{rating}}{{else}}0{{/if}}/ <strong>5</strong>
+           {{#if count}}({{count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
+          <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
 
 <span class='st_sharethis_hcount' displayText='ShareThis' st_title="{{post.title}}"></span>
     <span class='st_facebook_hcount' displayText='Facebook' st_title="{{post.title}}"></span>
@@ -67,11 +70,14 @@
           <div id="detail{{post._id}}" class="description_2">  
           </div>
           <div class="right" style="margin-top:20px; margin-bottom: 45px;">
-           <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
-           <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
-           {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
-<!--            <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a> -->
-<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
+          {{#if rating}} 
+           <div class="rateit" data-rateit-value="{{rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
+          {{else}} 
+           <div class="rateit" data-rateit-value="0" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
+          {{/if}}
+           <span>Rating: {{#if rating}}{{rating}}{{else}}0{{/if}}/ <strong>5</strong>
+           {{#if count}}({{count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
 
 <span class='st_sharethis_hcount' displayText='ShareThis' st_title="{{post.title}}"></span>
     <span class='st_facebook_hcount' displayText='Facebook' st_title="{{post.title}}"></span>
