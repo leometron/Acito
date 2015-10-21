@@ -322,27 +322,6 @@ Template.postDetail.helpers({
        return monthArr[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
       },
 
-      // ratings: function() {
-        // console.log("functionalities " + this.postId);
-        // var counts = rating.find({postId: Session.get('routePostId')}).count();
-        // var rate = rating.find({postId: Session.get('routePostId')});
-
-        // var counts = rating.find({postId: this.postId}).count();
-        // var rate = rating.find({postId: this.postId});
-        // var sum = 0;
-        // rate.forEach(function(item)  {
-        //   sum = sum + item.points;
-        // });
-        // var average = sum/counts;
-
-        // console.log("Average Rating " + average);
-        
-        // return {
-        //   rating : average,
-        //   count: counts
-        // };
-      // },
-
       postCreatedBy : function(createdById) {
         var userDoc = Meteor.users.findOne({_id: createdById});
         return userDoc.username;        
@@ -407,13 +386,16 @@ Template.postDetail.rendered = function() {
    this.$('.rateit').rateit();
    var routepostId = this.data.postId;
 
+   var postDoc = Posts.findOne({ _id: routepostId});
+   Meteor.setTimeout(function() {
+      $('#list'+postDoc._id).html(postDoc.description);
+      $('#detail'+postDoc._id).html(postDoc.description);
+   }, 100);
+
    this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
             $('#userLoginForm').openModal();
           } else {
-            // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
-            // Meteor.call('insertrating', Meteor.userId(), Session.get('routePostId'), value);
-            // alert(Meteor.userId() +  " , " + routepostId + " , " + value);
             Meteor.call('insertrating', Meteor.userId(), routepostId, value);
           }
     });
