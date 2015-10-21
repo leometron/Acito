@@ -53,7 +53,6 @@ Template.addNewPost.rendered = function() {
 		belowOrigin: true, // Displays dropdown below the button
 		alignment: 'center' // Displays dropdown with edge aligned to the left of button
     });
-    $('.modal-trigger').leanModal();
     $('ul.tabs').tabs();
     $('.indicator').css('right', '498px');
     $('.indicator').css('left', '0px');
@@ -297,6 +296,7 @@ Template.addNewPost.events({
     'click #selectpublish': function () {
         var selectimage = Session.get('postImageUrl');
         Session.set('postImage', selectimage);
+        $('#selectImgModal').closeModal();
     },
     'click #removeImage': function () {
         Meteor.call('removeFeaturedImage', Session.get('selectedPostId'));
@@ -309,7 +309,7 @@ Template.addNewPost.events({
      	Session.set('postPageTitle', $(event.target).text());
      },
      'click #selectImage': function() {
-     	$('.modal-trigger').leanModal();
+     	$('#selectImgModal').openModal();
      }
 });
 
@@ -332,11 +332,11 @@ Template.posts.helpers({
 });
 
 Template.addNewPost.helpers({
-	'showSelectedPost': function(){
+	'selectedPost': function(){
 		return Posts.findOne(Session.get('selectedPostId'));
 	},
 	'pageList' : function() { 
-		return Pages.find();
+		return Pages.find({status: 'Published'});
 	},
 	'mediaList' : function() {
 		return Media.find();  

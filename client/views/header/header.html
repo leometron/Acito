@@ -2,13 +2,19 @@
     <div class="navbar-fixed">
        <nav class="light-green darken-3" role="navigation" style="height:45px">
           <div class="nav-wrapper nav_wrapper_margin">
+            <div class="hide-on-med-only hide-on-small-only">
              <a href="#" class="sm_headerTitle">{{category}}</a>
-             <div style="left: 19%; position: absolute; top: -9px; z-index:1">
-               <a href="#" class="" style="padding-right: 15px;">Home</a>
-               <a href="#" class="" style="padding-right: 15px;">Contact</a>
-               <a href="#" class="" style="padding-right: 15px;">About</a>
              </div>
-            <a href="#" data-activates="slide-out" style="margin-right:20px;" class="button-collapse">
+             <div class="hide-on-large-only">
+              <a href="#" class="sm_headerTitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 140px;">{{category}}</a>
+             </div>
+             <div style="left: 19%; position: absolute; top: -9px; z-index:1">
+              {{#each tagsList}}
+               <a href="/tam/category/{{title}}?pageId={{_id}}" style="padding-right: 15px;font-size: 12px;">{{title}}</a>
+              {{/each}}
+               <a href="/tam/grannytherapy-team" style="padding-right: 15px;">குழு</a>
+             </div>
+            <a href="#" data-activates="slide-out" style="margin-right:20px; margin-top:-6px" class="button-collapse">
               <i class="mdi-navigation-menu"></i>
             </a>
           <div id="slide-out" class="side-nav light-green darken-3">
@@ -49,27 +55,27 @@
               margin-left: 5px; padding: 0 20px; background: #558B2F none repeat scroll 0 0;color: yellow;">Ask</button>
               <!-- <img src="/images/ask.png" width="80" height="60" style="margin-bottom:-19px; cursor:pointer"> -->
               <span style="position:absolute; right:13%; height:95px; margin-top:3px;"> 
-              <img src="/images/dr.png" width="100" height="80">
+              <img src="/images/dr.png" width="100" height="80" class="dr">
               </span>
-              <span style="font-size: 14px; font-weight: bold; line-height: 1.3; margin-top: 46px; position: absolute; right: 10px; text-align: left;">Dr.Sankar Narayanan<br><span style="font-size:11px">B.S.M.S, D.P.N.H.E, D.Yoga</span></span>
+              <span class="drName" style="font-size: 14px; font-weight: bold; line-height: 1.3; margin-top: 46px; position: absolute; right: 10px; text-align: left;">Dr.Sankar Narayanan<br><span style="font-size:11px">B.S.M.S, D.P.N.H.E, D.Yoga</span></span>
             </div>
 
 
             <div class="hide-on-large-only" style="background: #87c540 none repeat scroll 0 0; width: 100%;">
               <!--div style="left: 13.5%; position: absolute; top: 111%; transform: rotate(-45deg);">
                 <span style="background: #558b2f none repeat scroll 0 0; font-weight: bold; padding: 10px 42px;">Ask Question</span></div> -->
-                <div class="row">
-              <div class=" col s12 m12" style="height:75px; width:100px; margin-left:31%; padding-top:5px;"> 
-                <img src="images/dr.png" width="105" height="70">
-              </div>
-              <div class=" col s12 m12" style="line-height: 1.5; text-align: center; font-weight:bold; font-size: 12px; color:#000">Dr.Sankar Narayanan<br>B.S.M.S, D.P.N.H.E, D.Yoga</div>
+                <div class="row" style="height:80px">
+<!--               <div class=" col s12 m12" style="height:75px; width:100px; padding-top:5px;"> 
+                <img src="/images/dr.png" width="105" height="70" class="dr">
+              </div> -->
+              <div class=" col s12 m12 drName" style="line-height: 1.5; font-weight:bold; font-size: 12px; margin-left:1px;">Dr.Sankar Narayanan <span style="font-size:8px;">B.S.M.S, D.P.N.H.E, D.Yoga</span></div>
               <div class="col s9 m9">
               <textarea id="" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 35px; line-height: 1.5;                 margin-top: 1.6%; overflow: hidden; resize: none;">
               </textarea>
             </div>
               <div class="col s3 m3">
-              <button class="btn waves-effect waves-light" type="button" id="" style="margin-left: -7px;
-              margin-top: -10px; padding: 0 12px;">Ask</button>
+              <button class="btn waves-effect waves-light" type="button" style="margin-left: -7px;
+              margin-top: -17px; padding: 0 12px;" id="askQuestion">Ask</button>
               </div>
               </div>
               

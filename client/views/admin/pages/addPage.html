@@ -1,6 +1,6 @@
 <template name="addNewPage">
     <div class="main-content-box">
-        {{#if PublishedPages}}
+        {{#if selectedPage}}
         <div class="content-box-menu">Edit Page</div>
         {{else}}
         <div class="content-box-menu">Add a new page</div>
@@ -11,7 +11,7 @@
             {{/if}} -->
 <!--         <div class="margin-top-40">
             <div class="row post-margin">
-                {{#if PublishedPages}}
+                {{#if selectedPage}}
                 <span style="font-size: 30px;">Edit Pages</span>
                 {{else}}
                 <span style="font-size: 30px;">Add a New Pages</span>
@@ -20,11 +20,11 @@
         </div> -->
         <div class="row" style="margin-left: 2.5%; margin-top: 5%;width: 95%;margin-bottom:30px">
             <div class="col l8  padding-left-zero">
-                {{#if PublishedPages}}
-                <input type="text" class="form-control" id="pageTitle" value={{PublishedPages.title}}>
+                {{#if selectedPage}}
+                <input type="text" class="form-control" id="pageTitle" value={{selectedPage.title}}>
 
                 <div>
-                    <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="pageComments" class="form-control">{{PublishedPages.content}}</textarea>
+                    <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="pageComments" class="form-control">{{selectedPage.content}}</textarea>
                 </div>
                 {{else}}
                 <input type="text" class="form-control" placeholder="Enter title here" id="title">
@@ -39,7 +39,7 @@
                     <div class="board-view  border-bottom">publish <span class="caret pull-right margin-top-10"></span>
                     </div>
                     <div class="board-view">
-                        {{#if PublishedPages}}
+                        {{#if selectedPage}}
                         {{else}}
                         <span>
                             <!-- <button type="button" class="admin-btn" id="draft">Save Draft</button> -->
@@ -48,8 +48,8 @@
                         {{/if}}
                         <!-- <span class="pull-right"><button type="button" class="btn btn-default">Preview</button></span> -->
                     </div>
-                    <div class="board-view">Status: {{#if PublishedPages}}
-                        {{PublishedPages.status}}
+                    <div class="board-view">Status: {{#if selectedPage}}
+                        {{selectedPage.status}}
                         {{else}}
                         Draft
                         {{/if}}
@@ -59,8 +59,8 @@
                 </div>
             <div class="board-view border-bottom" style="  border: 1px solid #ddd;border-top: 0;">
 
-                    {{#if PublishedPages}}
-                      {{#if PublishedPages.deleted}}
+                    {{#if selectedPage}}
+                      {{#if selectedPage.deleted}}
                         <a href="/admin/pages" id="delete">Delete Pages</a>
                       {{else}}
                         <a id="updatebin" style="cursor:pointer">Move to Bin</a>
@@ -69,13 +69,13 @@
                         <a id="insertbin" style="cursor:pointer">Move to Bin</a>
                     {{/if}}
 
-                    {{#if PublishedPages}}
-                    {{#if PublishedPages.deleted}}
+                    {{#if selectedPage}}
+                    {{#if selectedPage.deleted}}
                     <span style="padding-left: 25%">
                         <button class="btn waves-effect waves-light" type="button" id="restore">Restore</button>
                     </span>
                     {{else}}
-                    {{#if PublishedPages.published}}
+                    {{#if selectedPage.published}}
                     <span style="padding-left: 25%">
                         <button class="btn waves-effect waves-light" type="button" id="update">Update</button>
                     </span>
@@ -97,11 +97,11 @@
                     <div class="board-view">Parent</div>
                     <!-- Dropdown Trigger -->
                     <div class='dropdown-button btn drop-down-list margin-left-10' data-activates='pages'>
-                        {{#if PublishedPages}}
-                        {{#if equals PublishedPages.parentId "null"}}
+                        {{#if selectedPage}}
+                        {{#if equals selectedPage.parentId "null"}}
                         <span class="drop-down-label">(no parent)</span>
                         {{else}}
-                        <span class="drop-down-label">{{PublishedPages.parentTitle}}</span>
+                        <span class="drop-down-label">{{selectedPage.parentTitle}}</span>
                         {{/if}}
                         {{else}}
                         <span class="drop-down-label">(no parent)</span>
@@ -113,13 +113,28 @@
                     <ul id='pages' class='dropdown-content margin-left-10'>
                         <li class="drop-down-item">(no parent)</li>
                         {{#each parentPages}}
-                        {{#if equals PublishedPages._id _id}}
+                        {{#if equals selectedPage._id _id}}
                         {{else}}
                         <li class="divider"></li>
                         <li class="drop-down-item" id="{{_id}}">{{title}}</li> 
                         {{/if}}                
                         {{/each}}
                     </ul>
+                </div>
+                <div class="bg-white margin-top-20" style="border:1px solid #DDDDDD; padding: 10px;">
+                    <div class="board-view border-bottom">Page Priority<span class="caret pull-right margin-top-10"></span>
+                    </div>
+                    <div><span>Is this page is shown in navbar?</span></div>
+                    <div>
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="yesButton" />
+                        <label for="yesButton">Yes</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="noButton" checked/>
+                        <label for="noButton">No</label>
+                    </p>
+                    </div>                    
                 </div>
             </div>
         </div>

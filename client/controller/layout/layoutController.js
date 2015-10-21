@@ -57,7 +57,7 @@ Template.header.events({
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
       Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
    },
-   'click #grannyLogo' : function()  {
+   'click #grannyLogo' : function() {
       Session.set('categoryName','');    
       Router.go('/');
    },
@@ -88,7 +88,12 @@ Template.header.events({
       Meteor.setTimeout(function(){
           $('#questionEmptyInfo').html('');
       }, 3200);        
-   },   
+   },
+   'click .dr,.drName' : function() {
+        Meteor.setTimeout(function(){    
+          Router.go('/doctor');
+        },100);      
+   }
 });
 
 Template.home.events({
@@ -110,9 +115,9 @@ Template.home.events({
         if(!$('#searchQuery').val()) {
             $('#searchEmptyInfo').html('Please enter search string');
         } else {
-            $(window).scrollTop(572);
+            $(window).scrollTop(0);
             $('#search_modal').closeModal();
-            Router.go('/posts?queryString='+$('#searchQuery').val());
+            Router.go('/tam/category/search-posts?queryString='+$('#searchQuery').val());
             $('#searchQuery').val("");
             if($("label").hasClass("active")) {
                $("label").removeClass("active")
@@ -122,21 +127,21 @@ Template.home.events({
           $('#searchEmptyInfo').html('');
         }, 3500);        
     },
-    'keyup #searchQuery' : function(e){
-      if (e.which == 13) {
-          if (!$('#searchQuery').val()) {
-              $('#searchEmptyInfo').html('Please enter search string');
-          } else {
-            $(window).scrollTop(572);
-            $('#search_modal').closeModal();
-            Router.go('/posts?queryString='+$('#searchQuery').val());
-            $('#searchQuery').val("");                        
-          }        
-      }
-      Meteor.setTimeout(function(){
-        $('#searchEmptyInfo').html('');
-      }, 3500);       
-    },     
+    // 'keyup #searchQuery' : function(e){
+    //   if (e.which == 13) {
+    //       if (!$('#searchQuery').val()) {
+    //           $('#searchEmptyInfo').html('Please enter search string');
+    //       } else {
+    //         $(window).scrollTop(572);
+    //         $('#search_modal').closeModal();
+    //         Router.go('/posts?queryString='+$('#searchQuery').val());
+    //         $('#searchQuery').val("");                        
+    //       }        
+    //   }
+    //   Meteor.setTimeout(function(){
+    //     $('#searchEmptyInfo').html('');
+    //   }, 3500);       
+    // },     
    'click .select-question-row' : function() {
       if (this._id) {
         $(window).scrollTop(0);
@@ -299,7 +304,10 @@ Template.header.helpers({
    },
    'category' : function() {
       return Session.get('categoryName');
-   }
+   },
+    'tagsList' : function() {
+        return Pages.find({priority:"yes"});
+    },   
 });
 
 Template.readMore.helpers({

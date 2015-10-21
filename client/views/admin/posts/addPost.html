@@ -1,21 +1,21 @@
 <template name="addNewPost">
     <div class="main-content-box">
-        {{#if showSelectedPost}}
+        {{#if selectedPost}}
                 <div class="content-box-menu">Edit Post</div>
                 {{else}}
                 <div class="content-box-menu">Add a new Post</div>
                 {{/if}}
             <div class="row" style="margin-left: 2.5%; margin-top: 5%; width: 95%;margin-bottom:30px">
         <div class="col l8  padding-left-zero">
-            {{#if showSelectedPost}}
-        <input type="text" class="form-control" id="postName" value="{{showSelectedPost.title}}">
+            {{#if selectedPost}}
+        <input type="text" class="form-control" id="postName" value="{{selectedPost.title}}">
 
             <div>
-                <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="postContent" class="form-control">{{showSelectedPost.content}}</textarea>
+                <textarea name="area1" cols="80" style="border: 1px solid #ccc; height: 380px; overflow: hidden; resize: none;" id="postContent" class="form-control">{{selectedPost.content}}</textarea>
             </div>
             <div>
             <span style="font-size:20px;">Description</span>
-            <textarea name="editor" id="postDescription">{{showSelectedPost.description}}</textarea>
+            <textarea name="editor" id="postDescription">{{selectedPost.description}}</textarea>
             </div>
             {{else}}
             <input type="text" class="form-control" placeholder="Enter title here" id="postName">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="board-view">
                     <span>
-                    {{#if showSelectedPost}}
+                    {{#if selectedPost}}
                     {{else}}  
                     <button class="btn waves-effect waves-light" type="button" id="savePost">Save Draft</button>
                     {{/if}}            
@@ -44,26 +44,26 @@
                     </span>
                 </div>
                 <div class="board-view">Status: {{#if
-                    showSelectedPost}}{{showSelectedPost.status}}{{else}}Draft{{/if}}
+                    selectedPost}}{{selectedPost.status}}{{else}}Draft{{/if}}
                 </div>
                 <div class="board-view">Visibility: public</div>
             </div>
             <div class="board-view border-bottom" style=" border: 1px solid #ddd;border-top: 0;">
-              {{#if showSelectedPost}}
-                 {{#if showSelectedPost.deleted}}
+              {{#if selectedPost}}
+                 {{#if selectedPost.deleted}}
                    <a id="removePost">Delete Post</a>
                     {{else}}
                    <a id="moveBin">Move to Bin</a>
                    <a id="deletePost" class="padding-left-10">Delete</a>
                  {{/if}}
               {{/if}}
-              {{#if showSelectedPost}}
-                {{#if showSelectedPost.deleted}}
+              {{#if selectedPost}}
+                {{#if selectedPost.deleted}}
                 <span style="padding-left: 25%">                                    
                  <button class="btn waves-effect waves-light" type="button" id="restorePost">Publish</button>
                 </span>
                     {{else}}
-                    {{#if showSelectedPost.publish}}
+                    {{#if selectedPost.publish}}
                     <span style="padding-left: 6%">                                       
                        <button class="btn waves-effect waves-light" type="button" id="updatePost">Update</button>
                     </span>   
@@ -83,8 +83,8 @@
                 <div class="board-view border-bottom">pages <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
                     <div class='dropdown-button btn drop-down-list' data-activates='pages'>
-                        {{#if showSelectedPost}}
-                            <span class="drop-down-label">{{showSelectedPost.pageName}}</span>
+                        {{#if selectedPost}}
+                            <span class="drop-down-label">{{selectedPost.pageName}}</span>
                         {{else}}
                             <span class="drop-down-label">(no parent)</span>
                         {{/if}}
@@ -103,8 +103,8 @@
                 <div class="board-view border-bottom">Tags <span class="caret pull-right margin-top-10"></span></div>
                 <div class="board-view">
                     <span>
-                    {{#if showSelectedPost}}
-                        <input type="text" id="postTags" class="form-control" value="{{showSelectedPost.tags}}">
+                    {{#if selectedPost}}
+                        <input type="text" id="postTags" class="form-control" value="{{selectedPost.tags}}">
                     {{else}}                    
                         <input type="text" id="postTags" class="form-control">
                     {{/if}}                                                    
@@ -117,16 +117,19 @@
                 </div>
                 <div class="board-view">
 
-                    {{#if showSelectedPost}}
-                        {{#if equals showSelectedPost.featuredImage "-"}}
-                            <a class="cursor-pointer set-img modal-trigger" id="selectImage" data-toggle="modal" data-target="selectImgModal">Set featured image
-                            <!-- {{#if getpostUrl}}
+                    {{#if selectedPost}}
+                        {{#if equals selectedPost.featuredImage "-"}}
+                            {{#if getpostUrl}}
+                            <a class="cursor-pointer set-img" id="removeImage">Remove featured image
                             <img src="{{getpostUrl}}" id="featureImage" style="width:100px; height:100px;"/>
-                            {{/if}} -->
+                            </a> 
+                            {{else}}    
+                            <a class="cursor-pointer set-img modal-trigger" id="selectImage" data-toggle="modal" data-target="selectImgModal">Set featured image
                             </a>
+                            {{/if}}
                         {{else}}
                             <a class="cursor-pointer set-img" id="removeImage">Remove featured image
-                            <img src="{{showSelectedPost.featuredImage}}" id="featureImage"
+                            <img src="{{selectedPost.featuredImage}}" id="featureImage"
                                  style="width:100px; height:100px;"/>
                             </a>
                         {{/if}}
@@ -187,7 +190,7 @@
                             </div>
                         </div>
                         <div class="modal-footer" style="border-top: none;">
-                            <button type="button" id="selectpublish" class="btn waves-effect waves-light modal-close" data-dismiss="modal" >Done</button>
+                            <button type="button" id="selectpublish" class="btn waves-effect waves-light" data-dismiss="modal" >Done</button>
                         </div>
                     </div>
                 </div>

@@ -63,6 +63,16 @@ Router.route('/ask', {
   name: 'questionDetail'  
 });
 
+Router.route('/tam/grannytherapy-team', {
+  layoutTemplate: 'basicLayout',  
+  name: 'about'  
+});
+
+Router.route('/doctor', {
+  layoutTemplate: 'basicLayout',  
+  name: 'doctor'  
+});
+
 Router.route('/readmore', {
   layoutTemplate: 'basicLayout',  
   name: 'readMore', 
@@ -86,7 +96,6 @@ Router.route('/tam/category/:mainCategory/:subCategory?', {
             searchResultCount : Posts.find({title:new RegExp(this.params.query.queryString,'i'),status:"Published"}).count()
         }        
     }
-
    }
 });   
 
