@@ -233,7 +233,7 @@ Template.addNewPage.events({
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#pageComments').val()) ? "-" : $('#pageComments').val();
-            Meteor.call('deletePagesData', $('#pageTitle').val(), pagecomment, selectedPages, parentId, parentTitle);
+            Meteor.call('updateBinPages', $('#pageTitle').val(), pagecomment, selectedPages, parentId, parentTitle);
             Router.go('/admin/pages');
             Session.set('parentId', '');
             Session.set('parentTitle', '');

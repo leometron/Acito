@@ -8,7 +8,7 @@ Meteor.methods({
 		  if( typeof rating.findOne({userId: user, postId: post}) === "object") {
 		  	
 		  	var obj = rating.findOne({userId: user, postId: post});
-		  	// console.log(" rating value " + ratings + post);
+		  	console.log(" rating value " + ratings);
 		  	rating.update(obj._id, {$set: {points: ratings}});
 		  	console.log("Rating update successfully");
 

@@ -5,7 +5,7 @@ Has the events and helpers related to home page.
 */
 
 Meteor.subscribe('featuredimage');
-Meteor.subscribe('rating');
+// Meteor.subscribe('rating');
 
 Template.header.events({
 
@@ -89,18 +89,11 @@ Template.header.events({
           $('#questionEmptyInfo').html('');
       }, 3200);        
    },
-   // 'click .tagPage' : function () {
-   //    $(window).scrollTop(0);    
-   //    Session.set('categoryName',$(event.target).attr("name"));
-   //    Session.set('subCategory',$(event.target).attr("name"));
-   //    $('.button-collapse').sideNav('hide');
-   //    Session.set("pageId", "");
-   //    Session.set('numberOfCount', 6);
-   //    Session.set('selectedPostId', "");
-   //    Session.set("pageId", $(event.target).attr("id"));
-   //    Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
-   //    Router.go('/tam/category/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
-   // }
+   'click .dr,.drName' : function() {
+        Meteor.setTimeout(function(){    
+          Router.go('/doctor');
+        },100);      
+   }
 });
 
 Template.home.events({
@@ -109,7 +102,7 @@ Template.home.events({
       var postTitle = this.title;
       Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
-      Meteor.setTimeout(function(){
+      Meteor.setTimeout(function() {
         // Router.go("/tam/post/"+postTitle+"/"+postId);
             $(location).attr('href',"/tam/post/"+postTitle+"/"+postId);
 
@@ -134,21 +127,21 @@ Template.home.events({
           $('#searchEmptyInfo').html('');
         }, 3500);        
     },
-    'keyup #searchQuery' : function(e){
-      if (e.which == 13) {
-          if (!$('#searchQuery').val()) {
-              $('#searchEmptyInfo').html('Please enter search string');
-          } else {
-            $(window).scrollTop(572);
-            $('#search_modal').closeModal();
-            Router.go('/posts?queryString='+$('#searchQuery').val());
-            $('#searchQuery').val("");                        
-          }        
-      }
-      Meteor.setTimeout(function(){
-        $('#searchEmptyInfo').html('');
-      }, 3500);       
-    },     
+    // 'keyup #searchQuery' : function(e){
+    //   if (e.which == 13) {
+    //       if (!$('#searchQuery').val()) {
+    //           $('#searchEmptyInfo').html('Please enter search string');
+    //       } else {
+    //         $(window).scrollTop(572);
+    //         $('#search_modal').closeModal();
+    //         Router.go('/posts?queryString='+$('#searchQuery').val());
+    //         $('#searchQuery').val("");                        
+    //       }        
+    //   }
+    //   Meteor.setTimeout(function(){
+    //     $('#searchEmptyInfo').html('');
+    //   }, 3500);       
+    // },     
    'click .select-question-row' : function() {
       if (this._id) {
         $(window).scrollTop(0);
@@ -337,19 +330,27 @@ Template.postDetail.helpers({
        return monthArr[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
       },
 
-      ratings: function() {
-        var counts = rating.find({postId: Session.get('routePostId')}).count();
-        var rate = rating.find({postId: Session.get('routePostId')});
-        var sum = 0;
-        rate.forEach(function(item)  {
-          sum = sum + item.points;
-        });
-        var average = sum/counts;
-        return {
-          rating : average,
-          count: counts
-        };
-      },
+      // ratings: function() {
+        // console.log("functionalities " + this.postId);
+        // var counts = rating.find({postId: Session.get('routePostId')}).count();
+        // var rate = rating.find({postId: Session.get('routePostId')});
+
+        // var counts = rating.find({postId: this.postId}).count();
+        // var rate = rating.find({postId: this.postId});
+        // var sum = 0;
+        // rate.forEach(function(item)  {
+        //   sum = sum + item.points;
+        // });
+        // var average = sum/counts;
+
+        // console.log("Average Rating " + average);
+        
+        // return {
+        //   rating : average,
+        //   count: counts
+        // };
+      // },
+
       postCreatedBy : function(createdById) {
         var userDoc = Meteor.users.findOne({_id: createdById});
         return userDoc.username;        
@@ -404,22 +405,26 @@ alert('after');
 };
 
 Template.home.rendered = function () {
-   $('.posts-Over-text').hide();
-    $('#questionDetail').hide();
-    $('#loginDetail').hide();
-    $('.leftContent').css('height',window.innerHeight-141);
+   // $('.posts-Over-text').hide();
+    // $('#questionDetail').hide();
+    // $('#loginDetail').hide();
+    // $('.leftContent').css('height',window.innerHeight-141);
 };
 
 Template.postDetail.rendered = function() { 
   addTwitterWidget();
    addFbLikeWidget();
    this.$('.rateit').rateit();
-    this.$('.rateit').bind('rated', function(event, value) {
+   var routepostId = this.data.postId;
+
+   this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
             $('#userLoginForm').openModal();
           } else {
             // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
-            Meteor.call('insertrating', Meteor.userId(), Session.get('routePostId'), value);
+            // Meteor.call('insertrating', Meteor.userId(), Session.get('routePostId'), value);
+            // alert(Meteor.userId() +  " , " + routepostId + " , " + value);
+            Meteor.call('insertrating', Meteor.userId(), routepostId, value);
           }
     });
 };

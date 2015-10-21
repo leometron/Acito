@@ -17,16 +17,30 @@ Router.route('/', {
 Router.route('/tam/post/:title/:_postId', {    
   layoutTemplate: 'basicLayout',	
   name: 'postDetail',
+   waitOn: function() { 
+     return Meteor.subscribe('rating');
+   },
+
    data: function() {
     console.log('posts count...........'+Posts.find({}).count());
       var postDoc = Posts.findOne({ _id: this.params._postId });
       
+      var counts = rating.find({postId: this.params._postId}).count();
+      var rate = rating.find({postId: this.params._postId});
+      var sum = 0;
+        rate.forEach(function(item)  {
+          sum = sum + item.points;
+        });
+        var average = sum/counts;
+
+        console.log("Average Rating "+average +"  "+ counts);
+
       Meteor.setTimeout(function() {
           $('#list'+postDoc._id).html(postDoc.description);
           $('#detail'+postDoc._id).html(postDoc.description);
-      }, 200);
+      }, 100);
 
-      Session.set('routePostId', this.params._postId);
+      // Session.set('routePostId', this.params._postId);
     //   // console.log('meteor user.......'+Meteor.users.find().count());
     //   if (typeof Meteor.users.findOne({_id: postDoc.createdBy}) === "object") {
     //     var userDoc = Meteor.users.findOne({_id: postDoc.createdBy});
@@ -36,7 +50,10 @@ Router.route('/tam/post/:title/:_postId', {
       return {
         images: featuredimage.find({postId:this.params._postId}, { limit:3 }),    
         // post: postDoc
-        post: Posts.findOne({ _id: this.params._postId })
+        post: Posts.findOne({ _id: this.params._postId }),
+        postId: this.params._postId,
+        rating: average,
+        count: counts
       };
     }       
 });
@@ -44,6 +61,16 @@ Router.route('/tam/post/:title/:_postId', {
 Router.route('/ask', {
   layoutTemplate: 'basicLayout',  
   name: 'questionDetail'  
+});
+
+Router.route('/tam/grannytherapy-team', {
+  layoutTemplate: 'basicLayout',  
+  name: 'about'  
+});
+
+Router.route('/doctor', {
+  layoutTemplate: 'basicLayout',  
+  name: 'doctor'  
 });
 
 Router.route('/readmore', {
