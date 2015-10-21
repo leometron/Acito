@@ -391,9 +391,7 @@ Template.postList.rendered = function () {
 };
 
 Template.header.rendered = function () {
-  alert('before');
   $('#questionArea').val("");
-alert('after');  
   $('.button-collapse').sideNav();
 
   $('.search').click(function(){
