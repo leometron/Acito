@@ -88,7 +88,12 @@ Template.header.events({
       Meteor.setTimeout(function(){
           $('#questionEmptyInfo').html('');
       }, 3200);        
-   },   
+   },
+   'click .dr,.drName' : function() {
+        Meteor.setTimeout(function(){    
+          Router.go('/dr');
+        },100);      
+   }
 });
 
 Template.home.events({
@@ -112,7 +117,7 @@ Template.home.events({
         } else {
             $(window).scrollTop(572);
             $('#search_modal').closeModal();
-            Router.go('/posts?queryString='+$('#searchQuery').val());
+            Router.go('/tam/category/search-posts?queryString='+$('#searchQuery').val());
             $('#searchQuery').val("");
             if($("label").hasClass("active")) {
                $("label").removeClass("active")

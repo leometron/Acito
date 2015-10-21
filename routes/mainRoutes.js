@@ -46,6 +46,16 @@ Router.route('/ask', {
   name: 'questionDetail'  
 });
 
+Router.route('/tam/grannytherapy-team', {
+  layoutTemplate: 'basicLayout',  
+  name: 'about'  
+});
+
+Router.route('/dr', {
+  layoutTemplate: 'basicLayout',  
+  name: 'dr'  
+});
+
 Router.route('/readmore', {
   layoutTemplate: 'basicLayout',  
   name: 'readMore', 
