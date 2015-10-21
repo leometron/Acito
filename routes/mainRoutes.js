@@ -69,7 +69,6 @@ Router.route('/tam/category/:mainCategory/:subCategory?', {
             searchResultCount : Posts.find({title:new RegExp(this.params.query.queryString,'i'),status:"Published"}).count()
         }        
     }
-
    }
 });   
 

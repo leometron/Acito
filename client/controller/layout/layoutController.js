@@ -57,7 +57,7 @@ Template.header.events({
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
       Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
    },
-   'click #grannyLogo' : function()  {
+   'click #grannyLogo' : function() {
       Session.set('categoryName','');    
       Router.go('/');
    },
@@ -88,7 +88,19 @@ Template.header.events({
       Meteor.setTimeout(function(){
           $('#questionEmptyInfo').html('');
       }, 3200);        
-   },   
+   },
+   // 'click .tagPage' : function () {
+   //    $(window).scrollTop(0);    
+   //    Session.set('categoryName',$(event.target).attr("name"));
+   //    Session.set('subCategory',$(event.target).attr("name"));
+   //    $('.button-collapse').sideNav('hide');
+   //    Session.set("pageId", "");
+   //    Session.set('numberOfCount', 6);
+   //    Session.set('selectedPostId', "");
+   //    Session.set("pageId", $(event.target).attr("id"));
+   //    Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
+   //    Router.go('/tam/category/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
+   // }
 });
 
 Template.home.events({
@@ -110,9 +122,9 @@ Template.home.events({
         if(!$('#searchQuery').val()) {
             $('#searchEmptyInfo').html('Please enter search string');
         } else {
-            $(window).scrollTop(572);
+            $(window).scrollTop(0);
             $('#search_modal').closeModal();
-            Router.go('/posts?queryString='+$('#searchQuery').val());
+            Router.go('/tam/category/search-posts?queryString='+$('#searchQuery').val());
             $('#searchQuery').val("");
             if($("label").hasClass("active")) {
                $("label").removeClass("active")
@@ -299,7 +311,10 @@ Template.header.helpers({
    },
    'category' : function() {
       return Session.get('categoryName');
-   }
+   },
+    'tagsList' : function() {
+        return Pages.find({priority:"yes"});
+    },   
 });
 
 Template.readMore.helpers({
@@ -375,7 +390,9 @@ Template.postList.rendered = function () {
 };
 
 Template.header.rendered = function () {
+  alert('before');
   $('#questionArea').val("");
+alert('after');  
   $('.button-collapse').sideNav();
 
   $('.search').click(function(){

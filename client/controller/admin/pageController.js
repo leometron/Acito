@@ -22,6 +22,7 @@ Template.pages.helpers({
         alignment: 'center'
     }); 
     var status = Session.get('pageStatus');
+    var bulkOptionArr = ['Delete', 'Move to Bin'];
     if ( status == "all" ) {
        $('#pageAll').css('color','red');
     } else if ( status == "published" ) {
@@ -29,10 +30,19 @@ Template.pages.helpers({
     } else if ( status == "draft" ) {
        $('#pageDraft').css('color','red');
     } else if ( status == "bin" ) {
+        bulkOptionArr = ['Delete'];
        $('#pageBin').css('color','red');
     } else {
         $('#pageAll').css('color', 'red');
     }
+    var t = '<li class="action-item">Bulk Actions</li>';
+    $('ul#bulkActions').html('');
+    
+    for(var i = 0; i < bulkOptionArr.length; i++) {
+        t += '<li class="divider"></li>'
+            +'<li class="action-item">' + bulkOptionArr[i] + '</li>';
+    }
+    $('ul#bulkActions').html(t);
 };
 
   Template.addNewPage.rendered = function(){
@@ -182,7 +192,13 @@ Template.addNewPage.events({
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#comments').val()) ? "-" : $('#comments').val();
-            Meteor.call('insertPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle);
+            var priority;
+            if ($('#yesButton').prop('checked')) {
+                priority = "yes";
+            } else {
+                priority = "no";
+            }
+            Meteor.call('insertPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle, priority);
             Router.go('/admin/pages');
             Session.set('parentId', '');
             Session.set('parentTitle', '');
@@ -196,7 +212,13 @@ Template.addNewPage.events({
             var parentId = (!Session.get('parentId')) ? "null" : Session.get('parentId');
             var parentTitle = (!Session.get('parentTitle')) ? "null" : Session.get('parentTitle');
             var pagecomment = (!$('#comments').val()) ? "-" : $('#comments').val();
-            Meteor.call('draftPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle);
+            var priority;
+            if ($('#yesButton').prop('checked')) {
+                priority = "yes";
+            } else {
+                priority = "no";
+            }            
+            Meteor.call('draftPagesData', $('#title').val(), pagecomment, getCurrentDate(), parentId, parentTitle, priority);
             Router.go('/admin/pages');
             Session.set('parentId', '');
             Session.set('parentTitle', '');
@@ -282,13 +304,13 @@ Template.addNewPage.events({
 });
 
 Template.addNewPage.helpers({
-    'PublishedPages': function () {
+    selectedPage: function () {
         var selectedPages = Session.get('selectedPages');
         return Pages.findOne(selectedPages);
     },
 
-    'parentPages': function () {
-        return Pages.find({parentId: 'null'});
+    parentPages: function () {
+        return Pages.find({parentId: 'null', status: 'Published'});
     }
 });
 

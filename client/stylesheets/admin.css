@@ -556,3 +556,13 @@ body, #main {
     height: 100px;
     padding: 10px;
 }
+
+.stButton .stMainServices, .stArrow .stHBubble {
+    height: 22px !important;
+}
+
+#twitter-widget-1 {
+    margin-right: 7px !important;
+    margin-bottom: -7px !important;
+    height: 22px !important;
+}

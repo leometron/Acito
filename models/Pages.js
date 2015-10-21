@@ -34,6 +34,9 @@ Pages.attachSchema(
         },
         parentTitle: {
             type: String
+        },
+        priority: {
+            type: String
         }
 
 

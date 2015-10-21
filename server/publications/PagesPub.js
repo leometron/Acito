@@ -44,7 +44,7 @@ Meteor.publish('Pages', function () {
 //Define all the methods interact with the PAGES object
 Meteor.methods({
 
-    'insertPagesData': function (title, content, date, parentId, parentTitle) {
+    'insertPagesData': function (title, content, date, parentId, parentTitle, priorityField) {
         var currentUserId = Meteor.userId();
         Pages.insert({
             title: title,
@@ -55,14 +55,15 @@ Meteor.methods({
             createdAt: date,
             status: "Published",
             parentId: parentId,
-            parentTitle: parentTitle
+            parentTitle: parentTitle,
+            priority: priorityField
         });
         if (Pages.find().count() == 1) {
             Pages._ensureIndex({title: "text"});
         }        
     },
 
-    'draftPagesData': function (title, content, date, parentId, parentTitle) {
+    'draftPagesData': function (title, content, date, parentId, parentTitle, priorityField) {
         var currentUserId = Meteor.userId();
         Pages.insert({
             title: title,
@@ -73,7 +74,8 @@ Meteor.methods({
             createdAt: date,
             status: "Draft",
             parentId: parentId,
-            parentTitle: parentTitle
+            parentTitle: parentTitle,
+            priority: priorityField
         });
     },
 
