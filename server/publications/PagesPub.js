@@ -92,7 +92,7 @@ Meteor.methods({
         });
     },
 
-    'deletePagesData': function (pageTitle, pageComments, selectedPages, parentId, parentTitle) {
+    'updateBinPages': function (pageTitle, pageComments, selectedPages, parentId, parentTitle) {
         Pages.update(selectedPages, {
             $set: {
                 title: pageTitle,

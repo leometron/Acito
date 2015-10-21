@@ -24,11 +24,10 @@
       <div class="col s12 m12 l12">
           <div id="list{{post._id}}" class="description_1">  
           </div>
-           <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
-           <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
-           {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
-<!--            <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a> -->
-<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
+            <div class="rateit" data-rateit-value="{{rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
+           <span>Rating: {{#if rating}}{{rating}}{{else}}0{{/if}}/ <strong>5</strong>
+           {{#if count}}({{count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
+          <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
 
 <span class='st_sharethis_hcount' displayText='ShareThis' st_title="{{post.title}}"></span>
     <span class='st_facebook_hcount' displayText='Facebook' st_title="{{post.title}}"></span>
@@ -62,7 +61,6 @@
       </div>
      <!-- {{/if}} -->
     <span class="right" style="color:#7A7A7A; margin-right:10px;">published on {{formatDate post.createdAt}} | by {{postCreatedBy post.createdBy}}</span>
-
     <div class="row" style="margin-left: 20px; margin-top: 55px;">
     <div id="detail{{post._id}}" class="description_2 col l12">  
     </div>
@@ -71,12 +69,12 @@
    <div class="row" style="margin-left:17px; margin-top:40px">
       <div class="col s12 m12 l3">
           <div style="margin-top:20px; margin-bottom: 45px;">
-           <div class="rateit" data-rateit-value="{{ratings.rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
-           <span>Rating: {{#if ratings.rating}}{{ratings.rating}}{{else}}0{{/if}}/ <strong>5</strong>
-           {{#if ratings.count}}({{ratings.count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
-<!--            <a href="https://twitter.com/share" class="twitter-share-button" data-via="sharethis" data-count="horizontal"></a> -->
-</div>
-</div>
+           <div class="rateit" data-rateit-value="{{rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
+           <span>Rating: {{#if rating}}{{rating}}{{else}}0{{/if}}/ <strong>5</strong>
+           {{#if count}}({{count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
+            <!-- <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a> -->
+          </div>
+      </div>
 <div class="col s12 m12 l9" style="margin-top:20px">
 <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
 
