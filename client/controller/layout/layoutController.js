@@ -8,7 +8,13 @@ Meteor.subscribe('featuredimage');
 // Meteor.subscribe('rating');
 
 Template.header.events({
-
+   'click .select-question-row' : function() {
+      if (this._id) {
+        $(window).scrollTop(0);
+        Meteor.call('countQuestion', this._id);
+        Router.go('/question?id='+ this._id);      
+      }
+    },
     'click #logout': function() {
       Meteor.setTimeout(function () {
             Meteor.logout();
@@ -27,6 +33,7 @@ Template.header.events({
          $('.page'+this._id).addClass('page-selection');
          var subPagesCount = Pages.find({parentId:this._id}).count();
          if(subPagesCount == 0) {
+          $('.button-collapse').sideNav('hide');
            Session.set('categoryName',$(event.target).attr("name"));      
            Session.set("pageId", "");
            Session.set('numberOfCount', 6);
@@ -285,7 +292,10 @@ Template.header.helpers({
    },
     'tagsList' : function() {
         return Pages.find({priority:"yes"});
-    },   
+    },
+    'questionList': function () {
+        return questionDetail.find({status:"active"});
+   }   
 });
 
 Template.readMore.helpers({

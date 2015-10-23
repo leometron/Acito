@@ -13,7 +13,7 @@
         <div style="text-align:center; color: #B96618; font-size: 22px; margin-top:4%;"><span>No results found</span></div>
       {{else}}
       {{#if searchResultCount}}
-          <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
+          <div style="display:table;width:100%; table-layout:fixed;">
             <div style="display:table-cell; width:40px; vertical-align:middle; text-align:center" class="back-arrow">
                 <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
             </div>
@@ -29,7 +29,7 @@
                 {{#if equals featuredImage '-'}}
                 {{else}}
                 <div class="card-image">
-                  <img src="{{featuredImage}}" style="width:100%;height:200px">
+                  <img src="{{featuredImage}}" style="width:100%;height:180px">
                   <span class="card-title">{{title}}</span>
                 </div>
                 {{/if}}

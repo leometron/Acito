@@ -650,8 +650,13 @@ body, #main {
      left: 17%;
     padding: 10px 10px 15px;
     position: absolute;
-    top: 140px;
-    width: 83%;
+    top: 135px;
+    width: 66.8%;
+}
+
+.select-question-row:hover {
+    color: #754719;
+    cursor: pointer;
 }
 
 .all-questions{

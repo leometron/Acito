@@ -66,8 +66,9 @@
 }
 
 .card-content {
-    height: 180px;
+    height: 150px;
     color: #000000;
+    overflow: hidden;
 }
 
 .card-content p{
@@ -241,11 +242,12 @@
    overflow-y:scroll;
    width:18%;
    z-index:1;
+   height: 100%;
 }
 
-/*.leftContent:hover{
+.leftContent:hover{
   overflow-y:scroll;
-}*/
+}
 
 .sm_content{
   padding:10px;

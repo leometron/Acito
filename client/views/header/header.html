@@ -26,7 +26,7 @@
               <div class="white_bg">
                 <img src="/images/grannylogo.png" class="logo"/>
               </div>
-              <div class="logo_title">Granny Theraphy</div>
+              <div class="logo_title">Granny Therapy</div>
             </div>
             <div class="hrClass"></div>
             <div class="">
@@ -59,10 +59,25 @@
               margin-left: 5px; padding: 0 20px; background: #558B2F none repeat scroll 0 0;color: yellow;">Ask</button>
               <!-- <img src="/images/ask.png" width="80" height="60" style="margin-bottom:-19px; cursor:pointer"> -->
               <span style="position:absolute; right:13%; height:95px; margin-top:3px;"> 
-              <img src="/images/dr.png" width="100" height="80" class="dr">
+              <img src="/images/dr.png" width="100" height="76" class="dr">
               </span>
-              <span class="drName" style="font-size: 14px; font-weight: bold; line-height: 1.3; margin-top: 46px; position: absolute; right: 10px; text-align: left;">Dr.Sankar Narayanan<br><span style="font-size:11px">B.S.M.S, D.P.N.H.E, D.Yoga</span></span>
+              <span class="drName" style="font-size: 14px; font-weight: bold; line-height: 1.3; margin-top: 43px; position: absolute; right: 10px; text-align: left;">Dr.Sankar Narayanan<br><span style="font-size:11px">B.S.M.S, D.P.N.H.E, D.Yoga</span></span>
             </div>
+
+
+          <div class="hide-on-med-and-down" style="background: #87c540 none repeat scroll 0 0; border-top: 1px solid #E0E0E0; float: right; height: 455px; width: 16%;">
+            <div style="color:#da682d; text-align:center; font-size: 17px; font-weight: bold; margin:-10px">Answers</div>
+            <div class="divider"></div>
+            <div class="row">
+            {{#each questionList}}
+                <div class="col-md-12 select-question-row" style="line-height: 1.7; overflow: hidden; padding: 10px 10px 10px; text-overflow: ellipsis; white-space: nowrap; width: 97%;">
+                    {{question}}
+                </div>
+                <div class="divider">
+              </div>
+            {{/each}}
+           </div>
+          </div>
 
 
             <div class="hide-on-large-only" style="background: #87c540 none repeat scroll 0 0; width: 100%;">
@@ -92,7 +107,7 @@
       <div class="white_bg">
         <img src="/images/grannylogo.png" class="logo"/>
       </div>
-      <div class="logo_title">Granny Theraphy</div>
+      <div class="logo_title">Granny Therapy</div>
     </div>
     <div class="hrClass"></div>
 <!--     <div style="background: #558b2f none repeat scroll 0 0; height: 9.5px; position: absolute; right: -17px;
