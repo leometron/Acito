@@ -1,6 +1,6 @@
 # ACITO - Powerful CMS in Meteor
 
-Acito is a Web OS/Platform and content management system. You can install various modules above Acito to make it more robust and usable. Enjoy Acito!!!!
+Acito is a Web OS/Platform as well as a powerful Content Management System. You can install various other modules in Acito to make it more robust and usable. Enjoy Acito!!!!
 
 <!-- toc -->
 
@@ -20,7 +20,7 @@ Acito is a Web OS/Platform and content management system. You can install variou
 
 <!-- toc stop -->
 
-The boilerplate looks like following: [boilerplate.meteor.com](http://boilerplate.meteor.com). Have a look at [starthacking](http://starthacking.meteor.com/) for a project created with this boilerplate.
+The boilerplate looks like the following: [boilerplate.meteor.com](http://boilerplate.meteor.com). Have a look at [starthacking](http://starthacking.meteor.com/) for a project created with this boilerplate.
 
 ## Installing with orion-cli
 
@@ -31,10 +31,10 @@ npm install -g orion-cli
 This will install the [orion-cli](https://github.com/matteodem/orion-cli) tool, which can be used for scaffolding files with different profiles.
 You can still clone the repository, which doesn't give you the profile and scaffolding support.
 
-## How to use
+## How to use 
 
 ```sh
-# Assuming meteor is already installed
+# Assume meteor is already installed
 orion create appName
 cd appName && meteor
 ```
@@ -52,8 +52,8 @@ You can create models, views, change profiles and reset the project with the con
 
 ### Removing default code
 
-There's already a lot of predefined code in this boilerplate, to show you the possible functionality. However, if you want to start off with an
-empty project use the provided command to get rid off all the code you don't need.
+There's already a lot of predefined codes in this boilerplate, to show you the possible functionality. However, if you want to start off with an
+empty project, use the provided command to get rid off all the codes you won't need.
 
 ```sh
 orion reset
@@ -96,7 +96,7 @@ Router.route('/about', function () {
 ### Adding allow rules for external URLs
 
 The [browser-policy](https://atmospherejs.com/meteor/browser-policy) adds rules to deny all operations from external URLs.
-This helps dealing with clickjacking and other XSS methods used to attack the client. To whitelist a url, add following to 
+This helps dealing with clickjacking and other XSS methods used to attack the client. To whitelist a url, add the following to 
 __server/config/security.js__
 
 ```javascript
