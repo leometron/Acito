@@ -2,11 +2,11 @@
     <div class="navbar-fixed">
        <nav class="light-green darken-3" role="navigation" style="height:45px">
           <div class="nav-wrapper nav_wrapper_margin">
-            <div class="hide-on-med-only hide-on-small-only">
+            <div class="hide-on-med-and-down">
              <a href="#" class="sm_headerTitle">{{category}}</a>
              </div>
              <div class="hide-on-large-only">
-              <a href="#" class="sm_headerTitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 140px;">{{category}}</a>
+              <a href="#" class="sm_headerTitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 140px; text-align: right;">{{category}}</a>
              </div>
              <div style="left: 19%; position: absolute; top: -9px; z-index:1">
                <a href="/tam/grannytherapy-team" style="padding-right: 15px;">குழு</a>
@@ -43,8 +43,8 @@
 
 <!--           <div style="background: #FDFEFB none repeat scroll 0 0; height: 11px; position: absolute;
                 width: 100%; z-index: 10;"></div> -->
-            <div class="hide-on-med-only hide-on-small-only" style="background: #87c540 none repeat scroll 0 0; margin-left: 16.7%;width: 83.3%; height:85px">
-                <div style="left: 11.9%; position: absolute; top: 103%; transform: rotate(-31deg);">
+            <div class="hide-on-med-and-down" style="background: #87c540 none repeat scroll 0 0; margin-left: 16.7%;width: 83.3%; height:85px">
+                <div style="left: 11.9%; position: absolute; top: 103%; transform: rotate(-31deg); -webkit-transform: rotate(-31deg); -moz-transform: rotate(-31deg); -ms-transform: rotate(-31deg); -o-transform: rotate(-31deg);">
                 <span style="background: #558b2f none repeat scroll 0 0; font-weight: bold; padding: 10px 64px; color: yellow;">Ask Question</span></div>
               <textarea id="questionArea" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 45px; line-height: 1.5; margin-left: 13%; margin-top: 2%; overflow: hidden; resize: none; width: 50%;">
               </textarea>
@@ -67,12 +67,11 @@
               </div> -->
               <div class=" col s12 m12 drName" style="line-height: 1.5; font-weight:bold; font-size: 12px; margin-left:1px;">Dr.Sankar Narayanan <span style="font-size:8px;">B.S.M.S, D.P.N.H.E, D.Yoga</span></div>
               <div class="col s9 m9">
-              <textarea id="" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 35px; line-height: 1.5;                 margin-top: 1.6%; overflow: hidden; resize: none;">
-              </textarea>
+              <textarea id="questionArea" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 35px; line-height: 1.2; margin-top: 1.6%; overflow: hidden; resize: none; width:100%;"></textarea>
             </div>
               <div class="col s3 m3">
-              <button class="btn waves-effect waves-light" type="button" style="margin-left: -7px;
-              margin-top: -17px; padding: 0 12px;" id="askQuestion">Ask</button>
+              <button class="btn waves-effect waves-light" type="button" id="askQuestion" style="margin-top: -28px;
+              margin-left: -5px; padding: 0 10px; background: #558B2F none repeat scroll 0 0;color: yellow; width: 50px;">Ask</button>
               </div>
               </div>
               
@@ -81,7 +80,7 @@
 
     </div>
 
-  <div class="leftMenu hide-on-med-only hide-on-small-only">
+  <div class="leftMenu hide-on-med-and-down">
     <div id="grannyLogo" align="center">
       <div class="white_bg">
         <img src="/images/grannylogo.png" class="logo"/>

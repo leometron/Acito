@@ -61,33 +61,11 @@ Template.header.events({
       Session.set('categoryName','');    
       Router.go('/');
    },
-   'click #askQuestion' : function() {
-      if (!$('#questionArea').val()) {
-          // $('#questionEmptyInfo').html('Please enter question');
-            Materialize.toast('Please enter your question', 3000, 'error-toast');          
-      } else if (!Meteor.userId()) {
-        Session.set('question',$('#questionArea').val());
-        // Session.setPersistent('question',$('#questionArea').val()) 
-         Meteor.setTimeout(function() {
-            $(window).scrollTop(0);  
-          },300);
-          $('#question_modal').closeModal();
-          $('#userLoginForm').openModal();
-      } else {
-        Session.set('question',$('#questionArea').val());
-          Meteor.setTimeout(function(){
-            $(window).scrollTop(0);
-              $('#question_modal').closeModal();
-              $('#questionArea').val("");
-              if($("label").hasClass("active")) {
-               $("label").removeClass("active")
-              }  
-            Router.go('/ask');
-          },300);
-      }
-      Meteor.setTimeout(function(){
-          $('#questionEmptyInfo').html('');
-      }, 3200);        
+   'click .hide-on-large-only #askQuestion' : function() {
+      askQuestion('hide-on-large-only');     
+   },
+   'click .hide-on-med-and-down #askQuestion' : function() {
+      askQuestion('hide-on-med-and-down');     
    },
    'click .dr,.drName' : function() {
         Meteor.setTimeout(function(){    
@@ -493,4 +471,33 @@ function addFbLikeWidget() {
       js.src = "http://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
       fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+}
+
+function askQuestion(paerentClass) {
+  if (!$('.' + paerentClass + ' #questionArea').val()) {
+          // $('#questionEmptyInfo').html('Please enter question');
+            Materialize.toast('Please enter your question', 3000, 'error-toast');          
+      } else if (!Meteor.userId()) {
+        Session.set('question',$('.' + paerentClass + ' #questionArea').val());
+        // Session.setPersistent('question',$('#questionArea').val())
+         Meteor.setTimeout(function() {
+            $(window).scrollTop(0);  
+          },300);
+          $('#question_modal').closeModal();
+          $('#userLoginForm').openModal();
+      } else {
+        Session.set('question',$('.' + paerentClass + ' #questionArea').val());
+          Meteor.setTimeout(function(){
+            $(window).scrollTop(0);
+              $('#question_modal').closeModal();
+              $('.' + paerentClass + ' #questionArea').val("");
+              if($("label").hasClass("active")) {
+               $("label").removeClass("active")
+              }  
+            Router.go('/ask');
+          },300);
+      }
+      Meteor.setTimeout(function(){
+          $('#questionEmptyInfo').html('');
+      }, 3200);   
 }

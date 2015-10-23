@@ -446,6 +446,12 @@ body, #main {
    }
 }
 
+@media(max-width: 600px){
+  .smallDevice {
+    height: 80px  !important;
+  }    
+}
+
 .load-content-design {
   text-align: center;
   margin-top: 2%;

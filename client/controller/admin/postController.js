@@ -87,6 +87,7 @@ Template.posts.events({
 	},
 	'click .post': function () {
 		Session.set('selectedPostId', this._id);
+		Session.set('postImage', '');
 		Router.go("/admin/posts/edit");
 	}, 
 	'click #searchPost' : function (event) {
