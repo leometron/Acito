@@ -22,8 +22,8 @@ Router.route('/tam/post/:title/:_postId', {
    },
 
    data: function() {
-    console.log('posts count...........'+Posts.find({}).count());
-      var postDoc = Posts.findOne({ _id: this.params._postId });
+    // console.log('posts count...........'+Posts.find({}).count());
+      // var postDoc = Posts.findOne({ _id: this.params._postId });
       
       var counts = rating.find({postId: this.params._postId}).count();
       var rate = rating.find({postId: this.params._postId});
@@ -33,12 +33,12 @@ Router.route('/tam/post/:title/:_postId', {
         });
         var average = sum/counts;
 
-        console.log("Average Rating "+average +"  "+ counts);
+        // console.log("Average Rating "+average +"  "+ counts);
 
-      Meteor.setTimeout(function() {
-          $('#list'+postDoc._id).html(postDoc.description);
-          $('#detail'+postDoc._id).html(postDoc.description);
-      }, 100);
+      // Meteor.setTimeout(function() {
+      //     $('#list'+postDoc._id).html(postDoc.description);
+      //     $('#detail'+postDoc._id).html(postDoc.description);
+      // }, 100);
 
       // Session.set('routePostId', this.params._postId);
     //   // console.log('meteor user.......'+Meteor.users.find().count());
@@ -68,9 +68,9 @@ Router.route('/tam/grannytherapy-team', {
   name: 'about'  
 });
 
-Router.route('/dr', {
+Router.route('/doctor', {
   layoutTemplate: 'basicLayout',  
-  name: 'dr'  
+  name: 'doctor'  
 });
 
 Router.route('/readmore', {
@@ -96,7 +96,6 @@ Router.route('/tam/category/:mainCategory/:subCategory?', {
             searchResultCount : Posts.find({title:new RegExp(this.params.query.queryString,'i'),status:"Published"}).count()
         }        
     }
-
    }
 });   
 

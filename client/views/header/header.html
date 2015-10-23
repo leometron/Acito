@@ -9,6 +9,9 @@
               <a href="#" class="sm_headerTitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 140px; text-align: right;">{{category}}</a>
              </div>
              <div style="left: 19%; position: absolute; top: -9px; z-index:1">
+              {{#each tagsList}}
+               <a href="/tam/category/{{title}}?pageId={{_id}}" style="padding-right: 15px;font-size: 12px;">{{title}}</a>
+              {{/each}}
                <a href="/tam/grannytherapy-team" style="padding-right: 15px;">குழு</a>
              </div>
             <a href="#" data-activates="slide-out" style="margin-right:20px; margin-top:-6px" class="button-collapse">

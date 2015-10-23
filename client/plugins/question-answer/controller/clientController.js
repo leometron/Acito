@@ -3,9 +3,9 @@ Template.questionDetail.events({
 		var question = $('#question').val();
 		var details = $('#questionDetails').val();
 		if (!question) {
-			$('#emptyQuestionInfo').show();
+			Materialize.toast('Enter a Question', 3000, 'error-toast');
 		} else if (!details) {
-			$('#emptyDetailInfo').show();
+			Materialize.toast('Enter a question details', 3000, 'error-toast');
 		} else {
 			var majorComplaint = (!$('#majorComplaint').val() ) ? "-" : $('#majorComplaint').val();		
 			var detailExplanation = (!$('#detailExplanation').val() ) ? "-" : $('#detailExplanation').val();			
@@ -21,10 +21,10 @@ Template.questionDetail.events({
 			// history.back();
 			Router.go('/');
 		}
-		Meteor.setTimeout(function () {
-			$('#emptyQuestionInfo').hide(),
-			$('#emptyDetailInfo').hide();
-		},5000);
+		// Meteor.setTimeout(function () {
+		// 	$('#emptyQuestionInfo').hide(),
+		// 	$('#emptyDetailInfo').hide();
+		// },5000);
 	},
 	'click #closeAskQuestion': function () {
         // $('#questionDetail').hide();
@@ -36,8 +36,8 @@ Template.questionDetail.events({
 });
 
 Template.questionDetail.rendered = function() {
-	$('#emptyQuestionInfo').hide();
-	$('#emptyDetailInfo').hide();
+	// $('#emptyQuestionInfo').hide();
+	// $('#emptyDetailInfo').hide();
 	$("#questioncol label").addClass("active");
     // $('#question').val(Session.get('question'));           	
 	clearQuestionContent();
@@ -63,7 +63,8 @@ Template.questionAnswer.events({
 	'click #client-post-answer' : function () {
 		var answer = $('#answer').val();
 		if(!answer) {
-			$('#emptyAnswerInfo').show();
+			// $('#emptyAnswerInfo').show();
+			Materialize.toast('Enter a answer', 3000, 'error-toast');
 		} else if(!Meteor.userId()) {
 			Router.go('/login');
 		} else {
@@ -71,12 +72,12 @@ Template.questionAnswer.events({
 			$('#answer').val("");
 			history.back();
 		}
-		Meteor.setTimeout(function () {
-			$('#emptyAnswerInfo').hide()
-		},5000);			
+		// Meteor.setTimeout(function () {
+		// 	$('#emptyAnswerInfo').hide()
+		// },5000);			
 	},
 });
 
-Template.questionAnswer.rendered = function() {
-	$('#emptyAnswerInfo').hide()
-}
+// Template.questionAnswer.rendered = function() {
+// 	$('#emptyAnswerInfo').hide()
+// }

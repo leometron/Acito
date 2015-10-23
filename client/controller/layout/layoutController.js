@@ -57,7 +57,7 @@ Template.header.events({
       Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
       Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
    },
-   'click #grannyLogo' : function()  {
+   'click #grannyLogo' : function() {
       Session.set('categoryName','');    
       Router.go('/');
    },
@@ -69,7 +69,7 @@ Template.header.events({
    },
    'click .dr,.drName' : function() {
         Meteor.setTimeout(function(){    
-          Router.go('/dr');
+          Router.go('/doctor');
         },100);      
    }
 });
@@ -93,7 +93,7 @@ Template.home.events({
         if(!$('#searchQuery').val()) {
             $('#searchEmptyInfo').html('Please enter search string');
         } else {
-            $(window).scrollTop(572);
+            $(window).scrollTop(0);
             $('#search_modal').closeModal();
             Router.go('/tam/category/search-posts?queryString='+$('#searchQuery').val());
             $('#searchQuery').val("");
@@ -105,21 +105,21 @@ Template.home.events({
           $('#searchEmptyInfo').html('');
         }, 3500);        
     },
-    'keyup #searchQuery' : function(e){
-      if (e.which == 13) {
-          if (!$('#searchQuery').val()) {
-              $('#searchEmptyInfo').html('Please enter search string');
-          } else {
-            $(window).scrollTop(572);
-            $('#search_modal').closeModal();
-            Router.go('/posts?queryString='+$('#searchQuery').val());
-            $('#searchQuery').val("");                        
-          }        
-      }
-      Meteor.setTimeout(function(){
-        $('#searchEmptyInfo').html('');
-      }, 3500);       
-    },     
+    // 'keyup #searchQuery' : function(e){
+    //   if (e.which == 13) {
+    //       if (!$('#searchQuery').val()) {
+    //           $('#searchEmptyInfo').html('Please enter search string');
+    //       } else {
+    //         $(window).scrollTop(572);
+    //         $('#search_modal').closeModal();
+    //         Router.go('/posts?queryString='+$('#searchQuery').val());
+    //         $('#searchQuery').val("");                        
+    //       }        
+    //   }
+    //   Meteor.setTimeout(function(){
+    //     $('#searchEmptyInfo').html('');
+    //   }, 3500);       
+    // },     
    'click .select-question-row' : function() {
       if (this._id) {
         $(window).scrollTop(0);
@@ -182,19 +182,19 @@ Template.home.events({
     var repassword = t.find('#re-password').value;
 
     if(first_name == '') {
-      $('#Usererr').html("Please enter username");
+      Materialize.toast('Please enter username', 3000, 'error-toast');
       return;
     } else if(new_email == '') {
-      $('#Usererr').html("Please enter email");
+      Materialize.toast('Please enter email', 3000, 'error-toast');
       return;
     } else if(new_password == '') {
-      $('#Usererr').html("Please enter password");
+      Materialize.toast('Please enter password', 3000, 'error-toast');
       return;
     } else if(repassword == '') {
-      $('#Usererr').html("Please enter confirm password");
+      Materialize.toast('Please enter confirm password', 3000, 'error-toast');
       return;
     } else if (new_password != repassword) {
-      $('#Usererr').html("Your password and confirmation password do not match");
+      Materialize.toast('Your password and confirmation password do not match', 3000, 'error-toast');
       return;
     }
 
@@ -202,18 +202,18 @@ Template.home.events({
 
       Accounts.createUser(userDetail, function(error){
         if(error){
-            $('#Usererr').html(error.reason);
+            Materialize.toast(error.reason, 3000, 'error-toast');
         } else if(!$('#questionArea').val()) {
-            $('#Usererr').html("Account has been created and logged in successfully.");
+            Materialize.toast('Account has been created and logged in successfully.', 3000, 'success-toast');
             Meteor.setTimeout(function () {
               $('#userRegistrationForm').closeModal();
-            },2000);
+            },3000);
           } else {
-            $('#Usererr').html("Account has been created and logged in successfully.");
+            Materialize.toast('Account has been created and logged in successfully.', 3000, 'success-toast');
             Meteor.setTimeout(function () {
               $('#userRegistrationForm').closeModal();              
               Router.go('/ask')
-            },2000);
+            },3000);
           }
       });
       return false;
@@ -282,7 +282,10 @@ Template.header.helpers({
    },
    'category' : function() {
       return Session.get('categoryName');
-   }
+   },
+    'tagsList' : function() {
+        return Pages.find({priority:"yes"});
+    },   
 });
 
 Template.readMore.helpers({
@@ -304,27 +307,6 @@ Template.postDetail.helpers({
        var monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December'];
        return monthArr[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
       },
-
-      // ratings: function() {
-        // console.log("functionalities " + this.postId);
-        // var counts = rating.find({postId: Session.get('routePostId')}).count();
-        // var rate = rating.find({postId: Session.get('routePostId')});
-
-        // var counts = rating.find({postId: this.postId}).count();
-        // var rate = rating.find({postId: this.postId});
-        // var sum = 0;
-        // rate.forEach(function(item)  {
-        //   sum = sum + item.points;
-        // });
-        // var average = sum/counts;
-
-        // console.log("Average Rating " + average);
-        
-        // return {
-        //   rating : average,
-        //   count: counts
-        // };
-      // },
 
       postCreatedBy : function(createdById) {
         var userDoc = Meteor.users.findOne({_id: createdById});
@@ -390,13 +372,16 @@ Template.postDetail.rendered = function() {
    this.$('.rateit').rateit();
    var routepostId = this.data.postId;
 
+   var postDoc = Posts.findOne({ _id: routepostId});
+   Meteor.setTimeout(function() {
+      $('#list'+postDoc._id).html(postDoc.description);
+      $('#detail'+postDoc._id).html(postDoc.description);
+   }, 100);
+
    this.$('.rateit').bind('rated', function(event, value) {
           if(!Meteor.userId()){
             $('#userLoginForm').openModal();
           } else {
-            // alert(Meteor.userId() +  " , " + Session.get('selectedPostId') + " , " + value);
-            // Meteor.call('insertrating', Meteor.userId(), Session.get('routePostId'), value);
-            // alert(Meteor.userId() +  " , " + routepostId + " , " + value);
             Meteor.call('insertrating', Meteor.userId(), routepostId, value);
           }
     });
