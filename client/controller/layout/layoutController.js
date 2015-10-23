@@ -204,19 +204,19 @@ Template.home.events({
     var repassword = t.find('#re-password').value;
 
     if(first_name == '') {
-      $('#Usererr').html("Please enter username");
+      Materialize.toast('Please enter username', 3000, 'error-toast');
       return;
     } else if(new_email == '') {
-      $('#Usererr').html("Please enter email");
+      Materialize.toast('Please enter email', 3000, 'error-toast');
       return;
     } else if(new_password == '') {
-      $('#Usererr').html("Please enter password");
+      Materialize.toast('Please enter password', 3000, 'error-toast');
       return;
     } else if(repassword == '') {
-      $('#Usererr').html("Please enter confirm password");
+      Materialize.toast('Please enter confirm password', 3000, 'error-toast');
       return;
     } else if (new_password != repassword) {
-      $('#Usererr').html("Your password and confirmation password do not match");
+      Materialize.toast('Your password and confirmation password do not match', 3000, 'error-toast');
       return;
     }
 
@@ -224,18 +224,18 @@ Template.home.events({
 
       Accounts.createUser(userDetail, function(error){
         if(error){
-            $('#Usererr').html(error.reason);
+            Materialize.toast(error.reason, 3000, 'error-toast');
         } else if(!$('#questionArea').val()) {
-            $('#Usererr').html("Account has been created and logged in successfully.");
+            Materialize.toast('Account has been created and logged in successfully.', 3000, 'success-toast');
             Meteor.setTimeout(function () {
               $('#userRegistrationForm').closeModal();
-            },2000);
+            },3000);
           } else {
-            $('#Usererr').html("Account has been created and logged in successfully.");
+            Materialize.toast('Account has been created and logged in successfully.', 3000, 'success-toast');
             Meteor.setTimeout(function () {
               $('#userRegistrationForm').closeModal();              
               Router.go('/ask')
-            },2000);
+            },3000);
           }
       });
       return false;
