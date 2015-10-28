@@ -805,3 +805,13 @@ body, #main {
   cursor: pointer;
   color: #558B2F;
 }
+
+.all-questions {
+  color:#fff; 
+  font-size:16px
+}
+
+.all-questions:hover {
+  color: #558B2F;
+  cursor: pointer;
+}

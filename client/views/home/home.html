@@ -54,7 +54,7 @@
       {{> questionDetail}}
     </div> -->
 
-    <div style="position:fixed;bottom:0; right: 15px; z-index:1000;">
+    <div style="position:fixed;bottom:0; right: 15px; z-index:1000;" class="hide-on-large-only">
         <ul>
           <li style="display:inline-block; margin-top:10px;">
             <a class="btn-floating green darken-3">
@@ -74,6 +74,11 @@
             </a>
           </li>
         </ul>
+      </div>
+
+      <div style="position:fixed; top:4px; right: 10px; z-index:1000;" class="hide-on-med-and-down">
+          <img src="/images/search.png" width="23" style="margin-left: 8px; margin-top: 9px; cursor:pointer"
+          class="search">
       </div>
 
       <div id="search_modal" class="modal">
