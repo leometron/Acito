@@ -382,7 +382,8 @@ Template.home.rendered = function () {
 
 Template.postDetail.rendered = function() { 
   addTwitterWidget();
-   addFbLikeWidget();
+  addFbLikeWidget();
+  addSharethisWidget();
    this.$('.rateit').rateit();
    var routepostId = this.data.postId;
 
@@ -413,6 +414,18 @@ function addTwitterWidget() {
             fjs.parentNode.insertBefore(js, fjs);
         }
     }(document, 'script', 'twitter-wjs');
+}
+
+
+function addSharethisWidget() {
+  var media_element = document.createElement('script');
+    media_element.src = 'http://w.sharethis.com/button/buttons.js'; 
+    media_element.onload = function()
+      {
+        stLight.options({publisher: "adf6a9e7-f0ba-4402-bfa2-bbf4a9b749d8", doNotHash: true, 
+          doNotCopy: false, hashAddressBar: false, async: true});
+      };
+    document.body.appendChild(media_element);  
 }
 
 Template.registerHelper ("timeanalysis", function(date) {

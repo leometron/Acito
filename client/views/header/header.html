@@ -17,10 +17,17 @@
               <div style="display:inline-block">
                <div class="hide-on-med-and-down">
                <a href="/tam/grannytherapy-team" style="padding-right: 15px; font-size:12px;">குழு</a>
-               <!-- <a href="" style="padding-right: 15px; font-size:12px;" id="logout">Logout</a> -->
+               {{#if currentUser}}
+                <span style="padding-right:15px;">Welcome {{currentUser.username}}</span>
+                <span id="logout" class="logout" style="padding-right:15px;font-size:14px;">Logout</span>
+               {{/if}}
                </div> 
                <div class="hide-on-large-only">
-               <a href="/tam/grannytherapy-team" style="font-size: 15px; left: 60px; position: fixed; top: -6px;">குழு</a>
+               <a href="/tam/grannytherapy-team" style="font-size: 14px; left: 60px; position: fixed; top: -6px;">குழு</a>
+                {{#if currentUser}}
+                  <span style="font-size: 14px; left: 104px; position: fixed; top: -4px;">Welcome {{currentUser.username}}</span>
+                  <span id="logout" class="logout" style="font-size: 14px; left: 215px; position: fixed; top: -4px;">Logout</span>
+                {{/if}} 
                </div> 
                </div>
              </div>
