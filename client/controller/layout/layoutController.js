@@ -78,7 +78,11 @@ Template.header.events({
         Meteor.setTimeout(function(){    
           Router.go('/doctor');
         },100);      
-   }
+   },
+   'click .all-questions' : function() {
+      $(window).scrollTop(0);
+      Router.go('/allquestions');
+    },
 });
 
 Template.home.events({

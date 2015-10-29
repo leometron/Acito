@@ -3,7 +3,7 @@
        <nav class="light-green darken-3" role="navigation" style="height:45px">
           <div class="nav-wrapper nav_wrapper_margin">
             <div class="hide-on-med-and-down">
-             <a href="#" class="sm_headerTitle">{{category}}</a>
+             <a href="#" class="sm_headerTitle" style="margin-right:35px;">{{category}}</a>
              </div>
              <div class="hide-on-large-only">
               <a href="#" class="sm_headerTitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 140px; text-align: right;">{{category}}</a>
@@ -83,6 +83,7 @@
             </div>
             <div class="divider"></div>
             <div class="row">
+              <div style="max-height: 360px; overflow: hidden;">
             {{#each questionList}}
                 <div class="col-md-12 select-question-row" style="line-height: 1.7; overflow: hidden; padding: 10px 10px 10px; text-overflow: ellipsis; white-space: nowrap; width: 97%;">
                     {{question}}
@@ -90,6 +91,10 @@
                 <div class="divider">
               </div>
             {{/each}}
+          </div>
+              <div style="line-height:3.5; text-align:center">
+                <span class="all-questions">All Answers</span>
+              </div>
            </div>
           </div>
 
@@ -106,8 +111,8 @@
               <textarea id="questionArea" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 35px; line-height: 1.2; overflow: hidden; resize: none; width:100%;"></textarea>
             </div>
               <div class="col s3 m3">
-              <button class="waves-effect waves-light" type="button" id="askQuestion" style="background: #558b2f  none repeat scroll 0 0; border: medium none; color: yellow; height: 35px; line-height: 1.5;
-              margin-left: -10px; margin-top: -19px; width: 50px;">Ask</button>
+              <button class="waves-effect waves-light" type="button" id="askQuestion" style="background: #558b2f none repeat scroll 0 0; border: medium none; border-radius: 3px; color: yellow; height: 29px;
+              line-height: 1.5;  margin-left: -10px; margin-top: -19px; width: 50px;">Ask</button>
               </div>
               </div>
               
