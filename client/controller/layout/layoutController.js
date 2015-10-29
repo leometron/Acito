@@ -360,6 +360,7 @@ Template.postList.rendered = function () {
 Template.header.rendered = function () {
   $('#questionArea').val("");
   $('.button-collapse').sideNav();
+  // $('.leftContent').css('height',window.innerHeight-141);
 
   $('.search').click(function(){
       $('#search_modal').openModal();
