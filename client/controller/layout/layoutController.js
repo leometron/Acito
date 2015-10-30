@@ -331,10 +331,7 @@ Template.postDetail.helpers({
         return userDoc.username;        
       },
       locationUrl: function() {
-        // console.log('location by router.go...........'+window.location.href);
-        // return "http://www.google.com";
-        return window.location.href;
-        // return "http://www.grannytherapy.com/tam/மணலிக்கீரை/";
+        return encodeURIComponent(window.location.href);
       }
 });
 
@@ -368,6 +365,7 @@ Template.postList.rendered = function () {
 Template.header.rendered = function () {
   $('#questionArea').val("");
   $('.button-collapse').sideNav();
+  // $('.leftContent').css('height',window.innerHeight-141);
 
   $('.search').click(function(){
       $('#search_modal').openModal();

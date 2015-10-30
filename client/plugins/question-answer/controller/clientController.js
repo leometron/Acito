@@ -1,7 +1,25 @@
 Template.questionDetail.events({
-	'click #postQuestion' : function () {
-		var question = $('#question').val();
-		var details = $('#questionDetails').val();
+	'click .hide-on-large-only #postQuestion' : function() {
+		questiondetails('hide-on-large-only');
+	},
+
+	'click .hide-on-med-and-down #postQuestion' : function() {
+		questiondetails('hide-on-med-and-down');
+	},
+
+	'click #closeAskQuestion': function () {
+        // $('#questionDetail').hide();
+       	Session.set('question','');
+		clearQuestionContent();
+		Router.go('/');
+		Meteor._reload.reload();
+	}
+});
+
+function questiondetails(windowclass) {
+	var question = $('#question').val();
+	var details = $('.' + windowclass + ' #questionDetails').val();
+
 		if (!question) {
 			Materialize.toast('Enter a Question', 3000, 'error-toast');
 		} else if (!details) {
@@ -21,19 +39,9 @@ Template.questionDetail.events({
 			// history.back();
 			Router.go('/');
 		}
-		// Meteor.setTimeout(function () {
-		// 	$('#emptyQuestionInfo').hide(),
-		// 	$('#emptyDetailInfo').hide();
-		// },5000);
-	},
-	'click #closeAskQuestion': function () {
-        // $('#questionDetail').hide();
-       	Session.set('question','');
-		clearQuestionContent();
-		Router.go('/');
-		Meteor._reload.reload();
-	}
-});
+}
+
+
 
 Template.questionDetail.rendered = function() {
 	// $('#emptyQuestionInfo').hide();
