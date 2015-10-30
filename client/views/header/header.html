@@ -5,9 +5,9 @@
             <div class="hide-on-med-and-down">
              <a href="#" class="sm_headerTitle" style="margin-right:35px;">{{category}}</a>
              </div>
-             <div class="hide-on-large-only">
+            <!-- <div class="hide-on-large-only">
               <a href="#" class="sm_headerTitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 140px; text-align: right;">{{category}}</a>
-             </div>
+            </div> -->
              <div style="left: 19%; position: absolute; top: -9px; z-index:1">
               <div class="hide-on-med-and-down" style="display:inline-block">
               {{#each tagsList}}
@@ -25,8 +25,9 @@
                <div class="hide-on-large-only">
                <a href="/tam/grannytherapy-team" style="font-size: 14px; left: 60px; position: fixed; top: -6px;">குழு</a>
                 {{#if currentUser}}
-                  <span style="font-size: 14px; left: 104px; position: fixed; top: -4px;">Welcome {{currentUser.username}}</span>
-                  <span id="logout" class="logout" style="font-size: 14px; left: 215px; position: fixed; top: -4px;">Logout</span>
+                  <span style="left: 104px; overflow: hidden; position: fixed; text-overflow: ellipsis; top: -4px;
+                  white-space: nowrap; width: 150px;">Welcome {{currentUser.username}}</span>
+                  <!-- <span id="logout" class="logout" style="font-size: 14px; left: 215px; position: fixed; top: -4px;">Logout</span> -->
                 {{/if}} 
                </div> 
                </div>
@@ -61,8 +62,6 @@
           </div>
           </div>
 
-<!--           <div style="background: #FDFEFB none repeat scroll 0 0; height: 11px; position: absolute;
-                width: 100%; z-index: 10;"></div> -->
             <div class="hide-on-med-and-down" style="background: #87c540 none repeat scroll 0 0; margin-left: 16.7%;width: 83.3%; height:85px">
                 <div style="left: 11.9%; position: absolute; top: 103%; transform: rotate(-31deg); -webkit-transform: rotate(-31deg); -moz-transform: rotate(-31deg); -ms-transform: rotate(-31deg); -o-transform: rotate(-31deg);">
                 <span style="background: #558b2f none repeat scroll 0 0; font-weight: bold; padding: 10px 64px; color: yellow;">Ask Question</span></div>
@@ -70,7 +69,6 @@
               </textarea>
               <button class="btn waves-effect waves-light" type="button" id="askQuestion" style="margin-top: -28px;
               margin-left: 5px; padding: 0 20px; background: #558B2F none repeat scroll 0 0;color: yellow;">Ask</button>
-              <!-- <img src="/images/ask.png" width="80" height="60" style="margin-bottom:-19px; cursor:pointer"> -->
               <span style="position:absolute; right:13%; height:95px; margin-top:3px;"> 
               <img src="/images/dr.png" width="100" height="76" class="dr">
               </span>
@@ -85,8 +83,10 @@
             <div class="row">
               <div style="max-height: 360px; overflow: hidden;">
             {{#each questionList}}
-                <div class="col-md-12 select-question-row" style="line-height: 1.7; overflow: hidden; padding: 10px 10px 10px; text-overflow: ellipsis; white-space: nowrap; width: 97%;">
+                <div class="col-md-12 select-question-row" style="line-height: 1.7; overflow: hidden; padding: 10px 10px 10px; text-overflow: ellipsis; white-space: nowrap; width: 97%; color:#000">
                     {{question}}
+                </div>
+                <div style="color: #177EE5; font-size: 12px; line-height: 1; margin-top: -13px; margin-bottom: 4px; padding: 5px 10px;">{{timeanalysis createdAt}}<span style="color:#000; padding:5px;">by</span><span>{{questionCreatedBy createdBy}}</span>
                 </div>
                 <div class="divider">
               </div>
@@ -98,14 +98,8 @@
            </div>
           </div>
 
-
             <div class="hide-on-large-only" style="background: #87c540 none repeat scroll 0 0; width: 100%;">
-              <!--div style="left: 13.5%; position: absolute; top: 111%; transform: rotate(-45deg);">
-                <span style="background: #558b2f none repeat scroll 0 0; font-weight: bold; padding: 10px 42px;">Ask Question</span></div> -->
                 <div class="row" style="height:80px">
-<!--               <div class=" col s12 m12" style="height:75px; width:100px; padding-top:5px;"> 
-                <img src="/images/dr.png" width="105" height="70" class="dr">
-              </div> -->
               <div class=" col s12 m12 drName" style="line-height: 1.5; font-weight:bold; font-size: 12px; margin-left:1px;">Dr.Sankar Narayanan <span style="font-size:8px;">B.S.M.S, D.P.N.H.E, D.Yoga</span></div>
               <div class="col s9 m9">
               <textarea id="questionArea" placeholder="Enter Question Here" style="background: #fff none repeat scroll 0 0; border: medium none; border-radius: 3px; color: #000; height: 35px; line-height: 1.2; overflow: hidden; resize: none; width:100%;"></textarea>
@@ -129,11 +123,8 @@
       <div class="logo_title">Granny Therapy</div>
     </div>
     <div class="hrClass"></div>
-<!--     <div style="background: #558b2f none repeat scroll 0 0; height: 9.5px; position: absolute; right: -17px;
-        width: 17px; z-index: 11;"></div> -->
     <div style="background: #FDFEFB none repeat scroll 0 0; height: 100%; position: absolute; right: -18px;
     width: 18px; z-index: 10; top:140px;"></div>
-
     <div class="leftContent">
       {{#if parentPageList}}
         {{#each parentPageList}}
@@ -151,180 +142,4 @@
           {{/if}}
     </div>
   </div>
-
-  <!-- <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>
-  </ul> -->
-        
-
- <!-- <div class="hide-on-med-only hide-on-small-only">
-      <div class="row">
-        <div class="col l2">
-          <div class="leftMenu">
-            <div align="center">
-              <div class="white_bg">
-                <img src="images/grannylogo.png" class="logo"/>
-              </div>
-              <div class="logo_title">Granny Theraphy</div>
-            </div>
-            <div class="hrClass"></div>
-            <div class="leftContent">
-            {{#if parentPageList}}
-            {{#each parentPageList}}
-              <div class="content parent-page leftMenuContent page{{_id}}" id="page{{_id}}">
-                <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
-                margin-bottom:2px">{{title}}</p>
-                {{#if equals isChild "Yes"}}
-                  <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;">
-                {{/if}}
-              </div>
-                <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
-              {{/each}}
-              {{else}}
-                  <div>No categories</div>
-              {{/if}}
-            </div>
-          </div>
-        </div>
-        <div class="col l10">
-          <div class="rightMenu">
-            <div class="header">
-              <div class="headerTitle">Home</div>
-            </div>
-            
-           <div class="innerContainer">
-              <div class="fluid-container">
-                <div class="row margin10">
-                  {{#if equals searchResultCount 0}}
-                    <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
-                  {{else}}
-                  {{#each postsList}}
-                  <div class="col l4">
-                    <div class="card white hoverable">
-                      {{#if equals featuredImage '-'}}
-                      {{else}}
-                        <div class="card-image">
-                            <img src="{{featuredImage}}" style="width:100%;height:200px">
-                            <span class="card-title">{{title}}</span>
-                        </div>
-                      {{/if}}
-                          <div class="card-content">
-                            <p>{{content}}</p>
-                          </div>
-                          <div class="card-action">
-                            <a href="#" class="right" id="read-more">Read More</a>
-                          </div>
-                          </div>
-                        </div>
-                  {{/each}}
-                  {{/if}}
-                </div>
-              </div> 
-            </div>
-          </div>
-        </div>
-      </div> 
-    </div> 
- -->
-
-    <!-- <div class="hide-on-large-only" >
-      <div class="navbar-fixed">
-         <nav class="light-green darken-3" role="navigation">
-            <div class="nav-wrapper nav_wrapper_margin">
-               <a href="#" class="sm_headerTitle">Granny theraphy</a>
-              <a href="#" data-activates="slide-out" style="margin-right:20px;" class="button-collapse">
-                <i class="mdi-navigation-menu"></i>
-              </a>
-            <div id="slide-out" class="side-nav light-green darken-3">
-              <div align="center">
-                <div class="white_bg">
-                  <img src="images/grannylogo.png" class="logo"/>
-                </div>
-                <div class="logo_title">Granny Theraphy</div>
-              </div>
-              <div class="hrClass"></div>
-              <div class="sm_leftContent">
-              {{#if parentPageList}}
-              {{#each parentPageList}}
-              <div class="sm_content content parent-page leftMenuContent page{{_id}}" id="page{{_id}}">
-                <p style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 80%; 
-                margin-bottom:2px">{{title}}</p>
-                {{#if equals parentPageList._id parentId}}
-                  <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;">
-                  {{else}}
-                   <p>some</p> -->
-                  <!-- <img src="images/downarrow.png" class="leftMenuArrow right downarrow" style="margin-right: 16px; margin-top: -17px; width: 15px;"> 
-                {{/if}}
-              </div>
-                <div class="leftMenuSubTitle subpage{{_id}}" id="subpage{{_id}}"></div>
-              {{/each}}
-              {{else}}
-                  <div>No categories</div>
-              {{/if}}
-            </div>
-            </div>
-            </div>
-          </nav>
-      </div>
-    </div>
- -->
-   <!-- <div class="fluid-container hide-on-large-only">
-      <div class="row margin10">
-        {{#if equals searchResultCount 0}}
-          <div style="text-align:center; color: #B96618; font-size: 18px;"><span>No results found</span></div>
-        {{else}}
-        {{#each postsList}}
-        <div class="col l4">
-          <div class="card white">
-            {{#if equals featuredImage '-'}}
-            {{else}}
-                  <div class="card-image">
-                      <img src="{{featuredImage}}" style="width:100%;height:200px">
-                      <span class="card-title">Card Title</span>
-                  </div>
-            {{/if}}
-                  <div class="card-content">
-                    <p>{{content}}</p>
-                  </div>
-                  <div class="card-action">
-                    <a href="#" class="right" id="read-more">Read More</a>
-                  </div>
-                </div>
-              </div>
-              {{/each}}
-            {{/if}}
-          </div>
-      </div>
- -->
-   <!--  <div  class="footer_icon">
-        <ul>
-          <li class="footer_icon_row">
-            <a class="btn-floating light-green darken-3">
-              <i class="material-icons search">search</i>
-            </a>
-          </li>
-          <li class="footer_icon_row">
-            <a class="btn-floating light-green darken-3 paddingleft7">
-              <i class="material-icons question">edit_mode</i>
-            </a>
-          </li>
-          <li class="footer_icon_row">
-            <a class="btn-floating light-green darken-3">
-              <i class="material-icons">list</i>
-            </a>
-          </li>
-        </ul>
-      </div> -->
-
 </template>

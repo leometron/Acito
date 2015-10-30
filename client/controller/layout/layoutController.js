@@ -299,7 +299,11 @@ Template.header.helpers({
     },
     'questionList': function () {
         return questionDetail.find({status:"active"});
-   }   
+   },
+   questionCreatedBy : function(createdById) {
+      var userDoc = Meteor.users.findOne({_id: createdById});
+      return userDoc.username;        
+  },   
 });
 
 Template.readMore.helpers({
