@@ -11,6 +11,7 @@ Router.route('/', {
         this.render('postList');        
         SEO.set({ title: 'Home - ' + Meteor.App.NAME });
         console.log(Meteor.App.NAME);
+        Session.clear();
     }
 });
 
