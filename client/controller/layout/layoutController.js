@@ -88,7 +88,7 @@ Template.header.events({
 Template.home.events({
     'click #read-more,.card-image': function () {
       var postId = this._id;
-      var postTitle = this.title;
+      var postTitle = this.title.replace(/ /g,"-");
       // Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
       Meteor.setTimeout(function() {
@@ -331,7 +331,7 @@ Template.postDetail.helpers({
         return userDoc.username;        
       },
       locationUrl: function() {
-        return encodeURIComponent(window.location.href);
+        return window.location.href;
       }
 });
 
@@ -342,9 +342,9 @@ Template.postList.rendered = function () {
             if(Session.get('numberOfCount')){
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();
-                    $(window).scrollTop($(document).height() - $(window).height() - 10);                  
-                  Meteor.setTimeout(function(){
-                  Session.set('numberOfCount', Session.get('numberOfCount') +3);
+                    $(window).scrollTop($(document).height() - $(window).height() - 10);  
+                  Session.set('numberOfCount', Session.get('numberOfCount') +3);                
+                  Meteor.setTimeout(function() {
                   if(Session.get('subCategory')) {
                     // alert('scroll value.....'+(window).scrollTop()+'........'+$(document).height() - $(window).height());
                     Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             

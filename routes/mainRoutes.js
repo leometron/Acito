@@ -12,6 +12,8 @@ Router.route('/', {
         SEO.set({ title: 'Home - ' + Meteor.App.NAME });
         console.log(Meteor.App.NAME);
         Session.clear();
+        $(".leftMenuSubTitle").html('');
+        $('.parent-page').removeClass('page-selection');
     }
 });
 

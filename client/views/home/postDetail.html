@@ -28,11 +28,12 @@
            <span>Rating: {{#if rating}}{{rating}}{{else}}0{{/if}}/ <strong>5</strong>
            {{#if count}}({{count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
            <div style="line-height: 2;">
-    <span class='st_sharethis_hcount' displayText='ShareThis' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
-    <span class='st_facebook_hcount' displayText='Facebook' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
-    <span class='st_twitter_hcount' displayText='Tweet' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
-    <span class='st_linkedin_hcount' displayText='LinkedIn' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
-    <span class='st_email_hcount' displayText='Email' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
+    <span class='st_sharethis_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}" 
+    displayText='ShareThis'></span>
+    <span class='st_facebook_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
+    <span class='st_twitter_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
+    <span class='st_linkedin_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
+    <span class='st_email_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
            <div id="fb-root"></div>
            <div class="fb-like" data-href="{{locationUrl}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div><br>
            <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
@@ -79,11 +80,12 @@
 <div class="col s12 m12 l9" style="margin-top:20px">
 <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
 
-<span class='st_sharethis_hcount' displayText='ShareThis' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
-    <span class='st_facebook_hcount' displayText='Facebook' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
-    <span class='st_twitter_hcount' displayText='Tweet' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
-    <span class='st_linkedin_hcount' displayText='LinkedIn' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
-    <span class='st_email_hcount' displayText='Email' st_title="{{post.title}}" st_url="{{locationUrl}}"></span>
+    <span class='st_sharethis_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}" 
+    displayText='ShareThis'></span>
+    <span class='st_facebook_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
+    <span class='st_twitter_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
+    <span class='st_linkedin_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
+    <span class='st_email_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>    
            <div id="fb-root"></div>
            <div class="fb-like" data-href="{{locationUrl}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false" style="margin-top: 5px;"></div>
            </div>
