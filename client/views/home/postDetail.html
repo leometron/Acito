@@ -1,49 +1,6 @@
 
 <template name="postDetail">
-  <div class="home-post-detail-field hide-on-large-only" style="margin-top: 80px">
-    <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
-        <div style="display:table-cell; width:40px; vertical-align:middle; text-align:center" class="back-arrow">
-            <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
-        </div>
-        <div style="display:table-cell; width:auto; vertical-align:middle;font-size:18px; font-weight:bold;">
-             {{post.title}} 
-        </div>
-    </div>
-    <div class="divider" style="margin:13px 0 -12px;"></div>
-    <!-- {{#if equals post.featuredImage '-'}} -->
-      <div class="row" style="margin-top:25px">
-      {{#each images}} 
-        <div class="col s3 m4 l4">
-            <img src="{{url}}" style="width:100%;height:200px" class="smallDevice">
-        </div>
-      {{/each}}
-      </div>
-     <!-- {{/if}} -->
-    <span class="right" style="color:#7A7A7A; margin-right:10px;">published on {{formatDate post.createdAt}} | by {{postCreatedBy post.createdBy}}</span>
-    <div class="row">
-      <div class="col s12 m12 l12">
-          <div id="list{{post._id}}" class="description_1" style="margin-top:20px">  
-          </div>
-            <div class="rateit" data-rateit-value="{{rating}}" data-rateit-resetable="false" data-rateit-ispreset="true"></div><br>
-           <span>Rating: {{#if rating}}{{rating}}{{else}}0{{/if}}/ <strong>5</strong>
-           {{#if count}}({{count}} votes cast){{else}}(0 votes cast){{/if}}</span><br><br>
-           <div style="line-height: 2;">
-    <span class='st_sharethis_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}" 
-    displayText='ShareThis'></span>
-    <span class='st_facebook_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
-    <span class='st_twitter_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
-    <span class='st_linkedin_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
-    <span class='st_email_hcount' st_url="{{locationUrl}}" st_title="{{post.title}}"></span>
-           <div id="fb-root"></div>
-           <div class="fb-like" data-href="{{locationUrl}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div><br>
-           <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="{{post.title}}" data-counturl="{{locationUrl}}"></a>
-           </div>
-          </div>
-    </div>
-  </div>
 
-
-  <div class="hide-on-med-and-down" style="margin-left:17%; margin-top:6.5%; width:66%">
     <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
         <div style="display:table-cell; width:65px; vertical-align:middle; text-align:center" class="back-arrow">
             <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
@@ -90,5 +47,4 @@
            <div class="fb-like" data-href="{{locationUrl}}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false" style="margin-top: 5px;"></div>
            </div>
       </div>
-  </div>
 </template>
