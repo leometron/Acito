@@ -604,7 +604,7 @@ body, #main {
   white-space: nowrap; 
   overflow: hidden;
   cursor: pointer;
-  padding:13px 20px;
+  padding:6px 20px;
   font-weight: bold;
 }
 
@@ -814,4 +814,29 @@ body, #main {
 .all-questions:hover {
   color: #558B2F;
   cursor: pointer;
+}
+
+.mainContentView {
+  /*border: 1px solid red; */
+  margin-left: 18%; 
+  margin-top: 80px; 
+  width: 65%;
+}
+
+@media (min-width: 0px) and (max-width: 600px){
+  .mainContentView {
+    /*border: 1px solid green; */
+    margin-left: 0% !important; 
+    margin-top: 75px; 
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1000px){
+  .mainContentView {
+    /*border: 1px solid yellow; */
+    margin-left: 0% !important; 
+    margin-top: 75px; 
+    width: 100% !important;
+  } 
 }
