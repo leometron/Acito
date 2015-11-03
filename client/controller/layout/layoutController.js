@@ -15,7 +15,7 @@ Template.header.events({
         Router.go('/question?id='+ this._id);      
       }
     },
-    'click #logout': function() {
+    'click .logout': function() {
       Meteor.setTimeout(function () {
             Meteor.logout();
             Router.go('/');
@@ -491,7 +491,14 @@ Template.user.events({
             }
         });
         return false;
-    }
+    },
+    'click .logout': function() {
+      Meteor.setTimeout(function () {
+            Meteor.logout();
+            Router.go('/');
+            Meteor._reload.reload();                                    
+      }, 250); 
+    },
 });
 
 function addTwitterWidget() {

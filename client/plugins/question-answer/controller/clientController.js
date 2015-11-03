@@ -1,10 +1,6 @@
 Template.questionDetail.events({
-	'click .hide-on-large-only #postQuestion' : function() {
-		questiondetails('hide-on-large-only');
-	},
-
-	'click .hide-on-med-and-down #postQuestion' : function() {
-		questiondetails('hide-on-med-and-down');
+	'click #postQuestion' : function() {
+		questiondetails();
 	},
 
 	'click #closeAskQuestion': function () {
@@ -16,9 +12,9 @@ Template.questionDetail.events({
 	}
 });
 
-function questiondetails(windowclass) {
+function questiondetails() {
 	var question = $('#question').val();
-	var details = $('.' + windowclass + ' #questionDetails').val();
+	var details = $('#questionDetails').val();
 
 		if (!question) {
 			Materialize.toast('Enter a Question', 3000, 'error-toast');

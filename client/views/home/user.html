@@ -1,18 +1,29 @@
 <template name="user">
-    <div class="hide-on-med-and-down" style="margin-top: 90px; margin-bottom:50px; width:99%">
+    <div style="margin-top: 80px; margin-bottom:50px; width:99%">
         <div class="row">
-            <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
+            <div style="display:table;width:100%; table-layout:fixed; margin-top:20px display:inline-block">
                 <div style="display:table-cell; width:40px; vertical-align:middle;" class="back-arrow">
-                    <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
+                    <img src="/images/arrow-left.png" width="20px" style="margin-top:6px; margin-left: 15px;">
                 </div>
+                   <span id="logout" class="logout hide-on-large-only right" style="margin-right:60px">Logout</span>
             </div>
-            <div class="col s12">
+                
+            <div class="col s12 hide-on-large-only" style="font-size:10px; margin-left: -25px;">
                 <ul class="tabs">
-                    <li class="tab col s3"><a href="#myProfileTab" style="color: #004C19;" class="active capitalize">My Profile</a></li>
-                    <li class="tab col s3"><a href="#changePasswordTab" style="color: #004C19;" class="capitalize">Change Password</a></li>
-                    <li class="tab col s3"><a href="#myQuestionsTab" style="color: #004C19;" class="capitalize">My Questions</a></li>
+                    <li class="tab col s4"><a href="#myProfileTab" style="color: #004C19;" class="active capitalize">My Profile</a></li>
+                    <li class="tab col s4"><a href="#changePasswordTab" style="color: #004C19;" class="capitalize">Change Password</a></li>
+                    <li class="tab col s4"><a href="#myQuestionsTab" style="color: #004C19;" class="capitalize">My Questions</a></li>
                 </ul>
             </div>
+
+            <div class="col s12 hide-on-med-and-down">
+                <ul class="tabs">
+                    <li class="tab col s4"><a href="#myProfileTab" style="color: #004C19;" class="active capitalize">My Profile</a></li>
+                    <li class="tab col s4"><a href="#changePasswordTab" style="color: #004C19;" class="capitalize">Change Password</a></li>
+                    <li class="tab col s4"><a href="#myQuestionsTab" style="color: #004C19;" class="capitalize">My Questions</a></li>
+                </ul>
+            </div>
+
             <div id="myProfileTab" class="col s12">
                 <div class="divider" style="margin:13px 0;"></div>
                 <div class="row" >
@@ -99,123 +110,6 @@
             </div>
             <div id="myQuestionsTab" class="col s12">
                 <div class="divider" style="margin:13px 0;"></div>
-                {{#if questionExist}}
-                {{#each questionList}}
-                    <div class="row">
-                        <div class="col-md-12 home-answer-inner-field-content select-question-row">
-                        {{question}}
-                        </div>
-                        <div class="col-md-12 border-top-allquestion"></div>
-                    </div>
-                {{/each}}
-                {{else}}
-                <div align="center">No Questions</div>
-                {{/if}}
-            </div>
-        </div>
-	</div>
-
-	<div class="hide-on-large-only" style="margin-top: 76px; margin-left:14px;
-				margin-bottom:50px;">
-        <div class="row">
-            <div style="display:table;width:100%; table-layout:fixed; margin-top:20px">
-                <div style="display:table-cell; width:40px; vertical-align:middle;" class="back-arrow">
-                    <img src="/images/arrow-left.png" width="20px" style="margin-top:6px;">
-                </div>
-            </div>
-            <div class="col s12" style="margin-left: -7%;">
-                <ul class="tabs">
-                    <li class="tab col s4"><a href="#myProfileMobTab" style="color: #004C19;" class="active capitalize font-11">My Profile</a></li>
-                    <li class="tab col s4"><a href="#changePasswordMobTab" style="color: #004C19;" class="capitalize font-11">Change Password</a></li>
-                    <li class="tab col s4"><a href="#myQuestionsMobTab" style="color: #004C19;" class="capitalize font-11">My Questions</a></li>
-                </ul>
-            </div>
-            <div id="myProfileMobTab" class="col s12">
-                <div class="divider" style="margin-top: 13px; margin-left: -20px;"></div>
-                <div class="row" >
-                    <form class="col s12" id="mobProfileUpdate" style="margin-left: -30px;">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="firstName" type="text" class="validate" value="{{currentUser.profile.first_name}}">
-                                <label for="firstName" class="active">First Name</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="lastName" type="text" class="validate" value="{{currentUser.profile.last_name}}">
-                                <label for="lastName" class="active">Last Name</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input disabled id="email" type="email" class="validate" value="{{currentUser.profile.email}}">
-                                <label for="email" class="active">Email</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="mobileNumber" type="text" class="validate" value="{{currentUser.profile.mobile_no}}">
-                                <label for="mobileNumber" class="active">Mobile No</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="phoneNumber" type="text" class="validate" value="{{currentUser.profile.phone_no}}">
-                                <label for="phoneNumber" class="active">Phone No</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="bloodGroup" type="text" class="validate" value="{{currentUser.profile.blood_group}}">
-                                <label for="bloodGroup" class="active">Blood Group</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="allergies" type="text" class="validate" value="{{currentUser.profile.allergies}}">
-                                <label for="allergies" class="active">Allergies</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="currentCondition" type="text" class="validate" value="{{currentUser.profile.current_condition}}">
-                                <label for="currentCondition" class="active">Current Condition</label>
-                            </div>
-                        </div>
-                        <!-- <div class="row">
-                            <label for="profileImage" style="font-size: 1rem;left:0.75rem;position:relative;">Profile Image : </label>
-                            <input id="profileImage" type="file" class="validate" style="padding-left: 20px;">
-                        </div>  -->
-                        <button class="btn waves-effect waves-light" type="submit" style="margin-left: 2.3%; margin-top:3%;">Update</button>
-                    </form> 
-                </div>
-            </div>
-            <div id="changePasswordMobTab" class="col s12">
-                <div class="divider" style="margin-top: 13px; margin-left: -20px;"></div>
-                <div class="row">
-                    <form class="col s12" id="mobChangePassword" style="margin-left: -30px;">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="currentPassword" type="text" class="validate">
-                                <label for="currentPassword">Current Password</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="newPassword" type="text" class="validate">
-                                <label for="newPassword">New Password</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="confirmPassword" type="text" class="validate">
-                                <label for="confirmPassword">Confirm New Passord</label>
-                            </div>
-                        </div>
-                        <button class="btn waves-effect waves-light" type="submit" style="margin-left: 2.3%;">Update</button>
-                    </form>
-                </div>
-            </div>
-            <div id="myQuestionsMobTab" class="col s12">
-                <div class="divider" style="margin-top: 13px; margin-left: -20px;"></div>
                 {{#if questionExist}}
                 {{#each questionList}}
                     <div class="row">

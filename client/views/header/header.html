@@ -18,7 +18,7 @@
                <div class="hide-on-med-and-down">
                <a href="/tam/grannytherapy-team" style="padding-right: 15px; font-size:12px;">குழு</a>
                {{#if currentUser}}
-                <span style="padding-right:15px;">Welcome <span id="userName" style="cursor: pointer; text-decoration: underline;">{{currentUser.username}}</span></span>
+                <span style="padding-right:15px;">Welcome <span id="userName" style="cursor: pointer; text-decoration: underline;">{{currentUser.profile.first_name}}{{currentUser.profile.last_name}}</span></span>
                 <span id="logout" class="logout" style="padding-right:15px;font-size:14px;">Logout</span>
                {{/if}}
                </div> 
@@ -26,7 +26,7 @@
                <a href="/tam/grannytherapy-team" style="font-size: 14px; left: 60px; position: fixed; top: -6px;">குழு</a>
                 {{#if currentUser}}
                   <span style="left: 104px; overflow: hidden; position: fixed; text-overflow: ellipsis; top: -4px;
-                  white-space: nowrap; width: 150px;">Welcome <span id="userName" style="cursor: pointer; text-decoration: underline;">{{currentUser.username}}</span></span>
+                  white-space: nowrap; width: 150px;">Welcome <span id="userName" style="cursor: pointer; text-decoration: underline;">{{currentUser.profile.first_name}}{{currentUser.profile.last_name}}</span></span>
                   <!-- <span id="logout" class="logout" style="font-size: 14px; left: 215px; position: fixed; top: -4px;">Logout</span> -->
                 {{/if}} 
                </div> 
