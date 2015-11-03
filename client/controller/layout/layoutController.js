@@ -34,15 +34,15 @@ Template.header.events({
          var subPagesCount = Pages.find({parentId:this._id}).count();
          if(subPagesCount == 0) {
           $('.button-collapse').sideNav('hide');
-           Session.set('categoryName',$(event.target).attr("name"));      
-           Session.set("pageId", "");
-           Session.set('numberOfCount', 6);
+           Session.setPersistent('categoryName',$(event.target).attr("name"));      
+           Session.clear("pageId");
+           Session.setPersistent('numberOfCount', 6);
            Session.set('selectedPostId', "");
-           Session.set("pageId",this._id);
-           Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+           Session.setPersistent("pageId",this._id);
+           Session.setPersistent('postCount',Posts.find({pageId:Session.get("pageId")}).count());
            Router.go('/tam/category/'+Session.get('categoryName')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
          } else {
-          Session.set('mainCategory',$(event.target).attr("name"));
+          Session.setPersistent('mainCategory',$(event.target).attr("name"));
            var subPages = Pages.find({parentId: this._id,status:'Published'});
            var t ="";
            subPages.forEach(function(item){
@@ -54,18 +54,18 @@ Template.header.events({
   },
    'click .sub-page' : function(event){
       $(window).scrollTop(0)    
-      Session.set('categoryName',$(event.target).attr("name"));
-      Session.set('subCategory',$(event.target).attr("name"));
+      Session.setPersistent('categoryName',$(event.target).attr("name"));
+      Session.setPersistent('subCategory',$(event.target).attr("name"));
       $('.button-collapse').sideNav('hide');
-      Session.set("pageId", "");
-      Session.set('numberOfCount', 6);
+      Session.clear("pageId");
+      Session.setPersistent('numberOfCount', 6);
       Session.set('selectedPostId', "");
-      Session.set("pageId", $(event.target).attr("id"));
-      Session.set('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
+      Session.setPersistent("pageId", $(event.target).attr("id"));
+      Session.setPersistent('postCount',Posts.find({pageId:Session.get("pageId")}).count());              
       Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
    },
    'click #grannyLogo' : function() {
-      Session.set('categoryName','');    
+      // Session.set('categoryName','');    
       Router.go('/');
    },
    'click .hide-on-large-only #askQuestion' : function() {
@@ -91,8 +91,8 @@ Template.header.events({
 Template.home.events({
     'click #read-more,.card-image': function () {
       var postId = this._id;
-      var postTitle = this.title;
-      Session.set('selectedPageId',Session.get("pageId"));         
+      var postTitle = this.title.replace(/ /g,"-");
+      // Session.set('selectedPageId',Session.get("pageId"));         
       Session.set('selectedPostId', postId);
       Meteor.setTimeout(function() {
         // Router.go("/tam/post/"+postTitle+"/"+postId);
@@ -336,7 +336,7 @@ Template.postDetail.helpers({
         return userDoc.username;        
       },
       locationUrl: function() {
-        return encodeURIComponent(window.location.href);
+        return window.location.href;
       }
 });
 
@@ -347,9 +347,9 @@ Template.postList.rendered = function () {
             if(Session.get('numberOfCount')){
                 if(Session.get('postCount') >= Session.get('numberOfCount')){
                   $('.post-loading-icon').show();
-                    $(window).scrollTop($(document).height() - $(window).height() - 10);                  
-                  Meteor.setTimeout(function(){
-                  Session.set('numberOfCount', Session.get('numberOfCount') +3);
+                    $(window).scrollTop($(document).height() - $(window).height() - 10);  
+                  Session.set('numberOfCount', Session.get('numberOfCount') +3);                
+                  Meteor.setTimeout(function() {
                   if(Session.get('subCategory')) {
                     // alert('scroll value.....'+(window).scrollTop()+'........'+$(document).height() - $(window).height());
                     Router.go('/tam/category/'+Session.get('mainCategory')+'/'+Session.get('subCategory')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));             
@@ -370,7 +370,7 @@ Template.postList.rendered = function () {
 Template.header.rendered = function () {
   $('#questionArea').val("");
   $('.button-collapse').sideNav();
-  // $('.leftContent').css('height',window.innerHeight-141);
+  $('.leftContent').css('height',window.innerHeight-141);
 
   $('.search').click(function(){
       $('#search_modal').openModal();
