@@ -12,6 +12,8 @@ Router.route('/', {
         SEO.set({ title: 'Home - ' + Meteor.App.NAME });
         console.log(Meteor.App.NAME);
         Session.clear();
+        $(".leftMenuSubTitle").html('');
+        $('.parent-page').removeClass('page-selection');
     }
 });
 
@@ -119,4 +121,9 @@ Router.route('/allquestions', {
 Router.route('/login', {
   layoutTemplate: 'basicLayout',
   name: 'userLogin'
+});
+
+Router.route('/user', {
+  layoutTemplate: 'basicLayout',
+  name: 'user'
 });

@@ -8224,7 +8224,9 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 }
 
 .success-toast {
-    height: 30px;
+    /*height: 30px;*/
     background-color: green;
     margin-top: 30px;
+    text-align: center !important;
+    line-height: 20px !important;
 }

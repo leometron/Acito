@@ -272,3 +272,15 @@
   display:inline-block;
   margin-left:10px;
 }
+
+.capitalize {
+  text-transform: capitalize;
+},
+
+.ellipsis {
+  text-overflow: ellipsis;
+}
+
+.font-11 {
+  font-size: 11px;
+}

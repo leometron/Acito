@@ -1,0 +1,64 @@
+<template name="usersList">
+<div style="padding-left: 70%;">	
+<a href="/admin/users?letter=A">A</a>
+<a href="/admin/users?letter=B">B</a>
+<a href="/admin/users?letter=C">C</a>
+<a href="/admin/users?letter=D">D</a>
+<a href="/admin/users?letter=E">E</a>
+<a href="/admin/users?letter=F">F</a>
+<a href="/admin/users?letter=G">G</a>
+<a href="/admin/users?letter=H">H</a>
+<a href="/admin/users?letter=I">I</a>
+<a href="/admin/users?letter=J">J</a>
+<a href="/admin/users?letter=K">K</a>
+<a href="/admin/users?letter=L">L</a>
+<a href="/admin/users?letter=M">M</a>
+<a href="/admin/users?letter=N">N</a>
+<a href="/admin/users?letter=O">O</a>
+<a href="/admin/users?letter=P">P</a>
+<a href="/admin/users?letter=Q">Q</a>
+<a href="/admin/users?letter=R">R</a>
+<a href="/admin/users?letter=S">S</a>
+<a href="/admin/users?letter=T">T</a>
+<a href="/admin/users?letter=U">U</a>
+<a href="/admin/users?letter=V">V</a>
+<a href="/admin/users?letter=W">W</a>
+<a href="/admin/users?letter=X">X</a>
+<a href="/admin/users?letter=Y">Y</a>
+<a href="/admin/users?letter=Z">Z</a>
+<a href="/admin/users">All</a>
+</div>
+    <div class="main-content-box z-depth-2">
+    <div class="content-box-menu">Users</div>
+    <div class="row bg-white padding-top-bottom-10 " style="border: 1px solid #ddd; margin-top: 7%;width: 95%;">
+        <div class="col l1">
+            <!-- <span><input type="checkbox"></span> -->
+        </div>
+        <!-- <div class="col-md-6 padding-left-zero margin-left-minus-30">Sl.no</div> -->
+        <div class="col l6">Firstname</div>
+        <div class="col l2">Lastname</div>
+        <div class="col l3">Email Id</div>
+    </div>
+<!--    	{{#if equals userCount 0}}
+        <div class="row cursor-pointer">
+            <div class="CodingRules-data-row">
+                <div class="col l12 center empty-results">
+                    <span>No users found</span>
+                </div>
+            </div>
+        </div>
+    {{else}} -->
+    	{{#each userList}}
+            <div id="{{_id}}" class="row  padding-top-bottom-10" style="border: 1px solid #ddd; width: 95%; margin-top:-21px;">
+			    <div class="col l1">
+            		<!-- <span><input type="checkbox"></span> -->
+        		</div>
+        		<!-- <div class="col-md-6 padding-left-zero margin-left-minus-30">Sl.no</div> -->
+        		<div class="col l6">{{profile.first_name}}</div>
+        		<div class="col l2">{{profile.last_name}}</div>
+        		<div class="col l3">{{profile.email}}</div>
+    		</div>
+    	{{/each}}
+    <!-- {{/if}} -->
+    </div>
+</template>

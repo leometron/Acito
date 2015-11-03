@@ -10,7 +10,6 @@ Template.adminlayout.helpers({
                 'title': 'posts',
                 'maintitle': 'Posts',
                 'icon': 'fa-thumb-tack',
-                // 'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}]                
                 'subtitle': [{'sTitle': 'add', 'title': 'posts', 'name': 'AddNew'}, {
                     'sTitle': 'tags',
                     'title': 'posts',
@@ -21,32 +20,29 @@ Template.adminlayout.helpers({
                 'title': 'homeSliders',
                 'maintitle': 'HomeSliders',
                 'icon': 'fa-bars',
-                // 'subtitle': [{'sTitle': 'add', 'title': 'HomeSliders', 'name': 'AddNew'}]
             },
             {
                 'title': 'media',
                 'maintitle': 'Media',
                 'icon': 'fa-picture-o',
-                // 'subtitle': [{'sTitle': 'add', 'title': 'media', 'name': 'AddNew'}]
             },
             {
                 'title': 'pages',
                 'maintitle': 'Pages',
                 'icon': 'fa-file'
-                // 'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
             },
-            // {'title': 'settings', 'maintitle': 'Settings', 'icon': 'fa-cog'},
-            // {'title': 'themes', 'maintitle': 'Themes', 'icon': 'fa-paint-brush'},
             {
                 'title': 'questions',
                 'maintitle': 'Questions'
-                // 'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
             },
             {
                 'title': 'answers',
                 'maintitle': 'Answers'
-                // 'subtitle': [{'sTitle': 'add', 'title': 'pages', 'name': 'AddNew'}]
-            },            
+            },
+            {
+                'title': 'users',
+                'maintitle': 'Users'
+            },                         
         ]
     },
     // 'pluginList': function () {
@@ -78,32 +74,12 @@ Template.adminlayout.rendered = function () {
         $('#header').hide();
         $('#main_view').addClass('full-width');
     }
-    // Meteor.setTimeout(function () {
-    //     $('.plugin-submenu').hide(),
-    //     $('#second').hide();
-    // }, 500);
 };
 
 Template.adminlayout.events({
     'click .item': function (events) {  
         var selectedId = $(events.currentTarget).attr("id");
 
-        if (selectedId == 'navBarICD-10') {
-            $('#navBarICD-10').addClass('selected');
-        } else {
-            $('#navBarICD-10').removeClass('selected');
-        }
-        if (selectedId == 'navBarDSM-5') {
-            $('#navBarDSM-5').addClass('selected');
-        } else {
-            $('#navBarDSM-5').removeClass('selected');
-        }
-        if (selectedId == 'navBarCodingRules') {
-            $('#navBarCodingRules').addClass('selected');
-        } else {
-            $('#navBarCodingRules').removeClass('selected');
-        }
-                        
         if (selectedId == 'navBardashboard') {
             $('#navBardashboard').addClass('selected');
             $('#navdashboard').css("color", "#FFFFFF");
@@ -153,6 +129,13 @@ Template.adminlayout.events({
             $('#navBaranswers').removeClass('selected');
             $('#navanswers').css("color", "#000000")
         }
+        if(selectedId == 'navBarusers') {
+            $('#navBarusers').addClass('selected');
+            $('#navusers').css("color", "#FFFFFF");
+        } else {
+            $('#navBarusers').removeClass('selected');
+            $('#navusers').css("color", "#000000")
+        }        
         if (selectedId == 'navBarsettings') {
             $('#navBarsettings').addClass('selected');
         } else {
@@ -188,21 +171,9 @@ Template.adminlayout.events({
         } else {
             $('#subNavBarHomeSlidersadd').hide(800);
         }
-        if(selectedId == "navBarBHS") {
-            $('#navBarBHS').addClass('selected');
-        } else {
-            $('#navBarBHS').removeClass('selected');
-        }
-        if (this.title != "BHS") {
-            $('#second').hide();
-            $('#first').show(); 
-            $('.plugin-submenu').hide(800);
-            flag = true;
-        }
     },
       'click .plugin': function(){
           if(flag){
-            // console.log("link ");
             $('#second').show();
             $('#first').hide();
             $('.plugin-submenu').show(800);
@@ -211,7 +182,6 @@ Template.adminlayout.events({
             $('#second').hide();
             $('#first').show();
             $('.plugin-submenu').hide(800); 
-            // console.log("antoher link ");
             flag = true;
           }
       },

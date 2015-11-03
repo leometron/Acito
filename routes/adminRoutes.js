@@ -166,14 +166,17 @@ Router.route('admin/answer/edit', {
     }    
 });
 
-// Router.route('admin/get', {    
-//     data: function() {
-//         console.log('server side response..............'+answer.findOne());
-//         return answer.find();
-//     }    
-// });
-
-Router.route('/admin/get', function () {
-        console.log('server side response..............'+answer.findOne());
-        // return answer.find();
+Router.route('/admin/users', {    
+    name: 'usersList',
+    data: function() {
+        if (this.params.query.letter) {
+            return {
+                usersList: Meteor.users.find()
+            };  
+        } else {
+            return {
+                usersList: Meteor.users.find()
+            };              
+        }
+    }    
 });
