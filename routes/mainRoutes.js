@@ -119,3 +119,8 @@ Router.route('/login', {
   layoutTemplate: 'basicLayout',
   name: 'userLogin'
 });
+
+Router.route('/user', {
+  layoutTemplate: 'basicLayout',
+  name: 'user'
+});

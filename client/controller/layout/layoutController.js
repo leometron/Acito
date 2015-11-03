@@ -83,6 +83,9 @@ Template.header.events({
       $(window).scrollTop(0);
       Router.go('/allquestions');
     },
+    'click #userName': function() {
+        Router.go('/user');
+    }
 });
 
 Template.home.events({
@@ -188,7 +191,8 @@ Template.home.events({
 
   'submit #signUp' : function(e, t) {
     e.preventDefault();
-    var first_name = t.find('#firstname').value;
+    var first_name = t.find('#firstName').value;
+    var last_name = t.find('#lastName').value;
     var new_email = t.find('#upemail').value, new_password = t.find('#signpassword').value;
     var repassword = t.find('#re-password').value;
 
@@ -209,7 +213,8 @@ Template.home.events({
       return;
     }
 
-    var userDetail = { "email": new_email, "username":  first_name, "password": new_password }
+    var profile = {"email": new_email, "first_name":  first_name, "last_name": last_name, "mobile_no": "Nil", "phone_no": "Nil", "blood_group": "Nil", "allergies": "Nil", "current_condition": "Nil"}
+    var userDetail = { "email": new_email, "username": first_name+" "+last_name, "password": new_password, "profile": profile}
 
       Accounts.createUser(userDetail, function(error){
         if(error){
@@ -403,6 +408,91 @@ Template.postDetail.rendered = function() {
           }
     });
 };
+
+Template.user.rendered = function() {
+  $('ul.tabs').tabs();
+}
+
+Template.user.helpers({
+  'questionList': function() {
+        return questionDetail.find({status: "active", createdBy: Meteor.user()._id});
+   }, 
+   'questionExist': function() {
+        return (questionDetail.find({status: "active", createdBy: Meteor.user()._id}).count() > 0);
+   }
+});
+
+Template.user.events({
+    'submit #profileUpdate, submit #mobProfileUpdate': function(e, t) {
+        e.preventDefault();
+        var parentClass = (e.target.id == 'mobProfileUpdate') ? 'hide-on-large-only' : 'hide-on-med-and-down';
+        var first_name = t.find('.' + parentClass + ' #firstName').value;
+        var last_name = t.find('.' + parentClass + ' #lastName').value;
+        var new_email = t.find('.' + parentClass + ' #email').value;
+        var mobile_no = t.find('.' + parentClass + ' #mobileNumber').value;
+        var phone_no = t.find('.' + parentClass + ' #phoneNumber').value;
+        var blood_group = t.find('.' + parentClass + ' #bloodGroup').value;
+        var allergies = t.find('.' + parentClass + ' #allergies').value;
+        var current_condition = t.find('.' + parentClass + ' #currentCondition').value;
+
+        if(first_name == '') {
+          Materialize.toast('Please enter username', 3000, 'error-toast');
+          return;
+        } else if(mobile_no == '' && phone_no == '') {
+          Materialize.toast('Please enter mobile no/phone no', 3000, 'error-toast');
+          return;
+        } else if(blood_group == '') {
+          Materialize.toast('Please enter blood group', 3000, 'error-toast');
+          return;
+        } else if(allergies == '') {
+          Materialize.toast('Please enter allergies', 3000, 'error-toast');
+          return;
+        } else if (currentCondition == '') {
+          Materialize.toast('Please enter current condition', 3000, 'error-toast');
+          return;
+        }
+
+        mobile_no = (mobile_no == '') ? "Nil" : mobile_no;
+        phone_no = (phone_no == '') ? "Nil" : phone_no;
+        var profileDetail = {"profile.first_name":  first_name, "profile.last_name": last_name, "profile.mobile_no": mobile_no, "profile.phone_no": phone_no, "profile.blood_group": blood_group, "profile.allergies": allergies, "profile.current_condition": current_condition}
+        
+        Meteor.users.update({_id:Meteor.user()._id}, {$set: profileDetail}, function(error) {
+            if(error){
+                Materialize.toast(error.reason, 3000, 'error-toast');
+            } else {
+                Materialize.toast('Account has been updated successfully.', 3000, 'success-toast');
+            }
+        });
+        return false;
+    },
+    'submit #changePassword, submit #mobChangePassword': function(e, t) {
+        e.preventDefault();
+        var parentClass = (e.target.id == 'mobChangePassword') ? 'hide-on-large-only' : 'hide-on-med-and-down';
+        var current_password = t.find('.' + parentClass + ' #currentPassword').value;
+        var new_password = t.find('.' + parentClass + ' #newPassword').value;
+        var confirm_password = t.find('.' + parentClass + ' #confirmPassword').value;
+
+        if(current_password == '') {
+          Materialize.toast('Please enter current password', 3000, 'error-toast');
+          return;
+        } else if(new_password == '') {
+          Materialize.toast('Please enter new password', 3000, 'error-toast');
+          return;
+        } else if(confirm_password != new_password) {
+          Materialize.toast('Your password and confirmation password do not match', 3000, 'error-toast');
+          return;
+        }
+
+        Accounts.changePassword(current_password, new_password, function(error){
+            if(error){
+                Materialize.toast(error.reason, 3000, 'error-toast');
+            } else {
+                Materialize.toast('Password has been changed successfully.', 3000, 'success-toast');
+            }
+        });
+        return false;
+    }
+});
 
 function addTwitterWidget() {
     !function (d, s, id) {
