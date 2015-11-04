@@ -13,8 +13,11 @@
     <!-- {{#if equals post.featuredImage '-'}} -->
       <div class="row" style="margin-top:15px;">
       {{#each images}} 
-        <div class="col s4 m4 l4" style="margin-top:15px;">
-            <img src="{{url}}" style="width:100%">
+        <div class="col s4 m4 l4 hide-on-small-only" style="margin-top:15px;">
+            <img src="{{url}}" style="width:100%; height:175px">
+        </div>
+        <div class="col s4 m4 l4 hide-on-large-only hide-on-med-only" style="margin-top:15px;">
+            <img src="{{url}}" style="width:100%; height:90px">
         </div>
       {{/each}}
       </div>

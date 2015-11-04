@@ -18,7 +18,8 @@
             <div class="card white">
                 {{#if equals featuredImage '-'}}
                 <div style="border-bottom: 1px solid rgba(160, 160, 160, 0.2); padding: 20px;">
-                  <span style="font-size:18px; color:#000;">{{title}}</span>
+                  <div style="color: #000; font-size: 18px; overflow: hidden; text-overflow: ellipsis;
+                   white-space: nowrap; width: 210px;"><span>{{title}}</span></div>
                 </div>
                 {{else}}
                 <div class="card-image">
