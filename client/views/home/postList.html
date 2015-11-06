@@ -18,8 +18,9 @@
             <div class="card white">
                 {{#if equals featuredImage '-'}}
                 <div style="border-bottom: 1px solid rgba(160, 160, 160, 0.2); padding: 20px;">
-                  <div style="color: #000; font-size: 18px; overflow: hidden; text-overflow: ellipsis;
-                   white-space: nowrap; width: 210px;"><span>{{title}}</span></div>
+                  <div style="color: #000; font-size: 18px; overflow: hidden; text-overflow: ellipsis;cursor: pointer; white-space: nowrap; width: 210px;" id="title-only">
+                    <span>{{title}}</span>
+                  </div>
                 </div>
                 {{else}}
                 <div class="card-image">
@@ -33,7 +34,7 @@
                 <div class="card-action">
                   <a href="#" class="right" id="read-more">Read More</a>
                 </div>
-              </div>
+            </div>
         </div>
         {{/each}}
         {{/if}}

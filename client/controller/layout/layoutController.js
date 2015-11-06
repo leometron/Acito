@@ -89,7 +89,7 @@ Template.header.events({
 });
 
 Template.home.events({
-    'click #read-more,.card-image': function () {
+    'click #read-more,.card-image,#title-only': function () {
       var postId = this._id;
       var postTitle = this.title.replace(/ /g,"-");
       // Session.set('selectedPageId',Session.get("pageId"));         
