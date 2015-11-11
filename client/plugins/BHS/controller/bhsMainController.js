@@ -10,7 +10,7 @@ if(Meteor.isCordova){
 }
 
 Template.BHShome.rendered = function(){
-	$('#home_logo').attr('src','images/logo.png');
+	$('#home_logo').attr('src','/images/logo.png');
    	$('body').addClass('bgImage');
 }
 

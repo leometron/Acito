@@ -10,8 +10,10 @@ BHSListController = RouteController.extend({
   findOptions: function() {
     if(Session.get('title') == "DSM-5 codes") {
       return {sort: {sectionName: 1,subSectionName:1}, limit: this.postsLimit()};      
-    } else {
+    } else if(Session.get('title') == "ICD-10 codes") {
       return {sort: {sectionName: 1}, limit: this.postsLimit()};
+    } else {
+      return {sort: {guideline: 1}, limit: this.postsLimit()};      
     }
   },
 
@@ -33,7 +35,8 @@ BHSListController = RouteController.extend({
       } else if(Session.get('selectedAlphabet')) {
         postData = ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
       } else {
-        postData = ICD.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        // postData = ICD.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        postData = ICD.find({},this.findOptions());        
       }
       $('#loading').css('display','none');
       return postData;
@@ -43,7 +46,8 @@ BHSListController = RouteController.extend({
       } else if(Session.get('selectedAlphabet')) {
         postData =  DSM.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet') + '|:' + Session.get('selectedAlphabet'),'i') },this.findOptions());
       } else {
-        postData =  DSM.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList') + '|:' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        // postData =  DSM.find({sectionName : new RegExp('^' + Session.get('firstAlphabetinList') + '|:' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        postData =  DSM.find({},this.findOptions());        
       }
        $('#loading').css('display','none');
       return postData;
@@ -53,7 +57,8 @@ BHSListController = RouteController.extend({
       } else if(Session.get('selectedAlphabet')) {
         postData =  codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') }, this.findOptions());
       } else {
-        postData =  codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        // postData =  codingRules.find({guideline : new RegExp('^' + Session.get('firstAlphabetinList'),'i') },this.findOptions());
+        postData =  codingRules.find({},this.findOptions());        
       }
        $('#loading').css('display','none');
       return postData;
@@ -77,7 +82,6 @@ BHSListController = RouteController.extend({
     var arr = [];
     var data = self.posts().fetch();
     
-
     if(Session.get('title') == "ICD-10 codes"){
         var prevSectionName="";
         if(data.length>0){
