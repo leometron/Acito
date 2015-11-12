@@ -840,3 +840,7 @@ body, #main {
     width: 100% !important;
   } 
 }
+
+.dropdown-content {
+  height:300px !important;
+}
