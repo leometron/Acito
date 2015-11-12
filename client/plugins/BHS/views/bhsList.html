@@ -12,9 +12,10 @@
 		<div class="row"> 
 		<div class="col-md-11 col-sm-11 col-xs-10 main_post">
 			<div>
-			 	<div style="margin:15px;">
-	      			<input type="text" id="searchString" placeholder="Search" class="search_box"/>
+			 	<div style="margin:15px 15px 10px 15px;">
+	      			<input type="text" id="searchString" placeholder="Search" class="search_box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
 	  			</div>
+	  			<div id="errorMsg" style="color:red;text-align:center;margin-top:-25px;display:none;">Please enter search key</div>
 			</div>
 		<div class="listContainer">
 		{{#if listICD}}

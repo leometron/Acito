@@ -113,8 +113,19 @@ Template.BHSlist.events({
   			Session.set('searchString',"");
   		}
   		if (e.which == 13) {
-  			$('#loading').css('display','block');
-			Session.set('searchString',$('#searchString').val());
+  			if (!$('#searchString').val()) {
+  				$('#errorMsg').css('display','block');
+  			} else {
+Session.set('searchString','');  				
+  				$('#loading').css('display','block');
+  				$('#errorMsg').css('display','none');
+  				// Session.set('searchKey',$('#searchString').val());
+  				// if (Session.get('searchKey')) {
+  				// 	// alert('entered inside');
+					Session.set('searchString',$('#searchString').val()); 
+					// Session.set('searchKey','');
+  				// }
+  			}
   		}
   	}  
 });

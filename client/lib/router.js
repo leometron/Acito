@@ -3,10 +3,9 @@ BHSListController = RouteController.extend({
   template: 'BHSlist',
   increment: 30, 
 
- postsLimit: function() { 
+  postsLimit: function() { 
     return parseInt(this.params.postsLimit) || this.increment; 
   },
-
   findOptions: function() {
     if(Session.get('title') == "DSM-5 codes") {
       return {sort: {sectionName: 1,subSectionName:1}, limit: this.postsLimit()};      
@@ -31,6 +30,8 @@ BHSListController = RouteController.extend({
     var postData = "";
     if(Session.get('title') == "ICD-10 codes"){
       if (Session.get('searchString')) {
+        var temp = Session.get('searchString');
+        // Session.set('searchString','');        
         postData = ICD.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i') }, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] },this.findOptions());
       } else if(Session.get('selectedAlphabet')) {
         postData = ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') },this.findOptions());
