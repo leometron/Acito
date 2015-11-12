@@ -66,13 +66,13 @@
 }
 
 .card-content {
-    height: 122px;
+    height: 122px !important;
     color: #000000;
     overflow: hidden;
 }
 
 .card-content p{
-    height: 155px;
+    height: 122px;
     overflow: hidden;
     line-height: 25px;
     font-size: 13px;
