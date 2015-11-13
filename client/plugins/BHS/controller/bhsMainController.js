@@ -77,7 +77,8 @@ Template.BHSlist.helpers({
 			}
 			alphabetArray.sort();
 			Session.set('firstAlphabetinList',alphabetArray[0]);
-		return alphabetArray;
+		var alphaArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+		return alphaArray;
 	},
 })
 

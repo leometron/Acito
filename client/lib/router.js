@@ -76,6 +76,15 @@ BHSListController = RouteController.extend({
          return DSM.find({ $or: [ { sectionName : new RegExp(Session.get('searchString'),'i')}, { sectionCode : new RegExp(Session.get('searchString'),'i')} ] }).count();
        }
      }
+     else if (Session.get('selectedAlphabet')) {
+       if(Session.get('title') == "Coding Rules") {
+         return codingRules.find({guideline : new RegExp('^' + Session.get('selectedAlphabet'),'i') }).count();
+       } else if(Session.get('title') == "ICD-10 codes") {
+         return ICD.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet'),'i') }).count();
+       } else if(Session.get('title') == "DSM-5 codes") {
+         return DSM.find({sectionName : new RegExp('^' + Session.get('selectedAlphabet') + '|:' + Session.get('selectedAlphabet'),'i') }).count();
+       }      
+    }
  },
 
   data: function() {

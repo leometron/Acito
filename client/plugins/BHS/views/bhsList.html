@@ -11,6 +11,9 @@
 		</div>
 		<div class="row"> 
 		<div class="col-md-11 col-sm-11 col-xs-10 main_post">
+	{{#if equals searchDataEmpty 0}}
+		<div class="search-empty">No Results</div>
+	{{/if}}				
 			<div>
 			 	<div style="margin:15px 15px 10px 15px;">
 	      			<input type="text" id="searchString" placeholder="Search" class="search_box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
@@ -91,11 +94,8 @@
         		<div class="alphabet" id="{{this}}" style="padding:8px 0; cursor:pointer;">{{this}}</div>  
         	{{/each}}
         	 <div class="alphabet" style="padding:5px 0;">#</div> 
-		</div>
+		</div>	
 	</div>
-	{{#if equals searchDataEmpty 0}}
-		<div class="search-empty">No Results</div>
-	{{/if}}
 	<div id="loading" style="display:none">
 	      {{> spinner}}
 	</div>
