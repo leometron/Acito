@@ -90,8 +90,10 @@ Router.route('/tam/category/:mainCategory/:subCategory?', {
   data: function() {
     if (this.params.query.pageId) {
         var postCount = parseInt(this.params.query.count);
+        // Meteor.call('getPostListInCategory',this.params.query.pageId,postCount);
         return {
             postsList: Posts.find({pageId:this.params.query.pageId,status:"Published"}, { limit: postCount })
+            // postsList: Posts.find()            
         };      
     } else if (this.params.query.queryString) {
         return {
