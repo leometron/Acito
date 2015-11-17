@@ -3,7 +3,7 @@ Meteor.publish('users', function () {
 });
 
 var currentPostId = "";
-var querystr = "", filterstr = "", categorystr = "", dateString = "";
+var querystr = "", filterstr = "", categorystr = "", dateString = "", page = "", count = 0;
 
 Meteor.publish('Posts', function () {
     var loginUserId = this.userId;
@@ -36,6 +36,12 @@ Meteor.publish('Posts', function () {
         } else {
             return Posts.find({createdBy: loginUserId, createdAt: new RegExp(temp)});
         }
+    } else if (page) {
+        temp = page;
+        var total = count;
+        page = "";
+        count = 0;
+            return Posts.find({pageId:page,status:"Published"}, { limit: total });
     } else {
         // if (loginUserId) {
         //     return Posts.find({createdBy: loginUserId});
@@ -161,5 +167,9 @@ console.log(Meteor.userId());
     },
     'removeFeaturedImage': function (postId) {
         Posts.update(postId, {$set: {featuredImage: "-"}});
-    }
+    },
+    'getPostListInCategory': function (pageId,count) {
+        page = pageId;
+        count = count;
+    }    
 });

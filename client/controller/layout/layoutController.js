@@ -40,6 +40,7 @@ Template.header.events({
            Session.set('selectedPostId', "");
            Session.setPersistent("pageId",this._id);
            Session.setPersistent('postCount',Posts.find({pageId:Session.get("pageId")}).count());
+           Meteor.call('getPostListInCategory',Session.get("pageId"),Session.get('numberOfCount'));
            Router.go('/tam/category/'+Session.get('categoryName')+'?pageId='+Session.get("pageId")+'&count='+Session.get('numberOfCount'));
          } else {
           Session.setPersistent('mainCategory',$(event.target).attr("name"));
