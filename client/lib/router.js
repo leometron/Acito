@@ -18,11 +18,17 @@ BHSListController = RouteController.extend({
 
   subscriptions: function() {
     if(Session.get('title') == "ICD-10 codes"){
-      this.ICDSubscribed= Meteor.subscribe('ICD', this.findOptions());
+      this.ICDSubscribed= Meteor.subscribe('ICD', this.findOptions(),function () {
+        Session.set('ICD_data_loaded', true);
+       });
     }else if(Session.get('title') == "DSM-5 codes"){
-       this.DSMSubscribed= Meteor.subscribe('DSM', this.findOptions());
+       this.DSMSubscribed= Meteor.subscribe('DSM', this.findOptions(),function () {
+        Session.set('DSM_data_loaded', true);
+       });
     }else{
-      this.CodingRulesSubscribed= Meteor.subscribe('codingRules', this.findOptions());
+      this.CodingRulesSubscribed= Meteor.subscribe('codingRules', this.findOptions(),function () {
+        Session.set('CR_data_loaded', true);
+       });
     }
   },
 
@@ -107,7 +113,9 @@ BHSListController = RouteController.extend({
             arr.push(obj);
           }
         }
-        return {
+        if (Session.get('ICD_data_loaded')) {
+          $('#loading').css('display','none');   
+          return {
           listICD: arr,
           ready: self.ICDSubscribed.ready,
           searchDataEmpty : self.resultCount(),
@@ -117,6 +125,9 @@ BHSListController = RouteController.extend({
             }
           }
       };
+    } else {
+      $('#loading').css('display','block');         
+    }
     } else  if(Session.get('title') == "DSM-5 codes"){
         var prevSectionName="";
         var prevSubSectionName = "";
@@ -136,6 +147,8 @@ BHSListController = RouteController.extend({
             arr.push(obj);
           }
         }
+        if (Session.get('DSM_data_loaded')) {
+          $('#loading').css('display','none');        
         return {
           listDSM: arr,
           ready: self.DSMSubscribed.ready,
@@ -146,6 +159,9 @@ BHSListController = RouteController.extend({
               }
           }
       };
+      } else {
+          $('#loading').css('display','block');        
+      }
     }else{
       if(data.length>0){
           for(var i=0;i<data.length;i++){
@@ -155,6 +171,8 @@ BHSListController = RouteController.extend({
             arr.push(obj);
           }
         }
+        if (Session.get('CR_data_loaded')) {
+          $('#loading').css('display','none');        
         return {
           listCodingRule: arr,
           ready: self.CodingRulesSubscribed.ready,
@@ -165,6 +183,9 @@ BHSListController = RouteController.extend({
             }
           }
       };
+    } else {
+      $('#loading').css('display','block');          
+    }      
     }
   }
 });
