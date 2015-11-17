@@ -6,3 +6,15 @@ user_test:
   email: test@test.com
   username: test
   password: testtest
+user_siju:
+  email: siju@neemtecsolutions.com
+  username: siju
+  password: welcome01
+user_dinesh:
+  email: draja@neemtecsolutions.com
+  username: dinesh
+  password: welcome01
+user_lingaraja:
+  email: lingaraja@neemtecsolutions.com
+  username: lingaraja
+  password: welcome01

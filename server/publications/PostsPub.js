@@ -92,6 +92,7 @@ Meteor.methods({
                 }
             });
         } else {
+console.log(Meteor.userId());
             Posts.insert({
                 title: title,
                 content: content,
