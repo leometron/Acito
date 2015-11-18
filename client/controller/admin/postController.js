@@ -12,6 +12,16 @@ Meteor.subscribe("users");
 var selectedIds = [];
 
 Template.posts.rendered = function(){
+
+	Session.set('userPostListCount', 50);
+    $(window).scroll(function(){
+        if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+            Meteor.setTimeout(function(){
+            Session.set('userPostListCount', Session.get('userPostListCount') +50);
+            }, 100);
+        }
+    });
+
   	$('#apply').hide();
   	$('.dropdown-button').dropdown({
         inDuration: 300,
@@ -322,7 +332,7 @@ Template.addNewPost.events({
 
 Template.posts.helpers({
     'postList': function () {
-        return Posts.find();
+        return Posts.find({},{limit:Session.get('userPostListCount')});
     },
     'pageList': function () {
         return Pages.find();
