@@ -15,6 +15,7 @@ Template.BHShome.rendered = function(){
 }
 
 Template.BHSlist.rendered = function(){
+    $('#loading').css('display','block');         	
 	$('.listContainer').scroll(function(){
         if($('.listContainer').scrollTop() + $('.listContainer').innerHeight()>=$('.listContainer')[0].scrollHeight-20) {
         	if($("input:hidden").length==1){
