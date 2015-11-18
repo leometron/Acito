@@ -116,18 +116,18 @@ BHSListController = RouteController.extend({
         if (Session.get('ICD_data_loaded')) {
           $('#loading').css('display','none');   
           return {
-          listICD: arr,
-          ready: self.ICDSubscribed.ready,
-          searchDataEmpty : self.resultCount(),
-          nextPath: function() {
-            if (self.posts().count() === self.postsLimit()){
+            listICD: arr,
+            ready: self.ICDSubscribed.ready,
+            searchDataEmpty : self.resultCount(),
+            nextPath: function() {
+              if (self.posts().count() === self.postsLimit()){
                 return self.nextPath();
+              }
             }
-          }
-      };
-    } else {
-      $('#loading').css('display','block');         
-    }
+          };
+        } else {
+          $('#loading').css('display','block');         
+        }
     } else  if(Session.get('title') == "DSM-5 codes"){
         var prevSectionName="";
         var prevSubSectionName = "";
@@ -149,19 +149,19 @@ BHSListController = RouteController.extend({
         }
         if (Session.get('DSM_data_loaded')) {
           $('#loading').css('display','none');        
-        return {
-          listDSM: arr,
-          ready: self.DSMSubscribed.ready,
-          searchDataEmpty : self.resultCount(),
-          nextPath: function() {
-            if (self.posts().count() === self.postsLimit()){
+          return {
+            listDSM: arr,
+            ready: self.DSMSubscribed.ready,
+            searchDataEmpty : self.resultCount(),
+            nextPath: function() {
+              if (self.posts().count() === self.postsLimit()){
                 return self.nextPath();
               }
-          }
-      };
-      } else {
+            }
+          };
+        } else {
           $('#loading').css('display','block');        
-      }
+        }
     }else{
       if(data.length>0){
           for(var i=0;i<data.length;i++){
@@ -173,19 +173,19 @@ BHSListController = RouteController.extend({
         }
         if (Session.get('CR_data_loaded')) {
           $('#loading').css('display','none');        
-        return {
-          listCodingRule: arr,
-          ready: self.CodingRulesSubscribed.ready,
-          searchDataEmpty : self.resultCount(),
-          nextPath: function() {
-            if (self.posts().count() === self.postsLimit()){
-              return self.nextPath();
+          return {
+            listCodingRule: arr,
+            ready: self.CodingRulesSubscribed.ready,
+            searchDataEmpty : self.resultCount(),
+            nextPath: function() {
+              if (self.posts().count() === self.postsLimit()){
+                return self.nextPath();
+              }
             }
-          }
-      };
-    } else {
-      $('#loading').css('display','block');          
-    }      
+          };
+        } else {
+          $('#loading').css('display','block');          
+        }      
     }
   }
 });

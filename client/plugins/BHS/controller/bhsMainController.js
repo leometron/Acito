@@ -97,8 +97,9 @@ Template.BHSlist.events({
 		Router.go("/");
   	},
   	'click .alphabet':function(event){
+  		$('#loading').css('display','block');  		
+  		Session.set('selectedAlphabet','');
   		event.preventDefault();
-  		$('#loading').css('display','block');
   		$('.listContainer').scrollTop(0);
 		var id = event.currentTarget.id;
 		Router.go('list');
@@ -117,7 +118,7 @@ Template.BHSlist.events({
   			if (!$('#searchString').val()) {
   				$('#errorMsg').css('display','block');
   			} else {
-Session.set('searchString','');  				
+				Session.set('searchString','');  				
   				$('#loading').css('display','block');
   				$('#errorMsg').css('display','none');
   				// Session.set('searchKey',$('#searchString').val());
